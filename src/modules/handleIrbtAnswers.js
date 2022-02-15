@@ -1,0 +1,119 @@
+
+ let ms = 0;
+let startTime;
+let timerActive = false;
+
+function startTimer() {
+    ms = 0;
+     startTime = new Date();
+    timerActive = true
+    timerLoop();
+}
+
+function stopTimer() {
+    const endTime = new Date();
+    timerActive = false;
+    ms = endTime - startTime;    
+}
+
+function timerLoop() {
+    if (!timerActive) return;
+
+    setTimeout(() => {
+        ms = new Date() - startTime;
+        timerLoop();
+    }, 1)
+}
+
+function getFacesPosition(that) {
+    let face;
+    if (that.irbt_trials[that.currentUserTrial]?.randomNo === 0) {
+        face = "happy.jpg";
+    } else {
+        face = "sad.jpg";
+    }
+    that.leftFace = face;
+    return face;
+}
+
+function getFacesPosition2(thiskeyword) {
+    let that = thiskeyword;
+    let face;
+    if (that.irbt_trials[that.currentUserTrial]?.randomNo === 0) {
+        face = "sad.jpg";
+    } else {
+        face = "happy.jpg";
+    }
+    that.rightFace = face;
+    return face;
+}
+
+function handleCorrectAnswer(thiskeyword, routeTo) {
+    stopTimer();
+    let that = thiskeyword;
+    that.irbt_trials[that.currentUserTrial].visibility = "none";
+    that.irbt_trials[that.currentUserTrial].ms = ms;
+    document.querySelector(".irbt_cross").style.display = "none"
+    document.querySelector(".irbt-cross-text").style.display = "none"
+    document.querySelector(".irbt_star").style.display = "block"
+    document.querySelector(".faceRight").style.display = "none"
+    document.querySelector(".faceLeft").style.display = "none"
+
+
+    setTimeout(function () {
+        document.querySelector(".irbt_star").style.display = "none"
+        that.currentUserTrial++;
+        startTimer();
+        if (that.currentUserTrial !== that.irbt_trials.length) {
+            that.irbt_trials[that.currentUserTrial].visibility = "block";
+            document.querySelector(".faceRight").style.display = "block"
+            document.querySelector(".faceLeft").style.display = "block"
+        } else {
+            // !Store data in firebase!
+            // console.log("enddd");
+            that.$store.state.irbt_data[that.section] = that.irbt_trials;
+            that.$router.push(routeTo);
+        }
+    }, 1000)
+
+}
+
+function handleIncorrectAnswer(that) {
+    document.querySelector(".irbt_cross").style.display = "block";
+    document.querySelector(".irbt-cross-text").style.display = "block";
+    setTimeout(function () {
+        that.irbt_trials[that.currentUserTrial].accuracy = 0;
+        // console.log("wrong");
+        document.querySelector(".irbt_cross").style.display = "none";
+        document.querySelector(".irbt-cross-text").style.display = "none";
+
+    }, 1000)
+}
+
+
+
+function leftFaceAction(that, routeTo) {
+    //!return and reset timer here
+    const faceBeingShown = that.irbt_trials[that.currentUserTrial].emotion;
+    // console.log(faceBeingShown, " ", that.leftFace);
+    if (faceBeingShown === that.leftFace) {
+        // console.log("left is answer");
+        handleCorrectAnswer(that, routeTo);
+    } else {
+        handleIncorrectAnswer(that);
+    }
+}
+
+function rightFaceAction(that, routeTo) {
+    //! return and reset timer here
+    const faceBeingShown = that.irbt_trials[that.currentUserTrial].emotion;
+    // console.log(faceBeingShown, " ", that.rightFace);
+    if (faceBeingShown === that.rightFace) {
+        // console.log("right is answer");
+        handleCorrectAnswer(that, routeTo);
+    } else {
+        handleIncorrectAnswer(that, routeTo);
+    }
+}
+
+export { getFacesPosition, getFacesPosition2, handleCorrectAnswer, handleIncorrectAnswer, leftFaceAction, rightFaceAction, stopTimer, startTimer }

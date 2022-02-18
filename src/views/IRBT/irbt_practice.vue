@@ -11,7 +11,7 @@
       :key="trial.id"
       :style="{ display: trial.visibility }"
     >
-      <h3><img :src="getImage(trial.image)" class="trialimg" /></h3>
+      <img :src="getImage(trial.image)" class="trialimg" />
     </div>
   </main>
   <img

@@ -34,6 +34,10 @@ h3 {
   .style-instruction{
         padding: 33px 34px;
   }
+  .style-instruction h3{
+    font-size: 2vh;
+  }
+
 }
 </style>
 

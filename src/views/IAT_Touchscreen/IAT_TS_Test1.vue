@@ -65,19 +65,5 @@ export default {
 </script>
 
 <style scoped>
-.faceimg {
-  height: 400px;
-  border: none;
-  padding: 20px 34px 0px;
-  background: white;
-}
-
-@media (max-width: 595px) {
-  .faceimg {
-    height: 273px !important;
-  } 
-  main{
-    background: white;
-  }
-}
+@import url("../../styles/IAT_TS.css");
 </style>

@@ -38,5 +38,12 @@
   font-size: 2.6vh;
 }
 
+@media(max-width: 595px) {
+  .left, .right{
+    font-size: 2.5vh;
+    line-height: 33px
+  }
+
+}
 
 </style>

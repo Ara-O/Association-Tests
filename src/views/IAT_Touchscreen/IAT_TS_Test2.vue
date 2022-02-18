@@ -60,19 +60,5 @@ export default {
 </script>
 
 <style scoped>
- .instruction-iat{
-    box-shadow: 0px 0px 4px #c6c6c6;
-    background: white;
-    padding: 30px 30px;
-    border-radius: 7px;
-}
-
-@media (max-width: 595px) {
-  .faceimg {
-    height: 273px !important;
-  } 
-    main{
-    background: white;
-  }
-}
+@import url("../../styles/IAT_TS.css");
 </style>

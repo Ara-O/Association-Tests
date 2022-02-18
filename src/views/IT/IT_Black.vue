@@ -22,7 +22,7 @@
         number, tap on the number.
       </h3>
       <br />
-      <h3>Tap the arrow at the upper right to get started.</h3>
+      <h3 style="line-height: 33px">Tap the arrow at the upper right to get started.</h3>
     </div>
 
     <!-- -------------------- -->
@@ -470,12 +470,12 @@ li img {
   .instructions {
     width: auto !important;
     font-size: 15px;
-    max-height: 326px;
+    max-height: 380px;
     overflow: auto;
   }
 
   .next {
-    bottom: 18px;
+    bottom: 40px;
     right: 43px;
     width: 86px;
   }

@@ -1,7 +1,7 @@
 <template>
 <main>
   <br />
-     <jelly-button whereTo="/">Go back to home page</jelly-button>
+     <jelly-button whereTo="/Home">Go back to home page</jelly-button>
    <br />
   <h4>Here's your feedback!</h4>
   <br />

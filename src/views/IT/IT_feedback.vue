@@ -1,7 +1,7 @@
 <template>
   <main>
     <h3>The test is over!</h3>
-    <router-link to="/" tag="button" class="gohome">Go Home</router-link>
+    <router-link to="/Home" tag="button" class="gohome">Go Home</router-link>
     <!-- CODE for previous feedback page ( not needed ) -->
     <!-- <div
     >

@@ -14,7 +14,7 @@
       Implicit Racial Bias Test
     </router-link>
     <router-link to="/IT" class="routerlink test_btn" tag="button">
-      Indivduation Training
+      Individuation Training
     </router-link>
     <!-- //-------------  -->
     <!-- <div class="container">

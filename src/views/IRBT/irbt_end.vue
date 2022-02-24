@@ -1,6 +1,6 @@
 <template>
 <main>
-    <jelly-button whereTo="/">Go back to main page</jelly-button>
+    <jelly-button whereTo="Home/">Go back to main page</jelly-button>
     <h3>You have finished the game :D</h3>
     </main>
 </template>
@@ -24,7 +24,7 @@ export default {
          const db = getDatabase();
               set(ref(db, `User-${test.$store.state.uid}-IRBT`), {
                 data: data,
-                 browserInfo: navigator["userAgent"],
+                browserInfo: navigator["userAgent"],
               });
     }
 }

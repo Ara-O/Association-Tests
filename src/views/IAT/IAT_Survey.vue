@@ -48,7 +48,7 @@
         </div>
       </div>
       <div class="progress">
-     <router-link to="/" class="nextbtn btn">Back</router-link>
+     <router-link to="/Home" class="nextbtn btn">Back</router-link>
       <button @click="next" class="btn nextbtn">next</button>
 </div>
     </div>

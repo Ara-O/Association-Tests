@@ -1,4 +1,4 @@
-# iat
+# Association tests
 
 ## Project setup
 ```

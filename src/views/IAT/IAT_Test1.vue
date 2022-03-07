@@ -12,10 +12,8 @@
         class="spacebar"
       />
     </div>
-
-    <div v-else>
+    <div v-else >
       <h3>Click E for Male names/images or I for Female names/images</h3>
-
       <div v-for="data in testData" :key="data.id">
         <div v-if="data.isImg" class="imagecontainer">
           <img
@@ -31,16 +29,16 @@
           </h3>
         </div>
       </div>
+    </div>
       <div id="wrong" style="display: none">
-        <h3>Incorrect</h3>
-        <h4>Try again to progress!</h4>
+        <!-- <h3></h3> -->
+        <h4>Incorrect. Try again to progress!</h4>
         <img
           src="../../assets/app-icons/incorrectImg.png"
           alt="Wrong icon"
-          style="width: 70px"
+          class="wrongicon"
         />
       </div>
-    </div>
   </main>
 </template>
 

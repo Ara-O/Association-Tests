@@ -22,7 +22,9 @@
         number, tap on the number.
       </h3>
       <br />
-      <h3 style="line-height: 33px">Tap the arrow at the upper right to get started.</h3>
+      <h3 style="line-height: 33px">
+        Tap the arrow at the upper right to get started.
+      </h3>
     </div>
 
     <!-- -------------------- -->
@@ -216,7 +218,7 @@ export default {
         this.currentlyVisible = 0;
         this.progress++;
         this.allMemorizationTimes[`${this.block + 1}-faces-trials`] =
-        this.memorizationTimes;
+          this.memorizationTimes;
         this.memorizationTimes = [];
         this.block++;
         this.$store.state.memorization_times = this.allMemorizationTimes;
@@ -252,14 +254,18 @@ export default {
             });
           }
 
+          let currentDate = new Date();
+          let cDay = currentDate.getDate();
+          let cMonth = currentDate.getMonth() + 1;
+          let cYear = currentDate.getFullYear();
+
           this.$router.push("/IT/Feedback");
           const db = getDatabase();
-          set(ref(db, `User-${this.$store.state.uid}-IT_EastAsian`), {
-            IT_EastAsian: {
-              trials: this.$store.state.IT_trials,
-              time_spent_on_memorization: this.$store.state.memorization_times,
-              browserInfo: navigator["userAgent"],
-            },
+          set(ref(db, `IT_EastAsian/User-${this.$store.state.uid}`), {
+            trials: this.$store.state.IT_trials,
+            time_spent_on_memorization: this.$store.state.memorization_times,
+            browserInfo: navigator["userAgent"],
+            dateTaken: `${cMonth}-${cDay}-${cYear}`,
           });
           // console.log("THE TEST HAS ENDED")
         }
@@ -308,7 +314,8 @@ export default {
           this.facedata[this.currentlyVisible].timeSpentOnFace = this.ms;
           this.startTimer();
 
-          document.querySelector(`.${choice.slice(0, 2)}`).style.display ="none";
+          document.querySelector(`.${choice.slice(0, 2)}`).style.display =
+            "none";
           document.querySelector(".choices").style.display = "none";
           this.facedata[this.currentlyVisible].visibility = "none";
           document.querySelector(".star").style.display = "block";
@@ -326,7 +333,8 @@ export default {
             if (that.currentlyVisible !== that.facedata.length - 1) {
               that.currentlyVisible++;
               document.querySelector(".star").style.display = "none";
-              document.querySelector(`.${choice.slice(0, 2)}`).style.display = "none";
+              document.querySelector(`.${choice.slice(0, 2)}`).style.display =
+                "none";
               that.facedata[that.currentlyVisible].visibility = "block";
               document.querySelector(".choices").style.display = "flex";
             } else {

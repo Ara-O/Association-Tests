@@ -45,6 +45,9 @@ import IRBT_Section2 from "../views/IRBT/irbt_section2.vue"
 import Reinforcement from "../views/IRBT/irbt_reinforcement.vue"
 import IRBT_end from "../views/IRBT/irbt_end.vue"
 
+//-----------
+
+
 const routes = [
   {
     path: "/",
@@ -197,6 +200,7 @@ const routes = [
     path: '/IRBT/end',
     component: IRBT_end,
   },
+
 
 ]
 

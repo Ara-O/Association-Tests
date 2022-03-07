@@ -165,7 +165,7 @@ main {
 
 .irbt_cross {
   display: none;
-  width: 160px;
+  width: 102px;
 }
 
 .irbt-cross-text {

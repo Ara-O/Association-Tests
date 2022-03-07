@@ -26,15 +26,14 @@
           <h3 class="data_name_h3">{{ data.name }}</h3>
         </div>
       </div>
-      <div id="wrong" style="display: none">
-        <h3>Incorrect</h3>
-        <h4>Try again to progress!</h4>
-        <img
-          src="../../assets/app-icons/incorrectImg.png"
-          alt="Wrong icon"
-          style="width: 70px"
-        />
-      </div>
+    </div>
+    <div id="wrong" style="display: none">
+      <h4>Incorrect. Try again to progress!</h4>
+      <img
+        src="../../assets/app-icons/incorrectImg.png"
+        alt="Wrong icon"
+        class="wrongicon"
+      />
     </div>
   </main>
 </template>

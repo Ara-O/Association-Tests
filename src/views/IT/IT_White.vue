@@ -22,7 +22,9 @@
         number, tap on the number.
       </h3>
       <br />
-      <h3 style="line-height: 33px">Tap the arrow at the upper right to get started.</h3>
+      <h3 style="line-height: 33px">
+        Tap the arrow at the upper right to get started.
+      </h3>
     </div>
 
     <!-- -------------------- -->
@@ -256,14 +258,18 @@ export default {
             });
           }
 
+          let currentDate = new Date();
+          let cDay = currentDate.getDate();
+          let cMonth = currentDate.getMonth() + 1;
+          let cYear = currentDate.getFullYear();
+
           this.$router.push("/IT/Feedback");
           const db = getDatabase();
-          set(ref(db, `User-${this.$store.state.uid}-IT_White`), {
-            IT_white: {
-              trials: this.$store.state.IT_trials,
-              time_spent_on_memorization: this.$store.state.memorization_times,
-               browserInfo: navigator["userAgent"],
-            },
+          set(ref(db, `IT_White/User-${this.$store.state.uid}`), {
+            trials: this.$store.state.IT_trials,
+            time_spent_on_memorization: this.$store.state.memorization_times,
+            browserInfo: navigator["userAgent"],
+            dateTaken: `${cMonth}-${cDay}-${cYear}`,
           });
           // console.log("THE TEST HAS ENDED")
         }
@@ -487,50 +493,48 @@ li img {
   box-shadow: grey 0px 0px 5px 0px;
 }
 
- .face_img{
-    width: 537px;
-  }
-
+.face_img {
+  width: 537px;
+}
 
 @media (max-width: 852px) {
-  main{
+  main {
     background: white;
   }
-  .instructions{
-      width: auto !important;
+  .instructions {
+    width: auto !important;
     font-size: 15px;
     max-height: 380px;
     overflow: auto;
   }
 
-  .next{
+  .next {
     bottom: 40px;
     right: 43px;
     width: 86px;
   }
 
-  .face_img{
+  .face_img {
     bottom: 18px;
     right: 43px;
     width: 337px;
   }
 
-  .img-of-face{
+  .img-of-face {
     width: 337px;
   }
 
-  .choices{
+  .choices {
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  .faces{
+  .faces {
     margin-left: -23px;
   }
 
-  
-  .faces_flexbox{
-        flex-direction: column ;
+  .faces_flexbox {
+    flex-direction: column;
     row-gap: 13px;
   }
 }

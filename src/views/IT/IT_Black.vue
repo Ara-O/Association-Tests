@@ -22,7 +22,9 @@
         number, tap on the number.
       </h3>
       <br />
-      <h3 style="line-height: 33px">Tap the arrow at the upper right to get started.</h3>
+      <h3 style="line-height: 33px">
+        Tap the arrow at the upper right to get started.
+      </h3>
     </div>
 
     <!-- -------------------- -->
@@ -218,7 +220,8 @@ export default {
         this.currentlyVisible = 0;
         this.progress++;
         // console.log(this.memorizationTimes);
-        this.allMemorizationTimes[`${this.block + 1}-faces-trials`] =this.memorizationTimes;
+        this.allMemorizationTimes[`${this.block + 1}-faces-trials`] =
+          this.memorizationTimes;
         this.memorizationTimes = [];
         this.block++;
         this.$store.state.memorization_times = this.allMemorizationTimes;
@@ -255,14 +258,18 @@ export default {
             });
           }
 
+          let currentDate = new Date();
+          let cDay = currentDate.getDate();
+          let cMonth = currentDate.getMonth() + 1;
+          let cYear = currentDate.getFullYear();
+
           this.$router.push("/IT/Feedback");
           const db = getDatabase();
-          set(ref(db, `User-${this.$store.state.uid}-IT_Black`), {
-            IT_Black: {
-              trials: this.$store.state.IT_trials,
-              time_spent_on_memorization: this.$store.state.memorization_times,
-              browserInfo: navigator["userAgent"],
-            },
+          set(ref(db, `IT_Black/User-${this.$store.state.uid}`), {
+            trials: this.$store.state.IT_trials,
+            time_spent_on_memorization: this.$store.state.memorization_times,
+            browserInfo: navigator["userAgent"],
+            dateTaken: `${cMonth}-${cDay}-${cYear}`,
           });
           // console.log("THE TEST HAS ENDED")
         }

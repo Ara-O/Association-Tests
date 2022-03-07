@@ -66,3 +66,17 @@ main {
     font-size: 15px;
     padding: 0px 15px;
   }
+
+  #wrong{
+    align-items: center;
+    flex-direction: row-reverse;
+    column-gap: 20px;
+} 
+
+.wrongicon{
+  display: flex;
+  align-items: center;
+  column-gap: 9px;
+  flex-direction: row-reverse;
+  height: 40px;
+}

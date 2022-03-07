@@ -4,6 +4,10 @@
 // Timer 
 let ms = 0;
 let startTime;
+let currentDate = new Date();
+let cDay = currentDate.getDate();
+let cMonth = currentDate.getMonth() + 1;
+let cYear = currentDate.getFullYear();
 
 function startTimer() {
   ms = 0;
@@ -67,14 +71,15 @@ function handleAnswer_TS(main, thiskeyword, Data, whereToStore, whereToGo) {
 
           //Storing data in firebase
             const db = getDatabase();
-            set(ref(db, `User-${test.$store.state.uid}-IAT_Touchscreen`), {
+            set(ref(db, `IAT_Touchscreen/User-${test.$store.state.uid}`), {
               data: test.$store.state.IAT_TS_data,
               browserInfo: navigator["userAgent"],
+              dateTaken: `${cMonth}-${cDay}-${cYear}` 
             });
         }
       } else {
         currentChallenge.accuracy = 0;
-        document.querySelector("#wrong").style.display = "block";
+        document.querySelector("#wrong").style.display = "flex";
       }
     }
 

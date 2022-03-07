@@ -16,16 +16,15 @@
         </h3>
       </div>
     </div>
-    <div id="wrong" style="display: none">
-      <h3 style="font-size: 2.5vh">Incorrect</h3>
-     <h4>Try again to progress!</h4>
-      <img
-        src="../../assets/app-icons/incorrectImg.png"
-        alt="Wrong icon"
-        style="width: 70px"
-      />
-    </div>
-
+  <div id="wrong" style="display: none">
+        <!-- <h3></h3> -->
+        <h4>Incorrect. Try again to progress!</h4>
+        <img
+          src="../../assets/app-icons/incorrectImg.png"
+          alt="Wrong icon"
+          class="wrongicon"
+        />
+      </div>
     <clicker>
       <template #left>Male</template>
       <template #right>Female</template>

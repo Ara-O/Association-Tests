@@ -1,11 +1,11 @@
 <template>
   <main class="test3" @click.once="start3">
     <div v-if="notStarted" class="instruction-iat">
-      <h3 style="font-size: 2.5vh">Let's practice Male and Career vs Female and Home!</h3>
-      <h3 style="font-size: 2.5vh">
+      <h3 style="font-size: 2.3vh">Let's practice Male and Career vs Female and Home!</h3>
+      <h3 style="font-size: 2.3vh">
         Click the right for Female and Home, and the left for Male and Career
       </h3>
-      <h3 style="font-size: 2.5vh">Click anywhere to start</h3>
+      <h3 style="font-size: 2.3vh">Click anywhere to start</h3>
     </div>
     <div v-else>
       <div v-for="data in testData" :key="data.id">
@@ -25,13 +25,12 @@
         </div>
       </div>
       <div id="wrong" style="display: none">
-        <h3 style="font-size: 2.5vh">Incorrect</h3>
-             <h4>Try again to progress!</h4>
-
+        <!-- <h3></h3> -->
+        <h4>Incorrect. Try again to progress!</h4>
         <img
           src="../../assets/app-icons/incorrectImg.png"
           alt="Wrong icon"
-          style="width: 70px"
+          class="wrongicon"
         />
       </div>
 

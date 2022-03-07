@@ -1,10 +1,10 @@
 <template>
   <main class="test5" @click.once="start5">
     <div v-if="notStarted" class="instruction-iat">
-      <h3 style="font-size: 2.5vh">The positions are reversed now!</h3>
-      <h3 style="font-size: 2.5vh">Click the right for Male names/images </h3>
-      <h3 style="font-size: 2.5vh">Click the left for Female names/images</h3>
-       <h3 style="font-size: 2.5vh">Click anywhere to start</h3>
+      <h3 style="font-size: 2.3vh">The positions are reversed now!</h3>
+      <h3 style="font-size: 2.3vh">Click the right for Male names/images </h3>
+      <h3 style="font-size: 2.3vh">Click the left for Female names/images</h3>
+       <h3 style="font-size: 2.3vh">Click anywhere to start</h3>
     </div>
     <div v-else>
       <div v-for="data in testData" :key="data.id">
@@ -24,7 +24,7 @@
         </div>
       </div>
       <div id="wrong" style="display: none">
-        <h3 style="font-size: 2.5vh">Incorrect</h3>
+        <h3 style="font-size: 2.3vh">Incorrect</h3>
              <h4>Try again to progress!</h4>
 
         <img

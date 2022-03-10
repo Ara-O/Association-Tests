@@ -1,15 +1,14 @@
 <template>
   <main>
-
     <!-- BASIC QUESTIONS -->
     <div v-if="moveon" class="survey_container">
-      <h3 style="margin-top: 53px">Basic questions</h3>
+      <h3>Basic questions</h3>
       <h4>How do you identify your gender</h4>
       <div class="image_examples">
         <img
           src="../../assets/app-icons/diverseimg.jpg"
           alt="Image"
-          style="width: 350px"
+          style="width: 273px"
         />
       </div>
       <div class="image_examples">
@@ -17,21 +16,21 @@
           <input
             type="radio"
             value="male"
-            for="male"
             name="gender"
             v-model="userData.gender"
+            id="male"
           />
-          <label id="male">Male</label>
+          <label for="male">Male</label>
         </div>
         <div class="gender_choice">
           <input
             type="radio"
             value="female"
-            for="female"
             name="gender"
             v-model="userData.gender"
+            id="female"
           />
-          <label id="female">Female</label>
+          <label for="female">Female</label>
         </div>
       </div>
       <h4 style="margin-top: 35px">
@@ -43,19 +42,19 @@
             type="checkbox"
             :value="ethnicity.name"
             v-model="userData.chosenethnicity"
+            :id="ethnicity.name"
           />
-          <label>{{ ethnicity.name }}</label>
+          <label :for="ethnicity.name">{{ ethnicity.name }}</label>
         </div>
       </div>
       <div class="progress">
-     <router-link to="/Home" class="nextbtn btn">Back</router-link>
-      <button @click="next" class="btn nextbtn">next</button>
-</div>
+        <router-link to="/Home" class="nextbtn btn">Back</router-link>
+        <button @click="next" class="btn nextbtn">next</button>
+      </div>
     </div>
 
     <!-- EXPLICIT ATTITUDES -->
     <div v-else class="survey_container">
-      <h3>Explicit attitudes</h3>
       <h4>
         How warm or cold do you feel towards men? Use the slider:
         {{ this.userData.slider1 }}
@@ -97,10 +96,18 @@
         >men
       </h4>
       <div class="buttons">
-        <button @click="progress_ts" class="btn nextbtn">
+        <button
+          @click="progress_ts"
+          class="btn nextbtn"
+          style="margin-top: 5px"
+        >
           Touch Screen Version
         </button>
-        <button @click="progress_kb" class="btn nextbtn kb_btn">
+        <button
+          @click="progress_kb"
+          class="btn nextbtn kb_btn"
+          style="margin-top: 5px"
+        >
           Keyboard Version
         </button>
       </div>
@@ -182,13 +189,15 @@ main {
 
 .nextbtn {
   min-height: 45px;
-  min-width: 85px;
+  min-width: 45px;
   border: none;
+  font-weight: 300;
   margin-top: 33px;
+  font-size: 13px;
+  padding: 1px 26px;
 }
 
 .survey_container {
-  border: solid 1px #c9c9c9;
   min-height: 586px;
   min-width: 471px;
   background: white;
@@ -196,9 +205,10 @@ main {
   flex-direction: column;
   border-radius: 5px;
   align-items: center;
-  box-shadow: 0px 1px 10px #b3b3b3;
+  box-shadow: -3px 1px 7px #eeeeeeb2, 2px 3px 5px rgb(218 218 219 / 95%);
   box-sizing: border-box;
   padding: 4px 46px;
+  justify-content: center;
 }
 
 .image_examples {
@@ -226,15 +236,12 @@ h4 {
   margin-bottom: 15px;
 }
 
-h3 {
-  margin-top: 51px;
-}
-
 select {
   height: 28px;
-  border: solid 1px gray;
-  border-radius: 16px;
+  border: solid 1px #d0d0d0;
+  border-radius: 7px;
   text-align: center;
+  font-weight: 400;
 }
 
 .buttons {
@@ -242,32 +249,40 @@ select {
   column-gap: 10px;
 }
 
-.progress{
+.progress {
   display: flex;
   justify-content: center;
   align-items: center;
   column-gap: 30px;
 }
 
-@media(max-width: 450px){
-.survey_container{
-  min-height: 0px;
+.survey_container h4,
+#male,
+#female,
+label {
+  font-weight: 400;
+  font-size: 15px;
+}
+
+@media (max-width: 450px) {
+  .survey_container {
+    min-height: 0px;
     min-width: 0px;
     border: none;
     box-shadow: none;
     padding: 4px;
-}
+  }
 
-main{
-  background: white;
-}
+  main {
+    background: white;
+  }
 
-.nextbtn{
-  font-size: 14px;
-}
+  .nextbtn {
+    font-size: 14px;
+  }
 
-.kb_btn{
-  display: none;
-}
+  .kb_btn {
+    display: none;
+  }
 }
 </style>

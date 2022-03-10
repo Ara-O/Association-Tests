@@ -251,6 +251,7 @@ export default {
           // !End of test
           //REMOVE CN AND VISIBILITY
           let data = this.$store.state.IT_trials;
+          let dataclone = JSON.parse(JSON.stringify(data));
           for (let trial in data) {
             data[trial].forEach((data) => {
               delete data.visibility;
@@ -262,6 +263,20 @@ export default {
           let cDay = currentDate.getDate();
           let cMonth = currentDate.getMonth() + 1;
           let cYear = currentDate.getFullYear();
+          let dataclonearray = [];
+          //!Data clone
+          for (let trial in dataclone) {
+            dataclone[trial].forEach((data) => {
+              delete data.visibility;
+              delete data.id;
+              data.currentTrial = trial;
+              (data.browserInfo = navigator["userAgent"]),
+              (data.dateTaken = `${cMonth}-${cDay}-${cYear}`),
+              dataclonearray.push(data);
+            });
+          }
+          this.$store.state.IT_trials_text = dataclonearray;
+          console.log(dataclone);
 
           this.$router.push("/IT/Feedback");
           const db = getDatabase();
@@ -270,6 +285,9 @@ export default {
             time_spent_on_memorization: this.$store.state.memorization_times,
             browserInfo: navigator["userAgent"],
             dateTaken: `${cMonth}-${cDay}-${cYear}`,
+          });
+          set(ref(db, `TestData/IT_White/User-${this.$store.state.uid}`), {
+            data: this.$store.state.IT_trials_text,
           });
           // console.log("THE TEST HAS ENDED")
         }
@@ -419,9 +437,15 @@ main {
   transform: translate(-4px, -1px);
   transition: all 100ms ease-in;
 }
+
 .instructions {
   line-height: 31px;
   width: 700px;
+}
+
+h3.instructions.midinstructions {
+  font-size: 16.5px;
+  font-weight: 400;
 }
 
 .faces_displayed {
@@ -490,7 +514,12 @@ li img {
   padding: 48px;
   border-radius: 14px;
   color: black;
-  box-shadow: grey 0px 0px 5px 0px;
+  box-shadow: -3px -3px 7px #eeeeeeb2, 4px 4px 5px rgb(218 218 219 / 95%);
+}
+
+.midinstructions h3 {
+  font-size: 16.5px;
+  font-weight: 400;
 }
 
 .face_img {

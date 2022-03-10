@@ -8,6 +8,8 @@ main {
   
   .instructions {
     width: 700px;
+    font-size: 16.5px;
+    font-weight: 400;
   }
   
   .faces_displayed {

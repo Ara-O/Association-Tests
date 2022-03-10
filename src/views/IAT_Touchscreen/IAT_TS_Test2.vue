@@ -8,7 +8,7 @@
     <div v-else>
     <div v-for="data in testData" :key="data.id">
         <div :style="{ display: data.visibility }">
-        <h3 style="font-size: 3vh">{{ data.name }}</h3>
+        <h3 class="data-name">{{ data.name }}</h3>
         </div>
     </div>
     <div id="wrong" style="display: none">

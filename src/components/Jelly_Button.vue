@@ -21,8 +21,8 @@ export default {
   transition: all 250ms ease-in-out;
   color: white;
   text-decoration: none;
-  font-size: 15px;
-  padding: 18px 37px;
+  padding: 9px 34px;
+  font-size: 14px;
 }
 
 .btn:hover {

@@ -1,21 +1,30 @@
 <template>
-<main>
-  <br />
-     <jelly-button whereTo="/Home">Go back to home page</jelly-button>
-   <br />
-  <h4>Here's your feedback!</h4>
-  <br />
-  <div class="feedbacks">
-    <div v-for="(data, index) in blocksAccuracydata" :key="data">
-      <div class="feedbacksect" v-if="index + 1 === 4">
-        <h3 style="line-height: 31px"> When you were asked to associate male with career and female with home, your accuracy was {{ data[data.length - 1].slice(-7) }}, and your avergae response time was {{allAverageSpeeds[index].toFixed(0) }}ms </h3>
-       </div>
-       <div class="feedbacksect" v-else-if="index + 1 === 7">
-                 <h3 style="line-height: 31px"> When you were asked to associate male with home and female with career, your accuracy was {{ data[data.length - 1].slice(-7) }}, and your avergae response time was {{allAverageSpeeds[index].toFixed(0) }}ms </h3>
-
-       </div>
+  <main>
+    <br />
+    <jelly-button whereTo="/Home">Go back to home page</jelly-button>
+    <br />
+    <h4>Here's your feedback!</h4>
+    <br />
+    <div class="feedbacks">
+      <div v-for="(data, index) in blocksAccuracydata" :key="data">
+        <div class="feedbacksect" v-if="index + 1 === 4">
+          <h3 style="line-height: 31px; font-size: 15px">
+            When you were asked to associate male with career and female with
+            home, your accuracy was {{ data[data.length - 1].slice(-7) }}, and
+            your avergae response time was
+            {{ allAverageSpeeds[index].toFixed(0) }}ms
+          </h3>
+        </div>
+        <div class="feedbacksect" v-else-if="index + 1 === 7">
+          <h3 style="line-height: 31px; font-size: 15px">
+            When you were asked to associate male with home and female with
+            career, your accuracy was {{ data[data.length - 1].slice(-7) }}, and
+            your avergae response time was
+            {{ allAverageSpeeds[index].toFixed(0) }}ms
+          </h3>
+        </div>
+      </div>
     </div>
-  </div>
   </main>
 </template>
 
@@ -86,16 +95,22 @@ export default {
   gap: 10px;
 }
 
+.btn {
+  padding: 21px 34px;
+  font-weight: 300;
+  margin-bottom: 0px;
+}
+
 @media (max-width: 595px) {
-  main{
+  main {
     background: white;
   }
 
-  .btn{
+  .btn {
     margin-top: 145px;
-      }
+  }
 
-  .feedbacks{
+  .feedbacks {
     display: flex;
     row-gap: 10px;
     flex-direction: column;

@@ -16,14 +16,6 @@
     <router-link to="/IT" class="routerlink test_btn" tag="button">
       Individuation Training
     </router-link>
-    <!-- //-------------  -->
-    <!-- <div class="container">
-  <img src="../assets/app-icons/jellybeanbtn.png" alt="Jelly bean" style="width:34%;">
-   <router-link to="/IAT" class="centered" tabindex="0" tag="button">
-        Implicit Association Test
-      </router-link> 
-    </div> -->
-    <!-- //  -->
   </main>
 </template>
 
@@ -45,6 +37,7 @@ main {
   justify-content: center;
   flex-direction: column;
 }
+
 h3 {
   margin: 40px 0 0;
 }
@@ -52,6 +45,7 @@ h3 {
 .choosetest {
   margin-bottom: 50px;
   font-size: 49px;
+  font-weight: 600
 }
 
 .test_btn {
@@ -66,6 +60,8 @@ h3 {
   cursor: pointer;
   margin-bottom: 25px;
   transition: all 250ms ease-in-out;
+  /* padding: 9px 34px; */
+  font-size: 14px;
 }
 
 .test_btn:hover {
@@ -77,25 +73,7 @@ h3 {
 a.routerlink {
   text-decoration: none;
   color: white;
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: 300;
 }
-
-/* .container {
-  position: relative;
-  text-align: center;
-  color: white;
-} */
-
-/* Centered text */
-/* .centered {
-  position: absolute;
-  top: 50%;
-  text-align: center;
-  width: 106px;
-  color: white;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-decoration: none;
-  text-shadow: 1px 1px 1px #bebebe;
-} */
 </style>

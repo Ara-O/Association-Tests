@@ -1,7 +1,7 @@
 <template>
   <main class="test3" @click.once="start3">
     <div v-if="notStarted" class="instruction-iat">
-      <h3 style="font-size: 2.3vh">Let's practice Male and Career vs Female and Home!</h3>
+      <h3 style="font-size: 2.3vh">Let's practice!</h3>
       <h3 style="font-size: 2.3vh">
         Click the right for Female and Home, and the left for Male and Career
       </h3>
@@ -19,7 +19,7 @@
         </div>
 
         <div v-else :style="{ display: data.visibility }">
-          <h3 style="font-size: 3vh">
+          <h3 class="data-name">
             {{ data.name }}
           </h3>
         </div>

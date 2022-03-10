@@ -72,6 +72,13 @@ function handleCorrectAnswer(thiskeyword, routeTo) {
             // !Store data in firebase!
             // console.log("enddd");
             that.$store.state.irbt_data[that.section] = that.irbt_trials;
+            let clone = JSON.parse(JSON.stringify(that.irbt_trials))
+            clone.forEach((data)=> {
+                data.section = that.section;
+                delete data.visibility;
+                delete data.randomNo;
+            })
+            that.$store.state.irbt_data_text.push(clone)
             that.$router.push(routeTo);
         }
     }, 1000)
@@ -93,7 +100,6 @@ function handleIncorrectAnswer(that) {
 
 
 function leftFaceAction(that, routeTo) {
-    //!return and reset timer here
     const faceBeingShown = that.irbt_trials[that.currentUserTrial].emotion;
     // console.log(faceBeingShown, " ", that.leftFace);
     if (faceBeingShown === that.leftFace) {
@@ -105,7 +111,6 @@ function leftFaceAction(that, routeTo) {
 }
 
 function rightFaceAction(that, routeTo) {
-    //! return and reset timer here
     const faceBeingShown = that.irbt_trials[that.currentUserTrial].emotion;
     // console.log(faceBeingShown, " ", that.rightFace);
     if (faceBeingShown === that.rightFace) {

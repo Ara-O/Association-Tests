@@ -58,6 +58,17 @@ function handleAnswer_TS(main, thiskeyword, Data, whereToStore, whereToGo) {
           let totalaccuracy = 0;
           test.$store.state.IAT_TS_data[whereToStore] = Data;
 
+          // !Cloning the data
+          let dataclone = JSON.parse(JSON.stringify(Data));
+          dataclone.forEach((data)=>{
+            data.currentTest = whereToStore;
+            data.browser = navigator["userAgent"];
+            data.dateTaken =  `${cMonth}-${cDay}-${cYear}`;
+            delete data.visibility;
+          })
+          
+          test.$store.state.IAT_TS_data_text.push(dataclone);
+
           Data.forEach((data) => {
             totalaccuracy += data.accuracy;
             delete data.visibility;
@@ -68,14 +79,18 @@ function handleAnswer_TS(main, thiskeyword, Data, whereToStore, whereToGo) {
           document.removeEventListener("keyup", handleInput);
           test.$router.push(whereToGo)
 
-
           //Storing data in firebase
             const db = getDatabase();
-            set(ref(db, `IAT_Touchscreen/User-${test.$store.state.uid}`), {
-              data: test.$store.state.IAT_TS_data,
-              browserInfo: navigator["userAgent"],
-              dateTaken: `${cMonth}-${cDay}-${cYear}` 
-            });
+            set(ref(db, `IAT_Touchscreen/User-${test.$store.state.uid}`), [
+              test.$store.state.IAT_TS_data,
+              navigator["userAgent"],
+              `${cMonth}-${cDay}-${cYear}` 
+            ]);
+
+            //!Store test data
+            set(ref(db, `TestData/IAT_Touchscreen/User-${test.$store.state.uid}`), [
+              test.$store.state.IAT_TS_data_text, 
+            ]);
         }
       } else {
         currentChallenge.accuracy = 0;

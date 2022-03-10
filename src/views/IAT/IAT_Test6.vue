@@ -4,7 +4,6 @@
   <main>
     <div v-if="notStarted" class="instruction">
       <h3>LET'S PRACTICE</h3>
-      <h3>Now switching to Male and Home vs Female and Career</h3>
       <h4>Click E for Male and Home, and I for Female and Career</h4>
       <h4>Press the space bar to start</h4>
       <img

@@ -19,7 +19,7 @@
         </div>
 
         <div v-else :style="{ display: data.visibility }">
-          <h3 style="font-size: 3vh">
+          <h3 class="data-name">
             {{ data.name }}
           </h3>
         </div>

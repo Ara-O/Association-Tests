@@ -156,6 +156,8 @@ main {
 .disagreement {
   width: 190px;
   margin-top: 30px;
+  font-weight: 300;
+  height: 47px
 }
 
 .arrange-btns {

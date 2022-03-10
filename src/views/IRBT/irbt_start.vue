@@ -31,11 +31,12 @@ main {
 .fullinstruction {
     width: 600px;
     line-height: 28px;
-    border: solid 1px #b9b9b9;
+    /* border: solid 1px #b9b9b9; */
     padding: 30px;
     background: white;
+    font-size: 14px;
     border-radius: 12px;
-    box-shadow: 0px 0px 2px grey;
+  box-shadow: -3px 1px 7px #e2e2e2b2, 2px 3px 5px rgb(218 218 219 / 95%);
 }
 
  

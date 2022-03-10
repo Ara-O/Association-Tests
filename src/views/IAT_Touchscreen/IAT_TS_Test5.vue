@@ -18,19 +18,18 @@
         </div>
 
         <div v-else :style="{ display: data.visibility }">
-          <h3 style="font-size: 3vh">
+          <h3 class="data-name">
             {{ data.name }}
           </h3>
         </div>
       </div>
-      <div id="wrong" style="display: none">
-        <h3 style="font-size: 2.3vh">Incorrect</h3>
-             <h4>Try again to progress!</h4>
-
+       <div id="wrong" style="display: none">
+        <!-- <h3></h3> -->
+        <h4>Incorrect. Try again to progress!</h4>
         <img
           src="../../assets/app-icons/incorrectImg.png"
           alt="Wrong icon"
-          style="width: 70px"
+          class="wrongicon"
         />
       </div>
 

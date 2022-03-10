@@ -77,7 +77,16 @@ main {
     padding: 23px;
     border-radius: 10px;
     box-shadow: 0px 0px 5px #b9b9b9;
+}
 
+.feedback h3, .feedback h2{
+  font-size: 15px
+}
+
+.btn{
+    padding: 21px 34px;
+  font-weight: 300;
+  margin-bottom: 0px;
 }
 
 @media (max-width: 852px) {

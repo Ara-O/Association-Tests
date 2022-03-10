@@ -6,13 +6,32 @@
 }
 
 .instruction-iat{
-    box-shadow:0px 0px 4px #c6c6c6;
-    background: white;
-    padding: 30px 30px;
-    border-radius: 7px;
+  width: 469px;
+  height: 240px;
+  display: flex;
+  box-shadow: -3px -3px 7px #eeeeeeb2, 4px 4px 5px rgb(218 218 219 / 95%);
+  background: white;
+  border-radius: 7px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 32px 41px;
+}
+
+.instruction-iat h3{
+  margin: 11px 0px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 27px;
+}
+
+.data-name{
+  font-size: 3vh;
+  margin: 2px 0px;
 }
   
-  @media (max-width: 595px) {
+@media (max-width: 595px) {
     .faceimg {
       height: 273px !important;
       padding: 0px;
@@ -24,7 +43,15 @@
     }
   
       .instruction-iat h3{
-      font-size: 2.3vh !important;
+      font-size: 2vh !important;
       line-height: 30px;  
+      margin: 2px 0px;
+      }
+
+      .instruction-iat{
+        width: 311px;
+        height: 240px;
+        padding: 0px 29px;
+        box-sizing: border-box;
       }
   }

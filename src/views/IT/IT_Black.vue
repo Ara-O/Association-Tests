@@ -251,6 +251,7 @@ export default {
           // !End of test
           //REMOVE CN AND VISIBILITY
           let data = this.$store.state.IT_trials;
+          
           for (let trial in data) {
             data[trial].forEach((data) => {
               delete data.visibility;

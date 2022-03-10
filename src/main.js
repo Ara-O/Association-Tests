@@ -7,8 +7,6 @@ import 'firebase/database'
 import clicker from "../src/components/IAT_TS_Buttons.vue"
 import jellybtn from "../src/components/Jelly_Button.vue"
 
-
-
 // Configuring firebase 
 
 const config = {

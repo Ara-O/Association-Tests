@@ -56,8 +56,8 @@
   }
 
   .choice {
-    height: 38vw;
-    width: 41vw;
+       height: 35vw;
+    width: 38vw;
   }
 }
 </style>

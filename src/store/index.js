@@ -4,6 +4,7 @@ export default createStore({
   state: {
     IAT_data: {
     },
+    IAT_data_text: [],
     IAT_TS_data: {
     },
     IAT_TS_data_text: [],

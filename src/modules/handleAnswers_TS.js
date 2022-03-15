@@ -88,9 +88,9 @@ function handleAnswer_TS(main, thiskeyword, Data, whereToStore, whereToGo) {
             ]);
 
             //!Store test data
-            set(ref(db, `TestData/IAT_Touchscreen/User-${test.$store.state.uid}`), [
-              test.$store.state.IAT_TS_data_text, 
-            ]);
+            set(ref(db, `TestData/IAT_Touchscreen/User-${test.$store.state.uid}`), {
+              data: test.$store.state.IAT_TS_data_text, 
+            });
         }
       } else {
         currentChallenge.accuracy = 0;

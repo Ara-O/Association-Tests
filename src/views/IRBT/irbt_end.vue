@@ -22,27 +22,12 @@ export default {
       });
     }
 
-    // for (let trial in dataclone) {
-    //   dataclone[trial].forEach((data) => {
-    //     delete data.randomNo;
-    //     delete data.visibility;
-    //   });
-    // }
-
     let currentDate = new Date();
     let cDay = currentDate.getDate();
     let cMonth = currentDate.getMonth() + 1;
     let cYear = currentDate.getFullYear();
 
     console.log(dataclone);
-
-    // for (let trial in dataclone) {
-    //   dataclone[trial].forEach((data) => {
-    //     data.browserInfo = navigator["userAgent"];
-    //     data.dateTaken = `${cMonth}-${cDay}-${cYear}`;
-    //     data.trial = trial;
-    //   }    
-    // }
 
     const db = getDatabase();
     set(ref(db, `IRBT/User-${test.$store.state.uid}`), {

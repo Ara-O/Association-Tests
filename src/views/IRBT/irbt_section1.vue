@@ -160,12 +160,12 @@ main {
 }
 .irbt_star {
   display: none;
-  width: 150px;
+  width: 130px;
 }
 
 .irbt_cross {
   display: none;
-  width: 102px;
+  width: 70px;
 }
 
 .irbt-cross-text {

@@ -1,114 +1,121 @@
-
 main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.instructions {
+  width: 700px;
+}
+
+.faces_displayed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.number {
+  cursor: pointer;
+}
+
+.choices {
+  display: flex;
+  justify-content: center;
+}
+
+li {
+  list-style: none;
+}
+
+li img {
+  cursor: pointer;
+}
+
+.star {
+  width: 150px;
+  display: none;
+}
+
+.centerstar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stardiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+}
+
+.faces_flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cross {
+  width: 150px;
+  display: none;
+}
+
+.correctchoice {
+  display: none;
+}
+
+.face_img {
+  width: 537px;
+}
+
+.instructionsforincorrectchoice {
+  display: none;
+}
+
+@media (max-width: 852px) {
+  main {
+    background: white;
   }
-  
   .instructions {
-    width: 700px;
-    font-size: 16.5px;
-    font-weight: 400;
+    width: auto !important;
+    font-size: 15px;
+    max-height: 380px;
+    overflow: auto;
   }
-  
-  .faces_displayed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+
+  .next {
+     bottom: 19px;
+    right: 19px;
+    width: 69px;
   }
-  
-  .number {
-    cursor: pointer;
+
+  .face_img {
+    bottom: 18px;
+    right: 43px;
+    width: 337px;
   }
-  
+
+  .img-of-face {
+    width: 300px;
+  }
+
   .choices {
-    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
   }
-  
-  li {
-    list-style: none;
+
+  .faces {
+    margin-left: -23px;
   }
-  
-  li img {
-    cursor: pointer;
-  }
-  
-  .star {
-    width: 150px;
-    display: none;
-  }
-  
-  .centerstar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .stardiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 4;
-  }
-  
+
   .faces_flexbox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    row-gap: 13px;
   }
-  
-  .cross {
-    width: 150px;
-    display: none;
+
+  li img{
+    width: 90px;
   }
-  
-  .correctchoice {
-    display: none;
-  }
-  
-  .instructionsforincorrectchoice {
-    display: none;
-  }
-  
-  @media (max-width: 852px) {
-    main{
-      background: white;
-    }
-    .instructions{
-      width: auto !important;
-      font-size: 18px;
-    }
-  
-    .next{
-      bottom: 18px;
-      right: 43px;
-      width: 86px;
-    }
-  
-    .face_img{
-      bottom: 18px;
-      right: 43px;
-      width: 337px;
-    }
-  
-    .img-of-face{
-      width: 337px;
-    }
-  
-    .choices{
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-  
-    .faces{
-      margin-left: -23px;
-    }
-  
-    .faces_flexbox{
-          flex-direction: column;
-      row-gap: 13px;
-    }
-  }
+}

@@ -154,12 +154,20 @@ main {
 
 .irbt_star {
   display: none;
-  width: 150px;
+  width: 130px;
 }
+
 
 .irbt_cross {
   display: none;
-  width: 102px;
+  width: 70px;
+}
+
+.irbt-wrong{
+      display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .irbt-cross-text{
@@ -171,10 +179,10 @@ main {
     background: white;
   }
   .faceLeft{
-    max-width: 96px;
+    max-width: 104px;
   }
   .faceRight{
-    max-width: 96px;
+    max-width: 104px;
   }
 
   .trialimg{

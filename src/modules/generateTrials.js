@@ -1,6 +1,3 @@
-//! If new approach, set two for loops for half of the trials number,
-//! With that you can control which turns out male or female
-
 import getRandomImage from "../modules/getRandomImage";
 
 function shuffleObjects(array) {
@@ -68,7 +65,7 @@ function testData_Block1(male, female, trials) {
 
 function testData_Block2(home, career) {
     const dataset = [
-        { name: "Office", key: career, accuracy: 100, visibility: "block" },
+        { name: "Office", key: career, accuracy: 100, visibility: "none" },
         { name: "Desk", key: career, accuracy: 100, visibility: "none" },
         { name: "Garden", key: home, accuracy: 100, visibility: "none" },
         { name: "Marriage", key: home, accuracy: 100, visibility: "none" },
@@ -80,7 +77,10 @@ function testData_Block2(home, career) {
         { name: "Children", key: home, accuracy: 100, visibility: "none" },
     ];
 
-    return dataset
+    const newData = shuffleObjects(dataset);
+    newData[0].visibility = "block";
+
+    return newData;
 }
 
 //   Click E for Male and Career, and I for Female and Home

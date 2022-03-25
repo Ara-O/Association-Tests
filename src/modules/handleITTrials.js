@@ -1,7 +1,7 @@
 'use strict';
 
 import { getDatabase, ref, set } from "firebase/database";
-let startTime 
+let startTime
 let ms;
 
 function startTimer() {
@@ -57,7 +57,7 @@ function nextFaceToMemorize(thisval) {
         thisval.currentlyVisible = 0;
         thisval.progress++;
         thisval.allMemorizationTimes[`${thisval.block + 1}-faces-trials`] =
-        thisval.memorizationTimes;
+            thisval.memorizationTimes;
         thisval.memorizationTimes = [];
         thisval.block++;
         // this.$store.state.memorization_times = this.allMemorizationTimes;
@@ -102,26 +102,36 @@ function proceedToNextSection(thisval, IT_Trials, section) {
             let dataclonearray = [];
             //!Data clone
             for (let trial in dataclone) {
-                dataclone[trial].forEach((data) => {
+                dataclone[trial].forEach((data, index) => {
                     delete data.visibility;
                     delete data.id;
                     data.currentTrial = trial;
-                    (data.browserInfo = navigator["userAgent"]),
-                        (data.dateTaken = `${cMonth}-${cDay}-${cYear}`),
-                        dataclonearray.push(data);
+                    data.browserInfo = navigator["userAgent"];
+                    data.dateTaken = `${cMonth}-${cDay}-${cYear}`;
+
+                    //Creating a descriptions column for the data
+                    if (section == "White") {
+                        data.description = "Test cycles through the 2-5 faces of white people and tasks the user with memorizing the number associated with each face";
+                    } else if (section == "Black") {
+                        data.description = "Test cycles through the 2-5 faces of black people and tasks the user with memorizing the number associated with each face";
+                    } else if (section == "Asian") {
+                        data.description = "Test cycles through the 2-5 faces of asian people and tasks the user with memorizing the number associated with each face";
+                    }
+                    data.testType =    `IT-${section}`;
+                    data.stimulusOrder = index + 1;
+                    delete data.visibility;
+                    delete data.randomNo;
+                    delete data.cN;
+                    dataclonearray.push(data);
+
                 });
             }
             thisval.$store.state.IT_trials_text = dataclonearray;
 
             thisval.$router.push("/IT/Feedback");
             const db = getDatabase();
-            set(ref(db, `IT_${section}/User-${thisval.$store.state.uid}`), {
-                trials: thisval.$store.state.IT_trials,
-                browserInfo: navigator["userAgent"],
-                dateTaken: `${cMonth}-${cDay}-${cYear}`,
-            });
 
-            set(ref(db, `TestData/IT_${section}/User-${thisval.$store.state.uid}`), {
+            set(ref(db, `IT/IT_${section}/User-${thisval.$store.state.uid}`), {
                 data: thisval.$store.state.IT_trials_text,
             });
             // console.log("THE TEST HAS ENDED")
@@ -171,6 +181,7 @@ function validateChoice(choice, thisval) {
             thisval.stopTimer();
             thisval.facedata[thisval.currentlyVisible].timeSpentSolvingFace = ms;
             thisval.facedata[thisval.currentlyVisible].timeSpentMemorizingFace = thisval.allMemorizationTimes[`${thisval.block}-faces-trials`][thisval.currentlyVisible];
+            thisval.facedata[thisval.currentlyVisible].blockAttempts = thisval.numberOfTimesToMemorize;
             thisval.startTimer();
 
             document.querySelector(`.${choice.slice(0, 2)}`).style.display =
@@ -200,7 +211,7 @@ function validateChoice(choice, thisval) {
                     // The faces cycle has reached the end, store current timing
                     // Only store the time it took when user gets both sides right
                     // console.log(that.facedata);
-                    document.querySelector(".star").style.display = "none";
+                    document.querySelector(".star").style.display = "none";        
                     that.numberOfTimesToMemorize = 1;
                     that.proceedToNextSection();
                     // thisval.$store.state.
@@ -224,10 +235,8 @@ function validateChoice(choice, thisval) {
         thisval.$store.state.IT_trials[`${thisval.block}-faces-trials`] = JSON.parse(
             JSON.stringify(thisval.facedata)
         );
-        thisval.$store.state.IT_trials[`${thisval.block}-faces-trials`].push({
-            blockAttempts: thisval.numberOfTimesToMemorize,
-        });
+   
     }
 }
 
-export {startTimer, stopTimer, moveForward, shuffleObjects, nextFaceToMemorize, proceedAfterIncorrectChoice, proceedToNextSection, validateChoice}
+export { startTimer, stopTimer, moveForward, shuffleObjects, nextFaceToMemorize, proceedAfterIncorrectChoice, proceedToNextSection, validateChoice }

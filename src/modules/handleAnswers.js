@@ -1,6 +1,4 @@
-// import firebase from 'firebase/app'
-import { getDatabase, ref, set } from "firebase/database"
-
+import * as storeData from "./storingDataIAT"
 
 // * Timer 
 let ms = 0;
@@ -22,8 +20,6 @@ function stopTimer() {
 
 }
 
-
-
 function handleAnswer(thiskeyword, Data, whereToStore, whereToGo) {
   const test = thiskeyword;
   test.notStarted = false;
@@ -35,7 +31,6 @@ function handleAnswer(thiskeyword, Data, whereToStore, whereToGo) {
 
 
       //First check to make sure that what was entered is accurate
-
       if (keyClicked == currentChallenge.key & test.arrayIndex !== Data.length) {
         //Proceeds to the next name while adding the speed used to answer the question
         document.querySelector("#wrong").style.display = "none";
@@ -43,7 +38,6 @@ function handleAnswer(thiskeyword, Data, whereToStore, whereToGo) {
         stopTimer();
         currentChallenge.ms = ms;
         startTimer();
-
 
         // Making sure the test isnt over yet
         if (test.arrayIndex !== Data.length - 1) {
@@ -53,45 +47,15 @@ function handleAnswer(thiskeyword, Data, whereToStore, whereToGo) {
         } else {
           //Stops timer, stores the accuracy and speed and removes the event listener when the test is over
           stopTimer();
-          let totalaccuracy = 0;
-          test.$store.state.IAT_data[whereToStore] = Data;
 
-          let dataclone = JSON.parse(JSON.stringify(Data));
-          dataclone.forEach((data) => {
-            data.currentTest = whereToStore;
-            data.browser = navigator["userAgent"];
-            data.dateTaken = `${cMonth}-${cDay}-${cYear}`;
-            delete data.visibility;
-          })
-
-          test.$store.state.IAT_data_text.push(dataclone);
-
-          Data.forEach((data) => {
-            totalaccuracy += data.accuracy;
-            delete data.visibility;
-            //  delete data.isImage;
-          })
-
-
+          //Store data in firebase
+          storeData.storeIATData(Data, thiskeyword, cMonth, cDay, cYear, whereToStore, "IAT");
 
           //Adds the accuracy to the array
-          test.$store.state.IAT_data[whereToStore].push(`Accuracy: ${(totalaccuracy / Data.length).toFixed(2)}%`);
           document.removeEventListener("keyup", handleInput);
           test.notStarted = true;
           test.$router.push(whereToGo)
 
-
-          //!Store data in firebase
-          const db = getDatabase();
-          set(ref(db, `IAT/User-${test.$store.state.uid}`), {
-            data: test.$store.state.IAT_data,
-            browserInfo: navigator["userAgent"],
-            dateTaken: `${cMonth}-${cDay}-${cYear}`,
-          });
-
-          set(ref(db, `TestData/IAT/User-${test.$store.state.uid}`), {
-            data: test.$store.state.IAT_data_text,
-          });
         }
       } else {
         currentChallenge.accuracy = 0;

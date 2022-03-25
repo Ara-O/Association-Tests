@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Consent_Form from "../views/consent_form.vue";
+import Explore_Studies from "../views/explore_studies.vue";
 import Home from "../views/Home.vue";
 import IAT_Survey from "../views/IAT/IAT_Survey.vue";
 import IAT_Test1 from "../views/IAT/IAT_Test1.vue";
@@ -51,6 +52,11 @@ import IRBT_end from "../views/IRBT/irbt_end.vue"
 const routes = [
   {
     path: "/",
+    name: "Explore studies",
+    component: Explore_Studies,
+  },
+  {
+    path: "/consent-form",
     name: "Consent Form",
     component: Consent_Form,
   },

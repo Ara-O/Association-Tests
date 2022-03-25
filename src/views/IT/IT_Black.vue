@@ -130,6 +130,7 @@ export default {
       allMemorizationTimes: {},
       block: 1,
       numberOfTimesToMemorize: 1,
+      section: "IT_Black"
     };
   },
 

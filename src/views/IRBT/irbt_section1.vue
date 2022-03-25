@@ -95,12 +95,10 @@ export default {
     },
 
     leftFaceAction() {
-      //!return and reset timer here
       irbt.leftFaceAction(this, "/IRBT/start2");
     },
 
     rightFaceAction() {
-      //! return and reset timer here
       irbt.rightFaceAction(this, "/IRBT/start2");
     },
 

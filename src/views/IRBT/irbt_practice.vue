@@ -42,18 +42,42 @@ export default {
       currentUserTrial: 0,
       leftFace: "",
       rightFace: "",
+      surveyNotStarted: true,
+      section: "practice",
+      picked: [],
     };
   },
 
-  mounted() {
-    //& (Expectedsmiling, Expectedsad, trials)
-
-    //!CHANGE TRIALS HERE
-    const trials = generateIRBTtrials("White", "Black", 8);
-    this.irbt_trials = trials;
-  },
-
   methods: {
+    moveOn() {
+      document.querySelector(".faceLeft").style.display = "block";
+      document.querySelector(".faceRight").style.display = "block";
+      this.surveyNotStarted = false;
+      let trials;
+      //& (Expectedsmiling, Expectedsad, trials)
+      
+
+      //! CHANGE TRIALS HERE
+      trials = generateIRBTtrials("White", "Black", 6);
+      let firstItem = trials[0];
+      trials.shift();
+      this.shuffleObjects(trials);
+      this.irbt_trials = trials;
+      this.irbt_trials.unshift(firstItem);
+      // console.log(this.irbt_trials);
+      irbt.startTimer();
+    },
+
+    shuffleObjects(array) {
+      for (var a = 0; a < array.length; a++) {
+        var x = array[a];
+        var y = Math.floor(Math.random() * (a + 1));
+        array[a] = array[y];
+        array[y] = x;
+      }
+      return array;
+    },
+
     getFacesPosition() {
       let face = irbt.getFacesPosition(this);
       return require(`../../assets/IRBT_faces/${face}`);
@@ -65,54 +89,16 @@ export default {
       return require(`../../assets/IRBT_faces/${face}`);
     },
 
-    handleCorrectAnswer() {
-      let that = this;
-      that.irbt_trials[that.currentUserTrial].visibility = "none";
-      document.querySelector(".irbt_star").style.display = "block";
-      document.querySelector(".irbt_cross").style.display = "none";
-      document.querySelector(".irbt-cross-text").style.display = "none";
-      document.querySelector(".faceLeft").style.display = "none";
-      document.querySelector(".faceRight").style.display = "none";
-
-      setTimeout(function () {
-        document.querySelector(".irbt_star").style.display = "none";
-        document.querySelector(".faceLeft").style.display = "block";
-        document.querySelector(".faceRight").style.display = "block";
-        // !Store speed and accuracy
-        that.currentUserTrial++;
-        if (that.currentUserTrial !== that.irbt_trials.length) {
-          that.irbt_trials[that.currentUserTrial].visibility = "block";
-        } else {
-          // console.log("end");
-          that.$router.push("/IRBT/reinforcement");
-        }
-      }, 1000);
-    },
-
     leftFaceAction() {
-      let that = this;
-      //!return and reset timer here
-      const faceBeingShown = that.irbt_trials[that.currentUserTrial].emotion;
-      // console.log(faceBeingShown, " ", that.leftFace);
-      if (faceBeingShown === that.leftFace) {
-        // console.log("left is answer");
-        this.handleCorrectAnswer(that);
-      } else {
-        this.handleIncorrectAnswer(that);
-      }
+      irbt.leftFaceAction(this, "/IRBT/reinforcement");
     },
 
     rightFaceAction() {
-      let that = this;
-      //! return and reset timer here
-      const faceBeingShown = that.irbt_trials[that.currentUserTrial].emotion;
-      // console.log(faceBeingShown, " ", that.rightFace);
-      if (faceBeingShown === that.rightFace) {
-        // console.log("right is answer");
-        this.handleCorrectAnswer(that);
-      } else {
-        this.handleIncorrectAnswer(that);
-      }
+      irbt.rightFaceAction(this, "/IRBT/reinforcement");
+    },
+
+    handleCorrectAnswer() {
+      irbt.handleCorrectAnswer(this, "/IRBT/reinforcement");
     },
 
     handleIncorrectAnswer() {
@@ -123,10 +109,24 @@ export default {
       return require(`../../assets/stimulus_faces/${url}`);
     },
   },
+
+  mounted() {
+    this.moveOn();
+  },
 };
 </script>
 
 <style scoped>
+button {
+  border-radius: 27px;
+  background: darkblue;
+  margin-top: 19px;
+  color: white;
+  cursor: pointer;
+  border: solid 0px;
+  height: 44px;
+  width: 102px;
+}
 main {
   display: flex;
   justify-content: center;
@@ -142,51 +142,46 @@ main {
 .faceLeft {
   position: absolute;
   bottom: 20px;
-  max-width: 461px;
   left: 40px;
+  display: none;
 }
 .faceRight {
+  display: none;
   position: absolute;
   bottom: 20px;
-  max-width: 461px;
   right: 40px;
 }
-
 .irbt_star {
   display: none;
   width: 130px;
 }
-
 
 .irbt_cross {
   display: none;
   width: 70px;
 }
 
-.irbt-wrong{
-      display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-
-.irbt-cross-text{
+.irbt-cross-text {
   display: none;
 }
 
 @media (max-width: 852px) {
-  main{
+  main {
     background: white;
   }
-  .faceLeft{
-    max-width: 104px;
+  .faceLeft {
+    max-width: 96px;
   }
-  .faceRight{
-    max-width: 104px;
+  .faceRight {
+    max-width: 96px;
   }
 
-  .trialimg{
-    width:196px
+  .trialimg {
+    width: 196px;
+  }
+
+  .irbt_cross {
+    margin-left: 10px;
   }
 }
 </style>

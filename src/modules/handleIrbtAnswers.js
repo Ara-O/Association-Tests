@@ -1,11 +1,11 @@
 
- let ms = 0;
+let ms = 0;
 let startTime;
 let timerActive = false;
 
 function startTimer() {
     ms = 0;
-     startTime = new Date();
+    startTime = new Date();
     timerActive = true
     timerLoop();
 }
@@ -13,7 +13,7 @@ function startTimer() {
 function stopTimer() {
     const endTime = new Date();
     timerActive = false;
-    ms = endTime - startTime;    
+    ms = endTime - startTime;
 }
 
 function timerLoop() {
@@ -69,12 +69,29 @@ function handleCorrectAnswer(thiskeyword, routeTo) {
             document.querySelector(".faceRight").style.display = "block"
             document.querySelector(".faceLeft").style.display = "block"
         } else {
-            // !Store data in firebase!
+            // !Push data to be stored in firebase
             // console.log("enddd");
             that.$store.state.irbt_data[that.section] = that.irbt_trials;
             let clone = JSON.parse(JSON.stringify(that.irbt_trials))
-            clone.forEach((data)=> {
+
+            let currentDate = new Date();
+            let cDay = currentDate.getDate();
+            let cMonth = currentDate.getMonth() + 1;
+            let cYear = currentDate.getFullYear();
+
+            clone.forEach((data, index) => {
                 data.section = that.section;
+                data.browser = navigator["userAgent"];
+                data.dateTaken = `${cMonth}-${cDay}-${cYear}`;
+
+                //Creating a descriptions column for the data
+                if (data.section == "section_1") {
+                    data.description = "User clicks a happy face for an image of a white person, and a sad face for an image of a black person";
+                } else if (data.currentTest == "section_2") {
+                    data.description = "User clicks a sad face for an image of a white person, and a happy face for an image of a black person";
+                }
+                data.testType = "IRBT";
+                data.stimulusOrder = index + 1;
                 delete data.visibility;
                 delete data.randomNo;
             })

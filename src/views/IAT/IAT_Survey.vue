@@ -32,6 +32,16 @@
           />
           <label for="female">Female</label>
         </div>
+        <div class="gender_choice">
+          <input
+            type="radio"
+            value="other"
+            name="gender"
+            v-model="userData.gender"
+            id="other"
+          />
+          <label for="other">Other</label>
+        </div>
       </div>
       <h4 style="margin-top: 35px">
         How would you identify your race/ethnicity
@@ -138,12 +148,12 @@ export default {
     },
 
     progress_ts() {
-      this.$store.state.IAT_TS_data = this.userData;
+      this.$store.state.userData = this.userData;
       this.$router.push("IAT_TS_Instruction");
     },
 
     progress_kb() {
-      this.$store.state.IAT_data = this.userData;
+      this.$store.state.userData = this.userData;
       this.$router.push("/IAT_Test");
     },
   },

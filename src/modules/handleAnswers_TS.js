@@ -1,5 +1,4 @@
- import { getDatabase, ref, set } from "firebase/database"
-
+import * as storeData from "./storingDataIAT"
 
 // Timer 
 let ms = 0;
@@ -55,42 +54,11 @@ function handleAnswer_TS(main, thiskeyword, Data, whereToStore, whereToGo) {
 
           //Stops timer, stores the accuracy and speed and removes the event listener when the test is over
           stopTimer();
-          let totalaccuracy = 0;
-          test.$store.state.IAT_TS_data[whereToStore] = Data;
 
-          // !Cloning the data
-          let dataclone = JSON.parse(JSON.stringify(Data));
-          dataclone.forEach((data)=>{
-            data.currentTest = whereToStore;
-            data.browser = navigator["userAgent"];
-            data.dateTaken =  `${cMonth}-${cDay}-${cYear}`;
-            delete data.visibility;
-          })
-          
-          test.$store.state.IAT_TS_data_text.push(dataclone);
+          storeData.storeIATData(Data, thiskeyword, cMonth, cDay, cYear, whereToStore, "IAT_Touchscreen");
 
-          Data.forEach((data) => {
-            totalaccuracy += data.accuracy;
-            delete data.visibility;
-          })
-
-          //Adds the accuracy to the array
-          test.$store.state.IAT_TS_data[whereToStore].push(`Accuracy: ${(totalaccuracy / Data.length).toFixed(2)}%`);
           document.removeEventListener("keyup", handleInput);
           test.$router.push(whereToGo)
-
-          //Storing data in firebase
-            const db = getDatabase();
-            set(ref(db, `IAT_Touchscreen/User-${test.$store.state.uid}`), [
-              test.$store.state.IAT_TS_data,
-              navigator["userAgent"],
-              `${cMonth}-${cDay}-${cYear}` 
-            ]);
-
-            //!Store test data
-            set(ref(db, `TestData/IAT_Touchscreen/User-${test.$store.state.uid}`), {
-              data: test.$store.state.IAT_TS_data_text, 
-            });
         }
       } else {
         currentChallenge.accuracy = 0;

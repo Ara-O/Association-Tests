@@ -10,7 +10,6 @@ import { getDatabase, ref, set } from "firebase/database";
 
 export default {
   mounted() {
-    // console.log(this.$store.state.irbt_data);
     let test = this;
     let data = this.$store.state.irbt_data;
     let dataclone =this.$store.state.irbt_data_text;
@@ -22,21 +21,17 @@ export default {
       });
     }
 
-    let currentDate = new Date();
-    let cDay = currentDate.getDate();
-    let cMonth = currentDate.getMonth() + 1;
-    let cYear = currentDate.getFullYear();
+    // let currentDate = new Date();
+    // let cDay = currentDate.getDate();
+    // let cMonth = currentDate.getMonth() + 1;
+    // let cYear = currentDate.getFullYear();
 
-    console.log(dataclone);
+   // console.log(dataclone);
 
     const db = getDatabase();
-    set(ref(db, `IRBT/User-${test.$store.state.uid}`), {
-      data: data,
-      browserInfo: navigator["userAgent"],
-      dateTaken: `${cMonth}-${cDay}-${cYear}`,
-    });
 
-    set(ref(db, `TestData/IRBT/User-${test.$store.state.uid}`), {
+
+    set(ref(db, `IRBT/User-${test.$store.state.uid}`), {
       data: dataclone
     });
   },

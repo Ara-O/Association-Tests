@@ -1,10 +1,12 @@
 <template>
 <main>
-<h3>Welcome to the Explore studies</h3>
+<h3>Welcome!</h3>
 <!-- <video width="500px" height="500px">
     <source src="https://www.youtube.com/watch?v=ScMzIvxBSi4">
 </video> -->
-<h4>Welcome video goes here</h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NpEaa2P7qZI?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; loop" autoplay loop></iframe>
+    <br>
+    <br>
     <btn whereTo="/consent-form" class="explore-studies">Explore Studies</btn>
 </main>
 </template>

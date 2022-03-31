@@ -3,7 +3,7 @@
 export default function (male, female) {
     //B_F
     let fullImgLink = "";
-    let race = '';
+    let race = ''; 
     let key = '';
 
     //Get race ( B_ or W_ )

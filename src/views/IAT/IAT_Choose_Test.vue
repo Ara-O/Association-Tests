@@ -1,53 +1,31 @@
 <template>
   <main>
-    <h3 class="choosetest">Choose Test</h3>
-    <!-- //-------- -->
+    <h3 class="choose-iat">Select IAT</h3>
     <router-link
-      to="/IAT_Gender/Choose_Test"
+      to="/IAT_Gender_Survey"
       class="routerlink test_btn"
-      tabindex="0"
       tag="button"
     >
-      Implicit Association Test
+      Gender IAT
     </router-link>
-    <router-link to="/IRBT" class="routerlink test_btn" tag="button">
-      Implicit Racial Bias Test
+    <router-link to="/IAT_Black_White_Survey" class="routerlink test_btn" tag="button">
+      Black-White IAT
     </router-link>
-    <router-link to="/IT" class="routerlink test_btn" tag="button">
-      Individuation Training
+    <router-link to="/" class="routerlink test_btn" tag="button">
+      Black-Asian IAT
+    </router-link>
+    <router-link to="/" class="routerlink test_btn" tag="button">
+      Asian-White IAT
     </router-link>
   </main>
 </template>
 
-<script>
-export default {
-  name: "ChooseTest",
-};
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 main {
-  background-image: url("../assets/app-icons/patternbg.jpg");
-  height: 100vh;
+  background: url("../../assets/app-icons/patternbg.jpg");
   background-repeat: repeat;
   background-size: 433px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
-
-h3 {
-  margin: 40px 0 0;
-}
-
-.choosetest {
-  margin-bottom: 50px;
-  font-size: 49px;
-  font-weight: 600
-}
-
 .test_btn {
   display: flex;
   justify-content: center;
@@ -75,5 +53,11 @@ a.routerlink {
   color: white;
   font-size: 14px;
   font-weight: 300;
+}
+
+.choose-iat {
+  font-size: 34px;
+  font-weight: 600;
+  color: #2c3e50;
 }
 </style>

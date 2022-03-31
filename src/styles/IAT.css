@@ -88,6 +88,13 @@ main {
   height: 31px;
 }
 
+.in-test-instructions{
+  line-height: 37px;
+  font-weight: 500;
+  width: 470px;
+  font-size: 18px;
+}
+
 @media (max-width: 595px) {
   .instruction{
     width: 360px;

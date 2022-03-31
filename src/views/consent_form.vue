@@ -95,7 +95,10 @@
           <btn class="agreement" whereTo="/Home"
             >Yes, I agree to participate</btn
           >
-          <btn class="disagreement" whereTo="/consent-form" @click="participating = false"
+          <btn
+            class="disagreement"
+            whereTo="/consent-form"
+            @click="participating = false"
             >No, I do not agree to participate</btn
           >
         </div>
@@ -139,6 +142,11 @@ main {
   box-shadow: 0px 0px 4px lightgray;
 }
 
+.jumbotron h3 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
 .consent {
   width: auto;
   height: 618px;
@@ -157,7 +165,7 @@ main {
   width: 190px;
   margin-top: 30px;
   font-weight: 300;
-  height: 47px
+  height: 47px;
 }
 
 .arrange-btns {

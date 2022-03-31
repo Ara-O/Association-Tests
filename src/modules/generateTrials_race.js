@@ -11,21 +11,21 @@ function shuffleObjects(array) {
 }
 
 //Gemerate the trials for the other blocks
-function generateStimulusGender(stimulusData, male, female, trials, isSwitched = false) {
+function generateStimulusGender(stimulusData, white, black, trials, isSwitched = false) {
     if (!isSwitched) {
         const selectedData = []
-        //looping through the stimulus data and assigning the make key to images with M in them, and female for images with F in them
+        //looping through the stimulus data and assigning the white key to images with W in them, and black for images with B in them
         stimulusData.forEach((stimulus) => {
-            if (stimulus.image[2] === "M") {
-                stimulus.key = male
-            } else if (stimulus.image[2] === "F") {
-                stimulus.key = female;
+            if (stimulus.image[0] === "W" || stimulus.image[0] === "H") {
+                stimulus.key = white
+            } else if (stimulus.image[0] === "B" || stimulus.image[0] === "S") {
+                stimulus.key = black;
             }
         })
 
         //filters stimuluses for male and for female and sorts them into separate arrays
-        const data = shuffleObjects(stimulusData.filter((stimulus) => stimulus.key === male));
-        const data2 = shuffleObjects(stimulusData.filter((stimulus) => stimulus.key === female));
+        const data = shuffleObjects(stimulusData.filter((stimulus) => stimulus.key === white));
+        const data2 = shuffleObjects(stimulusData.filter((stimulus) => stimulus.key === black));
 
         for (let i = 0; i < trials / 2; i++) {
             //takes half of the trials of each data type and stores tham in the selected data
@@ -39,18 +39,16 @@ function generateStimulusGender(stimulusData, male, female, trials, isSwitched =
         const selectedData = []
         stimulusData.forEach((stimulus) => {
             //seatrching for male and female toy
-            if (stimulus.image[0] === "T" && stimulus.image[2] === "F") {
-                stimulus.key = male
-            } else if (stimulus.image[0] !== "T" && stimulus.image[2] === "M") {
-                stimulus.key = male;
-            } else {
-                stimulus.key = female;
+            if (stimulus.image[0] === "W" || stimulus.image[0] === "S") {
+                stimulus.key = white
+            } else if (stimulus.image[0] === "B" || stimulus.image[0] === "H") {
+                stimulus.key = black;
             }
         })
-        
-        const data = shuffleObjects(stimulusData.filter((stimulus) => stimulus.key === male));
-        const data2 = shuffleObjects(stimulusData.filter((stimulus) => stimulus.key === female));
-        
+
+        const data = shuffleObjects(stimulusData.filter((stimulus) => stimulus.key === white));
+        const data2 = shuffleObjects(stimulusData.filter((stimulus) => stimulus.key === black));
+
         for (let i = 0; i < trials / 2; i++) {
             //takes half of the trials of each data type and stores tham in the selected data
             selectedData.push(data[i]);
@@ -63,7 +61,7 @@ function generateStimulusGender(stimulusData, male, female, trials, isSwitched =
 
 
 // IAT block 1 and 5
-function testData_Block1(male, female, trials) {
+function testData_Block1(white, black, trials) {
     const genderStimulusDataFull = [
         { accuracy: 100, image: "B_F01.jpg" },
         { accuracy: 100, image: "B_F02.jpg" },
@@ -106,70 +104,62 @@ function testData_Block1(male, female, trials) {
         { accuracy: 100, image: "W_M07.jpg" },
         { accuracy: 100, image: "W_M08.jpg" },
         { accuracy: 100, image: "W_M09.jpg" },
-        { accuracy: 100, image: "C_M01.jpg" },
-        { accuracy: 100, image: "C_M02.jpg" },
-        { accuracy: 100, image: "C_M03.jpg" },
-        { accuracy: 100, image: "C_M04.jpg" },
-        { accuracy: 100, image: "C_M05.jpg" },
-        { accuracy: 100, image: "C_M06.jpg" },
-        { accuracy: 100, image: "C_M07.jpg" },
-        { accuracy: 100, image: "C_M08.jpg" },
-        { accuracy: 100, image: "C_M09.jpg" },
-        { accuracy: 100, image: "C_M10.jpg" },
-        { accuracy: 100, image: "C_M11.jpg" },
-        { accuracy: 100, image: "C_M12.jpg" },
-        { accuracy: 100, image: "C_F01.jpg" },
-        { accuracy: 100, image: "C_F02.jpg" },
-        { accuracy: 100, image: "C_F03.jpg" },
-        { accuracy: 100, image: "C_F04.jpg" },
-        { accuracy: 100, image: "C_F05.jpg" },
-        { accuracy: 100, image: "C_F06.jpg" },
-        { accuracy: 100, image: "C_F07.jpg" },
-        { accuracy: 100, image: "C_F08.jpg" },
-        { accuracy: 100, image: "C_F09.jpg" },
-        { accuracy: 100, image: "C_F10.jpg" },
-        { accuracy: 100, image: "C_F11.jpg" },
-        { accuracy: 100, image: "C_F12.jpg" },
     ]
-    const testData = generateStimulusGender(genderStimulusDataFull, male, female, trials);
+    const childImages = [
+        { accuracy: 100, image: "B_CF01.jpg" },
+        { accuracy: 100, image: "B_CF02.jpg" },
+        { accuracy: 100, image: "B_CF03.jpg" },
+        { accuracy: 100, image: "B_CM01.jpg" },
+        { accuracy: 100, image: "B_CM02.jpg" },
+        { accuracy: 100, image: "B_CMO3.jpg" },
+        { accuracy: 100, image: "W_CF01.jpg" },
+        { accuracy: 100, image: "W_CF02.jpg" },
+        { accuracy: 100, image: "W_CF03.jpg" },
+        { accuracy: 100, image: "W_CM01.jpg" },
+        { accuracy: 100, image: "W_CM02.jpg" },
+        { accuracy: 100, image: "W_CM03.jpg" },
+    ]
+
+    //slicing off 40 so theres a higher chance a child's image will show
+    const shuffledStimuli = shuffleObjects(genderStimulusDataFull).slice(-20);
+    const testData = generateStimulusGender([...shuffledStimuli, ...childImages], white, black, trials);
     testData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
-        el.description = "User chooses between male faces and female faces"
+        el.description = "User chooses between White faces and Black faces"
     })
 
     return testData
 
 }
 
-// IAT 2
-function testData_Block2(male_toy, female_toy) {
-    const dataset = [
-        { accuracy: 100, image: "T_M01.jpg", key: male_toy },
-        { accuracy: 100, image: "T_M02.jpg", key: male_toy },
-        { accuracy: 100, image: "T_M03.jpg", key: male_toy },
-        { accuracy: 100, image: "T_M04.jpg", key: male_toy },
-        { accuracy: 100, image: "T_M05.jpg", key: male_toy },
-        { accuracy: 100, image: "T_F01.jpg", key: female_toy },
-        { accuracy: 100, image: "T_F02.jpg", key: female_toy },
-        { accuracy: 100, image: "T_F03.jpg", key: female_toy },
-        { accuracy: 100, image: "T_F04.jpg", key: female_toy },
-        { accuracy: 100, image: "T_F05.jpg", key: female_toy },
-    ];
+//!Work on sad and happy faces - get 5 happy and 5 sad
+function testData_Block2(happy, sad) {
+    const smileyImages = [
+        { accuracy: 100, image: "H_F01.jpg", key: happy },
+        { accuracy: 100, image: "H_F02.jpg", key: happy },
+        { accuracy: 100, image: "H_F03.jpg", key: happy },
+        { accuracy: 100, image: "H_F04.jpg", key: happy },
+        { accuracy: 100, image: "H_F05.jpg", key: happy },
+        { accuracy: 100, image: "S_F01.jpg", key: sad },
+        { accuracy: 100, image: "S_F02.jpg", key: sad },
+        { accuracy: 100, image: "S_F03.jpg", key: sad },
+        { accuracy: 100, image: "S_F04.jpg", key: sad },
+        { accuracy: 100, image: "S_F05.jpg", key: sad },
+    ]
 
-    const newData = shuffleObjects(dataset);
+    const newData = shuffleObjects(smileyImages);
     newData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
-        el.description = "User chooses between male toys and female toys"
+        el.description = "User chooses between happy faces or sad faces"
     })
 
 
     return newData;
 }
 
-//   Click E for Male and male toys, and I for Female and female toys
-//   IAT block 3 and 4
-function testData_Block3(male_and_toys, female_and_toys, trials) {
-    trials;
+// Click E for Male and Female toys, and I for Female and Male toys
+//  IAT block 3 and 4
+function testData_Block3(white_happy, black_sad, trials) {
     const genderStimulusDataFull = [
         { accuracy: 100, image: "B_F01.jpg" },
         { accuracy: 100, image: "B_F02.jpg" },
@@ -212,60 +202,46 @@ function testData_Block3(male_and_toys, female_and_toys, trials) {
         { accuracy: 100, image: "W_M07.jpg" },
         { accuracy: 100, image: "W_M08.jpg" },
         { accuracy: 100, image: "W_M09.jpg" },
-        { accuracy: 100, image: "C_M01.jpg" },
-        { accuracy: 100, image: "C_M02.jpg" },
-        { accuracy: 100, image: "C_M03.jpg" },
-        { accuracy: 100, image: "C_M04.jpg" },
-        { accuracy: 100, image: "C_M05.jpg" },
-        { accuracy: 100, image: "C_M06.jpg" },
-        { accuracy: 100, image: "C_M07.jpg" },
-        { accuracy: 100, image: "C_M08.jpg" },
-        { accuracy: 100, image: "C_M09.jpg" },
-        { accuracy: 100, image: "C_M10.jpg" },
-        { accuracy: 100, image: "C_M11.jpg" },
-        { accuracy: 100, image: "C_M12.jpg" },
-        { accuracy: 100, image: "C_F01.jpg" },
-        { accuracy: 100, image: "C_F02.jpg" },
-        { accuracy: 100, image: "C_F03.jpg" },
-        { accuracy: 100, image: "C_F04.jpg" },
-        { accuracy: 100, image: "C_F05.jpg" },
-        { accuracy: 100, image: "C_F06.jpg" },
-        { accuracy: 100, image: "C_F07.jpg" },
-        { accuracy: 100, image: "C_F08.jpg" },
-        { accuracy: 100, image: "C_F09.jpg" },
-        { accuracy: 100, image: "C_F10.jpg" },
-        { accuracy: 100, image: "C_F11.jpg" },
-        { accuracy: 100, image: "C_F12.jpg" },
-    ]
-    const toysStimuli = [
-        { accuracy: 100, image: "T_M01.jpg" },
-        { accuracy: 100, image: "T_M02.jpg" },
-        { accuracy: 100, image: "T_M03.jpg" },
-        { accuracy: 100, image: "T_M04.jpg" },
-        { accuracy: 100, image: "T_M05.jpg" },
-        { accuracy: 100, image: "T_F01.jpg", },
-        { accuracy: 100, image: "T_F02.jpg", },
-        { accuracy: 100, image: "T_F03.jpg", },
-        { accuracy: 100, image: "T_F04.jpg", },
-        { accuracy: 100, image: "T_F05.jpg", },
+        { accuracy: 100, image: "B_CF01.jpg" },
+        { accuracy: 100, image: "B_CF02.jpg" },
+        { accuracy: 100, image: "B_CF03.jpg" },
+        { accuracy: 100, image: "B_CM01.jpg" },
+        { accuracy: 100, image: "B_CM02.jpg" },
+        { accuracy: 100, image: "B_CMO3.jpg" },
+        { accuracy: 100, image: "W_CF01.jpg" },
+        { accuracy: 100, image: "W_CF02.jpg" },
+        { accuracy: 100, image: "W_CF03.jpg" },
+        { accuracy: 100, image: "W_CM01.jpg" },
+        { accuracy: 100, image: "W_CM02.jpg" },
+        { accuracy: 100, image: "W_CM03.jpg" },
     ]
 
-    const shuffledStimuli = shuffleObjects(genderStimulusDataFull)
-    const shuffledToys = shuffleObjects(toysStimuli);
-    const slicedStimuli = shuffledStimuli.slice(-(20));
-    const fullData = generateStimulusGender([...shuffledToys, ...slicedStimuli], male_and_toys, female_and_toys, trials);
+    const smileyImages = [
+        { accuracy: 100, image: "H_F01.jpg" },
+        { accuracy: 100, image: "H_F02.jpg" },
+        { accuracy: 100, image: "H_F03.jpg" },
+        { accuracy: 100, image: "H_F04.jpg" },
+        { accuracy: 100, image: "H_F05.jpg" },
+        { accuracy: 100, image: "S_F01.jpg" },
+        { accuracy: 100, image: "S_F02.jpg" },
+        { accuracy: 100, image: "S_F03.jpg" },
+        { accuracy: 100, image: "S_F04.jpg" },
+        { accuracy: 100, image: "S_F05.jpg" },
+    ]
+
+    const shuffledStimuli = shuffleObjects(genderStimulusDataFull).slice(-20);
+    const fullData = generateStimulusGender([...shuffledStimuli, ...smileyImages], white_happy, black_sad, trials);
 
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
-        el.description = "Male faces/Male toys are grouped together, while Female faces/Female toys are grouped together"
+        el.description = "White faces/Happy faces are grouped together, while Black faces/Sad faces are grouped together"
     })
 
     return fullData
 }
 
 // IAT block 6 and 7
-function testData_Block4(male_femaletoys, female_maletoys, trials) {
-    trials;
+function testData_Block4(white_sad, black_happy, trials) {
     const genderStimulusDataFull = [
         { accuracy: 100, image: "B_F01.jpg" },
         { accuracy: 100, image: "B_F02.jpg" },
@@ -308,53 +284,42 @@ function testData_Block4(male_femaletoys, female_maletoys, trials) {
         { accuracy: 100, image: "W_M07.jpg" },
         { accuracy: 100, image: "W_M08.jpg" },
         { accuracy: 100, image: "W_M09.jpg" },
-        { accuracy: 100, image: "C_M01.jpg" },
-        { accuracy: 100, image: "C_M02.jpg" },
-        { accuracy: 100, image: "C_M03.jpg" },
-        { accuracy: 100, image: "C_M04.jpg" },
-        { accuracy: 100, image: "C_M05.jpg" },
-        { accuracy: 100, image: "C_M06.jpg" },
-        { accuracy: 100, image: "C_M07.jpg" },
-        { accuracy: 100, image: "C_M08.jpg" },
-        { accuracy: 100, image: "C_M09.jpg" },
-        { accuracy: 100, image: "C_M10.jpg" },
-        { accuracy: 100, image: "C_M11.jpg" },
-        { accuracy: 100, image: "C_M12.jpg" },
-        { accuracy: 100, image: "C_F01.jpg" },
-        { accuracy: 100, image: "C_F02.jpg" },
-        { accuracy: 100, image: "C_F03.jpg" },
-        { accuracy: 100, image: "C_F04.jpg" },
-        { accuracy: 100, image: "C_F05.jpg" },
-        { accuracy: 100, image: "C_F06.jpg" },
-        { accuracy: 100, image: "C_F07.jpg" },
-        { accuracy: 100, image: "C_F08.jpg" },
-        { accuracy: 100, image: "C_F09.jpg" },
-        { accuracy: 100, image: "C_F10.jpg" },
-        { accuracy: 100, image: "C_F11.jpg" },
-        { accuracy: 100, image: "C_F12.jpg" },
-    ]
-    const toysStimuli = [
-        { accuracy: 100, image: "T_M01.jpg" },
-        { accuracy: 100, image: "T_M02.jpg" },
-        { accuracy: 100, image: "T_M03.jpg" },
-        { accuracy: 100, image: "T_M04.jpg" },
-        { accuracy: 100, image: "T_M05.jpg" },
-        { accuracy: 100, image: "T_F01.jpg", },
-        { accuracy: 100, image: "T_F02.jpg", },
-        { accuracy: 100, image: "T_F03.jpg", },
-        { accuracy: 100, image: "T_F04.jpg", },
-        { accuracy: 100, image: "T_F05.jpg", },
+        { accuracy: 100, image: "B_CF01.jpg" },
+        { accuracy: 100, image: "B_CF02.jpg" },
+        { accuracy: 100, image: "B_CF03.jpg" },
+        { accuracy: 100, image: "B_CM01.jpg" },
+        { accuracy: 100, image: "B_CM02.jpg" },
+        { accuracy: 100, image: "B_CMO3.jpg" },
+        { accuracy: 100, image: "W_CF01.jpg" },
+        { accuracy: 100, image: "W_CF02.jpg" },
+        { accuracy: 100, image: "W_CF03.jpg" },
+        { accuracy: 100, image: "W_CM01.jpg" },
+        { accuracy: 100, image: "W_CM02.jpg" },
+        { accuracy: 100, image: "W_CM03.jpg" },
     ]
 
-    const shuffledStimuli = shuffleObjects(genderStimulusDataFull)
-    const shuffledToys = shuffleObjects(toysStimuli);
-    const slicedStimuli = shuffledStimuli.slice(-(20));
-    const fullData = generateStimulusGender([...slicedStimuli, ...shuffledToys], male_femaletoys, female_maletoys, trials, true);
+    const smileyImages = [
+        { accuracy: 100, image: "H_F01.jpg" },
+        { accuracy: 100, image: "H_F02.jpg" },
+        { accuracy: 100, image: "H_F03.jpg" },
+        { accuracy: 100, image: "H_F04.jpg" },
+        { accuracy: 100, image: "H_F05.jpg" },
+        { accuracy: 100, image: "S_F01.jpg" },
+        { accuracy: 100, image: "S_F02.jpg" },
+        { accuracy: 100, image: "S_F03.jpg" },
+        { accuracy: 100, image: "S_F04.jpg" },
+        { accuracy: 100, image: "S_F05.jpg" },
+    ]
+
+    const shuffledStimuli = shuffleObjects(genderStimulusDataFull).slice(-20);
+    const fullData = generateStimulusGender([...shuffledStimuli, ...smileyImages], white_sad, black_happy, trials, true);
 
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
-        el.description = "Male faces/Female toys are grouped together, while Female faces/Male toys are grouped together"
+        el.description = "White faces/Sad faces are grouped together, while Black faces/Happy faces are grouped together"
     })
+
+    console.log(fullData)
 
     return fullData
 

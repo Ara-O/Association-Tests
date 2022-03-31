@@ -20,7 +20,7 @@ function stopTimer() {
 
 }
 
-function handleAnswer(thiskeyword, Data, whereToStore, whereToGo) {
+function handleAnswer(thiskeyword, Data, whereToStore, version) {
   const test = thiskeyword;
   test.notStarted = false;
   if (!test.notStarted) {
@@ -29,9 +29,9 @@ function handleAnswer(thiskeyword, Data, whereToStore, whereToGo) {
       const keyClicked = e.key.toUpperCase();
       const currentChallenge = Data[test.arrayIndex];
 
-
+      if(keyClicked == "I" || keyClicked == "E"){
       //First check to make sure that what was entered is accurate
-      if (keyClicked == currentChallenge.key & test.arrayIndex !== Data.length) {
+      if (keyClicked == currentChallenge.key && test.arrayIndex !== Data.length) {
         //Proceeds to the next name while adding the speed used to answer the question
         document.querySelector("#wrong").style.display = "none";
         currentChallenge.visibility = "none";
@@ -49,18 +49,23 @@ function handleAnswer(thiskeyword, Data, whereToStore, whereToGo) {
           stopTimer();
 
           //Store data in firebase
-          storeData.storeIATData(Data, thiskeyword, cMonth, cDay, cYear, whereToStore, "IAT");
+          storeData.storeIATData(Data, thiskeyword, cMonth, cDay, cYear, whereToStore,"IAT_Gender" ,version);
 
-          //Adds the accuracy to the array
-          document.removeEventListener("keyup", handleInput);
-          test.notStarted = true;
-          test.$router.push(whereToGo)
-
+          if(test.currentBlock == test.genderTest.length - 1){
+            document.removeEventListener("keyup", handleInput);
+            test.testOver();
+          } else {
+            document.removeEventListener("keyup", handleInput);
+            test.notStarted = true;
+            test.currentBlock++;
+          }
+          // test.$router.push(whereToGo)
         }
       } else {
         currentChallenge.accuracy = 0;
         document.querySelector("#wrong").style.display = "flex";
       }
+    }
     });
 
   }

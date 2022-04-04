@@ -33,7 +33,7 @@ export default {
   },
 
   mounted() {
-    calcAvgSpeed(this, this.$store.state.IAT_Black_White);
+    calcAvgSpeed(this, this.$store.state.IAT_Black_White_Touchscreen);
     // shows 7 blocks
     this.blocks.forEach((data) => {
       this.sum = 0;
@@ -53,8 +53,6 @@ export default {
 </script>
 
 <style scoped >
- 
-
 .feedbacksect {
   display: flex;
   width: 300px;
@@ -88,11 +86,10 @@ export default {
   }
 
   .feedbacks{
-        flex-direction: column;
-        flex-wrap: nowrap;
-        padding-bottom: 40px;
-    
-  }
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding-bottom: 40px;
+}
 
   .btn{
     margin-top: 100px;

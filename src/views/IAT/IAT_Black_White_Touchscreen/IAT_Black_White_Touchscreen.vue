@@ -42,9 +42,9 @@ import {
   testData_Block2,
   testData_Block3,
   testData_Block4,
-} from "../../../modules/generateTrials";
+} from "../../../modules/generateTrials_race";
 import handleAnswer_TS from "../../../modules/handleAnswers_TS";
-import {startTimer} from "../../../modules/handleAnswers_TS";
+import { startTimer } from "../../../modules/handleAnswers_TS";
 export default {
   data() {
     return {
@@ -56,57 +56,57 @@ export default {
         {
           block: "Block1_TS",
           instructions:
-            "Click left for Male images and right for Female images",
+            "Click left for images of white people and right for images of black people",
           data: testData_Block1("Left", "Right", 20),
-          clickerLeft: "Male",
-          clickerRight: "Female",
+          clickerLeft: "White",
+          clickerRight: "Black",
         },
         {
           block: "Block2_TS",
-          instructions: "Click left for Male toys, and right for Female toys",
+          instructions: "Click left for happy faces, and right for sad faces",
           data: testData_Block2("Left", "Right"),
-          clickerLeft: "Male toy",
-          clickerRight: "Female toy",
+          clickerLeft: "Happy",
+          clickerRight: "Sad",
         },
         {
           block: "Block3_TS",
           instructions:
-          "Practice: Click the left for Male images/Male toys, and the right for Female images/Female toys",
+            "Practice: Click the left for White faces/Happy faces, and the right for Black faces/Sad faces",
           data: testData_Block3("Left", "Right", 10),
-          clickerLeft: "Male/Male toy",
-          clickerRight: "Female/Female toy",
+          clickerLeft: "White faces/Happy faces",
+          clickerRight: "Black faces/Sad faces",
         },
         {
           block: "Block4_TS",
           instructions:
-            "Let's Continue: Click the left for Male images/Male toys, and the right for Female images/Female toys",
+            "Let's Continue: Click the left for white faces/Happy faces, and the right for Black faces/Sad faces",
           data: testData_Block3("Left", "Right", 20),
-          clickerLeft: "Male/Male toy",
-          clickerRight: "Female/Female toy",
+          clickerLeft: "White faces/Happy faces",
+          clickerRight: "Black faces/Sad faces",
         },
         {
           block: "Block5_TS",
           instructions:
-            "The letters are reversed now!<br/>Choose the right for Male images or the left for Female images",
+            "The letters are reversed now!<br/>Choose the left for images of black people or the right for images of white people",
           data: testData_Block1("Right", "Left", 20),
-          clickerLeft: "Female",
-          clickerRight: "Male",
+          clickerLeft: "Black",
+          clickerRight: "White",
         },
         {
           block: "Block6_TS",
           instructions:
-            "Practice: Click the right for Male images/Female toys, and the left for Female images/Male toys",
+            "Practice: Click the right for White faces/Sad faces, and the left for Black faces/Happy faces",
           data: testData_Block4("Right", "Left", 10),
-          clickerLeft: "Female/Male toy",
-          clickerRight: "Male/Female toy",
+          clickerLeft: "White faces/Sad faces",
+          clickerRight: "Black faces/Happy faces",
         },
         {
           block: "Block7_TS",
           instructions:
-            "Let's Continue: Click the right for Male and Home, and the left for Female and Career",
+            "Let's continue: Click the right for White faces/Sad faces, and the left for Black faces/Happy faces",
           data: testData_Block4("Right", "Left", 20),
-          clickerLeft: "Female/Male toy",
-          clickerRight: "Male/Female toy",
+          clickerLeft: "White faces/Sad faces",
+          clickerRight: "Black faces/Happy faces",
         },
       ],
       testOver: false,
@@ -119,15 +119,15 @@ export default {
         document
           .querySelector(".test")
           .removeEventListener("click", this.handleAnswer);
-        this.$router.push("/IAT_Gender_Touchscreen_Feedback");
+        this.$router.push("/IAT_Black_White_Touchscreen_Feedback");
       }
     },
 
-    notStarted(){
-      if(this.notStarted === false ){
-            startTimer();
+    notStarted() {
+      if (this.notStarted === false) {
+        startTimer();
       }
-    }
+    },
   },
 
   methods: {
@@ -146,7 +146,7 @@ export default {
         this,
         this.fullTest[this.currentBlock].data,
         this.fullTest[this.currentBlock].block,
-        "IAT_Gender_Touchscreen"
+        "IAT_Black_White_Touchscreen"
       );
     },
   },

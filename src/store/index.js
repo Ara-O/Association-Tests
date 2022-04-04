@@ -5,6 +5,8 @@ export default createStore({
     userData: {},
     IAT_Gender: [],
     IAT_Gender_Touchscreen: [],
+    IAT_Black_White: [],
+    IAT_Black_White_Touchscreen: [],
     irbt_data: {},
     irbt_data_text: [],
     memorization_times: {},

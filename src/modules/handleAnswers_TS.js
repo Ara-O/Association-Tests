@@ -49,8 +49,8 @@ function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {
         } else {
           //Stops timer, stores the accuracy and speed and removes the event listener when the test is over
           stopTimer();
-          storeData.storeIATData(Data, thiskeyword, cMonth, cDay, cYear, whereToStore, "IAT_Gender_Touchscreen", version);
-          if(test.currentBlock == test.genderTest.length - 1){
+          storeData.storeIATData(Data, thiskeyword, cMonth, cDay, cYear, whereToStore, version);
+          if(test.currentBlock == test.fullTest.length - 1){
             test.testOver = true;
           } else {
             test.currentBlock++;

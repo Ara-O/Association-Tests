@@ -8,7 +8,7 @@
   <div class="feedbacks">
     <div v-for="(data, index) in blocksAccuracydata" :key="data">
       <div class="feedbacksect" v-if="index + 1 === 4 || index + 1 === 7">
-        <h3 style="line-height: 31px; font-size: 15px"> When you were asked to associate male with {{ (index + 1) == 4 ? "career" : "home"}}  and female with  {{(index + 1) == 4 ? "home" : "career"}}  , your accuracy was {{(data.averageaccuracy).toFixed(2)}}%, and your average response time was {{(data.averagespeed).toFixed(0) }}ms </h3>
+        <h3 style="line-height: 31px; font-size: 15px"> When you were asked to associate male images with {{ (index + 1) == 4 ? "male toys" : "female toys"}}  and female with  {{(index + 1) == 4 ? "female toys" : "male toys"}}  , your accuracy was {{(data.averageaccuracy).toFixed(2)}}%, and your average response time was {{(data.averagespeed).toFixed(0) }}ms </h3>
         </div>
     </div>
   </div>

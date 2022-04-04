@@ -49,9 +49,9 @@ function handleAnswer(thiskeyword, Data, whereToStore, version) {
           stopTimer();
 
           //Store data in firebase
-          storeData.storeIATData(Data, thiskeyword, cMonth, cDay, cYear, whereToStore,"IAT_Gender" ,version);
+          storeData.storeIATData(Data, thiskeyword, cMonth, cDay, cYear, whereToStore, version);
 
-          if(test.currentBlock == test.genderTest.length - 1){
+          if(test.currentBlock == test.fullTest.length - 1){
             document.removeEventListener("keyup", handleInput);
             test.testOver();
           } else {

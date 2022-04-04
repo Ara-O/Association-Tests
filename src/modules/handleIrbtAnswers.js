@@ -53,8 +53,8 @@ function handleCorrectAnswer(thiskeyword, routeTo) {
     let that = thiskeyword;
     that.irbt_trials[that.currentUserTrial].visibility = "none";
     that.irbt_trials[that.currentUserTrial].ms = ms;
-    document.querySelector(".irbt_cross").style.display = "none"
-    document.querySelector(".irbt-cross-text").style.display = "none"
+    document.querySelector(".irbt-wrong").style.display = "none"
+    document.querySelector(".irbt-wrong-img").style.display = "none"
     document.querySelector(".irbt_star").style.display = "block"
     document.querySelector(".faceRight").style.display = "none"
     document.querySelector(".faceLeft").style.display = "none"
@@ -103,13 +103,12 @@ function handleCorrectAnswer(thiskeyword, routeTo) {
 }
 
 function handleIncorrectAnswer(that) {
-    document.querySelector(".irbt_cross").style.display = "block";
-    document.querySelector(".irbt-cross-text").style.display = "block";
+    document.querySelector(".irbt-wrong").style.display = "block";
+    document.querySelector(".irbt-wrong-img").style.display = "block";
     setTimeout(function () {
         that.irbt_trials[that.currentUserTrial].accuracy = 0;
-        // console.log("wrong");
-        document.querySelector(".irbt_cross").style.display = "none";
-        document.querySelector(".irbt-cross-text").style.display = "none";
+        document.querySelector(".irbt-wrong").style.display = "none";
+        document.querySelector(".irbt-wrong-img").style.display = "none";
 
     }, 1000)
 }

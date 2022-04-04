@@ -11,7 +11,7 @@ function shuffleObjects(array) {
 }
 
 //Gemerate the trials for the other blocks
-function generateStimulusGender(stimulusData, white, black, trials, isSwitched = false) {
+function generateStimulusRace(stimulusData, white, black, trials, isSwitched = false) {
     if (!isSwitched) {
         const selectedData = []
         //looping through the stimulus data and assigning the white key to images with W in them, and black for images with B in them
@@ -62,7 +62,7 @@ function generateStimulusGender(stimulusData, white, black, trials, isSwitched =
 
 // IAT block 1 and 5
 function testData_Block1(white, black, trials) {
-    const genderStimulusDataFull = [
+    const raceDataFull = [
         { accuracy: 100, image: "B_F01.jpg" },
         { accuracy: 100, image: "B_F02.jpg" },
         { accuracy: 100, image: "B_F03.jpg" },
@@ -111,7 +111,7 @@ function testData_Block1(white, black, trials) {
         { accuracy: 100, image: "B_CF03.jpg" },
         { accuracy: 100, image: "B_CM01.jpg" },
         { accuracy: 100, image: "B_CM02.jpg" },
-        { accuracy: 100, image: "B_CMO3.jpg" },
+        { accuracy: 100, image: "B_CM03.jpg" },
         { accuracy: 100, image: "W_CF01.jpg" },
         { accuracy: 100, image: "W_CF02.jpg" },
         { accuracy: 100, image: "W_CF03.jpg" },
@@ -121,13 +121,13 @@ function testData_Block1(white, black, trials) {
     ]
 
     //slicing off 40 so theres a higher chance a child's image will show
-    const shuffledStimuli = shuffleObjects(genderStimulusDataFull).slice(-20);
-    const testData = generateStimulusGender([...shuffledStimuli, ...childImages], white, black, trials);
+    const shuffledStimuli = shuffleObjects(raceDataFull).slice(-20);
+    const testData = generateStimulusRace([...shuffledStimuli, ...childImages], white, black, trials);
     testData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
         el.description = "User chooses between White faces and Black faces"
     })
-
+    console.log(testData)
     return testData
 
 }
@@ -153,6 +153,7 @@ function testData_Block2(happy, sad) {
         el.description = "User chooses between happy faces or sad faces"
     })
 
+    console.log(newData)
 
     return newData;
 }
@@ -160,7 +161,7 @@ function testData_Block2(happy, sad) {
 // Click E for Male and Female toys, and I for Female and Male toys
 //  IAT block 3 and 4
 function testData_Block3(white_happy, black_sad, trials) {
-    const genderStimulusDataFull = [
+    const raceDataFull = [
         { accuracy: 100, image: "B_F01.jpg" },
         { accuracy: 100, image: "B_F02.jpg" },
         { accuracy: 100, image: "B_F03.jpg" },
@@ -207,7 +208,7 @@ function testData_Block3(white_happy, black_sad, trials) {
         { accuracy: 100, image: "B_CF03.jpg" },
         { accuracy: 100, image: "B_CM01.jpg" },
         { accuracy: 100, image: "B_CM02.jpg" },
-        { accuracy: 100, image: "B_CMO3.jpg" },
+        { accuracy: 100, image: "B_CM03.jpg" },
         { accuracy: 100, image: "W_CF01.jpg" },
         { accuracy: 100, image: "W_CF02.jpg" },
         { accuracy: 100, image: "W_CF03.jpg" },
@@ -229,20 +230,22 @@ function testData_Block3(white_happy, black_sad, trials) {
         { accuracy: 100, image: "S_F05.jpg" },
     ]
 
-    const shuffledStimuli = shuffleObjects(genderStimulusDataFull).slice(-20);
-    const fullData = generateStimulusGender([...shuffledStimuli, ...smileyImages], white_happy, black_sad, trials);
+    const shuffledStimuli = shuffleObjects(raceDataFull).slice(-20);
+    const fullData = generateStimulusRace([...shuffledStimuli, ...smileyImages], white_happy, black_sad, trials);
 
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
         el.description = "White faces/Happy faces are grouped together, while Black faces/Sad faces are grouped together"
     })
 
+    console.log(fullData)
+
     return fullData
 }
 
 // IAT block 6 and 7
 function testData_Block4(white_sad, black_happy, trials) {
-    const genderStimulusDataFull = [
+    const raceDataFull = [
         { accuracy: 100, image: "B_F01.jpg" },
         { accuracy: 100, image: "B_F02.jpg" },
         { accuracy: 100, image: "B_F03.jpg" },
@@ -289,7 +292,7 @@ function testData_Block4(white_sad, black_happy, trials) {
         { accuracy: 100, image: "B_CF03.jpg" },
         { accuracy: 100, image: "B_CM01.jpg" },
         { accuracy: 100, image: "B_CM02.jpg" },
-        { accuracy: 100, image: "B_CMO3.jpg" },
+        { accuracy: 100, image: "B_CM03.jpg" },
         { accuracy: 100, image: "W_CF01.jpg" },
         { accuracy: 100, image: "W_CF02.jpg" },
         { accuracy: 100, image: "W_CF03.jpg" },
@@ -311,14 +314,13 @@ function testData_Block4(white_sad, black_happy, trials) {
         { accuracy: 100, image: "S_F05.jpg" },
     ]
 
-    const shuffledStimuli = shuffleObjects(genderStimulusDataFull).slice(-20);
-    const fullData = generateStimulusGender([...shuffledStimuli, ...smileyImages], white_sad, black_happy, trials, true);
+    const shuffledStimuli = shuffleObjects(raceDataFull).slice(-20);
+    const fullData = generateStimulusRace([...shuffledStimuli, ...smileyImages], white_sad, black_happy, trials, true);
 
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
         el.description = "White faces/Sad faces are grouped together, while Black faces/Happy faces are grouped together"
     })
-
     console.log(fullData)
 
     return fullData

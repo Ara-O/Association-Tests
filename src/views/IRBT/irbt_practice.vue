@@ -1,11 +1,6 @@
 <template>
   <main>
     <img src="../../assets/IT_faces/star.jpg" alt="star" class="irbt_star" />
-    <div class="irbt-wrong">
-    <img src="../../assets/IT_faces/cross.jpg" alt="star" class="irbt_cross" />
-    <h3 class="irbt-cross-text">Try again!</h3>
-    </div>
-    
     <div
       v-for="trial in irbt_trials"
       :key="trial.id"
@@ -13,6 +8,17 @@
     >
       <img :src="getImage(trial.image)" class="trialimg" />
     </div>
+    <div class="irbt-wrong-wrapper">
+      <h3 class="irbt-wrong" style="display: none">
+        Incorrect. Try again to progress!
+      </h3>
+        <img
+          src="../../assets/app-icons/incorrectImg.png"
+          alt="Wrong icon"
+          class="irbt-wrong-img"
+        />
+    </div>
+      
   </main>
   <img
     :src="getFacesPosition()"
@@ -156,13 +162,22 @@ main {
   width: 130px;
 }
 
-.irbt_cross {
+.irbt-wrong-img {
   display: none;
-  width: 70px;
+  width: 30px;
 }
+
 
 .irbt-cross-text {
   display: none;
+}
+
+.irbt-wrong-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  column-gap: 30px
 }
 
 @media (max-width: 852px) {

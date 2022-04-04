@@ -3,7 +3,7 @@
     <div v-if="notStarted" class="instruction">
       <h3
         style="line-height: 37px; margin-top: 4px"
-        v-html="genderTest[currentBlock].instructions"
+        v-html="fullTest[currentBlock].instructions"
       ></h3>
       <h3>Click the SPACE bar on your computer to start</h3>
       <!-- SPACE BAR -->
@@ -14,8 +14,8 @@
       />
     </div>
     <div v-else>
-      <h3 v-html="genderTest[currentBlock].instructions" class="in-test-instructions"></h3>
-      <div v-for="data in genderTest[currentBlock].data" :key="data.id">
+      <h3 v-html="fullTest[currentBlock].instructions" class="in-test-instructions"></h3>
+      <div v-for="data in fullTest[currentBlock].data" :key="data.id">
         <div class="imagecontainer">
           <img
             class="faceimg"
@@ -50,7 +50,7 @@ import handleAnswers from "../../../modules/handleAnswers";
       currentBlock: 0,
       testData: [],
       //!Test making black and happy goign first - swtch block 3/4 with 6/7
-      genderTest:[
+      fullTest:[
         {
           block: "Block1",
           instructions: "Click E for White faces and I for Black faces",
@@ -101,7 +101,7 @@ import handleAnswers from "../../../modules/handleAnswers";
     getImage(url) {
       return require(`../../../assets/stimulus_faces/${url}`);
     },
-
+ 
     testOver(){
       this.$router.push("/IAT/Black_White_Feedback")
     },
@@ -112,8 +112,8 @@ import handleAnswers from "../../../modules/handleAnswers";
       if (e.key === " ") {
         handleAnswers(
           this,
-          this.genderTest[this.currentBlock].data,
-          this.genderTest[this.currentBlock].block,
+          this.fullTest[this.currentBlock].data,
+          this.fullTest[this.currentBlock].block,
           "IAT_Black_White"
         );
         this.notStarted = false;

@@ -1,6 +1,6 @@
 import { getDatabase, ref, set } from "firebase/database"
 
-export function storeIATData(Data, test, cMonth, cDay, cYear, whereToStore, testType, version) {
+export function storeIATData(Data, test, cMonth, cDay, cYear, whereToStore, version) {
     const db = getDatabase();
     let dataclone = JSON.parse(JSON.stringify(Data));
     dataclone.forEach((data, index) => {
@@ -10,7 +10,7 @@ export function storeIATData(Data, test, cMonth, cDay, cYear, whereToStore, test
         data.dateTaken = `${cMonth}-${cDay}-${cYear}`;
 
         data.stimulus = data.image || data.name;
-        data.testType = testType;
+        data.testType = version;
         data.stimulusOrder = index + 1;
         data.gender = test.$store.state.userData.gender || "Not provided";
         data.ethnicity = test.$store.state.userData.chosenethnicity || "Not provided";
@@ -24,10 +24,10 @@ export function storeIATData(Data, test, cMonth, cDay, cYear, whereToStore, test
         delete data.isImg;
     });
 
-    test.$store.state[testType].push(dataclone);
+    test.$store.state[version].push(dataclone);
 
     //!Store data in firebase
     set(ref(db, `${version}/User-${test.$store.state.uid}`), {
-        data:  test.$store.state[testType],
+        data:  test.$store.state[version],
     });
 }

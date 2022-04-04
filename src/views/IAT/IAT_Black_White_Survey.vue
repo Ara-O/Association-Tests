@@ -162,7 +162,7 @@ export default {
       this.userData.chosenethnicity =
         this.chosenethnicity || this.userData.chosenethnicity;
       this.$store.state.userData = this.userData;
-      this.$router.push("IAT_Gender_Touchscreen");
+      this.$router.push("IAT_Black_White_Touchscreen");
     },
 
     progress_kb() {

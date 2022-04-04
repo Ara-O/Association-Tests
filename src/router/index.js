@@ -18,10 +18,15 @@ import IAT_Gender_Touchscreen from "../views/IAT/IAT_Gender_Touchscreen/IAT_Gend
 import IAT_Gender_Touchscreen_Feedback from "../views/IAT/IAT_Gender_Touchscreen/IAT_Gender_Touchscreen_Feedback.vue"
 
 // ---------------
-
+// IAT Black_White
 import IAT_Black_White from "../views/IAT/IAT_Black_White/IAT_Black_White.vue"
 import IAT_Black_White_Survey from "../views/IAT/IAT_Black_White_Survey.vue"
 import IAT_Black_White_Feedback from "../views/IAT/IAT_Black_White/IAT_Black_White_Feedback.vue";
+
+// ---------------
+
+import IAT_Black_White_Touchscreen from "../views/IAT/IAT_Black_White_Touchscreen/IAT_Black_White_Touchscreen.vue"
+import IAT_Black_White_Touchscreen_Feedback from "../views/IAT/IAT_Black_White_Touchscreen/IAT_Black_White_Touchscreen_Feedback.vue";
 
 // ---------------
 
@@ -34,9 +39,7 @@ import IT_Feedback from "../views/IT/IT_feedback.vue";
 // -----------------
 
 import IRBT from "../views/IRBT/irbt.vue"
-import IRBT_Practice_Instruction from "../views/IRBT/irbt_practice_instruction.vue"
 import IRBT_Practice from "../views/IRBT/irbt_practice.vue"
-import IRBT_Start from "../views/IRBT/irbt_start.vue"
 import IRBT_Start2 from "../views/IRBT/irbt_start2.vue"
 import IRBT_Feedback from "../views/IRBT/irbt_feedback.vue"
 import IRBT_Section1 from "../views/IRBT/irbt_section1.vue"
@@ -97,6 +100,7 @@ const routes = [
     path: "/IAT_Gender_Touchscreen_Feedback",
     component: IAT_Gender_Touchscreen_Feedback,
   },
+  // &IAT black and white
   {
     path: "/IAT_Black_White",
     component: IAT_Black_White,
@@ -106,8 +110,16 @@ const routes = [
     component: IAT_Black_White_Survey,
   },
   {
-    path: "/IAT/Black_White_Feedback",
+    path: "/IAT_Black_White_Feedback",
     component: IAT_Black_White_Feedback,
+  },
+  {
+    path: "/IAT_Black_White_Touchscreen",
+    component: IAT_Black_White_Touchscreen,
+  },
+  {
+    path: "/IAT_Black_White_Touchscreen_Feedback",
+    component: IAT_Black_White_Touchscreen_Feedback,
   },
   {
     path: "/IT",
@@ -134,16 +146,8 @@ const routes = [
     component: IRBT,
   },
   {
-    path: '/IRBT/Practice_Instruction',
-    component: IRBT_Practice_Instruction,
-  },
-  {
     path: '/IRBT/Practice',
     component: IRBT_Practice,
-  },
-  {
-    path: '/IRBT/Start',
-    component: IRBT_Start,
   },
   {
     path: '/IRBT/Start2',

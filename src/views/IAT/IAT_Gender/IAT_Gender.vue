@@ -3,7 +3,7 @@
     <div v-if="notStarted" class="instruction">
       <h3
         style="line-height: 37px; margin-top: 4px"
-        v-html="genderTest[currentBlock].instructions"
+        v-html="fullTest[currentBlock].instructions"
       ></h3>
       <h3>Click the SPACE bar on your computer to start</h3>
       <!-- SPACE BAR -->
@@ -14,8 +14,8 @@
       />
     </div>
     <div v-else>
-      <h3 v-html="genderTest[currentBlock].instructions" class="in-test-instructions"></h3>
-      <div v-for="data in genderTest[currentBlock].data" :key="data.id">
+      <h3 v-html="fullTest[currentBlock].instructions" class="in-test-instructions"></h3>
+      <div v-for="data in fullTest[currentBlock].data" :key="data.id">
         <div class="imagecontainer">
           <img
             class="faceimg"
@@ -49,7 +49,7 @@ export default {
       arrayIndex: 0,
       currentBlock: 0,
       testData: [],
-      genderTest:[
+      fullTest:[
         {
           block: "Block1",
           instructions: "Click E for Male images and I for Female images",
@@ -110,8 +110,8 @@ export default {
       if (e.key === " ") {
         handleAnswers(
           this,
-          this.genderTest[this.currentBlock].data,
-          this.genderTest[this.currentBlock].block,
+          this.fullTest[this.currentBlock].data,
+          this.fullTest[this.currentBlock].block,
           "IAT_Gender"
         );
         this.notStarted = false;

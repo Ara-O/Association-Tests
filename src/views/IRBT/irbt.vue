@@ -61,7 +61,7 @@ main {
 }
 
 .continue-instruction {
-  font-size: 1vw;
+  font-size: 16px;
 }
 
 @media (max-width: 852px) {
@@ -69,9 +69,7 @@ main {
     background: white;
   }
 
-  img {
-    width: 82vw !important;
-  }
+
 
   .fullinstruction {
     width: auto;

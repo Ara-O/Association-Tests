@@ -1,15 +1,15 @@
 <template>
   <main>
-    <img
-      src="../../assets/app-icons/rightArrow.png"
-      alt="Right Arrow"
-      class="next"
-      v-if="progress !== 3 && progress !== 5"
-      @click="moveForward"
-    />
     <div v-if="progress === 1" class="midinstructions">
       <h3>Can you remember all the people?</h3>
       <h3>Press the right arrow to get started</h3>
+      <img
+        src="../../assets/app-icons/rightArrow.png"
+        alt="Right Arrow"
+        class="next"
+        v-if="progress !== 3 && progress !== 5"
+        @click="moveForward"
+      />
     </div>
 
     <!-- ----------------  -->
@@ -23,6 +23,12 @@
         to get started
       </h3>
       <br />
+      <img
+        src="../../assets/app-icons/rightArrow.png"
+        alt="Right Arrow"
+        class="next"
+        @click="moveForward"
+      />
     </div>
 
     <!-- -------------------- -->
@@ -56,6 +62,12 @@
 
     <div v-if="progress === 4" class="progress4">
       <h3 class="instructions midinstructions" v-html="createInstruction"></h3>
+      <img
+      src="../../assets/app-icons/rightArrow.png"
+      alt="Right Arrow"
+      class="next"
+      @click="moveForward"
+    />
     </div>
 
     <!-- -------------------- -->
@@ -111,7 +123,7 @@
 
 <script>
 import IT_Trials from "../../modules/individuationTrainingTrials";
-import * as handleIT from "../../modules/handleITTrials"
+import * as handleIT from "../../modules/handleITTrials";
 
 export default {
   data() {
@@ -164,7 +176,7 @@ export default {
     },
 
     moveForward() {
-      handleIT.moveForward(this)
+      handleIT.moveForward(this);
     },
 
     getImg(img) {
@@ -172,7 +184,7 @@ export default {
     },
 
     shuffleObjects(array) {
-      return handleIT.shuffleObjects(array)
+      return handleIT.shuffleObjects(array);
     },
 
     nextFaceToMemorize() {
@@ -180,16 +192,16 @@ export default {
     },
 
     proceedToNextSection() {
-      handleIT.proceedToNextSection(this, IT_Trials, "White")
+      handleIT.proceedToNextSection(this, IT_Trials, "White");
     },
 
     proceedAfterIncorrectChoice() {
-      handleIT.proceedAfterIncorrectChoice(this)
+      handleIT.proceedAfterIncorrectChoice(this);
     },
 
     validateChoice(choice) {
       handleIT.validateChoice(choice, this, IT_Trials);
-  },
+    },
   },
 
   mounted() {
@@ -206,7 +218,7 @@ export default {
     }
 
     this.facedata = this.facedatashuffled;
-  }
+  },
 };
 </script>
 
@@ -220,14 +232,16 @@ main {
 }
 
 .next {
-  position: absolute;
+  /* position: absolute;
   bottom: 58px;
-  right: 58px;
+  right: 58px; */
   width: 97px;
+  margin-top: 10px;
   cursor: pointer;
   filter: drop-shadow(0px 4px 1px gray);
   transition: all 100ms ease-in;
 }
+
 .next:hover {
   filter: drop-shadow(0px 0px 0px gray);
   transform: translate(-4px, -1px);
@@ -330,7 +344,7 @@ li img {
   .instructions {
     width: auto !important;
     font-size: 15px;
-     overflow: auto;
+    overflow: auto;
   }
 
   .next {
@@ -367,12 +381,13 @@ li img {
     width: 90px;
   }
 
-  .star, .cross{
-    width: 100px
+  .star,
+  .cross {
+    width: 100px;
   }
 
-  .correctchoice h3{
-    font-size: 15px
+  .correctchoice h3 {
+    font-size: 15px;
   }
 }
 </style>

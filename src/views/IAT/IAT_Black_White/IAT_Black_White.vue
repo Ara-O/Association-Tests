@@ -79,12 +79,12 @@ import handleAnswers from "../../../modules/handleAnswers";
         {
           block: "Block6",
           instructions: "Practice: Click E for Black faces/Happy faces, and I for White faces/Sad faces",
-          data:  testData_Block4("E", "I", 10),
+          data:  testData_Block4("I", "E", 10),
         },
         {
           block: "Block7",
           instructions: "Let's Continue: Click E for Black faces/Happy faces, and I for White faces/Sad faces",
-          data:  testData_Block4("E", "I", 10),
+          data:  testData_Block4("I", "E", 10),
         }
       ]
     };

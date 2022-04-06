@@ -77,13 +77,13 @@ export default {
         },
         {
           block: "Block6",
-          instructions: "Practice: Click E for Male images and Female Toys, and I for Female images and Male toys",
-          data:  testData_Block4("E", "I", 10),
+          instructions: "Practice: Click I for Male images and Female Toys, and E for Female images and Male toys",
+          data:  testData_Block4("I", "E", 10),
         },
         {
           block: "Block7",
-          instructions: "Let's Continue: Click E for Male images and Female Toys, and I for Female images and Male toys",
-          data:  testData_Block4("E", "I", 20),
+          instructions: "Let's Continue: Click I for Male images and Female Toys, and E for Female images and Male toys",
+          data:  testData_Block4("I", "E", 20),
         }
       ]
     };

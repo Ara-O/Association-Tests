@@ -97,16 +97,16 @@ export default {
           instructions:
             "Practice: Click the right for White faces/Sad faces, and the left for Black faces/Happy faces",
           data: testData_Block4("Right", "Left", 10),
-          clickerLeft: "White faces/Sad faces",
-          clickerRight: "Black faces/Happy faces",
+          clickerLeft: "Black faces/Happy faces",
+          clickerRight: "White faces/Sad faces",
         },
         {
           block: "Block7_TS",
           instructions:
             "Let's continue: Click the right for White faces/Sad faces, and the left for Black faces/Happy faces",
           data: testData_Block4("Right", "Left", 20),
-          clickerLeft: "White faces/Sad faces",
-          clickerRight: "Black faces/Happy faces",
+          clickerLeft: "Black faces/Happy faces",
+          clickerRight: "White faces/Sad faces",
         },
       ],
       testOver: false,

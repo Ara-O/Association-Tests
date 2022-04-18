@@ -61,51 +61,50 @@ function generateStimulusGender(stimulusData, male, female, trials, isSwitched =
     }
 }
 
-
 // IAT block 1 and 5
 function testData_Block1(male, female, trials) {
     const genderStimulusDataFull = [
-        { accuracy: 100, image: "B_F01.jpg" },
-        { accuracy: 100, image: "B_F02.jpg" },
-        { accuracy: 100, image: "B_F03.jpg" },
-        { accuracy: 100, image: "B_F04.jpg" },
-        { accuracy: 100, image: "B_F05.jpg" },
-        { accuracy: 100, image: "B_F06.jpg" },
-        { accuracy: 100, image: "B_F07.jpg" },
-        { accuracy: 100, image: "B_F08.jpg" },
-        { accuracy: 100, image: "B_F09.jpg" },
-        { accuracy: 100, image: "B_F10.jpg" },
-        { accuracy: 100, image: "B_F11.jpg" },
-        { accuracy: 100, image: "B_M01.jpg" },
-        { accuracy: 100, image: "B_M02.jpg" },
-        { accuracy: 100, image: "B_M03.jpg" },
-        { accuracy: 100, image: "B_M04.jpg" },
-        { accuracy: 100, image: "B_M05.jpg" },
-        { accuracy: 100, image: "B_M06.jpg" },
-        { accuracy: 100, image: "B_M07.jpg" },
-        { accuracy: 100, image: "B_M08.jpg" },
-        { accuracy: 100, image: "B_M09.jpg" },
-        { accuracy: 100, image: "B_M10.jpg" },
-        { accuracy: 100, image: "B_M11.jpg" },
-        { accuracy: 100, image: "W_F01.jpg" },
-        { accuracy: 100, image: "W_F02.jpg" },
-        { accuracy: 100, image: "W_F03.jpg" },
-        { accuracy: 100, image: "W_F04.jpg" },
-        { accuracy: 100, image: "W_F05.jpg" },
-        { accuracy: 100, image: "W_F06.jpg" },
-        { accuracy: 100, image: "W_F07.jpg" },
-        { accuracy: 100, image: "W_F08.jpg" },
-        { accuracy: 100, image: "W_F09.jpg" },
-        { accuracy: 100, image: "W_F10.jpg" },
-        { accuracy: 100, image: "W_M01.jpg" },
-        { accuracy: 100, image: "W_M02.jpg" },
-        { accuracy: 100, image: "W_M03.jpg" },
-        { accuracy: 100, image: "W_M04.jpg" },
-        { accuracy: 100, image: "W_M05.jpg" },
-        { accuracy: 100, image: "W_M06.jpg" },
-        { accuracy: 100, image: "W_M07.jpg" },
-        { accuracy: 100, image: "W_M08.jpg" },
-        { accuracy: 100, image: "W_M09.jpg" },
+        // { accuracy: 100, image: "B_F01.jpg" },
+        // { accuracy: 100, image: "B_F02.jpg" },
+        // { accuracy: 100, image: "B_F03.jpg" },
+        // { accuracy: 100, image: "B_F04.jpg" },
+        // { accuracy: 100, image: "B_F05.jpg" },
+        // { accuracy: 100, image: "B_F06.jpg" },
+        // { accuracy: 100, image: "B_F07.jpg" },
+        // { accuracy: 100, image: "B_F08.jpg" },
+        // { accuracy: 100, image: "B_F09.jpg" },
+        // { accuracy: 100, image: "B_F10.jpg" },
+        // { accuracy: 100, image: "B_F11.jpg" },
+        // { accuracy: 100, image: "B_M01.jpg" },
+        // { accuracy: 100, image: "B_M02.jpg" },
+        // { accuracy: 100, image: "B_M03.jpg" },
+        // { accuracy: 100, image: "B_M04.jpg" },
+        // { accuracy: 100, image: "B_M05.jpg" },
+        // { accuracy: 100, image: "B_M06.jpg" },
+        // { accuracy: 100, image: "B_M07.jpg" },
+        // { accuracy: 100, image: "B_M08.jpg" },
+        // { accuracy: 100, image: "B_M09.jpg" },
+        // { accuracy: 100, image: "B_M10.jpg" },
+        // { accuracy: 100, image: "B_M11.jpg" },
+        // { accuracy: 100, image: "W_F01.jpg" },
+        // { accuracy: 100, image: "W_F02.jpg" },
+        // { accuracy: 100, image: "W_F03.jpg" },
+        // { accuracy: 100, image: "W_F04.jpg" },
+        // { accuracy: 100, image: "W_F05.jpg" },
+        // { accuracy: 100, image: "W_F06.jpg" },
+        // { accuracy: 100, image: "W_F07.jpg" },
+        // { accuracy: 100, image: "W_F08.jpg" },
+        // { accuracy: 100, image: "W_F09.jpg" },
+        // { accuracy: 100, image: "W_F10.jpg" },
+        // { accuracy: 100, image: "W_M01.jpg" },
+        // { accuracy: 100, image: "W_M02.jpg" },
+        // { accuracy: 100, image: "W_M03.jpg" },
+        // { accuracy: 100, image: "W_M04.jpg" },
+        // { accuracy: 100, image: "W_M05.jpg" },
+        // { accuracy: 100, image: "W_M06.jpg" },
+        // { accuracy: 100, image: "W_M07.jpg" },
+        // { accuracy: 100, image: "W_M08.jpg" },
+        // { accuracy: 100, image: "W_M09.jpg" },
         { accuracy: 100, image: "C_M01.jpg" },
         { accuracy: 100, image: "C_M02.jpg" },
         { accuracy: 100, image: "C_M03.jpg" },
@@ -137,6 +136,8 @@ function testData_Block1(male, female, trials) {
         el.description = "User chooses between male faces and female faces"
     })
 
+    // console.log(testData)
+
     return testData
 
 }
@@ -162,56 +163,55 @@ function testData_Block2(male_toy, female_toy) {
         el.description = "User chooses between male toys and female toys"
     })
 
-
+    // console.log(newData)
     return newData;
 }
 
 //   Click E for Male and male toys, and I for Female and female toys
 //   IAT block 3 and 4
 function testData_Block3(male_and_toys, female_and_toys, trials) {
-    trials;
     const genderStimulusDataFull = [
-        { accuracy: 100, image: "B_F01.jpg" },
-        { accuracy: 100, image: "B_F02.jpg" },
-        { accuracy: 100, image: "B_F03.jpg" },
-        { accuracy: 100, image: "B_F04.jpg" },
-        { accuracy: 100, image: "B_F05.jpg" },
-        { accuracy: 100, image: "B_F06.jpg" },
-        { accuracy: 100, image: "B_F07.jpg" },
-        { accuracy: 100, image: "B_F08.jpg" },
-        { accuracy: 100, image: "B_F09.jpg" },
-        { accuracy: 100, image: "B_F10.jpg" },
-        { accuracy: 100, image: "B_F11.jpg" },
-        { accuracy: 100, image: "B_M01.jpg" },
-        { accuracy: 100, image: "B_M02.jpg" },
-        { accuracy: 100, image: "B_M03.jpg" },
-        { accuracy: 100, image: "B_M04.jpg" },
-        { accuracy: 100, image: "B_M05.jpg" },
-        { accuracy: 100, image: "B_M06.jpg" },
-        { accuracy: 100, image: "B_M07.jpg" },
-        { accuracy: 100, image: "B_M08.jpg" },
-        { accuracy: 100, image: "B_M09.jpg" },
-        { accuracy: 100, image: "B_M10.jpg" },
-        { accuracy: 100, image: "B_M11.jpg" },
-        { accuracy: 100, image: "W_F01.jpg" },
-        { accuracy: 100, image: "W_F02.jpg" },
-        { accuracy: 100, image: "W_F03.jpg" },
-        { accuracy: 100, image: "W_F04.jpg" },
-        { accuracy: 100, image: "W_F05.jpg" },
-        { accuracy: 100, image: "W_F06.jpg" },
-        { accuracy: 100, image: "W_F07.jpg" },
-        { accuracy: 100, image: "W_F08.jpg" },
-        { accuracy: 100, image: "W_F09.jpg" },
-        { accuracy: 100, image: "W_F10.jpg" },
-        { accuracy: 100, image: "W_M01.jpg" },
-        { accuracy: 100, image: "W_M02.jpg" },
-        { accuracy: 100, image: "W_M03.jpg" },
-        { accuracy: 100, image: "W_M04.jpg" },
-        { accuracy: 100, image: "W_M05.jpg" },
-        { accuracy: 100, image: "W_M06.jpg" },
-        { accuracy: 100, image: "W_M07.jpg" },
-        { accuracy: 100, image: "W_M08.jpg" },
-        { accuracy: 100, image: "W_M09.jpg" },
+        // { accuracy: 100, image: "B_F01.jpg" },
+        // { accuracy: 100, image: "B_F02.jpg" },
+        // { accuracy: 100, image: "B_F03.jpg" },
+        // { accuracy: 100, image: "B_F04.jpg" },
+        // { accuracy: 100, image: "B_F05.jpg" },
+        // { accuracy: 100, image: "B_F06.jpg" },
+        // { accuracy: 100, image: "B_F07.jpg" },
+        // { accuracy: 100, image: "B_F08.jpg" },
+        // { accuracy: 100, image: "B_F09.jpg" },
+        // { accuracy: 100, image: "B_F10.jpg" },
+        // { accuracy: 100, image: "B_F11.jpg" },
+        // { accuracy: 100, image: "B_M01.jpg" },
+        // { accuracy: 100, image: "B_M02.jpg" },
+        // { accuracy: 100, image: "B_M03.jpg" },
+        // { accuracy: 100, image: "B_M04.jpg" },
+        // { accuracy: 100, image: "B_M05.jpg" },
+        // { accuracy: 100, image: "B_M06.jpg" },
+        // { accuracy: 100, image: "B_M07.jpg" },
+        // { accuracy: 100, image: "B_M08.jpg" },
+        // { accuracy: 100, image: "B_M09.jpg" },
+        // { accuracy: 100, image: "B_M10.jpg" },
+        // { accuracy: 100, image: "B_M11.jpg" },
+        // { accuracy: 100, image: "W_F01.jpg" },
+        // { accuracy: 100, image: "W_F02.jpg" },
+        // { accuracy: 100, image: "W_F03.jpg" },
+        // { accuracy: 100, image: "W_F04.jpg" },
+        // { accuracy: 100, image: "W_F05.jpg" },
+        // { accuracy: 100, image: "W_F06.jpg" },
+        // { accuracy: 100, image: "W_F07.jpg" },
+        // { accuracy: 100, image: "W_F08.jpg" },
+        // { accuracy: 100, image: "W_F09.jpg" },
+        // { accuracy: 100, image: "W_F10.jpg" },
+        // { accuracy: 100, image: "W_M01.jpg" },
+        // { accuracy: 100, image: "W_M02.jpg" },
+        // { accuracy: 100, image: "W_M03.jpg" },
+        // { accuracy: 100, image: "W_M04.jpg" },
+        // { accuracy: 100, image: "W_M05.jpg" },
+        // { accuracy: 100, image: "W_M06.jpg" },
+        // { accuracy: 100, image: "W_M07.jpg" },
+        // { accuracy: 100, image: "W_M08.jpg" },
+        // { accuracy: 100, image: "W_M09.jpg" },
         { accuracy: 100, image: "C_M01.jpg" },
         { accuracy: 100, image: "C_M02.jpg" },
         { accuracy: 100, image: "C_M03.jpg" },
@@ -237,6 +237,7 @@ function testData_Block3(male_and_toys, female_and_toys, trials) {
         { accuracy: 100, image: "C_F11.jpg" },
         { accuracy: 100, image: "C_F12.jpg" },
     ]
+    
     const toysStimuli = [
         { accuracy: 100, image: "T_M01.jpg" },
         { accuracy: 100, image: "T_M02.jpg" },
@@ -252,62 +253,61 @@ function testData_Block3(male_and_toys, female_and_toys, trials) {
 
     const shuffledStimuli = shuffleObjects(genderStimulusDataFull)
     const shuffledToys = shuffleObjects(toysStimuli);
-    const slicedStimuli = shuffledStimuli.slice(-(20));
-    const fullData = generateStimulusGender([...shuffledToys, ...slicedStimuli], male_and_toys, female_and_toys, trials);
+    const fullData = generateStimulusGender([...shuffledStimuli, ...shuffledToys], male_and_toys, female_and_toys, trials);
 
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
         el.description = "Male faces/Male toys are grouped together, while Female faces/Female toys are grouped together"
     })
 
+    // console.log(fullData)
     return fullData
 }
 
 // IAT block 6 and 7
 function testData_Block4(male_femaletoys, female_maletoys, trials) {
-    trials;
     const genderStimulusDataFull = [
-        { accuracy: 100, image: "B_F01.jpg" },
-        { accuracy: 100, image: "B_F02.jpg" },
-        { accuracy: 100, image: "B_F03.jpg" },
-        { accuracy: 100, image: "B_F04.jpg" },
-        { accuracy: 100, image: "B_F05.jpg" },
-        { accuracy: 100, image: "B_F06.jpg" },
-        { accuracy: 100, image: "B_F07.jpg" },
-        { accuracy: 100, image: "B_F08.jpg" },
-        { accuracy: 100, image: "B_F09.jpg" },
-        { accuracy: 100, image: "B_F10.jpg" },
-        { accuracy: 100, image: "B_F11.jpg" },
-        { accuracy: 100, image: "B_M01.jpg" },
-        { accuracy: 100, image: "B_M02.jpg" },
-        { accuracy: 100, image: "B_M03.jpg" },
-        { accuracy: 100, image: "B_M04.jpg" },
-        { accuracy: 100, image: "B_M05.jpg" },
-        { accuracy: 100, image: "B_M06.jpg" },
-        { accuracy: 100, image: "B_M07.jpg" },
-        { accuracy: 100, image: "B_M08.jpg" },
-        { accuracy: 100, image: "B_M09.jpg" },
-        { accuracy: 100, image: "B_M10.jpg" },
-        { accuracy: 100, image: "B_M11.jpg" },
-        { accuracy: 100, image: "W_F01.jpg" },
-        { accuracy: 100, image: "W_F02.jpg" },
-        { accuracy: 100, image: "W_F03.jpg" },
-        { accuracy: 100, image: "W_F04.jpg" },
-        { accuracy: 100, image: "W_F05.jpg" },
-        { accuracy: 100, image: "W_F06.jpg" },
-        { accuracy: 100, image: "W_F07.jpg" },
-        { accuracy: 100, image: "W_F08.jpg" },
-        { accuracy: 100, image: "W_F09.jpg" },
-        { accuracy: 100, image: "W_F10.jpg" },
-        { accuracy: 100, image: "W_M01.jpg" },
-        { accuracy: 100, image: "W_M02.jpg" },
-        { accuracy: 100, image: "W_M03.jpg" },
-        { accuracy: 100, image: "W_M04.jpg" },
-        { accuracy: 100, image: "W_M05.jpg" },
-        { accuracy: 100, image: "W_M06.jpg" },
-        { accuracy: 100, image: "W_M07.jpg" },
-        { accuracy: 100, image: "W_M08.jpg" },
-        { accuracy: 100, image: "W_M09.jpg" },
+        // { accuracy: 100, image: "B_F01.jpg" },
+        // { accuracy: 100, image: "B_F02.jpg" },
+        // { accuracy: 100, image: "B_F03.jpg" },
+        // { accuracy: 100, image: "B_F04.jpg" },
+        // { accuracy: 100, image: "B_F05.jpg" },
+        // { accuracy: 100, image: "B_F06.jpg" },
+        // { accuracy: 100, image: "B_F07.jpg" },
+        // { accuracy: 100, image: "B_F08.jpg" },
+        // { accuracy: 100, image: "B_F09.jpg" },
+        // { accuracy: 100, image: "B_F10.jpg" },
+        // { accuracy: 100, image: "B_F11.jpg" },
+        // { accuracy: 100, image: "B_M01.jpg" },
+        // { accuracy: 100, image: "B_M02.jpg" },
+        // { accuracy: 100, image: "B_M03.jpg" },
+        // { accuracy: 100, image: "B_M04.jpg" },
+        // { accuracy: 100, image: "B_M05.jpg" },
+        // { accuracy: 100, image: "B_M06.jpg" },
+        // { accuracy: 100, image: "B_M07.jpg" },
+        // { accuracy: 100, image: "B_M08.jpg" },
+        // { accuracy: 100, image: "B_M09.jpg" },
+        // { accuracy: 100, image: "B_M10.jpg" },
+        // { accuracy: 100, image: "B_M11.jpg" },
+        // { accuracy: 100, image: "W_F01.jpg" },
+        // { accuracy: 100, image: "W_F02.jpg" },
+        // { accuracy: 100, image: "W_F03.jpg" },
+        // { accuracy: 100, image: "W_F04.jpg" },
+        // { accuracy: 100, image: "W_F05.jpg" },
+        // { accuracy: 100, image: "W_F06.jpg" },
+        // { accuracy: 100, image: "W_F07.jpg" },
+        // { accuracy: 100, image: "W_F08.jpg" },
+        // { accuracy: 100, image: "W_F09.jpg" },
+        // { accuracy: 100, image: "W_F10.jpg" },
+        // { accuracy: 100, image: "W_M01.jpg" },
+        // { accuracy: 100, image: "W_M02.jpg" },
+        // { accuracy: 100, image: "W_M03.jpg" },
+        // { accuracy: 100, image: "W_M04.jpg" },
+        // { accuracy: 100, image: "W_M05.jpg" },
+        // { accuracy: 100, image: "W_M06.jpg" },
+        // { accuracy: 100, image: "W_M07.jpg" },
+        // { accuracy: 100, image: "W_M08.jpg" },
+        // { accuracy: 100, image: "W_M09.jpg" },
         { accuracy: 100, image: "C_M01.jpg" },
         { accuracy: 100, image: "C_M02.jpg" },
         { accuracy: 100, image: "C_M03.jpg" },
@@ -348,14 +348,14 @@ function testData_Block4(male_femaletoys, female_maletoys, trials) {
 
     const shuffledStimuli = shuffleObjects(genderStimulusDataFull)
     const shuffledToys = shuffleObjects(toysStimuli);
-    const slicedStimuli = shuffledStimuli.slice(-(20));
-    const fullData = generateStimulusGender([...slicedStimuli, ...shuffledToys], male_femaletoys, female_maletoys, trials, true);
+    const fullData = generateStimulusGender([...shuffledStimuli, ...shuffledToys], male_femaletoys, female_maletoys, trials, true);
 
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
         el.description = "Male faces/Female toys are grouped together, while Female faces/Male toys are grouped together"
     })
 
+    // console.log(fullData)
     return fullData
 
 }

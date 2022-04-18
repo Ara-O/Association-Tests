@@ -82,7 +82,7 @@ export default {
   }
 
   .feedbacksect{
-   border: solid 3px #a7a7a7
+   border: solid 3px #ffffff
   }
 
   .feedbacks{

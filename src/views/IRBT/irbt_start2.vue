@@ -1,5 +1,5 @@
 <template>
-  <main @click="next">
+  <main>
     <h3>Instruction</h3>
     <br />
     <h3 class="fullinstruction">
@@ -13,8 +13,13 @@
     </h3>
 
     <br />
-    <br />
-    <h3>Click anywhere to continue</h3>
+    <h4>Click the right arrow to continue</h4>
+      <img
+      src="../../assets/app-icons/rightArrow.png"
+      alt="Right arraw"
+      @click="next"
+      class="continue"
+    />
   </main>
 </template>
 
@@ -24,6 +29,11 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.continue {
+  width: 60px;
+  cursor: pointer;
 }
 
 .fullinstruction {

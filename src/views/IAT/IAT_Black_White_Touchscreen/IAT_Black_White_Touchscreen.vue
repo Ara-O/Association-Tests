@@ -30,8 +30,22 @@
       />
     </div>
     <clicker>
-      <template #left>{{ fullTest[currentBlock].clickerLeft }}</template>
-      <template #right>{{ fullTest[currentBlock].clickerRight }}</template>
+      <template #left>
+        <img
+          :src="getImageClicker(fullTest[currentBlock].clickerLeft)"
+          alt="Clicker left"
+          class="clickerImage left"
+          :class="calculateClass"
+        />
+      </template>
+      <template #right>
+        <img
+          :src="getImageClicker(fullTest[currentBlock].clickerRight)"
+          alt="Clicker left"
+          class="clickerImage right"
+          :class="calculateClass"
+        />
+      </template>
     </clicker>
   </main>
 </template>
@@ -56,57 +70,57 @@ export default {
         {
           block: "Block1_TS",
           instructions:
-            "Click left for images of white people and right for images of black people",
-          data: testData_Block1("Left", "Right", 20),
-          clickerLeft: "White",
-          clickerRight: "Black",
+            "Click left for images of white children and right for images of black children",
+          data: testData_Block1("Left", "Right", 10),
+          clickerLeft: "White_Face.png",
+          clickerRight: "Black_Face.png",
         },
         {
           block: "Block2_TS",
           instructions: "Click left for happy faces, and right for sad faces",
           data: testData_Block2("Left", "Right"),
-          clickerLeft: "Happy",
-          clickerRight: "Sad",
+          clickerLeft: "Happy_Face.jpg",
+          clickerRight: "Sad_Face.jpg",
         },
         {
           block: "Block3_TS",
           instructions:
             "Practice: Click the left for White faces/Happy faces, and the right for Black faces/Sad faces",
           data: testData_Block3("Left", "Right", 10),
-          clickerLeft: "White faces/Happy faces",
-          clickerRight: "Black faces/Sad faces",
+          clickerLeft: "White_And_Happy_Face.png",
+          clickerRight: "Black_And_Sad_Face.png",
         },
         {
           block: "Block4_TS",
           instructions:
             "Let's Continue: Click the left for white faces/Happy faces, and the right for Black faces/Sad faces",
-          data: testData_Block3("Left", "Right", 20),
-          clickerLeft: "White faces/Happy faces",
-          clickerRight: "Black faces/Sad faces",
+          data: testData_Block3("Left", "Right", 10),
+          clickerLeft: "White_And_Happy_Face.png",
+          clickerRight: "Black_And_Sad_Face.png",
         },
         {
           block: "Block5_TS",
           instructions:
             "The letters are reversed now!<br/>Choose the left for images of black people or the right for images of white people",
-          data: testData_Block1("Right", "Left", 20),
-          clickerLeft: "Black",
-          clickerRight: "White",
+          data: testData_Block1("Right", "Left", 10),
+          clickerLeft: "Black_Face.png",
+          clickerRight: "White_Face.png",
         },
         {
           block: "Block6_TS",
           instructions:
-            "Practice: Click the right for White faces/Sad faces, and the left for Black faces/Happy faces",
+            "Practice: Click the left for Black faces/Happy faces  and the left for White faces/Sad faces",
           data: testData_Block4("Right", "Left", 10),
-          clickerLeft: "Black faces/Happy faces",
-          clickerRight: "White faces/Sad faces",
+          clickerLeft: "Black_And_Happy_Face.png",
+          clickerRight: "White_And_Sad_Face.png",
         },
         {
           block: "Block7_TS",
           instructions:
             "Let's continue: Click the right for White faces/Sad faces, and the left for Black faces/Happy faces",
-          data: testData_Block4("Right", "Left", 20),
-          clickerLeft: "Black faces/Happy faces",
-          clickerRight: "White faces/Sad faces",
+          data: testData_Block4("Right", "Left", 10),
+          clickerLeft: "Black_And_Happy_Face.png",
+          clickerRight: "White_And_Sad_Face.png",
         },
       ],
       testOver: false,
@@ -119,7 +133,7 @@ export default {
         document
           .querySelector(".test")
           .removeEventListener("click", this.handleAnswer);
-        this.$router.push("/IAT_Black_White_Touchscreen_Feedback");
+         this.$router.push("/IAT_Black_White_Touchscreen_Feedback");
       }
     },
 
@@ -135,6 +149,10 @@ export default {
       return require(`../../../assets/stimulus_faces/${url}`);
     },
 
+    getImageClicker(url) {
+      return require(`../../../assets/clicker_images/${url}`);
+    },
+
     start() {
       this.notStarted = false;
       this.arrayIndex = 0;
@@ -148,6 +166,23 @@ export default {
         this.fullTest[this.currentBlock].block,
         "IAT_Black_White_Touchscreen"
       );
+    },
+  },
+
+  computed: {
+    calculateClass() {
+      if (this.currentBlock == 1) {
+        return "clickerImage";
+      } else if (
+        this.currentBlock == 2 ||
+        this.currentBlock == 3 ||
+        this.currentBlock == 5 ||
+        this.currentBlock == 6
+      ) {
+        return "clickerImageCombined_Race";
+      } else {
+        return "";
+      }
     },
   },
 

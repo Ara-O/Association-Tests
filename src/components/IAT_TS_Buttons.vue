@@ -1,19 +1,25 @@
 <template>
   <div class="choice left-choice">
-    <h3 class="left"><slot name="left"></slot></h3>
+    <slot name="left"></slot>
   </div>
   <div class="choice right-choice">
-    <h3 class="right"><slot name="right"></slot></h3>
+    <slot name="right"></slot>
   </div>
 </template>
 
+<script>
+export default {
+
+}
+</script>
+
  <style scoped>
 .choice {
-  background: #85e9bf;
+  background: #85e9bf; 
   height: 28vw;
   width: 28vw;
-  max-width: 218px;
-  max-height: 196px;
+    max-width: 257px;
+    max-height: 240px;
   border-radius: 12%;
   position: absolute;
   bottom: 20px;
@@ -56,7 +62,7 @@
   }
 
   .choice {
-       height: 35vw;
+    height: 35vw;
     width: 38vw;
   }
 }

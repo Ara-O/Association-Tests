@@ -5,6 +5,7 @@
         src="../../assets/IRBT_faces/welcome_instruction.jpg"
         alt="Welcome Instruction"
         style="width: 100vh"
+        class="welcomejpg"
       />
     </div>
     <div v-else-if="section === 1">
@@ -24,6 +25,7 @@
         src="../../assets/IRBT_faces/practice_instruction.jpg"
         alt="Practice instruction"
         style="width: 100vh"
+        class="welcomejpg"
       />
     </div>
     <h3 class="continue-instruction">Click green arrow below to continue</h3>
@@ -69,12 +71,20 @@ main {
     background: white;
   }
 
-
-
   .fullinstruction {
     width: auto;
     font-size: 14px;
   }
+}
+
+@media (max-width: 582px) {
+.welcomejpg{
+  width: 41vh !important
+}
+
+.continue-instruction{
+font-size: 15px;
+}
 }
 </style>
 

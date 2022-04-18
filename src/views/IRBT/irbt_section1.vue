@@ -63,8 +63,7 @@ export default {
       let trials;
       //& (Expectedsmiling, Expectedsad, trials)
 
-      //! CHANGE TRIALS HERE
-      trials = generateIRBTtrials("White", "Black", 6);
+      trials = generateIRBTtrials("happy.jpg", "sad.jpg", 4);
       let firstItem = trials[0];
       trials.shift();
       this.shuffleObjects(trials);
@@ -142,7 +141,7 @@ main {
 }
 
 .trialimg {
-  width: 300px;
+  width: 170px;
 }
 
 .faceLeft {
@@ -201,11 +200,27 @@ main {
   }
 
   .trialimg {
-    width: 196px;
+    width: 156px;
   }
 
   .irbt_cross {
     margin-left: 10px;
   }
+  
+  .irbt-wrong-wrapper {
+    column-gap: 6px;
+}
+
+.irbt-wrong{
+  font-size: 13px
+}
+
+.irbt-wrong-img{
+  width: 24px
+}
+
+.irbt_star{
+  width: 101px
+}
 }
 </style>

@@ -1,24 +1,82 @@
 <template>
   <main>
     <h3 class="choose-iat">Select IAT</h3>
-    <router-link
-      to="/IAT_Gender_Survey"
-      class="routerlink test_btn"
-      tag="button"
-    >
-      Gender IAT
-    </router-link>
-    <router-link to="/IAT_Black_White_Survey" class="routerlink test_btn" tag="button">
-      Black-White IAT
-    </router-link>
-    <router-link to="/" class="routerlink test_btn" tag="button">
-      Black-Asian IAT
-    </router-link>
-    <router-link to="/" class="routerlink test_btn" tag="button">
-      Asian-White IAT
-    </router-link>
+    <section v-if="iattype == ''">
+      <btn
+        whereTo="/IAT_Gender/Choose_Test"
+        class="button"
+        @click="handleGender"
+        >Gender IAT</btn
+      >
+      <btn whereTo="/IAT_Gender/Choose_Test" class="button" @click="handleRace"
+        >Race IAT</btn
+      >
+    </section>
+
+    <section v-if="iattype === 'gender'">
+      <router-link
+        to="/IAT_Gender_Survey"
+        class="routerlink test_btn"
+        tag="button"
+      >
+        Male-Female IAT
+      </router-link>
+      <h3
+        style="text-decoration: underline; cursor: pointer; font-size: 16px"
+        @click="iattype = ''"
+      >
+        Go back
+      </h3>
+    </section>
+
+    <section v-if="iattype === 'race'">
+      <router-link
+        to="/IAT_Black_White_Survey"
+        class="routerlink test_btn"
+        tag="button"
+      >
+        Black-White IAT
+      </router-link>
+      <router-link to="/" class="routerlink test_btn" tag="button">
+        Black-Asian IAT
+      </router-link>
+      <router-link to="/" class="routerlink test_btn" tag="button">
+        Asian-White IAT
+      </router-link>
+      <h3
+        style="text-decoration: underline; cursor: pointer; font-size: 16px"
+        @click="iattype = ''"
+      >
+        Go back
+      </h3>
+    </section>
   </main>
 </template>
+
+<script>
+import btn from "../../components/Jelly_Button.vue";
+export default {
+  components: {
+    btn,
+  },
+
+  data() {
+    return {
+      iattype: "",
+    };
+  },
+
+  methods: {
+    handleGender() {
+      this.iattype = "gender";
+    },
+
+    handleRace() {
+      this.iattype = "race";
+    },
+  },
+};
+</script>
 
 <style scoped>
 main {
@@ -26,6 +84,13 @@ main {
   background-repeat: repeat;
   background-size: 433px;
 }
+
+.button {
+  height: 40px;
+  font-weight: 300;
+  width: 117px;
+}
+
 .test_btn {
   display: flex;
   justify-content: center;

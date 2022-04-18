@@ -103,7 +103,7 @@ import handleAnswers from "../../../modules/handleAnswers";
     },
  
     testOver(){
-      this.$router.push("/IAT/Black_White_Feedback")
+      this.$router.push("/IAT_Black_White_Feedback")
     },
 
 

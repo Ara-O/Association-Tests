@@ -82,11 +82,6 @@ export default {
   main{
     background: white;
   }
-
-  .feedbacksect{
-   border: solid 3px #a7a7a7
-  }
-
   .feedbacks{
         flex-direction: column;
         flex-wrap: nowrap;

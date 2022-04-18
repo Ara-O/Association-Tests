@@ -2,7 +2,6 @@
   <main class="test">
     <section class="instruction" v-if="notStarted">
       <h3 v-html="fullTest[currentBlock]?.instructions"></h3>
-
       <img
         src="../../../assets/app-icons/rightArrow.png"
         alt="Right arrow"
@@ -29,9 +28,23 @@
         class="wrongicon"
       />
     </div>
-    <clicker>
-      <template #left>{{ fullTest[currentBlock].clickerLeft }}</template>
-      <template #right>{{ fullTest[currentBlock].clickerRight }}</template>
+    <clicker :rightColor="fullTest[currentBlock]?.colorRight" :leftColor="fullTest[currentBlock]?.colorLeft">
+      <template #left >
+        <img
+          :src="getImageClicker(fullTest[currentBlock].clickerLeft)"
+          alt="Clicker image"
+          class="clickerImage left"
+          :class="calculateClass"
+        />
+      </template>
+      <template #right >
+        <img
+          :src="getImageClicker(fullTest[currentBlock].clickerRight)"
+          alt="Clicker image"
+          class="clickerImage right"
+          :class="calculateClass"
+        />
+      </template>
     </clicker>
   </main>
 </template>
@@ -41,10 +54,10 @@ import {
   testData_Block1,
   testData_Block2,
   testData_Block3,
-  testData_Block4,
+  testData_Block4, 
 } from "../../../modules/generateTrials";
 import handleAnswer_TS from "../../../modules/handleAnswers_TS";
-import {startTimer} from "../../../modules/handleAnswers_TS";
+import { startTimer } from "../../../modules/handleAnswers_TS";
 export default {
   data() {
     return {
@@ -57,56 +70,58 @@ export default {
           block: "Block1_TS",
           instructions:
             "Click left for Male images and right for Female images",
-          data: testData_Block1("Left", "Right", 20),
-          clickerLeft: "Male",
-          clickerRight: "Female",
+          data: testData_Block1("Left", "Right", 2),
+          clickerLeft: "Male.png",
+          clickerRight: "Female.png",
         },
         {
           block: "Block2_TS",
-          instructions: "Click left for Male toys, and right for Female toys",
+          instructions: "Click the left for Male toys, and the right for Female toys",
           data: testData_Block2("Left", "Right"),
-          clickerLeft: "Male toy",
-          clickerRight: "Female toy",
+          clickerLeft: "Male_Toy.png",
+          clickerRight: "Female_Toy.png",
         },
         {
           block: "Block3_TS",
           instructions:
-          "Practice: Click the left for Male images/Male toys, and the right for Female images/Female toys",
-          data: testData_Block3("Left", "Right", 10),
-          clickerLeft: "Male/Male toy",
-          clickerRight: "Female/Female toy",
+            "Practice: Click the left and blue box for Male images/Male toys, and the right and pink box for Female images/Female toys",
+          data: testData_Block3("Left", "Right", 2),
+          clickerLeft: "Male_And_Male_Toy.png",
+          clickerRight: "Female_And_Female_Toy.png",
+          clickerCombined: "normal"
         },
         {
           block: "Block4_TS",
           instructions:
-            "Let's Continue: Click the left for Male images/Male toys, and the right for Female images/Female toys",
-          data: testData_Block3("Left", "Right", 20),
-          clickerLeft: "Male/Male toy",
-          clickerRight: "Female/Female toy",
+            "Let's Continue: Click the left box for Male images/Male toys, and the right box for Female images/Female toys",
+          data: testData_Block3("Left", "Right", 2),
+          clickerLeft: "Male_And_Male_Toy.png",
+          clickerRight: "Female_And_Female_Toy.png",
+
         },
         {
           block: "Block5_TS",
           instructions:
             "The letters are reversed now!<br/>Choose the right for Male images or the left for Female images",
-          data: testData_Block1("Right", "Left", 20),
-          clickerLeft: "Female",
-          clickerRight: "Male",
+          data: testData_Block1("Right", "Left", 2),
+          clickerLeft: "Female.png",
+          clickerRight: "Male.png",
         },
         {
           block: "Block6_TS",
           instructions:
             "Practice: Click the right for Male images/Female toys, and the left for Female images/Male toys",
-          data: testData_Block4("Right", "Left", 10),
-          clickerLeft: "Female/Male toy",
-          clickerRight: "Male/Female toy",
+          data: testData_Block4("Right", "Left", 2),
+          clickerLeft: "Female_And_Male_Toy.png",
+          clickerRight: "Male_And_Female_Toy.png",
         },
         {
           block: "Block7_TS",
           instructions:
             "Let's Continue: Click the right for Male and Home, and the left for Female and Career",
-          data: testData_Block4("Right", "Left", 20),
-          clickerLeft: "Female/Male toy",
-          clickerRight: "Male/Female toy",
+          data: testData_Block4("Right", "Left", 2),
+          clickerLeft: "Female_And_Male_Toy.png",
+          clickerRight: "Male_And_Female_Toy.png",
         },
       ],
       testOver: false,
@@ -123,16 +138,32 @@ export default {
       }
     },
 
-    notStarted(){
-      if(this.notStarted === false ){
-            startTimer();
+    notStarted() {
+      if (this.notStarted === false) {
+        startTimer();
       }
-    }
+    },
+  },
+
+  computed: {
+    calculateClass(){
+      if(this.currentBlock == 1){
+        return "clickerImageToy"
+      }else if(this.currentBlock == 2 || this.currentBlock == 3 ||  this.currentBlock == 5 ||  this.currentBlock == 6  ){
+        return "clickerImageCombined"
+      } else {
+        return ""
+      }
+    } 
   },
 
   methods: {
     getImage(url) {
       return require(`../../../assets/stimulus_faces/${url}`);
+    },
+
+    getImageClicker(url) {
+      return require(`../../../assets/clicker_images/${url}`);
     },
 
     start() {

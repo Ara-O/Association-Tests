@@ -76,4 +76,10 @@ a.routerlink {
   font-size: 14px;
   font-weight: 300;
 }
+
+@media(max-width: 595px){
+  .choosetest{
+    font-size: 38px
+  }
+}
 </style>

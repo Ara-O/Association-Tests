@@ -1,15 +1,16 @@
 <template>
   <main>
-    <img
+   
+    <div v-if="progress === 1" class="midinstructions">
+      <h3>Can you remember all the people?</h3>
+      <h3>Press the right arrow to get started</h3>
+       <img
       src="../../assets/app-icons/rightArrow.png"
       alt="Right Arrow"
       class="next"
       v-if="progress !== 3 && progress !== 5"
       @click="moveForward"
     />
-    <div v-if="progress === 1" class="midinstructions">
-      <h3>Can you remember all the people?</h3>
-      <h3>Press the right arrow to get started</h3>
     </div>
 
     <!-- ----------------  -->
@@ -22,6 +23,12 @@
         number, tap on the number. Tap the arrow on the bottom right of the page to get started
       </h3>
       <br />
+       <img
+        src="../../assets/app-icons/rightArrow.png"
+        alt="Right Arrow"
+        class="next"
+        @click="moveForward"
+      />
     </div>
 
     <!-- -------------------- -->
@@ -54,6 +61,12 @@
 
     <div v-if="progress === 4" class="progress4">
       <h3 class="instructions midinstructions" v-html="createInstruction"></h3>
+       <img
+      src="../../assets/app-icons/rightArrow.png"
+      alt="Right Arrow"
+      class="next"
+      @click="moveForward"
+    />
     </div>
 
     <!-- -------------------- -->

@@ -8,8 +8,10 @@
 </template>
 
 <style scoped >
-
 main {
+  background: url("../../assets/app-icons/patternbg.jpg");
+    background-size: 433px;
+background-repeat: repeat;
   display: flex;
   justify-content: center;
   align-items: center;

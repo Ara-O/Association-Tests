@@ -65,10 +65,27 @@ h3 {
   font-weight: 500;
 }
 
+.clickerImage{
+  width: 110px;
+}
+
+.clickerImageToy{
+  width: 170px;
+}
+
+.clickerImageCombined{
+  margin-left: 20px;
+  width: 210px
+}
+
+.clickerImageCombined_Race{
+  width: 210px
+}
+
   
 @media (max-width: 595px) {
     .faceimg {
-      height: 273px !important;
+      height: 233px !important;
       padding: 0px;
       border-radius: 0px ;
     } 
@@ -90,7 +107,17 @@ h3 {
         box-sizing: border-box;
       }
 
-  
+      .instruction{
+        width: 100vw
+      }
+
+      .instruction h3{
+        font-size: 14px;
+      }
+
+      #wrong{
+        font-size: 14px;
+      }
     
       .style-instruction {
         padding: 33px 28px;
@@ -99,5 +126,31 @@ h3 {
     
       .style-instruction h3 {
         font-size: 2vh;
+      }
+
+      .clickerImage{
+        width: 19vw;
+      }
+
+      .clickerImageCombined{
+        width: 39vw;
+        margin-left: 4px;
+      }
+
+      .clickerImageCombined_Race{
+        width: 39vw;
+        margin-left: -2px;
+      }
+
+      .clickerImageToy{
+        width: 23vw;
+      }
+
+      .wrongicon{
+        height: 21px
+      }
+
+      .feedbacksect{
+        border: solid 3px #ffffff;
       }
   }

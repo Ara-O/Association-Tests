@@ -235,18 +235,11 @@ main {
   /* position: absolute;
   bottom: 58px;
   right: 58px; */
-  width: 97px;
+  width: 67px;
   margin-top: 10px;
   cursor: pointer;
-  filter: drop-shadow(0px 4px 1px gray);
-  transition: all 100ms ease-in;
 }
 
-.next:hover {
-  filter: drop-shadow(0px 0px 0px gray);
-  transform: translate(-4px, -1px);
-  transition: all 100ms ease-in;
-}
 
 .instructions {
   line-height: 31px;
@@ -350,7 +343,7 @@ li img {
   .next {
     bottom: 19px;
     right: 19px;
-    width: 69px;
+    width: 55px;
   }
 
   .face_img {
@@ -381,9 +374,13 @@ li img {
     width: 90px;
   }
 
-  .star,
-  .cross {
+  .star {
     width: 100px;
+  }
+
+  .cross{
+    width: 65px;
+    margin-bottom: 40px;
   }
 
   .correctchoice h3 {

@@ -3,6 +3,7 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     userData: {},
+    current_IAT_test: "",
     IAT_Gender: [],
     IAT_Gender_Touchscreen: [],
     IAT_Black_White: [],

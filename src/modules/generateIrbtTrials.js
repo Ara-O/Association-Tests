@@ -1,72 +1,73 @@
+function shuffleObjects(array) {
+    for (var a = 0; a < array.length; a++) {
+        var x = array[a];
+        var y = Math.floor(Math.random() * (a + 1));
+        array[a] = array[y];
+        array[y] = x;
+    }
+    return array;
+}
 
-import fullImgLink from './getRandomImage.js'
+export default function (white, black, trials) {
+    let all_children_stimulus_black = [
+        { image: "B_CF01.jpg", emotion: black, },
+        { image: "B_CF02.jpg", emotion: black, },
+        { image: "B_CF03.jpg", emotion: black, },
+        { image: "B_CM01.jpg", emotion: black, },
+        { image: "B_CM02.jpg", emotion: black, },
+        { image: "B_CM03.jpg", emotion: black, },]
 
-export default function (expectedSmiling, expectedSad, trials) {
+    let all_children_stimulus_white = [
+        { image: "W_CF01.jpg", emotion: white },
+        { image: "W_CF02.jpg", emotion: white },
+        { image: "W_CF03.jpg", emotion: white },
+        { image: "W_CM01.jpg", emotion: white },
+        { image: "W_CM02.jpg", emotion: white },
+        { image: "W_CM03.jpg", emotion: white }]
+    let irbt_data = [];
 
-    let num1 = 0;
-    let num2 = 0;
-    let trial = 0;
-    let zeros = 0;
-    // let ones = 0;
-    const irbt_data = [];
 
-    do {
-        const { fullImgLink: imgLink } = fullImgLink();
+    //Starts with an object of what to push
+    /*accuracy: 100
+    emotion: "sad.jpg"
+    happyFacePosition: "Right"
+    image: "B_F05.jpg"
+    randomNo: 1
+    sadFacePosition: "Left"
+    visibility: "none" */
 
-        let firstLetter = imgLink[0];
+    //shuffling the two data
+    all_children_stimulus_black = shuffleObjects(all_children_stimulus_black);
+    all_children_stimulus_white = shuffleObjects(all_children_stimulus_white);
 
-        //Starts with an object of what to push
+    //Making sure there is half for both races
+    for (let i = 0; i < trials / 2; i++) {
+        irbt_data.push(all_children_stimulus_black[i])
+    }
+    for (let i = 0; i < trials / 2; i++) {
+        irbt_data.push(all_children_stimulus_white[i])
+    }
 
-        const whatToPush = { image: imgLink, };
+    for (let i = 0; i < irbt_data.length; i++) {
+        //setting the visibility to block for the first data
+        i === 0 ? irbt_data[i].visibility = "block" : irbt_data[i].visibility = "none";
+        let randomNo = Math.floor(Math.random() * 2);
 
-        //!Generate random number half and half
-
-        // let randomNo = Math.floor(Math.random() * 2);
-
-        if (zeros < trials / 2) {
-            whatToPush.happyFacePosition = "Left";
-            whatToPush.sadFacePosition = "Right";
-            whatToPush.randomNo = 0;
-            zeros++
+        //Setting the position of the clicker faces randomized
+        irbt_data[i].randomNo = randomNo;
+        if (randomNo === 0) {
+            irbt_data[i].sadFacePosition = "Left";
+            irbt_data[i].happyFacePosition = "Right"
         } else {
-            whatToPush.happyFacePosition = "Right";
-            whatToPush.sadFacePosition = "Left";
-            whatToPush.randomNo = 1;
-            //  ones++;
-        }
-        whatToPush.accuracy = 100;
-        trial === 0 ? whatToPush.visibility = 'block' : whatToPush.visibility = 'none';
-
-        if (firstLetter === "B" && num1 < trials / 2) {
-            num1++
-            if (expectedSmiling === "Black") {
-                whatToPush.emotion = "happy.jpg"
-            } else {
-                whatToPush.emotion = "sad.jpg"
-            }
-
-            irbt_data.push(
-                whatToPush
-            )
-
-            ++trial
-
-        } else if (firstLetter === "W" && num2 < trials / 2) {
-            num2++;
-            if (expectedSmiling === "White") {
-                whatToPush.emotion = "happy.jpg"
-            } else {
-                whatToPush.emotion = "sad.jpg"
-            }
-          irbt_data.push(
-                whatToPush
-            )
-
-            ++trial
-
+            irbt_data[i].sadFacePosition = "Right";
+            irbt_data[i].happyFacePosition = "Left";
         }
 
-    } while (trial < trials)
+        irbt_data[i].accuracy = 100;
+    }
 
+
+
+  //  console.log(irbt_data)
     return irbt_data;
 }

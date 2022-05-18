@@ -101,7 +101,7 @@ export default {
         {
           block: "Block5_TS",
           instructions:
-            "The letters are reversed now!<br/>Choose the left for images of black people or the right for images of white people",
+            "The images are reversed now!<br/>Choose the left for images of black people or the right for images of white people",
           data: testData_Block1("Right", "Left", 10),
           clickerLeft: "Black_Face.png",
           clickerRight: "White_Face.png",

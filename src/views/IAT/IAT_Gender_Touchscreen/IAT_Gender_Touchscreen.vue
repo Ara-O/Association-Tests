@@ -102,7 +102,7 @@ export default {
         {
           block: "Block5_TS",
           instructions:
-            "The letters are reversed now!<br/>Choose the right for Male images or the left for Female images",
+            "The images are reversed now!<br/>Choose the right for Male images or the left for Female images",
           data: testData_Block1("Right", "Left", 2),
           clickerLeft: "Female.png",
           clickerRight: "Male.png",

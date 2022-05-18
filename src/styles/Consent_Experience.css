@@ -57,8 +57,9 @@ select {
 
 form {
   min-height: 675px;
-  width: 550px;
-  background: white;
+  width: 100%;
+  max-width: 550px;
+    background: white;
   display: flex;
   flex-direction: column;
   border-radius: 5px;

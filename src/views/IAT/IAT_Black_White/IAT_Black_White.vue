@@ -73,7 +73,7 @@ import handleAnswers from "../../../modules/handleAnswers";
         },
         {
           block: "Block5",
-          instructions: "The letters are reversed now!<br/>Click I for Black faces/Sad faces and E for White faces/Sad faces",
+          instructions: "The images are reversed now!<br/>Click I for Black faces/Sad faces and E for White faces/Sad faces",
           data:  testData_Block1("I", "E", 10),
         },
         {

@@ -72,7 +72,7 @@ export default {
         },
         {
           block: "Block5",
-          instructions: "The letters are reversed now!<br/>Choose I for Male images and E for Female images",
+          instructions: "The images are reversed now!<br/>Choose I for Male images and E for Female images",
           data:  testData_Block1("I", "E", 2),
         },
         {

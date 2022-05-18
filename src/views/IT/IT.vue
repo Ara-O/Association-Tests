@@ -19,7 +19,7 @@ background-repeat: repeat;
 }
 
 .test-btn{
-  padding: 15px 34px;
+  padding: 22px 36px;
   font-weight: 300;
   margin-bottom: 20px;
 }

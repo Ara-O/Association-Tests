@@ -3,14 +3,21 @@
     <h3 class="choose-iat">Select IAT</h3>
     <section v-if="iattype == ''">
       <btn
-        whereTo="/IAT_Gender/Choose_Test"
+        whereTo="/IAT_Choose_Test"
         class="button"
         @click="handleGender"
         >Gender IAT</btn
       >
-      <btn whereTo="/IAT_Gender/Choose_Test" class="button" @click="handleRace"
+      <btn whereTo="/IAT_Choose_Test" class="button" @click="handleRace"
         >Race IAT</btn
       >
+        <router-link
+        style="text-decoration: underline; cursor: pointer; font-size: 16px; "
+        class="router-link-back"
+        to="/Home"
+      >
+        Go back
+        </router-link>
     </section>
 
     <section v-if="iattype === 'gender'">
@@ -19,7 +26,7 @@
         class="routerlink test_btn"
         tag="button"
       >
-        Male-Female IAT
+        Gender-Toy IAT
       </router-link>
       <h3
         style="text-decoration: underline; cursor: pointer; font-size: 16px"
@@ -124,5 +131,9 @@ a.routerlink {
   font-size: 34px;
   font-weight: 600;
   color: #2c3e50;
+}
+
+.router-link-back:active{
+color: purple;
 }
 </style>

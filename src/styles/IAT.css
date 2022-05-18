@@ -6,10 +6,10 @@ main {
   }
   
   .faceimg {
-        height: 198px;
-      border: solid 1px lightgray;
+        height: 258px;
+      /* border: solid 1px lightgray; */
       border-radius: 25px;
-      padding: 20px 34px 0px;
+      padding: 2px;
       background: white;
   }
   
@@ -69,7 +69,6 @@ main {
     transition: all 250ms ease-in-out;
     color: white;
     text-decoration: none;
-    font-size: 15px;
     padding: 0px 15px;
     margin-bottom: 0px;
   }
@@ -98,6 +97,7 @@ main {
 @media (max-width: 595px) {
   .instruction{
     width: 360px;
+    margin-bottom: 70px;
   }
 
   .spacebar{

@@ -10,12 +10,12 @@ import jellybtn from "../src/components/Jelly_Button.vue"
 // Configuring firebase 
 
 const config = {
-    apiKey: "AIzaSyCvK9ZURXJObb7xVyx5APWEmOgkYNEOZGo",
-    authDomain: "implicit-association-tes-b2656.firebaseapp.com",
-    projectId: "implicit-association-tes-b2656",
-    storageBucket: "implicit-association-tes-b2656.appspot.com",
-    messagingSenderId: "660355196414",
-    appId: "1:660355196414:web:4a2078ce4ba75a5f998caf"
+    apiKey: process.env.VUE_APP_API_KEY,
+    authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+    projectId: process.env.VUE_APP_PROJECT_ID,
+    storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
+    appId: process.env.VUE_APP_APP_ID
 };
 
 let firebaseapp = firebase.initializeApp(config)

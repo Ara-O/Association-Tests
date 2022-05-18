@@ -1,5 +1,9 @@
 <template>
-<main>
+<contact-experience
+    v-if="surveyNotComplete"
+    @surveyDone="surveyComplete"
+  ></contact-experience>
+<main v-else>
   <br />
      <jelly-button whereTo="/Home">Go back to home page</jelly-button>
    <br />
@@ -17,7 +21,13 @@
 
 <script>
 import calcAvgSpeed from "../../../modules/calculateAverageSpeed";
+import contactExperience from "../../../views/contact_experience.vue";
+import storeContactExperience from "../../../modules/storeContactExperience"
 export default {
+   components: {
+    contactExperience,
+  },
+  
   data() {
     return {
       sum: 0,
@@ -29,7 +39,17 @@ export default {
       opinionofwomen: "",
       averageSpeed: 0,
       blocks: [],
+      surveyNotComplete: true
     };
+  },
+
+  methods: {
+    surveyComplete(userData) {
+       if(userData !== "opted-out"){
+        storeContactExperience(userData, "IAT_Gender", this);
+      }
+        this.surveyNotComplete = false;
+    },
   },
 
   mounted() {

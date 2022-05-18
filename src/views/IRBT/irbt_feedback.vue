@@ -1,27 +1,42 @@
 <template>
-  <main>
+  <contact-experience
+    v-if="surveyNotComplete"
+    @surveyDone="surveyComplete"
+  ></contact-experience>
+  <main v-else>
     <h3>Here is your feedback!</h3>
     <jelly-button whereTo="/IRBT/end" style="margin-bottom: -11px"
       >Continue!</jelly-button
     >
     <br />
     <div class="feedbacks">
-    <div class="feedback">
-      <h3 style="line-height: 26px">For block one, where you associated white faces with a smiley face and black faces with a frowney face. Your feedback is:</h3>
-    <h2 class="data">Average accuracy: {{ totalacc1.toFixed(2) }}%</h2>
-    <h2 class="data">Average Speed: {{ totalspeed1.toFixed(2) }} ms</h2>
-    </div>
-    <div class="feedback">
-            <h3 style="line-height: 26px">For block two, where you associated black faces with a smiley face and white faces with a frowney face. Your feedback is:</h3>
-    <h2 class="data">Average accuracy: {{ totalacc2.toFixed(2) }}%</h2>
-    <h2 class="data">Average Speed: {{ totalspeed2.toFixed(2) }} ms</h2>
-    </div>
+      <div class="feedback">
+        <h3 style="line-height: 26px">
+          For block one, where you associated white faces with a smiley face and
+          black faces with a frowney face. Your feedback is:
+        </h3>
+        <h2 class="data">Average accuracy: {{ totalacc1.toFixed(2) }}%</h2>
+        <h2 class="data">Average Speed: {{ totalspeed1.toFixed(2) }} ms</h2>
+      </div>
+      <div class="feedback">
+        <h3 style="line-height: 26px">
+          For block two, where you associated black faces with a smiley face and
+          white faces with a frowney face. Your feedback is:
+        </h3>
+        <h2 class="data">Average accuracy: {{ totalacc2.toFixed(2) }}%</h2>
+        <h2 class="data">Average Speed: {{ totalspeed2.toFixed(2) }} ms</h2>
+      </div>
     </div>
   </main>
 </template>
 
 <script>
+import contactExperience from "../../views/contact_experience.vue";
+import storeContactExperience from "../../modules/storeContactExperience";
 export default {
+  components: {
+    contactExperience,
+  },
   data() {
     return {
       fullData: [],
@@ -29,7 +44,17 @@ export default {
       totalspeed1: 0,
       totalacc2: 0,
       totalspeed2: 0,
+      surveyNotComplete: true,
     };
+  },
+
+  methods: {
+    surveyComplete(userData) {
+       if(userData !== "opted-out"){
+        storeContactExperience(userData, "IAT_Gender", this);
+      }
+        this.surveyNotComplete = false;
+      },
   },
 
   mounted() {
@@ -58,49 +83,51 @@ export default {
 }
 
 main {
+  padding-top: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.feedbacks{
+.feedbacks {
   display: flex;
   justify-content: center;
   column-gap: 30px;
   margin-top: 30px;
 }
 
-.feedback{
- background: rgb(237 237 237);
-    width: 330px;
-    box-sizing: border-box;
-    padding: 23px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px #b9b9b9;
+.feedback {
+  background: rgb(237 237 237);
+  width: 330px;
+  box-sizing: border-box;
+  padding: 23px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px #b9b9b9;
 }
 
-.feedback h3, .feedback h2{
-  font-size: 15px
+.feedback h3,
+.feedback h2 {
+  font-size: 15px;
 }
 
-.btn{
-    padding: 21px 34px;
+.btn {
+  padding: 21px 34px;
   font-weight: 300;
   margin-bottom: 0px;
 }
 
 @media (max-width: 852px) {
-  main{
+  main {
     background: white;
-    height:  auto
+    height: auto;
   }
 
-.feedbacks{
-      display: flex;
+  .feedbacks {
+    display: flex;
     justify-content: center;
     row-gap: 34px;
     flex-direction: column;
     margin-top: 30px;
-}
+  }
 }
 </style>

@@ -3,7 +3,7 @@ import Home from "../views/Home.vue";
 import Consent_Form from "../views/consent_form.vue";
 import Explore_Studies from "../views/explore_studies.vue";
 import IAT_Choose_Test from "../views/IAT/IAT_Choose_Test.vue";
-
+// import Contact_Experience from "../views/contact_experience.vue"
 // ------------
 // IAT GENDER
 
@@ -67,7 +67,7 @@ const routes = [
     component: Home,
   },
   {
-    path: "/IAT_Gender/Choose_Test",
+    path: "/IAT_Choose_Test",
     name: "IAT_Choose_Test",
     component: IAT_Choose_Test,
   },

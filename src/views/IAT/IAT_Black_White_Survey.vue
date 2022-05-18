@@ -1,5 +1,101 @@
 <template>
-  <main>
+  <section v-if="notAgreedToConsentForm && !redirectToHome" class="consent-form">
+    <div class="jumbotron">
+      <h3>Pre-Test Consent Form</h3>
+    </div>
+    <br />
+      <h4 class="consent">
+        <b>Here is a quick consent form before you start the test!</b>
+        <br /><br />
+        <b>Key Information</b>
+        <br /><br />
+        The following is a short summary of this study to help you decide
+        whether or not to be a part of this study. If you choose to participate
+        in this study, you will be asked to complete an Implicit Association
+        Test (IAT) in which you will pair words representing son and daughter
+        with words representing the categories “Good” and “Bad”, and the
+        categories “Money” and “Love”.
+
+        <br /><br />
+        <b> Why is this research being done?</b>
+        <br /><br />
+        To understand the association between different social groups (e.g., son
+        and daughter) and the categories of “good” or “bad” and “money” or
+        “love” using the Implicit Association Test (IAT; Greenwald, McGhee, and
+        Schwartz, 1998).
+
+        <br /><br />
+        <b> How long will the research last and what will I need to do?</b>
+        <br /><br />
+
+        We expect that you will be in this research study for 12-14 minutes. You
+        will be asked to answer questions and to complete two Implicit
+        Association Tests (IATs) in which you will pair words representing son
+        and daughter with words representing the categories “Good” and “Bad”,
+        and the categories “Money” and “Love”.
+
+        <br /><br />
+        <b>Will being in this study help me in any way? </b>
+        <br /><br />
+
+        There are no benefits to you from your taking part in this research, and
+        we cannot promise any benefits to others from your taking part in this
+        research. However, possible benefits to others include understanding
+        your own implicit associations. Given the civil unrest in our country,
+        this test may provide you with data that will make you think about how
+        much or how little you personally are influenced by your society.
+
+        <br /><br />
+        <b>Data Collection and Privacy </b>
+        <br /><br />
+
+        During the session, your response will be automatically recorded. Data
+        is stored securely on local servers. Personal information will be
+        treated in compliance with data protection laws.
+
+        <br /><br />
+        <b>Use of Data by Study Researchers</b>
+        <br /><br />
+
+        Your data may be placed in publicly accessible data repositories in a
+        completely anonymized form. Your data may also be used to publish
+        summaries of the study results in academic journals or at educational
+        meetings. You will not be directly identified in any publication or
+        report of the study.
+
+        <br /><br />
+        <b>Rights of Research Subjects</b>
+        <br /><br />
+
+        Please contact the Committee on the Use of Human Subjects in Research at
+        Harvard University, if you have any questions, concerns, suggestions, or
+        complaints that have not been or cannot be addressed by the researcher,
+        or want to report research-related harm.They can be reached at:
+        617-496-2847, 44-R Brattle St, Suite 200, Cambridge, MA 02138. The
+        committee's email is cuhs@fas.harvard.edu.
+
+        <br /><br />
+        <b>Researcher Contact Information</b>
+        <br /><br />
+
+        If you have any questions or concerns about this study, please contact
+        research lead Miao Qian at miao_qian@fas.harvard.edu, or the faculty
+        supervisor Mahzarin Banaji at mahzarin_banaji@harvard.edu. Feel free
+        take a photo or a screenshot of the contact information, in case you
+        would like to contact us with any questions or concerns.
+
+        <br />
+        Please double click below if you agree to participate in this study.
+      </h4>
+      <br />
+      <div class="arrange-btns">
+      <button @click="notAgreedToConsentForm = false" class="btn_survey">I agree</button>
+      <button @click="notAgreedToConsentForm = redirectToHome = true" class="btn_survey">
+        I do not agree
+      </button>
+      </div>
+    </section>
+  <main v-else-if="!redirectToHome && !notAgreedToConsentForm">
     <!-- BASIC QUESTIONS -->
     <div v-if="moveon" class="survey_container">
       <h3>Basic questions</h3>
@@ -69,8 +165,8 @@
         <input type="text" class="ethnicity-input" v-model="chosenethnicity" />
       </div>
       <div class="progress">
-        <router-link to="/Home" class="nextbtn btn">Back</router-link>
-        <button @click="next" class="btn nextbtn">next</button>
+        <router-link to="/IAT_Choose_Test" class="btn_basic_survey router-link">Back</router-link>
+        <button @click="next" class=" btn_basic_survey">next</button>
       </div>
     </div>
 
@@ -119,27 +215,32 @@
       <div class="buttons">
         <button
           @click="progress_ts"
-          class="btn nextbtn"
-          style="margin-top: 5px"
+          class="btn btn_basic_survey"
+          style="margin-top: 5px; width: 195px"
         >
           Touch Screen Version
         </button>
         <button
           @click="progress_kb"
-          class="btn nextbtn kb_btn"
-          style="margin-top: 5px"
+          class="btn btn_basic_survey kb_btn"
+          style="margin-top: 5px; width: 150px"
         >
           Keyboard Version
         </button>
       </div>
     </div>
   </main>
+    <section v-if="redirectToHome" class="redirectToHome">
+        <router-link to="/Home" class="btn_survey">Click here to redirect to home</router-link>
+    </section>
 </template>
 
 <script>
 export default {
   data() {
     return {
+      notAgreedToConsentForm: true,
+      redirectToHome: false,
       moveon: true,
       userData: {
         gender: "",
@@ -176,147 +277,5 @@ export default {
 </script>
 
 <style scoped>
-main {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(185deg, #7eefbf, #389820);
-  border-radius: 47px;
-  box-shadow: -2px 4px 4px -1px #cbcbcb;
-  cursor: pointer;
-  margin-bottom: 25px;
-  transition: all 250ms ease-in-out;
-  color: white;
-  text-decoration: none;
-  font-size: 15px;
-  padding: 0px 15px;
-}
-
-.btn:hover {
-  box-shadow: 0px 0px #cbcbcb;
-  transform: translate(-2px, 2px);
-}
-
-.backbtn {
-  /* position: absolute; */
-  min-height: 46px;
-  min-width: 80px;
-  margin-top: 33px;
-}
-
-.nextbtn {
-  min-height: 45px;
-  min-width: 45px;
-  border: none;
-  font-weight: 300;
-  margin-top: 33px;
-  font-size: 13px;
-  padding: 1px 26px;
-}
-
-.survey_container {
-  min-height: 586px;
-  min-width: 471px;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  border-radius: 5px;
-  align-items: center;
-  box-shadow: -3px 1px 7px #eeeeeeb2, 2px 3px 5px rgb(218 218 219 / 95%);
-  box-sizing: border-box;
-  padding: 14px 46px;
-  justify-content: center;
-}
-
-.image_examples {
-  display: flex;
-}
-
-.gender_img {
-  width: 174px;
-}
-
-.gender_choice {
-  margin-top: 10px;
-  margin-left: 23px;
-}
-
-.ethnicities {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  column-gap: 20px;
-}
-
-h4 {
-  width: 317px;
-  line-height: 27px;
-  margin-bottom: 15px;
-}
-
-select {
-  height: 28px;
-  border: solid 1px #d0d0d0;
-  border-radius: 7px;
-  text-align: center;
-  font-weight: 400;
-}
-
-.buttons {
-  display: flex;
-  column-gap: 10px;
-}
-
-.progress {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  column-gap: 30px;
-}
-
-.survey_container h4,
-#male,
-#female,
-label {
-  font-weight: 400;
-  font-size: 15px;
-}
-
-.ethnicity-input {
-  height: 28px;
-  border: solid 1px #d0d0d0;
-  border-radius: 7px;
-  text-align: center;
-  font-weight: 400;
-}
-
-@media (max-width: 450px) {
-  .survey_container {
-    min-height: 0px;
-    min-width: 0px;
-    border: none;
-    box-shadow: none;
-    padding: 4px;
-  }
-
-  main {
-    background: white;
-  }
-
-  .nextbtn {
-    font-size: 14px;
-  }
-
-  .kb_btn {
-    display: none;
-  }
-}
+@import url("../../styles/Pre_Test_Survey.css");
 </style>

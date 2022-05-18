@@ -3,7 +3,7 @@
     <h3 class="choosetest">Choose Test</h3>
     <!-- //-------- -->
     <router-link
-      to="/IAT_Gender/Choose_Test"
+      to="/IAT_Choose_Test"
       class="routerlink test_btn"
       tabindex="0"
       tag="button"

@@ -131,7 +131,6 @@ main {
   justify-content: center;
   flex-direction: column;
   height: auto !important;
-  padding: 50px 0px;
 }
 
 .jumbotron {
@@ -140,6 +139,8 @@ main {
   border-radius: 1px;
   color: white;
   box-shadow: 0px 0px 4px lightgray;
+    margin-top: 45px
+
 }
 
 .jumbotron h3 {
@@ -157,13 +158,14 @@ main {
   box-sizing: border-box;
   border: solid 1px #e5e5e5;
   font-weight: 300;
+  border-radius: 3px;
   box-shadow: 0px 0px 2px lightgrey;
 }
 
 .agreement,
 .disagreement {
   width: 190px;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   font-weight: 300;
   height: 47px;
 }

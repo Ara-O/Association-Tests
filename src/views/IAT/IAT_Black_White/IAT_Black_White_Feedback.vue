@@ -1,23 +1,40 @@
 <template>
-<main>
-  <br />
-     <jelly-button whereTo="/Home">Go back to home page</jelly-button>
-   <br />
-  <h4>Here's your feedback!</h4>
-  <br />
-  <div class="feedbacks">
-    <div v-for="(data, index) in blocksAccuracydata" :key="data">
-      <div class="feedbacksect" v-if="index + 1 === 4 || index + 1 === 7">
-        <h3 style="line-height: 31px; font-size: 15px"> When you were asked to associate images of black people with {{ (index + 1) == 4 ? "sad faces" : "happy faces"}} and images of white people with  {{(index + 1) == 4 ? "happy faces" : "sad faces"}}  , your accuracy was {{(data.averageaccuracy).toFixed(2)}}%, and your average response time was {{(data.averagespeed).toFixed(0) }}ms </h3>
+  <contact-experience
+    v-if="surveyNotComplete"
+    @surveyDone="surveyComplete"
+  ></contact-experience>
+  <main v-else>
+    <br />
+    <jelly-button whereTo="/Home">Go back to home page</jelly-button>
+    <br />
+    <h4>Here's your feedback!</h4>
+    <br />
+    <div class="feedbacks">
+      <div v-for="(data, index) in blocksAccuracydata" :key="data">
+        <div class="feedbacksect" v-if="index + 1 === 4 || index + 1 === 7">
+          <h3 style="line-height: 31px; font-size: 15px">
+            When you were asked to associate images of black people with
+            {{ index + 1 == 4 ? "sad faces" : "happy faces" }} and images of
+            white people with
+            {{ index + 1 == 4 ? "happy faces" : "sad faces" }} , your accuracy
+            was {{ data.averageaccuracy.toFixed(2) }}%, and your average
+            response time was {{ data.averagespeed.toFixed(0) }}ms
+          </h3>
         </div>
+      </div>
     </div>
-  </div>
   </main>
 </template>
 
 <script>
 import calcAvgSpeed from "../../../modules/calculateAverageSpeed";
+import contactExperience from "../../../views/contact_experience.vue";
+import storeContactExperience from "../../../modules/storeContactExperience"
+
 export default {
+  components: {
+    contactExperience,
+  },
   data() {
     return {
       sum: 0,
@@ -29,7 +46,17 @@ export default {
       opinionofwomen: "",
       averageSpeed: 0,
       blocks: [],
-    };
+      surveyNotComplete: true
+      };
+  },
+
+  methods: {
+    surveyComplete(userData) {
+       if(userData !== "opted-out"){
+        storeContactExperience(userData, "IAT_Gender", this);
+      }
+        this.surveyNotComplete = false;
+      },
   },
 
   mounted() {
@@ -38,13 +65,13 @@ export default {
     this.blocks.forEach((data) => {
       this.sum = 0;
       this.accuracy = 0;
-      for (let i = 0; i < data.length ; i++) {
+      for (let i = 0; i < data.length; i++) {
         this.sum += data[i].ms;
         this.accuracy += data[i].accuracy;
       }
-      this.sum /= data.length ;
+      this.sum /= data.length;
       //console.log(this.accuracy)
-      this.accuracy /= data.length ;
+      this.accuracy /= data.length;
       data.averageaccuracy = this.accuracy;
       data.averagespeed = this.sum;
     });
@@ -53,8 +80,6 @@ export default {
 </script>
 
 <style scoped >
- 
-
 .feedbacksect {
   display: flex;
   width: 300px;
@@ -79,19 +104,17 @@ export default {
 }
 
 @media (max-width: 595px) {
-  main{
+  main {
     background: white;
   }
-  .feedbacks{
-        flex-direction: column;
-        flex-wrap: nowrap;
-        padding-bottom: 40px;
-    
+  .feedbacks {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding-bottom: 40px;
   }
 
-  .btn{
+  .btn {
     margin-top: 100px;
   }
 }
-
 </style>

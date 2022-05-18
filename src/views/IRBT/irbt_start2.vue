@@ -5,7 +5,7 @@
     <h3 class="fullinstruction">
       There will be a picture of a Black person or a White person in the middle
       of screen. When you see a picture of the White person you should touch the
-      smiling face; when you see the Black person, you should touch the crying
+      crying face; when you see the Black person, you should touch the smiling
       face. Smiling and crying faces will appear at the bottom of the screen
       either on the left or right. Pay attention because the smiling and crying
       faces may change places. Please respond <u>quickly and correctly.</u> You

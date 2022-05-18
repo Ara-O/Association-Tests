@@ -193,10 +193,10 @@ main {
     background: white;
   }
   .faceLeft {
-    max-width: 96px;
+    max-width: 120px;
   }
   .faceRight {
-    max-width: 96px;
+    max-width: 120px;
   }
 
   .trialimg {

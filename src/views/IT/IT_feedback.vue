@@ -1,16 +1,38 @@
 <template>
-  <main>
+  <contact-experience
+    v-if="surveyNotComplete"
+    @surveyDone="surveyComplete"
+  ></contact-experience>
+  <main v-else>
     <h3>The test is over!</h3>
     <router-link to="/Home" tag="button" class="gohome">Go Home</router-link>
   </main>
 </template>
 
 <script>
+import contactExperience from "../../views/contact_experience.vue";
+import storeContactExperience from "../../modules/storeContactExperience";
+export default {
+  components: {
+    contactExperience,
+  },
+  data() {
+    return{
+      surveyNotComplete: true,
+    }
+  },
 
+  methods: {
+    surveyComplete(userData) {
+      if (userData !== "opted-out") {
+        storeContactExperience(userData, "IT-Contact-Experience", this);
+      }
+      this.surveyNotComplete = false;
+    },
+  },
+};
 </script>
-
 <style scoped>
-
 .gohome {
   display: flex;
   justify-content: center;

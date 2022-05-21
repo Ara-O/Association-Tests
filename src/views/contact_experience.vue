@@ -39,11 +39,11 @@
 </template>
 
 <script>
-import firstSurveySection from "../components/firstSurveySection.vue";
-import secondSurveySection from "../components/secondSurveySection.vue";
-import thirdSurveySection from "../components/thirdSurveySection.vue";
-import fourthSurveySection from "../components/fourthSurveySection.vue";
-import fifthSurveySection from "../components/fifthSurveySection.vue";
+import firstSurveySection from "../components/ContactExperienceSurveySections/FirstSurveySection.vue";
+import secondSurveySection from "../components/ContactExperienceSurveySections/SecondSurveySection.vue";
+import thirdSurveySection from "../components/ContactExperienceSurveySections/ThirdSurveySection.vue";
+import fourthSurveySection from "../components/ContactExperienceSurveySections/FourthSurveySection.vue";
+import fifthSurveySection from "../components/ContactExperienceSurveySections/FifthSurveySection.vue";
 export default {
   emits: ["surveyDone"],
   components: {
@@ -53,7 +53,7 @@ export default {
     fourthSurveySection,
     fifthSurveySection,
   },
-
+ 
   data() {
     return {
       progress: 1,

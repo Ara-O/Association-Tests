@@ -10,8 +10,8 @@
     >
       Implicit Association Test
     </router-link>
-    <router-link to="/IRBT" class="routerlink test_btn" tag="button">
-      Implicit Racial Bias Test
+    <router-link to="/IBT" class="routerlink test_btn" tag="button">
+      Implicit Bias Test
     </router-link>
     <router-link to="/IT" class="routerlink test_btn" tag="button">
       Individuation Training

@@ -105,7 +105,7 @@
   <label for="" style="color: red" v-if="missingField"
     >There is a missing field, please try again</label
   >
-  <br /><br />
+  <br />
   <button type="button" @click.prevent="emitData" class="nextbtn">
     Move on
   </button>
@@ -129,25 +129,25 @@ export default {
 
   methods: {
     emitData() {
-      this.missingField = false;
-      for (let key in this.userData) {
-        if (String(this.userData[key]).trim() == "") {
-          this.missingField = true;
-          let that = this;
-          window.setTimeout(function () {
-            that.missingField = false;
-          }, 3000);
-        }
-      }
+      // this.missingField = false;
+      // for (let key in this.userData) {
+      //   if (String(this.userData[key]).trim() == "") {
+      //     this.missingField = true;
+      //     let that = this;
+      //     window.setTimeout(function () {
+      //       that.missingField = false;
+      //     }, 3000);
+      //   }
+      // }
 
-      if (!this.missingField) {
+      // if (!this.missingField) {
         this.$emit("emit-data", this.userData);
-      }
+      // }
     },
   },
 };
 </script>
 
 <style scoped>
-@import url("../styles/Consent_Experience.css");
+@import url("../../styles/Contact_Experience.css");
 </style>

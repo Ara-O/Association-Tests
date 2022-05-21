@@ -92,14 +92,14 @@
     </h4>
     <br />
     <div class="arrange-btns">
-      <button @click="notAgreedToConsentForm = false" class="btn_survey">
-        I agree
-      </button>
       <button
         @click="notAgreedToConsentForm = redirectToHome = true"
         class="btn_survey"
       >
         I do not agree
+      </button>
+      <button @click="notAgreedToConsentForm = false" class="btn_survey">
+        I agree
       </button>
     </div>
   </section>
@@ -358,7 +358,7 @@ main {
 }
 
 h3.instructions.midinstructions {
-  font-size: 16.5px;
+  font-size: 15.5px;
   font-weight: 400;
 }
 
@@ -437,7 +437,11 @@ li img {
 }
 
 .face_img {
-  width: 537px;
+  width: 480px;
+}
+
+.faces_flexbox div:nth-of-type(2) img{
+  width: 450px;
 }
 
 @media (max-width: 852px) {

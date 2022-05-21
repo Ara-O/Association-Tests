@@ -75,6 +75,8 @@ export default {
       data.averageaccuracy = this.accuracy;
       data.averagespeed = this.sum;
     });
+
+    
   },
 };
 </script>

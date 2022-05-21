@@ -1,101 +1,97 @@
 <template>
   <main>
-    <h3 class="choose-iat">Select IAT</h3>
-    <section v-if="iattype == ''">
-      <btn
-        whereTo="/IAT_Choose_Test"
-        class="button"
-        @click="handleGender"
-        >Gender IAT</btn
+    <h3 class="choose-iat">Select IBT</h3>
+    <section v-if="ibt == ''">
+      <btn whereTo="/IBT_Choose_Test" class="button" @click="handleGender"
+        >Gender IBT</btn
       >
-      <btn whereTo="/IAT_Choose_Test" class="button" @click="handleRace"
-        >Race IAT</btn
+      <btn whereTo="/IBT_Choose_Test" class="button" @click="handleRace"
+        >Race IBT</btn
       >
-        <router-link
-        style="text-decoration: underline; cursor: pointer; font-size: 16px; "
+      <router-link
+        style="text-decoration: underline; cursor: pointer; font-size: 16px"
         class="router-link-back"
         to="/Home"
       >
         Go back
-        </router-link>
+      </router-link>
     </section>
 
-    <section v-if="iattype === 'gender'">
-      <router-link
-        to="/IAT_Gender_Survey"
-        class="routerlink test_btn"
-        tag="button"
-      >
-        Gender-Toy IAT
-      </router-link>
-      <!-- 
-3.	Gender Subject
-4.	Gender Color 
-5.	Gender Roles
+    <!-- Second section -->
 
-       -->
+    <section v-if="ibt === 'gender'">
       <router-link
-        to="/IAT_Choose_Test"
+        to="/IBT_Choose_Test"
         class="routerlink test_btn"
         tag="button"
       >
-        Gender-Clothing IAT
+        Gender-Toy IBT
+      </router-link>
+
+
+      <router-link
+        to="/IBT_Choose_Test"
+        class="routerlink test_btn"
+        tag="button"
+      >
+        Gender-Clothing IBT
       </router-link>
 
       <router-link
-        to="/IAT_Choose_Test"
+        to="/IBT_Choose_Test"
         class="routerlink test_btn"
         tag="button"
       >
-        Gender-Subject IAT
+        Gender-Subject IBT
       </router-link>
 
       <router-link
-        to="/IAT_Choose_Test"
+        to="/IBT_Choose_Test"
         class="routerlink test_btn"
         tag="button"
       >
-        Gender-Color IAT
+        Gender-Color IBT
       </router-link>
 
       <router-link
-        to="/IAT_Choose_Test"
+        to="/IBT_Choose_Test"
         class="routerlink test_btn"
         tag="button"
       >
-        Gender-Roles IAT
+        Gender-Roles IBT
       </router-link>
       <h3
         style="text-decoration: underline; cursor: pointer; font-size: 16px"
-        @click="iattype = ''"
+        @click="ibt = ''"
       >
         Go back
       </h3>
     </section>
 
-    <section v-if="iattype === 'race'">
+    <section v-if="ibt === 'race'">
       <router-link
-        to="/IAT_Black_White_Survey"
+        to="/IBT_Black_White_Practice"
         class="routerlink test_btn"
         tag="button"
       >
-        Black-White IAT
+        Black-White IBT
       </router-link>
-      <router-link to="/" class="routerlink test_btn" tag="button">
-        Black-Asian IAT
+      <router-link to="/IBT_Choose_Test" class="routerlink test_btn" tag="button">
+        Black-Asian IBT
       </router-link>
-      <router-link to="/" class="routerlink test_btn" tag="button">
-        Asian-White IAT
+      <router-link to="/IBT_Choose_Test" class="routerlink test_btn" tag="button">
+        Asian-White IBT
       </router-link>
       <h3
         style="text-decoration: underline; cursor: pointer; font-size: 16px"
-        @click="iattype = ''"
+        @click="ibt = ''"
       >
         Go back
       </h3>
     </section>
   </main>
 </template>
+
 
 <script>
 import btn from "../../components/Jelly_Button.vue";
@@ -106,17 +102,17 @@ export default {
 
   data() {
     return {
-      iattype: "",
+      ibt: "",
     };
   },
 
   methods: {
     handleGender() {
-      this.iattype = "gender";
+      this.ibt = "gender";
     },
 
     handleRace() {
-      this.iattype = "race";
+      this.ibt = "race";
     },
   },
 };
@@ -170,7 +166,7 @@ a.routerlink {
   color: #2c3e50;
 }
 
-.router-link-back:active{
-color: purple;
+.router-link-back:active {
+  color: purple;
 }
 </style>

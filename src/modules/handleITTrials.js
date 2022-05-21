@@ -164,6 +164,7 @@ function proceedAfterIncorrectChoice(thisval) {
         thisval.inaccurateTrial = true;
     } else {
         // when the user gets the face wrong at the end of the test
+        document.querySelector(".cross").style.display = "none";
         thisval.inaccurateTrial = true;
         thisval.proceedToNextSection();
     }

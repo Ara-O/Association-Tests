@@ -8,7 +8,7 @@
     </div>
     <br />
     <h4 class="consent">
-        <b>Here is a quick consent form before you start the test!</b>
+      <b>Here is a quick consent form before you start the test!</b>
       <br /><br />
       <b>Key Information</b>
       <br /><br />
@@ -92,151 +92,30 @@
     </h4>
     <br />
     <div class="arrange-btns">
-      <button @click="notAgreedToConsentForm = false" class="btn_survey">
-        I agree
-      </button>
       <button
         @click="notAgreedToConsentForm = redirectToHome = true"
         class="btn_survey"
       >
         I do not agree
       </button>
+      <button @click="notAgreedToConsentForm = false" class="btn_survey">
+        I agree
+      </button>
     </div>
   </section>
   <main v-else-if="!redirectToHome && !notAgreedToConsentForm">
     <!-- BASIC QUESTIONS -->
     <div v-if="moveon" class="survey_container">
-      <h3>Basic questions</h3>
-      <h4>How do you identify your gender</h4>
-      <div class="image_examples">
-        <img
-          src="../../assets/app-icons/diverseimg.jpg"
-          alt="Image"
-          style="width: 273px"
-        />
-      </div>
-      <div class="image_examples">
-        <div class="gender_choice">
-          <input
-            type="radio"
-            value="male"
-            name="gender"
-            v-model="userData.gender"
-            id="male"
-          />
-          <label for="male">Male</label>
-        </div>
-        <div class="gender_choice">
-          <input
-            type="radio"
-            value="female"
-            name="gender"
-            v-model="userData.gender"
-            id="female"
-          />
-          <label for="female">Female</label>
-        </div>
-        <div class="gender_choice">
-          <input
-            type="radio"
-            value="other"
-            name="gender"
-            v-model="userData.gender"
-            id="other"
-          />
-          <label for="other">Other</label>
-        </div>
-      </div>
-      <h4 style="margin-top: 35px">
-        How would you identify your race/ethnicity
-      </h4>
-
-      <div class="ethnicities">
-        <select
-          name="ethnicity"
-          id="ethnicity"
-          v-model="userData.chosenethnicity"
-        >
-          <option value="none" selected disabled>Choose your ethnicity</option>
-          <option value="American Indian/Alaska Native">
-            American Indian/Alaska Native
-          </option>
-          <option value="Asian">Asian</option>
-          <option value="Black/African American">Black/African American</option>
-          <option value="Hispanic">Hispanic</option>
-          <option value="Native Hawaiian or Other Pacific Islander">
-            Native Hawaiian or Other Pacific Islander
-          </option>
-          <option value="White">White</option>
-        </select>
-        <h4>Other, please specify</h4>
-        <input type="text" class="ethnicity-input" v-model="chosenethnicity" />
-      </div>
-      <div class="progress">
-        <router-link to="/IAT_Choose_Test" class="btn_basic_survey router-link">Back</router-link>
-        <button @click="next" class=" btn_basic_survey">next</button>
-      </div>
+      <basic-questions :userData="userData" @next="next"></basic-questions>
     </div>
 
     <!-- EXPLICIT ATTITUDES -->
     <div v-else class="survey_container">
-      <h4>
-        How warm or cold do you feel towards men? Use the slider:
-        {{ this.userData.slider1 }}
-      </h4>
-      <input type="range" v-model="userData.slider1" min="1" max="100" />
-      <h4>
-        How warm or cold do you feel towards women? Use the slider:
-        {{ this.userData.slider2 }}
-      </h4>
-      <input type="range" v-model="userData.slider2" min="1" max="100" />
-      <br />
-      <h4>
-        I consider men to be
-        <select v-model="userData.opinionofmen">
-          <option value="Much more associated with career than">
-            Much more associated with career than
-          </option>
-          <option value="Somewhat more associated with career than">
-            Somewhat more associated with career than
-          </option>
-          <option value="Less associated with career than">
-            Less associated with career than
-          </option>
-        </select>
-        women
-      </h4>
-      <h4>
-        I consider women to be
-        <select v-model="userData.opinionofwomen">
-          <option value="Much more associated with career than">
-            Much more associated with career than
-          </option>
-          <option value="Somewhat more associated with career than">
-            Somewhat more associated with career than
-          </option>
-          <option value="Less associated with career than">
-            Less associated with career than
-          </option></select
-        >men
-      </h4>
-      <div class="buttons">
-        <button
-          @click="progress_ts"
-          class="btn btn_basic_survey"
-          style="margin-top: 5px; width: 195px"
-        >
-          Touch Screen Version
-        </button>
-        <br>
-        <button
-          @click="progress_kb"
-          class="btn btn_basic_survey kb_btn"
-          style="margin-top: 5px;width: 150px"
-        >
-          Keyboard Version
-        </button>
-      </div>
+      <explicit-attitudes
+        :userDataProp="userData"
+        @progress_kb="progress_kb"
+        @progress_ts="progress_ts"
+      ></explicit-attitudes>
     </div>
   </main>
   <section v-if="redirectToHome" class="redirectToHome">
@@ -247,10 +126,17 @@
 </template>
 
 <script>
+import ExplicitAttitudes from "../../components/ExplicitAttitudes.vue";
+import BasicQuestions from "../../components/BasicQuestions.vue";
 export default {
+  components: {
+    ExplicitAttitudes,
+    BasicQuestions,
+  },
+
   data() {
     return {
-       notAgreedToConsentForm: true,
+      notAgreedToConsentForm: true,
       redirectToHome: false,
       moveon: true,
       userData: {
@@ -266,7 +152,8 @@ export default {
   },
 
   methods: {
-    next() {
+     next(userdata) {
+      this.userData = userdata;
       this.moveon = false;
     },
 

@@ -89,10 +89,10 @@
       </h4>
       <br />
       <div class="arrange-btns">
-      <button @click="notAgreedToConsentForm = false" class="btn_survey">I agree</button>
-      <button @click="notAgreedToConsentForm = redirectToHome = true" class="btn_survey">
+        <button @click="notAgreedToConsentForm = redirectToHome = true" class="btn_survey">
         I do not agree
       </button>
+      <button @click="notAgreedToConsentForm = false" class="btn_survey">I agree</button>
       </div>
     </section>
   <main v-else-if="!redirectToHome && !notAgreedToConsentForm">

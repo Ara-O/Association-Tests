@@ -1,0 +1,141 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.trialimg {
+    width: 170px;
+}
+
+.faceLeft {
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+    max-width: 461px;
+}
+
+.faceRight {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    max-width: 461px;
+}
+
+.irbt-wrong-img {
+    display: none;
+    width: 30px;
+}
+
+.irbt-cross-text {
+    display: none;
+}
+
+.irbt-wrong-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+    column-gap: 30px;
+}
+
+.irbt_star {
+    display: none;
+    width: 130px;
+}
+
+.irbt_cross {
+    display: none;
+    width: 70px;
+}
+
+.irbt-cross-text {
+    display: none;
+}
+
+.irbt-wrong {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.continue {
+    width: 60px;
+    cursor: pointer;
+}
+
+.fullinstruction {
+    width: 600px;
+    line-height: 28px;
+    /* border: solid 1px #b9b9b9; */
+    padding: 30px;
+    background: white;
+    font-size: 14px;
+    border-radius: 12px;
+    box-shadow: -3px 1px 7px #e2e2e2b2, 2px 3px 5px rgb(218 218 219 / 95%);
+}
+
+.continue-instruction {
+    font-size: 16px;
+}
+
+@media (max-width: 852px) {
+    main {
+        background: white;
+    }
+
+    .fullinstruction {
+        width: auto;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 582px) {
+    .welcomejpg {
+        width: 41vh !important;
+    }
+
+    .continue-instruction {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 852px) {
+    main {
+        background: white;
+    }
+
+    .faceLeft {
+        max-width: 120px;
+    }
+
+    .faceRight {
+        max-width: 120px;
+    }
+
+    .trialimg {
+        width: 156px;
+    }
+
+    .irbt_cross {
+        margin-left: 10px;
+    }
+
+    .irbt-wrong-wrapper {
+        column-gap: 6px;
+    }
+
+    .irbt-wrong {
+        font-size: 13px;
+    }
+
+    .irbt-wrong-img {
+        width: 24px;
+    }
+
+    .irbt_star {
+        width: 101px;
+    }
+}

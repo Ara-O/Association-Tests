@@ -5,7 +5,7 @@
   ></contact-experience>
   <main v-else>
     <h3>Here is your feedback!</h3>
-    <jelly-button whereTo="/IRBT/end" style="margin-bottom: -11px"
+    <jelly-button whereTo="/IBT/end" style="margin-bottom: -11px"
       >Continue!</jelly-button
     >
     <br />
@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import contactExperience from "../../views/contact_experience.vue";
-import storeContactExperience from "../../modules/storeContactExperience";
+import contactExperience from "../../contact_experience.vue";
+import storeContactExperience from "../../../modules/storeContactExperience";
 export default {
   components: {
     contactExperience,
@@ -51,15 +51,15 @@ export default {
   methods: {
     surveyComplete(userData) {
        if(userData !== "opted-out"){
-        storeContactExperience(userData, "IAT_Gender", this);
+        storeContactExperience(userData, "IBT_Black_White", this);
       }
         this.surveyNotComplete = false;
       },
   },
 
   mounted() {
-    this.fullData1 = this.$store.state.irbt_data.section_1;
-    this.fullData2 = this.$store.state.irbt_data.section_2;
+    this.fullData1 = this.$store.state.ibt_data[1];
+    this.fullData2 = this.$store.state.ibt_data[2];
     this.fullData1.forEach((data) => {
       this.totalacc1 += data.accuracy;
       this.totalspeed1 += data.ms;

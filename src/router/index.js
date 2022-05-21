@@ -38,14 +38,12 @@ import IT_Feedback from "../views/IT/IT_feedback.vue";
 
 // -----------------
 
-import IRBT from "../views/IRBT/irbt.vue"
-import IRBT_Practice from "../views/IRBT/irbt_practice.vue"
-import IRBT_Start2 from "../views/IRBT/irbt_start2.vue"
-import IRBT_Feedback from "../views/IRBT/irbt_feedback.vue"
-import IRBT_Section1 from "../views/IRBT/irbt_section1.vue"
-import IRBT_Section2 from "../views/IRBT/irbt_section2.vue"
-import Reinforcement from "../views/IRBT/irbt_reinforcement.vue"
-import IRBT_end from "../views/IRBT/irbt_end.vue"
+import IBT from "../views/IBT/IBT.vue"
+import IBT_Choose_Test from "../views/IBT/IBT_Choose_Test.vue"
+import IBT_Black_White from "../views/IBT/IBT_Black_White/IBT_Black_White.vue"
+import IBT_Black_White_Feedback from "../views/IBT/IBT_Black_White/IBT_Black_White_Feedback.vue"
+import IBT_Black_White_Practice from "../views/IBT/IBT_Black_White/IBT_Black_White_Practice.vue"
+import IBT_End from "../views/IBT/IBT_End.vue"
 
 //-----------
 
@@ -142,36 +140,28 @@ const routes = [
     component: IT_Feedback,
   },
   {
-    path: '/IRBT',
-    component: IRBT,
+    path: '/IBT',
+    component: IBT,
   },
   {
-    path: '/IRBT/Practice',
-    component: IRBT_Practice,
+    path: '/IBT_Choose_Test',
+    component: IBT_Choose_Test,
   },
   {
-    path: '/IRBT/Start2',
-    component: IRBT_Start2,
+    path: '/IBT_Black_White',
+    component: IBT_Black_White,
   },
   {
-    path: '/IRBT/Feedback',
-    component: IRBT_Feedback,
+    path: '/IBT_Black_White_Feedback',
+    component: IBT_Black_White_Feedback,
   },
   {
-    path: '/IRBT/section_1',
-    component: IRBT_Section1,
+    path: '/IBT_Black_White_Practice',
+    component: IBT_Black_White_Practice,
   },
   {
-    path: '/IRBT/section_2',
-    component: IRBT_Section2,
-  },
-  {
-    path: '/IRBT/reinforcement',
-    component: Reinforcement,
-  },
-  {
-    path: '/IRBT/end',
-    component: IRBT_end,
+    path: '/IBT/End',
+    component: IBT_End,
   },
 
 

@@ -92,14 +92,14 @@
         </h4>
         <br />
         <div class="arrange-btns">
-          <btn class="agreement" whereTo="/Home"
-            >Yes, I agree to participate</btn
-          >
           <btn
             class="disagreement"
             whereTo="/consent-form"
             @click="participating = false"
             >No, I do not agree to participate</btn
+          >
+          <btn class="agreement" whereTo="/Home"
+            >Yes, I agree to participate</btn
           >
         </div>
       </div>

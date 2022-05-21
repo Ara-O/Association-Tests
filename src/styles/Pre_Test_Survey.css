@@ -84,8 +84,8 @@ main .btn {
 }
 
 .survey_container {
-  min-height: 602px;
   width: 446px;
+  height: auto;
   background: white;
   display: flex;
   flex-direction: column;
@@ -93,8 +93,7 @@ main .btn {
   align-items: center;
   box-shadow: -3px 1px 7px #eeeeeeb2, 2px 3px 5px rgb(218 218 219 / 95%);
   box-sizing: border-box;
-  padding: 14px 46px;
-  justify-content: center;
+  padding: 21px 45px 35px;
   
 }
 
@@ -106,8 +105,8 @@ main .btn {
   width: 174px;
 }
 
-.gender_choice {
-  margin-top: 10px;
+.gender_choice label {
+  margin-top: 0px;
   /* margin-left: 23px; */
 }
 
@@ -150,6 +149,12 @@ select {
 label {
   font-weight: 400;
   font-size: 15px;
+  line-height: 28px;
+
+}
+
+label {
+  /* margin-top: 0px !important; */
 }
 
 .ethnicity-input {
@@ -177,7 +182,7 @@ label {
 .consent {
   border-radius: 3px;
   width: auto;
-  height: 618px;
+  height: 81vh;
   max-width: 668px;
   padding: 47px 48px;
   overflow: auto;
@@ -216,6 +221,27 @@ section.consent-form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.warmness-slider{
+  display: flex;
+  flex-direction: column;
+}
+
+.slider-options{
+  display: flex;
+  justify-content: space-between;
+  height: 35px
+}
+
+.slider-options span h5{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: 400;
+}
+.input-range-slider{
+  width: 325px
+  
 }
 
 @media (max-width: 450px) {

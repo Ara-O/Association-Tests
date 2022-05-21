@@ -49,6 +49,7 @@ function handleAnswer(thiskeyword, Data, whereToStore, version) {
           stopTimer();
 
           //Store data in firebase
+          //! To make it so that the data is only stored at the end, place in else statement below
           storeData.storeIATData(Data, thiskeyword, cMonth, cDay, cYear, whereToStore, version);
 
           if(test.currentBlock == test.fullTest.length - 1){

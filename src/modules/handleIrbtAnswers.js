@@ -1,3 +1,4 @@
+import { getDatabase, ref, set } from "firebase/database";
 
 let ms = 0;
 let startTime;
@@ -27,7 +28,7 @@ function timerLoop() {
 
 function getFacesPosition(that) {
     let face;
-    if (that.irbt_trials[that.currentUserTrial]?.randomNo === 0) {
+    if (that.irbt_trials[that.section].trials[that.currentUserTrial]?.randomNo === 0) {
         face = "happy.jpg";
     } else {
         face = "sad.jpg";
@@ -39,7 +40,7 @@ function getFacesPosition(that) {
 function getFacesPosition2(thiskeyword) {
     let that = thiskeyword;
     let face;
-    if (that.irbt_trials[that.currentUserTrial]?.randomNo === 0) {
+    if (that.irbt_trials[that.section].trials[that.currentUserTrial]?.randomNo === 0) {
         face = "sad.jpg";
     } else {
         face = "happy.jpg";
@@ -48,65 +49,90 @@ function getFacesPosition2(thiskeyword) {
     return face;
 }
 
-function handleCorrectAnswer(thiskeyword, routeTo) {
+const ibt_data = []
+
+function handleCorrectAnswer(thiskeyword) {
     stopTimer();
     let that = thiskeyword;
-    that.irbt_trials[that.currentUserTrial].visibility = "none";
-    that.irbt_trials[that.currentUserTrial].ms = ms;
+    that.irbt_trials[that.section].trials[that.currentUserTrial].visibility = "none";
+    that.irbt_trials[that.section].trials[that.currentUserTrial].ms = ms;
     document.querySelector(".irbt-wrong").style.display = "none"
     document.querySelector(".irbt-wrong-img").style.display = "none"
     document.querySelector(".irbt_star").style.display = "block"
     document.querySelector(".faceRight").style.display = "none"
     document.querySelector(".faceLeft").style.display = "none"
-
-
     setTimeout(function () {
-        document.querySelector(".irbt_star").style.display = "none"
-        that.currentUserTrial++;
-        startTimer();
-        if (that.currentUserTrial !== that.irbt_trials.length) {
-            that.irbt_trials[that.currentUserTrial].visibility = "block";
+        //Checking from trial to trial, once it reaches the end of the trials, increment the section
+        if (that.currentUserTrial < Object.keys(that.irbt_trials[that.section].trials).length - 1) {
+            that.currentUserTrial++;
+            document.querySelector(".irbt_star").style.display = "none"
+            startTimer();
+            that.irbt_trials[that.section].trials[that.currentUserTrial].visibility = "block";
             document.querySelector(".faceRight").style.display = "block"
             document.querySelector(".faceLeft").style.display = "block"
+        } else if (that.section + 1 !== that.irbt_trials.length) {
+            document.querySelector(".irbt_star").style.display = "none"
+            //Checking to see if the sections have all being exhausted, if so, store data to firebase
+            that.testNotStarted = true;
+            ibt_data[that.section] = that.irbt_trials[that.section].trials;
+            // ibt_data[that.irbt_trials[that.section].section] = that.irbt_trials[that.section].trials;
+            that.section++;
+            that.currentUserTrial = 0;
         } else {
+
             // !Push data to be stored in firebase
             // console.log("enddd");
-            that.$store.state.irbt_data[that.section] = that.irbt_trials;
-            let clone = JSON.parse(JSON.stringify(that.irbt_trials))
+
+
+            ibt_data[that.section] = that.irbt_trials[that.section].trials;
 
             let currentDate = new Date();
             let cDay = currentDate.getDate();
             let cMonth = currentDate.getMonth() + 1;
             let cYear = currentDate.getFullYear();
+            ibt_data.forEach((data, index) => {
 
-            clone.forEach((data, index) => {
-                data.section = that.section;
-                data.browser = navigator["userAgent"];
-                data.dateTaken = `${cMonth}-${cDay}-${cYear}`;
+                data.forEach((data, inner_index) => {
+                    data.section = that.irbt_trials[index].section;
+                    data.browser = navigator["userAgent"];
+                    data.dateTaken = `${cMonth}-${cDay}-${cYear}`;
 
-                //Creating a descriptions column for the data
-                if (data.section == "section_1") {
-                    data.description = "User clicks a happy face for an image of a white person, and a sad face for an image of a black person";
-                } else if (data.currentTest == "section_2") {
-                    data.description = "User clicks a sad face for an image of a white person, and a happy face for an image of a black person";
-                }
-                data.testType = "IRBT";
-                data.stimulusOrder = index + 1;
-                delete data.visibility;
-                delete data.randomNo;
+                    //Creating a descriptions column for the data
+                    if (index === 0) {
+                        data.description = "Practice: clicks a happy face for an image of a white person, and a sad face for an image of a black person";
+                    } else if (index === 1) {
+                        data.description = "User clicks a happy face for an image of a white person, and a sad face for an image of a black person";
+                    } else if (index === 2) {
+                        data.description = "User clicks a sad face for an image of a white person, and a happy face for an image of a black person";
+                    }
+                    data.testType = "IBT";
+                    data.stimulusOrder = inner_index + 1;
+                    delete data.visibility;
+                    delete data.randomNo;
+                })
+
             })
-            that.$store.state.irbt_data_text.push(clone)
-            that.$router.push(routeTo);
+            // console.log(ibt_data)
+            
+            that.$store.state.ibt_data = ibt_data;
+
+            //Storing in firebase
+            const db = getDatabase();
+
+            set(ref(db, `IBT/IBT-${that.testType}/User-${that.$store.state.uid}`), {
+                data: that.$store.state.ibt_data
+            });
+
+            that.$router.push(that.routeTo);
         }
     }, 1000)
-
 }
 
 function handleIncorrectAnswer(that) {
     document.querySelector(".irbt-wrong").style.display = "block";
     document.querySelector(".irbt-wrong-img").style.display = "block";
     setTimeout(function () {
-        that.irbt_trials[that.currentUserTrial].accuracy = 0;
+        that.irbt_trials[that.section].trials[that.currentUserTrial].accuracy = 0;
         document.querySelector(".irbt-wrong").style.display = "none";
         document.querySelector(".irbt-wrong-img").style.display = "none";
 
@@ -115,25 +141,26 @@ function handleIncorrectAnswer(that) {
 
 
 
-function leftFaceAction(that, routeTo) {
-    const faceBeingShown = that.irbt_trials[that.currentUserTrial].emotion;
+function leftFaceAction(that) {
+    const faceBeingShown = that.irbt_trials[that.section].trials[that.currentUserTrial].emotion;
+    // console.log(faceBeingShown)
     // console.log(faceBeingShown, " ", that.leftFace);
     if (faceBeingShown === that.leftFace) {
-        // console.log("left is answer");
-        handleCorrectAnswer(that, routeTo);
+        handleCorrectAnswer(that);
     } else {
         handleIncorrectAnswer(that);
     }
 }
 
-function rightFaceAction(that, routeTo) {
-    const faceBeingShown = that.irbt_trials[that.currentUserTrial].emotion;
+function rightFaceAction(that) {
+    const faceBeingShown = that.irbt_trials[that.section].trials[that.currentUserTrial].emotion;
+    // console.log(faceBeingShown)
     // console.log(faceBeingShown, " ", that.rightFace);
     if (faceBeingShown === that.rightFace) {
         // console.log("right is answer");
-        handleCorrectAnswer(that, routeTo);
+        handleCorrectAnswer(that);
     } else {
-        handleIncorrectAnswer(that, routeTo);
+        handleIncorrectAnswer(that);
     }
 }
 

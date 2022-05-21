@@ -50,9 +50,9 @@ export default function (white, black, trials) {
 
     for (let i = 0; i < irbt_data.length; i++) {
         //setting the visibility to block for the first data
-        i === 0 ? irbt_data[i].visibility = "block" : irbt_data[i].visibility = "none";
         let randomNo = Math.floor(Math.random() * 2);
-
+        irbt_data[i].visibility = "none";
+        
         //Setting the position of the clicker faces randomized
         irbt_data[i].randomNo = randomNo;
         if (randomNo === 0) {
@@ -66,8 +66,9 @@ export default function (white, black, trials) {
         irbt_data[i].accuracy = 100;
     }
 
+    let updated_irbt_data = shuffleObjects(irbt_data)
+    updated_irbt_data[0].visibility = "block"
 
-
-  //  console.log(irbt_data)
-    return irbt_data;
+    console.log("Updated irbt data " ,updated_irbt_data)
+    return updated_irbt_data;
 }

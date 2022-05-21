@@ -17,6 +17,7 @@
   box-shadow: -2px 4px 4px -1px #cbcbcb;
   cursor: pointer;
   margin-bottom: 25px;
+  margin-top: 10px;
   transition: all 250ms ease-in-out;
   color: white;
   height: 51px;

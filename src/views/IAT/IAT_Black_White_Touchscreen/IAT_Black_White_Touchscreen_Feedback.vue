@@ -74,13 +74,17 @@ export default {
 
 <style scoped >
 .feedbacksect {
-  display: flex;
-  width: 300px;
-  background-color: rgb(232 232 232);
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 24px 29px;
-  border-radius: 7px;
+    width: 469px;
+    height: auto;
+    display: flex;
+    box-shadow: -4px -1px 6px hsl(0deg 0% 93% / 70%), 2px 1px 3px rgb(218 218 219 / 95%);
+    background: white;
+    border-radius: 7px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 32px 41px;
 }
 
 .feedbacks {

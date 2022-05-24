@@ -10,7 +10,7 @@ import IAT_Choose_Test from "../views/IAT/IAT_Choose_Test.vue";
 import IAT_Gender_Survey from "../views/IAT/IAT_Gender_Survey.vue";
 import IAT_Gender from "../views/IAT/IAT_Gender/IAT_Gender.vue";
 import IAT_Gender_Feedback from "../views/IAT/IAT_Gender/IAT_Gender_Feedback.vue";
-import IAT from "../views/IAT/IAT.vue";
+// import IAT from "../views/IAT/IAT.vue";
 
 // ---------------
 
@@ -38,15 +38,14 @@ import IT_Feedback from "../views/IT/IT_feedback.vue";
 
 // -----------------
 
-import IBT from "../views/IBT/IBT.vue"
 import IBT_Choose_Test from "../views/IBT/IBT_Choose_Test.vue"
 import IBT_Black_White from "../views/IBT/IBT_Black_White/IBT_Black_White.vue"
 import IBT_Black_White_Feedback from "../views/IBT/IBT_Black_White/IBT_Black_White_Feedback.vue"
-import IBT_Black_White_Practice from "../views/IBT/IBT_Black_White/IBT_Black_White_Practice.vue"
-import IBT_End from "../views/IBT/IBT_End.vue"
+// import IBT_Black_White_Practice from "../views/IBT/IBT_Black_White/IBT_Black_White_Practice.vue"
 
 //-----------
 
+import IBT_Gender_Toy from "../views/IBT/IBT_Gender_Toy/IBT_Gender_Toy.vue"
 
 const routes = [
   {
@@ -71,24 +70,17 @@ const routes = [
   },
   {
     path: "/IAT_Gender",
-    name: "IAT",
-    component: IAT,
-    children: [
-      {
-        path: '',
-        component: IAT_Gender,
-      },
-      {
-        path: "/IAT_Gender_Survey",
-        name: "IAT Gender Survey",
-        component: IAT_Gender_Survey,
-      },
-      {
-        path: "/IAT/Gender_Feedback",
-        name: "IAT_Gender_Feedback",
-        component: IAT_Gender_Feedback,
-      }
-    ],
+    component: IAT_Gender,
+  },
+  {
+    path: "/IAT_Gender_Survey",
+    name: "IAT Gender Survey",
+    component: IAT_Gender_Survey,
+  },
+  {
+    path: "/IAT_Gender_Feedback",
+    name: "IAT_Gender_Feedback",
+    component: IAT_Gender_Feedback,
   },
   {
     path: "/IAT_Gender_Touchscreen",
@@ -140,10 +132,6 @@ const routes = [
     component: IT_Feedback,
   },
   {
-    path: '/IBT',
-    component: IBT,
-  },
-  {
     path: '/IBT_Choose_Test',
     component: IBT_Choose_Test,
   },
@@ -156,13 +144,14 @@ const routes = [
     component: IBT_Black_White_Feedback,
   },
   {
-    path: '/IBT_Black_White_Practice',
-    component: IBT_Black_White_Practice,
+    path: '/IBT_Black_White_Feedback',
+    component: IBT_Black_White_Feedback,
   },
   {
-    path: '/IBT/End',
-    component: IBT_End,
-  },
+    path: '/IBT_Gender_Toy',
+    component: IBT_Gender_Toy,
+  }
+
 
 
 ]

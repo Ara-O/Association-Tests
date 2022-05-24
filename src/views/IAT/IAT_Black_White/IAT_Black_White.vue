@@ -40,7 +40,7 @@
 
  <script>
 import handleAnswers from "../../../modules/handleAnswers";
- import { testData_Block1, testData_Block2, testData_Block3, testData_Block4 } from "../../../modules/generateTrials_race";
+ import { testData_Block1, testData_Block2, testData_Block3, testData_Block4 } from "../../../modules/generateIatTrialsRace";
 
  export default {
   data() {
@@ -130,5 +130,3 @@ import handleAnswers from "../../../modules/handleAnswers";
 
 </script>
 
-// <style src="../../../styles/IAT.css">
-// </style>

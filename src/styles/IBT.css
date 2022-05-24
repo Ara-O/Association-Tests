@@ -81,6 +81,11 @@ main {
     font-size: 16px;
 }
 
+.welcomejpg{
+    border-radius: 8px;
+    
+}
+
 @media (max-width: 852px) {
     main {
         background: white;

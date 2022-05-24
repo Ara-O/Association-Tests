@@ -1,6 +1,18 @@
 <template>
   <main>
-    <div v-if="testNotStarted">
+    <section v-if="notFinishedInstructions">
+        <ibt-instructions @finishedInstructions="notFinishedInstructions = false">There will be a picture of a Black person or a White person in the
+        middle of screen. When you see a picture of the White person you should
+        touch the smiling face; when you see the Black person, you should touch
+        the crying face. Smiling and crying faces will appear at the bottom of
+        the screen either on the left or right. Pay attention because the
+        smiling and crying faces may change places. Please respond
+        <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
+        the screen.
+        </ibt-instructions>
+    </section>
+    <section v-else>
+      <div v-if="testNotStarted">
       <h3>Instruction</h3>
       <br />
       <h3 class="fullinstruction" v-html="irbt_trials[section]?.instruction">
@@ -57,29 +69,35 @@
         class="faceRight"
       />
     </div>
+    </section>
   </main>
 </template>
 
 <script>
-import generateIRBTtrials from "../../../modules/generateIrbtTrials";
+import generateIBTtrialsRace from "../../../modules/generateIbtTrialsRace";
+import IbtInstructions from "../../../components/IbtInstructions.vue";
 import * as irbt from "../../../modules/handleIrbtAnswers";
 export default {
+  components: {
+    IbtInstructions
+  },
   data() {
     return {
       section: 0,
-      testType: "Black_White",
+      testType: "Black_White", 
       routeTo: "/IBT_Black_White_Feedback",
       testNotStarted: false,
+      notFinishedInstructions: true,
       currentUserTrial: 0,
       leftFace: "",
       rightFace: "",
       irbt_trials: [
         {
-          trials: generateIRBTtrials("happy.jpg", "sad.jpg", 2),
+          trials: generateIBTtrialsRace("happy.jpg", "sad.jpg", 2),
           section: "practice",
         },
         {
-          trials: generateIRBTtrials("happy.jpg", "sad.jpg", 2),
+          trials: generateIBTtrialsRace("happy.jpg", "sad.jpg", 2),
           section: "section_1",
           instruction: `There will be a picture of a Black person or a White person in the
         middle of screen. When you see a picture of the White person you should
@@ -91,7 +109,7 @@ export default {
         the screen.`,
         },
         {
-          trials: generateIRBTtrials("sad.jpg", "happy.jpg", 2),
+          trials: generateIBTtrialsRace("sad.jpg", "happy.jpg", 2),
           section: "section_2",
           instruction: `There will be a picture of a Black person or a White person in the middle
       of screen. When you see a picture of the White person you should touch the

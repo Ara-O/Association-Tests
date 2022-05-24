@@ -40,7 +40,7 @@
 
 <script>
 import handleAnswers from "../../../modules/handleAnswers";
-import { testData_Block1, testData_Block2, testData_Block3, testData_Block4 } from "../../../modules/generateTrials";
+import { testData_Block1, testData_Block2, testData_Block3, testData_Block4 } from "../../../modules/generateIatTrialsGender";
 
 export default {
   data() {
@@ -102,7 +102,7 @@ export default {
     },
 
     testOver(){
-      this.$router.push("/IAT/Gender_Feedback")
+      this.$router.push("/IAT_Gender_Feedback")
     },
 
     start(e) {

@@ -8,6 +8,7 @@ function shuffleObjects(array) {
     return array;
 }
 
+//Current limit - 10 trials
 export default function (white, black, trials) {
     let all_children_stimulus_black = [
         { image: "B_CF01.jpg", emotion: black, },
@@ -69,6 +70,5 @@ export default function (white, black, trials) {
     let updated_irbt_data = shuffleObjects(irbt_data)
     updated_irbt_data[0].visibility = "block"
 
-    console.log("Updated irbt data " ,updated_irbt_data)
     return updated_irbt_data;
 }

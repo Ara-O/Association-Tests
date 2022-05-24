@@ -56,7 +56,7 @@ import {
   testData_Block2,
   testData_Block3,
   testData_Block4,
-} from "../../../modules/generateTrials_race";
+} from "../../../modules/generateIatTrialsRace";
 import handleAnswer_TS from "../../../modules/handleAnswers_TS";
 import { startTimer } from "../../../modules/handleAnswers_TS";
 export default {

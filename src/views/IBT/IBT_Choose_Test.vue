@@ -21,7 +21,7 @@
 
     <section v-if="ibt === 'gender'">
       <router-link
-        to="/IBT_Choose_Test"
+        to="/IBT_Gender_Toy"
         class="routerlink test_btn"
         tag="button"
       >
@@ -70,7 +70,7 @@
 
     <section v-if="ibt === 'race'">
       <router-link
-        to="/IBT_Black_White_Practice"
+        to="/IBT_Black_White"
         class="routerlink test_btn"
         tag="button"
       >

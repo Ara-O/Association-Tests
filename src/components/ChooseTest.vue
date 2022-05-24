@@ -1,7 +1,6 @@
 <template>
   <main>
     <h3 class="choosetest">Choose Test</h3>
-    <!-- //-------- -->
     <router-link
       to="/IAT_Choose_Test"
       class="routerlink test_btn"
@@ -10,7 +9,7 @@
     >
       Implicit Association Test
     </router-link>
-    <router-link to="/IBT" class="routerlink test_btn" tag="button">
+    <router-link to="/IBT_Choose_Test" class="routerlink test_btn" tag="button">
       Implicit Bias Test
     </router-link>
     <router-link to="/IT" class="routerlink test_btn" tag="button">

@@ -5,8 +5,9 @@
   ></contact-experience>
   <main v-else>
     <h3>Here is your feedback!</h3>
-    <jelly-button whereTo="/IBT/end" style="margin-bottom: -11px"
-      >Continue!</jelly-button
+    <h4>You have finished the game :)</h4>
+    <jelly-button whereTo="/Home" style="margin-bottom: -11px"
+      >Go Home</jelly-button
     >
     <br />
     <div class="feedbacks">
@@ -97,12 +98,17 @@ main {
 }
 
 .feedback {
-  background: rgb(237 237 237);
-  width: 330px;
-  box-sizing: border-box;
-  padding: 23px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 5px #b9b9b9;
+    width: 469px;
+    height: auto;
+    display: flex;
+    box-shadow: -4px -1px 6px hsl(0deg 0% 93% / 70%), 2px 1px 3px rgb(218 218 219 / 95%);
+    background: white;
+    border-radius: 7px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 32px 41px;
 }
 
 .feedback h3,

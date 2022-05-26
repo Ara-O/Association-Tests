@@ -145,7 +145,7 @@ main {
 @media (max-width: 852px) {
     main {
         background: white;
-        height: auto;
+        /* height: auto; */
     }
 
     .feedbacks {

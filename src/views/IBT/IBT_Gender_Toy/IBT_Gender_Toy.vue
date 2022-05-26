@@ -1,7 +1,7 @@
 <template>
   <main>
     <section v-if="notFinishedInstructions">
-      <ibt-instructions @finishedInstructions="notFinishedInstructions = false">
+      <ibt-instructions @finishedInstructions="finishedInstructions">
         There will be a picture of a Female toy or a Male toy in the
         middle of screen. When you see a picture of the Female toy you should
         touch the female face at the bottom of the screen; when you see a Male toy, you should touch
@@ -152,6 +152,13 @@ export default {
     leftFaceAction() {
       irbt.leftFaceAction(this, "gender");
     },
+
+     finishedInstructions(){
+      this.notFinishedInstructions = false;
+      console.log("starting timer")
+      irbt.startTimer();
+    },
+
 
     rightFaceAction() {
       irbt.rightFaceAction(this, "gender");

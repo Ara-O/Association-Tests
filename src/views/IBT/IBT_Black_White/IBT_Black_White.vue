@@ -1,7 +1,7 @@
 <template>
   <main>
     <section v-if="notFinishedInstructions">
-        <ibt-instructions @finishedInstructions="notFinishedInstructions = false">There will be a picture of a Black person or a White person in the
+        <ibt-instructions @finishedInstructions="finishedInstructions">There will be a picture of a Black person or a White person in the
         middle of screen. When you see a picture of the White person you should
         touch the smiling face; when you see the Black person, you should touch
         the crying face. Smiling and crying faces will appear at the bottom of
@@ -134,6 +134,13 @@ export default {
       return array;
     },
 
+    finishedInstructions(){
+      this.notFinishedInstructions = false;
+      console.log("starting timer")
+      irbt.startTimer();
+    },
+
+
     getFacesPosition() {
       let face = irbt.getFacesPosition(this, "happy.jpg", "sad.jpg");
       return require(`../../../assets/IRBT_faces/${face}`);
@@ -170,10 +177,6 @@ export default {
     },
   },
 
-  mounted() {
-    console.log("strting timer")
-    irbt.startTimer();
-  },
 };
 </script>
 

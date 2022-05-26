@@ -21,7 +21,7 @@ export default {
   transition: all 250ms ease-in-out;
   color: white;
   text-decoration: none;
-  padding: 9px 34px;
+  padding: 21px 34px;
   font-size: 14px;
 }
 

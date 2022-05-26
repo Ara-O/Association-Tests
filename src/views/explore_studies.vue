@@ -32,6 +32,5 @@ export default {
 .explore-studies {
   width: 130px;
   font-weight: 400;
-  height: 41px;
 }
 </style>

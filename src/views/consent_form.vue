@@ -130,7 +130,7 @@ main {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: auto !important;
+  height: auto;
 }
 
 .jumbotron {
@@ -150,7 +150,8 @@ main {
 
 .consent {
   width: auto;
-  height: 618px;
+  min-height: 618px;
+  height: 75vh;
   max-width: 668px;
   padding: 47px 48px;
   overflow: auto;
@@ -167,7 +168,7 @@ main {
   width: 190px;
   /* margin-top: 30px; */
   font-weight: 300;
-  height: 47px;
+  height: 26px;
 }
 
 .arrange-btns {

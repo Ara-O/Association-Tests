@@ -69,14 +69,14 @@
     <button
       @click="progress_ts"
       class="btn btn_basic_survey"
-      style="margin-top: 5px; width: 195px"
+      style="margin-top: 5px; width: 195px;  padding: 27px 18px"
     >
       Touch Screen Version
     </button>
     <button
       @click="progress_kb"
       class="btn btn_basic_survey kb_btn"
-      style="margin-top: 5px; width: 150px"
+      style="margin-top: 5px; width: 150px; padding: 27px 18px"
     >
       Keyboard Version
     </button>

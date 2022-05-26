@@ -127,10 +127,10 @@ main {
   background: url("../../assets/app-icons/patternbg.jpg");
   background-repeat: repeat;
   background-size: 433px;
+  height: 100vh;
 }
 
 .button {
-  height: 40px;
   font-weight: 300;
   width: 117px;
 }

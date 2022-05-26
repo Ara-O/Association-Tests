@@ -126,7 +126,6 @@ main {
 }
 
 .button {
-  height: 40px;
   font-weight: 300;
   width: 117px;
 }

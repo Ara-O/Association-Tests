@@ -46,6 +46,7 @@ import IBT_Black_White_Feedback from "../views/IBT/IBT_Black_White/IBT_Black_Whi
 //-----------
 
 import IBT_Gender_Toy from "../views/IBT/IBT_Gender_Toy/IBT_Gender_Toy.vue"
+import IBT_Gender_Toy_Feedback from "../views/IBT/IBT_Gender_Toy/IBT_Gender_Toy_Feedback.vue"
 
 const routes = [
   {
@@ -150,6 +151,10 @@ const routes = [
   {
     path: '/IBT_Gender_Toy',
     component: IBT_Gender_Toy,
+  },
+  {
+    path: '/IBT_Gender_Toy_Feedback',
+    component: IBT_Gender_Toy_Feedback,
   }
 
 

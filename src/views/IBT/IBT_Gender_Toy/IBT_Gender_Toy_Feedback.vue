@@ -6,23 +6,23 @@
   <main v-else>
     <h3>Here is your feedback!</h3>
     <h4>You have finished the game :)</h4>
-    <jelly-button whereTo="/Home" style="margin-bottom: -11px" class="feedack-btn"
+    <jelly-button whereTo="/Home" style="margin-bottom: -11px" class="feedback-btn"
       >Go Home</jelly-button
     >
     <br />
     <div class="feedbacks">
       <div class="feedback">
         <h3 style="line-height: 26px">
-          For block one, where you associated white faces with a smiley face and
-          black faces with a frowney face. Your feedback is:
+          For block one, where you associated male faces with a male toy and
+          female faces with a female toys. Your feedback is:
         </h3>
         <h2 class="data">Average accuracy: {{ totalacc1.toFixed(2) }}%</h2>
         <h2 class="data">Average Speed: {{ totalspeed1.toFixed(2) }} ms</h2>
       </div>
       <div class="feedback">
         <h3 style="line-height: 26px">
-          For block two, where you associated black faces with a smiley face and
-          white faces with a frowney face. Your feedback is:
+          For block one, where you associated female faces with a male toy and
+          male faces with a female toys
         </h3>
         <h2 class="data">Average accuracy: {{ totalacc2.toFixed(2) }}%</h2>
         <h2 class="data">Average Speed: {{ totalspeed2.toFixed(2) }} ms</h2>
@@ -51,11 +51,11 @@ export default {
 
   methods: {
     surveyComplete(userData) {
-       if(userData !== "opted-out"){
-        storeContactExperience(userData, "IBT_Black_White", this);
+      if (userData !== "opted-out") {
+        storeContactExperience(userData, "IBT_Gender_Toy", this);
       }
-        this.surveyNotComplete = false;
-      },
+      this.surveyNotComplete = false;
+    },
   },
 
   mounted() {
@@ -77,6 +77,7 @@ export default {
   },
 };
 </script>
+
 
 <style scoped>
 @import url("../../../styles/IBT.css");

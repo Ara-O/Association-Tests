@@ -76,7 +76,7 @@
 <script>
 import generateIBTtrialsRace from "../../../modules/generateIbtTrialsRace";
 import IbtInstructions from "../../../components/IbtInstructions.vue";
-import * as irbt from "../../../modules/handleIrbtAnswers";
+import * as irbt from "../../../modules/handleIbtAnswers";
 export default {
   components: {
     IbtInstructions
@@ -135,22 +135,22 @@ export default {
     },
 
     getFacesPosition() {
-      let face = irbt.getFacesPosition(this);
+      let face = irbt.getFacesPosition(this, "happy.jpg", "sad.jpg");
       return require(`../../../assets/IRBT_faces/${face}`);
     },
 
     //does the reverse of the first method for the second image
     getFacesPosition2() {
-      let face = irbt.getFacesPosition2(this);
+      let face = irbt.getFacesPosition2(this, "happy.jpg", "sad.jpg");
       return require(`../../../assets/IRBT_faces/${face}`);
     },
 
     leftFaceAction() {
-      irbt.leftFaceAction(this);
+      irbt.leftFaceAction(this, "emotion");
     },
 
     rightFaceAction() {
-      irbt.rightFaceAction(this);
+      irbt.rightFaceAction(this, "emotion");
     },
 
     handleCorrectAnswer() {

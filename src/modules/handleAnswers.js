@@ -21,6 +21,7 @@ function stopTimer() {
 }
 
 function handleAnswer(thiskeyword, Data, whereToStore, version) {
+  whereToStore, version
   const test = thiskeyword;
   test.notStarted = false;
   if (!test.notStarted) {
@@ -50,7 +51,7 @@ function handleAnswer(thiskeyword, Data, whereToStore, version) {
 
           //Store data in firebase
           //! To make it so that the data is only stored at the end, place in else statement below
-          storeData.storeIATData(Data, thiskeyword, cMonth, cDay, cYear, whereToStore, version);
+          storeData.updateIATData(Data, thiskeyword, cMonth, cDay, cYear, whereToStore, version);
 
           if(test.currentBlock == test.fullTest.length - 1){
             document.removeEventListener("keyup", handleInput);
@@ -70,6 +71,6 @@ function handleAnswer(thiskeyword, Data, whereToStore, version) {
     });
 
   }
-};
+}
 
 export default handleAnswer;

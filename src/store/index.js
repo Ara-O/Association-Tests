@@ -14,6 +14,14 @@ export default createStore({
     IT_trials_text: [],
     uid: Math.floor((Math.random() * 10000) + 1)
   },
+  getters: {
+    getUID(state){
+      return state.uid;
+    },
+    getIatData(state){
+      return state.IAT_Gender
+    }
+  },
   mutations: {},
   actions: {},
   modules: {},

@@ -49,7 +49,7 @@ function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {
         } else {
           //Stops timer, stores the accuracy and speed and removes the event listener when the test is over
           stopTimer();
-          storeData.storeIATData(Data, thiskeyword, cMonth, cDay, cYear, whereToStore, version);
+          storeData.updateIATData(Data, thiskeyword, cMonth, cDay, cYear, whereToStore, version);
           if(test.currentBlock == test.fullTest.length - 1){
             test.testOver = true;
           } else {
@@ -65,6 +65,8 @@ function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {
   } else {
     ms = 0
   }
-};
+}
+
 export {startTimer};
+
 export default handleAnswer_TS;

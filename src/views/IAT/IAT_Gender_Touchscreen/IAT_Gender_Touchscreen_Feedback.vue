@@ -8,7 +8,6 @@
      <jelly-button whereTo="/Home">Go back to home page</jelly-button>
    <br />
   <h4>Here's your feedback!</h4>
-  <br />
   <div class="feedbacks">
     <div v-for="(data, index) in blocksAccuracydata" :key="data">
       <div class="feedbacksect" v-if="index + 1 === 4 || index + 1 === 7">

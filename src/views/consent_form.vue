@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="consent-form-main">
     <div class="jumbotron">
       <h3>Consent Form</h3>
     </div>
@@ -126,26 +126,24 @@ export default {
 </script>
 
 <style scoped>
-main {
+.consent-form-main {
+  height: auto;
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  height: auto;
+  align-items: center;
 }
-
 .jumbotron {
   background: linear-gradient(45deg, #3e9c3e, #32976d);
   width: 263px;
   border-radius: 1px;
   color: white;
   box-shadow: 0px 0px 4px lightgray;
-    margin-top: 45px
-
+  margin-top: 45px;
 }
 
 .jumbotron h3 {
   font-size: 16px;
-    font-weight: 300;
+  font-weight: 300;
 }
 
 .consent {

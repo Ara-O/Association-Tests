@@ -4,7 +4,7 @@
       <h3 v-html="fullTest[currentBlock]?.instructions"></h3>
 
       <img
-        src="../../../assets/app-icons/rightArrow.png"
+        src="../../../../assets/app-icons/rightArrow.png"
         alt="Right arrow"
         @click="start"
         class="right-arrow"
@@ -13,7 +13,7 @@
     <div v-for="data in fullTest[currentBlock].data" :key="data.id" v-else>
       <div class="imagecontainer">
         <img
-          class="faceimg"
+          class="face-img"
           loading="eager"
           :style="{ display: data.visibility }"
           :src="getImage(data.image)"
@@ -24,9 +24,9 @@
       <!-- <h3></h3> -->
       <h4>Incorrect. Try again to progress!</h4>
       <img
-        src="../../../assets/app-icons/incorrectImg.png"
+        src="../../../../assets/app-icons/incorrectImg.png"
         alt="Wrong icon"
-        class="wrongicon"
+        class="wrong-icon"
       />
     </div>
     <clicker>
@@ -56,9 +56,9 @@ import {
   testData_Block2,
   testData_Block3,
   testData_Block4,
-} from "../../../modules/generateIatTrialsRace";
-import handleAnswer_TS from "../../../modules/handleAnswers_TS";
-import { startTimer } from "../../../modules/handleAnswers_TS";
+} from "../../../../modules/generateIatTrialsRace";
+import handleAnswer_TS from "../../../../modules/handleAnswers_TS";
+import { startTimer } from "../../../../modules/handleAnswers_TS";
 export default {
   data() {
     return {
@@ -133,7 +133,7 @@ export default {
         document
           .querySelector(".test")
           .removeEventListener("click", this.handleAnswer);
-         this.$router.push("/IAT_Black_White_Touchscreen_Feedback");
+         this.$router.push("/IAT_Feedback");
       }
     },
 
@@ -146,11 +146,11 @@ export default {
 
   methods: {
     getImage(url) {
-      return require(`../../../assets/stimulus_faces/${url}`);
+      return require(`../../../../assets/stimulus_faces/${url}`);
     },
 
     getImageClicker(url) {
-      return require(`../../../assets/clicker_images/${url}`);
+      return require(`../../../../assets/clicker_images/${url}`);
     },
 
     start() {
@@ -187,6 +187,7 @@ export default {
   },
 
   mounted() {
+        this.$store.commit("changeCurrentTest", "IAT_Black_White_Touchscreen")
     let that = this;
     document
       .querySelector(".test")
@@ -196,5 +197,5 @@ export default {
 </script>
 
 <style scoped>
-@import url("../../../styles/IAT_TS.css");
+@import url("../../../../styles/IAT_TS.css");
 </style>

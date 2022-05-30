@@ -126,8 +126,8 @@
 </template>
 
 <script>
-import ExplicitAttitudes from "../../components/ExplicitAttitudes.vue";
-import BasicQuestions from "../../components/BasicQuestions.vue";
+import ExplicitAttitudes from "../../../../components/ExplicitAttitudes.vue";
+import BasicQuestions from "../../../../components/BasicQuestions.vue";
 export default {
   components: {
     ExplicitAttitudes,
@@ -161,19 +161,19 @@ export default {
       this.userData.chosenethnicity =
         this.chosenethnicity || this.userData.chosenethnicity;
       this.$store.state.userData = this.userData;
-      this.$router.push("IAT_Gender_Touchscreen");
+      this.$router.push("IAT_Gender_Toy_Touchscreen");
     },
 
     progress_kb() {
       this.userData.chosenethnicity =
         this.chosenethnicity || this.userData.chosenethnicity;
       this.$store.state.userData = this.userData;
-      this.$router.push("IAT_Gender");
+      this.$router.push("IAT_Gender_Toy");
     },
   },
 };
 </script>
 
 <style scoped>
-@import url("../../styles/Pre_Test_Survey.css");
+@import url("../../../../styles/Pre_Test_Survey.css");
 </style>

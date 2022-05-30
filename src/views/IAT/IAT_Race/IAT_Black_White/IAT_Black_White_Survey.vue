@@ -126,8 +126,8 @@
 </template>
 
 <script>
-import BasicQuestions from "../../components/BasicQuestions.vue";
-import ExplicitAttitudes from "../../components/ExplicitAttitudes.vue";
+import BasicQuestions from "../../../../components/BasicQuestions.vue";
+import ExplicitAttitudes from "../../../../components/ExplicitAttitudes.vue";
 export default {
   components: {
     BasicQuestions,
@@ -174,5 +174,5 @@ export default {
 </script>
 
 <style scoped>
-@import url("../../styles/Pre_Test_Survey.css");
+@import url("../../../../styles/Pre_Test_Survey.css");
 </style>

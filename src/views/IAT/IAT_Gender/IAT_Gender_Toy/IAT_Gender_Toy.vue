@@ -8,7 +8,7 @@
       <h3>Click the SPACE bar on your computer to start</h3>
       <!-- SPACE BAR -->
       <img
-        src="../../../assets/app-icons/spacebar.png"
+        src="../../../../assets/app-icons/spacebar.png"
         alt="Space bar"
         class="spacebar"
       />
@@ -18,7 +18,7 @@
       <div v-for="data in fullTest[currentBlock].data" :key="data.id">
         <div class="imagecontainer">
           <img
-            class="faceimg"
+            class="face-img"
             loading="eager"
             :style="{ display: data.visibility }"
             :src="getImage(data.image)"
@@ -30,17 +30,17 @@
       <!-- <h3></h3> -->
       <h4>Incorrect. Try again to progress!</h4>
       <img
-        src="../../../assets/app-icons/incorrectImg.png"
+        src="../../../../assets/app-icons/incorrectImg.png"
         alt="Wrong icon"
-        class="wrongicon"
+        class="wrong-icon"
       />
     </div>
   </main>
 </template>
 
 <script>
-import handleAnswers from "../../../modules/handleAnswers";
-import { testData_Block1, testData_Block2, testData_Block3, testData_Block4 } from "../../../modules/generateIatTrialsGender";
+import handleAnswers from "../../../../modules/handleAnswers";
+import { testData_Block1, testData_Block2, testData_Block3, testData_Block4 } from "../../../../modules/generateIatTrialsGender";
 
 export default {
   data() {
@@ -98,11 +98,11 @@ export default {
 
   methods: {
     getImage(url) {
-      return require(`../../../assets/stimulus_faces/${url}`);
+      return require(`../../../../assets/stimulus_faces/${url}`);
     },
 
     testOver(){
-      this.$router.push("/IAT_Gender_Feedback")
+      this.$router.push("/IAT_Feedback")
     },
 
     start(e) {
@@ -112,7 +112,7 @@ export default {
           this,
           this.fullTest[this.currentBlock].data,
           this.fullTest[this.currentBlock].block,
-          "IAT_Gender"
+          "IAT_Gender_Toy"
         );
         this.notStarted = false;
         window.removeEventListener("keyup", that.start);
@@ -122,11 +122,12 @@ export default {
 
   mounted() {
     let that = this;
+    this.$store.commit("changeCurrentTest", "IAT_Gender_Toy")
     window.addEventListener("keyup", that.start);
   },
 };
 </script>
 
-<style>
-@import url("../../../styles/IAT.css");
+<style >
+@import url("../../../../styles/IAT.css");
 </style>

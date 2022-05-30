@@ -3,7 +3,7 @@
     <section class="instruction" v-if="notStarted">
       <h3 v-html="fullTest[currentBlock]?.instructions"></h3>
       <img
-        src="../../../assets/app-icons/rightArrow.png"
+        src="../../../../assets/app-icons/rightArrow.png"
         alt="Right arrow"
         @click="start"
         class="right-arrow"
@@ -12,7 +12,7 @@
     <div v-for="data in fullTest[currentBlock].data" :key="data.id" v-else>
       <div class="imagecontainer">
         <img
-          class="faceimg"
+          class="face-img"
           loading="eager"
           :style="{ display: data.visibility }"
           :src="getImage(data.image)"
@@ -23,9 +23,9 @@
       <!-- <h3></h3> -->
       <h4>Incorrect. Try again to progress!</h4>
       <img
-        src="../../../assets/app-icons/incorrectImg.png"
+        src="../../../../assets/app-icons/incorrectImg.png"
         alt="Wrong icon"
-        class="wrongicon"
+        class="wrong-icon"
       />
     </div>
     <clicker :rightColor="fullTest[currentBlock]?.colorRight" :leftColor="fullTest[currentBlock]?.colorLeft">
@@ -55,9 +55,9 @@ import {
   testData_Block2,
   testData_Block3,
   testData_Block4, 
-} from "../../../modules/generateIatTrialsGender";
-import handleAnswer_TS from "../../../modules/handleAnswers_TS";
-import { startTimer } from "../../../modules/handleAnswers_TS";
+} from "../../../../modules/generateIatTrialsGender";
+import handleAnswer_TS from "../../../../modules/handleAnswers_TS";
+import { startTimer } from "../../../../modules/handleAnswers_TS";
 export default {
   data() {
     return {
@@ -88,7 +88,6 @@ export default {
           data: testData_Block3("Left", "Right", 2),
           clickerLeft: "Male_And_Male_Toy.png",
           clickerRight: "Female_And_Female_Toy.png",
-          clickerCombined: "normal"
         },
         {
           block: "Block4_TS",
@@ -134,7 +133,7 @@ export default {
         document
           .querySelector(".test")
           .removeEventListener("click", this.handleAnswer);
-        this.$router.push("/IAT_Gender_Touchscreen_Feedback");
+        this.$router.push("/IAT_Feedback");
       }
     },
 
@@ -159,11 +158,11 @@ export default {
 
   methods: {
     getImage(url) {
-      return require(`../../../assets/stimulus_faces/${url}`);
+      return require(`../../../../assets/stimulus_faces/${url}`);
     },
 
     getImageClicker(url) {
-      return require(`../../../assets/clicker_images/${url}`);
+      return require(`../../../../assets/clicker_images/${url}`);
     },
 
     start() {
@@ -177,12 +176,13 @@ export default {
         this,
         this.fullTest[this.currentBlock].data,
         this.fullTest[this.currentBlock].block,
-        "IAT_Gender_Touchscreen"
+        "IAT_Gender_Toy_Touchscreen"
       );
     },
   },
 
   mounted() {
+        this.$store.commit("changeCurrentTest", "IAT_Gender_Toy_Touchscreen")
     let that = this;
     document
       .querySelector(".test")
@@ -192,5 +192,5 @@ export default {
 </script>
 
 <style scoped>
-@import url("../../../styles/IAT_TS.css");
+@import url("../../../../styles/IAT_TS.css");
 </style>

@@ -334,14 +334,6 @@ export default {
 </script>
 
 <style >
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: white;
-}
-
 .next {
   /* position: absolute;
   bottom: 58px;

@@ -3,9 +3,10 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     userData: {},
+    currentTest: "",
     current_IAT_test: "",
-    IAT_Gender: [],
-    IAT_Gender_Touchscreen: [],
+    IAT_Gender_Toy: [],
+    IAT_Gender_Toy_Touchscreen: [],
     IAT_Black_White: [],
     IAT_Black_White_Touchscreen: [],
     ibt_data: [],
@@ -18,11 +19,15 @@ export default createStore({
     getUID(state){
       return state.uid;
     },
-    getIatData(state){
-      return state.IAT_Gender
+    getCurrentTest(state){
+      return state.currentTest;
     }
   },
-  mutations: {},
+  mutations: {
+    changeCurrentTest(state, payload){
+      state.currentTest = payload;
+    }
+  },
   actions: {},
   modules: {},
 });

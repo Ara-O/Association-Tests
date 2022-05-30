@@ -22,18 +22,13 @@
 
     <section v-if="iattype === 'gender'">
       <router-link
-        to="/IAT_Gender_Survey"
+        to="/IAT_Gender_Toy_Survey"
         class="routerlink test_btn"
         tag="button"
       >
         Gender-Toy IAT
       </router-link>
-      <!-- 
-3.	Gender Subject
-4.	Gender Color 
-5.	Gender Roles
 
-       -->
       <router-link
         to="/IAT_Choose_Test"
         class="routerlink test_btn"
@@ -127,7 +122,9 @@ main {
   background: url("../../assets/app-icons/patternbg.jpg");
   background-repeat: repeat;
   background-size: 433px;
-  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center
 }
 
 .button {

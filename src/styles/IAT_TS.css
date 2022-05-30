@@ -1,4 +1,4 @@
-.faceimg {
+.face-img {
     height: 300px;
     border: none;
     padding: 2px;
@@ -34,10 +34,6 @@
 .right-arrow{
   width: 59px;
   margin-top: 16px;
-}
-
-h3 {
-  font-size: 2.5vh;
 }
 
 .style-instruction {
@@ -84,7 +80,7 @@ h3 {
 
   
 @media (max-width: 595px) {
-    .faceimg {
+    .face-img {
       height: 233px !important;
       padding: 0px;
       border-radius: 0px ;
@@ -146,7 +142,7 @@ h3 {
         width: 23vw;
       }
 
-      .wrongicon{
+      .wrong-icon{
         height: 21px
       }
 

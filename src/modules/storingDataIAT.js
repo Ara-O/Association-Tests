@@ -34,11 +34,10 @@ export function updateIATData(Data, test, cMonth, cDay, cYear, whereToStore, ver
 
 export function storeIATGroupData(version, test, role, individualUid, familyUid) {
     const db = getDatabase();
-    console.log("bob")
     set(ref(db, `Group-data/Family-${familyUid}/${role}-${individualUid}/${version}`), {
         data: test.$store.state[version],
     });
-    test.$store.state[version] = [];
+    // test.$store.state[version] = [];
 }
 
 export function storeIATIndividualData(version, test) {
@@ -46,5 +45,5 @@ export function storeIATIndividualData(version, test) {
     set(ref(db, `${version}/User-${test.$store.state.uid}`), {
         data: test.$store.state[version],
     });
-    test.$store.state[version] = [];
+    // test.$store.state[version] = [];
 }

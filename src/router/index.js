@@ -3,30 +3,22 @@ import Home from "../views/Home.vue";
 import Consent_Form from "../views/consent_form.vue";
 import Explore_Studies from "../views/explore_studies.vue";
 import IAT_Choose_Test from "../views/IAT/IAT_Choose_Test.vue";
+import IAT_Feedback from "../views/IAT/IAT_Feedback.vue";
 // import Contact_Experience from "../views/contact_experience.vue"
 // ------------
 // IAT GENDER
 
-import IAT_Gender_Survey from "../views/IAT/IAT_Gender_Survey.vue";
-import IAT_Gender from "../views/IAT/IAT_Gender/IAT_Gender.vue";
-import IAT_Gender_Feedback from "../views/IAT/IAT_Gender/IAT_Gender_Feedback.vue";
-// import IAT from "../views/IAT/IAT.vue";
+import IAT_Gender_Toy from "../views/IAT/IAT_Gender/IAT_Gender_Toy/IAT_Gender_Toy.vue";
+import IAT_Gender_Toy_Touchscreen from "../views/IAT/IAT_Gender/IAT_Gender_Toy/IAT_Gender_Toy_Touchscreen.vue";
+import IAT_Gender_Toy_Survey from "../views/IAT/IAT_Gender/IAT_Gender_Toy/IAT_Gender_Survey.vue";
 
-// ---------------
-
-import IAT_Gender_Touchscreen from "../views/IAT/IAT_Gender_Touchscreen/IAT_Gender_Touchscreen.vue"
-import IAT_Gender_Touchscreen_Feedback from "../views/IAT/IAT_Gender_Touchscreen/IAT_Gender_Touchscreen_Feedback.vue"
 
 // ---------------
 // IAT Black_White
-import IAT_Black_White from "../views/IAT/IAT_Black_White/IAT_Black_White.vue"
-import IAT_Black_White_Survey from "../views/IAT/IAT_Black_White_Survey.vue"
-import IAT_Black_White_Feedback from "../views/IAT/IAT_Black_White/IAT_Black_White_Feedback.vue";
+import IAT_Black_White from "../views/IAT/IAT_Race/IAT_Black_White/IAT_Black_White.vue"
+import IAT_Black_White_Touchscreen from "../views/IAT/IAT_Race/IAT_Black_White/IAT_Black_White_Touchscreen.vue"
+import IAT_Black_White_Survey from "../views/IAT/IAT_Race/IAT_Black_White/IAT_Black_White_Survey.vue"
 
-// ---------------
-
-import IAT_Black_White_Touchscreen from "../views/IAT/IAT_Black_White_Touchscreen/IAT_Black_White_Touchscreen.vue"
-import IAT_Black_White_Touchscreen_Feedback from "../views/IAT/IAT_Black_White_Touchscreen/IAT_Black_White_Touchscreen_Feedback.vue";
 
 // ---------------
 
@@ -70,26 +62,20 @@ const routes = [
     component: IAT_Choose_Test,
   },
   {
-    path: "/IAT_Gender",
-    component: IAT_Gender,
+    path: "/IAT_Gender_Toy",
+    component: IAT_Gender_Toy,
   },
   {
-    path: "/IAT_Gender_Survey",
-    name: "IAT Gender Survey",
-    component: IAT_Gender_Survey,
+    path: "/IAT_Gender_Toy_Survey",
+    component: IAT_Gender_Toy_Survey,
   },
   {
-    path: "/IAT_Gender_Feedback",
-    name: "IAT_Gender_Feedback",
-    component: IAT_Gender_Feedback,
+    path: "/IAT_Feedback",
+    component: IAT_Feedback,
   },
   {
-    path: "/IAT_Gender_Touchscreen",
-    component: IAT_Gender_Touchscreen,
-  },
-  {
-    path: "/IAT_Gender_Touchscreen_Feedback",
-    component: IAT_Gender_Touchscreen_Feedback,
+    path: "/IAT_Gender_Toy_Touchscreen",
+    component: IAT_Gender_Toy_Touchscreen,
   },
   // &IAT black and white
   {
@@ -101,16 +87,8 @@ const routes = [
     component: IAT_Black_White_Survey,
   },
   {
-    path: "/IAT_Black_White_Feedback",
-    component: IAT_Black_White_Feedback,
-  },
-  {
     path: "/IAT_Black_White_Touchscreen",
     component: IAT_Black_White_Touchscreen,
-  },
-  {
-    path: "/IAT_Black_White_Touchscreen_Feedback",
-    component: IAT_Black_White_Touchscreen_Feedback,
   },
   {
     path: "/IT",

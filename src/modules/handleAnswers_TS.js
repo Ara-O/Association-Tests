@@ -11,11 +11,13 @@ let cYear = currentDate.getFullYear();
 function startTimer() {
   ms = 0;
   startTime = new Date();
+  console.log('timer starting')
 }
 
 function stopTimer() {
   const endTime = new Date();
   ms = (endTime - startTime);
+  console.log('stop timer - ', ms)
 }
 
 function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {
@@ -39,19 +41,19 @@ function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {
         currentChallenge.visibility = "none";
         stopTimer();
         currentChallenge.ms = ms;
-        startTimer();
-
-
+        
+        
         // Making sure the test isnt over yet
         if (test.arrayIndex !== Data.length - 1) {
+          startTimer();
           Data[test.arrayIndex + 1].visibility = "block";
           test.arrayIndex += 1;
         } else {
-          //Stops timer, stores the accuracy and speed and removes the event listener when the test is over
-          stopTimer();
 
-          //storing data in vuex
+          //Storing data in vuex
           storeData.updateIATData(Data, thiskeyword, cMonth, cDay, cYear, whereToStore, version);
+
+          //If test is over, call the test over function, or else,increment the current block 
           if(test.currentBlock == test.fullTest.length - 1){
             test.testOver = true;
           } else {

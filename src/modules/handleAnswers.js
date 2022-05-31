@@ -11,17 +11,14 @@ let cYear = currentDate.getFullYear();
 function startTimer() {
   ms = 0;
   startTime = new Date();
-
 }
 
 function stopTimer() {
   const endTime = new Date();
   ms = endTime - startTime;
-
 }
 
 function handleAnswer(thiskeyword, Data, whereToStore, version) {
-  whereToStore, version
   const test = thiskeyword;
   test.notStarted = false;
   if (!test.notStarted) {
@@ -30,29 +27,28 @@ function handleAnswer(thiskeyword, Data, whereToStore, version) {
       const keyClicked = e.key.toUpperCase();
       const currentChallenge = Data[test.arrayIndex];
 
+      //First check to make sure that what was entered is either I or E
       if(keyClicked == "I" || keyClicked == "E"){
-      //First check to make sure that what was entered is accurate
+
+        //Checking if the test isnt over yet, and the entry is accurate
       if (keyClicked == currentChallenge.key && test.arrayIndex !== Data.length) {
+
         //Proceeds to the next name while adding the speed used to answer the question
         document.querySelector("#wrong").style.display = "none";
         currentChallenge.visibility = "none";
         stopTimer();
         currentChallenge.ms = ms;
-        startTimer();
-
+        
         // Making sure the test isnt over yet
         if (test.arrayIndex !== Data.length - 1) {
-          // console.log("Next data index ", Data[test.arrayIndex + 1])
+          startTimer();
           Data[test.arrayIndex + 1].visibility = "block";
           test.arrayIndex += 1;
         } else {
-          //Stops timer, stores the accuracy and speed and removes the event listener when the test is over
-          stopTimer();
-
-          //Store data in firebase
-          //! To make it so that the data is only stored at the end, place in else statement below
+          //Store data in vuex
           storeData.updateIATData(Data, thiskeyword, cMonth, cDay, cYear, whereToStore, version);
 
+          //If test is over, call the test over function, or else,increment the current block 
           if(test.currentBlock == test.fullTest.length - 1){
             document.removeEventListener("keyup", handleInput);
             test.testOver();
@@ -61,7 +57,6 @@ function handleAnswer(thiskeyword, Data, whereToStore, version) {
             test.notStarted = true;
             test.currentBlock++;
           }
-          // test.$router.push(whereToGo)
         }
       } else {
         currentChallenge.accuracy = 0;
@@ -69,7 +64,6 @@ function handleAnswer(thiskeyword, Data, whereToStore, version) {
       }
     }
     });
-
   }
 }
 

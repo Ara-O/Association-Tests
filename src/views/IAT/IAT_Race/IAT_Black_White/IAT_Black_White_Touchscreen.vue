@@ -188,6 +188,7 @@ export default {
 
   mounted() {
         this.$store.commit("changeCurrentTest", "IAT_Black_White_Touchscreen")
+    this.$store.state["IAT_Black_White_Touchscreen"] = [];
     let that = this;
     document
       .querySelector(".test")

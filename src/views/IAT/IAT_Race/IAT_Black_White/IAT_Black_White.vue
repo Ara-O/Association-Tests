@@ -1,5 +1,5 @@
 <template>
-    <main>
+  <main>
     <div v-if="notStarted" class="instruction">
       <h3
         style="line-height: 37px; margin-top: 4px"
@@ -14,7 +14,10 @@
       />
     </div>
     <div v-else>
-      <h3 v-html="fullTest[currentBlock].instructions" class="in-test-instructions"></h3>
+      <h3
+        v-html="fullTest[currentBlock].instructions"
+        class="in-test-instructions"
+      ></h3>
       <div v-for="data in fullTest[currentBlock].data" :key="data.id">
         <div class="imagecontainer">
           <img
@@ -41,9 +44,14 @@
 
  <script>
 import handleAnswers from "../../../../modules/handleAnswers";
- import { testData_Block1, testData_Block2, testData_Block3, testData_Block4 } from "../../../../modules/generateIatTrialsRace";
+import {
+  testData_Block1,
+  testData_Block2,
+  testData_Block3,
+  testData_Block4,
+} from "../../../../modules/generateIatTrialsRace";
 
- export default {
+export default {
   data() {
     return {
       notStarted: true,
@@ -51,7 +59,7 @@ import handleAnswers from "../../../../modules/handleAnswers";
       currentBlock: 0,
       testData: [],
       //!Test making black and happy goign first - swtch block 3/4 with 6/7
-      fullTest:[
+      fullTest: [
         {
           block: "Block1",
           instructions: "Click E for White faces and I for Black faces",
@@ -64,49 +72,53 @@ import handleAnswers from "../../../../modules/handleAnswers";
         },
         {
           block: "Block3",
-          instructions: "Practice: Click E for White faces/Happy faces, and I for Black faces/Sad faces",
-          data:  testData_Block3("E", "I", 2),
+          instructions:
+            "Practice: Click E for White faces/Happy faces, and I for Black faces/Sad faces",
+          data: testData_Block3("E", "I", 2),
         },
         {
           block: "Block4",
-          instructions: "Let's Continue:  Click E for White faces/Happy faces, and I for Black faces/Sad faces",
-          data:  testData_Block3("E", "I", 2),
+          instructions:
+            "Let's Continue:  Click E for White faces/Happy faces, and I for Black faces/Sad faces",
+          data: testData_Block3("E", "I", 2),
         },
         {
           block: "Block5",
-          instructions: "The images are reversed now!<br/>Click I for Black faces/Sad faces and E for White faces/Sad faces",
-          data:  testData_Block1("I", "E", 2),
+          instructions:
+            "The images are reversed now!<br/>Click I for Black faces/Sad faces and E for White faces/Sad faces",
+          data: testData_Block1("I", "E", 2),
         },
         {
           block: "Block6",
-          instructions: "Practice: Click E for Black faces/Happy faces, and I for White faces/Sad faces",
-          data:  testData_Block4("I", "E", 2),
+          instructions:
+            "Practice: Click E for Black faces/Happy faces, and I for White faces/Sad faces",
+          data: testData_Block4("I", "E", 2),
         },
         {
           block: "Block7",
-          instructions: "Let's Continue: Click E for Black faces/Happy faces, and I for White faces/Sad faces",
-          data:  testData_Block4("I", "E", 2),
-        }
-      ]
+          instructions:
+            "Let's Continue: Click E for Black faces/Happy faces, and I for White faces/Sad faces",
+          data: testData_Block4("I", "E", 2),
+        },
+      ],
     };
   },
 
   watch: {
-    currentBlock(){
+    currentBlock() {
       this.arrayIndex = 0;
-        window.addEventListener("keyup", this.start);
-    }
+      window.addEventListener("keyup", this.start);
+    },
   },
 
   methods: {
     getImage(url) {
       return require(`../../../../assets/stimulus_faces/${url}`);
     },
- 
-    testOver(){
-      this.$router.push("/IAT_Feedback")
-    },
 
+    testOver() {
+      this.$router.push("/IAT_Feedback");
+    },
 
     start(e) {
       let that = this;
@@ -125,10 +137,11 @@ import handleAnswers from "../../../../modules/handleAnswers";
 
   mounted() {
     let that = this;
-        this.$store.commit("changeCurrentTest", "IAT_Black_White")
+    this.$store.commit("changeCurrentTest", "IAT_Black_White");
+    this.$store.state["IAT_Black_White"] = [];
+
     window.addEventListener("keyup", that.start);
   },
 };
-
 </script>
 

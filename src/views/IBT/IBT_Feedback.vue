@@ -5,7 +5,9 @@
   ></contact-experience>
   <main class="gender-feedback-main" v-else>
     <br />
-    <button @click="routeToHome" class="return-to-home-btn">Go back to home page</button>
+    <button @click="routeToHome" class="return-to-home-btn">
+      Go back to home page
+    </button>
     <h4>Here's your feedback!</h4>
     <div class="feedbacks">
       <div
@@ -28,7 +30,7 @@
 import contactExperience from "../contact_experience.vue";
 import groupTest from "../../components/GroupTest.vue";
 import storeContactExperience from "../../modules/storeContactExperience";
-import * as storeData from "../../modules/storingDataIAT";
+import * as storeData from "../../modules/storingDataIBT";
 import { mapGetters } from "vuex";
 export default {
   components: {
@@ -39,51 +41,44 @@ export default {
   data() {
     return {
       surveyNotComplete: true,
-      wasGroupTest: false
+      wasGroupTest: false,
     };
   },
 
   computed: {
     ...mapGetters(["getUID", "getCurrentTest"]),
- 
   },
 
   methods: {
-       generateFeedbackMessage() {
-      if (
-        this.getCurrentTest === "IAT_Gender_Toy" ||
-        this.getCurrentTest === "IAT_Gender_Toy_Touchscreen"
-      ) {
+    generateFeedbackMessage() {
+      if (this.getCurrentTest === "IBT_Gender_Toy") {
         return [
           `
-            When you were asked to associate male with career, and female with home,
-            your accuracy was ${this.calculateAccuracy(
-              0
-            )}, and your speed was  ${this.calculateSpeed(0)}
-        `,
-          `
-            When you were asked to associate male with home, and female with career
+            When you were asked to associate a female toy with a female face, and a male toy with a male face,
             your accuracy was ${this.calculateAccuracy(
               1
             )}, and your speed was  ${this.calculateSpeed(1)}
         `,
+          `
+           When you were asked to associate a female toy with a male face, and a male toy with a female face
+            your accuracy was ${this.calculateAccuracy(
+              2
+            )}, and your speed was  ${this.calculateSpeed(2)}
+        `,
         ];
-      } else if (
-        this.getCurrentTest === "IAT_Black_White" ||
-        this.getCurrentTest === "IAT_Black_White_Touchscreen"
-      ) {
+      } else if (this.getCurrentTest === "IBT_Black_White") {
         return [
           `
             When you were asked to associate images of black people with sad faces, and images of
             white people with happy faces, your accuracy was ${this.calculateAccuracy(
-              0
-            )}, and your speed was  ${this.calculateSpeed(0)}
+              1
+            )}, and your speed was  ${this.calculateSpeed(1)}
         `,
           `
            When you were asked to associate images of black people with sad faces, and images of
             white people with happy faces, your accuracy was ${this.calculateAccuracy(
-              1
-            )}, and your speed was  ${this.calculateSpeed(1)}
+              2
+            )}, and your speed was  ${this.calculateSpeed(2)}
         `,
         ];
       } else {
@@ -92,26 +87,20 @@ export default {
     },
 
     calculateAccuracy(trialIndex) {
-      let trials = [3, 6];
       let nsum = 0;
-      this.$store.state[this.getCurrentTest][trials[trialIndex]].forEach(
-        (trial) => {
-          nsum += trial.accuracy;
-        }
-      );
-      nsum /= this.$store.state[this.getCurrentTest][trials[trialIndex]].length;
+      this.$store.state[this.getCurrentTest][trialIndex].forEach((trial) => {
+        nsum += trial.accuracy;
+      });
+      nsum /= this.$store.state[this.getCurrentTest][trialIndex].length;
       return `${nsum}%`;
     },
 
     calculateSpeed(trialIndex) {
-      let trials = [3, 6];
       let nsum = 0;
-      this.$store.state[this.getCurrentTest][trials[trialIndex]].forEach(
-        (trial) => {
-          nsum += trial.ms;
-        }
-      );
-      nsum /= this.$store.state[this.getCurrentTest][trials[trialIndex]].length;
+      this.$store.state[this.getCurrentTest][trialIndex].forEach((trial) => {
+        nsum += trial.ms;
+      });
+      nsum /= this.$store.state[this.getCurrentTest][trialIndex].length;
       return `${nsum}ms`;
     },
 
@@ -123,7 +112,8 @@ export default {
     },
 
     storeDataWithNewUniqueId(role, individualUid, uid) {
-      storeData.storeIATGroupData(
+      console.log(role, individualUid, uid);
+      storeData.storeIBTGroupData(
         this.getCurrentTest,
         this,
         role,
@@ -135,7 +125,8 @@ export default {
     },
 
     storeDataWithExistingUniqueId(role, individualUid, familyUniqueId) {
-      storeData.storeIATGroupData(
+      console.log(role, individualUid, familyUniqueId);
+      storeData.storeIBTGroupData(
         this.getCurrentTest,
         this,
         role,
@@ -143,23 +134,23 @@ export default {
         familyUniqueId
       );
 
-      this.wasGroupTest = true
+      this.wasGroupTest = true;
     },
 
     routeToHome() {
-      if(!this.wasGroupTest){
-        storeData.storeIATIndividualData(this.getCurrentTest, this);
+      if (!this.wasGroupTest) {
+        storeData.storeIBTIndividualData(this.getCurrentTest, this);
       }
       this.$router.push("/Home");
     },
   },
   mounted() {
-    this.wasGroupTest = false
+    this.wasGroupTest = false;
     console.log(this.$store.state[this.getCurrentTest]);
   },
 };
 </script>
 
 <style scoped >
-@import url("../../styles/Feedback_Page.css")
+@import url("../../styles/Feedback_Page.css");
 </style>

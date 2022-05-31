@@ -2,82 +2,84 @@
   <main>
     <section v-if="notFinishedInstructions">
       <ibt-instructions @finishedInstructions="finishedInstructions">
-        There will be a picture of a Female toy or a Male toy in the
-        middle of screen. When you see a picture of the Female toy you should
-        touch the female face at the bottom of the screen; when you see a Male toy, you should touch
-        the Male face. Male faces and Female faces will appear at the bottom of
-        the screen either on the left or right. Pay attention because the
-        male and female faces may change places. Please respond
+        There will be a picture of a Female toy or a Male toy in the middle of
+        screen. When you see a picture of the Female toy you should touch the
+        female face at the bottom of the screen; when you see a Male toy, you
+        should touch the Male face. Male faces and Female faces will appear at
+        the bottom of the screen either on the left or right. Pay attention
+        because the male and female faces may change places. Please respond
         <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
         the screen.
       </ibt-instructions>
     </section>
     <section v-else>
       <div v-if="testNotStarted">
-      <h3>Instruction</h3>
-      <br />
-      <h3 class="fullinstruction" v-html="irbt_trials[section]?.instruction">
-      </h3>
+        <h3>Instruction</h3>
+        <br />
+        <h3
+          class="fullinstruction" 
+          v-html="irbt_trials[section]?.instruction"
+        ></h3>
 
-      <br />
-      <h4>Click the right arrow to continue</h4>
-      <img
-        src="../../../assets/app-icons/rightArrow.png"
-        alt="Right arrow"
-        @click="next"
-        class="continue"
-      />
-    </div>
-    <div v-else-if="testNotStarted === false">
-      <div style="display: flex; flex-direction: column; align-items: center">
+        <br />
+        <h4>Click the right arrow to continue</h4>
         <img
-          src="../../../assets/IT_faces/star.jpg"
-          alt="star"
-          class="irbt_star"
+          src="../../../../assets/app-icons/rightArrow.png"
+          alt="Right arrow"
+          @click="next"
+          class="continue"
         />
-        <div
-          v-for="trial in irbt_trials[section].trials"
-          :key="trial.id"
-          :style="{ display: trial.visibility }"
-        >
-          <img :src="getImage(trial.image)" class="trialimg ibt-trial-img" />
-        </div>
-        <div class="irbt-wrong-wrapper">
-          <h3 class="irbt-wrong" style="display: none">
-            Incorrect. Try again to progress!
-          </h3>
-          <img
-            src="../../../assets/app-icons/incorrectImg.png"
-            alt="Wrong icon"
-            class="irbt-wrong-img"
-          />
-        </div>
       </div>
-      <img
-        :src="getFacesPosition()"
-        alt="Left face"
-        ref="leftFace"
-        @click="leftFaceAction"
-        :data-mood="this.leftFace"
-        class="faceLeft ibt-icon"
-      />
-      <img
-        :src="getFacesPosition2()"
-        alt="Right face"
-        ref="rightFace"
-        @click="rightFaceAction"
-        :data-mood="this.rightFace"
-        class="faceRight ibt-icon"
-      />
-    </div>
+      <div v-else-if="testNotStarted === false">
+        <div style="display: flex; flex-direction: column; align-items: center">
+          <img
+            src="../../../../assets/IT_faces/star.jpg"
+            alt="star"
+            class="irbt_star"
+          />
+          <div
+            v-for="trial in irbt_trials[section].trials"
+            :key="trial.id"
+            :style="{ display: trial.visibility }"
+          >
+            <img :src="getImage(trial.image)" class="trialimg ibt-trial-img" />
+          </div>
+          <div class="irbt-wrong-wrapper">
+            <h3 class="irbt-wrong" style="display: none">
+              Incorrect. Try again to progress!
+            </h3>
+            <img
+              src="../../../../assets/app-icons/incorrectImg.png"
+              alt="Wrong icon"
+              class="irbt-wrong-img"
+            />
+          </div>
+        </div>
+        <img
+          :src="getFacesPosition()"
+          alt="Left face"
+          ref="leftFace"
+          @click="leftFaceAction"
+          :data-mood="this.leftFace"
+          class="faceLeft ibt-icon"
+        />
+        <img
+          :src="getFacesPosition2()"
+          alt="Right face"
+          ref="rightFace"
+          @click="rightFaceAction"
+          :data-mood="this.rightFace"
+          class="faceRight ibt-icon"
+        />
+      </div>
     </section>
   </main>
 </template>
 
 <script>
-import IbtInstructions from "../../../components/IbtInstructions.vue";
-import { genderAndToy } from "../../../modules/generateIbtTrialsGender";
-import * as irbt from "../../../modules/handleIbtAnswers";
+import IbtInstructions from "../../../../components/IbtInstructions.vue";
+import { genderAndToy } from "../../../../modules/generateIbtTrialsGender";
+import * as irbt from "../../../../modules/handleIbtAnswers";
 
 export default {
   components: {
@@ -88,7 +90,7 @@ export default {
     return {
       section: 0,
       testType: "Gender_Toy",
-      routeTo: "/IBT_Gender_Toy_Feedback",
+      routeTo: "/IBT_Feedback",
       testNotStarted: false,
       notFinishedInstructions: true,
       currentUserTrial: 0,
@@ -140,54 +142,52 @@ export default {
 
     getFacesPosition() {
       let face = irbt.getFacesPosition(this, "male.jpg", "female.jpg");
-      return require(`../../../assets/IRBT_faces/${face}`);
+      return require(`../../../../assets/IRBT_faces/${face}`);
     },
 
     //does the reverse of the first method for the second image
     getFacesPosition2() {
       let face = irbt.getFacesPosition2(this, "male.jpg", "female.jpg");
-      return require(`../../../assets/IRBT_faces/${face}`);
+      return require(`../../../../assets/IRBT_faces/${face}`);
     },
 
-    leftFaceAction() {
-      irbt.leftFaceAction(this, "gender");
-    },
-
-     finishedInstructions(){
+    finishedInstructions() {
       this.notFinishedInstructions = false;
-      console.log("starting timer")
       irbt.startTimer();
     },
 
-
+    leftFaceAction() {
+      irbt.leftFaceAction(this, "gender", "IBT_Gender_Toy");
+    },
     rightFaceAction() {
-      irbt.rightFaceAction(this, "gender");
+      irbt.rightFaceAction(this, "gender", "IBT_Gender_Toy");
     },
 
     handleCorrectAnswer() {
-      irbt.handleCorrectAnswer(this);
+      irbt.handleCorrectAnswer(this, "IBT_Gender_Toy", "IBT_Gender_Toy");
     },
 
     handleIncorrectAnswer() {
       irbt.handleIncorrectAnswer(this);
     },
 
-      getImage(url) {
-      return require(`../../../assets/stimulus_faces/${url}`);
+    getImage(url) {
+      return require(`../../../../assets/stimulus_faces/${url}`);
     },
 
     next() {
       this.testNotStarted = false;
+            irbt.startTimer();
     },
   },
 
   mounted() {
-    console.log("Full data:", genderAndToy("male.jpg", "female.jpg", 10));
-    irbt.startTimer()
+    this.$store.state["IBT_Gender_Toy"] = [];
+    this.$store.commit("changeCurrentTest", "IBT_Gender_Toy");
   },
 };
 </script>
 
 <style scoped>
-@import url("../../../styles/IBT.css");
+@import url("../../../../styles/IBT.css");
 </style>

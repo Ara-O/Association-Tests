@@ -31,14 +31,12 @@ import IT_Feedback from "../views/IT/IT_feedback.vue";
 // -----------------
 
 import IBT_Choose_Test from "../views/IBT/IBT_Choose_Test.vue"
-import IBT_Black_White from "../views/IBT/IBT_Black_White/IBT_Black_White.vue"
-import IBT_Black_White_Feedback from "../views/IBT/IBT_Black_White/IBT_Black_White_Feedback.vue"
-// import IBT_Black_White_Practice from "../views/IBT/IBT_Black_White/IBT_Black_White_Practice.vue"
+import IBT_Black_White from "../views/IBT/IBT_Race/IBT_Black_White/IBT_Black_White.vue"
 
 //-----------
 
-import IBT_Gender_Toy from "../views/IBT/IBT_Gender_Toy/IBT_Gender_Toy.vue"
-import IBT_Gender_Toy_Feedback from "../views/IBT/IBT_Gender_Toy/IBT_Gender_Toy_Feedback.vue"
+import IBT_Gender_Toy from "../views/IBT/IBT_Gender/IBT_Gender_Toy/IBT_Gender_Toy.vue"
+import IBT_Feedback from "../views/IBT/IBT_Feedback.vue"
 
 const routes = [
   {
@@ -119,20 +117,12 @@ const routes = [
     component: IBT_Black_White,
   },
   {
-    path: '/IBT_Black_White_Feedback',
-    component: IBT_Black_White_Feedback,
-  },
-  {
-    path: '/IBT_Black_White_Feedback',
-    component: IBT_Black_White_Feedback,
-  },
-  {
     path: '/IBT_Gender_Toy',
     component: IBT_Gender_Toy,
   },
   {
-    path: '/IBT_Gender_Toy_Feedback',
-    component: IBT_Gender_Toy_Feedback,
+    path: '/IBT_Feedback',
+    component: IBT_Feedback,
   }
 
 

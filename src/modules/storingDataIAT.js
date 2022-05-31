@@ -25,11 +25,6 @@ export function updateIATData(Data, test, cMonth, cDay, cYear, whereToStore, ver
     });
 
     test.$store.state[version].push(dataclone);
-
-    //!Store data in firebase
-    // set(ref(db, `${version}/User-${test.$store.state.uid}`), {
-    //     data: test.$store.state[version],
-    // });
 }
 
 export function storeIATGroupData(version, test, role, individualUid, familyUid) {
@@ -37,7 +32,6 @@ export function storeIATGroupData(version, test, role, individualUid, familyUid)
     set(ref(db, `Group-data/Family-${familyUid}/${role}-${individualUid}/${version}`), {
         data: test.$store.state[version],
     });
-    // test.$store.state[version] = [];
 }
 
 export function storeIATIndividualData(version, test) {
@@ -45,5 +39,4 @@ export function storeIATIndividualData(version, test) {
     set(ref(db, `${version}/User-${test.$store.state.uid}`), {
         data: test.$store.state[version],
     });
-    // test.$store.state[version] = [];
 }

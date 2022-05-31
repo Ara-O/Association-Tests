@@ -1,29 +1,22 @@
-import { getDatabase, ref, set } from "firebase/database";
-
+// import { getDatabase, ref, set } from "firebase/database";
+import * as storeData from "../modules/storingDataIBT";
 let ms = 0;
 let startTime;
-let timerActive = false;
+let currentDate = new Date();
+let cDay = currentDate.getDate();
+let cMonth = currentDate.getMonth() + 1;
+let cYear = currentDate.getFullYear();
+
 
 function startTimer() {
     ms = 0;
     startTime = new Date();
-    timerActive = true
-    timerLoop();
+    console.log('starting timer')
 }
 
 function stopTimer() {
     const endTime = new Date();
-    timerActive = false;
     ms = endTime - startTime;
-}
-
-function timerLoop() {
-    if (!timerActive) return;
-
-    setTimeout(() => {
-        ms = new Date() - startTime;
-        timerLoop();
-    }, 1)
 }
 
 //If the random number is 0, the left face will be that face
@@ -51,9 +44,9 @@ function getFacesPosition2(thiskeyword, face_0, face_1) {
     return face;
 }
 
-const ibt_data = []
+let ibt_data = []
 
-function handleCorrectAnswer(thiskeyword) {
+function handleCorrectAnswer(thiskeyword, whereToStore, version) {
     stopTimer();
     let that = thiskeyword;
     that.irbt_trials[that.section].trials[that.currentUserTrial].visibility = "none";
@@ -72,69 +65,26 @@ function handleCorrectAnswer(thiskeyword) {
             that.irbt_trials[that.section].trials[that.currentUserTrial].visibility = "block";
             document.querySelector(".faceRight").style.display = "block"
             document.querySelector(".faceLeft").style.display = "block"
-        } else if (that.section + 1 !== that.irbt_trials.length) {
-            document.querySelector(".irbt_star").style.display = "none"
-            //Checking to see if the sections have all being exhausted, if so, store data to firebase
-            that.testNotStarted = true;
-            ibt_data[that.section] = that.irbt_trials[that.section].trials;
-            // ibt_data[that.irbt_trials[that.section].section] = that.irbt_trials[that.section].trials;
-            that.section++;
-            that.currentUserTrial = 0;
         } else {
 
-            // !Push data to be stored in firebase
-            // console.log("enddd");
-
+            // The section has ended, storing the data in vuex store
             ibt_data[that.section] = that.irbt_trials[that.section].trials;
+            storeData.updateIBTData(ibt_data, that, cMonth, cDay, cYear, whereToStore, version);
 
-            let currentDate = new Date();
-            let cDay = currentDate.getDate();
-            let cMonth = currentDate.getMonth() + 1;
-            let cYear = currentDate.getFullYear();
-            ibt_data.forEach((data, index) => {
-                data.forEach((data, inner_index) => {
-                    data.section = that.irbt_trials[index].section;
-                    data.browser = navigator["userAgent"];
-                    data.dateTaken = `${cMonth}-${cDay}-${cYear}`;
-
-                    //Creating a descriptions column for the data
-                    if (that.testType === "Black_White") {
-                        if (index === 0) {
-                            data.description = "Practice: clicks a happy face for an image of a white person, and a sad face for an image of a black person";
-                        } else if (index === 1) {
-                            data.description = "User clicks a happy face for an image of a white person, and a sad face for an image of a black person";
-                        } else if (index === 2) {
-                            data.description = "User clicks a sad face for an image of a white person, and a happy face for an image of a black person";
-                        }
-                        data.testType = "IBT Black-White";
-                    } else if (that.test === "Gender_Toy") {
-                        if (index === 0) {
-                            data.description = "Practice: clicks the male face for an image of a male toy, and the female face for an image of a female toy";
-                        } else if (index === 1) {
-                            data.description = "User clicks the male face for an image of a male toy, and the female face for an image of a female toy";
-                        } else if (index === 2) {
-                            data.description = "User clicks the female face for an image of a male toy, and the male face for an image of a female toy";
-                        }
-                        data.testType = "IBT Gender-Toy";
-                    }
-                    data.stimulusOrder = inner_index + 1;
-                    delete data.visibility;
-                    delete data.randomNo;
-                })
-
-            })
-            // console.log(ibt_data)
-
-            that.$store.state.ibt_data = ibt_data;
-
-            //Storing in firebase
-            const db = getDatabase();
-
-            set(ref(db, `IBT/IBT-${that.testType}/User-${that.$store.state.uid}`), {
-                data: that.$store.state.ibt_data
-            });
-
-            that.$router.push(that.routeTo);
+            console.log("section has ended")
+            if (that.section + 1 !== that.irbt_trials.length) {
+                document.querySelector(".irbt_star").style.display = "none"
+                //Checking to see if the sections have all being exhausted, if so, store data to firebase
+                that.testNotStarted = true;
+                that.section++;
+                that.currentUserTrial = 0;
+                stopTimer();
+            } else {
+                
+                //Test is over
+                that.$router.push(that.routeTo);
+                ibt_data = [];
+            }
         }
     }, 1000)
 }
@@ -152,24 +102,24 @@ function handleIncorrectAnswer(that) {
 
 
 
-function leftFaceAction(that, objectKey) {
+function leftFaceAction(that, objectKey, whereToStore) {
     const faceBeingShown = that.irbt_trials[that.section].trials[that.currentUserTrial][objectKey];
     // console.log(faceBeingShown)
     // console.log(faceBeingShown, " ", that.leftFace);
     if (faceBeingShown === that.leftFace) {
-        handleCorrectAnswer(that);
+        handleCorrectAnswer(that, whereToStore, whereToStore);
     } else {
         handleIncorrectAnswer(that);
     }
 }
 
-function rightFaceAction(that, objectKey) {
+function rightFaceAction(that, objectKey, whereToStore) {
     const faceBeingShown = that.irbt_trials[that.section].trials[that.currentUserTrial][objectKey];
     // console.log(faceBeingShown)
     // console.log(faceBeingShown, " ", that.rightFace);
     if (faceBeingShown === that.rightFace) {
         // console.log("right is answer");
-        handleCorrectAnswer(that);
+        handleCorrectAnswer(that, whereToStore, whereToStore);
     } else {
         handleIncorrectAnswer(that);
     }

@@ -170,4 +170,10 @@ a.routerlink {
 .router-link-back:active{
 color: purple;
 }
+
+ @media (max-height: 600px) and (max-width: 600px) {
+   main{
+     height: 100vh
+   }
+ }
 </style>

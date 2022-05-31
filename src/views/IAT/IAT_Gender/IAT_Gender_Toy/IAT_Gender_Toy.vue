@@ -123,6 +123,7 @@ export default {
   mounted() {
     let that = this;
     this.$store.commit("changeCurrentTest", "IAT_Gender_Toy")
+    this.$store.state["IAT_Gender_Toy"] = [];
     window.addEventListener("keyup", that.start);
   },
 };

@@ -28,8 +28,11 @@
         class="wrong-icon"
       />
     </div>
-    <clicker :rightColor="fullTest[currentBlock]?.colorRight" :leftColor="fullTest[currentBlock]?.colorLeft">
-      <template #left >
+    <clicker
+      :rightColor="fullTest[currentBlock]?.colorRight"
+      :leftColor="fullTest[currentBlock]?.colorLeft"
+    >
+      <template #left>
         <img
           :src="getImageClicker(fullTest[currentBlock].clickerLeft)"
           alt="Clicker image"
@@ -37,7 +40,7 @@
           :class="calculateClass"
         />
       </template>
-      <template #right >
+      <template #right>
         <img
           :src="getImageClicker(fullTest[currentBlock].clickerRight)"
           alt="Clicker image"
@@ -54,7 +57,7 @@ import {
   testData_Block1,
   testData_Block2,
   testData_Block3,
-  testData_Block4, 
+  testData_Block4,
 } from "../../../../modules/generateIatTrialsGender";
 import handleAnswer_TS from "../../../../modules/handleAnswers_TS";
 import { startTimer } from "../../../../modules/handleAnswers_TS";
@@ -76,7 +79,8 @@ export default {
         },
         {
           block: "Block2_TS",
-          instructions: "Click the left for Male toys, and the right for Female toys",
+          instructions:
+            "Click the left for Male toys, and the right for Female toys",
           data: testData_Block2("Left", "Right"),
           clickerLeft: "Male_Toy.png",
           clickerRight: "Female_Toy.png",
@@ -96,7 +100,6 @@ export default {
           data: testData_Block3("Left", "Right", 2),
           clickerLeft: "Male_And_Male_Toy.png",
           clickerRight: "Female_And_Female_Toy.png",
-
         },
         {
           block: "Block5_TS",
@@ -145,15 +148,20 @@ export default {
   },
 
   computed: {
-    calculateClass(){
-      if(this.currentBlock == 1){
-        return "clickerImageToy"
-      }else if(this.currentBlock == 2 || this.currentBlock == 3 ||  this.currentBlock == 5 ||  this.currentBlock == 6  ){
-        return "clickerImageCombined"
+    calculateClass() {
+      if (this.currentBlock == 1) {
+        return "clickerImageToy";
+      } else if (
+        this.currentBlock == 2 ||
+        this.currentBlock == 3 ||
+        this.currentBlock == 5 ||
+        this.currentBlock == 6
+      ) {
+        return "clickerImageCombined";
       } else {
-        return ""
+        return "";
       }
-    } 
+    },
   },
 
   methods: {
@@ -182,7 +190,8 @@ export default {
   },
 
   mounted() {
-        this.$store.commit("changeCurrentTest", "IAT_Gender_Toy_Touchscreen")
+    this.$store.commit("changeCurrentTest", "IAT_Gender_Toy_Touchscreen");
+    this.$store.state["IAT_Gender_Toy_Touchscreen"] = [];
     let that = this;
     document
       .querySelector(".test")

@@ -20,7 +20,7 @@
       <h4 @click="version = ''" class="go-back">Go back</h4>
     </section>
     <section v-if="version === 'Name'">
-      <jelly-button whereTo="/IT" class="test-btn"
+      <jelly-button whereTo="/IT_Name_White" class="test-btn"
         >White</jelly-button
       >
       <jelly-button whereTo="/IT" class="test-btn"

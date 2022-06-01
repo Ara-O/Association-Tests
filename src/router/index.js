@@ -28,6 +28,10 @@ import IT_Number_Black from "../views/IT/IT_Number/IT_Black.vue";
 import IT_Number_EastAsian from "../views/IT/IT_Number/IT_Asian.vue";
 import IT_Feedback from "../views/IT/IT_feedback.vue";
 
+// --------------
+
+import IT_Name_White from "../views/IT/IT_Name/IT_Name_White.vue";
+
 // -----------------
 
 import IBT_Choose_Test from "../views/IBT/IBT_Choose_Test.vue"
@@ -92,9 +96,14 @@ const routes = [
     path: "/IT",
     component: IT,
 
-  }, {
+  }, 
+  {
     path: '/IT_Number_White',
     component: IT_Number_White,
+  },
+  {
+    path: '/IT_Name_White',
+    component: IT_Name_White,
   },
   {
     path: '/IT_Number_Black',

@@ -155,7 +155,7 @@ export default {
   },
   mounted() {
     this.wasGroupTest = false
-    console.log(this.$store.state[this.getCurrentTest]);
+    // console.log(this.$store.state[this.getCurrentTest]);
   },
 };
 </script>

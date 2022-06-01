@@ -2,7 +2,7 @@
   <div class="basic-questions">
     <h3 class="basic-questions_title">Basic questions</h3>
     <img
-      src="../assets/app-icons/diverseimg.jpg"
+      src="../assets/app_icons/diverseimg.jpg"
       alt="Image"
       style="width: 273px"
     />
@@ -93,7 +93,6 @@ export default {
 
   methods: {
     next() {
-      console.log(this.userData.chosenethnicity.trim());
       if (this.userData.chosenethnicity.trim() === "") {
         this.userData.chosenethnicity = this.chosenethnicity;
       }

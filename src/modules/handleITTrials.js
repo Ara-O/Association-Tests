@@ -128,7 +128,7 @@ function proceedToNextSection(thisval, IT_Trials, section) {
             }
             thisval.$store.state.IT_trials_text = dataclonearray;
 
-            thisval.$router.push("/IT/Feedback");
+            thisval.$router.push("/IT_Feedback");
             const db = getDatabase();
 
             set(ref(db, `IT/IT_${section}/User-${thisval.$store.state.uid}`), {

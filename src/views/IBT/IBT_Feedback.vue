@@ -112,7 +112,7 @@ export default {
     },
 
     storeDataWithNewUniqueId(role, individualUid, uid) {
-      console.log(role, individualUid, uid);
+      // console.log(role, individualUid, uid);
       storeData.storeIBTGroupData(
         this.getCurrentTest,
         this,
@@ -125,7 +125,7 @@ export default {
     },
 
     storeDataWithExistingUniqueId(role, individualUid, familyUniqueId) {
-      console.log(role, individualUid, familyUniqueId);
+      // console.log(role, individualUid, familyUniqueId);
       storeData.storeIBTGroupData(
         this.getCurrentTest,
         this,
@@ -146,7 +146,7 @@ export default {
   },
   mounted() {
     this.wasGroupTest = false;
-    console.log(this.$store.state[this.getCurrentTest]);
+    // console.log(this.$store.state[this.getCurrentTest]);
   },
 };
 </script>

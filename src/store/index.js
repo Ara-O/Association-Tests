@@ -4,7 +4,6 @@ export default createStore({
   state: {
     userData: {},
     currentTest: "",
-    current_IAT_test: "",
     IAT_Gender_Toy: [],
     IAT_Gender_Toy_Touchscreen: [],
     IAT_Black_White: [],

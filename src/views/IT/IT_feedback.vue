@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import contactExperience from "../../views/contact_experience.vue";
+import contactExperience from "../contact_experience.vue";
 import storeContactExperience from "../../modules/storeContactExperience";
 export default {
   components: {

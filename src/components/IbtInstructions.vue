@@ -23,7 +23,7 @@
     </div>
     <h3 class="continue-instruction">Click green arrow below to continue</h3>
     <img
-      src="../assets/app-icons/rightArrow.png"
+      src="../assets/app_icons/rightArrow.png"
       alt="Right arraw"
       @click="section++"
       class="continue"

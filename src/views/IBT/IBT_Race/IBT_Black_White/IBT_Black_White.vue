@@ -24,7 +24,7 @@
         <br />
         <h4>Click the right arrow to continue</h4>
         <img
-          src="../../../../assets/app-icons/rightArrow.png"
+          src="../../../../assets/app_icons/rightArrow.png"
           alt="Right arrow"
           @click="next"
           class="continue"
@@ -49,7 +49,7 @@
               Incorrect. Try again to progress!
             </h3>
             <img
-              src="../../../../assets/app-icons/incorrectImg.png"
+              src="../../../../assets/app_icons/incorrectImg.png"
               alt="Wrong icon"
               class="irbt-wrong-img"
             />

@@ -11,7 +11,7 @@ let cYear = currentDate.getFullYear();
 function startTimer() {
     ms = 0;
     startTime = new Date();
-    console.log('starting timer')
+    // console.log('starting timer')
 }
 
 function stopTimer() {
@@ -71,7 +71,7 @@ function handleCorrectAnswer(thiskeyword, whereToStore, version) {
             ibt_data[that.section] = that.irbt_trials[that.section].trials;
             storeData.updateIBTData(ibt_data, that, cMonth, cDay, cYear, whereToStore, version);
 
-            console.log("section has ended")
+            // console.log("section has ended")
             if (that.section + 1 !== that.irbt_trials.length) {
                 document.querySelector(".irbt_star").style.display = "none"
                 //Checking to see if the sections have all being exhausted, if so, store data to firebase

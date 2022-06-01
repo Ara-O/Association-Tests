@@ -23,9 +23,9 @@ import IAT_Black_White_Survey from "../views/IAT/IAT_Race/IAT_Black_White/IAT_Bl
 // ---------------
 
 import IT from "../views/IT/IT.vue";
-import IT_White from "../views/IT/IT_White.vue";
-import IT_Black from "../views/IT/IT_Black.vue";
-import IT_EastAsian from "../views/IT/IT_Asian.vue";
+import IT_Number_White from "../views/IT/IT_Number/IT_White.vue";
+import IT_Number_Black from "../views/IT/IT_Number/IT_Black.vue";
+import IT_Number_EastAsian from "../views/IT/IT_Number/IT_Asian.vue";
 import IT_Feedback from "../views/IT/IT_feedback.vue";
 
 // -----------------
@@ -93,19 +93,19 @@ const routes = [
     component: IT,
 
   }, {
-    path: '/IT/White',
-    component: IT_White,
+    path: '/IT_Number_White',
+    component: IT_Number_White,
   },
   {
-    path: '/IT/Black',
-    component: IT_Black,
+    path: '/IT_Number_Black',
+    component: IT_Number_Black,
   },
   {
-    path: '/IT/EastAsian',
-    component: IT_EastAsian,
+    path: '/IT_Number_EastAsian',
+    component: IT_Number_EastAsian,
   },
   {
-    path: '/IT/Feedback',
+    path: '/IT_Feedback',
     component: IT_Feedback,
   },
   {

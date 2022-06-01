@@ -11,13 +11,11 @@ let cYear = currentDate.getFullYear();
 function startTimer() {
   ms = 0;
   startTime = new Date();
-  console.log('timer starting')
 }
 
 function stopTimer() {
   const endTime = new Date();
   ms = (endTime - startTime);
-  console.log('stop timer - ', ms)
 }
 
 function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {

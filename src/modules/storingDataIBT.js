@@ -5,7 +5,6 @@ export function updateIBTData(Data, test, cMonth, cDay, cYear, whereToStore, ver
     let dataclone = JSON.parse(JSON.stringify(Data));
     dataclone.forEach((outerdata, outerIndex) => {
     outerdata.forEach((data, innerIndex) => {
-        console.log(innerIndex, test.testType)
         //adding the current test, browser type, and the date taken
         data.currentTest = whereToStore;
         data.browser = navigator["userAgent"];

@@ -307,7 +307,7 @@ export default {
     },
 
     proceedToNextSection() {
-      handleIT.proceedToNextSection(this, IT_Name_Trials, "White");
+      handleIT.proceedToNextSection(this, IT_Name_Trials, "Black");
     },
 
     proceedAfterIncorrectChoice() {
@@ -320,8 +320,8 @@ export default {
   },
 
   mounted() {
-            this.$store.commit("changeCurrentTest", "IT_White_Name");
-    this.facedata = IT_Name_Trials("White", 2);
+            this.$store.commit("changeCurrentTest", "IT_Black_Name");
+    this.facedata = IT_Name_Trials("Black", 2);
     this.faceDataToMemorize = JSON.parse(JSON.stringify(this.facedata));
     // console.log(this.faceDataToMemorize);
     this.facedatashuffled = JSON.parse(JSON.stringify(this.facedata));

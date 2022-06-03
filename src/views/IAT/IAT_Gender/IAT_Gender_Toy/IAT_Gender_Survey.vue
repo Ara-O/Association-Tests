@@ -115,7 +115,16 @@
         :userDataProp="userData"
         @progress_kb="progress_kb"
         @progress_ts="progress_ts"
-      ></explicit-attitudes>
+        opinionTitle1="I consider boys to be"
+        opinionTitle2="I consider girls to be"
+        opinion1="Much more associated with toy cars/trucks than girls" 
+        opinion2="Somewhat more associated with toy cars/trucks than girls" 
+        opinion3="Less associated with toy cars/trucks than girls" 
+        opinion4="Much more associated with barbie dolls than boys"
+        opinion5="Somewhat more associated with barbie dolls than boys"
+        opinion6="Less associated with barbie dolls than boys"
+      >
+      </explicit-attitudes>
     </div>
   </main>
   <section v-if="redirectToHome" class="redirectToHome">
@@ -144,8 +153,8 @@ export default {
         chosenethnicity: "",
         slider1: 50,
         slider2: 50,
-        opinionofmen: "",
-        opinionofwomen: "",
+        opinionofboys: "",
+        opinionofgirls: "",
       },
       chosenethnicity: "",
     };
@@ -171,6 +180,10 @@ export default {
       this.$router.push("IAT_Gender_Toy");
     },
   },
+
+  mounted(){
+  
+  }
 };
 </script>
 

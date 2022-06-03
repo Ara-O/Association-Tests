@@ -1,6 +1,6 @@
 import { getDatabase, ref, set } from "firebase/database";
 
-export default function(thisval, section){
+export function updateITData(thisval, section){
     let data = thisval.$store.state.IT_trials;
     let dataclone = JSON.parse(JSON.stringify(data));
     for (let trial in data) {
@@ -46,7 +46,22 @@ export default function(thisval, section){
     thisval.$router.push("/IT_Feedback");
     const db = getDatabase();
 
-    set(ref(db, `IT/IT_${section}/User-${thisval.$store.state.uid}`), {
+    set(ref(db, `IT/${section}/User-${thisval.$store.state.uid}`), {
         data: thisval.$store.state.IT_trials_text,
+    });
+}
+
+
+export function storeITGroupData(version, test, role, individualUid, familyUid) {
+    const db = getDatabase();
+    set(ref(db, `Group-data/Family-${familyUid}/${role}-${individualUid}/${version}`), {
+        data: test.$store.state.IT_trials_text,
+    });
+}
+
+export function storeITIndividualData(version, test) {
+    const db = getDatabase();
+    set(ref(db, `${version}/User-${test.$store.state.uid}`), {
+        data: test.$store.state.IT_trials_text,
     });
 }

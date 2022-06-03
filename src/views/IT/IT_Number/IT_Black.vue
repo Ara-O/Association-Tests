@@ -182,7 +182,11 @@
 
           <div class="faces_flexbox">
             <div class="crossdiv">
-              <img src="../../../assets/IT_faces/cross.jpg" alt="" class="cross" />
+              <img
+                src="../../../assets/IT_faces/cross.jpg"
+                alt=""
+                class="cross"
+              />
             </div>
             <div>
               <li v-for="(data, index) in facedata" :key="data.id">
@@ -317,6 +321,7 @@ export default {
   },
 
   mounted() {
+    this.$store.commit("changeCurrentTest", "IT_Black_Number");
     this.facedata = IT_Trials("Black", 2);
     this.facedataclone = JSON.parse(JSON.stringify(this.facedata));
     this.facedatashuffled = JSON.parse(JSON.stringify(this.facedata));

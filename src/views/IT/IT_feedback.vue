@@ -5,21 +5,37 @@
   ></contact-experience>
   <main v-else>
     <h3>The test is over!</h3>
-    <router-link to="/Home" tag="button" class="gohome">Go Home</router-link>
+    <button @click="routeToHome" tag="button" class="gohome">Go Home</button>
+    <br />
+    <group-test
+      @storeDataWithExistingUniqueId="storeDataWithExistingUniqueId"
+      @storeDataWithNewUniqueId="storeDataWithNewUniqueId"
+    ></group-test>
   </main>
 </template>
 
 <script>
 import contactExperience from "../contact_experience.vue";
 import storeContactExperience from "../../modules/storeContactExperience";
+import groupTest from "../../components/GroupTest.vue";
+import * as storeData from "../../modules/storingDataIT";
+import { mapGetters } from "vuex";
+
 export default {
   components: {
     contactExperience,
+    groupTest,
   },
+
   data() {
-    return{
+    return {
       surveyNotComplete: true,
-    }
+      wasGroupTest: false,
+    };
+  },
+
+  computed: {
+    ...mapGetters(["getUID", "getCurrentTest"]),
   },
 
   methods: {
@@ -29,28 +45,62 @@ export default {
       }
       this.surveyNotComplete = false;
     },
+
+    storeDataWithNewUniqueId(role, individualUid, uid) {
+      // console.log(role, individualUid, uid);
+      storeData.storeITGroupData(
+        this.getCurrentTest,
+        this,
+        role,
+        individualUid,
+        uid
+      );
+
+      this.wasGroupTest = true;
+    },
+
+    storeDataWithExistingUniqueId(role, individualUid, familyUniqueId) {
+      // console.log(role, individualUid, familyUniqueId);
+      storeData.storeITGroupData(
+        this.getCurrentTest,
+        this,
+        role,
+        individualUid,
+        familyUniqueId
+      );
+
+      this.wasGroupTest = true;
+    },
+
+    routeToHome() {
+      if(!this.wasGroupTest){
+        storeData.updateITData(this, this.getCurrentTest);
+      }
+      this.$router.push("/Home");
+    },
   },
 };
 </script>
 <style scoped>
 .gohome {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(185deg, #7eefbf, #389820);
-  border-radius: 47px;
-  box-shadow: -2px 4px 4px -1px #cbcbcb;
-  cursor: pointer;
-  margin-bottom: 25px;
-  transition: all 250ms ease-in-out;
-  color: white;
-  text-decoration: none;
-  font-size: 15px;
-  padding: 7px 24px;
-  font-weight: 300;
-  margin-bottom: 20px;
-  height: 45px;
-  width: 100px;
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(185deg, #7eefbf, #389820);
+    border-radius: 47px;
+    box-shadow: -2px 4px 4px -1px #cbcbcb;
+    cursor: pointer;
+    margin-bottom: 25px;
+    transition: all 250ms ease-in-out;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 9px 24px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    height: 54px;
+    width: 170px;
+    border: none;
 }
 
 .gohome:hover {

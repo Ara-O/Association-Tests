@@ -11,6 +11,11 @@
         You have made it to the end of the test! We will ask you a few questions
         before you receive your results
       </h5>
+      <div>
+        <br>
+         <h5 style="display: inline; font-weight: 400">Progress Bar:  </h5>
+        <progress max="100" :value="20 * progress"></progress>
+      </div>
       <!-- emit-data is called when the user has finished the current section -->
       <div v-if="progress === 1">
         <first-survey-section
@@ -134,4 +139,5 @@ export default {
     margin-bottom: 30px;
     max-width: 600px
 }
+
 </style>

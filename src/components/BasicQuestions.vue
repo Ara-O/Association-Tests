@@ -85,8 +85,8 @@ export default {
         chosenethnicity: "",
         slider1: 50,
         slider2: 50,
-        opinionofmen: "",
-        opinionofwomen: "",
+        opinionofboys: "",
+        opinionofgirls: "",
       },
     };
   },

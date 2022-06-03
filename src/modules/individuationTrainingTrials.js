@@ -15,23 +15,21 @@ export default function (section, trials) {
         i === 0 ? fullData[i].visibility = "block" : fullData[i].visibility = "none";
     }
 
-    console.log(fullData)
+    // console.log(fullData)
     return fullData
 }
 
 
 export function IT_Name_Trials(section, trials) {
     let fullData = [];
-    if (section === "White") {
-        let names = ["John", "Lucas", "Mark", "Joe", "James"];
+        let names = ["David", "Jacob", "Lucas", "Mark", "Paul"];
 
         for (let i = 0; i < trials; i++) {
-            fullData.push({name: names[i], visibility: "none", img: `White/${names[i]}.jpg`});
+            fullData.push({name: names[i], visibility: "none", img: `${section}/${names[i]}.jpg`});
         }
-    }
 
     fullData[0].visibility = "block"
 
-    console.log("full data", fullData)
+    // console.log("full data", fullData)
     return fullData
 }

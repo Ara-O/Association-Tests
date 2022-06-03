@@ -31,6 +31,8 @@ import IT_Feedback from "../views/IT/IT_feedback.vue";
 // --------------
 
 import IT_Name_White from "../views/IT/IT_Name/IT_Name_White.vue";
+import IT_Name_Black from "../views/IT/IT_Name/IT_Name_Black.vue";
+import IT_Name_EastAsian from "../views/IT/IT_Name/IT_Name_Asian.vue";
 
 // -----------------
 
@@ -104,6 +106,14 @@ const routes = [
   {
     path: '/IT_Name_White',
     component: IT_Name_White,
+  },
+  {
+    path: '/IT_Name_Black',
+    component: IT_Name_Black,
+  },
+  {
+    path: '/IT_Name_EastAsian',
+    component: IT_Name_EastAsian,
   },
   {
     path: '/IT_Number_Black',

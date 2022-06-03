@@ -116,7 +116,6 @@ function proceedAfterIncorrectChoice(thisval) {
         document.querySelector(".cross").style.display = "none";
         thisval.inaccurateTrial = true;
         thisval.proceedToNextSection();
-        // document.querySelector(".correctchoice").textContent = thisva
     }
 }
 

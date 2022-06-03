@@ -6,7 +6,7 @@
   <div class="warmness-slider">
     <div class="slider-options">
       <span> <h5>Cold ( 1 )</h5> </span>
-      <span> <h5>No Preference ( 50 )</h5> </span>
+      <span> <h5>Neutral ( 50 )</h5> </span>
       <span> <h5>Warm ( 100 )</h5> </span>
     </div>
     <input
@@ -26,7 +26,7 @@
   <div class="warmness-slider">
     <div class="slider-options">
       <span> <h5>Cold ( 1 )</h5> </span>
-      <span> <h5>No Preference ( 50 )</h5> </span>
+      <span> <h5>Neutral ( 50 )</h5> </span>
       <span> <h5>Warm ( 100 )</h5> </span>
     </div>
     <input
@@ -38,38 +38,38 @@
     />
   </div>
   <h4>
-    I consider men to be
-    <select v-model="userData.opinionofmen">
-      <option value="Much more associated with career than">
-        Much more associated with career than women
+    {{opinionTitle1}}
+    <select v-model="userData.opinionofboys">
+      <option :value="opinion1">
+        {{ opinion1 }}
       </option>
-      <option value="Somewhat more associated with career than">
-        Somewhat more associated with career than women
+      <option :value="opinion2">
+        {{ opinion2 }}
       </option>
-      <option value="Less associated with career than">
-        Less associated with career than women
+      <option :value="opinion3">
+        {{ opinion3 }}
       </option>
     </select>
   </h4>
   <h4 style="margin-top: 0px">
-    I consider women to be
-    <select v-model="userData.opinionofwomen">
-      <option value="Much more associated with career than">
-        Much more associated with career than men
+    {{opinionTitle2}}
+   <select v-model="userData.opinionofgirls">
+      <option :value="opinion4">
+        {{ opinion4 }}
       </option>
-      <option value="Somewhat more associated with career than">
-        Somewhat more associated with career than men
+      <option :value="opinion5">
+        {{ opinion5 }}
       </option>
-      <option value="Less associated with career than">
-        Less associated with career than men
-      </option></select
-    >
+      <option :value="opinion6">
+        {{ opinion6 }}
+      </option>
+    </select>
   </h4>
   <div class="buttons">
     <button
       @click="progress_ts"
       class="btn btn_basic_survey"
-      style="margin-top: 5px; width: 195px;  padding: 24px 18px"
+      style="margin-top: 5px; width: 195px; padding: 24px 18px"
     >
       Touch Screen Version
     </button>
@@ -85,7 +85,17 @@
 
 <script>
 export default {
-  props: ["userDataProp"],
+  props: [
+    "userDataProp",
+    "opinion1",
+    "opinion2",
+    "opinion3",
+    "opinion4",
+    "opinion5",
+    "opinion6",
+    "opinionTitle1",
+    "opinionTitle2"
+  ],
   emits: ["progress_kb", "progress_ts"],
   data() {
     return {
@@ -94,8 +104,8 @@ export default {
         chosenethnicity: "",
         slider1: 50,
         slider2: 50,
-        opinionofmen: "",
-        opinionofwomen: "",
+        opinionofboys: "",
+        opinionofgirls: "",
       },
     };
   },

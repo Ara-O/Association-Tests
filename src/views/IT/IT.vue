@@ -23,10 +23,10 @@
       <jelly-button whereTo="/IT_Name_White" class="test-btn"
         >White</jelly-button
       >
-      <jelly-button whereTo="/IT" class="test-btn"
+      <jelly-button whereTo="/IT_Name_Black" class="test-btn"
         >Black</jelly-button
       >
-      <jelly-button whereTo="/IT" class="test-btn"
+      <jelly-button whereTo="/IT_Name_EastAsian" class="test-btn"
         > East Asian</jelly-button
       >
       <h4 @click="version = ''" class="go-back">Go back</h4>
@@ -42,11 +42,6 @@ export default {
     };
   },
 
-  methods: {
-    test() {
-      console.log("roalr");
-    },
-  },
 };
 </script>
 

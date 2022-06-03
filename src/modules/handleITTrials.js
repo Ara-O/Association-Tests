@@ -1,6 +1,5 @@
 'use strict';
 
-import { getDatabase, ref, set } from "firebase/database";
 let startTime
 let ms;
 
@@ -129,11 +128,7 @@ function proceedToNextSection(thisval, IT_Trials, section) {
             thisval.$store.state.IT_trials_text = dataclonearray;
 
             thisval.$router.push("/IT_Feedback");
-            const db = getDatabase();
-
-            set(ref(db, `IT/IT_${section}/User-${thisval.$store.state.uid}`), {
-                data: thisval.$store.state.IT_trials_text,
-            });
+     
             // console.log("THE TEST HAS ENDED")
         }
     } else {

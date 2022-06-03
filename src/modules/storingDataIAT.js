@@ -16,8 +16,8 @@ export function updateIATData(Data, test, cMonth, cDay, cYear, whereToStore, ver
         data.ethnicity = test.$store.state.userData.chosenethnicity || "Not provided";
         data.howUserFeelsTowardsMen = test.$store.state.userData.slider1 || "Not provided";
         data.howUserFeelsTowardsWomen = test.$store.state.userData.slider2 || "Not provided";
-        data.opinionOfMen = test.$store.state.userData.opinionofmen || "Not provided";
-        data.opinionOfWomen = test.$store.state.userData.opinionofwomen || "Not provided";
+        data.opinionOfBoys = test.$store.state.userData.opinionofboys || "Not provided";
+        data.opinionOfGirls = test.$store.state.userData.opinionofgirls || "Not provided";
         delete data.image;
         delete data.name;
         delete data.visibility;

@@ -223,7 +223,6 @@
             <h3 @click="validateChoice('Paul')" class="choice-name">Paul</h3>
           </div>
         </ul>
-
       </div>
     </div>
   </main>
@@ -307,7 +306,7 @@ export default {
     },
 
     proceedToNextSection() {
-      handleIT.proceedToNextSection(this, IT_Name_Trials, "White");
+      handleIT.proceedToNextSection(this, IT_Name_Trials, "Asian");
     },
 
     proceedAfterIncorrectChoice() {
@@ -320,8 +319,8 @@ export default {
   },
 
   mounted() {
-            this.$store.commit("changeCurrentTest", "IT_White_Name");
-    this.facedata = IT_Name_Trials("White", 2);
+    this.$store.commit("changeCurrentTest", "IT_Asian_Name");
+    this.facedata = IT_Name_Trials("Asian", 2);
     this.faceDataToMemorize = JSON.parse(JSON.stringify(this.facedata));
     // console.log(this.faceDataToMemorize);
     this.facedatashuffled = JSON.parse(JSON.stringify(this.facedata));
@@ -409,17 +408,16 @@ li img {
   align-items: center;
 }
 
-
-.choice-name{
-       height: 50px;
-    font-size: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 101px;
-    box-shadow: inset 0px 0px 2px #b2b2b2;
-    border-radius: 2px;
-    background: white;
+.choice-name {
+  height: 50px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 101px;
+  box-shadow: inset 0px 0px 2px #b2b2b2;
+  border-radius: 2px;
+  background: white;
 }
 
 .cross {

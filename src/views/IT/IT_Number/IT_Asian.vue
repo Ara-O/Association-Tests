@@ -302,6 +302,7 @@ export default {
   },
 
   mounted() {
+        this.$store.commit("changeCurrentTest", "IT_Asian_Number");
     this.facedata = IT_Trials("Asian", 2);
     this.facedataclone = JSON.parse(JSON.stringify(this.facedata));
     this.facedatashuffled = JSON.parse(JSON.stringify(this.facedata));

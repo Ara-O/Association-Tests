@@ -236,7 +236,7 @@
 
 <script>
 import IT_Trials from "../../../modules/individuationTrainingTrials";
-import * as handleIT from "../../../modules/handleITTrials";
+import * as handleIT from "../../../modules/handleAnswers/handleITTrials";
 
 export default {
   data() {

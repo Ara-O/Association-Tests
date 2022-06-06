@@ -18,7 +18,7 @@
 import contactExperience from "../contact_experience.vue";
 import storeContactExperience from "../../modules/storeContactExperience";
 import groupTest from "../../components/GroupTest.vue";
-import * as storeData from "../../modules/storingDataIT";
+import * as storeData from "../../modules/storingData/storingDataIT";
 import { mapGetters } from "vuex";
 
 export default {

@@ -1,5 +1,5 @@
 // import { getDatabase, ref, set } from "firebase/database";
-import * as storeData from "../modules/storingDataIBT";
+import * as storeData from "../storingData/storingDataIBT";
 let ms = 0;
 let startTime;
 let currentDate = new Date();

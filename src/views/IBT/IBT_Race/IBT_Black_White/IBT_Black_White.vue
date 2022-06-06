@@ -77,9 +77,9 @@
 </template>
 
 <script>
-import generateIBTtrialsRace from "../../../../modules/generateIbtTrialsRace";
+import generateIBTtrialsRace from "../../../../modules/generateIbtTrials/generateIbtTrialsRace";
 import IbtInstructions from "../../../../components/IbtInstructions.vue";
-import * as irbt from "../../../../modules/handleIbtAnswers";
+import * as irbt from "../../../../modules/handleAnswers/handleIbtAnswers";
 export default {
   components: {
     IbtInstructions,

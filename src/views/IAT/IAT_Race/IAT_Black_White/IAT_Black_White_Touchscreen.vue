@@ -57,8 +57,8 @@ import {
   testData_Block3,
   testData_Block4,
 } from "../../../../modules/generateIatTrialsRace";
-import handleAnswer_TS from "../../../../modules/handleAnswers_TS";
-import { startTimer } from "../../../../modules/handleAnswers_TS";
+import handleAnswer_TS from "../../../../modules/handleAnswers/handleAnswers_TS";
+import { startTimer } from "../../../../modules/handleAnswers/handleAnswers_TS";
 export default {
   data() {
     return {

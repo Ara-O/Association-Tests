@@ -43,7 +43,7 @@
 </template>
 
  <script>
-import handleAnswers from "../../../../modules/handleAnswers";
+import handleAnswers from "../../../../modules/handleAnswers/handleAnswers";
 import {
   testData_Block1,
   testData_Block2,

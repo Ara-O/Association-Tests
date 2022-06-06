@@ -58,9 +58,9 @@ import {
   testData_Block2,
   testData_Block3,
   testData_Block4,
-} from "../../../../modules/generateIatTrialsGender";
-import handleAnswer_TS from "../../../../modules/handleAnswers_TS";
-import { startTimer } from "../../../../modules/handleAnswers_TS";
+} from "../../../../modules/generateIatTrialsGender/generateIatTrialsToy.js";
+import handleAnswer_TS from "../../../../modules/handleAnswers/handleAnswers_TS";
+import { startTimer } from "../../../../modules/handleAnswers/handleAnswers_TS";
 export default {
   data() {
     return {
@@ -81,7 +81,7 @@ export default {
           block: "Block2_TS",
           instructions:
             "Click the left for Male toys, and the right for Female toys",
-          data: testData_Block2("Left", "Right"),
+          data: testData_Block2("Left", "Right", 6),
           clickerLeft: "Male_Toy.png",
           clickerRight: "Female_Toy.png",
         },

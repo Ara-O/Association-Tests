@@ -78,8 +78,8 @@
 
 <script>
 import IbtInstructions from "../../../../components/IbtInstructions.vue";
-import { genderAndToy } from "../../../../modules/generateIbtTrialsGender";
-import * as irbt from "../../../../modules/handleIbtAnswers";
+import { genderAndToy } from "../../../../modules/generateIbtTrials/generateIbtTrialsGender";
+import * as irbt from "../../../../modules/handleAnswers/handleIbtAnswers";
 
 export default {
   components: {

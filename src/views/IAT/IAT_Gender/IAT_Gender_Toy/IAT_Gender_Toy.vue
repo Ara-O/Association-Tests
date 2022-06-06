@@ -39,8 +39,8 @@
 </template>
 
 <script>
-import handleAnswers from "../../../../modules/handleAnswers";
-import { testData_Block1, testData_Block2, testData_Block3, testData_Block4 } from "../../../../modules/generateIatTrialsGender";
+import handleAnswers from "../../../../modules/handleAnswers/handleAnswers";
+import { testData_Block1, testData_Block2, testData_Block3, testData_Block4 } from "../../../../modules/generateIatTrialsGender/generateIatTrialsToy";
 
 export default {
   data() {
@@ -58,7 +58,7 @@ export default {
         {
           block: "Block2",
           instructions: "Click E for Male toys, and I for Female toys",
-          data: testData_Block2("E", "I"),
+          data: testData_Block2("E", "I", 6),
         },
         {
           block: "Block3",

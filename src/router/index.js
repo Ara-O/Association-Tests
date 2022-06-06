@@ -13,12 +13,17 @@ import IAT_Gender_Toy_Touchscreen from "../views/IAT/IAT_Gender/IAT_Gender_Toy/I
 import IAT_Gender_Toy_Survey from "../views/IAT/IAT_Gender/IAT_Gender_Toy/IAT_Gender_Survey.vue";
 
 
+//---------
+//IAT Gender-Roles
+import IAT_Gender_Roles from "../views/IAT/IAT_Gender/IAT_Gender_Roles/IAT_Gender_Roles.vue";
+
+
+
 // ---------------
 // IAT Black_White
 import IAT_Black_White from "../views/IAT/IAT_Race/IAT_Black_White/IAT_Black_White.vue"
 import IAT_Black_White_Touchscreen from "../views/IAT/IAT_Race/IAT_Black_White/IAT_Black_White_Touchscreen.vue"
 import IAT_Black_White_Survey from "../views/IAT/IAT_Race/IAT_Black_White/IAT_Black_White_Survey.vue"
-
 
 // ---------------
 
@@ -68,6 +73,10 @@ const routes = [
   {
     path: "/IAT_Gender_Toy",
     component: IAT_Gender_Toy,
+  },
+  {
+    path: "/IAT_Gender_Roles",
+    component: IAT_Gender_Roles,
   },
   {
     path: "/IAT_Gender_Toy_Survey",

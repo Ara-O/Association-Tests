@@ -30,7 +30,7 @@
 import contactExperience from "../contact_experience.vue";
 import groupTest from "../../components/GroupTest.vue";
 import storeContactExperience from "../../modules/storeContactExperience";
-import * as storeData from "../../modules/storingDataIBT";
+import * as storeData from "../../modules/storingData/storingDataIBT";
 import { mapGetters } from "vuex";
 export default {
   components: {

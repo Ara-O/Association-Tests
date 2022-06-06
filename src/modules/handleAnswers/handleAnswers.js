@@ -1,6 +1,6 @@
-import * as storeData from "./storingDataIAT"
+import * as storeData from "../storingData/storingDataIAT"
 
-// Timer 
+// * Timer 
 let ms = 0;
 let startTime;
 let currentDate = new Date();
@@ -9,37 +9,37 @@ let cMonth = currentDate.getMonth() + 1;
 let cYear = currentDate.getFullYear();
 
 function startTimer() {
+  // console.log("starting timer")
   ms = 0;
   startTime = new Date();
 }
 
 function stopTimer() {
   const endTime = new Date();
-  ms = (endTime - startTime);
+  ms = endTime - startTime;
+  // console.log("ending timer - ", ms)
 }
 
-function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {
+function handleAnswer(thiskeyword, Data, whereToStore, version) {
   const test = thiskeyword;
+  test.notStarted = false;
   if (!test.notStarted) {
-    let keyClicked = target;
-    const currentChallenge = Data[test.arrayIndex];
-    if (keyClicked.classList.contains("left") || keyClicked.classList.contains("left-choice")) {
-      keyClicked = 'Left'
-    } else if (keyClicked.classList.contains("right") || keyClicked.classList.contains("right-choice")) {
-      keyClicked = 'Right'
-    } else {
-      keyClicked = "Not applicable"
-    }
+    startTimer();
+    document.addEventListener("keyup", function handleInput(e) {
+      const keyClicked = e.key.toUpperCase();
+      const currentChallenge = Data[test.arrayIndex];
 
-    //Checking accuracy
-    if (keyClicked === "Left" || keyClicked === "Right") {
+      //First check to make sure that what was entered is either I or E
+      if(keyClicked == "I" || keyClicked == "E"){
+
+        //Checking if the test isnt over yet, and the entry is accurate
       if (keyClicked == currentChallenge.key && test.arrayIndex !== Data.length) {
+
         //Proceeds to the next name while adding the speed used to answer the question
         document.querySelector("#wrong").style.display = "none";
         currentChallenge.visibility = "none";
         stopTimer();
         currentChallenge.ms = ms;
-        
         
         // Making sure the test isnt over yet
         if (test.arrayIndex !== Data.length - 1) {
@@ -47,16 +47,17 @@ function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {
           Data[test.arrayIndex + 1].visibility = "block";
           test.arrayIndex += 1;
         } else {
-
-          //Storing data in vuex
+          //Store data in vuex
           storeData.updateIATData(Data, thiskeyword, cMonth, cDay, cYear, whereToStore, version);
 
           //If test is over, call the test over function, or else,increment the current block 
           if(test.currentBlock == test.fullTest.length - 1){
-            test.testOver = true;
+            document.removeEventListener("keyup", handleInput);
+            test.testOver();
           } else {
-            test.currentBlock++;
+            document.removeEventListener("keyup", handleInput);
             test.notStarted = true;
+            test.currentBlock++;
           }
         }
       } else {
@@ -64,11 +65,8 @@ function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {
         document.querySelector("#wrong").style.display = "flex";
       }
     }
-  } else {
-    ms = 0
+    });
   }
 }
 
-export {startTimer};
-
-export default handleAnswer_TS;
+export default handleAnswer;

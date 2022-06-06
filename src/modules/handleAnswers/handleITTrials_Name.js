@@ -1,5 +1,5 @@
 'use strict';
-import storeDataIT from "../modules/storingDataIT";
+import * as storeDataIT from "../storingData/storingDataIT";
 let startTime
 let ms;
 
@@ -83,7 +83,7 @@ function proceedToNextSection(thisval, IT_Trials, section) {
             thisval.facedata = thisval.facedatashuffled;
         } else {
             // !End of test
-            storeDataIT(thisval, section)            
+            storeDataIT.updateITData(thisval, section)            
         }
     } else {
         //There has been an inaccurate trial

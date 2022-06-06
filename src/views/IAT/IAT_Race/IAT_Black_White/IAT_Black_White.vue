@@ -68,7 +68,7 @@ export default {
         {
           block: "Block2",
           instructions: "Click E for Happy faces and I for Sad faces",
-          data: testData_Block2("E", "I"),
+          data: testData_Block2("E", "I", 6),
         },
         {
           block: "Block3",

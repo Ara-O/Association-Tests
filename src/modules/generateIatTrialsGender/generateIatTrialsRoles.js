@@ -111,6 +111,8 @@ export function testData_Block2(office, kitchen, trials) {
     fullData[0].visibility = "block"
 
     console.log("Test data 2: ", fullData)
+
+    return fullData
 }
 
 export function testData_Block3(male_and_office, female_and_kitchen, trials) {

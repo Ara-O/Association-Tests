@@ -6,6 +6,8 @@ export default createStore({
     currentTest: "",
     IAT_Gender_Toy: [],
     IAT_Gender_Toy_Touchscreen: [],
+    IAT_Gender_Roles: [],
+    IAT_Gender_Roles_Touchscreen: [],
     IAT_Black_White: [],
     IAT_Black_White_Touchscreen: [],
     ibt_data: [],

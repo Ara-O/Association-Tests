@@ -78,7 +78,7 @@ export default {
         {
           block: "Block2_TS",
           instructions: "Click left for happy faces, and right for sad faces",
-          data: testData_Block2("Left", "Right"),
+          data: testData_Block2("Left", "Right", 10),
           clickerLeft: "Happy_Face.jpg",
           clickerRight: "Sad_Face.jpg",
         },

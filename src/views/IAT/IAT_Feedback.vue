@@ -85,7 +85,23 @@ export default {
             )}, and your speed was  ${this.calculateSpeed(1)}
         `,
         ];
-      } else {
+      } else if(this.getCurrentTest === "IAT_Gender_Roles" ||
+        this.getCurrentTest === "IAT_Gender_Roles_Touchscreen"){
+         return [
+          `
+            When you were asked to associate males with office items, and females with kitchen items
+            , your accuracy was ${this.calculateAccuracy(
+              0
+            )}, and your speed was  ${this.calculateSpeed(0)}
+        `,
+          `
+          When you were asked to associate males with kitchen items, and 
+          females with office items, your accuracy was ${this.calculateAccuracy(
+              1
+            )}, and your speed was  ${this.calculateSpeed(1)}
+        `,
+        ];
+      }else {
         return "error";
       }
     },

@@ -84,7 +84,7 @@ export function testData_Block1(male, female, trials) {
     });
     
     fullData[0].visibility = "block"
-    console.log("Test data 1: ", fullDataShuffled)
+    // console.log("Test data 1: ", fullDataShuffled)
     return fullData
 }
 
@@ -110,7 +110,7 @@ export function testData_Block2(office, kitchen, trials) {
     })
     fullData[0].visibility = "block"
 
-    console.log("Test data 2: ", fullData)
+    // console.log("Test data 2: ", fullData)
 
     return fullData
 }
@@ -136,7 +136,7 @@ export function testData_Block3(male_and_office, female_and_kitchen, trials) {
 
     fullData[0].visibility = "block"
 
-    console.log("Test data 3: ", fullData)
+    // console.log("Test data 3: ", fullData)
     return fullData
 
 }
@@ -162,7 +162,7 @@ export function testData_Block4(male_and_kitchen, female_and_office, trials) {
 
     fullData[0].visibility = "block"
 
-    console.log("Test data 4: ", fullData)
+    // console.log("Test data 4: ", fullData)
     return fullData
 
 }

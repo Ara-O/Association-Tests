@@ -58,7 +58,7 @@ import {
   testData_Block2,
   testData_Block3,
   testData_Block4,
-} from "../../../../modules/generateIatTrialsGender/generateIatTrialsToy.js";
+} from "../../../../modules/generateIatTrialsGender/generateIatTrialsRoles";
 import handleAnswer_TS from "../../../../modules/handleAnswers/handleAnswers_TS";
 import { startTimer } from "../../../../modules/handleAnswers/handleAnswers_TS";
 export default {
@@ -80,7 +80,7 @@ export default {
         {
           block: "Block2_TS",
           instructions:
-            "Click the left for Male toys, and the right for Female toys",
+            "Click the left for Office items, and the right for Kitchen items",
           data: testData_Block2("Left", "Right", 6),
           clickerLeft: "Male_Toy.png",
           clickerRight: "Female_Toy.png",
@@ -88,7 +88,7 @@ export default {
         {
           block: "Block3_TS",
           instructions:
-            "Practice: Click the left box for Male images/Male toys, and the right box for Female images/Female toys",
+            "Practice: Click the left box for Male images/Office items, and the right box for Female images/Kitchen items",
           data: testData_Block3("Left", "Right", 2),
           clickerLeft: "Male_And_Male_Toy.png",
           clickerRight: "Female_And_Female_Toy.png",
@@ -96,7 +96,7 @@ export default {
         {
           block: "Block4_TS",
           instructions:
-            "Let's Continue: Click the left box for Male images/Male toys, and the right box for Female images/Female toys",
+            "Let's Continue: Click the left box for Male images/Office items, and the right box for Female images/Kitchen items",
           data: testData_Block3("Left", "Right", 2),
           clickerLeft: "Male_And_Male_Toy.png",
           clickerRight: "Female_And_Female_Toy.png",
@@ -112,7 +112,7 @@ export default {
         {
           block: "Block6_TS",
           instructions:
-            "Practice: Click the right for Male images/Female toys, and the left for Female images/Male toys",
+            "Practice: Click the right for Male images/Kitchen items, and the left for Female images/Office items",
           data: testData_Block4("Right", "Left", 2),
           clickerLeft: "Female_And_Male_Toy.png",
           clickerRight: "Male_And_Female_Toy.png",
@@ -120,7 +120,7 @@ export default {
         {
           block: "Block7_TS",
           instructions:
-            "Let's Continue: Click the right for Male and Home, and the left for Female and Career",
+            "Let's Continue:  Click the right for Male images/Kitchen items, and the left for Female images/Office items",
           data: testData_Block4("Right", "Left", 2),
           clickerLeft: "Female_And_Male_Toy.png",
           clickerRight: "Male_And_Female_Toy.png",
@@ -166,7 +166,7 @@ export default {
 
   methods: {
     getImage(url) {
-      return require(`../../../../assets/stimulus_faces/${url}`);
+      return require(`../../../../assets/IAT_Gender_Roles/${url}`);
     },
 
     getImageClicker(url) {
@@ -184,14 +184,14 @@ export default {
         this,
         this.fullTest[this.currentBlock].data,
         this.fullTest[this.currentBlock].block,
-        "IAT_Gender_Toy_Touchscreen"
+        "IAT_Gender_Roles_Touchscreen"
       );
     },
   },
 
   mounted() {
-    this.$store.commit("changeCurrentTest", "IAT_Gender_Toy_Touchscreen");
-    this.$store.state["IAT_Gender_Toy_Touchscreen"] = [];
+    this.$store.commit("changeCurrentTest", "IAT_Gender_Roles_Touchscreen");
+    this.$store.state["IAT_Gender_Roles_Touchscreen"] = [];
     let that = this;
     document
       .querySelector(".test")

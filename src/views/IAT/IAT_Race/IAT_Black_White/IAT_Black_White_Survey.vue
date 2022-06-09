@@ -117,12 +117,6 @@
         @progress_ts="progress_ts"
         opinionTitle1="I consider black boys to be"
         opinionTitle2="I consider girls to be"
-        opinion1="Much more associated with toy cars/trucks than girls" 
-        opinion2="Somewhat more associated with toy cars/trucks than girls" 
-        opinion3="Less associated with toy cars/trucks than girls" 
-        opinion4="Much more associated with barbie dolls than boys"
-        opinion5="Somewhat more associated with barbie dolls than boys"
-        opinion6="Less associated with barbie dolls than boys"
       >
       </explicit-attitudes>
     </div>

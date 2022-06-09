@@ -66,7 +66,7 @@ function testData_Block1(white, black, trials) {
         el.description = "User chooses between White faces and Black faces"
     })
     
-    console.log("Rest data 1: ", fullData)
+    // console.log("Rest data 1: ", fullData)
     return fullData
 
 }
@@ -92,7 +92,7 @@ function testData_Block2(happy, sad, trials) {
         el.description = "User chooses between happy emojis and sad emojis"
     })
 
-    console.log("Test data 2: ", fullData)
+    // console.log("Test data 2: ", fullData)
 
     return fullData;
 }
@@ -118,7 +118,7 @@ function testData_Block3(white_happy, black_sad, trials) {
         el.description = "White faces/Happy faces are grouped together, while Black faces/Sad faces are grouped together"
     })
 
-    console.log("Test data 3/4: ", fullData)
+    // console.log("Test data 3/4: ", fullData)
 
     return fullData
 }
@@ -144,7 +144,7 @@ function testData_Block4(white_sad, black_happy, trials) {
         el.description = "White faces/Happy faces are grouped together, while Black faces/Sad faces are grouped together"
     })
 
-    console.log("Test data 6/7: ", fullData)
+    // console.log("Test data 6/7: ", fullData)
 
     return fullData
 

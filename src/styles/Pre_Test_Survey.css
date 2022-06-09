@@ -34,7 +34,7 @@ main .btn {
   border-radius: 47px;
   box-shadow: -2px 4px 4px -1px #cbcbcb;
   cursor: pointer;
-  margin-bottom: 25px;
+  /* margin-bottom: 25px; */
   transition: all 250ms ease-in-out;
 
   color: white;
@@ -77,7 +77,9 @@ main .btn {
 
 .survey_container {
   width: 446px;
+  max-height: 600px;
   height: auto;
+  overflow: auto;
   background: white;
   display: flex;
   flex-direction: column;
@@ -85,7 +87,7 @@ main .btn {
   align-items: center;
   box-shadow: -3px 1px 7px #eeeeeeb2, 2px 3px 5px rgb(218 218 219 / 95%);
   box-sizing: border-box;
-  padding: 21px 45px 35px;
+  padding: 21px 35px 35px;
   
 }
 
@@ -145,12 +147,8 @@ label {
 
 }
 
-label {
-  /* margin-top: 0px !important; */
-}
-
 .ethnicity-input {
-  height: 28px;
+  height: 24px;
   border: solid 1px #d0d0d0;
   border-radius: 7px;
   text-align: center;
@@ -223,7 +221,8 @@ section.consent-form {
 .slider-options{
   display: flex;
   justify-content: space-between;
-  height: 35px
+  height: 35px;
+  margin-bottom: 12px;
 }
 
 .slider-options span h5{
@@ -234,6 +233,32 @@ section.consent-form {
 .input-range-slider{
   width: 325px
   
+}
+
+.emotion-img{
+  width: 33px; 
+  cursor: pointer;
+}
+
+.child-img-survey{
+  width: 75px
+}
+
+.child-img-survey-option{
+  cursor: pointer;
+}
+
+.child-img-survey-option-container{
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.gender-toy-stereotype-option {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  column-gap: 19px;
 }
 
 @media (max-width: 450px) {

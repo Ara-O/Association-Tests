@@ -56,10 +56,9 @@ function nextFaceToMemorize(thisval) {
         thisval.currentlyVisible = 0;
         thisval.progress++;
         thisval.allMemorizationTimes[`${thisval.block + 1}-faces-trials`] =
-            thisval.memorizationTimes;
+        thisval.memorizationTimes;
         thisval.memorizationTimes = [];
         thisval.block++;
-        // this.$store.state.memorization_times = this.allMemorizationTimes;
     }
 }
 

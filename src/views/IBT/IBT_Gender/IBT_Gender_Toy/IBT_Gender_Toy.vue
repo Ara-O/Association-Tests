@@ -105,7 +105,7 @@ export default {
           trials: genderAndToy("male.jpg", "female.jpg", 2),
           section: "section_1",
           instruction: `There will be a picture of a Female toy or a Male toy in the
-        middle of screen. When you see a picture of the Female toy you should
+        middle of the screen. When you see a picture of the Female toy you should
         touch the female face at the bottom of the screen; when you see a Male toy, you should touch
         the Male face. Male faces and Female faces will appear at the bottom of
         the screen either on the left or right. Pay attention because the
@@ -117,7 +117,7 @@ export default {
           trials: genderAndToy("female.jpg", "male.jpg", 2),
           section: "section_2",
           instruction: `There will be a picture of a Female toy or a Male toy in the
-        middle of screen. When you see a picture of the Female toy you should
+        middle of the screen. When you see a picture of the Female toy you should
         touch the male face at the bottom of the screen; when you see a Male toy, you should touch
         the female face. Male faces and Female faces will appear at the bottom of
         the screen either on the left or right. Pay attention because the

@@ -54,6 +54,11 @@ select {
   text-align: center;
   font-weight: 400;
   margin-top: 10px;
+  width: 322px;
+}
+
+#role, #unique-id {
+  width: 58px;
 }
 
 form {

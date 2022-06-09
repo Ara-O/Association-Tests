@@ -11,7 +11,6 @@ let cYear = currentDate.getFullYear();
 function startTimer() {
     ms = 0;
     startTime = new Date();
-    // console.log('starting timer')
 }
 
 function stopTimer() {

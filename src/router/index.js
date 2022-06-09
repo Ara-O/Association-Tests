@@ -16,6 +16,7 @@ import IAT_Gender_Toy_Survey from "../views/IAT/IAT_Gender/IAT_Gender_Toy/IAT_Ge
 //---------
 //IAT Gender-Roles
 import IAT_Gender_Roles from "../views/IAT/IAT_Gender/IAT_Gender_Roles/IAT_Gender_Roles.vue";
+import IAT_Gender_Roles_Touchscreen from "../views/IAT/IAT_Gender/IAT_Gender_Roles/IAT_Gender_Roles_Touchscreen.vue";
 import IAT_Gender_Roles_Survey from "../views/IAT/IAT_Gender/IAT_Gender_Roles/IAT_Gender_Roles_Survey.vue";
 
 
@@ -78,6 +79,10 @@ const routes = [
   {
     path: "/IAT_Gender_Roles",
     component: IAT_Gender_Roles,
+  },
+  {
+    path: "/IAT_Gender_Roles_Touchscreen",
+    component: IAT_Gender_Roles_Touchscreen,
   },
   {
     path: "/IAT_Gender_Roles_Survey",

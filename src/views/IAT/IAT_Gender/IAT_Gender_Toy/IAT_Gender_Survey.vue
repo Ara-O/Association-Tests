@@ -115,14 +115,11 @@
         :userDataProp="userData"
         @progress_kb="progress_kb"
         @progress_ts="progress_ts"
-        opinionTitle1="I consider boys to be"
-        opinionTitle2="I consider girls to be"
-        opinion1="Much more associated with toy cars/trucks than girls" 
-        opinion2="Somewhat more associated with toy cars/trucks than girls" 
-        opinion3="Less associated with toy cars/trucks than girls" 
-        opinion4="Much more associated with barbie dolls than boys"
-        opinion5="Somewhat more associated with barbie dolls than boys"
-        opinion6="Less associated with barbie dolls than boys"
+        opinionTitle1="Which toy do you think this boy would choose to play?"
+        opinionTitle2="Which toy do you think this girl would choose to play?"
+        :stereotypeImages1="stereotypeImages1"
+        :stereotypeImages2="stereotypeImages2"
+        currentTest="IAT_Gender_Toy"
       >
       </explicit-attitudes>
     </div>
@@ -148,6 +145,8 @@ export default {
       notAgreedToConsentForm: true,
       redirectToHome: false,
       moveon: true,
+      stereotypeImages1: ["T_F01", "T_F02", "T_F03", "T_F04", "T_F05"],
+      stereotypeImages2: ["T_M01", "T_M02", "T_M03", "T_M04", "T_M05"],
       userData: {
         gender: "",
         chosenethnicity: "",
@@ -161,14 +160,14 @@ export default {
   },
 
   methods: {
-     next(userdata) {
+    next(userdata) {
       this.userData = userdata;
       this.moveon = false;
     },
 
     progress_ts() {
       this.userData.chosenethnicity =
-        this.chosenethnicity || this.userData.chosenethnicity;
+      this.chosenethnicity || this.userData.chosenethnicity;
       this.$store.state.userData = this.userData;
       this.$router.push("IAT_Gender_Toy_Touchscreen");
     },
@@ -181,9 +180,7 @@ export default {
     },
   },
 
-  mounted(){
-  
-  }
+  mounted() {},
 };
 </script>
 

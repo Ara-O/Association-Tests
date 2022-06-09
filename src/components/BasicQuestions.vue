@@ -6,42 +6,20 @@
       alt="Image"
       style="width: 273px"
     />
-    <div class="image_examples"></div>
     <h4>How do you identify your gender</h4>
-    <div class="image_examples">
-      <div class="gender_choice">
-        <input
-          type="radio"
-          value="male"
-          name="gender"
-          v-model="userData.gender"
-          id="male"
-          style="margin-left: 46px"
-        />
-        <label for="male">Male</label>
-      </div>
-      <div class="gender_choice">
-        <input
-          type="radio"
-          value="female"
-          name="gender"
-          v-model="userData.gender"
-          id="female"
-        />
-        <label for="female">Female</label>
-      </div>
-      <div class="gender_choice">
-        <input
-          type="radio"
-          value="other"
-          name="gender"
-          v-model="userData.gender"
-          id="other"
-        />
-        <label for="other">Other</label>
-      </div>
+    <div class="ethnicities">
+      <select name="gender" id="gender" v-model="userData.gender">
+        <option value="none" selected disabled>Choose your gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Female">Non-Binary</option>
+        <option value="Other">Other</option>
+        <option value="Prefer not to say">Prefer not to say</option>
+      </select>
+      <h4>Other, please specify</h4>
+      <input autocomplete="false"  type="text" class="ethnicity-input" v-model="gender" />
     </div>
-    <h4 style="margin-top: 35px">How would you identify your race/ethnicity</h4>
+    <h4 style="margin-top: 26px">How would you identify your race/ethnicity</h4>
 
     <div class="ethnicities">
       <select
@@ -80,6 +58,7 @@ export default {
   data() {
     return {
       chosenethnicity: "",
+      gender: "",
       userData: {
         gender: "",
         chosenethnicity: "",
@@ -95,6 +74,9 @@ export default {
     next() {
       if (this.userData.chosenethnicity.trim() === "") {
         this.userData.chosenethnicity = this.chosenethnicity;
+      }
+      if (this.userData.gender.trim() === "") {
+        this.userData.gender = this.gender;
       }
       this.$emit("next", this.userData);
     },

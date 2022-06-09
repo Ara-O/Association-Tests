@@ -120,11 +120,11 @@ function proceedAfterIncorrectChoice(thisval) {
 }
 
 function validateChoice(choice, thisval) {
-    console.log(thisval.facedata)
+    // console.log(thisval.facedata)
 
     // Sets the current face to the first value of the face data
     thisval.currentFace = thisval.facedata[thisval.currentlyVisible].name;
-    console.log(thisval.facedata[thisval.currentlyVisible].name)
+    // console.log(thisval.facedata[thisval.currentlyVisible].name)
     // Checks to make sure the value used to go over the array is less than the array length
     if (thisval.currentlyVisible !== thisval.facedata.length) {
         //If the user got the face right

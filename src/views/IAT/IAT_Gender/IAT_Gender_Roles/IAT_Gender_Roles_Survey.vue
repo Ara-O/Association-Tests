@@ -115,14 +115,11 @@
         :userDataProp="userData"
         @progress_kb="progress_kb"
         @progress_ts="progress_ts"
-        opinionTitle1="I consider boys to be"
-        opinionTitle2="I consider girls to be"
-        opinion1="Much more associated with office items than girls" 
-        opinion2="Somewhat more associated with office items than girls" 
-        opinion3="Less associated with office items than girls" 
-        opinion4="Much more associated with kitchen items than boys"
-        opinion5="Somewhat more associated with kitchen items than boys"
-        opinion6="Less associated with kitchen items than boys"
+        opinionTitle1="Which item do you think this boy would choose to work with?"
+        opinionTitle2="Which item do you think this girl would choose to work with?"
+        :stereotypeImages1="stereotypeImages1"
+        :stereotypeImages2="stereotypeImages2"
+        currentTest="IAT_Gender_Roles"
       >
       </explicit-attitudes>
     </div>
@@ -148,6 +145,22 @@ export default {
       notAgreedToConsentForm: true,
       redirectToHome: false,
       moveon: true,
+      stereotypeImages1: [
+        "H01-cookerhood",
+        "H02-cuttingboard",
+        "H03-pan",
+        "H04-refrigerator",
+        "H05-spatula",
+        "H06-washingsink",
+      ],
+      stereotypeImages2: [
+        "W01-chair",
+        "W02-computer",
+        "W03-desk",
+        "W04-filecabinet",
+        "W05-pen",
+        "W06-phone",
+      ],
       userData: {
         gender: "",
         chosenethnicity: "",
@@ -161,7 +174,7 @@ export default {
   },
 
   methods: {
-     next(userdata) {
+    next(userdata) {
       this.userData = userdata;
       this.moveon = false;
     },
@@ -181,9 +194,7 @@ export default {
     },
   },
 
-  mounted(){
-  
-  }
+  mounted() {},
 };
 </script>
 

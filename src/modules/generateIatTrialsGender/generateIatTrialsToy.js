@@ -82,7 +82,7 @@ function testData_Block1(male, female, trials) {
         el.description = "User chooses between male faces and female faces"
     })
 
-    console.table(fullData)
+    // console.table(fullData)
 
     return fullData
 
@@ -113,7 +113,7 @@ function testData_Block2(male_toy, female_toy, trials) {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
         el.description = "User chooses between male toys and female toys"
     })
-    console.table(fullData)
+    // console.table(fullData)
     return fullData;
 }
 
@@ -139,7 +139,7 @@ function testData_Block3(male_and_male_toy, female_and_female_toy, trials) {
         el.description = "Male faces/Male toys are grouped together, while Female faces/Female toys are grouped together"
     })
 
-    console.table(fullData)
+    // console.table(fullData)
     return fullData
 }
 
@@ -163,7 +163,7 @@ function testData_Block4(male_and_female_toys, female_and_male_toys, trials) {
         el.description = "Male faces/Female toys are grouped together, while Female faces/Male toys are grouped together"
     })
 
-    console.table(fullData)
+    // console.table(fullData)
     return fullData
 
 }

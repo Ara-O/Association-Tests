@@ -3,7 +3,7 @@
     <section v-if="notFinishedInstructions">
       <ibt-instructions @finishedInstructions="finishedInstructions"
         >There will be a picture of a Black person or a White person in the
-        middle of screen. When you see a picture of the White person you should
+        middle of the screen. When you see a picture of the White person you should
         touch the smiling face; when you see the Black person, you should touch
         the crying face. Smiling and crying faces will appear at the bottom of
         the screen either on the left or right. Pay attention because the
@@ -103,7 +103,7 @@ export default {
           trials: generateIBTtrialsRace("happy.jpg", "sad.jpg", 2),
           section: "section_1",
           instruction: `There will be a picture of a Black person or a White person in the
-        middle of screen. When you see a picture of the White person you should
+        middle of the screen. When you see a picture of the White person you should
         touch the crying face; when you see the Black person, you should touch
         the smiling face. Smiling and crying faces will appear at the bottom of
         the screen either on the left or right. Pay attention because the

@@ -55,13 +55,13 @@ export default {
       ) {
         return [
           `
-            When you were asked to associate male with career, and female with home,
+            When you were asked to associate boys with male toys, and girls with female toys,
             your accuracy was ${this.calculateAccuracy(
               0
             )}, and your speed was  ${this.calculateSpeed(0)}
         `,
           `
-            When you were asked to associate male with home, and female with career
+            When you were asked to associate boys with female toys, and girls with male toys
             your accuracy was ${this.calculateAccuracy(
               1
             )}, and your speed was  ${this.calculateSpeed(1)}

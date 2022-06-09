@@ -75,8 +75,8 @@ export default {
             )}, and your speed was  ${this.calculateSpeed(1)}
         `,
           `
-           When you were asked to associate images of black people with sad faces, and images of
-            white people with happy faces, your accuracy was ${this.calculateAccuracy(
+           When you were asked to associate images of black people with happy faces, and images of
+            white people with sad faces, your accuracy was ${this.calculateAccuracy(
               2
             )}, and your speed was  ${this.calculateSpeed(2)}
         `,

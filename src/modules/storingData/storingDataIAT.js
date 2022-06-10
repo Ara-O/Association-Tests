@@ -4,6 +4,7 @@ export function updateIATData(Data, test, cMonth, cDay, cYear, whereToStore, ver
     // const db = getDatabase();
     let dataclone = JSON.parse(JSON.stringify(Data));
     dataclone.forEach((data, index) => {
+        console.log(data)
         //adding the current test, browser type, and the date taken
         data.currentTest = whereToStore;
         data.browser = navigator["userAgent"];
@@ -14,10 +15,19 @@ export function updateIATData(Data, test, cMonth, cDay, cYear, whereToStore, ver
         data.stimulusOrder = index + 1;
         data.gender = test.$store.state.userData.gender || "Not provided";
         data.ethnicity = test.$store.state.userData.chosenethnicity || "Not provided";
-        data.howUserFeelsTowardsMen = test.$store.state.userData.slider1 || "Not provided";
-        data.howUserFeelsTowardsWomen = test.$store.state.userData.slider2 || "Not provided";
-        data.opinionOfBoys = test.$store.state.userData.opinionofboys || "Not provided";
-        data.opinionOfGirls = test.$store.state.userData.opinionofgirls || "Not provided";
+        data.howUserFeelsTowardsBoys = test.$store.state.userData.slider1 || "Not provided";
+        data.howUserFeelsTowardsGirls = test.$store.state.userData.slider2 || "Not provided";
+
+        //Only for iat gender
+        if(data.testType[4] === "G"){
+            data.opinionOfBoys = test.$store.state.userData.opinionofboys || "Not provided";
+            data.opinionOfGirls = test.$store.state.userData.opinionofgirls || "Not provided";
+        } else {     
+            //Only for iat race
+            data.opinionOfBlackAmericans = test.$store.state.userData.opinionofblackamericans;
+            data.opinionOfWhiteAmericans = test.$store.state.userData.opinionofwhiteamericans;
+            data.opinionOfAsianAmericans = test.$store.state.userData.opinionofasianamericans;
+        }
         delete data.image;
         delete data.name;
         delete data.visibility;

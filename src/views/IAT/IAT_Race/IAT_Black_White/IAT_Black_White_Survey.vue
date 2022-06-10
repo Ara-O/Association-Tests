@@ -111,14 +111,12 @@
 
     <!-- EXPLICIT ATTITUDES -->
     <div v-else class="survey_container">
-      <explicit-attitudes
+      <explicit-attitudes-race
         :userDataProp="userData"
         @progress_kb="progress_kb"
         @progress_ts="progress_ts"
-        opinionTitle1="I consider black boys to be"
-        opinionTitle2="I consider girls to be"
       >
-      </explicit-attitudes>
+      </explicit-attitudes-race>
     </div>
   </main>
   <section v-if="redirectToHome" class="redirectToHome">
@@ -130,11 +128,11 @@
 
 <script>
 import BasicQuestions from "../../../../components/BasicQuestions.vue";
-import ExplicitAttitudes from "../../../../components/ExplicitAttitudes.vue";
+import ExplicitAttitudesRace from "../../../../components/ExplicitAttitudesRace.vue";
 export default {
   components: {
     BasicQuestions,
-    ExplicitAttitudes,
+    ExplicitAttitudesRace,
   },
   data() {
     return {
@@ -159,17 +157,17 @@ export default {
       this.moveon = false;
     },
 
-    progress_ts() {
-      this.userData.chosenethnicity =
-        this.chosenethnicity || this.userData.chosenethnicity;
+    progress_ts(userData) {
+      this.userData = userData
       this.$store.state.userData = this.userData;
+      console.log(this.userData)
       this.$router.push("IAT_Black_White_Touchscreen");
     },
 
-    progress_kb() {
-      this.userData.chosenethnicity =
-        this.chosenethnicity || this.userData.chosenethnicity;
+    progress_kb(userData) {
+      this.userData=userData;
       this.$store.state.userData = this.userData;
+      console.log(this.userData)
       this.$router.push("IAT_Black_White");
     },
   },

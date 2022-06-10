@@ -76,7 +76,8 @@ main .btn {
 }
 
 .survey_container {
-  width: 446px;
+  width: auto;
+  max-width: 600px;
   max-height: 600px;
   height: auto;
   overflow: auto;
@@ -259,6 +260,26 @@ section.consent-form {
   display: flex;
   align-items: center;
   column-gap: 19px;
+}
+
+.explicit-attitudes-div{
+  display: flex;
+  justify-content: center
+}
+
+.explicit-attitudes-scale{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center
+}
+
+.explicit-attitudes-label{
+      margin-top: 0px;
+    display: inline-block;
+    font-size: 14px;
+    margin-bottom: 0px;
+    font-weight: 400;
+    line-height: 24px;
 }
 
 @media (max-width: 450px) {

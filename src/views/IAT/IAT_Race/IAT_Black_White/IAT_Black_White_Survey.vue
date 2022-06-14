@@ -139,15 +139,7 @@ export default {
       notAgreedToConsentForm: true,
       redirectToHome: false,
       moveon: true,
-      userData: {
-        gender: "",
-        chosenethnicity: "",
-        slider1: 50,
-        slider2: 50,
-        opinionofboys: "",
-        opinionofgirls: "",
-      },
-      chosenethnicity: "",
+      userData: {},
     };
   },
 
@@ -160,14 +152,12 @@ export default {
     progress_ts(userData) {
       this.userData = userData
       this.$store.state.userData = this.userData;
-      console.log(this.userData)
       this.$router.push("IAT_Black_White_Touchscreen");
     },
 
     progress_kb(userData) {
       this.userData=userData;
       this.$store.state.userData = this.userData;
-      console.log(this.userData)
       this.$router.push("IAT_Black_White");
     },
   },

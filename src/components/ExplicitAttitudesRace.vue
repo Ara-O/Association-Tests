@@ -9,30 +9,30 @@
   <div class="warmness-slider">
     <div class="slider-options">
       <img
-        src="../assets/emotions_range/big-frown.png"
+        src="../assets/Emotions_Range/big-frown.png"
         alt="big frown"
         class="emotion-img"
         style="width: 32px"
       />
       <img
-        src="../assets/emotions_range/slightly-sad.png"
+        src="../assets/Emotions_Range/slightly-sad.png"
         alt="slightly sad"
         class="emotion-img"
         style="width: 33px"
       />
       <img
-        src="../assets/emotions_range/no-preference.png"
+        src="../assets/Emotions_Range/no-preference.png"
         alt="no preference"
         class="emotion-img"
       />
       <img
-        src="../assets/emotions_range/slightly-happy.png"
+        src="../assets/Emotions_Range/slightly-happy.png"
         alt="slightly happy"
         class="emotion-img"
         style="width: 32px"
       />
       <img
-        src="../assets/emotions_range/big-smile.png"
+        src="../assets/Emotions_Range/big-smile.png"
         alt="big smile"
         class="emotion-img"
       />
@@ -55,30 +55,30 @@
   <div class="warmness-slider">
     <div class="slider-options">
       <img
-        src="../assets/emotions_range/big-frown.png"
+        src="../assets/Emotions_Range/big-frown.png"
         alt="big frown"
         class="emotion-img"
         style="width: 32px"
       />
       <img
-        src="../assets/emotions_range/slightly-sad.png"
+        src="../assets/Emotions_Range/slightly-sad.png"
         alt="slightly sad"
         class="emotion-img"
         style="width: 33px"
       />
       <img
-        src="../assets/emotions_range/no-preference.png"
+        src="../assets/Emotions_Range/no-preference.png"
         alt="no preference"
         class="emotion-img"
       />
       <img
-        src="../assets/emotions_range/slightly-happy.png"
+        src="../assets/Emotions_Range/slightly-happy.png"
         alt="slightly happy"
         class="emotion-img"
         style="width: 32px"
       />
       <img
-        src="../assets/emotions_range/big-smile.png"
+        src="../assets/Emotions_Range/big-smile.png"
         alt="big smile"
         class="emotion-img"
       />
@@ -255,7 +255,7 @@ export default {
 
   methods: {
       test(){
-          console.log(this.userData)
+          // console.log(this.userData)
       },
     progress_ts() {
       this.$emit("progress_ts",this.userData);
@@ -265,7 +265,7 @@ export default {
     },
 
     getImage(img) {
-      return require(`../assets/stimulus_faces/${img}.jpg`);
+      return require(`../assets/Stimulus_Faces/${img}.jpg`);
     },
   },
 

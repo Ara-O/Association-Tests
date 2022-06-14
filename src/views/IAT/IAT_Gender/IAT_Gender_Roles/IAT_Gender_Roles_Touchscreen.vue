@@ -3,7 +3,7 @@
     <section class="instruction" v-if="notStarted">
       <h3 v-html="fullTest[currentBlock]?.instructions"></h3>
       <img
-        src="../../../../assets/app_icons/rightArrow.png"
+        src="../../../../assets/App_Icons/rightArrow.png"
         alt="Right arrow"
         @click="start"
         class="right-arrow"
@@ -23,7 +23,7 @@
       <!-- <h3></h3> -->
       <h4>Incorrect. Try again to progress!</h4>
       <img
-        src="../../../../assets/app_icons/incorrectImg.png"
+        src="../../../../assets/App_Icons/incorrectImg.png"
         alt="Wrong icon"
         class="wrong-icon"
       />
@@ -170,7 +170,7 @@ export default {
     },
 
     getImageClicker(url) {
-      return require(`../../../../assets/clicker_images/${url}`);
+      return require(`../../../../assets/Clicker_Images/${url}`);
     },
 
     start() {

@@ -24,7 +24,7 @@
         <br />
         <h4>Click the right arrow to continue</h4>
         <img
-          src="../../../../assets/app_icons/rightArrow.png"
+          src="../../../../assets/App_Icons/rightArrow.png"
           alt="Right arrow"
           @click="next"
           class="continue"
@@ -33,7 +33,7 @@
       <div v-else-if="testNotStarted === false">
         <div style="display: flex; flex-direction: column; align-items: center">
           <img
-            src="../../../../assets/IT_faces/star.jpg"
+            src="../../../../assets/IT_Faces/star.jpg"
             alt="star"
             class="irbt_star"
           />
@@ -49,7 +49,7 @@
               Incorrect. Try again to progress!
             </h3>
             <img
-              src="../../../../assets/app_icons/incorrectImg.png"
+              src="../../../../assets/App_Icons/incorrectImg.png"
               alt="Wrong icon"
               class="irbt-wrong-img"
             />
@@ -144,13 +144,13 @@ export default {
 
     getFacesPosition() {
       let face = irbt.getFacesPosition(this, "happy.jpg", "sad.jpg");
-      return require(`../../../../assets/IRBT_faces/${face}`);
+      return require(`../../../../assets/IBT_Faces/${face}`);
     },
 
     //does the reverse of the first method for the second image
     getFacesPosition2() {
       let face = irbt.getFacesPosition2(this, "happy.jpg", "sad.jpg");
-      return require(`../../../../assets/IRBT_faces/${face}`);
+      return require(`../../../../assets/IBT_Faces/${face}`);
     },
 
     leftFaceAction() {
@@ -170,7 +170,7 @@ export default {
     },
 
     getImage(url) {
-      return require(`../../../../assets/stimulus_faces/${url}`);
+      return require(`../../../../assets/IAT_Gender_Toy/${url}`);
     },
 
     next() {

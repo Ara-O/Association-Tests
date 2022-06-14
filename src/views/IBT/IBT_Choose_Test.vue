@@ -120,7 +120,7 @@ export default {
 
 <style scoped>
 main {
-  background: url("../../assets/app_icons/patternbg.jpg");
+  background: url("../../assets/App_Icons/patternbg.jpg");
   background-repeat: repeat;
   background-size: 433px;
 }

@@ -4,7 +4,7 @@ export function updateIATData(Data, test, cMonth, cDay, cYear, whereToStore, ver
     // const db = getDatabase();
     let dataclone = JSON.parse(JSON.stringify(Data));
     dataclone.forEach((data, index) => {
-        console.log(data)
+        // console.log(data)
         //adding the current test, browser type, and the date taken
         data.currentTest = whereToStore;
         data.browser = navigator["userAgent"];
@@ -20,8 +20,8 @@ export function updateIATData(Data, test, cMonth, cDay, cYear, whereToStore, ver
 
         //Only for iat gender
         if(data.testType[4] === "G"){
-            data.opinionOfBoys = test.$store.state.userData.opinionofboys || "Not provided";
-            data.opinionOfGirls = test.$store.state.userData.opinionofgirls || "Not provided";
+            data.boyWouldChooseToPlayWith = test.$store.state.userData.boyWouldChooseToPlayWith || "Not provided";
+            data.girlWouldChooseToPlayWith = test.$store.state.userData.girlWouldChooseToPlayWith || "Not provided";
         } else {     
             //Only for iat race
             data.opinionOfBlackAmericans = test.$store.state.userData.opinionofblackamericans;

@@ -27,7 +27,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 main {
-  background-image: url("../assets/app_icons/patternbg.jpg");
+  background-image: url("../assets/App_Icons/patternbg.jpg");
   height: 100vh;
   background-repeat: repeat;
   background-size: 433px;

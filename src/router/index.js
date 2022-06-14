@@ -20,6 +20,18 @@ import IAT_Gender_Roles_Touchscreen from "../views/IAT/IAT_Gender/IAT_Gender_Rol
 import IAT_Gender_Roles_Survey from "../views/IAT/IAT_Gender/IAT_Gender_Roles/IAT_Gender_Roles_Survey.vue";
 
 
+//---------
+//IAT Gender-Clothing
+import IAT_Gender_Clothing from "../views/IAT/IAT_Gender/IAT_Gender_Clothing/IAT_Gender_Clothing.vue";
+import IAT_Gender_Clothing_Touchscreen from "../views/IAT/IAT_Gender/IAT_Gender_Clothing/IAT_Gender_Clothing_Touchscreen.vue";
+import IAT_Gender_Clothing_Survey from "../views/IAT/IAT_Gender/IAT_Gender_Clothing/IAT_Gender_Clothing_Survey.vue";
+
+//---------
+//IAT Gender-Color
+import IAT_Gender_Color from "../views/IAT/IAT_Gender/IAT_Gender_Color/IAT_Gender_Color.vue";
+import IAT_Gender_Color_Touchscreen from "../views/IAT/IAT_Gender/IAT_Gender_Color/IAT_Gender_Color_Touchscreen.vue";
+import IAT_Gender_Color_Survey from "../views/IAT/IAT_Gender/IAT_Gender_Color/IAT_Gender_Color_Survey.vue";
+
 
 // ---------------
 // IAT Black_White
@@ -89,6 +101,30 @@ const routes = [
     component: IAT_Gender_Roles_Survey,
   },
   {
+    path: "/IAT_Gender_Clothing",
+    component: IAT_Gender_Clothing,
+  },
+  {
+    path: "/IAT_Gender_Clothing_Touchscreen",
+    component: IAT_Gender_Clothing_Touchscreen,
+  },
+  {
+    path: "/IAT_Gender_Clothing_Survey",
+    component: IAT_Gender_Clothing_Survey,
+  },
+  {
+    path: "/IAT_Gender_Color",
+    component: IAT_Gender_Color,
+  },
+  {
+    path: "/IAT_Gender_Color_Touchscreen",
+    component: IAT_Gender_Color_Touchscreen,
+  },
+  {
+    path: "/IAT_Gender_Color_Survey",
+    component: IAT_Gender_Color_Survey,
+  },
+  {
     path: "/IAT_Gender_Toy_Survey",
     component: IAT_Gender_Toy_Survey,
   },
@@ -116,7 +152,6 @@ const routes = [
   {
     path: "/IT",
     component: IT,
-
   }, 
   {
     path: '/IT_Number_White',

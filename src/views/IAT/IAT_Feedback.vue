@@ -101,6 +101,38 @@ export default {
             )}, and your speed was  ${this.calculateSpeed(1)}
         `,
         ];
+      } else if(this.getCurrentTest === "IAT_Gender_Clothing" ||
+        this.getCurrentTest === "IAT_Gender_Clothing_Touchscreen"){
+         return [
+          `
+            When you were asked to associate males with male clothing, and females with female clothing
+            , your accuracy was ${this.calculateAccuracy(
+              0
+            )}, and your speed was  ${this.calculateSpeed(0)}
+        `,
+          `
+          When you were asked to associate males with female clothing, and 
+          females with male clothing, your accuracy was ${this.calculateAccuracy(
+              1
+            )}, and your speed was  ${this.calculateSpeed(1)}
+        `,
+        ];
+      } else if(this.getCurrentTest === "IAT_Gender_Color" ||
+        this.getCurrentTest === "IAT_Gender_Color_Touchscreen"){
+         return [
+          `
+            When you were asked to associate males with blue colors, and females with pink colors
+            , your accuracy was ${this.calculateAccuracy(
+              0
+            )}, and your speed was  ${this.calculateSpeed(0)}
+        `,
+          `
+          When you were asked to associate males with pink colors, and 
+          females with blue colors, your accuracy was ${this.calculateAccuracy(
+              1
+            )}, and your speed was  ${this.calculateSpeed(1)}
+        `,
+        ];
       }else {
         return "error";
       }

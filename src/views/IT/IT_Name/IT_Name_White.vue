@@ -108,7 +108,7 @@
       <h3>Can you remember all the people?</h3>
       <h3>Press the right arrow to get started</h3>
       <img
-        src="../../../assets/app_icons/rightArrow.png"
+        src="../../../assets/App_Icons/rightArrow.png"
         alt="Right Arrow"
         class="next"
         v-if="progress !== 3 && progress !== 5"
@@ -128,7 +128,7 @@
       </h3>
       <br />
       <img
-        src="../../../assets/app_icons/rightArrow.png"
+        src="../../../assets/App_Icons/rightArrow.png"
         alt="Right Arrow"
         class="next"
         @click="moveForward"
@@ -138,7 +138,7 @@
     <!-- -------------------- -->
 
     <div class="stardiv">
-      <img src="../../../assets/IT_faces/star.jpg" class="star" alt="" />
+      <img src="../../../assets/IT_Faces/star.jpg" class="star" alt="" />
     </div>
 
     <div v-if="progress === 3">
@@ -171,7 +171,7 @@
     <div v-if="progress === 4" class="progress4">
       <h3 class="instructions midinstructions" v-html="createInstruction"></h3>
       <img
-        src="../../../assets/app_icons/rightArrow.png"
+        src="../../../assets/App_Icons/rightArrow.png"
         alt="Right Arrow"
         class="next"
         @click="moveForward"
@@ -188,7 +188,7 @@
           <div class="faces_flexbox">
             <div class="crossdiv">
               <img
-                src="../../../assets/IT_faces/cross.jpg"
+                src="../../../assets/IT_Faces/cross.jpg"
                 alt=""
                 class="cross"
               />

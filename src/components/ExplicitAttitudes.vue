@@ -9,30 +9,30 @@
   <div class="warmness-slider">
     <div class="slider-options">
       <img
-        src="../assets/emotions_range/big-frown.png"
+        src="../assets/Emotions_Range/big-frown.png"
         alt="big frown"
         class="emotion-img"
         style="width: 32px"
       />
       <img
-        src="../assets/emotions_range/slightly-sad.png"
+        src="../assets/Emotions_Range/slightly-sad.png"
         alt="slightly sad"
         class="emotion-img"
         style="width: 33px"
       />
       <img
-        src="../assets/emotions_range/no-preference.png"
+        src="../assets/Emotions_Range/no-preference.png"
         alt="no preference"
         class="emotion-img"
       />
       <img
-        src="../assets/emotions_range/slightly-happy.png"
+        src="../assets/Emotions_Range/slightly-happy.png"
         alt="slightly happy"
         class="emotion-img"
         style="width: 32px"
       />
       <img
-        src="../assets/emotions_range/big-smile.png"
+        src="../assets/Emotions_Range/big-smile.png"
         alt="big smile"
         class="emotion-img"
       />
@@ -55,30 +55,30 @@
   <div class="warmness-slider">
     <div class="slider-options">
       <img
-        src="../assets/emotions_range/big-frown.png"
+        src="../assets/Emotions_Range/big-frown.png"
         alt="big frown"
         class="emotion-img"
         style="width: 32px"
       />
       <img
-        src="../assets/emotions_range/slightly-sad.png"
+        src="../assets/Emotions_Range/slightly-sad.png"
         alt="slightly sad"
         class="emotion-img"
         style="width: 33px"
       />
       <img
-        src="../assets/emotions_range/no-preference.png"
+        src="../assets/Emotions_Range/no-preference.png"
         alt="no preference"
         class="emotion-img"
       />
       <img
-        src="../assets/emotions_range/slightly-happy.png"
+        src="../assets/Emotions_Range/slightly-happy.png"
         alt="slightly happy"
         class="emotion-img"
         style="width: 32px"
       />
       <img
-        src="../assets/emotions_range/big-smile.png"
+        src="../assets/Emotions_Range/big-smile.png"
         alt="big smile"
         class="emotion-img"
       />
@@ -94,11 +94,10 @@
 
   <!-- Stereotype section -->
   <div>
-    <!-- Make it so that this is dynamic -->
     <h4>{{ opinionTitle1 }}</h4>
     <div class="gender-toy-stereotype-option">
       <img
-        src="../assets/stimulus_faces/C_M08.jpg"
+        src="../assets/IAT_Gender_Toy/C_M08.jpg"
         alt="Boy child"
         class="child-img-survey"
       />
@@ -118,7 +117,7 @@
           id="child-img-survey-option1-2"
           name="child-img-survey-2"
           :value="generateOptionValue(leftImg)"
-          v-model="userData.opinionofboys"
+          v-model="userData.boyWouldChooseToPlayWith"
         />
       </div>
       <div class="child-img-survey-option-container">
@@ -136,7 +135,7 @@
           id="child-img-survey-option2-2"
           name="child-img-survey-2"
           :value="generateOptionValue(rightImg)"
-          v-model="userData.opinionofboys"
+          v-model="userData.boyWouldChooseToPlayWith"
         />
       </div>
     </div>
@@ -147,7 +146,7 @@
     <h4>{{ opinionTitle2 }}</h4>
     <div class="gender-toy-stereotype-option" style="margin-bottom: 30px">
       <img
-        src="../assets/stimulus_faces/C_F08.jpg"
+        src="../assets/IAT_Gender_Toy/C_F08.jpg"
         alt="Girl child"
         class="child-img-survey"
       />
@@ -167,7 +166,7 @@
           id="child-img-survey-option1"
           name="child-img-survey"
           :value="generateOptionValue(leftImg2)"
-          v-model="userData.opinionofgirls"
+          v-model="userData.girlWouldChooseToPlayWith"
         />
       </div>
       <div class="child-img-survey-option-container">
@@ -185,7 +184,7 @@
           id="child-img-survey-option2"
           name="child-img-survey"
           :value="generateOptionValue(rightImg2)"
-          v-model="userData.opinionofgirls"
+          v-model="userData.girlWouldChooseToPlayWith"
         />
       </div>
     </div>
@@ -211,14 +210,17 @@
 
 <script>
 export default {
-  props: [
-    "userDataProp",
-    "opinionTitle1",
-    "opinionTitle2",
-    "stereotypeImages1",
-    "stereotypeImages2",
-    "currentTest"
-  ],
+  props: {
+    userDataProp: Object,
+    opinionTitle1: String,
+    opinionTitle2: String,
+    stereotypeImages1: Array,
+    stereotypeImages2: Array,
+    currentTest: String,
+    fileLocation: {
+      default: "Stimulus_Faces",
+    },
+  },
   emits: ["progress_kb", "progress_ts"],
   data() {
     return {
@@ -231,8 +233,8 @@ export default {
         chosenethnicity: "",
         slider1: 50,
         slider2: 50,
-        opinionofboys: "",
-        opinionofgirls: "",
+        boyWouldChooseToPlayWith: "",
+        girlWouldChooseToPlayWith: "",
       },
     };
   },
@@ -246,25 +248,41 @@ export default {
     },
 
     generateOptionValue(img) {
-      if(this.currentTest ==="IAT_Gender_Toy"){
-      if(img[2] === "M"){
-        return "Chose the male toy"
-      } else if (img[2] === "F"){
-        return "Chose the female toy"
-      }
+      if (this.currentTest === "IAT_Gender_Toy") {
+        if (img[2] === "M") {
+          return "Male toy";
+        } else if (img[2] === "F") {
+          return "Female toy";
+        }
       }
 
-      if(this.currentTest ==="IAT_Gender_Roles"){
-      if(img[0] === "H"){
-        return "Chose the kitchen appliance"
-      } else if (img[0] === "W"){
-        return "Chose the office appliance"
+      if (this.currentTest === "IAT_Gender_Roles") {
+        if (img[0] === "H") {
+          return "Kitchen appliance";
+        } else if (img[0] === "W") {
+          return "Office appliance";
+        }
       }
+
+      if (this.currentTest === "IAT_Gender_Clothing") {
+        if (img[3] === "F") {
+          return "Female clothing";
+        } else if (img[3] === "M") {
+          return "Male clothing";
+        }
+      }
+
+      if (this.currentTest === "IAT_Gender_Color") {
+        if (img[0] === "b") {
+          return "Blue color";
+        } else if (img[0] === "p") {
+          return "Female color";
+        }
       }
     },
 
     getImage(img) {
-      return require(`../assets/stimulus_faces/${img}.jpg`);
+      return require(`../assets/${this.fileLocation}/${img}.jpg`);
     },
 
     generateStereotypeOptions() {

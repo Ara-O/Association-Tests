@@ -30,11 +30,27 @@
       </router-link>
 
       <router-link
-        to="/IAT_Choose_Test"
+        to="/IAT_Gender_Clothing_Survey"
         class="routerlink test_btn"
         tag="button"
       >
         Gender-Clothing IAT
+      </router-link>
+
+      <router-link
+        to="/IAT_Gender_Color_Survey"
+        class="routerlink test_btn"
+        tag="button"
+      >
+        Gender-Color IAT
+      </router-link>
+      
+      <router-link
+        to="/IAT_Gender_Roles_Survey"
+        class="routerlink test_btn"
+        tag="button"
+      >
+        Gender-Roles IAT
       </router-link>
 
       <router-link
@@ -45,21 +61,7 @@
         Gender-Subject IAT
       </router-link>
 
-      <router-link
-        to="/IAT_Choose_Test"
-        class="routerlink test_btn"
-        tag="button"
-      >
-        Gender-Color IAT
-      </router-link>
 
-      <router-link
-        to="/IAT_Gender_Roles_Survey"
-        class="routerlink test_btn"
-        tag="button"
-      >
-        Gender-Roles IAT
-      </router-link>
       <h3
         style="text-decoration: underline; cursor: pointer; font-size: 16px"
         @click="iattype = ''"
@@ -119,7 +121,7 @@ export default {
 
 <style scoped>
 main {
-  background: url("../../assets/app_icons/patternbg.jpg");
+  background: url("../../assets/App_Icons/patternbg.jpg");
   background-repeat: repeat;
   background-size: 433px;
   display: flex;

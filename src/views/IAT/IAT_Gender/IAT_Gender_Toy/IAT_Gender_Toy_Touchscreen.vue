@@ -3,7 +3,7 @@
     <section class="instruction" v-if="notStarted">
       <h3 v-html="fullTest[currentBlock]?.instructions"></h3>
       <img
-        src="../../../../assets/app_icons/rightArrow.png"
+        src="../../../../assets/App_Icons/rightArrow.png"
         alt="Right arrow"
         @click="start"
         class="right-arrow"
@@ -23,7 +23,7 @@
       <!-- <h3></h3> -->
       <h4>Incorrect. Try again to progress!</h4>
       <img
-        src="../../../../assets/app_icons/incorrectImg.png"
+        src="../../../../assets/App_Icons/incorrectImg.png"
         alt="Wrong icon"
         class="wrong-icon"
       />
@@ -120,7 +120,7 @@ export default {
         {
           block: "Block7_TS",
           instructions:
-            "Let's Continue: Click the right for Male and Home, and the left for Female and Career",
+            "Let's Continue: Click the right for Male images/Female toys, and the left for Female images/Male toys",
           data: testData_Block4("Right", "Left", 2),
           clickerLeft: "Female_And_Male_Toy.png",
           clickerRight: "Male_And_Female_Toy.png",
@@ -166,11 +166,11 @@ export default {
 
   methods: {
     getImage(url) {
-      return require(`../../../../assets/stimulus_faces/${url}`);
+      return require(`../../../../assets/IAT_Gender_Toy/${url}`);
     },
 
     getImageClicker(url) {
-      return require(`../../../../assets/clicker_images/${url}`);
+      return require(`../../../../assets/Clicker_Images/${url}`);
     },
 
     start() {

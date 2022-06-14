@@ -120,6 +120,7 @@
         :stereotypeImages1="stereotypeImages1"
         :stereotypeImages2="stereotypeImages2"
         currentTest="IAT_Gender_Roles"
+        fileLocation="IAT_Gender_Roles"
       >
       </explicit-attitudes>
     </div>
@@ -161,15 +162,7 @@ export default {
         "W05-pen",
         "W06-phone",
       ],
-      userData: {
-        gender: "",
-        chosenethnicity: "",
-        slider1: 50,
-        slider2: 50,
-        opinionofboys: "",
-        opinionofgirls: "",
-      },
-      chosenethnicity: "",
+      userData: {},
     };
   },
 
@@ -180,15 +173,11 @@ export default {
     },
 
     progress_ts() {
-      this.userData.chosenethnicity =
-        this.chosenethnicity || this.userData.chosenethnicity;
       this.$store.state.userData = this.userData;
       this.$router.push("IAT_Gender_Roles_Touchscreen");
     },
 
     progress_kb() {
-      this.userData.chosenethnicity =
-        this.chosenethnicity || this.userData.chosenethnicity;
       this.$store.state.userData = this.userData;
       this.$router.push("IAT_Gender_Roles");
     },

@@ -2,7 +2,7 @@
   <div class="basic-questions">
     <h3 class="basic-questions_title">Basic questions</h3>
     <img
-      src="../assets/app_icons/diverseimg.jpg"
+      src="../assets/App_Icons/diverseimg.jpg"
       alt="Image"
       style="width: 273px"
     />
@@ -64,8 +64,8 @@ export default {
         chosenethnicity: "",
         slider1: 50,
         slider2: 50,
-        opinionofboys: "",
-        opinionofgirls: "",
+        boyWouldChooseToPlayWith: "",
+        girlWouldChooseToPlayWith: "",
       },
     };
   },

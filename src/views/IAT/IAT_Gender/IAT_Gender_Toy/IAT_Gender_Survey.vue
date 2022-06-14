@@ -120,6 +120,7 @@
         :stereotypeImages1="stereotypeImages1"
         :stereotypeImages2="stereotypeImages2"
         currentTest="IAT_Gender_Toy"
+        fileLocation="IAT_Gender_Toy"
       >
       </explicit-attitudes>
     </div>
@@ -147,15 +148,7 @@ export default {
       moveon: true,
       stereotypeImages1: ["T_F01", "T_F02", "T_F03", "T_F04", "T_F05"],
       stereotypeImages2: ["T_M01", "T_M02", "T_M03", "T_M04", "T_M05"],
-      userData: {
-        gender: "",
-        chosenethnicity: "",
-        slider1: 50,
-        slider2: 50,
-        opinionofboys: "",
-        opinionofgirls: "",
-      },
-      chosenethnicity: "",
+      userData: {},
     };
   },
 
@@ -166,15 +159,11 @@ export default {
     },
 
     progress_ts() {
-      this.userData.chosenethnicity =
-      this.chosenethnicity || this.userData.chosenethnicity;
       this.$store.state.userData = this.userData;
       this.$router.push("IAT_Gender_Toy_Touchscreen");
     },
 
     progress_kb() {
-      this.userData.chosenethnicity =
-        this.chosenethnicity || this.userData.chosenethnicity;
       this.$store.state.userData = this.userData;
       this.$router.push("IAT_Gender_Toy");
     },

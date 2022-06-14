@@ -8,7 +8,7 @@
       <h3>Click the SPACE bar on your computer to start</h3>
       <!-- SPACE BAR -->
       <img
-        src="../../../../assets/app_icons/spacebar.png"
+        src="../../../../assets/App_Icons/spacebar.png"
         alt="Space bar"
         class="spacebar"
       />
@@ -34,7 +34,7 @@
       <!-- <h3></h3> -->
       <h4>Incorrect. Try again to progress!</h4>
       <img
-        src="../../../../assets/app_icons/incorrectImg.png"
+        src="../../../../assets/App_Icons/incorrectImg.png"
         alt="Wrong icon"
         class="wrong-icon"
       />
@@ -113,7 +113,7 @@ export default {
 
   methods: {
     getImage(url) {
-      return require(`../../../../assets/stimulus_faces/${url}`);
+      return require(`../../../../assets/Stimulus_Faces/${url}`);
     },
 
     testOver() {

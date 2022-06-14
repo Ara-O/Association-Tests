@@ -2,7 +2,7 @@
   <main>
     <div v-if="section === 0">
       <img
-        src="../assets/IRBT_faces/welcome_instruction.jpg"
+        src="../assets/IBT_Faces/welcome_instruction.jpg"
         alt="Welcome Instruction"
         style="width: 100vh"
         class="welcomejpg"
@@ -15,7 +15,7 @@
     </div>
     <div v-else-if="section === 2">
       <img
-        src="../assets/IRBT_faces/practice_instruction.jpg"
+        src="../assets/IBT_Faces/practice_instruction.jpg"
         alt="Practice instruction"
         style="width: 100vh"
         class="welcomejpg"
@@ -23,7 +23,7 @@
     </div>
     <h3 class="continue-instruction">Click green arrow below to continue</h3>
     <img
-      src="../assets/app_icons/rightArrow.png"
+      src="../assets/App_Icons/rightArrow.png"
       alt="Right arraw"
       @click="section++"
       class="continue"

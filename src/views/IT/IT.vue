@@ -47,7 +47,7 @@ export default {
 
 <style scoped >
 main {
-  background: url("../../assets/app_icons/patternbg.jpg");
+  background: url("../../assets/App_Icons/patternbg.jpg");
   background-size: 433px;
   background-repeat: repeat;
   display: flex;
@@ -71,7 +71,7 @@ main {
   transition: all 250ms ease-in-out;
   color: white;
   text-decoration: none;
-  padding: 21px 34px;
+  padding: 23px 34px;
   font-size: 14px;
   border: none;
   font-weight: 300;

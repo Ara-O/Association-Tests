@@ -279,6 +279,14 @@ export default {
           return "Female color";
         }
       }
+
+      if (this.currentTest === "IAT_Gender_Subject") {
+        if (img[0] === "M") {
+          return "Math image";
+        } else if (img[0] === "R") {
+          return "Reading image";
+        }
+      }
     },
 
     getImage(img) {

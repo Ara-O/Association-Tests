@@ -66,6 +66,21 @@ export default {
             )}, and your speed was  ${this.calculateSpeed(2)}
         `,
         ];
+      } else if (this.getCurrentTest === "IBT_Gender_Clothing") {
+        return [
+          `
+            When you were asked to associate a female clothing with a female face, and a male clothing with a male face, 
+            your accuracy was ${this.calculateAccuracy(
+              1
+            )}, and your speed was  ${this.calculateSpeed(1)}
+        `,
+          `
+            When you were asked to associate a female clothing with a male face, and a male clothing with a female face, 
+            your accuracy was ${this.calculateAccuracy(
+              2
+            )}, and your speed was  ${this.calculateSpeed(2)}
+        `,
+        ];
       } else if (this.getCurrentTest === "IBT_Black_White") {
         return [
           `

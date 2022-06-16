@@ -32,6 +32,12 @@ import IAT_Gender_Color from "../views/IAT/IAT_Gender/IAT_Gender_Color/IAT_Gende
 import IAT_Gender_Color_Touchscreen from "../views/IAT/IAT_Gender/IAT_Gender_Color/IAT_Gender_Color_Touchscreen.vue";
 import IAT_Gender_Color_Survey from "../views/IAT/IAT_Gender/IAT_Gender_Color/IAT_Gender_Color_Survey.vue";
 
+//---------
+//IAT Gender-Subject
+import IAT_Gender_Subject from "../views/IAT/IAT_Gender/IAT_Gender_Subject/IAT_Gender_Subject.vue";
+import IAT_Gender_Subject_Touchscreen from "../views/IAT/IAT_Gender/IAT_Gender_Subject/IAT_Gender_Subject_Touchscreen.vue";
+import IAT_Gender_Subject_Survey from "../views/IAT/IAT_Gender/IAT_Gender_Subject/IAT_Gender_Subject_Survey.vue";
+
 
 // ---------------
 // IAT Black_White
@@ -61,6 +67,7 @@ import IBT_Black_White from "../views/IBT/IBT_Race/IBT_Black_White/IBT_Black_Whi
 //-----------
 
 import IBT_Gender_Toy from "../views/IBT/IBT_Gender/IBT_Gender_Toy/IBT_Gender_Toy.vue"
+import IBT_Gender_Clothing from "../views/IBT/IBT_Gender/IBT_Gender_Clothing/IBT_Gender_Clothing.vue"
 import IBT_Feedback from "../views/IBT/IBT_Feedback.vue"
 
 const routes = [
@@ -99,6 +106,18 @@ const routes = [
   {
     path: "/IAT_Gender_Roles_Survey",
     component: IAT_Gender_Roles_Survey,
+  },
+  {
+    path: "/IAT_Gender_Subject",
+    component: IAT_Gender_Subject,
+  },
+  {
+    path: "/IAT_Gender_Subject_Touchscreen",
+    component: IAT_Gender_Subject_Touchscreen,
+  },
+  {
+    path: "/IAT_Gender_Subject_Survey",
+    component: IAT_Gender_Subject_Survey,
   },
   {
     path: "/IAT_Gender_Clothing",
@@ -192,6 +211,10 @@ const routes = [
   {
     path: '/IBT_Gender_Toy',
     component: IBT_Gender_Toy,
+  },
+  {
+    path: '/IBT_Gender_Clothing',
+    component: IBT_Gender_Clothing,
   },
   {
     path: '/IBT_Feedback',

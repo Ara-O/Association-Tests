@@ -54,7 +54,7 @@
       </router-link>
 
       <router-link
-        to="/IAT_Choose_Test"
+        to="/IAT_Gender_Subject_Survey"
         class="routerlink test_btn"
         tag="button"
       >

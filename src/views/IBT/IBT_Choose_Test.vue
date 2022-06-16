@@ -30,7 +30,7 @@
 
 
       <router-link
-        to="/IBT_Choose_Test"
+        to="/IBT_Gender_Clothing"
         class="routerlink test_btn"
         tag="button"
       >

@@ -133,6 +133,22 @@ export default {
             )}, and your speed was  ${this.calculateSpeed(1)}
         `,
         ];
+      }  else if(this.getCurrentTest === "IAT_Gender_Subject" ||
+        this.getCurrentTest === "IAT_Gender_Subject_Touchscreen"){
+         return [
+          `
+            When you were asked to associate males with math, and females with reading
+            , your accuracy was ${this.calculateAccuracy(
+              0
+            )}, and your speed was  ${this.calculateSpeed(0)}
+        `,
+          `
+          When you were asked to associate males with reading, and 
+          females with math, your accuracy was ${this.calculateAccuracy(
+              1
+            )}, and your speed was  ${this.calculateSpeed(1)}
+        `,
+        ];
       }else {
         return "error";
       }

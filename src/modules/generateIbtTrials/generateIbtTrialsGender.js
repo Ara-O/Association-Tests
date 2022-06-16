@@ -69,3 +69,60 @@ export function genderAndToy(male_toy, female_toy, trials){
     updated_full_data[0].visibility = "block"
     return updated_full_data
 }
+
+export function genderAndClothing(male_clothing, female_clothing, trials){
+    
+    /*accuracy: 100
+    gender: "male.jpg"
+    maleFacePosition: "Right"
+    image: "T_M01.jpg"
+    randomNo: 1
+    femaleFacePosition: "Left"
+    visibility: "none" */
+
+    const female_clothing_images = [
+        { accuracy: 100, image: "CL_F01.jpg", gender: female_clothing},
+        { accuracy: 100, image: "CL_F02.jpg", gender: female_clothing},
+        { accuracy: 100, image: "CL_F03.jpg", gender: female_clothing},
+        { accuracy: 100, image: "CL_F04.jpg", gender: female_clothing},
+    ]
+    let male_clothing_images = [
+        { accuracy: 100, image: "CL_M01.jpg", gender: male_clothing},
+        { accuracy: 100, image: "CL_M02.jpg", gender: male_clothing},
+        { accuracy: 100, image: "CL_M03.jpg", gender: male_clothing},
+        { accuracy: 100, image: "CL_M04.jpg", gender: male_clothing},
+    ]
+    let full_data = []
+
+    let images_male_clothing = shuffleObjects(male_clothing_images);
+    let images_female_clothing = shuffleObjects(female_clothing_images);
+
+    for (let i = 0; i < trials / 2; i++) {
+        full_data.push(images_male_clothing[i])
+    }
+    for (let i = 0; i < trials / 2; i++) {
+        full_data.push(images_female_clothing[i])
+    }
+
+    for(let i = 0; i < full_data.length; i++){
+        //setting the visibility to block for the first data
+        let randomNo = Math.floor(Math.random() * 2);
+        full_data[i].visibility = "none";
+        
+        //Setting the position of the clicker faces randomized
+        full_data[i].randomNo = randomNo;
+        if (randomNo === 0) {
+            full_data[i].maleFacePosition = "Left";
+            full_data[i].femaleFacePosition = "Right"
+        } else {
+            full_data[i].maleFacePosition = "Right";
+            full_data[i].femaleFacePosition = "Left";
+        }
+
+        full_data[i].accuracy = 100;
+    }
+    
+    let updated_full_data = shuffleObjects(full_data)
+    updated_full_data[0].visibility = "block"
+    return updated_full_data
+}

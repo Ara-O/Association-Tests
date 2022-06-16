@@ -6,6 +6,10 @@
     <section class="it-section" v-if="version === ''">
       <button class="it-btn" @click="version = 'Number'">Number Version</button>
       <button class="it-btn" @click="version = 'Name'">Name Version</button>
+
+      <h3 style="text-decoration: underline; cursor: pointer; font-size: 16px; margin-top: 0px" @click="goToHome">
+        Go back
+      </h3>
     </section>
     <section v-if="version === 'Number'">
       <jelly-button whereTo="/IT_Number_White" class="test-btn"
@@ -26,8 +30,8 @@
       <jelly-button whereTo="/IT_Name_Black" class="test-btn"
         >Black</jelly-button
       >
-      <jelly-button whereTo="/IT_Name_EastAsian" class="test-btn"
-        > East Asian</jelly-button
+      <jelly-button whereTo="/IT_Name_EastAsian" class="test-btn">
+        East Asian</jelly-button
       >
       <h4 @click="version = ''" class="go-back">Go back</h4>
     </section>
@@ -42,6 +46,11 @@ export default {
     };
   },
 
+  methods: {
+    goToHome(){
+      this.$router.push("/Home")
+    }
+  }
 };
 </script>
 
@@ -89,9 +98,9 @@ main {
   transform: translate(-2px, 2px);
 }
 
-.go-back{
+.go-back {
   color: purple;
   text-decoration: underline;
-  cursor: pointer
+  cursor: pointer;
 }
 </style>

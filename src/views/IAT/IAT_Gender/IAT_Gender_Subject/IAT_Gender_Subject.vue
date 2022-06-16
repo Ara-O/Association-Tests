@@ -40,7 +40,7 @@
 
 <script>
 import handleAnswers from "../../../../modules/handleAnswers/handleAnswers";
-import * as trials from "../../../../modules/generateIatTrialsGender/generateIatTrialsRoles"
+import * as trials from "../../../../modules/generateIatTrialsGender/generateIatTrialsSubject"
 
 export default {
   data() {
@@ -57,17 +57,17 @@ export default {
         },
         {
           block: "Block2",
-          instructions: "Click E for Office Items, and I for Kitchen items",
-          data: trials.testData_Block2("I", "E", 6),
+          instructions: "Click E for Math images, and I for Reading images",
+          data: trials.testData_Block2("E", "I", 6),
         },
         {
           block: "Block3",
-          instructions: "Practice: Click E for Male images/Office items, and I for Female images/Kitchen items",
+          instructions: "Practice: Click E for Male images/Math images, and I for Female images/Reading images",
           data:  trials.testData_Block3("E", "I", 2),
         },
         {
           block: "Block4",
-          instructions: "Let's Continue: Click E for Male images/Office items, and I for Female images/Kitchen items",
+          instructions: "Let's Continue: Click E for Male images/Math images, and I for Female images/Reading images",
           data:  trials.testData_Block3("E", "I", 2),
         },
         {
@@ -77,12 +77,12 @@ export default {
         },
         {
           block: "Block6",
-          instructions: "Practice: Click I for Male images and Kitchen items, and E for Female images and Office items",
+          instructions: "Practice: Click I for Male images and Reading images, and E for Female images and Math images",
           data:  trials.testData_Block4("I", "E", 2),
         },
         {
           block: "Block7",
-          instructions: "Let's Continue: Click I for Male images and Kitchen items, and E for Female images and Office items",
+          instructions: "Let's Continue: Click I for Male images and Reading images, and E for Female images and Math images",
           data:  trials.testData_Block4("I", "E", 2),
         }
       ]
@@ -98,7 +98,7 @@ export default {
 
   methods: {
     getImage(url) {
-      return require(`../../../../assets/IAT_Gender_Roles/${url}`);
+      return require(`../../../../assets/IAT_Gender_Subject/${url}`);
     },
 
     testOver(){
@@ -112,7 +112,7 @@ export default {
           this,
           this.fullTest[this.currentBlock].data,
           this.fullTest[this.currentBlock].block,
-          "IAT_Gender_Roles"
+          "IAT_Gender_Subject"
         );
         this.notStarted = false;
         window.removeEventListener("keyup", that.start);
@@ -122,8 +122,8 @@ export default {
 
   mounted() {
     let that = this;
-    this.$store.commit("changeCurrentTest", "IAT_Gender_Roles")
-    this.$store.state["IAT_Gender_Roles"] = [];
+    this.$store.commit("changeCurrentTest", "IAT_Gender_Subject")
+    this.$store.state["IAT_Gender_Subject"] = [];
     window.addEventListener("keyup", that.start);
   },
 };

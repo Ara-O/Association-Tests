@@ -38,7 +38,7 @@ const female_images = [
     { accuracy: 100, image: "C_F12.jpg" },
 ]
 
-const office_images = [
+const kitchen_images = [
     { accuracy: 100, image: "H01-cookerhood.jpg"},
     { accuracy: 100, image: "H02-cuttingboard.jpg"},
     { accuracy: 100, image: "H03-pan.jpg"},
@@ -48,11 +48,11 @@ const office_images = [
 ]
 
 
-let kitchen_images = [
+let office_images = [
     { accuracy: 100, image: "W01-chair.jpg"},
     { accuracy: 100, image: "W02-computer.jpg"},
-    { accuracy: 100, image: "W03-desk.jpg"},
     { accuracy: 100, image: "W04-filecabinet.jpg"},
+    { accuracy: 100, image: "W03-desk.jpg"},
     { accuracy: 100, image: "W05-pen.jpg"},
     { accuracy: 100, image: "W06-phone.jpg"},
 ]

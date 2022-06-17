@@ -82,24 +82,24 @@ export default {
           instructions:
             "Click the left for Office items, and the right for Kitchen items",
           data: testData_Block2("Left", "Right", 6),
-          clickerLeft: "Male_Toy.png",
-          clickerRight: "Female_Toy.png",
+          clickerLeft: "Office.png",
+          clickerRight: "Kitchen.png",
         },
         {
           block: "Block3_TS",
           instructions:
             "Practice: Click the left box for Male images/Office items, and the right box for Female images/Kitchen items",
           data: testData_Block3("Left", "Right", 2),
-          clickerLeft: "Male_And_Male_Toy.png",
-          clickerRight: "Female_And_Female_Toy.png",
+          clickerLeft: "Male_And_Office.png",
+          clickerRight: "Female_And_Kitchen.png",
         },
         {
           block: "Block4_TS",
           instructions:
             "Let's Continue: Click the left box for Male images/Office items, and the right box for Female images/Kitchen items",
           data: testData_Block3("Left", "Right", 2),
-          clickerLeft: "Male_And_Male_Toy.png",
-          clickerRight: "Female_And_Female_Toy.png",
+          clickerLeft: "Male_And_Office.png",
+          clickerRight: "Female_And_Kitchen.png",
         },
         {
           block: "Block5_TS",
@@ -114,16 +114,16 @@ export default {
           instructions:
             "Practice: Click the right for Male images/Kitchen items, and the left for Female images/Office items",
           data: testData_Block4("Right", "Left", 2),
-          clickerLeft: "Female_And_Male_Toy.png",
-          clickerRight: "Male_And_Female_Toy.png",
+          clickerLeft: "Female_And_Office.png",
+          clickerRight: "Male_And_Kitchen.png",
         },
         {
           block: "Block7_TS",
           instructions:
             "Let's Continue:  Click the right for Male images/Kitchen items, and the left for Female images/Office items",
           data: testData_Block4("Right", "Left", 2),
-          clickerLeft: "Female_And_Male_Toy.png",
-          clickerRight: "Male_And_Female_Toy.png",
+          clickerLeft: "Female_And_Office.png",
+          clickerRight: "Male_And_Kitchen.png",
         },
       ],
       testOver: false,
@@ -170,7 +170,7 @@ export default {
     },
 
     getImageClicker(url) {
-      return require(`../../../../assets/Clicker_Images/${url}`);
+      return require(`../../../../assets/Clicker_Images/IAT_Gender_Roles/${url}`);
     },
 
     start() {

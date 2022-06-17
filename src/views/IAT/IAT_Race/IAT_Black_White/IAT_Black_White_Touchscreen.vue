@@ -150,7 +150,7 @@ export default {
     },
 
     getImageClicker(url) {
-      return require(`../../../../assets/Clicker_Images/${url}`);
+      return require(`../../../../assets/Clicker_Images/IAT_Black_White/${url}`);
     },
 
     start() {

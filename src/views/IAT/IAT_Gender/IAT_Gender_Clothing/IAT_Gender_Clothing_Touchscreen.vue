@@ -82,24 +82,24 @@ export default {
           instructions:
             "Click the left for Male clothing, and the right for Female clothing",
           data: testData_Block2("Left", "Right", 6),
-          clickerLeft: "Male_Toy.png",
-          clickerRight: "Female_Toy.png",
+          clickerLeft: "Male_Clothing.png",
+          clickerRight: "Female_Clothing.png",
         },
         {
           block: "Block3_TS",
           instructions:
             "Practice: Click the left box for Male images/Male clothing, and the right box for Female images/Female clothing",
           data: testData_Block3("Left", "Right", 2),
-          clickerLeft: "Male_And_Male_Toy.png",
-          clickerRight: "Female_And_Female_Toy.png",
+          clickerLeft: "Male_And_Male_Clothing.png",
+          clickerRight: "Female_And_Female_Clothing.png",
         },
         {
           block: "Block4_TS",
           instructions:
             "Let's Continue: Click the left box for Male images/Male clothing, and the right box for Female images/Female clothing",
           data: testData_Block3("Left", "Right", 2),
-          clickerLeft: "Male_And_Male_Toy.png",
-          clickerRight: "Female_And_Female_Toy.png",
+          clickerLeft: "Male_And_Male_Clothing.png",
+          clickerRight: "Female_And_Female_Clothing.png",
         },
         {
           block: "Block5_TS",
@@ -114,16 +114,16 @@ export default {
           instructions:
             "Practice: Click the right for Male images/Female clothing, and the left for Female images/Male clothing",
           data: testData_Block4("Right", "Left", 2),
-          clickerLeft: "Female_And_Male_Toy.png",
-          clickerRight: "Male_And_Female_Toy.png",
+          clickerLeft: "Female_And_Male_Clothing.png",
+          clickerRight: "Male_And_Female_Clothing.png",
         },
         {
           block: "Block7_TS",
           instructions:
             "Let's Continue:  Click the right for Male images/Female clothing, and the left for Female images/Male clothing",
           data: testData_Block4("Right", "Left", 2),
-          clickerLeft: "Female_And_Male_Toy.png",
-          clickerRight: "Male_And_Female_Toy.png",
+          clickerLeft: "Female_And_Male_Clothing.png",
+          clickerRight: "Male_And_Female_Clothing.png",
         },
       ],
       testOver: false,
@@ -170,7 +170,7 @@ export default {
     },
 
     getImageClicker(url) {
-      return require(`../../../../assets/Clicker_Images/${url}`);
+      return require(`../../../../assets/Clicker_Images/IAT_Gender_Clothing/${url}`);
     },
 
     start() {

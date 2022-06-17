@@ -6,7 +6,7 @@ function shuffleObjects(array) {
         array[y] = x;
     }
     return array;
-}
+} 
 
 const male_images = [
     { accuracy: 100, image: "C_M01.jpg" },

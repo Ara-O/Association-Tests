@@ -170,7 +170,7 @@ export default {
     },
 
     getImageClicker(url) {
-      return require(`../../../../assets/Clicker_Images/${url}`);
+      return require(`../../../../assets/Clicker_Images/IAT_Gender_Toy/${url}`);
     },
 
     start() {

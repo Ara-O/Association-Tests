@@ -78,7 +78,7 @@
 
 <script>
 import IbtInstructions from "../../../../components/IbtInstructions.vue";
-import { genderAndRoles } from "../../../../modules/generateIbtTrials/generateIbtTrialsGender";
+import { genderAndColor } from "../../../../modules/generateIbtTrials/generateIbtTrialsGender";
 import * as irbt from "../../../../modules/handleAnswers/handleIbtAnswers";
 
 export default {
@@ -89,7 +89,7 @@ export default {
   data() {
     return {
       section: 0,
-      testType: "Gender_Roles",
+      testType: "Gender_Color",
       routeTo: "/IBT_Feedback",
       testNotStarted: false,
       notFinishedInstructions: true,
@@ -98,11 +98,11 @@ export default {
       rightFace: "",
       irbt_trials: [
         {
-          trials: genderAndRoles("male.jpg", "female.jpg", 2),
+          trials: genderAndColor("male.jpg", "female.jpg", 2),
           section: "practice",
         },
         {
-          trials: genderAndRoles("male.jpg", "female.jpg", 2),
+          trials: genderAndColor("male.jpg", "female.jpg", 2),
           section: "section_1",
           instruction: `There will be a picture of a Blue color or a Pink color in the
         middle of the screen. When you see a picture of a Pink color, you should
@@ -114,7 +114,7 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndRoles("female.jpg", "male.jpg", 2),
+          trials: genderAndColor("female.jpg", "male.jpg", 2),
           section: "section_2",
           instruction: `There will be a picture of a Blue color or a Pink color in the
         middle of the screen. When you see a picture of a Blue color, you should

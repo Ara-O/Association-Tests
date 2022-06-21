@@ -109,13 +109,21 @@ export default {
         "Clicker_Images/IAT_Gender_Roles/Male_And_Kitchen.png",
         "Clicker_Images/IAT_Gender_Roles/Female_And_Office.png",
       ],
+      IBT_Gender_Color_Target_0: [
+        "Clicker_Images/IAT_Gender_Color/Male_And_Blue.png",
+        "Clicker_Images/IAT_Gender_Color/Female_And_Pink.png",
+      ],
+      IBT_Gender_Color_Target_1: [
+        "Clicker_Images/IAT_Gender_Color/Male_And_Pink.png",
+        "Clicker_Images/IAT_Gender_Color/Female_And_Blue.png",
+      ],
       IBT_Black_White_Target_0: [
-        "Clicker_Images/IAT_Gender_Clothing/Male_And_Male_Clothing.png",
-        "Clicker_Images/IAT_Gender_Clothing/Female_And_Female_Clothing.png",
+        "Clicker_Images/IAT_Black_White/White_And_Happy_Face.png",
+        "Clicker_Images/IAT_Black_White/Black_And_Sad_Face.png",
       ],
       IBT_Black_White_Target_1: [
-        "Clicker_Images/IAT_Gender_Clothing/Male_And_Female_Clothing.png",
-        "Clicker_Images/IAT_Gender_Clothing/Female_And_Male_Clothing.png",
+        "Clicker_Images/IAT_Black_White/White_And_Sad_Face.png",
+        "Clicker_Images/IAT_Black_White/Black_And_Happy_Face.png",
       ],
     };
   },

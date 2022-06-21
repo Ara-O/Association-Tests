@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import btn from "../components/Jelly_Button.vue";
+import btn from "../components/MainBtn.vue"
 export default {
   components: {
     btn,

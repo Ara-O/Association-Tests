@@ -52,7 +52,36 @@
   .role-label {
     margin-right: 20px;
   }
+
+  .image-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .image-wrapper img{
+    width: 220px
+  }
+
+  .feedback-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 33px;
+    padding: 20px 52px;
+    border-radius: 5px;
+    box-shadow: -2px 4px 4px -1px #cbcbcb, 0px 0px 4px #e4e4e4;
+  }
+
+  .feedback-message-wrapper{
+    display: flex;
+    flex-direction: column;
+  }
   
+  .feedback-message{
+    font-size: 15px;
+    font-weight: 400;
+  }
   @media (max-height: 600px) {
     .gender-feedback-main {
       /* height: auto; */

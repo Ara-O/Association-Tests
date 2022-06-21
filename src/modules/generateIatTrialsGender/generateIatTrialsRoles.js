@@ -122,7 +122,7 @@ export function testData_Block3(male_and_office, female_and_kitchen, trials) {
     images_male_office.forEach((el) => el.key = male_and_office);
 
     const images_female_kitchen = shuffleObjects(JSON.parse(JSON.stringify([...female_images, ...kitchen_images])))
-    images_female_kitchen.forEach((el) => el.key =female_and_kitchen);
+    images_female_kitchen.forEach((el) => el.key = female_and_kitchen);
 
     for (let i = 0; i < trials / 2; i++) {
         fullData.push(images_female_kitchen[i]);

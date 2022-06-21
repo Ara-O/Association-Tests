@@ -2,12 +2,12 @@
   <main>
     <section v-if="notFinishedInstructions">
       <ibt-instructions @finishedInstructions="finishedInstructions">
-        There will be a picture of a Female clothing or a Male clothing in the middle of
-        screen. When you see a picture of the Female clothing you should touch the
-        female face at the bottom of the screen; when you see a Male clothing, you
-        should touch the Male face. Male faces and Female faces will appear at
-        the bottom of the screen either on the left or right. Pay attention
-        because the male and female faces may change places. Please respond
+        There will be a picture of a Kitchen item or an Office item in the
+        middle of the screen. When you see a picture of a Kitchen item, you should
+        touch the female face at the bottom of the screen; when you see an Office item, you should touch
+        the Male face. Male faces and Female faces will appear at the bottom of
+        the screen either on the left or right. Pay attention because the
+        male and female faces may change places. Please respond
         <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
         the screen.
       </ibt-instructions>
@@ -78,7 +78,7 @@
 
 <script>
 import IbtInstructions from "../../../../components/IbtInstructions.vue";
-import { genderAndClothing } from "../../../../modules/generateIbtTrials/generateIbtTrialsGender";
+import { genderAndRoles } from "../../../../modules/generateIbtTrials/generateIbtTrialsGender";
 import * as irbt from "../../../../modules/handleAnswers/handleIbtAnswers";
 
 export default {
@@ -89,7 +89,7 @@ export default {
   data() {
     return {
       section: 0,
-      testType: "Gender_Clothing",
+      testType: "Gender_Roles",
       routeTo: "/IBT_Feedback",
       testNotStarted: false,
       notFinishedInstructions: true,
@@ -98,15 +98,15 @@ export default {
       rightFace: "",
       irbt_trials: [
         {
-          trials: genderAndClothing("male.jpg", "female.jpg", 2),
+          trials: genderAndRoles("male.jpg", "female.jpg", 2),
           section: "practice",
         },
         {
-          trials: genderAndClothing("male.jpg", "female.jpg", 2),
+          trials: genderAndRoles("male.jpg", "female.jpg", 2),
           section: "section_1",
-          instruction: `There will be a picture of a Female clothing or a Male clothing in the
-        middle of the screen. When you see a picture of the Female clothing you should
-        touch the female face at the bottom of the screen; when you see a Male clothing, you should touch
+          instruction: `There will be a picture of a Kitchen item or an Office item in the
+        middle of the screen. When you see a picture of a Kitchen item, you should
+        touch the female face at the bottom of the screen; when you see an Office item, you should touch
         the Male face. Male faces and Female faces will appear at the bottom of
         the screen either on the left or right. Pay attention because the
         male and female faces may change places. Please respond
@@ -114,12 +114,12 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndClothing("female.jpg", "male.jpg", 2),
+          trials: genderAndRoles("female.jpg", "male.jpg", 2),
           section: "section_2",
-          instruction: `There will be a picture of a Female clothing or a Male clothing in the
-        middle of the screen. When you see a picture of the Female clothing you should
-        touch the male face at the bottom of the screen; when you see a Male clothing, you should touch
-        the female face. Male faces and Female faces will appear at the bottom of
+          instruction: `There will be a picture of a Kitchen item or an Office item in the
+        middle of the screen. When you see a picture of an Office item, you should
+        touch the female face at the bottom of the screen; when you see a Kitchen item, you should touch
+        the Male face. Male faces and Female faces will appear at the bottom of
         the screen either on the left or right. Pay attention because the
         male and female faces may change places. Please respond
         <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
@@ -157,14 +157,14 @@ export default {
     },
 
     leftFaceAction() {
-      irbt.leftFaceAction(this, "gender", "IBT_Gender_Clothing");
+      irbt.leftFaceAction(this, "gender", "IBT_Gender_Roles");
     },
     rightFaceAction() {
-      irbt.rightFaceAction(this, "gender", "IBT_Gender_Clothing");
+      irbt.rightFaceAction(this, "gender", "IBT_Gender_Roles");
     },
 
     handleCorrectAnswer() {
-      irbt.handleCorrectAnswer(this, "IBT_Gender_Clothing", "IBT_Gender_Clothing");
+      irbt.handleCorrectAnswer(this, "IBT_Gender_Roles", "IBT_Gender_Roles");
     },
 
     handleIncorrectAnswer() {
@@ -172,7 +172,7 @@ export default {
     },
 
     getImage(url) {
-      return require(`../../../../assets/IAT_Gender_Clothing/${url}`);
+      return require(`../../../../assets/IAT_Gender_Roles/${url}`);
     },
 
     next() {
@@ -182,8 +182,8 @@ export default {
   },
 
   mounted() {
-    this.$store.state["IBT_Gender_Clothing"] = [];
-    this.$store.commit("changeCurrentTest", "IBT_Gender_Clothing");
+    this.$store.state["IBT_Gender_Roles"] = [];
+    this.$store.commit("changeCurrentTest", "IBT_Gender_Roles");
   },
 };
 </script>

@@ -38,7 +38,7 @@
       </router-link>
 
       <router-link
-        to="/IBT_Choose_Test"
+        to="/IBT_Gender_Subject"
         class="routerlink test_btn"
         tag="button"
       >
@@ -46,7 +46,7 @@
       </router-link>
 
       <router-link
-        to="/IBT_Choose_Test"
+        to="/IBT_Gender_Color"
         class="routerlink test_btn"
         tag="button"
       >
@@ -54,7 +54,7 @@
       </router-link>
 
       <router-link
-        to="/IBT_Choose_Test"
+        to="/IBT_Gender_Roles"
         class="routerlink test_btn"
         tag="button"
       >
@@ -94,7 +94,7 @@
 
 
 <script>
-import btn from "../../components/Jelly_Button.vue";
+import btn from "../../components/MainBtn.vue"
 export default {
   components: {
     btn,

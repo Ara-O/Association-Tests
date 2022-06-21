@@ -5,15 +5,52 @@
   ></contact-experience>
   <main class="gender-feedback-main" v-else>
     <br />
-    <button @click="routeToHome" class="return-to-home-btn">Go back to home page</button>
+    <button @click="routeToHome" class="return-to-home-btn">
+      Go back to home page
+    </button>
     <h4>Here's your feedback!</h4>
     <div class="feedbacks">
-      <div
-        class="feedbacksect"
-        v-for="feedback in generateFeedbackMessage()"
-        :key="feedback.id"
-      >
-        <h3>{{ feedback }}</h3>
+      <div class="feedback-wrapper">
+        <!-- image here -->
+        <div class="image-wrapper">
+          <div v-for="(n, index) in 2" :key="n">
+            <img
+              :src="getImg(getCurrentTestTrimmed(0, index))"
+              alt="Feedback image"
+            />
+            <h3 v-if="index === 0" style="margin: 0px">+</h3>
+          </div>
+        </div>
+        <div class="feedback-message-wrapper">
+          <h3 class="feedback-message">
+            Accuracy: {{ this.calculateAccuracy(0) }}
+          </h3>
+          <h3 class="feedback-message">
+            Speed:
+            {{ this.calculateSpeed(0) }}
+          </h3>
+        </div>
+      </div>
+       <div class="feedback-wrapper">
+        <!-- image here -->
+        <div class="image-wrapper">
+          <div v-for="(n, index) in 2" :key="n">
+            <img
+              :src="getImg(getCurrentTestTrimmed(1, index))"
+              alt="Feedback image"
+            />
+            <h3 v-if="index === 0" style="margin: 0px">+</h3>
+          </div>
+        </div>
+        <div class="feedback-message-wrapper">
+          <h3 class="feedback-message">
+            Accuracy: {{ this.calculateAccuracy(1) }}
+          </h3>
+          <h3 class="feedback-message">
+            Speed:
+            {{ this.calculateSpeed(1)}}
+          </h3>
+        </div>
       </div>
     </div>
     <br />
@@ -39,7 +76,47 @@ export default {
   data() {
     return {
       surveyNotComplete: true,
-      wasGroupTest: false
+      wasGroupTest: false,
+      IAT_Gender_Toy_Target_0: [
+        "Clicker_Images/IAT_Gender_Toy/Male_And_Male_Toy.png",
+        "Clicker_Images/IAT_Gender_Toy/Female_And_Female_Toy.png",
+      ],
+      IAT_Gender_Toy_Target_1: [
+        "Clicker_Images/IAT_Gender_Toy/Male_And_Female_Toy.png",
+        "Clicker_Images/IAT_Gender_Toy/Female_And_Male_Toy.png",
+      ],
+      IAT_Gender_Color_Target_0: [
+        "Clicker_Images/IAT_Gender_Color/Male_And_Blue.png",
+        "Clicker_Images/IAT_Gender_Color/Female_And_Pink.png",
+      ],
+      IAT_Gender_Color_Target_1: [
+        "Clicker_Images/IAT_Gender_Color/Male_And_Pink.png",
+        "Clicker_Images/IAT_Gender_Color/Female_And_Blue.png",
+      ],
+      IAT_Gender_Clothing_Target_0: [
+        "Clicker_Images/IAT_Gender_Clothing/Male_And_Male_Clothing.png",
+        "Clicker_Images/IAT_Gender_Clothing/Female_And_Male_Clothing.png",
+      ],
+      IAT_Gender_Clothing_Target_1: [
+        "Clicker_Images/IAT_Gender_Clothing/Male_And_Male_Clothing.png",
+        "Clicker_Images/IAT_Gender_Clothing/Female_And_Male_Clothing.png",
+      ],
+      IAT_Gender_Roles_Target_0: [
+        "Clicker_Images/IAT_Gender_Roles/Male_And_Office.png",
+        "Clicker_Images/IAT_Gender_Roles/Female_And_Kitchen.png",
+      ],
+      IAT_Gender_Roles_Target_1: [
+        "Clicker_Images/IAT_Gender_Roles/Male_And_Kitchen.png",
+        "Clicker_Images/IAT_Gender_Roles/Female_And_Office.png",
+      ],
+      IAT_Gender_Subject_Target_0: [
+        "Clicker_Images/IAT_Gender_Subject/Male_And_Math.png",
+        "Clicker_Images/IAT_Gender_Subject/Female_And_Reading.png",
+      ],
+      IAT_Gender_Subject_Target_1: [
+        "Clicker_Images/IAT_Gender_Subject/Male_And_Reading.png",
+        "Clicker_Images/IAT_Gender_Subject/Female_And_Math.png",
+      ],
     };
   },
 
@@ -48,109 +125,16 @@ export default {
   },
 
   methods: {
-       generateFeedbackMessage() {
-      if (
-        this.getCurrentTest === "IAT_Gender_Toy" ||
-        this.getCurrentTest === "IAT_Gender_Toy_Touchscreen"
-      ) {
-        return [
-          `
-            When you were asked to associate boys with male toys, and girls with female toys,
-            your accuracy was ${this.calculateAccuracy(
-              0
-            )}, and your speed was  ${this.calculateSpeed(0)}
-        `,
-          `
-            When you were asked to associate boys with female toys, and girls with male toys
-            your accuracy was ${this.calculateAccuracy(
-              1
-            )}, and your speed was  ${this.calculateSpeed(1)}
-        `,
-        ];
-      } else if (
-        this.getCurrentTest === "IAT_Black_White" ||
-        this.getCurrentTest === "IAT_Black_White_Touchscreen"
-      ) {
-        return [
-          `
-            When you were asked to associate images of black people with sad faces, and images of
-            white people with happy faces, your accuracy was ${this.calculateAccuracy(
-              0
-            )}, and your speed was  ${this.calculateSpeed(0)}
-        `,
-          `
-           When you were asked to associate images of black people with sad faces, and images of
-            white people with happy faces, your accuracy was ${this.calculateAccuracy(
-              1
-            )}, and your speed was  ${this.calculateSpeed(1)}
-        `,
-        ];
-      } else if(this.getCurrentTest === "IAT_Gender_Roles" ||
-        this.getCurrentTest === "IAT_Gender_Roles_Touchscreen"){
-         return [
-          `
-            When you were asked to associate males with office items, and females with kitchen items
-            , your accuracy was ${this.calculateAccuracy(
-              0
-            )}, and your speed was  ${this.calculateSpeed(0)}
-        `,
-          `
-          When you were asked to associate males with kitchen items, and 
-          females with office items, your accuracy was ${this.calculateAccuracy(
-              1
-            )}, and your speed was  ${this.calculateSpeed(1)}
-        `,
-        ];
-      } else if(this.getCurrentTest === "IAT_Gender_Clothing" ||
-        this.getCurrentTest === "IAT_Gender_Clothing_Touchscreen"){
-         return [
-          `
-            When you were asked to associate males with male clothing, and females with female clothing
-            , your accuracy was ${this.calculateAccuracy(
-              0
-            )}, and your speed was  ${this.calculateSpeed(0)}
-        `,
-          `
-          When you were asked to associate males with female clothing, and 
-          females with male clothing, your accuracy was ${this.calculateAccuracy(
-              1
-            )}, and your speed was  ${this.calculateSpeed(1)}
-        `,
-        ];
-      } else if(this.getCurrentTest === "IAT_Gender_Color" ||
-        this.getCurrentTest === "IAT_Gender_Color_Touchscreen"){
-         return [
-          `
-            When you were asked to associate males with blue colors, and females with pink colors
-            , your accuracy was ${this.calculateAccuracy(
-              0
-            )}, and your speed was  ${this.calculateSpeed(0)}
-        `,
-          `
-          When you were asked to associate males with pink colors, and 
-          females with blue colors, your accuracy was ${this.calculateAccuracy(
-              1
-            )}, and your speed was  ${this.calculateSpeed(1)}
-        `,
-        ];
-      }  else if(this.getCurrentTest === "IAT_Gender_Subject" ||
-        this.getCurrentTest === "IAT_Gender_Subject_Touchscreen"){
-         return [
-          `
-            When you were asked to associate males with math, and females with reading
-            , your accuracy was ${this.calculateAccuracy(
-              0
-            )}, and your speed was  ${this.calculateSpeed(0)}
-        `,
-          `
-          When you were asked to associate males with reading, and 
-          females with math, your accuracy was ${this.calculateAccuracy(
-              1
-            )}, and your speed was  ${this.calculateSpeed(1)}
-        `,
-        ];
-      }else {
-        return "error";
+    getImg(img) {
+      return require(`../../assets/${img}`);
+    },
+
+    getCurrentTestTrimmed(target, index) {
+      if (this.getCurrentTest.includes("_Touchscreen")) {
+        let currentTest = this.getCurrentTest.replace("_Touchscreen", "");
+        return this[`${currentTest}_Target_${target}`][index];
+      } else {
+        return this[`${this.getCurrentTest}_Target_${target}`][index];
       }
     },
 
@@ -163,7 +147,7 @@ export default {
         }
       );
       nsum /= this.$store.state[this.getCurrentTest][trials[trialIndex]].length;
-      return `${nsum}%`;
+      return `${nsum.toFixed(2)}%`;
     },
 
     calculateSpeed(trialIndex) {
@@ -175,7 +159,7 @@ export default {
         }
       );
       nsum /= this.$store.state[this.getCurrentTest][trials[trialIndex]].length;
-      return `${nsum}ms`;
+      return `${nsum.toFixed(2)}ms`;
     },
 
     surveyComplete(userData) {
@@ -206,23 +190,23 @@ export default {
         familyUniqueId
       );
 
-      this.wasGroupTest = true
+      this.wasGroupTest = true;
     },
 
     routeToHome() {
-      if(!this.wasGroupTest){
+      if (!this.wasGroupTest) {
         storeData.storeIATIndividualData(this.getCurrentTest, this);
       }
       this.$router.push("/Home");
     },
   },
   mounted() {
-    this.wasGroupTest = false
+    this.wasGroupTest = false;
     // console.log(this.$store.state[this.getCurrentTest]);
   },
 };
 </script>
 
 <style scoped >
-@import url("../../styles/Feedback_Page.css")
+@import url("../../styles/Feedback_Page.css");
 </style>

@@ -170,7 +170,7 @@ export default {
     },
 
     getImage(url) {
-      return require(`../../../../assets/IAT_Gender_Toy/${url}`);
+      return require(`../../../../assets/IBT_Black_White/${url}`);
     },
 
     next() {

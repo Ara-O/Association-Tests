@@ -10,12 +10,47 @@
     </button>
     <h4>Here's your feedback!</h4>
     <div class="feedbacks">
-      <div
-        class="feedbacksect"
-        v-for="feedback in generateFeedbackMessage()"
-        :key="feedback.id"
-      >
-        <h3>{{ feedback }}</h3>
+       <div class="feedback-wrapper">
+        <!-- image here -->
+        <div class="image-wrapper">
+          <div v-for="(n, index) in 2" :key="n">
+            <img
+              :src="getImg(getCurrentTestTrimmed(0, index))"
+              alt="Feedback image"
+            />
+            <h3 v-if="index === 0" style="margin: 0px">+</h3>
+          </div>
+        </div>
+        <div class="feedback-message-wrapper">
+          <h3 class="feedback-message">
+            Accuracy: {{ this.calculateAccuracy(0) }}
+          </h3>
+          <h3 class="feedback-message">
+            Speed:
+            {{ this.calculateSpeed(0) }}
+          </h3>
+        </div>
+      </div>
+       <div class="feedback-wrapper">
+        <!-- image here -->
+        <div class="image-wrapper">
+          <div v-for="(n, index) in 2" :key="n">
+            <img
+              :src="getImg(getCurrentTestTrimmed(1, index))"
+              alt="Feedback image"
+            />
+            <h3 v-if="index === 0" style="margin: 0px">+</h3>
+          </div>
+        </div>
+        <div class="feedback-message-wrapper">
+          <h3 class="feedback-message">
+            Accuracy: {{ this.calculateAccuracy(1) }}
+          </h3>
+          <h3 class="feedback-message">
+            Speed:
+            {{ this.calculateSpeed(1)}}
+          </h3>
+        </div>
       </div>
     </div>
     <br />
@@ -42,6 +77,46 @@ export default {
     return {
       surveyNotComplete: true,
       wasGroupTest: false,
+       IBT_Gender_Toy_Target_0: [
+        "Clicker_Images/IAT_Gender_Toy/Male_And_Male_Toy.png",
+        "Clicker_Images/IAT_Gender_Toy/Female_And_Female_Toy.png",
+      ],
+      IBT_Gender_Toy_Target_1: [
+        "Clicker_Images/IAT_Gender_Toy/Male_And_Female_Toy.png",
+        "Clicker_Images/IAT_Gender_Toy/Female_And_Male_Toy.png",
+      ],
+      IBT_Gender_Clothing_Target_0: [
+        "Clicker_Images/IAT_Gender_Clothing/Male_And_Male_Clothing.png",
+        "Clicker_Images/IAT_Gender_Clothing/Female_And_Female_Clothing.png",
+      ],
+      IBT_Gender_Clothing_Target_1: [
+        "Clicker_Images/IAT_Gender_Clothing/Male_And_Female_Clothing.png",
+        "Clicker_Images/IAT_Gender_Clothing/Female_And_Male_Clothing.png",
+      ],
+      IBT_Gender_Subject_Target_0: [
+        "Clicker_Images/IAT_Gender_Subject/Male_And_Math.png",
+        "Clicker_Images/IAT_Gender_Subject/Female_And_Reading.png",
+      ],
+      IBT_Gender_Subject_Target_1: [
+        "Clicker_Images/IAT_Gender_Subject/Male_And_Reading.png",
+        "Clicker_Images/IAT_Gender_Subject/Female_And_Math.png",
+      ],
+      IBT_Gender_Roles_Target_0: [
+        "Clicker_Images/IAT_Gender_Roles/Male_And_Office.png",
+        "Clicker_Images/IAT_Gender_Roles/Female_And_Kitchen.png",
+      ],
+      IBT_Gender_Roles_Target_1: [
+        "Clicker_Images/IAT_Gender_Roles/Male_And_Kitchen.png",
+        "Clicker_Images/IAT_Gender_Roles/Female_And_Office.png",
+      ],
+      IBT_Black_White_Target_0: [
+        "Clicker_Images/IAT_Gender_Clothing/Male_And_Male_Clothing.png",
+        "Clicker_Images/IAT_Gender_Clothing/Female_And_Female_Clothing.png",
+      ],
+      IBT_Black_White_Target_1: [
+        "Clicker_Images/IAT_Gender_Clothing/Male_And_Female_Clothing.png",
+        "Clicker_Images/IAT_Gender_Clothing/Female_And_Male_Clothing.png",
+      ],
     };
   },
 
@@ -50,55 +125,12 @@ export default {
   },
 
   methods: {
-    generateFeedbackMessage() {
-      if (this.getCurrentTest === "IBT_Gender_Toy") {
-        return [
-          `
-            When you were asked to associate a female toy with a female face, and a male toy with a male face,
-            your accuracy was ${this.calculateAccuracy(
-              1
-            )}, and your speed was  ${this.calculateSpeed(1)}
-        `,
-          `
-           When you were asked to associate a female toy with a male face, and a male toy with a female face
-            your accuracy was ${this.calculateAccuracy(
-              2
-            )}, and your speed was  ${this.calculateSpeed(2)}
-        `,
-        ];
-      } else if (this.getCurrentTest === "IBT_Gender_Clothing") {
-        return [
-          `
-            When you were asked to associate a female clothing with a female face, and a male clothing with a male face, 
-            your accuracy was ${this.calculateAccuracy(
-              1
-            )}, and your speed was  ${this.calculateSpeed(1)}
-        `,
-          `
-            When you were asked to associate a female clothing with a male face, and a male clothing with a female face, 
-            your accuracy was ${this.calculateAccuracy(
-              2
-            )}, and your speed was  ${this.calculateSpeed(2)}
-        `,
-        ];
-      } else if (this.getCurrentTest === "IBT_Black_White") {
-        return [
-          `
-            When you were asked to associate images of black people with sad faces, and images of
-            white people with happy faces, your accuracy was ${this.calculateAccuracy(
-              1
-            )}, and your speed was  ${this.calculateSpeed(1)}
-        `,
-          `
-           When you were asked to associate images of black people with happy faces, and images of
-            white people with sad faces, your accuracy was ${this.calculateAccuracy(
-              2
-            )}, and your speed was  ${this.calculateSpeed(2)}
-        `,
-        ];
-      } else {
-        return "error";
-      }
+    getImg(img) {
+      return require(`../../assets/${img}`);
+    },
+
+    getCurrentTestTrimmed(target, index) {
+        return this[`${this.getCurrentTest}_Target_${target}`][index];
     },
 
     calculateAccuracy(trialIndex) {
@@ -107,7 +139,7 @@ export default {
         nsum += trial.accuracy;
       });
       nsum /= this.$store.state[this.getCurrentTest][trialIndex].length;
-      return `${nsum}%`;
+      return `${nsum.toFixed(2)}%`;
     },
 
     calculateSpeed(trialIndex) {
@@ -116,7 +148,7 @@ export default {
         nsum += trial.ms;
       });
       nsum /= this.$store.state[this.getCurrentTest][trialIndex].length;
-      return `${nsum}ms`;
+      return `${nsum.toFixed(2)}ms`;
     },
 
     surveyComplete(userData) {

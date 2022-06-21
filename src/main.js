@@ -4,8 +4,8 @@ import router from "./router";
 import store from "./store";
 import * as firebase from 'firebase/app';
 import 'firebase/database'
-import clicker from "../src/components/IAT_TS_Buttons.vue"
-import jellybtn from "../src/components/Jelly_Button.vue"
+import clicker from "../src/components/TouchscreenButtons.vue"
+import jellybtn from "../src/components/MainBtn.vue"
 
 // Configuring firebase 
 

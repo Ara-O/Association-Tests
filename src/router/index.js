@@ -68,6 +68,9 @@ import IBT_Black_White from "../views/IBT/IBT_Race/IBT_Black_White/IBT_Black_Whi
 
 import IBT_Gender_Toy from "../views/IBT/IBT_Gender/IBT_Gender_Toy/IBT_Gender_Toy.vue"
 import IBT_Gender_Clothing from "../views/IBT/IBT_Gender/IBT_Gender_Clothing/IBT_Gender_Clothing.vue"
+import IBT_Gender_Subject from "../views/IBT/IBT_Gender/IBT_Gender_Subject/IBT_Gender_Subject.vue"
+import IBT_Gender_Roles from "../views/IBT/IBT_Gender/IBT_Gender_Roles/IBT_Gender_Roles.vue"
+import IBT_Gender_Color from "../views/IBT/IBT_Gender/IBT_Gender_Color/IBT_Gender_Color.vue"
 import IBT_Feedback from "../views/IBT/IBT_Feedback.vue"
 
 const routes = [
@@ -215,6 +218,18 @@ const routes = [
   {
     path: '/IBT_Gender_Clothing',
     component: IBT_Gender_Clothing,
+  },
+  {
+    path: '/IBT_Gender_Subject',
+    component: IBT_Gender_Subject,
+  },
+  {
+    path: '/IBT_Gender_Roles',
+    component: IBT_Gender_Roles,
+  },
+  {
+    path: '/IBT_Gender_Color',
+    component: IBT_Gender_Color,
   },
   {
     path: '/IBT_Feedback',

@@ -114,8 +114,9 @@ export default {
 }
 
 .group-test-input-field{
-  border: solid 1px #828282;
-  text-align: center;
+    border: solid 1px #8c8c8c;
+    text-align: center;
+    border-radius: 6px;
 }
 
 #unique-id-label {

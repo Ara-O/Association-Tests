@@ -9,7 +9,6 @@ export function updateIBTData(Data, test, cMonth, cDay, cYear, whereToStore, ver
         data.currentTest = whereToStore;
         data.browser = navigator["userAgent"];
         data.dateTaken = `${cMonth}-${cDay}-${cYear}`;
-
         if (test.testType === "Black_White") {
             if (outerIndex === 0) {
                 data.description = "Practice: clicks a happy face for an image of a white person, and a sad face for an image of a black person";
@@ -27,9 +26,46 @@ export function updateIBTData(Data, test, cMonth, cDay, cYear, whereToStore, ver
             } else if (outerIndex === 2) {
                 data.description = "User clicks the female face for an image of a male toy, and the male face for an image of a female toy";
             }
-            data.testType = "IBT Gender-Toy";
-        }
+            // data.testType = "IBT Gender-Toy";
 
+        } else if (test.testType === "Gender_Subject") {
+            if (outerIndex === 0) {
+                data.description = "Practice: clicks the male face for an image of a letter, and the female face for an image of a number";
+            } else if (outerIndex === 1) {
+                data.description = "User clicks the male face for an image of a letter, and the female face for an image of a number";
+            } else if (outerIndex === 2) {
+                data.description = "User clicks the female face for an image of a letter, and the male face for an image of a number";
+            }
+            // data.testType = "IBT Gender-Subject";
+
+        } else if (test.testType === "Gender_Roles") {
+            if (outerIndex === 0) {
+                data.description = "Practice: clicks the male face for an image of a kitchen item, and the female face for an image of a office item";
+            } else if (outerIndex === 1) {
+                data.description = "User clicks the male face for an image of a kitchen item, and the female face for an image of a office item";
+            } else if (outerIndex === 2) {
+                data.description = "User clicks the female face for an image of a kitchen item, and the male face for an image of a office item";
+            }
+            // data.testType = "IBT Gender-Roles";
+        } else if (test.testType === "Gender_Color") {
+            if (outerIndex === 0) {
+                data.description = "Practice: clicks the male face for an image of a blue color, and the female face for an image of a pink color";
+            } else if (outerIndex === 1) {
+                data.description = "User clicks the male face for an image of a blue color, and the female face for an image of a pink color";
+            } else if (outerIndex === 2) {
+                data.description = "User clicks the female face for an image of a blue color, and the male face for an image of a pink color";
+            }
+            // data.testType = "IBT Gender-Color";
+        } else if (test.testType === "Gender_Clothing") {
+            if (outerIndex === 0) {
+                data.description = "Practice: clicks the male face for an image of a male clothing, and the female face for an image of a female clothing";
+            } else if (outerIndex === 1) {
+                data.description = "User clicks the male face for an image of a male clothing, and the female face for an image of a female clothing";
+            } else if (outerIndex === 2) {
+                data.description = "User clicks the female face for an image of a male clothing, and the male face for an image of a female clothing";
+            }
+            // data.testType = "IBT Gender-Clothing";
+        }
 
         data.stimulus = data.image;
         data.testType = version;
@@ -38,7 +74,8 @@ export function updateIBTData(Data, test, cMonth, cDay, cYear, whereToStore, ver
         delete data.name;
         delete data.visibility;
         delete data.isImg;
-        delete data.randomNo
+        delete data.randomNo;
+        delete data.currentTest
     })
 });
     test.$store.state[version] = dataclone;

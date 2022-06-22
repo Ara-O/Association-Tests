@@ -3,7 +3,7 @@
     v-if="surveyNotComplete"
     @surveyDone="surveyComplete"
   ></contact-experience>
-  <main v-else>
+  <main class="it-feedback-main" v-else>
     <h3>The test is over!</h3>
     <button @click="routeToHome" tag="button" class="gohome">Go Home</button>
     <br />
@@ -20,6 +20,7 @@ import storeContactExperience from "../../modules/storeContactExperience";
 import groupTest from "../../components/GroupTest.vue";
 import * as storeData from "../../modules/storingData/storingDataIT";
 import { mapGetters } from "vuex";
+const confetti = require("canvas-confetti");
 
 export default {
   components: {
@@ -40,6 +41,7 @@ export default {
 
   methods: {
     surveyComplete(userData) {
+      this.launchConfetti()
       if (userData !== "opted-out") {
         storeContactExperience(userData, "IT-Contact-Experience", this);
       }
@@ -78,7 +80,42 @@ export default {
       }
       this.$router.push("/Home");
     },
+
+    
+    launchConfetti() {
+      var myCanvas = document.querySelector(".it-feedback-main");
+
+      var myConfetti = confetti.create(myCanvas, { resize: true });
+
+      // do this for 1 seconds
+      var duration = 10 * 100;
+      var end = Date.now() + duration;
+
+      (function frame() {
+        // launch a few confetti from the left edge
+        myConfetti({
+          particleCount: 7,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+        });
+        // and launch a few from the right edge
+        myConfetti({
+          particleCount: 7,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+        });
+
+        // keep going until we are out of time
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      })();
+    },
+
   },
+
 };
 </script>
 <style scoped>

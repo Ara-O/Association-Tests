@@ -61,11 +61,13 @@ function testData_Block1(white, black, trials) {
         fullData.push(images_white_children[i])
     }
 
+    
+    fullData = shuffleObjects(fullData)
+    
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
         el.description = "User chooses between White faces and Black faces"
     })
-    
     // console.log("Rest data 1: ", fullData)
     return fullData
 
@@ -87,13 +89,14 @@ function testData_Block2(happy, sad, trials) {
         fullData.push(images_sad_faces[i])
     }
 
+    
+    // console.log("Test data 2: ", fullData)
+    fullData = shuffleObjects(fullData)
+    
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
         el.description = "User chooses between happy emojis and sad emojis"
     })
-
-    // console.log("Test data 2: ", fullData)
-
     return fullData;
 }
 
@@ -113,12 +116,13 @@ function testData_Block3(white_happy, black_sad, trials) {
         fullData.push(black_sad_faces[i])
     }
 
+    
+    // console.log("Test data 3/4: ", fullData)
+    fullData = shuffleObjects(fullData)
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
         el.description = "White faces/Happy faces are grouped together, while Black faces/Sad faces are grouped together"
     })
-
-    // console.log("Test data 3/4: ", fullData)
 
     return fullData
 }
@@ -139,12 +143,13 @@ function testData_Block4(white_sad, black_happy, trials) {
         fullData.push(black_happy_faces[i])
     }
 
+    
+    // console.log("Test data 6/7: ", fullData)
+    fullData = shuffleObjects(fullData)
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
         el.description = "White faces/Happy faces are grouped together, while Black faces/Sad faces are grouped together"
     })
-
-    // console.log("Test data 6/7: ", fullData)
 
     return fullData
 

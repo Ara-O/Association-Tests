@@ -264,7 +264,8 @@ section.consent-form {
 
 .explicit-attitudes-div{
   display: flex;
-  justify-content: center
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .explicit-attitudes-scale{
@@ -286,13 +287,19 @@ section.consent-form {
   .survey_container {
     min-height: 0px;
     min-width: 0px;
+    max-height: initial;
     border: none;
     box-shadow: none;
     box-sizing: border-box;
-    padding: 4px 53px;
-    /* margin-top: 46px; */
-    width: 399px;
+    padding: 28px 53px;
+overflow: hidden;
+overflow-y: auto;
+    width: 440px;
+  }
 
+  
+  .basic-questions_title{
+    margin-top: 0px !important
   }
 
   main {

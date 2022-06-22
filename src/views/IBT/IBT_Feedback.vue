@@ -8,7 +8,7 @@
     <button @click="routeToHome" class="return-to-home-btn">
       Go back to home page
     </button>
-    <h4>Here's your feedback!</h4>
+    <h4>Congratulations! You have finished the test.</h4>
     <div class="feedbacks">
        <div class="feedback-wrapper">
         <!-- image here -->
@@ -67,6 +67,7 @@ import groupTest from "../../components/GroupTest.vue";
 import storeContactExperience from "../../modules/storeContactExperience";
 import * as storeData from "../../modules/storingData/storingDataIBT";
 import { mapGetters } from "vuex";
+const confetti = require("canvas-confetti");
 export default {
   components: {
     contactExperience,
@@ -160,11 +161,46 @@ export default {
     },
 
     surveyComplete(userData) {
+      this.launchConfetti()
       if (userData !== "opted-out") {
         storeContactExperience(userData, this.getCurrentTest, this);
       }
       this.surveyNotComplete = false;
     },
+
+    
+    launchConfetti() {
+      var myCanvas = document.querySelector(".gender-feedback-main");
+
+      var myConfetti = confetti.create(myCanvas, { resize: true });
+
+      // do this for 1 seconds
+      var duration = 10 * 100;
+      var end = Date.now() + duration;
+
+      (function frame() {
+        // launch a few confetti from the left edge
+        myConfetti({
+          particleCount: 7,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+        });
+        // and launch a few from the right edge
+        myConfetti({
+          particleCount: 7,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+        });
+
+        // keep going until we are out of time
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      })();
+    },
+
 
     storeDataWithNewUniqueId(role, individualUid, uid) {
       // console.log(role, individualUid, uid);

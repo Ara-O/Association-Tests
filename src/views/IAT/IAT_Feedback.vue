@@ -8,7 +8,7 @@
     <button @click="routeToHome" class="return-to-home-btn">
       Go back to home page
     </button>
-    <h4>Here's your feedback!</h4>
+    <h4 style="font-weight: 400">Congratulations! You have finished the test!</h4>
     <div class="feedbacks">
       <div class="feedback-wrapper">
         <!-- image here -->
@@ -31,7 +31,7 @@
           </h3>
         </div>
       </div>
-       <div class="feedback-wrapper">
+      <div class="feedback-wrapper">
         <!-- image here -->
         <div class="image-wrapper">
           <div v-for="(n, index) in 2" :key="n">
@@ -48,7 +48,7 @@
           </h3>
           <h3 class="feedback-message">
             Speed:
-            {{ this.calculateSpeed(1)}}
+            {{ this.calculateSpeed(1) }}
           </h3>
         </div>
       </div>
@@ -67,6 +67,7 @@ import groupTest from "../../components/GroupTest.vue";
 import storeContactExperience from "../../modules/storeContactExperience";
 import * as storeData from "../../modules/storingData/storingDataIAT";
 import { mapGetters } from "vuex";
+const confetti = require("canvas-confetti");
 export default {
   components: {
     contactExperience,
@@ -77,6 +78,14 @@ export default {
     return {
       surveyNotComplete: true,
       wasGroupTest: false,
+      IAT_Black_White_Target_0: [
+        "Clicker_Images/IAT_Black_White/White_And_Happy_Face.png",
+        "Clicker_Images/IAT_Black_White/Black_And_Sad_Face.png",
+      ],
+      IAT_Black_White_Target_1: [
+        "Clicker_Images/IAT_Black_White/White_And_Sad_Face.png",
+        "Clicker_Images/IAT_Black_White/Black_And_Happy_Face.png",
+      ],
       IAT_Gender_Toy_Target_0: [
         "Clicker_Images/IAT_Gender_Toy/Male_And_Male_Toy.png",
         "Clicker_Images/IAT_Gender_Toy/Female_And_Female_Toy.png",
@@ -162,7 +171,40 @@ export default {
       return `${nsum.toFixed(2)}ms`;
     },
 
+    launchConfetti() {
+      var myCanvas = document.querySelector(".gender-feedback-main");
+
+      var myConfetti = confetti.create(myCanvas, { resize: true });
+
+      // do this for 1 seconds
+      var duration = 10 * 100;
+      var end = Date.now() + duration;
+
+      (function frame() {
+        // launch a few confetti from the left edge
+        myConfetti({
+          particleCount: 7,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+        });
+        // and launch a few from the right edge
+        myConfetti({
+          particleCount: 7,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+        });
+
+        // keep going until we are out of time
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      })();
+    },
+
     surveyComplete(userData) {
+      this.launchConfetti();
       if (userData !== "opted-out") {
         storeContactExperience(userData, this.getCurrentTest, this);
       }
@@ -202,7 +244,6 @@ export default {
   },
   mounted() {
     this.wasGroupTest = false;
-    // console.log(this.$store.state[this.getCurrentTest]);
   },
 };
 </script>

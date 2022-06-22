@@ -204,7 +204,8 @@
               </li>
             </div>
             <div class="correctchoice">
-              <h3 @click="proceedAfterIncorrectChoice">
+              <h3 @click="proceedAfterIncorrectChoice" style="font-size: 21px;
+    font-weight: 600;">
                 {{ facedata[this.currentlyVisible].name }}
               </h3>
               <h3 style="font-size: 16px; width: 166px">

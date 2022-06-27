@@ -47,6 +47,14 @@ import IAT_Black_White_Survey from "../views/IAT/IAT_Race/IAT_Black_White/IAT_Bl
 
 // ---------------
 
+//IAT FUN
+
+import IAT_Cat_Dog from "../views/IAT/IAT_Cat_Dog/IAT_Cat_Dog.vue"
+import IAT_Cat_Dog_Touchscreen from "../views/IAT/IAT_Cat_Dog/IAT_Cat_Dog_Touchscreen.vue"
+import IAT_Cat_Dog_Survey from "../views/IAT/IAT_Cat_Dog/IAT_Cat_Dog_Survey.vue"
+
+//-------------
+
 import IT from "../views/IT/IT.vue";
 import IT_Number_White from "../views/IT/IT_Number/IT_White.vue";
 import IT_Number_Black from "../views/IT/IT_Number/IT_Black.vue";
@@ -63,6 +71,7 @@ import IT_Name_EastAsian from "../views/IT/IT_Name/IT_Name_Asian.vue";
 
 import IBT_Choose_Test from "../views/IBT/IBT_Choose_Test.vue"
 import IBT_Black_White from "../views/IBT/IBT_Race/IBT_Black_White/IBT_Black_White.vue"
+import IBT_Cat_Dog from "../views/IBT/IBT_Cat_Dog.vue"
 
 //-----------
 
@@ -151,6 +160,18 @@ const routes = [
     component: IAT_Gender_Toy_Survey,
   },
   {
+    path: "/IAT_Cat_Dog",
+    component: IAT_Cat_Dog
+  },
+  {
+    path: "/IAT_Cat_Dog_Touchscreen",
+    component: IAT_Cat_Dog_Touchscreen
+  },
+  {
+    path: "/IAT_Cat_Dog_Survey",
+    component: IAT_Cat_Dog_Survey
+  },
+  {
     path: "/IAT_Feedback",
     component: IAT_Feedback,
   },
@@ -214,6 +235,10 @@ const routes = [
   {
     path: '/IBT_Gender_Toy',
     component: IBT_Gender_Toy,
+  },
+  {
+    path: '/IBT_Cat_Dog',
+    component: IBT_Cat_Dog,
   },
   {
     path: '/IBT_Gender_Clothing',

@@ -12,7 +12,7 @@
         <option value="none" selected disabled>Choose your gender</option>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
-        <option value="Female">Non-Binary</option>
+        <option value="Non Binary">Non-Binary</option>
         <option value="Other">Other</option>
         <option value="Prefer not to say">Prefer not to say</option>
       </select>
@@ -64,8 +64,8 @@ export default {
         chosenethnicity: "",
         slider1: 50,
         slider2: 50,
-        boyWouldChooseToPlayWith: "",
-        girlWouldChooseToPlayWith: "",
+        boyWouldPrefer: "",
+        girlWouldPrefer: "",
       },
     };
   },

@@ -62,16 +62,9 @@
 }
 
 .clickerImage{
-  width: 110px;
-}
-
-.clickerImageToy{
-  width: 170px;
-}
-
-.clickerImageCombined{
-  margin-left: 20px;
-  width: 210px
+  width: inherit;
+  height: 53%;
+  object-fit: scale-down;
 }
 
 .clickerImageCombined_Race{

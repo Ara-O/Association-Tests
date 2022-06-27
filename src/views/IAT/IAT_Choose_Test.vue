@@ -11,6 +11,8 @@
       <btn whereTo="/IAT_Choose_Test" class="button" @click="handleRace"
         >Race IAT</btn
       >
+      <btn whereTo="/IAT_Cat_Dog_Survey" class="button">Cat-Dog IAT</btn
+      >
         <router-link
         style="text-decoration: underline; cursor: pointer; font-size: 16px; "
         class="router-link-back"

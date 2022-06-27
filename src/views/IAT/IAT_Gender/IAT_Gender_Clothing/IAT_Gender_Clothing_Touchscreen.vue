@@ -37,7 +37,6 @@
           :src="getImageClicker(fullTest[currentBlock].clickerLeft)"
           alt="Clicker image"
           class="clickerImage left"
-          :class="calculateClass"
         />
       </template>
       <template #right>
@@ -45,7 +44,6 @@
           :src="getImageClicker(fullTest[currentBlock].clickerRight)"
           alt="Clicker image"
           class="clickerImage right"
-          :class="calculateClass"
         />
       </template>
     </clicker>

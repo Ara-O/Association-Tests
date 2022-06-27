@@ -77,12 +77,12 @@ export default {
         },
         {
           block: "Block6",
-          instructions: "Practice: Click I for Male images and Female images, and E for Female images and Male clothing",
+          instructions: "Practice: Click I for Male images and Female clothing, and E for Female images and Male clothing",
           data:  trials.testData_Block4("I", "E", 2),
         },
         {
           block: "Block7",
-          instructions: "Let's Continue: Click I for Male images and Female images, and E for Female images and Male clothing",
+          instructions: "Let's Continue: Click I for Male images and Female clothing, and E for Female images and Male clothing",
           data:  trials.testData_Block4("I", "E", 2),
         }
       ]

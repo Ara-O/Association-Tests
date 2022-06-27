@@ -115,6 +115,7 @@
         :userDataProp="userData"
         @progress_kb="progress_kb"
         @progress_ts="progress_ts"
+        @goBackEmit="moveon = true"
       >
       </explicit-attitudes-race>
     </div>

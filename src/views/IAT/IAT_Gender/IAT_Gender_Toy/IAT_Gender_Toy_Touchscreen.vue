@@ -36,16 +36,14 @@
         <img
           :src="getImageClicker(fullTest[currentBlock].clickerLeft)"
           alt="Clicker image"
-          class="clickerImage left"
-          :class="calculateClass"
+          class="left clickerImage"
         />
       </template>
       <template #right>
         <img
           :src="getImageClicker(fullTest[currentBlock].clickerRight)"
           alt="Clicker image"
-          class="clickerImage right"
-          :class="calculateClass"
+          class="right clickerImage"
         />
       </template>
     </clicker>
@@ -143,23 +141,6 @@ export default {
     notStarted() {
       if (this.notStarted === false) {
         startTimer();
-      }
-    },
-  },
-
-  computed: {
-    calculateClass() {
-      if (this.currentBlock == 1) {
-        return "clickerImageToy";
-      } else if (
-        this.currentBlock == 2 ||
-        this.currentBlock == 3 ||
-        this.currentBlock == 5 ||
-        this.currentBlock == 6
-      ) {
-        return "clickerImageCombined";
-      } else {
-        return "";
       }
     },
   },

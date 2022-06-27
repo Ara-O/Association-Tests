@@ -115,6 +115,7 @@
         :userDataProp="userData"
         @progress_kb="progress_kb"
         @progress_ts="progress_ts"
+        @go-back-emit="moveon = true"
         opinionTitle1="Which color do you think this boy would prefer?"
         opinionTitle2="Which color do you think this girl would prefer?"
         :stereotypeImages1="stereotypeImages1"

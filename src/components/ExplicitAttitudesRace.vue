@@ -95,8 +95,8 @@
   <!-- Stereotype section - how do you feel about white americans, black americans, asian americans -->
 
   <div>
-      <!-- <button @click="test">clickity clack</button> -->
-    <h4>
+    <!-- <button @click="test">clickity clack</button> -->
+    <h4 style="max-width: 100%">
       Using the scale below, please rate how you feel about White Americans.
     </h4>
     <div
@@ -106,14 +106,22 @@
     >
       <h5>{{ explicitAttitudeOption.left }}</h5>
       <span v-for="i in 7" :key="i" class="explicit-attitudes-scale">
-        <label :for=" `${explicitAttitudeOption.left}-${i}`" class="explicit-attitudes-label">{{ i }}</label>
+        <label
+          :for="`${explicitAttitudeOption.left}-${i}`"
+          class="explicit-attitudes-label"
+          >{{ i }}</label
+        >
         <input
           type="radio"
           :id="`${explicitAttitudeOption.left}-${i}`"
           style="margin-left: 21px"
           :value="i"
           :name="explicitAttitudeOption.right"
-          v-model="userData.opinionofwhiteamericans[`${explicitAttitudeOption.left}_${explicitAttitudeOption.right}`]"
+          v-model="
+            userData.opinionofwhiteamericans[
+              `${explicitAttitudeOption.left}_${explicitAttitudeOption.right}`
+            ]
+          "
         />
       </span>
       <h5 style="margin-left: 21px">{{ explicitAttitudeOption.right }}</h5>
@@ -123,7 +131,7 @@
   <!-- Opinion on black americans  -->
 
   <div>
-    <h4>
+    <h4 style="max-width: 100%">
       Using the scale below, please rate how you feel about Black Americans.
     </h4>
     <div
@@ -133,14 +141,22 @@
     >
       <h5>{{ explicitAttitudeOption.left }}</h5>
       <span v-for="i in 7" :key="i" class="explicit-attitudes-scale">
-        <label :for=" `${explicitAttitudeOption.left}-${i}-2`" class="explicit-attitudes-label">{{ i }}</label>
+        <label
+          :for="`${explicitAttitudeOption.left}-${i}-2`"
+          class="explicit-attitudes-label"
+          >{{ i }}</label
+        >
         <input
           type="radio"
           :id="`${explicitAttitudeOption.left}-${i}-2`"
           style="margin-left: 21px"
           :value="i"
           :name="`${explicitAttitudeOption.right}-2`"
-          v-model="userData.opinionofblackamericans[`${explicitAttitudeOption.left}_${explicitAttitudeOption.right}`]"
+          v-model="
+            userData.opinionofblackamericans[
+              `${explicitAttitudeOption.left}_${explicitAttitudeOption.right}`
+            ]
+          "
         />
       </span>
       <h5 style="margin-left: 21px">{{ explicitAttitudeOption.right }}</h5>
@@ -150,7 +166,7 @@
   <!-- Users opinion of asian americans  -->
 
   <div>
-    <h4>
+    <h4 style="max-width: 100%">
       Using the scale below, please rate how you feel about Asian Americans.
     </h4>
     <div
@@ -160,35 +176,53 @@
     >
       <h5>{{ explicitAttitudeOption.left }}</h5>
       <span v-for="i in 7" :key="i" class="explicit-attitudes-scale">
-        <label :for=" `${explicitAttitudeOption.left}-${i}-3`" class="explicit-attitudes-label">{{ i }}</label>
+        <label
+          :for="`${explicitAttitudeOption.left}-${i}-3`"
+          class="explicit-attitudes-label"
+          >{{ i }}</label
+        >
         <input
           type="radio"
           :id="`${explicitAttitudeOption.left}-${i}-3`"
           style="margin-left: 21px"
           :value="i"
           :name="`${explicitAttitudeOption.right}-3`"
-          v-model="userData.opinionofasianamericans[`${explicitAttitudeOption.left}_${explicitAttitudeOption.right}`]"
+          v-model="
+            userData.opinionofasianamericans[
+              `${explicitAttitudeOption.left}_${explicitAttitudeOption.right}`
+            ]
+          "
         />
       </span>
       <h5 style="margin-left: 21px">{{ explicitAttitudeOption.right }}</h5>
     </div>
   </div>
 
-    <br>
-  <div class="buttons">
+  <br />
+  <div style="display: flex; flex-direction: column; align-items: center">
+    <div class="buttons">
+      <button
+        @click="progress_ts"
+        class="btn btn_basic_survey"
+        style="margin-top: 5px; width: 195px; padding: 24px 18px"
+      >
+        Touch Screen Version
+      </button>
+      <button
+        @click="progress_kb"
+        class="btn btn_basic_survey kb_btn"
+        style="margin-top: 5px; width: 150px; padding: 24px 18px"
+      >
+        Keyboard Version
+      </button>
+    </div>
+    <br />
     <button
-      @click="progress_ts"
-      class="btn btn_basic_survey"
-      style="margin-top: 5px; width: 195px; padding: 24px 18px"
-    >
-      Touch Screen Version
-    </button>
-    <button
-      @click="progress_kb"
+      @click="goBack"
       class="btn btn_basic_survey kb_btn"
       style="margin-top: 5px; width: 150px; padding: 24px 18px"
     >
-      Keyboard Version
+      Back
     </button>
   </div>
 </template>
@@ -196,7 +230,7 @@
 <script>
 export default {
   props: ["userDataProp", "opinionTitle1", "opinionTitle2", "currentTest"],
-  emits: ["progress_kb", "progress_ts"],
+  emits: ["progress_kb", "progress_ts", "goBackEmit"],
   data() {
     return {
       leftImg: "",
@@ -254,11 +288,11 @@ export default {
   },
 
   methods: {
-      test(){
-          // console.log(this.userData)
-      },
+    goBack() {
+      this.$emit("goBackEmit");
+    },
     progress_ts() {
-      this.$emit("progress_ts",this.userData);
+      this.$emit("progress_ts", this.userData);
     },
     progress_kb() {
       this.$emit("progress_kb", this.userData);

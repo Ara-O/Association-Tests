@@ -145,6 +145,7 @@ label {
   font-weight: 400;
   font-size: 15px;
   line-height: 28px;
+  max-width: 350px
 
 }
 
@@ -236,13 +237,17 @@ section.consent-form {
   
 }
 
+input[type="radio"]{
+  margin-left: 0px
+}
+
 .emotion-img{
   width: 33px; 
   cursor: pointer;
 }
 
 .child-img-survey{
-  width: 75px
+  width: 81px
 }
 
 .child-img-survey-option{

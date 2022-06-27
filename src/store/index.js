@@ -17,6 +17,8 @@ export default createStore({
     IAT_Black_White: [],
     IAT_Black_White_Touchscreen: [],
     ibt_data: [],
+    IAT_Cat_Dog: [],
+    IBT_Cat_Dog: [],
     IBT_Gender_Toy: [],
     IT_trials: {},
     IT_trials_text: [],

@@ -19,9 +19,9 @@ export function updateIATData(Data, test, cMonth, cDay, cYear, whereToStore, ver
         data.howUserFeelsTowardsGirls = test.$store.state.userData.slider2 || "Not provided";
 
         //Only for iat gender
-        if(data.testType[4] === "G"){
-            data.boyWouldChooseToPlayWith = test.$store.state.userData.boyWouldChooseToPlayWith || "Not provided";
-            data.girlWouldChooseToPlayWith = test.$store.state.userData.girlWouldChooseToPlayWith || "Not provided";
+        if(data.testType[4] === "G" || data.testType[4] === "C" ){
+            data.boyWouldPrefer = test.$store.state.userData.boyWouldPrefer || "Not provided";
+            data.girlWouldPrefer = test.$store.state.userData.girlWouldPrefer || "Not provided";
         } else {     
             //Only for iat race
             data.opinionOfBlackAmericans = test.$store.state.userData.opinionofblackamericans;

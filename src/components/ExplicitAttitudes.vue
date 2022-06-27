@@ -2,7 +2,7 @@
   <h3 style="font-size: 18px">Explicit Attitudes</h3>
   <h4>
     <!-- CHANGE THIS FOR THE DIFFERENT TESTS -->
-    How do you feel about boys? Use the slider:
+    How do you feel about {{ howDoYouFeelAbout1 }}? Use the slider:
     {{ this.userData.slider1 }}
   </h4>
   <!-- Warmness Slider -->
@@ -13,28 +13,33 @@
         alt="big frown"
         class="emotion-img"
         style="width: 32px"
+        @click="userData.slider1 = 0"
       />
       <img
         src="../assets/Emotions_Range/slightly-sad.png"
         alt="slightly sad"
         class="emotion-img"
         style="width: 33px"
+        @click="userData.slider1 = 25"
       />
       <img
         src="../assets/Emotions_Range/no-preference.png"
         alt="no preference"
         class="emotion-img"
+        @click="userData.slider1 = 50"
       />
       <img
         src="../assets/Emotions_Range/slightly-happy.png"
         alt="slightly happy"
         class="emotion-img"
         style="width: 32px"
+        @click="userData.slider1 = 75"
       />
       <img
         src="../assets/Emotions_Range/big-smile.png"
         alt="big smile"
         class="emotion-img"
+        @click="userData.slider1 = 100"
       />
     </div>
     <input
@@ -48,7 +53,7 @@
 
   <!-- Warmess Slider -->
   <h4>
-    How do you feel about girls? Use the slider:
+    How do you feel about {{ howDoYouFeelAbout2 }}? Use the slider:
     {{ this.userData.slider2 }}
   </h4>
 
@@ -59,28 +64,33 @@
         alt="big frown"
         class="emotion-img"
         style="width: 32px"
+        @click="userData.slider2 = 0"
       />
       <img
         src="../assets/Emotions_Range/slightly-sad.png"
         alt="slightly sad"
         class="emotion-img"
         style="width: 33px"
+        @click="userData.slider2 = 25"
       />
       <img
         src="../assets/Emotions_Range/no-preference.png"
         alt="no preference"
         class="emotion-img"
+        @click="userData.slider2 = 50"
       />
       <img
         src="../assets/Emotions_Range/slightly-happy.png"
         alt="slightly happy"
         class="emotion-img"
         style="width: 32px"
+        @click="userData.slider2 = 75"
       />
       <img
         src="../assets/Emotions_Range/big-smile.png"
         alt="big smile"
         class="emotion-img"
+        @click="userData.slider2 = 100"
       />
     </div>
     <input
@@ -117,7 +127,7 @@
           id="child-img-survey-option1-2"
           name="child-img-survey-2"
           :value="generateOptionValue(leftImg)"
-          v-model="userData.boyWouldChooseToPlayWith"
+          v-model="userData.boyWouldPrefer"
         />
       </div>
       <div class="child-img-survey-option-container">
@@ -135,7 +145,7 @@
           id="child-img-survey-option2-2"
           name="child-img-survey-2"
           :value="generateOptionValue(rightImg)"
-          v-model="userData.boyWouldChooseToPlayWith"
+          v-model="userData.boyWouldPrefer"
         />
       </div>
     </div>
@@ -166,7 +176,7 @@
           id="child-img-survey-option1"
           name="child-img-survey"
           :value="generateOptionValue(leftImg2)"
-          v-model="userData.girlWouldChooseToPlayWith"
+          v-model="userData.girlWouldPrefer"
         />
       </div>
       <div class="child-img-survey-option-container">
@@ -184,26 +194,36 @@
           id="child-img-survey-option2"
           name="child-img-survey"
           :value="generateOptionValue(rightImg2)"
-          v-model="userData.girlWouldChooseToPlayWith"
+          v-model="userData.girlWouldPrefer"
         />
       </div>
     </div>
   </div>
 
-  <div class="buttons">
+  <div style="display: flex; flex-direction: column; align-items: center">
+    <div class="buttons">
+      <button
+        @click="progress_ts"
+        class="btn btn_basic_survey"
+        style="margin-top: 5px; width: 195px; padding: 24px 18px"
+      >
+        Touch Screen Version
+      </button>
+      <button
+        @click="progress_kb"
+        class="btn btn_basic_survey kb_btn"
+        style="margin-top: 5px; width: 150px; padding: 24px 18px"
+      >
+        Keyboard Version
+      </button>
+    </div>
+    <br />
     <button
-      @click="progress_ts"
-      class="btn btn_basic_survey"
-      style="margin-top: 5px; width: 195px; padding: 24px 18px"
-    >
-      Touch Screen Version
-    </button>
-    <button
-      @click="progress_kb"
+      @click="goBack"
       class="btn btn_basic_survey kb_btn"
       style="margin-top: 5px; width: 150px; padding: 24px 18px"
     >
-      Keyboard Version
+      Back
     </button>
   </div>
 </template>
@@ -220,8 +240,14 @@ export default {
     fileLocation: {
       default: "Stimulus_Faces",
     },
+    howDoYouFeelAbout1: {
+      default: "boys",
+    },
+    howDoYouFeelAbout2: {
+      default: "girls",
+    },
   },
-  emits: ["progress_kb", "progress_ts"],
+  emits: ["progress_kb", "progress_ts", "goBackEmit"],
   data() {
     return {
       leftImg: "",
@@ -233,13 +259,17 @@ export default {
         chosenethnicity: "",
         slider1: 50,
         slider2: 50,
-        boyWouldChooseToPlayWith: "",
-        girlWouldChooseToPlayWith: "",
+        boyWouldPrefer: "",
+        girlWouldPrefer: "",
       },
     };
   },
 
   methods: {
+    goBack() {
+      this.$emit("goBackEmit");
+    },
+
     progress_ts() {
       this.$emit("progress_ts");
     },
@@ -248,6 +278,7 @@ export default {
     },
 
     generateOptionValue(img) {
+      // The suffix for when the user clicks what image the boy/girl/pet would likely choose
       if (this.currentTest === "IAT_Gender_Toy") {
         if (img[2] === "M") {
           return "Male toy";
@@ -285,6 +316,14 @@ export default {
           return "Math image";
         } else if (img[0] === "R") {
           return "Reading image";
+        }
+      }
+
+      if (this.currentTest === "IAT_Cat_Dog") {
+        if (img[0] === "D") {
+          return "Dog image";
+        } else if (img[0] === "C") {
+          return "Cat image";
         }
       }
     },

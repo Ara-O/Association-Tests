@@ -8,7 +8,20 @@
     <button @click="routeToHome" class="return-to-home-btn">
       Go back to home page
     </button>
-    <h4 style="font-weight: 400">Congratulations! You have finished the test!</h4>
+
+    <img
+      src="http://www.pngall.com/wp-content/uploads/2017/05/Congratulation-Free-Download-PNG.png"
+      alt="Congratulations image"
+      class="left-congratulations"
+    />
+    <h4 style="font-weight: 400">
+      Congratulations! You have finished the test!
+    </h4>
+      <img
+      src="http://www.pngall.com/wp-content/uploads/2017/05/Congratulation-Free-Download-PNG.png"
+      alt="Congratulations image"
+      class="right-congratulations"
+    />
     <div class="feedbacks">
       <div class="feedback-wrapper">
         <!-- image here -->
@@ -104,10 +117,10 @@ export default {
       ],
       IAT_Gender_Clothing_Target_0: [
         "Clicker_Images/IAT_Gender_Clothing/Male_And_Male_Clothing.png",
-        "Clicker_Images/IAT_Gender_Clothing/Female_And_Male_Clothing.png",
+        "Clicker_Images/IAT_Gender_Clothing/Female_And_Female_Clothing.png",
       ],
       IAT_Gender_Clothing_Target_1: [
-        "Clicker_Images/IAT_Gender_Clothing/Male_And_Male_Clothing.png",
+        "Clicker_Images/IAT_Gender_Clothing/Male_And_Female_Clothing.png",
         "Clicker_Images/IAT_Gender_Clothing/Female_And_Male_Clothing.png",
       ],
       IAT_Gender_Roles_Target_0: [
@@ -125,6 +138,14 @@ export default {
       IAT_Gender_Subject_Target_1: [
         "Clicker_Images/IAT_Gender_Subject/Male_And_Reading.png",
         "Clicker_Images/IAT_Gender_Subject/Female_And_Math.png",
+      ],
+      IAT_Cat_Dog_Target_0: [
+        "Clicker_Images/IAT_Cat_Dog/Dog_And_Happy_Face.png",
+        "Clicker_Images/IAT_Cat_Dog/Cat_And_Sad_Face.png",
+      ],
+      IAT_Cat_Dog_Target_1: [
+        "Clicker_Images/IAT_Cat_Dog/Dog_And_Sad_Face.png",
+        "Clicker_Images/IAT_Cat_Dog/Cat_And_Happy_Face.png",
       ],
     };
   },

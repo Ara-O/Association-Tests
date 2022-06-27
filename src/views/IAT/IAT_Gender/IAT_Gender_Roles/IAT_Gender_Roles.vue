@@ -58,7 +58,7 @@ export default {
         {
           block: "Block2",
           instructions: "Click E for Office Items, and I for Kitchen items",
-          data: trials.testData_Block2("I", "E", 6),
+          data: trials.testData_Block2("E", "I", 6),
         },
         {
           block: "Block3",

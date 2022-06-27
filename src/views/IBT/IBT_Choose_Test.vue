@@ -8,6 +8,9 @@
       <btn whereTo="/IBT_Choose_Test" class="button" @click="handleRace"
         >Race IBT</btn
       >
+      <btn whereTo="/IBT_Cat_Dog" class="button"
+        >Cat-Dog IBT</btn
+      >
       <router-link
         style="text-decoration: underline; cursor: pointer; font-size: 16px"
         class="router-link-back"

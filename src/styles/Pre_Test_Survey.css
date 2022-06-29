@@ -267,6 +267,40 @@ input[type="radio"]{
   column-gap: 19px;
 }
 
+
+.input-user-id-text {
+  max-width: 400px;
+  width: auto;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.user-id {
+  border-radius: 6px;
+  border: solid 1px gray;
+  margin-top: 15px;
+  height: 25px;
+  text-align: center;
+}
+
+.collect-user-id-ibt{
+  width: auto;
+  max-width: 600px;
+  max-height: 600px;
+  height: auto;
+  overflow: auto;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  align-items: center;
+  box-shadow: -3px 1px 7px #eeeeeeb2, 2px 3px 5px rgb(218 218 219 / 95%);
+  box-sizing: border-box;
+  padding: 21px 35px 35px;
+}
+
+
 .explicit-attitudes-div{
   display: flex;
   justify-content: center;

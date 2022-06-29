@@ -24,7 +24,7 @@
         <br />
         <h4>Click the right arrow to continue</h4>
         <img
-          src="../../assets/App_Icons/rightArrow.png"
+          src="../../../assets/App_Icons/rightArrow.png"
           alt="Right arrow"
           @click="next"
           class="continue"
@@ -33,7 +33,7 @@
       <div v-else-if="testNotStarted === false">
         <div style="display: flex; flex-direction: column; align-items: center">
           <img
-            src="../../assets/IT_Faces/star.jpg"
+            src="../../../assets/IT_Faces/star.jpg"
             alt="star"
             class="irbt_star"
           />
@@ -49,7 +49,7 @@
               Incorrect. Try again to progress!
             </h3>
             <img
-              src="../../assets/App_Icons/incorrectImg.png"
+              src="../../../assets/App_Icons/incorrectImg.png"
               alt="Wrong icon"
               class="irbt-wrong-img"
             />
@@ -77,9 +77,9 @@
 </template>
 
 <script>
-import IbtInstructions from "../../components/IbtInstructions.vue";
-import { catAndDog } from "../../modules/generateIbtTrials/generateIbtTrialsCatDog";
-import * as irbt from "../../modules/handleAnswers/handleIbtAnswers";
+import IbtInstructions from "../../../components/IbtInstructions.vue";
+import { catAndDog } from "../../../modules/generateIbtTrials/generateIbtTrialsCatDog";
+import * as irbt from "../../../modules/handleAnswers/handleIbtAnswers";
 
 export default {
   components: {
@@ -142,13 +142,13 @@ export default {
 
     getFacesPosition() {
       let face = irbt.getFacesPosition(this, "happy.jpg", "sad.jpg");
-      return require(`../../assets/IBT_Faces/${face}`);
+      return require(`../../../assets/IBT_Faces/${face}`);
     },
 
     //does the reverse of the first method for the second image
     getFacesPosition2() {
       let face = irbt.getFacesPosition2(this, "happy.jpg", "sad.jpg");
-      return require(`../../assets/IBT_Faces/${face}`);
+      return require(`../../../assets/IBT_Faces/${face}`);
     },
 
     finishedInstructions() {
@@ -172,7 +172,7 @@ export default {
     },
 
     getImage(url) {
-      return require(`../../assets/IAT_Cat_Dog/${url}`);
+      return require(`../../../assets/IAT_Cat_Dog/${url}`);
     },
 
     next() {
@@ -189,5 +189,5 @@ export default {
 </script>
 
 <style scoped>
-@import url("../../styles/IBT.css");
+@import url("../../../styles/IBT.css");
 </style>

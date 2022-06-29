@@ -22,7 +22,7 @@ export default createStore({
     IBT_Gender_Toy: [],
     IT_trials: {},
     IT_trials_text: [],
-    uid: Math.floor((Math.random() * 10000) + 1)
+    uid: 0,
   },
   getters: {
     getUID(state){
@@ -33,6 +33,10 @@ export default createStore({
     }
   },
   mutations: {
+    changeUserID(state, payload){
+      state.uid = payload;
+    },
+
     changeCurrentTest(state, payload){
       state.currentTest = payload;
     }

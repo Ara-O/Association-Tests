@@ -1,5 +1,14 @@
 <template>
-  <div class="basic-questions">
+  <div v-if="!userHasPutInUserID" class="collect-user-id">
+    <h3 style="font-size: 18px">Before we start!</h3>
+    <h3 class="input-user-id-text">
+      What is your unique testing ID? ( You will be given this by a lab
+      assistant )
+    </h3>
+    <input type="text" class="user-id" v-model="uid" />
+    <button @click="storeUserID" class="btn_basic_survey">next</button>
+  </div>
+  <div class="basic-questions" v-else>
     <h3 class="basic-questions_title">Basic questions</h3>
     <img
       src="../assets/App_Icons/diverseimg.jpg"
@@ -17,7 +26,12 @@
         <option value="Prefer not to say">Prefer not to say</option>
       </select>
       <h4>Other, please specify</h4>
-      <input autocomplete="false"  type="text" class="ethnicity-input" v-model="gender" />
+      <input
+        autocomplete="false"
+        type="text"
+        class="ethnicity-input"
+        v-model="gender"
+      />
     </div>
     <h4 style="margin-top: 26px">How would you identify your race/ethnicity</h4>
 
@@ -59,6 +73,8 @@ export default {
     return {
       chosenethnicity: "",
       gender: "",
+      uid: "",
+      userHasPutInUserID: false,
       userData: {
         gender: "",
         chosenethnicity: "",
@@ -71,6 +87,13 @@ export default {
   },
 
   methods: {
+    storeUserID() {
+      if (this.uid.trim() !== "") {
+        this.$store.commit("changeUserID", this.uid);
+        this.userHasPutInUserID = true;
+      }
+    },
+
     next() {
       if (this.userData.chosenethnicity.trim() === "") {
         this.userData.chosenethnicity = this.chosenethnicity;
@@ -88,6 +111,28 @@ export default {
 .basic-questions_title {
   font-size: 18px;
 }
+.input-user-id-text {
+  max-width: 400px;
+  width: auto;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.user-id {
+  border-radius: 6px;
+  border: solid 1px gray;
+  margin-top: 15px;
+  height: 25px;
+  text-align: center;
+}
+
+.collect-user-id {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @media (max-width: 852px) {
   .basic-questions_title {
     font-size: 18px;

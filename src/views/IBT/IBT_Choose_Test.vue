@@ -8,7 +8,7 @@
       <btn whereTo="/IBT_Choose_Test" class="button" @click="handleRace"
         >Race IBT</btn
       >
-      <btn whereTo="/IBT_Cat_Dog" class="button"
+      <btn whereTo="/IBT_Cat_Dog_Survey" class="button"
         >Cat-Dog IBT</btn
       >
       <router-link
@@ -24,7 +24,7 @@
 
     <section v-if="ibt === 'gender'">
       <router-link
-        to="/IBT_Gender_Toy"
+        to="/IBT_Gender_Toy_Survey"
         class="routerlink test_btn"
         tag="button"
       >
@@ -33,7 +33,7 @@
 
 
       <router-link
-        to="/IBT_Gender_Clothing"
+        to="/IBT_Gender_Clothing_Survey"
         class="routerlink test_btn"
         tag="button"
       >
@@ -41,7 +41,7 @@
       </router-link>
 
       <router-link
-        to="/IBT_Gender_Subject"
+        to="/IBT_Gender_Subject_Survey"
         class="routerlink test_btn"
         tag="button"
       >
@@ -49,7 +49,7 @@
       </router-link>
 
       <router-link
-        to="/IBT_Gender_Color"
+        to="/IBT_Gender_Color_Survey"
         class="routerlink test_btn"
         tag="button"
       >
@@ -57,7 +57,7 @@
       </router-link>
 
       <router-link
-        to="/IBT_Gender_Roles"
+        to="/IBT_Gender_Roles_Survey"
         class="routerlink test_btn"
         tag="button"
       >
@@ -73,7 +73,7 @@
 
     <section v-if="ibt === 'race'">
       <router-link
-        to="/IBT_Black_White"
+        to="/IBT_Black_White_Survey"
         class="routerlink test_btn"
         tag="button"
       >

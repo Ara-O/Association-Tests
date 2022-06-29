@@ -5,7 +5,7 @@
         style="line-height: 37px; margin-top: 4px"
         v-html="fullTest[currentBlock].instructions"
       ></h3>
-      <h3>Click the SPACE bar on your computer to start</h3>
+      <h3>Click the SPACE bar on your keyboard to start</h3>
       <!-- SPACE BAR -->
       <img
         src="../../../assets/App_Icons/spacebar.png"

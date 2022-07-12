@@ -374,3 +374,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.child-img-survey-option-container input{
+  margin-left: 0px
+}
+</style>

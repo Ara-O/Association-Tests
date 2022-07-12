@@ -98,11 +98,11 @@ export default {
       rightFace: "",
       irbt_trials: [
         {
-          trials: genderAndSubject("male.jpg", "female.jpg", 2),
+          trials: genderAndSubject("male.jpg", "female.jpg", 8),
           section: "practice",
         },
         {
-          trials: genderAndSubject("male.jpg", "female.jpg", 2),
+          trials: genderAndSubject("male.jpg", "female.jpg", 12),
           section: "section_1",
           instruction: `There will be a picture of a Letter or a Number in the middle of
         screen. When you see a letter you should touch the
@@ -114,7 +114,7 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndSubject("female.jpg", "male.jpg", 2),
+          trials: genderAndSubject("female.jpg", "male.jpg", 12),
           section: "section_2",
           instruction: `There will be a picture of a Letter or a Number in the middle of
         screen. When you see a number you should touch the

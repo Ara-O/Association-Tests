@@ -102,10 +102,23 @@
 }
 
 @media (max-width: 1372px) {
-  .left-congratulations,
-.right-congratulations{
-  display: none;
+
+  .left-congratulations {
+    left: 9vw
+  }
+
+  .right-congratulations {
+    right: 9vw
+  }
 }
+
+@media (max-width: 1172px) {
+
+  .left-congratulations,
+  .right-congratulations {
+    display: none;
+  }
+
 }
 
 @media (max-height: 600px) {

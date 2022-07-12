@@ -44,11 +44,23 @@ const kitchen_images = [
     { accuracy: 100, image: "H03-pan.jpg"},
     { accuracy: 100, image: "H04-refrigerator.jpg"},
     { accuracy: 100, image: "H05-spatula.jpg"},
+    { accuracy: 100, image: "H06-washingsink.jpg"},
+    { accuracy: 100, image: "H01-cookerhood.jpg"},
+    { accuracy: 100, image: "H02-cuttingboard.jpg"},
+    { accuracy: 100, image: "H03-pan.jpg"},
+    { accuracy: 100, image: "H04-refrigerator.jpg"},
+    { accuracy: 100, image: "H05-spatula.jpg"},
     { accuracy: 100, image: "H06-washingsink.jpg"}
 ]
 
 
 let office_images = [
+    { accuracy: 100, image: "W01-chair.jpg"},
+    { accuracy: 100, image: "W02-computer.jpg"},
+    { accuracy: 100, image: "W04-filecabinet.jpg"},
+    { accuracy: 100, image: "W03-desk.jpg"},
+    { accuracy: 100, image: "W05-pen.jpg"},
+    { accuracy: 100, image: "W06-phone.jpg"},
     { accuracy: 100, image: "W01-chair.jpg"},
     { accuracy: 100, image: "W02-computer.jpg"},
     { accuracy: 100, image: "W04-filecabinet.jpg"},
@@ -80,7 +92,7 @@ export function testData_Block1(male, female, trials) {
     //Attach the visibility and description
     fullDataShuffled.forEach((el) => {
         el.visibility = "none",
-        el.description = "User chooses between male faces and female faces"
+        el.description = "User chooses between male images and female images"
     });
     
     fullData[0].visibility = "block"
@@ -115,7 +127,7 @@ export function testData_Block2(office, kitchen, trials) {
     return fullData
 }
 
-export function testData_Block3(male_and_office, female_and_kitchen, trials) {
+export function testData_Block3(male_and_office, female_and_kitchen, trials, practice = false) {
     let fullData = [];
 
     const images_male_office = shuffleObjects(JSON.parse(JSON.stringify(([...male_images, ...office_images]))))
@@ -129,9 +141,15 @@ export function testData_Block3(male_and_office, female_and_kitchen, trials) {
         fullData.push(images_male_office[i])
     }
 
+    fullData = shuffleObjects(fullData);
+
     fullData.forEach((el) => {
         el.visibility = "none";
-        el.description = "User chooses between male and office images and female and kitchen images"
+        if(practice === false){
+            el.description = "Male images and Office items are grouped together, while Female images and Kitchen items are grouped together"
+        }else if(practice === true){
+            el.description = "Practice: Male images and Office items are grouped together, while Female images and Kitchen items are grouped together"
+        }
     })
 
     fullData[0].visibility = "block"
@@ -141,7 +159,7 @@ export function testData_Block3(male_and_office, female_and_kitchen, trials) {
 
 }
 
-export function testData_Block4(male_and_kitchen, female_and_office, trials) {
+export function testData_Block4(male_and_kitchen, female_and_office, trials, practice = false) {
     let fullData = [];
 
     const images_male_kitchen = shuffleObjects(JSON.parse(JSON.stringify(([...male_images, ...kitchen_images]))))
@@ -155,9 +173,15 @@ export function testData_Block4(male_and_kitchen, female_and_office, trials) {
         fullData.push(images_female_office[i])
     }
 
+    fullData = shuffleObjects(fullData);
+
     fullData.forEach((el) => {
         el.visibility = "none";
-        el.description = "User chooses between male and kitchen images and female and office images"
+        if(practice === false){
+            el.description = "Male images and Kitchen items are grouped together, while Female images and Office items are grouped together"
+        }else if(practice === true){
+            el.description = "Practice: Male images and Kitchen items are grouped together, while Female images and Office items are grouped together"
+        }
     })
 
     fullData[0].visibility = "block"

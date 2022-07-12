@@ -53,6 +53,6 @@ export function catAndDog(dog, cat, trials){
     
     let updated_full_data = shuffleObjects(full_data)
     updated_full_data[0].visibility = "block";
-    console.log(updated_full_data)
+    // console.log(updated_full_data)
     return updated_full_data
 }

@@ -8,6 +8,7 @@ function shuffleObjects(array) {
     return array;
 }
 
+// All stimuli
 const male_images = [
     { accuracy: 100, image: "C_M01.jpg" },
     { accuracy: 100, image: "C_M02.jpg" },
@@ -43,10 +44,18 @@ const female_clothing_images = [
     { accuracy: 100, image: "CL_F02.jpg"},
     { accuracy: 100, image: "CL_F03.jpg"},
     { accuracy: 100, image: "CL_F04.jpg"},
+    { accuracy: 100, image: "CL_F01.jpg"},
+    { accuracy: 100, image: "CL_F02.jpg"},
+    { accuracy: 100, image: "CL_F03.jpg"},
+    { accuracy: 100, image: "CL_F04.jpg"},
 ]
 
 
 let male_clothing_images = [
+    { accuracy: 100, image: "CL_M01.jpg"},
+    { accuracy: 100, image: "CL_M02.jpg"},
+    { accuracy: 100, image: "CL_M03.jpg"},
+    { accuracy: 100, image: "CL_M04.jpg"},
     { accuracy: 100, image: "CL_M01.jpg"},
     { accuracy: 100, image: "CL_M02.jpg"},
     { accuracy: 100, image: "CL_M03.jpg"},
@@ -76,7 +85,7 @@ export function testData_Block1(male, female, trials) {
     //Attach the visibility and description
     fullDataShuffled.forEach((el) => {
         el.visibility = "none",
-        el.description = "User chooses between male faces and female faces"
+        el.description = "User chooses between male images and female images"
     });
     
     fullData[0].visibility = "block"
@@ -111,7 +120,7 @@ export function testData_Block2(male_clothing, female_clothing, trials) {
     return fullData
 }
 
-export function testData_Block3(male_and_male_clothing, female_and_female_clothing, trials) {
+export function testData_Block3(male_and_male_clothing, female_and_female_clothing, trials, practice = false) {
     let fullData = [];
 
     const images_male_male_clothing = shuffleObjects(JSON.parse(JSON.stringify(([...male_images, ...male_clothing_images]))))
@@ -125,9 +134,15 @@ export function testData_Block3(male_and_male_clothing, female_and_female_clothi
         fullData.push(images_male_male_clothing[i])
     }
 
+    fullData = shuffleObjects(fullData)
+
     fullData.forEach((el) => {
         el.visibility = "none";
-        el.description = "User chooses between male and male clothing and female and female clothing"
+        if(practice === false){
+            el.description = "Male images and Male clothing are grouped together, while Female images and Female clothing are grouped together"
+        } else if(practice === true) {
+            el.description = "Practice: Male images and Male clothing are grouped together, while Female images and Female clothing are grouped together"
+        }
     })
 
     fullData[0].visibility = "block"
@@ -137,7 +152,7 @@ export function testData_Block3(male_and_male_clothing, female_and_female_clothi
 
 }
 
-export function testData_Block4(male_and_female_clothing, female_and_male_clothing, trials) {
+export function testData_Block4(male_and_female_clothing, female_and_male_clothing, trials, practice = false) {
     let fullData = [];
 
     const images_male_female_clothing = shuffleObjects(JSON.parse(JSON.stringify(([...male_images, ...female_clothing_images]))))
@@ -151,9 +166,16 @@ export function testData_Block4(male_and_female_clothing, female_and_male_clothi
         fullData.push(images_female_male_clothing[i])
     }
 
+    fullData = shuffleObjects(fullData)
+
+
     fullData.forEach((el) => {
         el.visibility = "none";
-        el.description = "User chooses between male and female clothing and female and male clothing"
+        if(practice === false){
+            el.description = "Male images and Female clothing are grouped together, while Female images and Male clothing are grouped together"
+        } else if(practice === true) {
+            el.description = "Practice: Male images and Female clothing are grouped together, while Female images and Male clothing are grouped together"
+        }
     })
 
     fullData[0].visibility = "block"

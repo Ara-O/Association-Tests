@@ -6,8 +6,9 @@ function shuffleObjects(array) {
         array[y] = x;
     }
     return array;
-} 
+}
 
+//All stimuli
 const male_images = [
     { accuracy: 100, image: "C_M01.jpg" },
     { accuracy: 100, image: "C_M02.jpg" },
@@ -39,17 +40,25 @@ const female_images = [
 ]
 
 let blue_colors = [
-    { accuracy: 100, image: "blue1.jpg"},
-    { accuracy: 100, image: "blue2.jpg"},
-    { accuracy: 100, image: "blue3.jpg"},
-    { accuracy: 100, image: "blue4.jpg"},
+    { accuracy: 100, image: "blue1.jpg" },
+    { accuracy: 100, image: "blue2.jpg" },
+    { accuracy: 100, image: "blue3.jpg" },
+    { accuracy: 100, image: "blue4.jpg" },
+    { accuracy: 100, image: "blue1.jpg" },
+    { accuracy: 100, image: "blue2.jpg" },
+    { accuracy: 100, image: "blue3.jpg" },
+    { accuracy: 100, image: "blue4.jpg" },
 ]
 
 const pink_colors = [
-    { accuracy: 100, image: "pink1.jpg"},
-    { accuracy: 100, image: "pink2.jpg"},
-    { accuracy: 100, image: "pink3.jpg"},
-    { accuracy: 100, image: "pink4.jpg"},
+    { accuracy: 100, image: "pink1.jpg" },
+    { accuracy: 100, image: "pink2.jpg" },
+    { accuracy: 100, image: "pink3.jpg" },
+    { accuracy: 100, image: "pink4.jpg" },
+    { accuracy: 100, image: "pink1.jpg" },
+    { accuracy: 100, image: "pink2.jpg" },
+    { accuracy: 100, image: "pink3.jpg" },
+    { accuracy: 100, image: "pink4.jpg" },
 ]
 
 
@@ -77,9 +86,9 @@ export function testData_Block1(male, female, trials) {
     //Attach the visibility and description
     fullDataShuffled.forEach((el) => {
         el.visibility = "none",
-        el.description = "User chooses between male faces and female faces"
+            el.description = "User chooses between male images and female images"
     });
-    
+
     fullData[0].visibility = "block"
     // console.log("Test data 1: ", fullDataShuffled)
     return fullData
@@ -90,7 +99,7 @@ export function testData_Block2(blue, pink, trials) {
     //! Only 8 objects, double trials if 10 trials necessary...     
     const images_blue_color = JSON.parse(JSON.stringify(shuffleObjects(blue_colors)))
     images_blue_color.forEach((el) => el.key = blue)
-    
+
     const images_pink_color = JSON.parse(JSON.stringify(shuffleObjects(pink_colors)))
     images_pink_color.forEach((el) => el.key = pink)
 
@@ -103,7 +112,7 @@ export function testData_Block2(blue, pink, trials) {
 
     fullData.forEach((el) => {
         el.visibility = "none";
-        el.description = "User chooses between blue color and pink color"
+        el.description = "User chooses between blue colors and pink colors"
     })
     fullData[0].visibility = "block"
 
@@ -112,7 +121,7 @@ export function testData_Block2(blue, pink, trials) {
     return fullData
 }
 
-export function testData_Block3(male_blue_color, female_pink_color, trials) {
+export function testData_Block3(male_blue_color, female_pink_color, trials, practice = false) {
     let fullData = [];
 
     const images_male_blue_color = shuffleObjects(JSON.parse(JSON.stringify(([...male_images, ...blue_colors]))))
@@ -126,9 +135,15 @@ export function testData_Block3(male_blue_color, female_pink_color, trials) {
         fullData.push(images_male_blue_color[i])
     }
 
+    fullData = shuffleObjects(fullData);
+
     fullData.forEach((el) => {
         el.visibility = "none";
-        el.description = "User chooses between male and blue color and female and pink color"
+        if (practice === false) {
+            el.description = "Male images and Blue colors are grouped together, while Female images and Pink colors are grouped together"
+        } else if (practice === true) {
+            el.description = "Practice: Male images and Blue colors are grouped together, while Female images and Pink colors are grouped together"
+        }
     })
 
     fullData[0].visibility = "block"
@@ -138,7 +153,7 @@ export function testData_Block3(male_blue_color, female_pink_color, trials) {
 
 }
 
-export function testData_Block4(male_pink_color, female_blue_color, trials) {
+export function testData_Block4(male_pink_color, female_blue_color, trials, practice = false) {
     let fullData = [];
 
     const images_male_pink_color = shuffleObjects(JSON.parse(JSON.stringify(([...male_images, ...pink_colors]))))
@@ -152,9 +167,15 @@ export function testData_Block4(male_pink_color, female_blue_color, trials) {
         fullData.push(images_female_blue_color[i])
     }
 
+    fullData = shuffleObjects(fullData);
+
     fullData.forEach((el) => {
         el.visibility = "none";
-        el.description = "User chooses between male and pink color and female and blue color"
+        if (practice === false) {
+            el.description = "Male images and Pink colors are grouped together, while Female images and Blue colors are grouped together"
+        } else if (practice === true) {
+            el.description = "Practice: Male images and Pink colors are grouped together, while Female images and Blue colors are grouped together"
+        }
     })
 
     fullData[0].visibility = "block"

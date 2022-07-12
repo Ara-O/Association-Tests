@@ -17,9 +17,19 @@ const dog_images = [
     { accuracy: 100, image: "Dog3.jpg" },
     { accuracy: 100, image: "Dog4.jpg" },
     { accuracy: 100, image: "Dog5.jpg" },
+    { accuracy: 100, image: "Dog1.jpg" },
+    { accuracy: 100, image: "Dog2.jpg" },
+    { accuracy: 100, image: "Dog3.jpg" },
+    { accuracy: 100, image: "Dog4.jpg" },
+    { accuracy: 100, image: "Dog5.jpg" },
 ]
 
 const cat_images = [
+    { accuracy: 100, image: "Cat1.jpg" },
+    { accuracy: 100, image: "Cat2.jpg" },
+    { accuracy: 100, image: "Cat3.jpg" },
+    { accuracy: 100, image: "Cat4.jpg" },
+    { accuracy: 100, image: "Cat5.jpg" },
     { accuracy: 100, image: "Cat1.jpg" },
     { accuracy: 100, image: "Cat2.jpg" },
     { accuracy: 100, image: "Cat3.jpg" },
@@ -33,9 +43,19 @@ const happy_face_images = [
     { accuracy: 100, image: "H_F03.jpg" },
     { accuracy: 100, image: "H_F04.jpg" },
     { accuracy: 100, image: "H_F05.jpg" },
+    { accuracy: 100, image: "H_F01.jpg" },
+    { accuracy: 100, image: "H_F02.jpg" },
+    { accuracy: 100, image: "H_F03.jpg" },
+    { accuracy: 100, image: "H_F04.jpg" },
+    { accuracy: 100, image: "H_F05.jpg" },
 ]
 
 const sad_face_images = [
+    { accuracy: 100, image: "S_F01.jpg"},
+    { accuracy: 100, image: "S_F02.jpg"},
+    { accuracy: 100, image: "S_F03.jpg"},
+    { accuracy: 100, image: "S_F04.jpg"},
+    { accuracy: 100, image: "S_F05.jpg"},
     { accuracy: 100, image: "S_F01.jpg"},
     { accuracy: 100, image: "S_F02.jpg"},
     { accuracy: 100, image: "S_F03.jpg"},
@@ -71,7 +91,6 @@ function testData_Block1(cat, dog, trials) {
 
 }
 
-//!Work on sad and happy faces - get 5 happy and 5 sad
 function testData_Block2(happy, sad, trials) {
     
     let fullData = [];
@@ -98,9 +117,8 @@ function testData_Block2(happy, sad, trials) {
     return fullData;
 }
 
-// White and happy faces, black and sad faces
 //  IAT block 3 and 4
-function testData_Block3(dog_happy, cat_sad, trials) {
+function testData_Block3(dog_happy, cat_sad, trials, practice = false) {
     let fullData = [];
 
     let dog_happy_faces = shuffleObjects(JSON.parse(JSON.stringify([...dog_images, ...happy_face_images])));
@@ -119,14 +137,18 @@ function testData_Block3(dog_happy, cat_sad, trials) {
     fullData = shuffleObjects(fullData)
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
-        el.description = "Dogs/Happy faces are grouped together, while Cats/Sad faces are grouped together"
+        if(practice === false){
+            el.description = "Dogs and Happy faces are grouped together, while Cats and Sad faces are grouped together"
+        }else if(practice === true){
+            el.description = "Practice: Dogs and Happy faces are grouped together, while Cats and Sad faces are grouped together"
+        }
     })
 
     return fullData
 }
 
 // IAT block 6 and 7
-function testData_Block4(dog_sad, cat_happy, trials) {
+function testData_Block4(dog_sad, cat_happy, trials, practice = false) {
 
     let fullData = [];
 
@@ -141,12 +163,14 @@ function testData_Block4(dog_sad, cat_happy, trials) {
         fullData.push(cat_happy_faces[i])
     }
 
-    
-    // console.log("Test data 6/7: ", fullData)
     fullData = shuffleObjects(fullData)
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
-        el.description = "Dogs/Happy faces are grouped together, while Cats/Sad faces are grouped together"
+        if(practice === false){
+            el.description = "Dogs/Happy faces are grouped together, while Cats/Sad faces are grouped together"
+        }else if(practice === true){
+            el.description = "Practice: Dogs/Happy faces are grouped together, while Cats/Sad faces are grouped together"
+        }
     })
 
     return fullData

@@ -4,7 +4,7 @@
     @surveyDone="surveyComplete"
   ></contact-experience>
   <main class="it-feedback-main" v-else>
-    <h3>The test is over!</h3>
+    <h4>Congratulations! You have finished the test</h4>
     <button @click="routeToHome" tag="button" class="gohome">Go Home</button>
     <br />
     <group-test

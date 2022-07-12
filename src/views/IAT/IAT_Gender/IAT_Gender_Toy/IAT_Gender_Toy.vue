@@ -53,37 +53,37 @@ export default {
         {
           block: "Block1",
           instructions: "Click E for Male images and I for Female images",
-          data: testData_Block1("E", "I", 2),
+          data: testData_Block1("E", "I", 16),
         },
         {
           block: "Block2",
           instructions: "Click E for Male toys, and I for Female toys",
-          data: testData_Block2("E", "I", 6),
+          data: testData_Block2("E", "I", 16),
         },
+        // {
+        //   block: "Block3",
+        //   instructions: "Practice: Click E for Male images/Male toys, and I for Female images/Female toys",
+        //   data:  testData_Block3("E", "I", 8, true),
+        // },
         {
           block: "Block3",
-          instructions: "Practice: Click E for Male images/Male toys, and I for Female images/Female toys",
-          data:  testData_Block3("E", "I", 2),
+          instructions: "Let's Continue: Click E for Male images/Male toys, and I for Female images/Female toys",
+          data:  testData_Block3("E", "I", 32),
         },
         {
           block: "Block4",
-          instructions: "Let's Continue: Click E for Male images/Male toys, and I for Female images/Female toys",
-          data:  testData_Block3("E", "I", 2),
+          instructions: "The images are reversed now!<br/>Choose I for Male images and E for Female images",
+          data:  testData_Block1("I", "E", 16),
         },
+        // {
+        //   block: "Block6",
+        //   instructions: "Practice: Click I for Male images and Female Toys, and E for Female images and Male toys",
+        //   data:  testData_Block4("I", "E", 8, true),
+        // },
         {
           block: "Block5",
-          instructions: "The images are reversed now!<br/>Choose I for Male images and E for Female images",
-          data:  testData_Block1("I", "E", 2),
-        },
-        {
-          block: "Block6",
-          instructions: "Practice: Click I for Male images and Female Toys, and E for Female images and Male toys",
-          data:  testData_Block4("I", "E", 2),
-        },
-        {
-          block: "Block7",
           instructions: "Let's Continue: Click I for Male images and Female Toys, and E for Female images and Male toys",
-          data:  testData_Block4("I", "E", 2),
+          data:  testData_Block4("I", "E", 32),
         }
       ]
     };

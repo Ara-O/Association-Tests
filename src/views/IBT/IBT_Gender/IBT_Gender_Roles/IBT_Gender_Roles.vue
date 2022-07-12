@@ -98,11 +98,11 @@ export default {
       rightFace: "",
       irbt_trials: [
         {
-          trials: genderAndRoles("male.jpg", "female.jpg", 2),
+          trials: genderAndRoles("male.jpg", "female.jpg", 8),
           section: "practice",
         },
         {
-          trials: genderAndRoles("male.jpg", "female.jpg", 2),
+          trials: genderAndRoles("male.jpg", "female.jpg", 12),
           section: "section_1",
           instruction: `There will be a picture of a Kitchen item or an Office item in the
         middle of the screen. When you see a picture of a Kitchen item, you should
@@ -114,7 +114,7 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndRoles("female.jpg", "male.jpg", 2),
+          trials: genderAndRoles("female.jpg", "male.jpg", 12),
           section: "section_2",
           instruction: `There will be a picture of a Kitchen item or an Office item in the
         middle of the screen. When you see a picture of an Office item, you should

@@ -71,19 +71,21 @@ main {
   margin-bottom: 20px;
 }
 .it-btn {
-  display: block;
-  background: linear-gradient(185deg, #7eefbf, #389820);
-  border-radius: 47px;
-  box-shadow: -2px 4px 4px -1px #cbcbcb;
-  cursor: pointer;
-  margin-bottom: 25px;
-  transition: all 250ms ease-in-out;
-  color: white;
-  text-decoration: none;
-  padding: 23px 34px;
-  font-size: 14px;
-  border: none;
-  font-weight: 300;
+    background: linear-gradient(185deg, #7eefbf, #389820);
+    border-radius: 47px;
+    box-shadow: -2px 4px 4px -1px #cbcbcb;
+    cursor: pointer;
+    margin-bottom: 25px;
+    transition: all 250ms ease-in-out;
+    color: white;
+    text-decoration: none;
+    padding: 23px 34px;
+    height: 60px;
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+    border: none;
+    font-weight: 300;
 }
 
 .it-section {

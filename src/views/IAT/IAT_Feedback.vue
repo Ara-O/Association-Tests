@@ -10,7 +10,7 @@
     </button>
 
     <img
-      src="http://www.pngall.com/wp-content/uploads/2017/05/Congratulation-Free-Download-PNG.png"
+      src="../../assets/App_Icons/congratulations.png"
       alt="Congratulations image"
       class="left-congratulations"
     />
@@ -18,7 +18,7 @@
       Congratulations! You have finished the test!
     </h4>
       <img
-      src="http://www.pngall.com/wp-content/uploads/2017/05/Congratulation-Free-Download-PNG.png"
+      src="../../assets/App_Icons/congratulations.png"
       alt="Congratulations image"
       class="right-congratulations"
     />
@@ -169,7 +169,7 @@ export default {
     },
 
     calculateAccuracy(trialIndex) {
-      let trials = [3, 6];
+      let trials = [2, 4];
       let nsum = 0;
       this.$store.state[this.getCurrentTest][trials[trialIndex]].forEach(
         (trial) => {
@@ -181,7 +181,7 @@ export default {
     },
 
     calculateSpeed(trialIndex) {
-      let trials = [3, 6];
+      let trials = [2, 4];
       let nsum = 0;
       this.$store.state[this.getCurrentTest][trials[trialIndex]].forEach(
         (trial) => {

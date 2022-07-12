@@ -71,54 +71,54 @@ export default {
           block: "Block1_TS",
           instructions:
             "Click left for images of white children and right for images of black children",
-          data: testData_Block1("Left", "Right", 10),
+          data: testData_Block1("Left", "Right", 16),
           clickerLeft: "White_Face.png",
           clickerRight: "Black_Face.png",
         },
         {
           block: "Block2_TS",
           instructions: "Click left for happy faces, and right for sad faces",
-          data: testData_Block2("Left", "Right", 10),
+          data: testData_Block2("Left", "Right", 16),
           clickerLeft: "Happy_Face.jpg",
           clickerRight: "Sad_Face.jpg",
         },
+        // {
+        //   block: "Block3_TS",
+        //   instructions:
+        //     "Practice: Click the left for White faces/Happy faces, and the right for Black faces/Sad faces",
+        //   data: testData_Block3("Left", "Right", 10),
+        //   clickerLeft: "White_And_Happy_Face.png",
+        //   clickerRight: "Black_And_Sad_Face.png",
+        // },
         {
           block: "Block3_TS",
           instructions:
-            "Practice: Click the left for White faces/Happy faces, and the right for Black faces/Sad faces",
-          data: testData_Block3("Left", "Right", 10),
+            "Let's Continue: Click the left for white faces/Happy faces, and the right for Black faces/Sad faces",
+          data: testData_Block3("Left", "Right", 32),
           clickerLeft: "White_And_Happy_Face.png",
           clickerRight: "Black_And_Sad_Face.png",
         },
         {
           block: "Block4_TS",
           instructions:
-            "Let's Continue: Click the left for white faces/Happy faces, and the right for Black faces/Sad faces",
-          data: testData_Block3("Left", "Right", 10),
-          clickerLeft: "White_And_Happy_Face.png",
-          clickerRight: "Black_And_Sad_Face.png",
-        },
-        {
-          block: "Block5_TS",
-          instructions:
             "The images are reversed now!<br/>Choose the left for images of black people or the right for images of white people",
-          data: testData_Block1("Right", "Left", 10),
+          data: testData_Block1("Right", "Left", 16),
           clickerLeft: "Black_Face.png",
           clickerRight: "White_Face.png",
         },
+        // {
+        //   block: "Block6_TS",
+        //   instructions:
+        //     "Practice: Click the left for Black faces/Happy faces  and the left for White faces/Sad faces",
+        //   data: testData_Block4("Right", "Left", 10),
+        //   clickerLeft: "Black_And_Happy_Face.png",
+        //   clickerRight: "White_And_Sad_Face.png",
+        // },
         {
-          block: "Block6_TS",
-          instructions:
-            "Practice: Click the left for Black faces/Happy faces  and the left for White faces/Sad faces",
-          data: testData_Block4("Right", "Left", 10),
-          clickerLeft: "Black_And_Happy_Face.png",
-          clickerRight: "White_And_Sad_Face.png",
-        },
-        {
-          block: "Block7_TS",
+          block: "Block5_TS",
           instructions:
             "Let's continue: Click the right for White faces/Sad faces, and the left for Black faces/Happy faces",
-          data: testData_Block4("Right", "Left", 10),
+          data: testData_Block4("Right", "Left", 32),
           clickerLeft: "Black_And_Happy_Face.png",
           clickerRight: "White_And_Sad_Face.png",
         },

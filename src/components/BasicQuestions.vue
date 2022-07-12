@@ -121,7 +121,7 @@ export default {
 
 .user-id {
   border-radius: 6px;
-  border: solid 1px gray;
+  border: solid 1px solid 1px #c2c2c2;
   margin-top: 15px;
   height: 25px;
   text-align: center;

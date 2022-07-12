@@ -46,9 +46,17 @@ const math_images = [
     { accuracy: 100, image: "Math_02.jpg" },
     { accuracy: 100, image: "Math_03.jpg" },
     { accuracy: 100, image: "Math_04.jpg" },
+    { accuracy: 100, image: "Math_01.jpg" },
+    { accuracy: 100, image: "Math_02.jpg" },
+    { accuracy: 100, image: "Math_03.jpg" },
+    { accuracy: 100, image: "Math_04.jpg" },
 ]
 
 const reading_images = [
+    { accuracy: 100, image: "Reading_01.jpg" },
+    { accuracy: 100, image: "Reading_02.jpg" },
+    { accuracy: 100, image: "Reading_03.jpg" },
+    { accuracy: 100, image: "Reading_04.jpg" },
     { accuracy: 100, image: "Reading_01.jpg" },
     { accuracy: 100, image: "Reading_02.jpg" },
     { accuracy: 100, image: "Reading_03.jpg" },
@@ -77,7 +85,7 @@ function testData_Block1(male, female, trials) {
 
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
-        el.description = "User chooses between male faces and female faces"
+        el.description = "User chooses between male images and female images"
     })
 
     // console.table(fullData)
@@ -109,7 +117,7 @@ function testData_Block2(math, reading, trials) {
 
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
-        el.description = "User chooses between math and reading"
+        el.description = "User chooses between math-related images and reading-related images"
     })
     // console.table(fullData)
     return fullData;
@@ -117,7 +125,7 @@ function testData_Block2(math, reading, trials) {
 
 //   Click E for Male and math, and I for Female and reading
 //   IAT block 3 and 4
-function testData_Block3(male_math, female_reading, trials) {
+function testData_Block3(male_math, female_reading, trials, practice = false) {
 
     let fullData = [];
 
@@ -132,9 +140,15 @@ function testData_Block3(male_math, female_reading, trials) {
         fullData.push(images_female_reading[i])
     }
 
+    fullData = shuffleObjects(fullData)
+
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
-        el.description = "Male faces/Math are grouped together, while Female faces/Reading are grouped together"
+        if(practice === false){
+            el.description = "Male images and Math-related images are grouped together, while Female images and Reading-related images are grouped together"
+        }else if(practice === true){
+            el.description = "Practice: Male images and Math-related images are grouped together, while Female images and Reading-related images are grouped together"         
+        }
     })
 
     // console.table(fullData)
@@ -142,7 +156,7 @@ function testData_Block3(male_math, female_reading, trials) {
 }
 
 // IAT block 6 and 7
-function testData_Block4(male_and_reading, female_and_math, trials) {
+function testData_Block4(male_and_reading, female_and_math, trials, practice = false) {
     let fullData = [];
 
     let images_male_reading = shuffleObjects(JSON.parse(JSON.stringify([...male_images, ...reading_images])));
@@ -156,9 +170,15 @@ function testData_Block4(male_and_reading, female_and_math, trials) {
         fullData.push(images_male_reading[i])
     }
 
+    fullData = shuffleObjects(fullData)
+
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
-        el.description = "Male faces/Reading are grouped together, while Female faces/Math are grouped together"
+        if(practice === false){
+            el.description = "Male images and Reading-related images are grouped together, while Female images and Math-related images are grouped together"
+        }else if(practice === true){
+            el.description = "Practice: Male images and Reading-related images are grouped together, while Female images and Math-related images are grouped together"
+        }
     })
 
     // console.table(fullData)

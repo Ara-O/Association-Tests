@@ -63,42 +63,42 @@ export default {
         {
           block: "Block1",
           instructions: "Click E for White faces and I for Black faces",
-          data: testData_Block1("E", "I", 2),
+          data: testData_Block1("E", "I", 16),
         },
         {
           block: "Block2",
           instructions: "Click E for Happy faces and I for Sad faces",
-          data: testData_Block2("E", "I", 6),
+          data: testData_Block2("E", "I", 16),
         },
+        // {
+        //   block: "Block3",
+        //   instructions:
+        //     "Practice: Click E for White faces/Happy faces, and I for Black faces/Sad faces",
+        //   data: testData_Block3("E", "I", 2),
+        // },
         {
           block: "Block3",
           instructions:
-            "Practice: Click E for White faces/Happy faces, and I for Black faces/Sad faces",
-          data: testData_Block3("E", "I", 2),
+            "Let's Continue:  Click E for White faces/Happy faces, and I for Black faces/Sad faces",
+          data: testData_Block3("E", "I", 32),
         },
         {
           block: "Block4",
           instructions:
-            "Let's Continue:  Click E for White faces/Happy faces, and I for Black faces/Sad faces",
-          data: testData_Block3("E", "I", 2),
+            "The images are reversed now!<br/>Click I for Black faces/Sad faces and E for White faces/Sad faces",
+          data: testData_Block1("I", "E", 16),
         },
+        // {
+        //   block: "Block6",
+        //   instructions:
+        //     "Practice: Click E for Black faces/Happy faces, and I for White faces/Sad faces",
+        //   data: testData_Block4("I", "E", 2),
+        // },
         {
           block: "Block5",
           instructions:
-            "The images are reversed now!<br/>Click I for Black faces/Sad faces and E for White faces/Sad faces",
-          data: testData_Block1("I", "E", 2),
-        },
-        {
-          block: "Block6",
-          instructions:
-            "Practice: Click E for Black faces/Happy faces, and I for White faces/Sad faces",
-          data: testData_Block4("I", "E", 2),
-        },
-        {
-          block: "Block7",
-          instructions:
             "Let's Continue: Click E for Black faces/Happy faces, and I for White faces/Sad faces",
-          data: testData_Block4("I", "E", 2),
+          data: testData_Block4("I", "E", 32),
         },
       ],
     };

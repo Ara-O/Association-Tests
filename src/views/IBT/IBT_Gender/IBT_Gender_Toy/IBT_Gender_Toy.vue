@@ -98,11 +98,11 @@ export default {
       rightFace: "",
       irbt_trials: [
         {
-          trials: genderAndToy("male.jpg", "female.jpg", 2),
+          trials: genderAndToy("male.jpg", "female.jpg", 8),
           section: "practice",
         },
         {
-          trials: genderAndToy("male.jpg", "female.jpg", 2),
+          trials: genderAndToy("male.jpg", "female.jpg", 12),
           section: "section_1",
           instruction: `There will be a picture of a Female toy or a Male toy in the
         middle of the screen. When you see a picture of the Female toy you should
@@ -114,7 +114,7 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndToy("female.jpg", "male.jpg", 2),
+          trials: genderAndToy("female.jpg", "male.jpg", 12),
           section: "section_2",
           instruction: `There will be a picture of a Female toy or a Male toy in the
         middle of the screen. When you see a picture of the Female toy you should

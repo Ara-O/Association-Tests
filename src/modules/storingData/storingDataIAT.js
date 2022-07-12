@@ -15,14 +15,25 @@ export function updateIATData(Data, test, cMonth, cDay, cYear, whereToStore, ver
         data.stimulusOrder = index + 1;
         data.gender = test.$store.state.userData.gender || "Not provided";
         data.ethnicity = test.$store.state.userData.chosenethnicity || "Not provided";
-        data.howUserFeelsTowardsBoys = test.$store.state.userData.slider1 || "Not provided";
-        data.howUserFeelsTowardsGirls = test.$store.state.userData.slider2 || "Not provided";
 
-        //Only for iat gender
-        if(data.testType[4] === "G" || data.testType[4] === "C" ){
+        if (test.$store.state.userData.slider1 === 0 || test.$store.state.userData.slider1) {
+            data.howUserFeelsTowardsBoys = test.$store.state.userData.slider1
+        } else {
+            data.howUserFeelsTowardsBoys = "Not provided";
+        }
+
+        if (test.$store.state.userData.slider2 === 0 || test.$store.state.userData.slider2) {
+            data.howUserFeelsTowardsGirls = test.$store.state.userData.slider2
+        } else {
+            data.howUserFeelsTowardsGirls = "Not provided";
+        }
+
+
+        //Only for iat gender and cat/dog
+        if (data.testType[4] === "G" || data.testType[4] === "C") {
             data.boyWouldPrefer = test.$store.state.userData.boyWouldPrefer || "Not provided";
             data.girlWouldPrefer = test.$store.state.userData.girlWouldPrefer || "Not provided";
-        } else {     
+        } else {
             //Only for iat race
             data.opinionOfBlackAmericans = test.$store.state.userData.opinionofblackamericans;
             data.opinionOfWhiteAmericans = test.$store.state.userData.opinionofwhiteamericans;

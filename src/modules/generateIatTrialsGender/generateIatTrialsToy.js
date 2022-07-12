@@ -10,7 +10,7 @@ function shuffleObjects(array) {
     return array;
 }
 
-//Gemerate the trials for the other blocks
+//All stimuli
 const male_images = [
     { accuracy: 100, image: "C_M01.jpg" },
     { accuracy: 100, image: "C_M02.jpg" },
@@ -47,9 +47,19 @@ const male_toy_images = [
     { accuracy: 100, image: "T_M03.jpg" },
     { accuracy: 100, image: "T_M04.jpg" },
     { accuracy: 100, image: "T_M05.jpg" },
+    { accuracy: 100, image: "T_M01.jpg" },
+    { accuracy: 100, image: "T_M02.jpg" },
+    { accuracy: 100, image: "T_M03.jpg" },
+    { accuracy: 100, image: "T_M04.jpg" },
+    { accuracy: 100, image: "T_M05.jpg" },
 ]
 
 const female_toy_images = [
+    { accuracy: 100, image: "T_F01.jpg" },
+    { accuracy: 100, image: "T_F02.jpg" },
+    { accuracy: 100, image: "T_F03.jpg" },
+    { accuracy: 100, image: "T_F04.jpg" },
+    { accuracy: 100, image: "T_F05.jpg" },
     { accuracy: 100, image: "T_F01.jpg" },
     { accuracy: 100, image: "T_F02.jpg" },
     { accuracy: 100, image: "T_F03.jpg" },
@@ -79,7 +89,7 @@ function testData_Block1(male, female, trials) {
 
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
-        el.description = "User chooses between male faces and female faces"
+        el.description = "User chooses between male images and female images"
     })
 
     // console.table(fullData)
@@ -119,7 +129,7 @@ function testData_Block2(male_toy, female_toy, trials) {
 
 //   Click E for Male and male toys, and I for Female and female toys
 //   IAT block 3 and 4
-function testData_Block3(male_and_male_toy, female_and_female_toy, trials) {
+function testData_Block3(male_and_male_toy, female_and_female_toy, trials, practice = false) {
 
     let fullData = [];
 
@@ -134,9 +144,15 @@ function testData_Block3(male_and_male_toy, female_and_female_toy, trials) {
         fullData.push(images_female_toys[i])
     }
 
+    fullData = shuffleObjects(fullData)
+
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
-        el.description = "Male faces/Male toys are grouped together, while Female faces/Female toys are grouped together"
+        if(practice === false){
+            el.description = "Male images and Male toys are grouped together, while Female images and Female toys are grouped together"
+        } else if(practice === true) {
+            el.description = "Practice: Male images and Male toys are grouped together, while Female images and Female toys are grouped together"
+        }
     })
 
     // console.table(fullData)
@@ -144,7 +160,7 @@ function testData_Block3(male_and_male_toy, female_and_female_toy, trials) {
 }
 
 // IAT block 6 and 7
-function testData_Block4(male_and_female_toys, female_and_male_toys, trials) {
+function testData_Block4(male_and_female_toys, female_and_male_toys, trials, practice = false) {
     let fullData = [];
 
     let images_male_and_female_toys = shuffleObjects(JSON.parse(JSON.stringify([...male_images, ...female_toy_images])));
@@ -158,9 +174,15 @@ function testData_Block4(male_and_female_toys, female_and_male_toys, trials) {
         fullData.push(images_male_and_female_toys[i])
     }
 
+    fullData = shuffleObjects(fullData)
+
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
-        el.description = "Male faces/Female toys are grouped together, while Female faces/Male toys are grouped together"
+        if(practice === false){
+            el.description = "Male images and Female toys are grouped together, while Female images and Male toys are grouped together"
+        } else if(practice === true) {
+            el.description = "Practice: Male images and Female toys are grouped together, while Female images and Male toys are grouped together"
+        }
     })
 
     // console.table(fullData)

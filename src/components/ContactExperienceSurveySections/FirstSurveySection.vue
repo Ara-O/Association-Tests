@@ -46,7 +46,7 @@
   <input type="text" id="notlisted" class="input-field" v-model="userData.ancestorsEthnicity_notApplicable" :disabled="userData.ancestorsEthnicity !== ''"/>
   <br />
   <br />
-  <button type="button" @click.prevent="emitData" class="nextbtn">
+  <button type="button" @click.prevent="emitData" class="next-contact-experience">
     Move on
   </button>
 </template>

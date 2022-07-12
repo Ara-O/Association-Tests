@@ -176,7 +176,7 @@ export default {
     },
 
     next() {
-         this.testNotStarted = false;
+        this.testNotStarted = false;
         irbt.startTimer();
     },
   },

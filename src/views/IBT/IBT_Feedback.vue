@@ -8,7 +8,20 @@
     <button @click="routeToHome" class="return-to-home-btn">
       Go back to home page
     </button>
-    <h4>Congratulations! You have finished the test.</h4>
+       <img
+      src="../../assets/App_Icons/congratulations.png"
+      alt="Congratulations image"
+      class="left-congratulations"
+    />
+    <h4 style="font-weight: 400">
+      Congratulations! You have finished the test!
+    </h4>
+      <img
+      src="../../assets/App_Icons/congratulations.png"
+      alt="Congratulations image"
+      class="right-congratulations"
+    />
+    <!-- <h4>Congratulations! You have finished the test.</h4> -->
     <div class="feedbacks">
        <div class="feedback-wrapper">
         <!-- image here -->
@@ -23,11 +36,11 @@
         </div>
         <div class="feedback-message-wrapper">
           <h3 class="feedback-message">
-            Accuracy: {{ this.calculateAccuracy(0) }}
+            Accuracy: {{ this.calculateAccuracy(1) }}
           </h3>
           <h3 class="feedback-message">
             Speed:
-            {{ this.calculateSpeed(0) }}
+            {{ this.calculateSpeed(1) }}
           </h3>
         </div>
       </div>
@@ -44,11 +57,11 @@
         </div>
         <div class="feedback-message-wrapper">
           <h3 class="feedback-message">
-            Accuracy: {{ this.calculateAccuracy(1) }}
+            Accuracy: {{ this.calculateAccuracy(3) }}
           </h3>
           <h3 class="feedback-message">
             Speed:
-            {{ this.calculateSpeed(1)}}
+            {{ this.calculateSpeed(3)}}
           </h3>
         </div>
       </div>

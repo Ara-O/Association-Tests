@@ -18,9 +18,21 @@ const black_children_images = [
     { accuracy: 100, image: "B_CM01.jpg" },
     { accuracy: 100, image: "B_CM02.jpg" },
     { accuracy: 100, image: "B_CM03.jpg" },
+    { accuracy: 100, image: "B_CF01.jpg" },
+    { accuracy: 100, image: "B_CF02.jpg" },
+    { accuracy: 100, image: "B_CF03.jpg" },
+    { accuracy: 100, image: "B_CM01.jpg" },
+    { accuracy: 100, image: "B_CM02.jpg" },
+    { accuracy: 100, image: "B_CM03.jpg" },
 ]
 
 const white_children_images = [
+    { accuracy: 100, image: "W_CF01.jpg" },
+    { accuracy: 100, image: "W_CF02.jpg" },
+    { accuracy: 100, image: "W_CF03.jpg" },
+    { accuracy: 100, image: "W_CM01.jpg" },
+    { accuracy: 100, image: "W_CM02.jpg" },
+    { accuracy: 100, image: "W_CM03.jpg" },
     { accuracy: 100, image: "W_CF01.jpg" },
     { accuracy: 100, image: "W_CF02.jpg" },
     { accuracy: 100, image: "W_CF03.jpg" },
@@ -35,9 +47,19 @@ const happy_face_images = [
     { accuracy: 100, image: "H_F03.jpg" },
     { accuracy: 100, image: "H_F04.jpg" },
     { accuracy: 100, image: "H_F05.jpg" },
+    { accuracy: 100, image: "H_F01.jpg" },
+    { accuracy: 100, image: "H_F02.jpg" },
+    { accuracy: 100, image: "H_F03.jpg" },
+    { accuracy: 100, image: "H_F04.jpg" },
+    { accuracy: 100, image: "H_F05.jpg" },
 ]
 
 const sad_face_images = [
+    { accuracy: 100, image: "S_F01.jpg"},
+    { accuracy: 100, image: "S_F02.jpg"},
+    { accuracy: 100, image: "S_F03.jpg"},
+    { accuracy: 100, image: "S_F04.jpg"},
+    { accuracy: 100, image: "S_F05.jpg"},
     { accuracy: 100, image: "S_F01.jpg"},
     { accuracy: 100, image: "S_F02.jpg"},
     { accuracy: 100, image: "S_F03.jpg"},

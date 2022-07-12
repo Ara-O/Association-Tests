@@ -2,14 +2,7 @@
   <main>
     <section v-if="notFinishedInstructions">
       <ibt-instructions @finishedInstructions="finishedInstructions">
-        There will be a picture of a Female clothing or a Male clothing in the middle of
-        screen. When you see a picture of the Female clothing you should touch the
-        female face at the bottom of the screen; when you see a Male clothing, you
-        should touch the Male face. Male faces and Female faces will appear at
-        the bottom of the screen either on the left or right. Pay attention
-        because the male and female faces may change places. Please respond
-        <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
-        the screen.
+        {{ irbt_trials[section].practice_instruction }}
       </ibt-instructions>
     </section>
     <section v-else>
@@ -17,7 +10,7 @@
         <h3>Instruction</h3>
         <br />
         <h3
-          class="fullinstruction" 
+          class="fullinstruction"
           v-html="irbt_trials[section]?.instruction"
         ></h3>
 
@@ -98,11 +91,20 @@ export default {
       rightFace: "",
       irbt_trials: [
         {
-          trials: genderAndClothing("male.jpg", "female.jpg", 2),
+          trials: genderAndClothing("male.jpg", "female.jpg", 10),
           section: "practice",
+          practice_instruction: `Practice: There will be a picture of a Female clothing or a Male clothing in the
+        middle of screen. When you see a picture of the Female clothing you
+        should touch the female face at the bottom of the screen; when you see a
+        Male clothing, you should touch the Male face. Male faces and Female
+        faces will appear at the bottom of the screen either on the left or
+        right. Pay attention because the male and female faces may change
+        places. Please respond
+        <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
+        the screen.`,
         },
         {
-          trials: genderAndClothing("male.jpg", "female.jpg", 2),
+          trials: genderAndClothing("male.jpg", "female.jpg", 10),
           section: "section_1",
           instruction: `There will be a picture of a Female clothing or a Male clothing in the
         middle of the screen. When you see a picture of the Female clothing you should
@@ -114,7 +116,20 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndClothing("female.jpg", "male.jpg", 2),
+          trials: genderAndClothing("female.jpg", "male.jpg", 10),
+          section: "practice_2",
+          instruction: `Practice: There will be a picture of a Female clothing or a Male clothing in the
+        middle of screen. When you see a picture of the Female clothing you
+        should touch the male face at the bottom of the screen; when you see a
+        Male clothing, you should touch the Female face. Male faces and Female
+        faces will appear at the bottom of the screen either on the left or
+        right. Pay attention because the male and female faces may change
+        places. Please respond
+        <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
+        the screen.`,
+        },
+        {
+          trials: genderAndClothing("female.jpg", "male.jpg", 10),
           section: "section_2",
           instruction: `There will be a picture of a Female clothing or a Male clothing in the
         middle of the screen. When you see a picture of the Female clothing you should
@@ -164,7 +179,11 @@ export default {
     },
 
     handleCorrectAnswer() {
-      irbt.handleCorrectAnswer(this, "IBT_Gender_Clothing", "IBT_Gender_Clothing");
+      irbt.handleCorrectAnswer(
+        this,
+        "IBT_Gender_Clothing",
+        "IBT_Gender_Clothing"
+      );
     },
 
     handleIncorrectAnswer() {
@@ -177,7 +196,7 @@ export default {
 
     next() {
       this.testNotStarted = false;
-            irbt.startTimer();
+      irbt.startTimer();
     },
   },
 

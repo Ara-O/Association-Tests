@@ -67,7 +67,7 @@
     <h4 for="" class="extensive">7 = very extensive</h4>
   </div>
   <br /><br />
-  <button type="button" @click.prevent="emitData" class="nextbtn">
+  <button type="button" @click.prevent="emitData" class="next-contact-experience">
     Move on
   </button>
 </template>

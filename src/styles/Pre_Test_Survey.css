@@ -146,7 +146,10 @@ label {
   font-size: 15px;
   line-height: 28px;
   max-width: 350px
+}
 
+label{
+  max-width: 100% 
 }
 
 .ethnicity-input {
@@ -180,7 +183,7 @@ label {
   overflow: auto;
   line-height: 35px;
   box-sizing: border-box;
-  font-size: 15px;
+  font-size: 14px;
   border: solid 1px #e5e5e5;
   font-weight: 300;
   box-shadow: 0px 0px 2px lightgrey;
@@ -238,7 +241,7 @@ section.consent-form {
 }
 
 input[type="radio"]{
-  margin-left: 0px
+  /* margin-left: 0px */
 }
 
 .emotion-img{

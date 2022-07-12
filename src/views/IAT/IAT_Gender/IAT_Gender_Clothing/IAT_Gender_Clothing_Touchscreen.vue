@@ -71,7 +71,7 @@ export default {
           block: "Block1_TS",
           instructions:
             "Click left for Male images and right for Female images",
-          data: testData_Block1("Left", "Right", 2),
+          data: testData_Block1("Left", "Right", 16),
           clickerLeft: "Male.png",
           clickerRight: "Female.png",
         },
@@ -79,47 +79,47 @@ export default {
           block: "Block2_TS",
           instructions:
             "Click the left for Male clothing, and the right for Female clothing",
-          data: testData_Block2("Left", "Right", 6),
+          data: testData_Block2("Left", "Right", 16),
           clickerLeft: "Male_Clothing.png",
           clickerRight: "Female_Clothing.png",
         },
+        // {
+        //   block: "Block3_TS",
+        //   instructions:
+        //     "Practice: Click the left box for Male images/Male clothing, and the right box for Female images/Female clothing",
+        //   data: testData_Block3("Left", "Right", 8, true),
+        //   clickerLeft: "Male_And_Male_Clothing.png",
+        //   clickerRight: "Female_And_Female_Clothing.png",
+        // },
         {
           block: "Block3_TS",
           instructions:
-            "Practice: Click the left box for Male images/Male clothing, and the right box for Female images/Female clothing",
-          data: testData_Block3("Left", "Right", 2),
+            "Click the left box for Male images/Male clothing, and the right box for Female images/Female clothing",
+          data: testData_Block3("Left", "Right", 32),
           clickerLeft: "Male_And_Male_Clothing.png",
           clickerRight: "Female_And_Female_Clothing.png",
         },
         {
           block: "Block4_TS",
           instructions:
-            "Let's Continue: Click the left box for Male images/Male clothing, and the right box for Female images/Female clothing",
-          data: testData_Block3("Left", "Right", 2),
-          clickerLeft: "Male_And_Male_Clothing.png",
-          clickerRight: "Female_And_Female_Clothing.png",
-        },
-        {
-          block: "Block5_TS",
-          instructions:
             "The images are reversed now!<br/>Choose the right for Male images or the left for Female images",
-          data: testData_Block1("Right", "Left", 2),
+          data: testData_Block1("Right", "Left", 16),
           clickerLeft: "Female.png",
           clickerRight: "Male.png",
         },
+        // {
+        //   block: "Block6_TS",
+        //   instructions:
+        //     "Practice: Click the right for Male images/Female clothing, and the left for Female images/Male clothing",
+        //   data: testData_Block4("Right", "Left", 8, true),
+        //   clickerLeft: "Female_And_Male_Clothing.png",
+        //   clickerRight: "Male_And_Female_Clothing.png",
+        // },
         {
-          block: "Block6_TS",
+          block: "Block5_TS",
           instructions:
-            "Practice: Click the right for Male images/Female clothing, and the left for Female images/Male clothing",
-          data: testData_Block4("Right", "Left", 2),
-          clickerLeft: "Female_And_Male_Clothing.png",
-          clickerRight: "Male_And_Female_Clothing.png",
-        },
-        {
-          block: "Block7_TS",
-          instructions:
-            "Let's Continue:  Click the right for Male images/Female clothing, and the left for Female images/Male clothing",
-          data: testData_Block4("Right", "Left", 2),
+            "Click the right for Male images/Female clothing, and the left for Female images/Male clothing",
+          data: testData_Block4("Right", "Left", 32),
           clickerLeft: "Female_And_Male_Clothing.png",
           clickerRight: "Male_And_Female_Clothing.png",
         },

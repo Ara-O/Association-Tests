@@ -2,9 +2,9 @@
   <main>
     <div v-if="section === 0">
       <img
-        src="../assets/IBT_Faces/welcome_instruction.jpg"
+        :src="getPracticeSource"
         alt="Welcome Instruction"
-        style="width: 100vh"
+        style="width: 100vh; box-shadow: -2px 3px 7px #dedede, 2px -2px 0px #fafafa"
         class="welcomejpg"
       />
     </div>
@@ -15,9 +15,9 @@
     </div>
     <div v-else-if="section === 2">
       <img
-        src="../assets/IBT_Faces/practice_instruction.jpg"
+        :src="getPracticeInstruction"
         alt="Practice instruction"
-        style="width: 100vh"
+        style="width: 100vh; box-shadow: -2px 3px 7px #dedede, 2px -2px 0px #fafafa"
         class="welcomejpg"
       />
     </div>
@@ -36,15 +36,32 @@ export default {
   emits: ["finishedInstructions"],
   data() {
     return {
-        section: 0
+        section: 0,
+        tes: 'welcome_instruction.jpg'
     };
+  },
+
+  computed: {
+    getPracticeSource(){
+      if(this.$store.getters.getCurrentTest !== "IBT_Cat_Dog"){
+        return require("../assets/IBT_Faces/welcome_instruction.jpg")
+      } else{
+        return require("../assets/IBT_Faces/cat_dog_welcome_img.jpg")
+      }
+    },
+
+    getPracticeInstruction(){
+        if(this.$store.getters.getCurrentTest !== "IBT_Cat_Dog"){
+        return require("../assets/IBT_Faces/practice_instruction.jpg")
+      } else{
+        return require("../assets/IBT_Faces/cat_dog_practice_img.jpg")
+      }
+    }
   },
 
   watch: {
       section(val){
           if(val === 3){
-            //   this.$router.push("/IBT_Black_White")
-            //   this.$router.push(this.routeTo)
             this.$emit("finishedInstructions")
           }
       }

@@ -53,37 +53,37 @@ export default {
         {
           block: "Block1",
           instructions: "Click E for Cat images, and I for Dog images",
-          data: trials.testData_Block1("E", "I", 2),
+          data: trials.testData_Block1("E", "I", 16),
         },
         {
           block: "Block2",
           instructions: "Click E for Happy faces, and I for Sad faces",
-          data: trials.testData_Block2("E", "I", 6),
+          data: trials.testData_Block2("E", "I", 16),
         },
+        // {
+        //   block: "Block3",
+        //   instructions: "Practice: Click E for Sad faces/Cat images, and I for Dog images/Happy faces",
+        //   data:  trials.testData_Block3("I", "E", 8),
+        // },
         {
           block: "Block3",
-          instructions: "Practice: Click E for Sad faces/Cat images, and I for Dog images/Happy faces",
-          data:  trials.testData_Block3("I", "E", 2),
+          instructions: "Let's Continue: Click E for Sad faces/Cat images, and I for Dog images/Happy faces",
+          data:  trials.testData_Block3("I", "E", 32),
         },
         {
           block: "Block4",
-          instructions: "Let's Continue: Click E for Sad faces/Cat images, and I for Dog images/Happy faces",
-          data:  trials.testData_Block3("I", "E", 2),
+          instructions: "The images are reversed now!<br/>Choose I for Cat images and E for Dog images",
+          data: trials.testData_Block1("I", "E", 16),
         },
+        // {
+        //   block: "Block6",
+        //   instructions: "Practice: Click I for Sad faces/Dog images, and E for Cat images/Happy faces",
+        //   data:  trials.testData_Block4("I", "E", 8, true),
+        // },
         {
           block: "Block5",
-          instructions: "The images are reversed now!<br/>Choose I for Cat images and E for Dog images",
-          data: trials.testData_Block1("I", "E", 2),
-        },
-        {
-          block: "Block6",
-          instructions: "Practice: Click I for Sad faces/Dog images, and E for Cat images/Happy faces",
-          data:  trials.testData_Block4("I", "E", 2),
-        },
-        {
-          block: "Block7",
           instructions: "Let's Continue: Click I for Sad faces/Dog images, and E for Cat images/Happy faces",
-          data:  trials.testData_Block4("I", "E", 2),
+          data:  trials.testData_Block4("I", "E", 32),
         }
       ]
     };

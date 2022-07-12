@@ -60,10 +60,10 @@ function handleCorrectAnswer(thiskeyword, whereToStore, version) {
         if (that.currentUserTrial < Object.keys(that.irbt_trials[that.section].trials).length - 1) {
             that.currentUserTrial++;
             document.querySelector(".irbt_star").style.display = "none"
-            startTimer();
             that.irbt_trials[that.section].trials[that.currentUserTrial].visibility = "block";
             document.querySelector(".faceRight").style.display = "block"
             document.querySelector(".faceLeft").style.display = "block"
+            startTimer();
         } else {
 
             // The section has ended, storing the data in vuex store

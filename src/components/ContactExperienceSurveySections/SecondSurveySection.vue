@@ -71,7 +71,7 @@
   <br />
     <label for="" style="color: red" v-if="missingField">There is a missing field, please try again</label>
   <br>
-  <button type="button" @click.prevent="emitData" class="nextbtn">
+  <button type="button" @click.prevent="emitData" class="next-contact-experience">
     Move on
   </button>
 

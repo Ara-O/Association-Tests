@@ -2,14 +2,7 @@
   <main>
     <section v-if="notFinishedInstructions">
       <ibt-instructions @finishedInstructions="finishedInstructions">
-        There will be a picture of a Cat or a Dog in the middle of
-        screen. When you see a picture of the Dog you should touch the
-        smiley face at the bottom of the screen; when you see a Cat, you
-        should touch the sad face. Smiley faces and Sad faces will appear at
-        the bottom of the screen either on the left or right. Pay attention
-        because the smile and sad faces may change places. Please respond
-        <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
-        the screen.
+        {{ irbt_trials[section].practice_instruction }}
       </ibt-instructions>
     </section>
     <section v-else>
@@ -17,7 +10,7 @@
         <h3>Instruction</h3>
         <br />
         <h3
-          class="fullinstruction" 
+          class="fullinstruction"
           v-html="irbt_trials[section]?.instruction"
         ></h3>
 
@@ -98,11 +91,19 @@ export default {
       rightFace: "",
       irbt_trials: [
         {
-          trials: catAndDog("happy.jpg", "sad.jpg", 2),
+          trials: catAndDog("happy.jpg", "sad.jpg", 8),
           section: "practice",
+          practice_instruction: `There will be a picture of a Cat or a Dog in the middle of
+        screen. When you see a picture of the Dog you should touch the
+        smiley face at the bottom of the screen; when you see a Cat, you
+        should touch the sad face. Smiley faces and Sad faces will appear at
+        the bottom of the screen either on the left or right. Pay attention
+        because the smile and sad faces may change places. Please respond
+        quickly and correctly. You can only use one hand to touch
+        the screen.`,
         },
         {
-          trials: catAndDog("happy.jpg", "sad.jpg", 2),
+          trials: catAndDog("happy.jpg", "sad.jpg", 24),
           section: "section_1",
           instruction: `There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Dog you should touch the
@@ -110,11 +111,23 @@ export default {
         should touch the sad face. Smiley faces and Sad faces will appear at
         the bottom of the screen either on the left or right. Pay attention
         because the smile and sad faces may change places. Please respond
-        <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
+        quickly and correctly. You can only use one hand to touch
         the screen.`,
         },
         {
-          trials: catAndDog("sad.jpg","happy.jpg", 2),
+          trials: catAndDog("sad.jpg", "happy.jpg", 8),
+          section: "practice_2",
+          instruction: `Practice: There will be a picture of a Cat or a Dog in the middle of
+        screen. When you see a picture of the Cat you should touch the
+        smiley face at the bottom of the screen; when you see a Dog, you
+        should touch the sad face. Smiley faces and Sad faces will appear at
+        the bottom of the screen either on the left or right. Pay attention
+        because the smile and sad faces may change places. Please respond
+        quickly and correctly. You can only use one hand to touch
+        the screen.`,
+        },
+        {
+          trials: catAndDog("sad.jpg", "happy.jpg", 24),
           section: "section_2",
           instruction: `There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Cat you should touch the
@@ -122,7 +135,7 @@ export default {
         should touch the sad face. Smiley faces and Sad faces will appear at
         the bottom of the screen either on the left or right. Pay attention
         because the smile and sad faces may change places. Please respond
-        <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
+        quickly and correctly. You can only use one hand to touch
         the screen.`,
         },
       ],
@@ -176,8 +189,8 @@ export default {
     },
 
     next() {
-        this.testNotStarted = false;
-        irbt.startTimer();
+      this.testNotStarted = false;
+      irbt.startTimer();
     },
   },
 

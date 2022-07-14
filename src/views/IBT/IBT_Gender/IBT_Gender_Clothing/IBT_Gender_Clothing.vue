@@ -91,7 +91,7 @@ export default {
       rightFace: "",
       irbt_trials: [
         {
-          trials: genderAndClothing("male.jpg", "female.jpg", 10),
+          trials: genderAndClothing("male.jpg", "female.jpg", 8),
           section: "practice",
           practice_instruction: `Practice: There will be a picture of a Female clothing or a Male clothing in the
         middle of screen. When you see a picture of the Female clothing you
@@ -99,12 +99,11 @@ export default {
         Male clothing, you should touch the Male face. Male faces and Female
         faces will appear at the bottom of the screen either on the left or
         right. Pay attention because the male and female faces may change
-        places. Please respond
-        <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
+        places. Please respond quickly and correctly. You can only use one hand to touch
         the screen.`,
         },
         {
-          trials: genderAndClothing("male.jpg", "female.jpg", 10),
+          trials: genderAndClothing("male.jpg", "female.jpg", 24),
           section: "section_1",
           instruction: `There will be a picture of a Female clothing or a Male clothing in the
         middle of the screen. When you see a picture of the Female clothing you should
@@ -112,11 +111,11 @@ export default {
         the Male face. Male faces and Female faces will appear at the bottom of
         the screen either on the left or right. Pay attention because the
         male and female faces may change places. Please respond
-        <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
+      quickly and correctly. You can only use one hand to touch
         the screen.`,
         },
         {
-          trials: genderAndClothing("female.jpg", "male.jpg", 10),
+          trials: genderAndClothing("female.jpg", "male.jpg", 8),
           section: "practice_2",
           instruction: `Practice: There will be a picture of a Female clothing or a Male clothing in the
         middle of screen. When you see a picture of the Female clothing you
@@ -125,11 +124,11 @@ export default {
         faces will appear at the bottom of the screen either on the left or
         right. Pay attention because the male and female faces may change
         places. Please respond
-        <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
+      quickly and correctly. You can only use one hand to touch
         the screen.`,
         },
         {
-          trials: genderAndClothing("female.jpg", "male.jpg", 10),
+          trials: genderAndClothing("female.jpg", "male.jpg", 24),
           section: "section_2",
           instruction: `There will be a picture of a Female clothing or a Male clothing in the
         middle of the screen. When you see a picture of the Female clothing you should
@@ -137,7 +136,7 @@ export default {
         the female face. Male faces and Female faces will appear at the bottom of
         the screen either on the left or right. Pay attention because the
         male and female faces may change places. Please respond
-        <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
+      quickly and correctly. You can only use one hand to touch
         the screen.`,
         },
       ],

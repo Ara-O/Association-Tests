@@ -2,14 +2,7 @@
   <main>
     <section v-if="notFinishedInstructions">
       <ibt-instructions @finishedInstructions="finishedInstructions">
-        There will be a Letter or a Number in the middle of
-        screen. When you see a letters you should touch the
-        female face at the bottom of the screen; when you see a letter, you
-        should touch the Male face. Male faces and Female faces will appear at
-        the bottom of the screen either on the left or right. Pay attention
-        because the male and female faces may change places. Please respond
-        <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
-        the screen.
+        {{ irbt_trials[section].practice_instruction }}
       </ibt-instructions>
     </section>
     <section v-else>
@@ -17,7 +10,7 @@
         <h3>Instruction</h3>
         <br />
         <h3
-          class="fullinstruction" 
+          class="fullinstruction"
           v-html="irbt_trials[section]?.instruction"
         ></h3>
 
@@ -100,9 +93,17 @@ export default {
         {
           trials: genderAndSubject("male.jpg", "female.jpg", 8),
           section: "practice",
+          practice_instruction: `Practice: There will be a picture of a Letter or a Number in the middle of
+        screen. When you see a letter you should touch the
+        female face at the bottom of the screen; when you see a letter, you
+        should touch the Male face. Male faces and Female faces will appear at
+        the bottom of the screen either on the left or right. Pay attention
+        because the male and female faces may change places. Please respond
+      quickly and correctly. You can only use one hand to touch
+        the screen.`
         },
         {
-          trials: genderAndSubject("male.jpg", "female.jpg", 12),
+          trials: genderAndSubject("male.jpg", "female.jpg", 24),
           section: "section_1",
           instruction: `There will be a picture of a Letter or a Number in the middle of
         screen. When you see a letter you should touch the
@@ -110,11 +111,23 @@ export default {
         should touch the Male face. Male faces and Female faces will appear at
         the bottom of the screen either on the left or right. Pay attention
         because the male and female faces may change places. Please respond
-        <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
+      quickly and correctly. You can only use one hand to touch
         the screen.`,
         },
         {
-          trials: genderAndSubject("female.jpg", "male.jpg", 12),
+          trials: genderAndSubject("female.jpg", "male.jpg", 8),
+          section: "practice_2",
+          instruction: `Practice: There will be a picture of a Letter or a Number in the middle of
+        screen. When you see a number you should touch the
+        female face at the bottom of the screen; when you see a number, you
+        should touch the Male face. Male faces and Female faces will appear at
+        the bottom of the screen either on the left or right. Pay attention
+        because the male and female faces may change places. Please respond
+        quickly and correctly. You can only use one hand to touch
+        the screen.`,
+        },
+        {
+          trials: genderAndSubject("female.jpg", "male.jpg", 24),
           section: "section_2",
           instruction: `There will be a picture of a Letter or a Number in the middle of
         screen. When you see a number you should touch the
@@ -122,7 +135,7 @@ export default {
         should touch the Male face. Male faces and Female faces will appear at
         the bottom of the screen either on the left or right. Pay attention
         because the male and female faces may change places. Please respond
-        <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
+      quickly and correctly. You can only use one hand to touch
         the screen.`,
         },
       ],

@@ -16,7 +16,14 @@ export default function (white, black, trials) {
         { image: "B_CF03.jpg", emotion: black, },
         { image: "B_CM01.jpg", emotion: black, },
         { image: "B_CM02.jpg", emotion: black, },
-        { image: "B_CM03.jpg", emotion: black, },]
+        { image: "B_CM03.jpg", emotion: black, },
+        { image: "B_CF01.jpg", emotion: black, },
+        { image: "B_CF02.jpg", emotion: black, },
+        { image: "B_CF03.jpg", emotion: black, },
+        { image: "B_CM01.jpg", emotion: black, },
+        { image: "B_CM02.jpg", emotion: black, },
+        { image: "B_CM03.jpg", emotion: black, },
+    ]
 
     let all_children_stimulus_white = [
         { image: "W_CF01.jpg", emotion: white },
@@ -24,7 +31,14 @@ export default function (white, black, trials) {
         { image: "W_CF03.jpg", emotion: white },
         { image: "W_CM01.jpg", emotion: white },
         { image: "W_CM02.jpg", emotion: white },
-        { image: "W_CM03.jpg", emotion: white }]
+        { image: "W_CM03.jpg", emotion: white },
+        { image: "W_CF01.jpg", emotion: white },
+        { image: "W_CF02.jpg", emotion: white },
+        { image: "W_CF03.jpg", emotion: white },
+        { image: "W_CM01.jpg", emotion: white },
+        { image: "W_CM02.jpg", emotion: white },
+        { image: "W_CM03.jpg", emotion: white }
+    ]
     let irbt_data = [];
 
 

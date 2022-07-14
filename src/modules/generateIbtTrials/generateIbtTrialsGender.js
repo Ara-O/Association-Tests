@@ -30,9 +30,19 @@ export function genderAndToy(male_toy, female_toy, trials){
         { accuracy: 100, image: "T_M03.jpg", gender: male_toy },
         { accuracy: 100, image: "T_M04.jpg", gender: male_toy },
         { accuracy: 100, image: "T_M05.jpg", gender: male_toy },
+        { accuracy: 100, image: "T_M01.jpg", gender: male_toy },
+        { accuracy: 100, image: "T_M02.jpg", gender: male_toy },
+        { accuracy: 100, image: "T_M03.jpg", gender: male_toy },
+        { accuracy: 100, image: "T_M04.jpg", gender: male_toy },
+        { accuracy: 100, image: "T_M05.jpg", gender: male_toy },
     ];
 
     let toy_stimuli_female_toy = [
+        { accuracy: 100, image: "T_F01.jpg", gender: female_toy },
+        { accuracy: 100, image: "T_F02.jpg", gender: female_toy },
+        { accuracy: 100, image: "T_F03.jpg", gender: female_toy },
+        { accuracy: 100, image: "T_F04.jpg", gender: female_toy },
+        { accuracy: 100, image: "T_F05.jpg", gender: female_toy },    
         { accuracy: 100, image: "T_F01.jpg", gender: female_toy },
         { accuracy: 100, image: "T_F02.jpg", gender: female_toy },
         { accuracy: 100, image: "T_F03.jpg", gender: female_toy },
@@ -80,6 +90,7 @@ export function genderAndToy(male_toy, female_toy, trials){
     return updated_full_data
 }
 
+// !HERE
 export function genderAndClothing(male_clothing, female_clothing, trials){
     let female_clothing_images = [
         { accuracy: 100, image: "CL_F01.jpg", gender: female_clothing},
@@ -88,10 +99,19 @@ export function genderAndClothing(male_clothing, female_clothing, trials){
         { accuracy: 100, image: "CL_F04.jpg", gender: female_clothing},
         { accuracy: 100, image: "CL_F01.jpg", gender: female_clothing},
         { accuracy: 100, image: "CL_F02.jpg", gender: female_clothing},
-        { accuracy: 100, image: "CL_F03.jpg", gender: female_clothing},
+        { accuracy: 100, image: "CL_F03.jpg", gender: female_clothing}, 
+        { accuracy: 100, image: "CL_F04.jpg", gender: female_clothing},
+        { accuracy: 100, image: "CL_F01.jpg", gender: female_clothing},
+        { accuracy: 100, image: "CL_F02.jpg", gender: female_clothing},
+        { accuracy: 100, image: "CL_F03.jpg", gender: female_clothing}, 
         { accuracy: 100, image: "CL_F04.jpg", gender: female_clothing},
     ]
+
     let male_clothing_images = [
+        { accuracy: 100, image: "CL_M01.jpg", gender: male_clothing},
+        { accuracy: 100, image: "CL_M02.jpg", gender: male_clothing},
+        { accuracy: 100, image: "CL_M03.jpg", gender: male_clothing},
+        { accuracy: 100, image: "CL_M04.jpg", gender: male_clothing},
         { accuracy: 100, image: "CL_M01.jpg", gender: male_clothing},
         { accuracy: 100, image: "CL_M02.jpg", gender: male_clothing},
         { accuracy: 100, image: "CL_M03.jpg", gender: male_clothing},
@@ -136,7 +156,7 @@ export function genderAndClothing(male_clothing, female_clothing, trials){
     return updated_full_data
 }
 
-
+// !HERE
 export function genderAndSubject(math, reading, trials){
    let female_reading_images = [
         { accuracy: 100, image: "Reading_01.jpg", gender: reading},
@@ -147,8 +167,16 @@ export function genderAndSubject(math, reading, trials){
         { accuracy: 100, image: "Reading_02.jpg", gender: reading},
         { accuracy: 100, image: "Reading_03.jpg", gender: reading},
         { accuracy: 100, image: "Reading_04.jpg", gender: reading},
+        { accuracy: 100, image: "Reading_01.jpg", gender: reading},
+        { accuracy: 100, image: "Reading_02.jpg", gender: reading},
+        { accuracy: 100, image: "Reading_03.jpg", gender: reading},
+        { accuracy: 100, image: "Reading_04.jpg", gender: reading},
     ]
     let male_math_images = [
+        { accuracy: 100, image: "Math_01.jpg", gender: math},
+        { accuracy: 100, image: "Math_02.jpg", gender: math},
+        { accuracy: 100, image: "Math_03.jpg", gender: math},
+        { accuracy: 100, image: "Math_04.jpg", gender: math},
         { accuracy: 100, image: "Math_01.jpg", gender: math},
         { accuracy: 100, image: "Math_02.jpg", gender: math},
         { accuracy: 100, image: "Math_03.jpg", gender: math},
@@ -207,8 +235,20 @@ export function genderAndRoles(office, kitchen, trials){
         { accuracy: 100, image: "W04-filecabinet.jpg", gender: office},
         { accuracy: 100, image: "W05-pen.jpg", gender: office},
         { accuracy: 100, image: "W06-phone.jpg", gender: office},
+        { accuracy: 100, image: "W01-chair.jpg", gender: office},
+        { accuracy: 100, image: "W02-computer.jpg", gender: office},
+        { accuracy: 100, image: "W03-desk.jpg", gender: office},
+        { accuracy: 100, image: "W04-filecabinet.jpg", gender: office},
+        { accuracy: 100, image: "W05-pen.jpg", gender: office},
+        { accuracy: 100, image: "W06-phone.jpg", gender: office},
     ]
     let kitchen_images = [
+        { accuracy: 100, image: "H01-cookerhood.jpg", gender: kitchen},
+        { accuracy: 100, image: "H02-cuttingboard.jpg", gender: kitchen},
+        { accuracy: 100, image: "H03-pan.jpg", gender: kitchen},
+        { accuracy: 100, image: "H04-refrigerator.jpg", gender: kitchen},
+        { accuracy: 100, image: "H05-spatula.jpg", gender: kitchen},
+        { accuracy: 100, image: "H06-washingsink.jpg", gender: kitchen},
         { accuracy: 100, image: "H01-cookerhood.jpg", gender: kitchen},
         { accuracy: 100, image: "H02-cuttingboard.jpg", gender: kitchen},
         { accuracy: 100, image: "H03-pan.jpg", gender: kitchen},
@@ -257,6 +297,7 @@ export function genderAndRoles(office, kitchen, trials){
     return updated_full_data
 }
 
+// !HERE
 export function genderAndColor(blue, pink, trials){
     let blue_images = [
         { accuracy: 100, image: "blue1.jpg", gender: blue},
@@ -267,8 +308,16 @@ export function genderAndColor(blue, pink, trials){
         { accuracy: 100, image: "blue2.jpg", gender: blue},
         { accuracy: 100, image: "blue3.jpg", gender: blue},
         { accuracy: 100, image: "blue4.jpg", gender: blue},
+        { accuracy: 100, image: "blue1.jpg", gender: blue},
+        { accuracy: 100, image: "blue2.jpg", gender: blue},
+        { accuracy: 100, image: "blue3.jpg", gender: blue},
+        { accuracy: 100, image: "blue4.jpg", gender: blue},
     ]
     let pink_images = [
+        { accuracy: 100, image: "pink1.jpg", gender: pink},
+        { accuracy: 100, image: "pink2.jpg", gender: pink},
+        { accuracy: 100, image: "pink3.jpg", gender: pink},
+        { accuracy: 100, image: "pink4.jpg", gender: pink},
         { accuracy: 100, image: "pink1.jpg", gender: pink},
         { accuracy: 100, image: "pink2.jpg", gender: pink},
         { accuracy: 100, image: "pink3.jpg", gender: pink},

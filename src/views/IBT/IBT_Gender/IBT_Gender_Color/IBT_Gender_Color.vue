@@ -2,14 +2,7 @@
   <main>
     <section v-if="notFinishedInstructions">
       <ibt-instructions @finishedInstructions="finishedInstructions">
-        There will be a picture of a Blue color or a Pink color in the
-        middle of the screen. When you see a picture of a Pink color, you should
-        touch the female face at the bottom of the screen; when you see a Blue color, you should touch
-        the Male face. Male faces and Female faces will appear at the bottom of
-        the screen either on the left or right. Pay attention because the
-        male and female faces may change places. Please respond
-        <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
-        the screen.
+        {{ irbt_trials[section].practice_instruction }}
       </ibt-instructions>
     </section>
     <section v-else>
@@ -17,7 +10,7 @@
         <h3>Instruction</h3>
         <br />
         <h3
-          class="fullinstruction" 
+          class="fullinstruction"
           v-html="irbt_trials[section]?.instruction"
         ></h3>
 
@@ -100,9 +93,17 @@ export default {
         {
           trials: genderAndColor("male.jpg", "female.jpg", 8),
           section: "practice",
+          practice_instruction: `Practice: There will be a picture of a Blue color or a Pink color in the
+        middle of the screen. When you see a picture of a Pink color, you should
+        touch the female face at the bottom of the screen; when you see a Blue color, you should touch
+        the Male face. Male faces and Female faces will appear at the bottom of
+        the screen either on the left or right. Pay attention because the
+        male and female faces may change places. Please respond
+      quickly and correctly. You can only use one hand to touch
+        the screen.`,
         },
         {
-          trials: genderAndColor("male.jpg", "female.jpg", 12),
+          trials: genderAndColor("male.jpg", "female.jpg", 24),
           section: "section_1",
           instruction: `There will be a picture of a Blue color or a Pink color in the
         middle of the screen. When you see a picture of a Pink color, you should
@@ -110,11 +111,23 @@ export default {
         the Male face. Male faces and Female faces will appear at the bottom of
         the screen either on the left or right. Pay attention because the
         male and female faces may change places. Please respond
-        <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
+      quickly and correctly. You can only use one hand to touch
         the screen.`,
         },
         {
-          trials: genderAndColor("female.jpg", "male.jpg", 12),
+          trials: genderAndColor("female.jpg", "male.jpg", 8),
+          section: "practice_2",
+          instruction: `Practice: There will be a picture of a Blue color or a Pink color in the
+        middle of the screen. When you see a picture of a Blue color, you should
+        touch the female face at the bottom of the screen; when you see a Pink color, you should touch
+        the Male face. Male faces and Female faces will appear at the bottom of
+        the screen either on the left or right. Pay attention because the
+        male and female faces may change places. Please respond
+      quickly and correctly. You can only use one hand to touch
+        the screen.`,
+        },
+        {
+          trials: genderAndColor("female.jpg", "male.jpg", 24),
           section: "section_2",
           instruction: `There will be a picture of a Blue color or a Pink color in the
         middle of the screen. When you see a picture of a Blue color, you should
@@ -122,7 +135,7 @@ export default {
         the Male face. Male faces and Female faces will appear at the bottom of
         the screen either on the left or right. Pay attention because the
         male and female faces may change places. Please respond
-        <u>quickly and correctly.</u> You can only <u>use one hand</u> to touch
+      quickly and correctly. You can only use one hand to touch
         the screen.`,
         },
       ],
@@ -177,7 +190,7 @@ export default {
 
     next() {
       this.testNotStarted = false;
-            irbt.startTimer();
+      irbt.startTimer();
     },
   },
 

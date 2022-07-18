@@ -123,6 +123,7 @@
         :stereotypeImages2="stereotypeImages2"
         currentTest="IAT_Cat_Dog"
         fileLocation="IAT_Cat_Dog"
+        visible="false"
       >
       </explicit-attitudes>
     </div>

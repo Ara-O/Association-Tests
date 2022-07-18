@@ -101,6 +101,22 @@
   right: 15vw
 }
 
+.iat-cat-dog-feedback-text h3{
+  font-size: 14px;
+  font-weight: 400 ;
+}
+.iat-cat-dog-feedback-text{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 906px;
+    width: auto;
+    column-gap: 33px;
+    padding: 20px 52px;
+    border-radius: 5px;
+    box-shadow: -2px 4px 4px -1px #cbcbcb, 0px 0px 4px #e4e4e4;
+}
+
 @media (max-width: 1372px) {
 
   .left-congratulations {

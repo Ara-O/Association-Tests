@@ -70,7 +70,7 @@ export default {
         {
           block: "Block1_TS",
           instructions:
-            "Click left for Male images and right for Female images",
+            "Tap left for male images and right for female images. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block1("Left", "Right", 16),
           clickerLeft: "Male.png",
           clickerRight: "Female.png",
@@ -78,7 +78,7 @@ export default {
         {
           block: "Block2_TS",
           instructions:
-            "Click the left for Male clothing, and the right for Female clothing",
+            "Tap left for male clothing, and right for female clothing. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block2("Left", "Right", 16),
           clickerLeft: "Male_Clothing.png",
           clickerRight: "Female_Clothing.png",
@@ -94,7 +94,7 @@ export default {
         {
           block: "Block3_TS",
           instructions:
-            "Click the left box for Male images/Male clothing, and the right box for Female images/Female clothing",
+            "Tap left for male images and male clothing, and right for female images and female clothing. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block3("Left", "Right", 32),
           clickerLeft: "Male_And_Male_Clothing.png",
           clickerRight: "Female_And_Female_Clothing.png",
@@ -102,7 +102,7 @@ export default {
         {
           block: "Block4_TS",
           instructions:
-            "The images are reversed now!<br/>Choose the right for Male images or the left for Female images",
+            "Tap right for male images and the left for female images. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block1("Right", "Left", 16),
           clickerLeft: "Female.png",
           clickerRight: "Male.png",
@@ -118,7 +118,7 @@ export default {
         {
           block: "Block5_TS",
           instructions:
-            "Click the right for Male images/Female clothing, and the left for Female images/Male clothing",
+            "Tap right for male images and female clothing, and left for female images and male clothing. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block4("Right", "Left", 32),
           clickerLeft: "Female_And_Male_Clothing.png",
           clickerRight: "Male_And_Female_Clothing.png",

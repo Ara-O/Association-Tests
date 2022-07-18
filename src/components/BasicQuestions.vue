@@ -92,6 +92,13 @@ export default {
         this.$store.commit("changeUserID", this.uid);
         this.userHasPutInUserID = true;
       }
+
+      //generate random number if they skip
+      if(this.uid.trim() === ""){
+        this.$store.commit("changeUserID", Math.floor(Math.random() * 10000));
+        this.userHasPutInUserID = true;
+      }
+
     },
 
     next() {

@@ -5,7 +5,7 @@
         style="line-height: 37px; margin-top: 4px"
         v-html="fullTest[currentBlock].instructions"
       ></h3>
-      <h3>Click the SPACE bar on your keyboard to start</h3>
+      <h3>When you are ready, please click the SPACE bar on your keyboard to start</h3>
       <!-- SPACE BAR -->
       <img
         src="../../../../assets/App_Icons/spacebar.png"
@@ -52,12 +52,12 @@ export default {
       fullTest:[
         {
           block: "Block1",
-          instructions: "Click E for Male images and I for Female images",
+          instructions: "Click E for male images and I for female images. Remember, you should tap as fast as you can!",
           data: trials.testData_Block1("E", "I", 16),
         },
         {
           block: "Block2",
-          instructions: "Click E for Office Items, and I for Kitchen items",
+          instructions: "Click E for office items, and I for kitchen items. Remember, you should tap as fast as you can!",
           data: trials.testData_Block2("E", "I", 16),
         },
         // {
@@ -67,12 +67,12 @@ export default {
         // },
         {
           block: "Block3",
-          instructions: "Let's Continue: Click E for Male images/Office items, and I for Female images/Kitchen items",
+          instructions: "Click E for male images and office items, and I for female images and kitchen items. Remember, you should tap as fast as you can!",
           data:  trials.testData_Block3("E", "I", 32),
         },
         {
           block: "Block4",
-          instructions: "The images are reversed now!<br/>Choose I for Male images and E for Female images",
+          instructions: "Click I for male images and E for female images. Remember, you should tap as fast as you can!",
           data: trials.testData_Block1("I", "E", 16),
         },
         // {
@@ -82,7 +82,7 @@ export default {
         // },
         {
           block: "Block5",
-          instructions: "Let's Continue: Click I for Male images and Kitchen items, and E for Female images and Office items",
+          instructions: "Click I for male images and kitchen items, and E for female images and office items. Remember, you should tap as fast as you can!",
           data:  trials.testData_Block4("I", "E", 32),
         }
       ]

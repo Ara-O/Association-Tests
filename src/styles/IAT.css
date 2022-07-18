@@ -75,18 +75,19 @@
 
 .wrong-icon{
   display: flex;
-  align-items: center;
+  align-items: center; 
   column-gap: 9px;
   flex-direction: row-reverse;
   height: 31px;
 }
 
 .in-test-instructions{
-  line-height: 37px;
-  font-weight: 500;
+  line-height: 32px;
+  font-weight: 400;
   width: 470px;
-  font-size: 18px;
+  font-size: 16px;
 }
+
 
 @media (max-width: 595px) {
   .instruction{

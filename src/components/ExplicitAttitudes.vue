@@ -102,8 +102,10 @@
     />
   </div>
 
+  <br v-if="!checkStereotypeVisibility">
+  <br v-if="!checkStereotypeVisibility">
   <!-- Stereotype section -->
-  <div>
+  <div v-if="checkStereotypeVisibility">
     <h4>{{ opinionTitle1 }}</h4>
     <div class="gender-toy-stereotype-option">
       <img
@@ -151,7 +153,7 @@
     </div>
   </div>
 
-  <div>
+  <div v-if="checkStereotypeVisibility">
     <!-- Second stereotype option-->
     <h4>{{ opinionTitle2 }}</h4>
     <div class="gender-toy-stereotype-option" style="margin-bottom: 30px">
@@ -246,6 +248,9 @@ export default {
     howDoYouFeelAbout2: {
       default: "girls",
     },
+    visible: {
+      default: true
+    }
   },
   emits: ["progress_kb", "progress_ts", "goBackEmit"],
   data() {
@@ -263,6 +268,16 @@ export default {
         girlWouldPrefer: "",
       },
     };
+  },
+
+  computed: {
+    checkStereotypeVisibility(){
+      if(this.visible == "false"){
+        return false
+      }else {
+        return true
+      }
+    }
   },
 
   methods: {
@@ -319,13 +334,13 @@ export default {
         }
       }
 
-      if (this.currentTest === "IAT_Cat_Dog") {
-        if (img[0] === "D") {
-          return "Dog image";
-        } else if (img[0] === "C") {
-          return "Cat image";
-        }
-      }
+      // if (this.currentTest === "IAT_Cat_Dog") {
+      //   if (img[0] === "D") {
+      //     return "Dog image";
+      //   } else if (img[0] === "C") {
+      //     return "Cat image";
+      //   }
+      // }
     },
 
     getImage(img) {

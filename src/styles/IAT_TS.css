@@ -1,11 +1,15 @@
 .face-img {
-    height: 300px;
-    border: none;
-    padding: 2px;
-    background: white;
+  height: 300px;
+  border: none;
+  padding: 2px;
+  background: white;
 }
 
-.instruction-iat{
+.instruction h3 {
+  font-size: 15px
+}
+
+.instruction-iat {
   width: 469px;
   height: 240px;
   display: flex;
@@ -19,19 +23,19 @@
   padding: 32px 41px;
 }
 
-.instruction-iat h3{
+.instruction-iat h3 {
   margin: 11px 0px;
   font-size: 16px;
   font-weight: 500;
   line-height: 27px;
 }
 
-.data-name{
+.data-name {
   font-size: 3vh;
   margin: 2px 0px;
 }
 
-.right-arrow{
+.right-arrow {
   width: 59px;
   margin-top: 16px;
 }
@@ -50,9 +54,9 @@
   flex-direction: column;
 }
 
-.right-arrow{
-      width: 59px;
-    margin-top: 16px;
+.right-arrow {
+  width: 59px;
+  margin-top: 16px;
 }
 
 .style-instruction h3 {
@@ -61,85 +65,110 @@
   font-weight: 500;
 }
 
-.clickerImage{
+.clickerImage {
   width: inherit;
   height: 53%;
   object-fit: scale-down;
 }
 
-.clickerImageCombined_Race{
+.clickerImageCombined_Race {
   width: 210px
 }
 
-  
-@media (max-width: 595px) {
-    .face-img {
-      height: 233px !important;
-      padding: 0px;
-      border-radius: 0px ;
-    } 
-  
-      main{
-      background: white;
-    }
-  
-      .instruction-iat h3{
-      font-size: 2vh !important;
-      line-height: 30px;  
-      margin: 2px 0px;
-      }
 
-      .instruction-iat{
-        width: 311px;
-        height: 240px;
-        padding: 0px 29px;
-        box-sizing: border-box;
-      }
-
-      .instruction{
-        width: 100vw
-      }
-
-      .instruction h3{
-        font-size: 14px;
-      }
-
-      #wrong{
-        font-size: 14px;
-      }
-    
-      .style-instruction {
-        padding: 33px 28px;
-        width: 262px;
-      }
-    
-      .style-instruction h3 {
-        font-size: 2vh;
-      }
-
-      .clickerImage{
-        width: 19vw;
-      }
-
-      .clickerImageCombined{
-        width: 39vw;
-        margin-left: 4px;
-      }
-
-      .clickerImageCombined_Race{
-        width: 39vw;
-        margin-left: -2px;
-      }
-
-      .clickerImageToy{
-        width: 23vw;
-      }
-
-      .wrong-icon{
-        height: 21px
-      }
-
-      .feedbacksect{
-        border: solid 3px #ffffff;
-      }
+@media (max-width: 1125px) {
+  .choice {
+    height: 200px !important;
+    width: 220px !important;
+    background: pink ;
   }
+
+  #wrong {
+    /* width: 237px; */
+    margin-top: 9px;
+    justify-content: flex-start;
+    font-size: 14px;
+    align-items: flex-start;
+  }
+
+  #wrong h4{
+    margin-top: 0px;
+    width:155px
+  }
+}
+
+@media (max-width: 800px) {
+  .face-img {
+    height: 233px !important;
+    padding: 0px;
+    border-radius: 0px;
+  }
+
+  #wrong, #wrong h4{
+    width: auto;
+  }
+
+  main {
+    background: white;
+  }
+
+  .instruction-iat h3 {
+    font-size: 2vh !important;
+    line-height: 30px;
+    margin: 2px 0px;
+  }
+
+  .instruction-iat {
+    width: 311px;
+    height: 240px;
+    padding: 0px 29px;
+    box-sizing: border-box;
+  }
+
+  .instruction {
+    width: 100vw
+  }
+
+  .instruction h3 {
+    font-size: 14px;
+  }
+
+  #wrong {
+    font-size: 14px;
+  }
+
+  .style-instruction {
+    padding: 33px 28px;
+    width: 262px;
+  }
+
+  .style-instruction h3 {
+    font-size: 2vh;
+  }
+
+  .clickerImage {
+    width: 19vw;
+  }
+
+  .clickerImageCombined {
+    width: 39vw;
+    margin-left: 4px;
+  }
+
+  .clickerImageCombined_Race {
+    width: 39vw;
+    margin-left: -2px;
+  }
+
+  .clickerImageToy {
+    width: 23vw;
+  }
+
+  .wrong-icon {
+    height: 21px
+  }
+
+  .feedbacksect {
+    border: solid 3px #ffffff;
+  }
+}

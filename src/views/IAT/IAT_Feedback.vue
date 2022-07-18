@@ -66,6 +66,12 @@
         </div>
       </div>
     </div>
+    <br>
+    <div v-if="getCurrentTest === 'IAT_Cat_Dog' || getCurrentTest === 'IAT_Cat_Dog_Touchscreen'" class="iat-cat-dog-feedback-text">
+        <h3 v-if="this.calculateSpeed(0) < this.calculateSpeed(1)">Your results suggest that you were faster at associating cat with sad face and dog with happy face. That might indicate a preference for dogs over cats!”</h3>
+        <h3 v-if="this.calculateSpeed(0) > this.calculateSpeed(1)">Your results suggest that you were faster at associating dog with sad face and cat with happy face. That might indicate a preference for cats over dogs!”</h3>
+        <h3 v-if="this.calculateSpeed(0) === this.calculateSpeed(1)">Your results suggest that you had a similar at associating dog with sad face and cat with happy face. That might indicate a preference for cats over dogs!”</h3>
+    </div>
     <br />
     <group-test
       @storeDataWithExistingUniqueId="storeDataWithExistingUniqueId"

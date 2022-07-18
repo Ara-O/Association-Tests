@@ -5,7 +5,7 @@
         style="line-height: 37px; margin-top: 4px"
         v-html="fullTest[currentBlock].instructions"
       ></h3>
-      <h3>Click the SPACE bar on your keyboard to start</h3>
+      <h3>When you are ready, click the SPACE bar on your keyboard to start</h3>
       <!-- SPACE BAR -->
       <img
         src="../../../assets/App_Icons/spacebar.png"
@@ -52,13 +52,13 @@ export default {
       fullTest:[
         {
           block: "Block1",
-          instructions: "Click E for Cat images, and I for Dog images",
-          data: trials.testData_Block1("E", "I", 16),
+          instructions: "Click E for cat images and I for dog images. Remember, you should tap as fast as you can!",
+          data: trials.testData_Block1("E", "I", 2),
         },
         {
           block: "Block2",
-          instructions: "Click E for Happy faces, and I for Sad faces",
-          data: trials.testData_Block2("E", "I", 16),
+          instructions: "Click E for happy faces, and I for sad faces. Remember, you should tap as fast as you can!",
+          data: trials.testData_Block2("E", "I", 2),
         },
         // {
         //   block: "Block3",
@@ -67,13 +67,13 @@ export default {
         // },
         {
           block: "Block3",
-          instructions: "Let's Continue: Click E for Sad faces/Cat images, and I for Dog images/Happy faces",
-          data:  trials.testData_Block3("I", "E", 32),
+          instructions: "Let's Continue: Click E for sad faces and cat images, and I for dog images and happy faces. Remember, you should tap as fast as you can!",
+          data:  trials.testData_Block3("I", "E", 4),
         },
         {
           block: "Block4",
-          instructions: "The images are reversed now!<br/>Choose I for Cat images and E for Dog images",
-          data: trials.testData_Block1("I", "E", 16),
+          instructions: "The images are reversed now!<br/>Choose I for Cat images and E for Dog images. Remember, you should tap as fast as you can!",
+          data: trials.testData_Block1("I", "E", 2),
         },
         // {
         //   block: "Block6",
@@ -82,8 +82,8 @@ export default {
         // },
         {
           block: "Block5",
-          instructions: "Let's Continue: Click I for Sad faces/Dog images, and E for Cat images/Happy faces",
-          data:  trials.testData_Block4("I", "E", 32),
+          instructions: "Let's Continue: Click I for Sad faces/Dog images, and E for Cat images/Happy faces.  Remember, you should tap as fast as you can!",
+          data:  trials.testData_Block4("I", "E", 4),
         }
       ]
     };

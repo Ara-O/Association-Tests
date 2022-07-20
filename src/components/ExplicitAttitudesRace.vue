@@ -2,8 +2,8 @@
   <h3 style="font-size: 18px">Explicit Attitudes</h3>
   <h4>
     <!-- CHANGE THIS FOR THE DIFFERENT TESTS -->
-    How do you feel about boys? Use the slider:
-    {{ this.userData.slider1 }}
+    How much do you like {{ currentRace1 }} children? Use the slider:
+    {{ userData.slider1 }}
   </h4>
   <!-- Warmness Slider -->
   <div class="warmness-slider">
@@ -13,28 +13,33 @@
         alt="big frown"
         class="emotion-img"
         style="width: 32px"
+        @click="userData.slider1 = 0"
       />
       <img
         src="../assets/Emotions_Range/slightly-sad.png"
         alt="slightly sad"
         class="emotion-img"
         style="width: 33px"
+        @click="userData.slider1 = 25"
       />
       <img
         src="../assets/Emotions_Range/no-preference.png"
         alt="no preference"
         class="emotion-img"
+        @click="userData.slider1 = 50"
       />
       <img
         src="../assets/Emotions_Range/slightly-happy.png"
         alt="slightly happy"
         class="emotion-img"
         style="width: 32px"
+        @click="userData.slider1 = 75"
       />
       <img
         src="../assets/Emotions_Range/big-smile.png"
         alt="big smile"
         class="emotion-img"
+        @click="userData.slider1 = 100"
       />
     </div>
     <input
@@ -48,8 +53,8 @@
 
   <!-- Warmess Slider -->
   <h4>
-    How do you feel about girls? Use the slider:
-    {{ this.userData.slider2 }}
+    How much do you like {{ currentRace2 }} children? Use the slider:
+    {{ userData.slider2 }}
   </h4>
 
   <div class="warmness-slider">
@@ -59,28 +64,33 @@
         alt="big frown"
         class="emotion-img"
         style="width: 32px"
+        @click="userData.slider2 = 0"
       />
       <img
         src="../assets/Emotions_Range/slightly-sad.png"
         alt="slightly sad"
         class="emotion-img"
         style="width: 33px"
+        @click="userData.slider2 = 25"
       />
       <img
         src="../assets/Emotions_Range/no-preference.png"
         alt="no preference"
         class="emotion-img"
+        @click="userData.slider2 = 50"
       />
       <img
         src="../assets/Emotions_Range/slightly-happy.png"
         alt="slightly happy"
         class="emotion-img"
         style="width: 32px"
+        @click="userData.slider2 = 75"
       />
       <img
         src="../assets/Emotions_Range/big-smile.png"
         alt="big smile"
         class="emotion-img"
+        @click="userData.slider2 = 100"
       />
     </div>
     <input
@@ -92,109 +102,49 @@
     />
   </div>
 
-  <!-- Stereotype section - how do you feel about white americans, black americans, asian americans -->
+  <!-- Stereotype section - which child would you prefer to play with  -->
 
   <div>
-    <!-- <button @click="test">clickity clack</button> -->
-    <h4 style="max-width: 100%">
-      Using the scale below, please rate how you feel about White Americans.
-    </h4>
-    <div
-      class="explicit-attitudes-div"
-      v-for="explicitAttitudeOption in explicitAttitudeOptions"
-      :key="explicitAttitudeOption.id"
-    >
-      <h5>{{ explicitAttitudeOption.left }}</h5>
-      <span v-for="i in 7" :key="i" class="explicit-attitudes-scale">
-        <label
-          :for="`${explicitAttitudeOption.left}-${i}`"
-          class="explicit-attitudes-label"
-          >{{ i }}</label
-        >
+    <h4>Which child would you like to play with</h4>
+    <div class="gender-toy-stereotype-option" style="column-gap: 75px">
+      <div class="child-img-survey-option-container">
+        <label for="child-img-survey-option1-2">
+          <div v-if="leftImg !== ''">
+            <img
+              :src="getImage(leftImg)"
+              alt="Toy 1"
+              class="child-img-survey child-img-survey-option"
+              style="width: 100px; height: 100px px; object-fit: contain"
+            />
+          </div>
+        </label>
         <input
           type="radio"
-          :id="`${explicitAttitudeOption.left}-${i}`"
-          style="margin-left: 21px"
-          :value="i"
-          :name="explicitAttitudeOption.right"
-          v-model="
-            userData.opinionofwhiteamericans[
-              `${explicitAttitudeOption.left}_${explicitAttitudeOption.right}`
-            ]
-          "
+          id="child-img-survey-option1-2"
+          name="child-img-survey-2"
+          :value="generateOptionValue(leftImg)"
+          v-model="userData.userWouldPrefer"
         />
-      </span>
-      <h5 style="margin-left: 21px">{{ explicitAttitudeOption.right }}</h5>
-    </div>
-  </div>
-
-  <!-- Opinion on black americans  -->
-
-  <div>
-    <h4 style="max-width: 100%">
-      Using the scale below, please rate how you feel about Black Americans.
-    </h4>
-    <div
-      class="explicit-attitudes-div"
-      v-for="explicitAttitudeOption in explicitAttitudeOptions"
-      :key="explicitAttitudeOption.id"
-    >
-      <h5>{{ explicitAttitudeOption.left }}</h5>
-      <span v-for="i in 7" :key="i" class="explicit-attitudes-scale">
-        <label
-          :for="`${explicitAttitudeOption.left}-${i}-2`"
-          class="explicit-attitudes-label"
-          >{{ i }}</label
-        >
+      </div>
+      <div class="child-img-survey-option-container">
+        <label for="child-img-survey-option2-2">
+          <div v-if="rightImg">
+            <img
+              :src="getImage(rightImg)"
+              alt="Toy 2"
+              class="child-img-survey child-img-survey-option"
+              style="width: 100px; height: 100px px; object-fit: contain"
+            />
+          </div>
+        </label>
         <input
           type="radio"
-          :id="`${explicitAttitudeOption.left}-${i}-2`"
-          style="margin-left: 21px"
-          :value="i"
-          :name="`${explicitAttitudeOption.right}-2`"
-          v-model="
-            userData.opinionofblackamericans[
-              `${explicitAttitudeOption.left}_${explicitAttitudeOption.right}`
-            ]
-          "
+          id="child-img-survey-option2-2"
+          name="child-img-survey-2"
+          :value="generateOptionValue(rightImg)"
+          v-model="userData.userWouldPrefer"
         />
-      </span>
-      <h5 style="margin-left: 21px">{{ explicitAttitudeOption.right }}</h5>
-    </div>
-  </div>
-
-  <!-- Users opinion of asian americans  -->
-
-  <div>
-    <h4 style="max-width: 100%">
-      Using the scale below, please rate how you feel about Asian Americans.
-    </h4>
-    <div
-      class="explicit-attitudes-div"
-      v-for="explicitAttitudeOption in explicitAttitudeOptions"
-      :key="explicitAttitudeOption.id"
-    >
-      <h5>{{ explicitAttitudeOption.left }}</h5>
-      <span v-for="i in 7" :key="i" class="explicit-attitudes-scale">
-        <label
-          :for="`${explicitAttitudeOption.left}-${i}-3`"
-          class="explicit-attitudes-label"
-          >{{ i }}</label
-        >
-        <input
-          type="radio"
-          :id="`${explicitAttitudeOption.left}-${i}-3`"
-          style="margin-left: 21px"
-          :value="i"
-          :name="`${explicitAttitudeOption.right}-3`"
-          v-model="
-            userData.opinionofasianamericans[
-              `${explicitAttitudeOption.left}_${explicitAttitudeOption.right}`
-            ]
-          "
-        />
-      </span>
-      <h5 style="margin-left: 21px">{{ explicitAttitudeOption.right }}</h5>
+      </div>
     </div>
   </div>
 
@@ -229,60 +179,27 @@
 
 <script>
 export default {
-  props: ["userDataProp", "opinionTitle1", "opinionTitle2", "currentTest"],
+  props: [
+    "userDataProp",
+    "childrenImages1",
+    "childrenImages2",
+    "currentTest",
+    "currentRace1",
+    "currentRace2",
+  ],
   emits: ["progress_kb", "progress_ts", "goBackEmit"],
   data() {
     return {
       leftImg: "",
       rightImg: "",
-      leftImg2: "",
-      rightImg2: "",
-      explicitAttitudeOptions: [
-        { left: "Unlikeable", right: "Likeable" },
-        { left: "Mean", right: "Kind" },
-        { left: "Unsuccessful", right: "Successful" },
-        { left: "Unattractive", right: "Attractive" },
-        { left: "Selfish", right: "Altruistic" },
-        { left: "Dishonest", right: "Honest" },
-        { left: "Untrustworthy", right: "Trustworthy" },
-        { left: "Lazy", right: "Hardworking" },
-      ],
+
       //! Update on storing data IAT
       userData: {
         gender: "",
         chosenethnicity: "",
         slider1: 50,
         slider2: 50,
-        opinionofblackamericans: {
-          Unlikeable_Likeable: "Not provided",
-          Mean_Kind: "Not provided",
-          Unsuccessful_Successful: "Not provided",
-          Selfish_Altruistic: "Not provided",
-          Unattractive_Attractive: "Not provided",
-          Dishonest_Honest: "Not provided",
-          Untrustworthy_Trustworthy: "Not provided",
-          Lazy_Hardworking: "Not provided",
-        },
-        opinionofwhiteamericans: {
-          Unlikeable_Likeable: "Not provided",
-          Mean_Kind: "Not provided",
-          Unsuccessful_Successful: "Not provided",
-          Selfish_Altruistic: "Not provided",
-          Unattractive_Attractive: "Not provided",
-          Dishonest_Honest: "Not provided",
-          Untrustworthy_Trustworthy: "Not provided",
-          Lazy_Hardworking: "Not provided",
-        },
-        opinionofasianamericans: {
-          Unlikeable_Likeable: "Not provided",
-          Mean_Kind: "Not provided",
-          Unsuccessful_Successful: "Not provided",
-          Selfish_Altruistic: "Not provided",
-          Unattractive_Attractive: "Not provided",
-          Dishonest_Honest: "Not provided",
-          Untrustworthy_Trustworthy: "Not provided",
-          Lazy_Hardworking: "Not provided",
-        },
+        userWouldPrefer: "",
       },
     };
   },
@@ -301,13 +218,46 @@ export default {
     getImage(img) {
       return require(`../assets/Stimulus_Faces/${img}.jpg`);
     },
+
+    generateOptionValue(img) {
+      // The suffix for when the user clicks what image the boy/girl/pet would likely choose
+      if (this.currentTest === "IAT_Black_White") {
+        if (img[0] === "W") {
+          return "White child";
+        } else if (img[0] === "B") {
+          return "Black child";
+        }
+      }
+    },
+
+    generateChildrenOptions() {
+      let randomNo = Math.floor(Math.random() * 2);
+      //if randomNo is 0, the male will be to the left, else, itll be flipped
+      let randomNoChildren1 = Math.floor(
+        Math.random() * this.childrenImages1.length
+      );
+      let randomNoChildren2 = Math.floor(
+        Math.random() * this.childrenImages2.length
+      );
+      this.leftImg =
+        randomNo === 0
+          ? this.childrenImages1[randomNoChildren1]
+          : this.childrenImages2[randomNoChildren2];
+      this.rightImg =
+        randomNo === 0
+          ? this.childrenImages2[randomNoChildren2]
+          : this.childrenImages1[randomNoChildren1];
+    },
   },
 
   mounted() {
     this.userData.gender = this.userDataProp.gender;
+    // delete this.userData.boyWouldPrefer;
+    // delete this.userData.girlWouldPrefer;
     this.userData.chosenethnicity = this.userDataProp.chosenethnicity;
-    this.userData.slider1 = this.userDataProp.slider1;
-    this.userData.slider2 = this.userDataProp.slider2;
+    this.userData.slider1 = this.userDataProp.slider1 || 50;
+    this.userData.slider2 = this.userDataProp.slider2 || 50;
+    this.generateChildrenOptions();
   },
 };
 </script>

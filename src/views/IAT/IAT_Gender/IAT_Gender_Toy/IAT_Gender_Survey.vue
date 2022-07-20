@@ -120,6 +120,7 @@
         opinionTitle2="Which toy do you think this girl would choose to play?"
         :stereotypeImages1="stereotypeImages1"
         :stereotypeImages2="stereotypeImages2"
+        userWouldPrefer="Which toy would you like to choose to play with?"
         currentTest="IAT_Gender_Toy"
         fileLocation="IAT_Gender_Toy"
       >

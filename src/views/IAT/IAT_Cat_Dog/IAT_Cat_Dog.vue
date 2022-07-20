@@ -53,12 +53,12 @@ export default {
         {
           block: "Block1",
           instructions: "Click E for cat images and I for dog images. Remember, you should tap as fast as you can!",
-          data: trials.testData_Block1("E", "I", 2),
+          data: trials.testData_Block1("E", "I", 16),
         },
         {
           block: "Block2",
           instructions: "Click E for happy faces, and I for sad faces. Remember, you should tap as fast as you can!",
-          data: trials.testData_Block2("E", "I", 2),
+          data: trials.testData_Block2("E", "I", 16),
         },
         // {
         //   block: "Block3",
@@ -68,12 +68,12 @@ export default {
         {
           block: "Block3",
           instructions: "Let's Continue: Click E for sad faces and cat images, and I for dog images and happy faces. Remember, you should tap as fast as you can!",
-          data:  trials.testData_Block3("I", "E", 4),
+          data:  trials.testData_Block3("I", "E", 32),
         },
         {
           block: "Block4",
           instructions: "The images are reversed now!<br/>Choose I for Cat images and E for Dog images. Remember, you should tap as fast as you can!",
-          data: trials.testData_Block1("I", "E", 2),
+          data: trials.testData_Block1("I", "E", 16),
         },
         // {
         //   block: "Block6",
@@ -83,7 +83,7 @@ export default {
         {
           block: "Block5",
           instructions: "Let's Continue: Click I for Sad faces/Dog images, and E for Cat images/Happy faces.  Remember, you should tap as fast as you can!",
-          data:  trials.testData_Block4("I", "E", 4),
+          data:  trials.testData_Block4("I", "E", 16),
         }
       ]
     };

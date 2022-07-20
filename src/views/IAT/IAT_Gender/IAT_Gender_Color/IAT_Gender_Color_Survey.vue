@@ -118,6 +118,7 @@
         @go-back-emit="moveon = true"
         opinionTitle1="Which color do you think this boy would prefer?"
         opinionTitle2="Which color do you think this girl would prefer?"
+        userWouldPrefer="Which color would you prefer to choose?"
         :stereotypeImages1="stereotypeImages1"
         :stereotypeImages2="stereotypeImages2"
         currentTest="IAT_Gender_Color"

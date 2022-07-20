@@ -78,8 +78,7 @@ export default {
       userData: {
         gender: "",
         chosenethnicity: "",
-        slider1: 50,
-        slider2: 50,
+        userWouldPrefer: "",
         boyWouldPrefer: "",
         girlWouldPrefer: "",
       },

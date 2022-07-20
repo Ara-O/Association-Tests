@@ -2,12 +2,50 @@
   <h3 style="font-size: 18px">Explicit Attitudes</h3>
   <h4>
     <!-- CHANGE THIS FOR THE DIFFERENT TESTS -->
-    How do you feel about {{ howDoYouFeelAbout1 }}? Use the slider:
-    {{ this.userData.slider1 }}
+    {{userWouldPrefer}} 
+    <!-- {{ this.userData.slider1 }} -->
   </h4>
+  <div class="gender-toy-stereotype-option">
+      <div class="child-img-survey-option-container">
+        <label for="child-img-survey-option1-user">
+          <div v-if="leftImgPersonal">
+            <img
+              :src="getImage(leftImgPersonal)"
+              alt="Toy 1"
+              class="child-img-survey child-img-survey-option"
+            />
+          </div>
+        </label>
+        <input
+          type="radio"
+          id="child-img-survey-option1-user"
+          name="child-img-survey-user1"
+          :value="generateOptionValue(leftImgPersonal)"
+          v-model="userData.userWouldPrefer"
+        />
+      </div>
+      <div class="child-img-survey-option-container">
+        <label for="child-img-survey-option2-user2">
+          <div v-if="rightImgPersonal">
+            <img
+              :src="getImage(rightImgPersonal)"
+              alt="Toy 2"
+              class="child-img-survey child-img-survey-option"
+            />
+          </div>
+        </label>
+        <input
+          type="radio"
+          id="child-img-survey-option2-user2"
+          name="child-img-survey-user2"
+          :value="generateOptionValue(rightImgPersonal)"
+          v-model="userData.userWouldPrefer"
+        />
+      </div>
+    </div>
   <!-- Warmness Slider -->
-  <div class="warmness-slider">
-    <div class="slider-options">
+  <!-- <div class="warmness-slider"> -->
+    <!-- <div class="slider-options">
       <img
         src="../assets/Emotions_Range/big-frown.png"
         alt="big frown"
@@ -48,15 +86,15 @@
       min="1"
       max="100"
       class="input-range-slider"
-    />
-  </div>
+    /> -->
+  <!-- </div> -->
 
   <!-- Warmess Slider -->
-  <h4>
+  <!-- <h4>
     How do you feel about {{ howDoYouFeelAbout2 }}? Use the slider:
     {{ this.userData.slider2 }}
-  </h4>
-
+  </h4> -->
+<!-- 
   <div class="warmness-slider">
     <div class="slider-options">
       <img
@@ -100,8 +138,9 @@
       max="100"
       class="input-range-slider"
     />
-  </div>
+  </div> -->
 
+<!-- The stereotype section is not visible for IAT CAT and DOG -->
   <br v-if="!checkStereotypeVisibility">
   <br v-if="!checkStereotypeVisibility">
   <!-- Stereotype section -->
@@ -242,28 +281,25 @@ export default {
     fileLocation: {
       default: "Stimulus_Faces",
     },
-    howDoYouFeelAbout1: {
-      default: "boys",
-    },
-    howDoYouFeelAbout2: {
-      default: "girls",
-    },
+    userWouldPrefer: String,
     visible: {
       default: true
     }
   },
   emits: ["progress_kb", "progress_ts", "goBackEmit"],
   data() {
+    //! cHANGE SLIDER 1 AND SLIDER 2
     return {
       leftImg: "",
+      leftImgPersonal: "",
       rightImg: "",
+      rightImgPersonal: "",
       leftImg2: "",
       rightImg2: "",
       userData: {
         gender: "",
         chosenethnicity: "",
-        slider1: 50,
-        slider2: 50,
+        userWouldPrefer: "",
         boyWouldPrefer: "",
         girlWouldPrefer: "",
       },
@@ -377,6 +413,23 @@ export default {
           ? this.stereotypeImages1[randomNoStereotype1]
           : this.stereotypeImages2[randomNoStereotype2];
       this.rightImg2 =
+        randomNo === 0
+          ? this.stereotypeImages2[randomNoStereotype2]
+          : this.stereotypeImages1[randomNoStereotype1];
+
+          // USER PERSONAL STEREOTPYE
+      randomNo = Math.floor(Math.random() * 2);
+      randomNoStereotype2 = Math.floor(
+        Math.random() * this.stereotypeImages2.length
+      );
+      randomNoStereotype1 = Math.floor(
+        Math.random() * this.stereotypeImages1.length
+      );
+      this.leftImgPersonal =
+        randomNo === 0
+          ? this.stereotypeImages1[randomNoStereotype1]
+          : this.stereotypeImages2[randomNoStereotype2];
+      this.rightImgPersonal =
         randomNo === 0
           ? this.stereotypeImages2[randomNoStereotype2]
           : this.stereotypeImages1[randomNoStereotype1];

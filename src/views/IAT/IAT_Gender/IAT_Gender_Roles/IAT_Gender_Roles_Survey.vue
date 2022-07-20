@@ -118,6 +118,7 @@
         @go-back-emit="moveon = true"
         opinionTitle1="Which item do you think this boy would choose to work with?"
         opinionTitle2="Which item do you think this girl would choose to work with?"
+        userWouldPrefer="Which item would you like to choose to use?"
         :stereotypeImages1="stereotypeImages1"
         :stereotypeImages2="stereotypeImages2"
         currentTest="IAT_Gender_Roles"

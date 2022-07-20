@@ -118,6 +118,7 @@
         @go-back-emit="moveon = true"
         opinionTitle1="Which item do you think this boy would choose to wear?"
         opinionTitle2="Which item do you think this girl would choose to wear?"
+        userWouldPrefer="Which clothing would you like to choose to wear?"
         :stereotypeImages1="stereotypeImages1"
         :stereotypeImages2="stereotypeImages2"
         currentTest="IAT_Gender_Clothing"

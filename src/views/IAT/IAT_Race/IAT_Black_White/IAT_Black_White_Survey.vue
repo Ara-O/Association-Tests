@@ -116,6 +116,11 @@
         @progress_kb="progress_kb"
         @progress_ts="progress_ts"
         @goBackEmit="moveon = true"
+        currentTest="IAT_Black_White"
+        currentRace1="Black"
+        currentRace2="White"
+        :childrenImages1="childrenImages1"
+        :childrenImages2="childrenImages2"
       >
       </explicit-attitudes-race>
     </div>
@@ -141,6 +146,8 @@ export default {
       redirectToHome: false,
       moveon: true,
       userData: {},
+      childrenImages1: ["B_CF01", "B_CF02", "B_CF03", "B_CM01", "B_CM02", "B_CM03"],
+      childrenImages2: ["W_CF01", "W_CF02", "W_CF03", "W_CM01", "W_CM02", "W_CM03"]
     };
   },
 

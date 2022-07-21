@@ -1,9 +1,7 @@
 <template>
   <h3 style="font-size: 18px">Explicit Attitudes</h3>
   <h4>
-    <!-- CHANGE THIS FOR THE DIFFERENT TESTS -->
     {{userWouldPrefer}} 
-    <!-- {{ this.userData.slider1 }} -->
   </h4>
   <div class="gender-toy-stereotype-option">
       <div class="child-img-survey-option-container">
@@ -42,103 +40,7 @@
           v-model="userData.userWouldPrefer"
         />
       </div>
-    </div>
-  <!-- Warmness Slider -->
-  <!-- <div class="warmness-slider"> -->
-    <!-- <div class="slider-options">
-      <img
-        src="../assets/Emotions_Range/big-frown.png"
-        alt="big frown"
-        class="emotion-img"
-        style="width: 32px"
-        @click="userData.slider1 = 0"
-      />
-      <img
-        src="../assets/Emotions_Range/slightly-sad.png"
-        alt="slightly sad"
-        class="emotion-img"
-        style="width: 33px"
-        @click="userData.slider1 = 25"
-      />
-      <img
-        src="../assets/Emotions_Range/no-preference.png"
-        alt="no preference"
-        class="emotion-img"
-        @click="userData.slider1 = 50"
-      />
-      <img
-        src="../assets/Emotions_Range/slightly-happy.png"
-        alt="slightly happy"
-        class="emotion-img"
-        style="width: 32px"
-        @click="userData.slider1 = 75"
-      />
-      <img
-        src="../assets/Emotions_Range/big-smile.png"
-        alt="big smile"
-        class="emotion-img"
-        @click="userData.slider1 = 100"
-      />
-    </div>
-    <input
-      type="range"
-      v-model="userData.slider1"
-      min="1"
-      max="100"
-      class="input-range-slider"
-    /> -->
-  <!-- </div> -->
-
-  <!-- Warmess Slider -->
-  <!-- <h4>
-    How do you feel about {{ howDoYouFeelAbout2 }}? Use the slider:
-    {{ this.userData.slider2 }}
-  </h4> -->
-<!-- 
-  <div class="warmness-slider">
-    <div class="slider-options">
-      <img
-        src="../assets/Emotions_Range/big-frown.png"
-        alt="big frown"
-        class="emotion-img"
-        style="width: 32px"
-        @click="userData.slider2 = 0"
-      />
-      <img
-        src="../assets/Emotions_Range/slightly-sad.png"
-        alt="slightly sad"
-        class="emotion-img"
-        style="width: 33px"
-        @click="userData.slider2 = 25"
-      />
-      <img
-        src="../assets/Emotions_Range/no-preference.png"
-        alt="no preference"
-        class="emotion-img"
-        @click="userData.slider2 = 50"
-      />
-      <img
-        src="../assets/Emotions_Range/slightly-happy.png"
-        alt="slightly happy"
-        class="emotion-img"
-        style="width: 32px"
-        @click="userData.slider2 = 75"
-      />
-      <img
-        src="../assets/Emotions_Range/big-smile.png"
-        alt="big smile"
-        class="emotion-img"
-        @click="userData.slider2 = 100"
-      />
-    </div>
-    <input
-      type="range"
-      v-model="userData.slider2"
-      min="1"
-      max="100"
-      class="input-range-slider"
-    />
-  </div> -->
+    </div>  
 
 <!-- The stereotype section is not visible for IAT CAT and DOG -->
   <br v-if="!checkStereotypeVisibility">
@@ -244,19 +146,13 @@
   <div style="display: flex; flex-direction: column; align-items: center">
     <div class="buttons">
       <button
-        @click="progress_ts"
+        @click="start_test"
         class="btn btn_basic_survey"
-        style="margin-top: 5px; width: 195px; padding: 24px 18px"
-      >
-        Touch Screen Version
-      </button>
-      <button
-        @click="progress_kb"
-        class="btn btn_basic_survey kb_btn"
         style="margin-top: 5px; width: 150px; padding: 24px 18px"
       >
-        Keyboard Version
+        Start Test
       </button>
+
     </div>
     <br />
     <button
@@ -286,7 +182,7 @@ export default {
       default: true
     }
   },
-  emits: ["progress_kb", "progress_ts", "goBackEmit"],
+  emits: ["start_test", "goBackEmit"],
   data() {
     //! cHANGE SLIDER 1 AND SLIDER 2
     return {
@@ -321,16 +217,13 @@ export default {
       this.$emit("goBackEmit");
     },
 
-    progress_ts() {
-      this.$emit("progress_ts");
-    },
-    progress_kb() {
-      this.$emit("progress_kb");
+    start_test() {
+      this.$emit("start_test");
     },
 
     generateOptionValue(img) {
       // The suffix for when the user clicks what image the boy/girl/pet would likely choose
-      if (this.currentTest === "IAT_Gender_Toy") {
+      if (this.currentTest === "IBT_Gender_Toy") {
         if (img[2] === "M") {
           return "Male toy";
         } else if (img[2] === "F") {
@@ -338,7 +231,7 @@ export default {
         }
       }
 
-      if (this.currentTest === "IAT_Gender_Roles") {
+      if (this.currentTest === "IBT_Gender_Roles") {
         if (img[0] === "H") {
           return "Kitchen appliance";
         } else if (img[0] === "W") {
@@ -346,7 +239,7 @@ export default {
         }
       }
 
-      if (this.currentTest === "IAT_Gender_Clothing") {
+      if (this.currentTest === "IBT_Gender_Clothing") {
         if (img[3] === "F") {
           return "Female clothing";
         } else if (img[3] === "M") {
@@ -354,7 +247,7 @@ export default {
         }
       }
 
-      if (this.currentTest === "IAT_Gender_Color") {
+      if (this.currentTest === "IBT_Gender_Color") {
         if (img[0] === "b") {
           return "Blue color";
         } else if (img[0] === "p") {
@@ -362,7 +255,7 @@ export default {
         }
       }
 
-      if (this.currentTest === "IAT_Gender_Subject") {
+      if (this.currentTest === "IBT_Gender_Subject") {
         if (img[0] === "M") {
           return "Math image";
         } else if (img[0] === "R") {
@@ -370,7 +263,7 @@ export default {
         }
       }
 
-      if (this.currentTest === "IAT_Cat_Dog") {
+      if (this.currentTest === "IBT_Cat_Dog") {
         if (img[0] === "D") {
           return "Dog image";
         } else if (img[0] === "C") {

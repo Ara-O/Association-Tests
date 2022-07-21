@@ -101,17 +101,32 @@
       <button @click="next" class="btn_survey">I agree</button>
     </div>
   </section>
-  <section v-else-if="!redirectToHome && !notAgreedToConsentForm" class="consent-form" style="height: 100vh"> 
-    <div class="collect-user-id-ibt">
-      <h3 style="font-size: 18px">Before we start!</h3>
-      <h3 class="input-user-id-text">
-        What is your unique testing ID? ( You will be given this by a lab
-        assistant )
-      </h3>
-      <input type="text" class="user-id" v-model="uid" />
-      <button @click="goToTest" class="btn_basic_survey">next</button>
+  <main v-else-if="!redirectToHome && !notAgreedToConsentForm">
+    <div v-if="moveon" class="survey_container">
+      <basic-questions
+        :userData="userData"
+        @next="moveToExplicitAttitudes"
+      ></basic-questions>
     </div>
-  </section>
+
+    <!-- EXPLICIT ATTITUDES -->
+    <div v-else class="survey_container">
+      <explicit-attitudes-ibt
+        :userDataProp="userData"
+        @start_test="goToTest"
+        @go-back-emit="moveon = true"
+        opinionTitle1="Which toy do you think this boy would choose to play?"
+        opinionTitle2="Which toy do you think this girl would choose to play?"
+        userWouldPrefer="Which toy would you like to choose to play with?"
+        :stereotypeImages1="stereotypeImages1"
+        :stereotypeImages2="stereotypeImages2"
+        currentTest="IBT_Gender_Toy"
+        fileLocation="IAT_Gender_Toy"
+      >
+      </explicit-attitudes-ibt>
+    </div>
+  </main>
+
   <section v-if="redirectToHome" class="redirectToHome">
     <router-link to="/Home" class="btn_survey"
       >Click here to redirect to home</router-link
@@ -120,27 +135,39 @@
 </template>
 
 <script>
+import ExplicitAttitudesIbt from "../../../../components/ExplicitAttitudesIBT.vue";
+import BasicQuestions from "../../../../components/BasicQuestions.vue";
+
 export default {
+  components: {
+    ExplicitAttitudesIbt,
+    BasicQuestions,
+  },
+
   data() {
     return {
       uid: "",
       redirectToHome: false,
       notAgreedToConsentForm: true,
+      moveon: true,
+      stereotypeImages1: ["T_F01", "T_F02", "T_F03", "T_F04", "T_F05"],
+      stereotypeImages2: ["T_M01", "T_M02", "T_M03", "T_M04", "T_M05"],
+      userData: {},
     };
   },
 
   methods: {
+    moveToExplicitAttitudes(userData) {
+      this.userData = userData;
+      this.moveon = false;
+    },
+
     next() {
       this.notAgreedToConsentForm = false;
     },
 
     goToTest() {
-      if (this.uid.trim() !== "") {
-        this.$store.commit("changeUserID", this.uid);
-        this.userHasPutInUserID = true;
-
-        this.$router.push("/IBT_Gender_Toy");
-      }
+      this.$router.push("/IBT_Gender_Toy");
     },
   },
 

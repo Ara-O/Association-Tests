@@ -101,17 +101,30 @@
       <button @click="next" class="btn_survey">I agree</button>
     </div>
   </section>
-  <section v-else-if="!redirectToHome && !notAgreedToConsentForm" class="consent-form" style="height: 100vh"> 
-    <div class="collect-user-id-ibt">
-      <h3 style="font-size: 18px">Before we start!</h3>
-      <h3 class="input-user-id-text">
-        What is your unique testing ID? ( You will be given this by a lab
-        assistant )
-      </h3>
-      <input type="text" class="user-id" v-model="uid" />
-      <button @click="goToTest" class="btn_basic_survey">next</button>
+
+  <main v-else-if="!redirectToHome && !notAgreedToConsentForm">
+    <div v-if="moveon" class="survey_container">
+      <basic-questions
+        :userData="userData"
+        @next="moveToExplicitAttitudes"
+      ></basic-questions>
     </div>
-  </section>
+
+    <!-- EXPLICIT ATTITUDES -->
+    <div v-else class="survey_container">
+      <explicit-attitudes-ibt-race
+        :userDataProp="userData"
+        @start_test="goToTest"
+        @goBackEmit="moveon = true"
+        currentTest="IBT_Black_White"
+        currentRace1="Black"
+        currentRace2="White"
+        :raceImages1="raceImages1"
+        :raceImages2="raceImages2"
+      >
+      </explicit-attitudes-ibt-race>
+    </div>
+  </main>
   <section v-if="redirectToHome" class="redirectToHome">
     <router-link to="/Home" class="btn_survey"
       >Click here to redirect to home</router-link
@@ -120,12 +133,24 @@
 </template>
 
 <script>
+import ExplicitAttitudesIbtRace from "../../../../components/ExplicitAttitudesIBTRace.vue";
+import BasicQuestions from "../../../../components/BasicQuestions.vue";
+
 export default {
+  components: {
+    ExplicitAttitudesIbtRace,
+    BasicQuestions,
+  },
+
   data() {
     return {
       uid: "",
       redirectToHome: false,
       notAgreedToConsentForm: true,
+      moveon: true,
+      userData: {},
+      raceImages1: ["B_CF01", "B_CF02", "B_CF03", "B_CM01", "B_CM02", "B_CM03"],
+      raceImages2: ["W_CF01", "W_CF02", "W_CF03", "W_CM01", "W_CM02", "W_CM03"],
     };
   },
 
@@ -133,14 +158,13 @@ export default {
     next() {
       this.notAgreedToConsentForm = false;
     },
+    moveToExplicitAttitudes(userData) {
+      this.userData = userData;
+      this.moveon = false;
+    },
 
     goToTest() {
-      if (this.uid.trim() !== "") {
-        this.$store.commit("changeUserID", this.uid);
-        this.userHasPutInUserID = true;
-
-        this.$router.push("/IBT_Black_White");
-      }
+      this.$router.push("/IBT_Black_White");
     },
   },
 

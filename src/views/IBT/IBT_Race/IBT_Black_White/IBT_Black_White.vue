@@ -38,7 +38,7 @@
             <img :src="getImage(trial.image)" class="trialimg" />
           </div>
           <div class="irbt-wrong-wrapper">
-            <h3 class="irbt-wrong" style="display: none">
+            <h3 class="irbt-wrong" style="display: none"> 
               Incorrect. Try again to progress!
             </h3>
             <img

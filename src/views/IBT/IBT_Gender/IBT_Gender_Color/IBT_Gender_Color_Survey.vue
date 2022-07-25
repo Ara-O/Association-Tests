@@ -166,6 +166,7 @@ export default {
     },
 
     goToTest() {
+      this.$store.state.userData = this.userData;
       this.$router.push("/IBT_Gender_Color");
     },
   },

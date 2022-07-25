@@ -171,7 +171,8 @@ export default {
     },
 
     goToTest() {
-        this.$router.push("/IBT_Gender_Subject");
+      this.$store.state.userData = this.userData;
+      this.$router.push("/IBT_Gender_Subject");
     },
   },
 

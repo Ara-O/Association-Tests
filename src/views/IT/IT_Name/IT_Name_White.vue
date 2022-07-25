@@ -103,6 +103,32 @@
       </button>
     </div>
   </section>
+  <!-- FOR WHEN WORKING ON ADDING SURVEY BEFORE TEST -->
+  <!-- <main v-else-if="!redirectToHome && !notAgreedToConsentForm">
+    <div v-if="moveon" class="survey_container">
+      <basic-questions
+        :userData="userData"
+        @next="moveToExplicitAttitudes"
+      ></basic-questions>
+    </div>
+
+    <div v-else class="survey_container">
+      <explicit-attitudes-ibt
+        :userDataProp="userData"
+        @start_test="goToTest"
+        @go-back-emit="moveon = true"
+        opinionTitle1="Which pet do you think this boy would prefer to play with?"
+        opinionTitle2="Which pet do you think this girl would prefer to play with?"
+        userWouldPrefer="Which pet would you like to play with?"
+        :stereotypeImages1="stereotypeImages1"
+        :stereotypeImages2="stereotypeImages2"
+        currentTest="IBT_Cat_Dog"
+        fileLocation="IAT_Cat_Dog"
+        visible="false"
+      >
+      </explicit-attitudes-ibt>
+    </div>
+  </main> -->
   <main v-else-if="!redirectToHome && !notAgreedToConsentForm">
     <div v-if="progress === 1" class="midinstructions">
       <h3>Can you remember all the people?</h3>
@@ -204,8 +230,10 @@
               </li>
             </div>
             <div class="correctchoice">
-              <h3 @click="proceedAfterIncorrectChoice" style="font-size: 21px;
-    font-weight: 600;">
+              <h3
+                @click="proceedAfterIncorrectChoice"
+                style="font-size: 21px; font-weight: 600"
+              >
                 {{ facedata[this.currentlyVisible].name }}
               </h3>
               <h3 style="font-size: 16px; width: 166px">
@@ -224,7 +252,6 @@
             <h3 @click="validateChoice('Paul')" class="choice-name">Paul</h3>
           </div>
         </ul>
-
       </div>
     </div>
   </main>
@@ -239,8 +266,15 @@
 // import IT_Trials from "../../../modules/individuationTrainingTrials";
 import { IT_Name_Trials } from "../../../modules/individuationTrainingTrials";
 import * as handleIT from "../../../modules/handleAnswers/handleITTrials_Name";
+// import ExplicitAttitudesIbt from "../../../components/ExplicitAttitudesIBT.vue";
+// import BasicQuestions from "../../../components/BasicQuestions.vue";
 
 export default {
+  // components: {
+  //   ExplicitAttitudesIbt,
+  //   BasicQuestions,
+  // },
+
   data() {
     return {
       progress: 1,
@@ -249,6 +283,7 @@ export default {
       faceDataToMemorize: [],
       facedatashuffled: [],
       currentlyVisible: 0,
+      startTest: false,
       currentFace: "",
       correctChoice: "",
       currentProgression: 2,
@@ -259,6 +294,8 @@ export default {
       numberOfTimesToMemorize: 1,
       notAgreedToConsentForm: true,
       redirectToHome: false,
+      userData: {},
+      moveon: true
     };
   },
 
@@ -283,6 +320,10 @@ export default {
   },
 
   methods: {
+    moveToExplicitAttitudes(){
+      this.moveon = false
+    }, 
+
     startTimer() {
       handleIT.startTimer();
     },
@@ -321,7 +362,7 @@ export default {
   },
 
   mounted() {
-            this.$store.commit("changeCurrentTest", "IT_White_Name");
+    this.$store.commit("changeCurrentTest", "IT_White_Name");
     this.facedata = IT_Name_Trials("White", 2);
     this.faceDataToMemorize = JSON.parse(JSON.stringify(this.facedata));
     // console.log(this.faceDataToMemorize);
@@ -410,17 +451,16 @@ li img {
   align-items: center;
 }
 
-
-.choice-name{
-       height: 50px;
-    font-size: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 101px;
-    box-shadow: inset 0px 0px 2px #b2b2b2;
-    border-radius: 2px;
-    background: white;
+.choice-name {
+  height: 50px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 101px;
+  box-shadow: inset 0px 0px 2px #b2b2b2;
+  border-radius: 2px;
+  background: white;
 }
 
 .cross {

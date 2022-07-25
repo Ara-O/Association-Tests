@@ -82,7 +82,7 @@ export default {
   data() {
     return {
       section: 0,
-      testType: "Gender_Color",
+      testType: "IBT_Gender_Color",
       routeTo: "/IBT_Feedback",
       testNotStarted: false,
       notFinishedInstructions: true,

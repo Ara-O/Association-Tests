@@ -82,7 +82,7 @@ export default {
   data() {
     return {
       section: 0,
-      testType: "Gender_Clothing",
+      testType: "IBT_Cat_Dog",
       routeTo: "/IBT_Feedback",
       testNotStarted: false,
       notFinishedInstructions: true,
@@ -91,7 +91,7 @@ export default {
       rightFace: "",
       irbt_trials: [
         {
-          trials: catAndDog("happy.jpg", "sad.jpg", 8),
+          trials: catAndDog("happy.jpg", "sad.jpg", 2),
           section: "practice",
           practice_instruction: `There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Dog you should touch the
@@ -103,7 +103,7 @@ export default {
         the screen.`,
         },
         {
-          trials: catAndDog("happy.jpg", "sad.jpg", 24),
+          trials: catAndDog("happy.jpg", "sad.jpg", 2),
           section: "section_1",
           instruction: `There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Dog you should touch the
@@ -115,7 +115,7 @@ export default {
         the screen.`,
         },
         {
-          trials: catAndDog("sad.jpg", "happy.jpg", 8),
+          trials: catAndDog("sad.jpg", "happy.jpg", 2),
           section: "practice_2",
           instruction: `Practice: There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Cat you should touch the
@@ -127,7 +127,7 @@ export default {
         the screen.`,
         },
         {
-          trials: catAndDog("sad.jpg", "happy.jpg", 24),
+          trials: catAndDog("sad.jpg", "happy.jpg", 2),
           section: "section_2",
           instruction: `There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Cat you should touch the

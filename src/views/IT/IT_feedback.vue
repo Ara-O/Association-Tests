@@ -43,7 +43,7 @@ export default {
     surveyComplete(userData) {
       this.launchConfetti()
       if (userData !== "opted-out") {
-        storeContactExperience(userData, "IT-Contact-Experience", this);
+        storeContactExperience(userData, "IT", this);
       }
       this.surveyNotComplete = false;
     },
@@ -76,7 +76,7 @@ export default {
 
     routeToHome() {
       if(!this.wasGroupTest){
-        storeData.updateITData(this, this.getCurrentTest);
+        storeData.storeITIndividualData(this.getCurrentTest, this);
       }
       this.$router.push("/Home");
     },

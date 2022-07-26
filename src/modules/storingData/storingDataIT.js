@@ -23,6 +23,11 @@ export function updateITData(thisval, section){
             data.currentTrial = trial;
             data.browserInfo = navigator["userAgent"];
             data.dateTaken = `${cMonth}-${cDay}-${cYear}`;
+            
+            //From userData
+            data.gender = thisval.$store.state.userData.gender || "Not provided";
+            data.ethnicity = thisval.$store.state.userData.chosenethnicity || "Not provided";
+
 
             //Creating a descriptions column for the data
             if (section == "White") {
@@ -44,11 +49,11 @@ export function updateITData(thisval, section){
     thisval.$store.state.IT_trials_text = dataclonearray;
 
     thisval.$router.push("/IT_Feedback");
-    const db = getDatabase();
+    // const db = getDatabase();
 
-    set(ref(db, `IT/${section}/User-${thisval.$store.state.uid}`), {
-        data: thisval.$store.state.IT_trials_text,
-    });
+    // set(ref(db, `IT/${section}/User-${thisval.$store.state.uid}`), {
+    //     data: thisval.$store.state.IT_trials_text,
+    // });
 }
 
 

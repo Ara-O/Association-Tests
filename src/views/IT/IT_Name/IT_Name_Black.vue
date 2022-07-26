@@ -103,7 +103,15 @@
       </button>
     </div>
   </section>
-  <main v-else-if="!redirectToHome && !notAgreedToConsentForm">
+  <main v-else-if="!redirectToHome && !notAgreedToConsentForm && !goToTest">
+    <div class="survey_container">
+      <basic-questions
+        :userData="userData"
+        @next="startIndividuationTraining"
+      ></basic-questions>
+    </div>
+  </main>
+  <main v-if="goToTest">
     <div v-if="progress === 1" class="midinstructions">
       <h3>Can you remember all the people?</h3>
       <h3>Press the right arrow to get started</h3>
@@ -204,8 +212,10 @@
               </li>
             </div>
             <div class="correctchoice">
-              <h3 @click="proceedAfterIncorrectChoice" style="font-size: 21px;
-    font-weight: 600;">
+              <h3
+                @click="proceedAfterIncorrectChoice"
+                style="font-size: 21px; font-weight: 600"
+              >
                 {{ facedata[this.currentlyVisible].name }}
               </h3>
               <h3 style="font-size: 16px; width: 166px">
@@ -224,7 +234,6 @@
             <h3 @click="validateChoice('Paul')" class="choice-name">Paul</h3>
           </div>
         </ul>
-
       </div>
     </div>
   </main>
@@ -239,8 +248,13 @@
 // import IT_Trials from "../../../modules/individuationTrainingTrials";
 import { IT_Name_Trials } from "../../../modules/individuationTrainingTrials";
 import * as handleIT from "../../../modules/handleAnswers/handleITTrials_Name";
+import BasicQuestions from "../../../components/BasicQuestions.vue";
 
 export default {
+  components: {
+    BasicQuestions,
+  },
+
   data() {
     return {
       progress: 1,
@@ -258,7 +272,9 @@ export default {
       block: 1,
       numberOfTimesToMemorize: 1,
       notAgreedToConsentForm: true,
-      redirectToHome: false,
+      redirectToHome: false,  
+      userData: {},
+      goToTest: false,
     };
   },
 
@@ -283,6 +299,12 @@ export default {
   },
 
   methods: {
+    startIndividuationTraining(userData) {
+      this.userData = userData;
+      this.goToTest = true;
+      this.$store.state.userData = this.userData;
+    },
+
     startTimer() {
       handleIT.startTimer();
     },
@@ -321,7 +343,7 @@ export default {
   },
 
   mounted() {
-            this.$store.commit("changeCurrentTest", "IT_Black_Name");
+    this.$store.commit("changeCurrentTest", "IT_Black_Name");
     this.facedata = IT_Name_Trials("Black", 2);
     this.faceDataToMemorize = JSON.parse(JSON.stringify(this.facedata));
     // console.log(this.faceDataToMemorize);
@@ -410,17 +432,16 @@ li img {
   align-items: center;
 }
 
-
-.choice-name{
-       height: 50px;
-    font-size: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 101px;
-    box-shadow: inset 0px 0px 2px #b2b2b2;
-    border-radius: 2px;
-    background: white;
+.choice-name {
+  height: 50px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 101px;
+  box-shadow: inset 0px 0px 2px #b2b2b2;
+  border-radius: 2px;
+  background: white;
 }
 
 .cross {

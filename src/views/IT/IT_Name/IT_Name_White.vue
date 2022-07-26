@@ -103,33 +103,15 @@
       </button>
     </div>
   </section>
-  <!-- FOR WHEN WORKING ON ADDING SURVEY BEFORE TEST -->
-  <!-- <main v-else-if="!redirectToHome && !notAgreedToConsentForm">
-    <div v-if="moveon" class="survey_container">
+  <main v-else-if="!redirectToHome && !notAgreedToConsentForm && !goToTest">
+    <div class="survey_container">
       <basic-questions
         :userData="userData"
-        @next="moveToExplicitAttitudes"
+        @next="startIndividuationTraining"
       ></basic-questions>
     </div>
-
-    <div v-else class="survey_container">
-      <explicit-attitudes-ibt
-        :userDataProp="userData"
-        @start_test="goToTest"
-        @go-back-emit="moveon = true"
-        opinionTitle1="Which pet do you think this boy would prefer to play with?"
-        opinionTitle2="Which pet do you think this girl would prefer to play with?"
-        userWouldPrefer="Which pet would you like to play with?"
-        :stereotypeImages1="stereotypeImages1"
-        :stereotypeImages2="stereotypeImages2"
-        currentTest="IBT_Cat_Dog"
-        fileLocation="IAT_Cat_Dog"
-        visible="false"
-      >
-      </explicit-attitudes-ibt>
-    </div>
-  </main> -->
-  <main v-else-if="!redirectToHome && !notAgreedToConsentForm">
+  </main>
+  <main v-if="goToTest">
     <div v-if="progress === 1" class="midinstructions">
       <h3>Can you remember all the people?</h3>
       <h3>Press the right arrow to get started</h3>
@@ -267,13 +249,12 @@
 import { IT_Name_Trials } from "../../../modules/individuationTrainingTrials";
 import * as handleIT from "../../../modules/handleAnswers/handleITTrials_Name";
 // import ExplicitAttitudesIbt from "../../../components/ExplicitAttitudesIBT.vue";
-// import BasicQuestions from "../../../components/BasicQuestions.vue";
+import BasicQuestions from "../../../components/BasicQuestions.vue";
 
 export default {
-  // components: {
-  //   ExplicitAttitudesIbt,
-  //   BasicQuestions,
-  // },
+  components: {
+    BasicQuestions,
+  },
 
   data() {
     return {
@@ -295,7 +276,7 @@ export default {
       notAgreedToConsentForm: true,
       redirectToHome: false,
       userData: {},
-      moveon: true
+      goToTest: false,
     };
   },
 
@@ -320,9 +301,11 @@ export default {
   },
 
   methods: {
-    moveToExplicitAttitudes(){
-      this.moveon = false
-    }, 
+    startIndividuationTraining(userData) {
+      this.userData = userData;
+      this.goToTest = true;
+      this.$store.state.userData = this.userData;
+    },
 
     startTimer() {
       handleIT.startTimer();

@@ -80,7 +80,7 @@
   .choice {
     height: 200px !important;
     width: 220px !important;
-    background: pink ;
+    /* background: pink ; */
   }
 
   #wrong {

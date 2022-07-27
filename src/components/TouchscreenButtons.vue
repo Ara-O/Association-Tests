@@ -62,8 +62,8 @@ export default {
   }
 
   .choice {
-    height: 35vw;
-    width: 38vw;
+    height: 35vw !important;
+    width: 38vw !important;
   }
 }
 </style>

@@ -1,3 +1,5 @@
+import validateTrialData from "../validateTrialData";
+
 function shuffleObjects(array) {
     for (var a = 0; a < array.length; a++) {
         var x = array[a];
@@ -7,6 +9,8 @@ function shuffleObjects(array) {
     }
     return array;
 }
+
+
 
 const male_images = [
     { accuracy: 100, image: "C_M01.jpg" },
@@ -95,8 +99,10 @@ export function testData_Block1(male, female, trials) {
         el.description = "User chooses between male images and female images"
     });
     
-    fullData[0].visibility = "block"
-    // console.log("Test data 1: ", fullDataShuffled)
+    fullData[0].visibility = "block";
+
+    fullData = validateTrialData(fullData);
+   
     return fullData
 }
 

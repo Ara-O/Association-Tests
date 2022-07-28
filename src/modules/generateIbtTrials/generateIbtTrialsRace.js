@@ -1,3 +1,5 @@
+import validateTrialData from "../validateTrialDataIBT";
+
 function shuffleObjects(array) {
     for (var a = 0; a < array.length; a++) {
         var x = array[a];
@@ -82,6 +84,8 @@ export default function (white, black, trials) {
     }
 
     let updated_irbt_data = shuffleObjects(irbt_data)
+    updated_irbt_data = validateTrialData(updated_irbt_data, "emotion");
+
     updated_irbt_data[0].visibility = "block"
 
     return updated_irbt_data;

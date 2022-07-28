@@ -1,5 +1,5 @@
 // import getRandomImage from "../modules/getRandomImage";
-
+import validateTrialData from "./validateTrialData";
 function shuffleObjects(array) {
     for (var a = 0; a < array.length; a++) {
         var x = array[a];
@@ -81,6 +81,8 @@ function testData_Block1(cat, dog, trials) {
 
     
     fullData = shuffleObjects(fullData)
+    fullData = validateTrialData(fullData);
+
     
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
@@ -109,6 +111,8 @@ function testData_Block2(happy, sad, trials) {
     
     // console.log("Test data 2: ", fullData)
     fullData = shuffleObjects(fullData)
+    fullData = validateTrialData(fullData);
+
     
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
@@ -135,6 +139,8 @@ function testData_Block3(dog_happy, cat_sad, trials, practice = false) {
     
     // console.log("Test data 3/4: ", fullData)
     fullData = shuffleObjects(fullData)
+    fullData = validateTrialData(fullData);
+
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
         if(practice === false){
@@ -164,6 +170,8 @@ function testData_Block4(dog_sad, cat_happy, trials, practice = false) {
     }
 
     fullData = shuffleObjects(fullData)
+    fullData = validateTrialData(fullData);
+
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
         if(practice === false){

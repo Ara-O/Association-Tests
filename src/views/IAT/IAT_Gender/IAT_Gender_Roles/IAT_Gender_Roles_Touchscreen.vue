@@ -70,7 +70,7 @@ export default {
         {
           block: "Block1_TS",
           instructions:
-            "Tap left for male images and right for memale images. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
+            "Tap left for male images and right for female images. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block1("Left", "Right", 16),
           clickerLeft: "Male.png",
           clickerRight: "Female.png",

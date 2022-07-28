@@ -1,3 +1,5 @@
+import validateTrialData from "../validateTrialData";
+
 function shuffleObjects(array) {
     for (var a = 0; a < array.length; a++) {
         var x = array[a];
@@ -81,6 +83,8 @@ export function testData_Block1(male, female, trials) {
 
     //Shuffle the object
     let fullDataShuffled = shuffleObjects(fullData)
+    fullData = validateTrialData(fullData);
+
 
     //Attach the visibility and description
     fullDataShuffled.forEach((el) => {
@@ -90,6 +94,8 @@ export function testData_Block1(male, female, trials) {
     
     fullData[0].visibility = "block"
     // console.log("Test data 1: ", fullDataShuffled)
+
+
     return fullData
 }
 
@@ -108,6 +114,7 @@ export function testData_Block2(male_clothing, female_clothing, trials) {
     }
 
     fullData = shuffleObjects(fullData);
+    fullData = validateTrialData(fullData);
 
     fullData.forEach((el) => {
         el.visibility = "none";
@@ -135,6 +142,8 @@ export function testData_Block3(male_and_male_clothing, female_and_female_clothi
     }
 
     fullData = shuffleObjects(fullData)
+    fullData = validateTrialData(fullData);
+
 
     fullData.forEach((el) => {
         el.visibility = "none";
@@ -148,6 +157,7 @@ export function testData_Block3(male_and_male_clothing, female_and_female_clothi
     fullData[0].visibility = "block"
 
     // console.log("Test data 3: ", fullData)
+
     return fullData
 
 }
@@ -167,6 +177,8 @@ export function testData_Block4(male_and_female_clothing, female_and_male_clothi
     }
 
     fullData = shuffleObjects(fullData)
+    fullData = validateTrialData(fullData);
+
 
 
     fullData.forEach((el) => {
@@ -179,6 +191,7 @@ export function testData_Block4(male_and_female_clothing, female_and_male_clothi
     })
 
     fullData[0].visibility = "block"
+
     // console.log("Test data 4: ", fullData)
     return fullData
 

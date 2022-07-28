@@ -1,3 +1,5 @@
+import validateTrialData from "../validateTrialData";
+
 function shuffleObjects(array) {
     for (var a = 0; a < array.length; a++) {
         var x = array[a];
@@ -82,6 +84,8 @@ export function testData_Block1(male, female, trials) {
 
     //Shuffle the object
     let fullDataShuffled = shuffleObjects(fullData)
+    fullData = validateTrialData(fullData);
+
 
     //Attach the visibility and description
     fullDataShuffled.forEach((el) => {
@@ -91,6 +95,7 @@ export function testData_Block1(male, female, trials) {
 
     fullData[0].visibility = "block"
     // console.log("Test data 1: ", fullDataShuffled)
+
     return fullData
 }
 
@@ -109,6 +114,8 @@ export function testData_Block2(blue, pink, trials) {
     }
 
     fullData = shuffleObjects(fullData);
+    fullData = validateTrialData(fullData);
+
 
     fullData.forEach((el) => {
         el.visibility = "none";
@@ -117,6 +124,7 @@ export function testData_Block2(blue, pink, trials) {
     fullData[0].visibility = "block"
 
     // console.log("Test data 2: ", fullData)
+
 
     return fullData
 }
@@ -136,6 +144,8 @@ export function testData_Block3(male_blue_color, female_pink_color, trials, prac
     }
 
     fullData = shuffleObjects(fullData);
+    fullData = validateTrialData(fullData);
+
 
     fullData.forEach((el) => {
         el.visibility = "none";
@@ -149,6 +159,7 @@ export function testData_Block3(male_blue_color, female_pink_color, trials, prac
     fullData[0].visibility = "block"
 
     // console.log("Test data 3: ", fullData)
+
     return fullData
 
 }
@@ -168,6 +179,8 @@ export function testData_Block4(male_pink_color, female_blue_color, trials, prac
     }
 
     fullData = shuffleObjects(fullData);
+    fullData = validateTrialData(fullData);
+
 
     fullData.forEach((el) => {
         el.visibility = "none";
@@ -180,6 +193,7 @@ export function testData_Block4(male_pink_color, female_blue_color, trials, prac
 
     fullData[0].visibility = "block"
     // console.log("Test data 4: ", fullData)
+
     return fullData
 
 }

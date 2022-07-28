@@ -1,3 +1,5 @@
+import validateTrialData from '../validateTrialDataIBT'
+
 function shuffleObjects(array) {
     for (var a = 0; a < array.length; a++) {
         var x = array[a];
@@ -68,6 +70,8 @@ export function catAndDog(dog, cat, trials){
     }
     
     let updated_full_data = shuffleObjects(full_data)
+    updated_full_data = validateTrialData(updated_full_data, "face");
+
     updated_full_data[0].visibility = "block";
     // console.log(updated_full_data)
     return updated_full_data

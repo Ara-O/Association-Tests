@@ -1,4 +1,4 @@
-// import getRandomImage from "../modules/getRandomImage";
+import validateTrialData from "../validateTrialData";
 
 function shuffleObjects(array) {
     for (var a = 0; a < array.length; a++) {
@@ -86,6 +86,8 @@ function testData_Block1(male, female, trials) {
 
     //Shuffle the object
     fullData = shuffleObjects(fullData)
+        fullData = validateTrialData(fullData);
+
 
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
@@ -93,6 +95,7 @@ function testData_Block1(male, female, trials) {
     })
 
     // console.table(fullData)
+
 
     return fullData
 
@@ -118,12 +121,15 @@ function testData_Block2(male_toy, female_toy, trials) {
     }
 
     fullData = shuffleObjects(fullData)
+        fullData = validateTrialData(fullData);
+
 
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
         el.description = "User chooses between male toys and female toys"
     })
     // console.table(fullData)
+
     return fullData;
 }
 
@@ -145,6 +151,8 @@ function testData_Block3(male_and_male_toy, female_and_female_toy, trials, pract
     }
 
     fullData = shuffleObjects(fullData)
+        fullData = validateTrialData(fullData);
+
 
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
@@ -156,6 +164,7 @@ function testData_Block3(male_and_male_toy, female_and_female_toy, trials, pract
     })
 
     // console.table(fullData)
+
     return fullData
 }
 
@@ -175,6 +184,8 @@ function testData_Block4(male_and_female_toys, female_and_male_toys, trials, pra
     }
 
     fullData = shuffleObjects(fullData)
+        fullData = validateTrialData(fullData);
+
 
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
@@ -186,6 +197,7 @@ function testData_Block4(male_and_female_toys, female_and_male_toys, trials, pra
     })
 
     // console.table(fullData)
+
     return fullData
 
 }

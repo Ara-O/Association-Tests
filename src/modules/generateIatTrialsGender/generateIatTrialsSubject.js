@@ -1,3 +1,4 @@
+import validateTrialData from "../validateTrialData";
 
 function shuffleObjects(array) {
     for (var a = 0; a < array.length; a++) {
@@ -82,6 +83,8 @@ function testData_Block1(male, female, trials) {
 
     //Shuffle the object
     fullData = shuffleObjects(fullData)
+    fullData = validateTrialData(fullData);
+
 
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
@@ -115,11 +118,13 @@ function testData_Block2(math, reading, trials) {
 
     fullData = shuffleObjects(fullData)
 
+    fullData = validateTrialData(fullData);
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
         el.description = "User chooses between math-related images and reading-related images"
     })
     // console.table(fullData)
+
     return fullData;
 }
 
@@ -141,6 +146,7 @@ function testData_Block3(male_math, female_reading, trials, practice = false) {
     }
 
     fullData = shuffleObjects(fullData)
+    fullData = validateTrialData(fullData);
 
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
@@ -151,7 +157,7 @@ function testData_Block3(male_math, female_reading, trials, practice = false) {
         }
     })
 
-    // console.table(fullData)
+
     return fullData
 }
 
@@ -171,6 +177,8 @@ function testData_Block4(male_and_reading, female_and_math, trials, practice = f
     }
 
     fullData = shuffleObjects(fullData)
+    fullData = validateTrialData(fullData);
+
 
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
@@ -182,6 +190,7 @@ function testData_Block4(male_and_reading, female_and_math, trials, practice = f
     })
 
     // console.table(fullData)
+
     return fullData
 
 }

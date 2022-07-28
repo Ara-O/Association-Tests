@@ -91,7 +91,7 @@ export default {
       rightFace: "",
       irbt_trials: [
         {
-          trials: genderAndClothing("male.jpg", "female.jpg", 2),
+          trials: genderAndClothing("male.jpg", "female.jpg", 8),
           section: "practice",
           practice_instruction: `Practice: There will be a picture of a Female clothing or a Male clothing in the
         middle of screen. When you see a picture of the Female clothing you
@@ -103,7 +103,7 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndClothing("male.jpg", "female.jpg", 2),
+          trials: genderAndClothing("male.jpg", "female.jpg", 24),
           section: "section_1",
           instruction: `There will be a picture of a Female clothing or a Male clothing in the
         middle of the screen. When you see a picture of the Female clothing you should
@@ -115,7 +115,7 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndClothing("female.jpg", "male.jpg", 2),
+          trials: genderAndClothing("female.jpg", "male.jpg", 8),
           section: "practice_2",
           instruction: `Practice: There will be a picture of a Female clothing or a Male clothing in the
         middle of screen. When you see a picture of the Female clothing you
@@ -128,7 +128,7 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndClothing("female.jpg", "male.jpg", 2),
+          trials: genderAndClothing("female.jpg", "male.jpg", 24),
           section: "section_2",
           instruction: `There will be a picture of a Female clothing or a Male clothing in the
         middle of the screen. When you see a picture of the Female clothing you should

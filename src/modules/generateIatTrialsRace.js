@@ -1,4 +1,5 @@
 // import getRandomImage from "../modules/getRandomImage";
+import validateTrialData from "./validateTrialData";
 
 function shuffleObjects(array) {
     for (var a = 0; a < array.length; a++) {
@@ -85,6 +86,8 @@ function testData_Block1(white, black, trials) {
 
     
     fullData = shuffleObjects(fullData)
+    fullData = validateTrialData(fullData);
+
     
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
@@ -114,6 +117,8 @@ function testData_Block2(happy, sad, trials) {
     
     // console.log("Test data 2: ", fullData)
     fullData = shuffleObjects(fullData)
+    fullData = validateTrialData(fullData);
+
     
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
@@ -141,6 +146,8 @@ function testData_Block3(white_happy, black_sad, trials) {
     
     // console.log("Test data 3/4: ", fullData)
     fullData = shuffleObjects(fullData)
+    fullData = validateTrialData(fullData);
+
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
         el.description = "White faces/Happy faces are grouped together, while Black faces/Sad faces are grouped together"
@@ -168,6 +175,8 @@ function testData_Block4(white_sad, black_happy, trials) {
     
     // console.log("Test data 6/7: ", fullData)
     fullData = shuffleObjects(fullData)
+    fullData = validateTrialData(fullData);
+
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
         el.description = "White faces/Happy faces are grouped together, while Black faces/Sad faces are grouped together"

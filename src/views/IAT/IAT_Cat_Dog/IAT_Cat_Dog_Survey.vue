@@ -135,8 +135,8 @@
 </template>
 
 <script>
-import ExplicitAttitudes from "../../../components/ExplicitAttitudes.vue";
-import BasicQuestions from "../../../components/BasicQuestions.vue";
+import ExplicitAttitudes from "../../../components/PreTestSurveyQuestions/ExplicitAttitudes.vue";
+import BasicQuestions from "../../../components/PreTestSurveyQuestions/BasicQuestions.vue";
 export default {
   components: {
     ExplicitAttitudes,

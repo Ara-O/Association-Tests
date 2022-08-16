@@ -248,7 +248,7 @@
 // import IT_Trials from "../../../modules/individuationTrainingTrials";
 import { IT_Name_Trials } from "../../../modules/individuationTrainingTrials";
 import * as handleIT from "../../../modules/handleAnswers/handleITTrials_Name";
-import BasicQuestions from "../../../components/BasicQuestions.vue";
+import BasicQuestions from "../../../components/PreTestSurveyQuestions/BasicQuestions.vue";
 
 export default {
   components: {

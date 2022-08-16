@@ -133,8 +133,8 @@
 </template>
 
 <script>
-import ExplicitAttitudesIbtRace from "../../../../components/ExplicitAttitudesIBTRace.vue";
-import BasicQuestions from "../../../../components/BasicQuestions.vue";
+import ExplicitAttitudesIbtRace from "../../../../components/PreTestSurveyQuestions/ExplicitAttitudesIBTRace.vue";
+import BasicQuestions from "../../../../components/PreTestSurveyQuestions/BasicQuestions.vue";
 
 export default {
   components: {

@@ -1,9 +1,6 @@
 <template>
   <main>
-    <h3>Welcome!</h3>
-    <!-- <video width="500px" height="500px">
-    <source src="https://www.youtube.com/watch?v=ScMzIvxBSi4">
-</video> -->
+    <h3 class="explore-studies_welcome">Welcome!</h3>
     <iframe
       style="max-width: 560px; width: 100vw"
       height="315"
@@ -28,6 +25,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .explore-studies {
   width: 130px;

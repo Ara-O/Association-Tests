@@ -248,8 +248,8 @@
 // import IT_Trials from "../../../modules/individuationTrainingTrials";
 import { IT_Name_Trials } from "../../../modules/individuationTrainingTrials";
 import * as handleIT from "../../../modules/handleAnswers/handleITTrials_Name";
-// import ExplicitAttitudesIbt from "../../../components/ExplicitAttitudesIBT.vue";
-import BasicQuestions from "../../../components/BasicQuestions.vue";
+// import ExplicitAttitudesIbt from "../../../components/PreTestSurveyQuestions/ExplicitAttitudesIBT.vue";
+import BasicQuestions from "../../../components/PreTestSurveyQuestions/BasicQuestions.vue";
 
 export default {
   components: {

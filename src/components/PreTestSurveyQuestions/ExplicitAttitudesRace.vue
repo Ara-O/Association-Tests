@@ -9,34 +9,34 @@
   <div class="warmness-slider">
     <div class="slider-options">
       <img
-        src="../assets/Emotions_Range/big-frown.png"
+        src="../../assets/Emotions_Range/big-frown.png"
         alt="big frown"
         class="emotion-img"
         style="width: 32px"
         @click="userData.slider1 = 0"
       />
       <img
-        src="../assets/Emotions_Range/slightly-sad.png"
+        src="../../assets/Emotions_Range/slightly-sad.png"
         alt="slightly sad"
         class="emotion-img"
         style="width: 33px"
         @click="userData.slider1 = 25"
       />
       <img
-        src="../assets/Emotions_Range/no-preference.png"
+        src="../../assets/Emotions_Range/no-preference.png"
         alt="no preference"
         class="emotion-img"
         @click="userData.slider1 = 50"
       />
       <img
-        src="../assets/Emotions_Range/slightly-happy.png"
+        src="../../assets/Emotions_Range/slightly-happy.png"
         alt="slightly happy"
         class="emotion-img"
         style="width: 32px"
         @click="userData.slider1 = 75"
       />
       <img
-        src="../assets/Emotions_Range/big-smile.png"
+        src="../../assets/Emotions_Range/big-smile.png"
         alt="big smile"
         class="emotion-img"
         @click="userData.slider1 = 100"
@@ -60,34 +60,34 @@
   <div class="warmness-slider">
     <div class="slider-options">
       <img
-        src="../assets/Emotions_Range/big-frown.png"
+        src="../../assets/Emotions_Range/big-frown.png"
         alt="big frown"
         class="emotion-img"
         style="width: 32px"
         @click="userData.slider2 = 0"
       />
       <img
-        src="../assets/Emotions_Range/slightly-sad.png"
+        src="../../assets/Emotions_Range/slightly-sad.png"
         alt="slightly sad"
         class="emotion-img"
         style="width: 33px"
         @click="userData.slider2 = 25"
       />
       <img
-        src="../assets/Emotions_Range/no-preference.png"
+        src="../../assets/Emotions_Range/no-preference.png"
         alt="no preference"
         class="emotion-img"
         @click="userData.slider2 = 50"
       />
       <img
-        src="../assets/Emotions_Range/slightly-happy.png"
+        src="../../assets/Emotions_Range/slightly-happy.png"
         alt="slightly happy"
         class="emotion-img"
         style="width: 32px"
         @click="userData.slider2 = 75"
       />
       <img
-        src="../assets/Emotions_Range/big-smile.png"
+        src="../../assets/Emotions_Range/big-smile.png"
         alt="big smile"
         class="emotion-img"
         @click="userData.slider2 = 100"
@@ -216,7 +216,7 @@ export default {
     },
 
     getImage(img) {
-      return require(`../assets/Stimulus_Faces/${img}.jpg`);
+      return require(`../../assets/Stimulus_Faces/${img}.jpg`);
     },
 
     generateOptionValue(img) {

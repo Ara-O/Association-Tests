@@ -152,6 +152,7 @@ export default {
   height: 75vh;
   max-width: 668px;
   padding: 47px 48px;
+  background: white;
   overflow: auto;
   line-height: 35px;
   box-sizing: border-box;

@@ -134,8 +134,8 @@
 </template>
 
 <script>
-import ExplicitAttitudesIbt from "../../../../components/ExplicitAttitudesIBT.vue";
-import BasicQuestions from "../../../../components/BasicQuestions.vue";
+import ExplicitAttitudesIbt from "../../../../components/PreTestSurveyQuestions/ExplicitAttitudesIBT.vue";
+import BasicQuestions from "../../../../components/PreTestSurveyQuestions/BasicQuestions.vue";
 
 export default {
   components: {

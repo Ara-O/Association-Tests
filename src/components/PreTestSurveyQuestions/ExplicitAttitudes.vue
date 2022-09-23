@@ -1,9 +1,7 @@
 <template>
   <h3 style="font-size: 18px">Explicit Attitudes</h3>
   <h4>
-    <!-- CHANGE THIS FOR THE DIFFERENT TESTS -->
     {{userWouldPrefer}} 
-    <!-- {{ this.userData.slider1 }} -->
   </h4>
   <div class="gender-toy-stereotype-option">
       <div class="child-img-survey-option-container">

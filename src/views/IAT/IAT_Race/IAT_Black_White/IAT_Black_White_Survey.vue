@@ -173,5 +173,5 @@ export default {
 </script>
 
 <style scoped>
-@import url("../../../../styles/Pre_Test_Survey.css");
+@import url("../../../../styles/pre-test-survey.css");
 </style>

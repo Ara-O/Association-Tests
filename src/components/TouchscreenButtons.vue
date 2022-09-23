@@ -7,12 +7,6 @@
   </div>
 </template>
 
-<script>
-export default {
-
-}
-</script>
-
  <style scoped>
 .choice {
   background: #85e9bf; 

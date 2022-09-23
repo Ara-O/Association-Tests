@@ -1,5 +1,5 @@
 <template>
-  <main class="test">
+  <main class="iat-gender-toy-touchscreen-main">
     <section class="instruction" v-if="notStarted">
       <h3 v-html="fullTest[currentBlock]?.instructions"></h3>
       <img
@@ -20,7 +20,6 @@
       </div>
     </div>
     <div id="wrong" style="display: none">
-      <!-- <h3></h3> -->
       <h4>Incorrect. Try again to progress!</h4>
       <img
         src="../../../../assets/App_Icons/incorrectImg.png"
@@ -28,10 +27,7 @@
         class="wrong-icon"
       />
     </div>
-    <clicker
-      :rightColor="fullTest[currentBlock]?.colorRight"
-      :leftColor="fullTest[currentBlock]?.colorLeft"
-    >
+    <clicker>
       <template #left>
         <img
           :src="getImageClicker(fullTest[currentBlock].clickerLeft)"
@@ -132,7 +128,7 @@ export default {
     testOver() {
       if (this.testOver === true) {
         document
-          .querySelector(".test")
+          .querySelector(".iat-gender-toy-touchscreen-main")
           .removeEventListener("click", this.handleAnswer);
         this.$router.push("/IAT_Feedback");
       }
@@ -175,12 +171,11 @@ export default {
     this.$store.state["IAT_Gender_Toy_Touchscreen"] = [];
     let that = this;
     document
-      .querySelector(".test")
+      .querySelector(".iat-gender-toy-touchscreen-main")
       .addEventListener("click", that.handleAnswer);
   },
 };
 </script>
 
-<style scoped>
-@import url("../../../../styles/IAT_TS.css");
+<style scoped src="../../../../styles/IAT_TS.css">
 </style>

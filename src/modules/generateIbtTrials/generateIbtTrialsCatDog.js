@@ -1,4 +1,4 @@
-import validateTrialData from '../validateTrialDataIBT'
+import validateTrialData from '../validateTrials/validateTrialDataIBT'
 
 function shuffleObjects(array) {
     for (var a = 0; a < array.length; a++) {

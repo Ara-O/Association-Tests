@@ -1,5 +1,5 @@
 // import getRandomImage from "../modules/getRandomImage";
-import validateTrialData from "./validateTrialData";
+import validateTrialData from "./validateTrials/validateTrialData";
 
 function shuffleObjects(array) {
     for (var a = 0; a < array.length; a++) {
@@ -11,7 +11,7 @@ function shuffleObjects(array) {
     return array;
 }
 
-//Doubled since the trails may not be enough
+//Doubled since the trials may not be enough
 const black_children_images = [
     { accuracy: 100, image: "B_CF01.jpg" },
     { accuracy: 100, image: "B_CF02.jpg" },

@@ -24,6 +24,8 @@ export default createStore({
     IT_trials_text: [],
     uid: 0,
   },
+
+
   getters: {
     getUID(state){
       return state.uid;
@@ -41,6 +43,4 @@ export default createStore({
       state.currentTest = payload;
     }
   },
-  actions: {},
-  modules: {},
 });

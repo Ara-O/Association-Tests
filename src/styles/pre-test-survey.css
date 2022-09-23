@@ -281,10 +281,11 @@ input[type="radio"]{
 
 .user-id {
   border-radius: 6px;
-  border: solid 1px gray;
   margin-top: 15px;
   height: 25px;
+  border: 1px solid rgb(246 246 246 / 95%);
   text-align: center;
+  box-shadow: -1px 1px 2px #eeeeeeb2, 0px 1px 2px rgb(164 164 164 / 95%);
 }
 
 .collect-user-id-ibt{

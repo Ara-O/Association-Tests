@@ -1,7 +1,7 @@
 <template>
-  <main>
+  <main class="iat-choose-test-main">
     <h3 class="choose-iat">Select IAT</h3>
-    <section v-if="iattype == ''">
+    <section v-if="iatType == ''">
       <btn
         whereTo="/IAT_Choose_Test"
         class="button"
@@ -22,7 +22,7 @@
         </router-link>
     </section>
 
-    <section v-if="iattype === 'gender'">
+    <section v-if="iatType === 'gender'">
       <router-link
         to="/IAT_Gender_Toy_Survey"
         class="routerlink test_btn"
@@ -66,13 +66,13 @@
 
       <h3
         style="text-decoration: underline; cursor: pointer; font-size: 16px"
-        @click="iattype = ''"
+        @click="iatType = ''"
       >
         Go back
       </h3>
     </section>
 
-    <section v-if="iattype === 'race'">
+    <section v-if="iatType === 'race'">
       <router-link
         to="/IAT_Black_White_Survey"
         class="routerlink test_btn"
@@ -88,7 +88,7 @@
       </router-link>
       <h3
         style="text-decoration: underline; cursor: pointer; font-size: 16px"
-        @click="iattype = ''"
+        @click="iatType = ''"
       >
         Go back
       </h3>
@@ -105,24 +105,24 @@ export default {
 
   data() {
     return {
-      iattype: "",
+      iatType: "",
     };
   },
 
   methods: {
     handleGender() {
-      this.iattype = "gender";
+      this.iatType = "gender";
     },
 
     handleRace() {
-      this.iattype = "race";
+      this.iatType = "race";
     },
   },
 };
 </script>
 
 <style scoped>
-main {
+.iat-choose-test-main {
   background: url("../../assets/App_Icons/patternbg.jpg");
   background-repeat: repeat;
   background-size: 433px;

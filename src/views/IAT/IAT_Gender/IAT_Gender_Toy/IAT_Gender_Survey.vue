@@ -170,11 +170,8 @@ export default {
       this.$router.push("IAT_Gender_Toy");
     },
   },
-
-  mounted() {},
 };
 </script>
 
-<style scoped>
-@import url("../../../../styles/Pre_Test_Survey.css");
+<style scoped src="../../../../styles/pre-test-survey.css">
 </style>

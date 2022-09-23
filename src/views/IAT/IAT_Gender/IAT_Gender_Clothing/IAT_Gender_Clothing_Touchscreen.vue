@@ -28,10 +28,7 @@
         class="wrong-icon"
       />
     </div>
-    <clicker
-      :rightColor="fullTest[currentBlock]?.colorRight"
-      :leftColor="fullTest[currentBlock]?.colorLeft"
-    >
+    <clicker>
       <template #left>
         <img
           :src="getImageClicker(fullTest[currentBlock].clickerLeft)"

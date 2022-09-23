@@ -129,6 +129,5 @@ export default {
 };
 </script>
 
-<style >
-@import url("../../../../styles/IAT.css");
+<style src="../../../../styles/IAT.css" scoped >
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <!-- test -->
+  <!-- test2 -->
   <router-link :to="whereTo" class="btn"><slot></slot></router-link>
 </template>
 

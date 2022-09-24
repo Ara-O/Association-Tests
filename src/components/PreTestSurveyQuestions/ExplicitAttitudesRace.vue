@@ -216,7 +216,7 @@ export default {
     },
 
     getImage(img) {
-      return require(`../../assets/Stimulus_Faces/${img}.jpg`);
+      return new URL(`../../assets/Stimulus_Faces/${img}.jpg`, import.meta.url).href;
     },
 
     generateOptionValue(img) {

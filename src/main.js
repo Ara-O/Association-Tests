@@ -4,18 +4,18 @@ import router from "./router";
 import store from "./store";
 import * as firebase from 'firebase/app';
 import 'firebase/database'
-import clicker from "../src/components/TouchscreenButtons.vue"
-import jellybtn from "../src/components/MainBtn.vue"
+import clicker from "../src/components/Buttons/TouchscreenButtons.vue"
+import jellybtn from "../src/components/Buttons/MainButton.vue"
 
 // Configuring firebase 
 
 const config = {
-    apiKey: process.env.VUE_APP_API_KEY,
-    authDomain: process.env.VUE_APP_AUTH_DOMAIN,
-    projectId: process.env.VUE_APP_PROJECT_ID,
-    storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
-    messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
-    appId: process.env.VUE_APP_APP_ID
+    apiKey:  import.meta.env.VITE_API_KEY,
+    authDomain:  import.meta.env.VITE_AUTH_DOMAIN,
+    projectId:  import.meta.env.VITE_PROJECT_ID,
+    storageBucket:  import.meta.env.VITE_STORAGE_BUCKET,
+    messagingSenderId:  import.meta.env.VITE_MESSAGING_SENDER_ID,
+    appId:  import.meta.env.VITE_APP_ID
 };
 
 let firebaseapp = firebase.initializeApp(config)

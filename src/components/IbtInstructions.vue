@@ -44,7 +44,7 @@ export default {
   computed: {
     getPracticeSource(){
       if(this.$store.getters.getCurrentTest !== "IBT_Cat_Dog"){
-        return require("../assets/IBT_Faces/welcome_instruction.jpg")
+        return new URL(`../assets/IBT_Faces/welcome_instruction.jpg`, import.meta.url).href
       } else{
         return require("../assets/IBT_Faces/cat_dog_welcome_img.jpg")
       }

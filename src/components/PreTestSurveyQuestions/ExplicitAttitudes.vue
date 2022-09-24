@@ -244,7 +244,7 @@
       <button
         @click="progress_ts"
         class="btn btn_basic_survey"
-        style="margin-top: 5px; width: 195px; padding: 24px 18px"
+        style="margin-top: 5px; width: 195px;"
       >
         Touch Screen Version
       </button>
@@ -268,6 +268,7 @@
 </template>
 
 <script>
+import "../../styles/pre-test-survey.css"
 export default {
   props: {
     userDataProp: Object,
@@ -378,7 +379,7 @@ export default {
     },
 
     getImage(img) {
-      return require(`../../assets/${this.fileLocation}/${img}.jpg`);
+      return new URL(`../../assets/${this.fileLocation}/${img}.jpg`, import.meta.url).href;
     },
 
     generateStereotypeOptions() {

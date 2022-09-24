@@ -273,7 +273,7 @@ export default {
     },
 
     getImage(img) {
-      return require(`../../assets/${this.fileLocation}/${img}.jpg`);
+      return new URL(`../../assets/${this.fileLocation}/${img}.jpg`, import.meta.url).href;
     },
 
     generateStereotypeOptions() {

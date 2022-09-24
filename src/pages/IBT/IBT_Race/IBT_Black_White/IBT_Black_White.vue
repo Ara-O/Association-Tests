@@ -1,9 +1,9 @@
 <template>
   <main>
     <section v-if="notFinishedInstructions">
-      <ibt-instructions @finishedInstructions="finishedInstructions">
+      <implicit-bias-test-instructions @finishedInstructions="finishedInstructions">
                {{ irbt_trials[section].practice_instruction }}
-      </ibt-instructions>
+      </implicit-bias-test-instructions>
     </section>
     <section v-else>
       <div v-if="testNotStarted">
@@ -71,11 +71,11 @@
 
 <script>
 import generateIBTtrialsRace from "../../../../modules/generateIbtTrials/generateIbtTrialsRace";
-import IbtInstructions from "../../../../components/IbtInstructions.vue";
+import ImplicitBiasTestInstructions from "../../../../components/ImplicitBiasTestInstructions.vue";
 import * as irbt from "../../../../modules/handleAnswers/handleIbtAnswers";
 export default {
   components: {
-    IbtInstructions,
+    ImplicitBiasTestInstructions,
   },
   data() {
     return {
@@ -156,13 +156,13 @@ export default {
 
     getFacesPosition() {
       let face = irbt.getFacesPosition(this, "happy.jpg", "sad.jpg");
-      return require(`../../../../assets/IBT_Faces/${face}`);
+      return new URL(`../../../../assets/IBT_Faces/${face}`, import.meta.url).href;
     },
 
     //does the reverse of the first method for the second image
     getFacesPosition2() {
       let face = irbt.getFacesPosition2(this, "happy.jpg", "sad.jpg");
-      return require(`../../../../assets/IBT_Faces/${face}`);
+      return new URL(`../../../../assets/IBT_Faces/${face}`, import.meta.url).href;
     },
 
     leftFaceAction() {
@@ -182,7 +182,7 @@ export default {
     },
 
     getImage(url) {
-      return require(`../../../../assets/IBT_Black_White/${url}`);
+      return new URL(`../../../../assets/IBT_Black_White/${url}`, import.meta.url).href;
     },
 
     next() {

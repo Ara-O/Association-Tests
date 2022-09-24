@@ -1,9 +1,9 @@
 <template>
   <main>
     <section v-if="notFinishedInstructions">
-      <ibt-instructions @finishedInstructions="finishedInstructions">
+      <implicit-bias-test-instructions @finishedInstructions="finishedInstructions">
         {{ irbt_trials[section].practice_instruction }}
-      </ibt-instructions>
+      </implicit-bias-test-instructions>
     </section>
     <section v-else>
       <div v-if="testNotStarted">
@@ -70,13 +70,13 @@
 </template>
 
 <script>
-import IbtInstructions from "../../../../components/IbtInstructions.vue";
+import ImplicitBiasTestInstructions from "../../../../components/ImplicitBiasTestInstructions.vue";
 import { genderAndClothing } from "../../../../modules/generateIbtTrials/generateIbtTrialsGender";
 import * as irbt from "../../../../modules/handleAnswers/handleIbtAnswers";
 
 export default {
   components: {
-    IbtInstructions,
+    ImplicitBiasTestInstructions,
   },
 
   data() {
@@ -156,13 +156,13 @@ export default {
 
     getFacesPosition() {
       let face = irbt.getFacesPosition(this, "male.jpg", "female.jpg");
-      return require(`../../../../assets/IBT_Faces/${face}`);
+      return new URL(`../../../../assets/IBT_Faces/${face}`, import.meta.url).href;
     },
 
     //does the reverse of the first method for the second image
     getFacesPosition2() {
       let face = irbt.getFacesPosition2(this, "male.jpg", "female.jpg");
-      return require(`../../../../assets/IBT_Faces/${face}`);
+      return new URL(`../../../../assets/IBT_Faces/${face}`, import.meta.url).href;
     },
 
     finishedInstructions() {
@@ -190,7 +190,7 @@ export default {
     },
 
     getImage(url) {
-      return require(`../../../../assets/IAT_Gender_Clothing/${url}`);
+      return new URL(`../../../../assets/IAT_Gender_Clothing/${url}`, import.meta.url).href;
     },
 
     next() {

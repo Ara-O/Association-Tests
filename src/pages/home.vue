@@ -4,7 +4,7 @@
       <MainButton routeTo="/IAT_Choose_Test" style="width: 180px" >Implicit Association Test</MainButton>
       <MainButton routeTo="/IBT_Choose_Test" style="width: 180px">Implicit Bias Test</MainButton>
       <MainButton routeTo="/IT" style="width: 180px">Individuation Training</MainButton>
-      <MainButton routeTo="/Home" style="width: 180px">Face Matching</MainButton>
+      <MainButton routeTo="/FM_Choose_Test" style="width: 180px">Face Matching</MainButton>
   </main>
 </template>
 

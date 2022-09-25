@@ -89,6 +89,10 @@ import IBT_Gender_Color from "../pages/IBT/IBT_Gender/IBT_Gender_Color/IBT_Gende
 import IBT_Gender_Color_Survey from "../pages/IBT/IBT_Gender/IBT_Gender_Color/IBT_Gender_Color_Survey.vue"
 import IBT_Feedback from "../pages/IBT/IBT_Feedback.vue"
 
+
+// Face matching
+import Face_Matching_Choose_Test from "../pages/FM/FM_Choose_Test.vue"
+import FM_Black_White from "../pages/FM/Categorization_Test/FM_Black_White.vue"
 const routes = [
   {
     path: "/",
@@ -298,6 +302,14 @@ const routes = [
   {
     path: '/IBT_Feedback',
     component: IBT_Feedback,
+  },
+  {
+    path: '/FM_Choose_Test',
+    component: Face_Matching_Choose_Test,
+  },
+  {
+    path: '/FM_Black_White',
+    component: FM_Black_White,
   }
 
 ]

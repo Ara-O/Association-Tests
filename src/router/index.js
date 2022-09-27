@@ -93,6 +93,7 @@ import IBT_Feedback from "../pages/IBT/IBT_Feedback.vue"
 // Face matching
 import Face_Matching_Choose_Test from "../pages/FM/FM_Choose_Test.vue"
 import FM_Black_White from "../pages/FM/Categorization_Test/FM_Black_White.vue"
+import FM_Black_White_Feedback from "../pages/FM/Categorization_Test/FM_Black_White_Feedback.vue"
 const routes = [
   {
     path: "/",
@@ -310,6 +311,10 @@ const routes = [
   {
     path: '/FM_Black_White',
     component: FM_Black_White,
+  },
+  {
+    path: '/FM_Black_White_Feedback',
+    component: FM_Black_White_Feedback,
   }
 
 ]

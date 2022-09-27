@@ -30,7 +30,7 @@ function generatePracticeTrials (trials, practice = false){
             //adds stimulus image based on the first indexes of the shuffled dataset
             dataToPush.stimulusImage = chosenMaleBlackImages[i]; 
             dataToPush.accuracy = 100;
-            dataToPush.visibility = "none"
+
             
             //!create left, right, and correct options here
             let randomNo = Math.floor(Math.random() * 10);
@@ -45,38 +45,38 @@ function generatePracticeTrials (trials, practice = false){
             }
        
             dataset.push(dataToPush)
-            console.log("loop through black")
+            // console.log("loop through black")
         } else {
             let dataToPush= {}
             dataToPush.stimulusImage = chosenMaleWhiteImages[i];
             dataToPush.accuracy = 100;
-            dataToPush.visibility = "none"
+
 
                 //!create left, right, and correct options here
                 let randomNo = Math.floor(Math.random() * 10);
                 if(randomNo % 2 === 0){
-                    dataToPush.correctImagePosition = "left";
+                    dataToPush.correctImagePosition = "right";
                     dataToPush.leftImage = chosenMaleBlackImages[Math.floor(Math.random() * chosenMaleBlackImages.length)]
                     dataToPush.rightImage = chosenMaleWhiteImages[Math.floor(Math.random() * chosenMaleWhiteImages.length)]
                 } else {
-                    dataToPush.correctImagePosition = "right";
+                    dataToPush.correctImagePosition = "left";
                     dataToPush.rightImage = chosenMaleBlackImages[Math.floor(Math.random() * chosenMaleBlackImages.length)]
                     dataToPush.leftImage = chosenMaleWhiteImages[Math.floor(Math.random() * chosenMaleWhiteImages.length)]
                 }
 
             dataset.push(dataToPush)
-            console.log("loop through white")
+            // console.log("loop through white")
         }
     }
 
     for(let i = 0; i < trials/2; i++){
         if(i % 2 === 0){
-            //loop for black males
+            //loop for black females
             let dataToPush= {}
             //adds stimulus image based on the first indexes of the shuffled dataset
             dataToPush.stimulusImage = chosenFemaleBlackImages[i]; 
             dataToPush.accuracy = 100;
-            dataToPush.visibility = "none"
+
             
             //!create left, right, and correct options here
             let randomNo = Math.floor(Math.random() * 10);
@@ -91,32 +91,31 @@ function generatePracticeTrials (trials, practice = false){
             }
        
             dataset.push(dataToPush)
-            console.log("loop through black")
+            // console.log("loop through black")
         } else {
             let dataToPush= {}
             dataToPush.stimulusImage = chosenFemaleWhiteImages[i];
             dataToPush.accuracy = 100;
-            dataToPush.visibility = "none"
+
 
                 //!create left, right, and correct options here
                 let randomNo = Math.floor(Math.random() * 10);
                 if(randomNo % 2 === 0){
-                    dataToPush.correctImagePosition = "left";
+                    dataToPush.correctImagePosition = "right";
                     dataToPush.leftImage = chosenFemaleBlackImages[Math.floor(Math.random() * chosenFemaleBlackImages.length)]
                     dataToPush.rightImage = chosenFemaleWhiteImages[Math.floor(Math.random() * chosenFemaleWhiteImages.length)]
                 } else {
-                    dataToPush.correctImagePosition = "right";
+                    dataToPush.correctImagePosition = "left";
                     dataToPush.rightImage = chosenFemaleBlackImages[Math.floor(Math.random() * chosenFemaleBlackImages.length)]
                     dataToPush.leftImage = chosenFemaleWhiteImages[Math.floor(Math.random() * chosenFemaleWhiteImages.length)]
                 }
 
             dataset.push(dataToPush)
-            console.log("loop through white")
+            // console.log("loop through white")
         }
     }
 
     let fullDataSet = shuffleObjects(dataset);
-    fullDataSet[0].visibility = "block"
     console.table(fullDataSet)
 
     /*

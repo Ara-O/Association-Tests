@@ -18,13 +18,51 @@ function stopTimer() {
 }
 
 export function startFaceMatching(){
-    console.log('starting matching')
+  startTimer();
 }
 
-export function handleUserSelection(userChoice, currentTrial){
+export function handleUserSelection(testHasStarted, userChoice, trials, currentTest, currentTrial, userChoseCorrectlyStarFeedback, userChoseIncorrectlyFeedback, router){
     //!check if user is right or not, if user is right,
     //!increment the currentTrial, if not, show error, etc etc
-    console.log("user choice: ", userChoice)
-    console.log(currentTrial)
-    currentTrial.value++
+    console.log("user choice: ", userChoice, " correct choice: ", trials[currentTest.value].trialDataSet[currentTrial.value].correctImagePosition)
+  
+    
+    if(userChoice === trials[currentTest.value].trialDataSet[currentTrial.value].correctImagePosition){
+      console.log('they got it right')
+      stopTimer();
+      trials[currentTest.value].trialDataSet[currentTrial.value].reactionTime = ms;
+      startTimer();
+      userChoseIncorrectlyFeedback.value = false
+      userChoseCorrectlyStarFeedback.value = true
+
+      setTimeout(function(){
+        //if we are at the end of one test
+        if(currentTrial.value === trials[currentTest.value].trialDataSet.length - 1) {
+          stopTimer()
+          //if we at the end of one test, check whether thats not the end of the series
+          //of tests, if it is, thats the end!
+          if(currentTest.value === trials.length -1){
+            console.log("full test has ended")
+            router.push("/FM_Black_White_Feedback")
+
+          }else {
+            currentTest.value++;
+            currentTrial.value = 0;
+            testHasStarted.value = false,
+            console.error("too big! this is the endd")     
+          }
+        } else {
+          currentTrial.value++
+        }
+       userChoseCorrectlyStarFeedback.value = false
+     }, 1000)
+     
+    }else {
+      console.log('they got it wrong')
+      trials[currentTest.value].trialDataSet[currentTrial.value].accuracy = 0;
+      userChoseIncorrectlyFeedback.value = true
+      setTimeout(function(){
+        userChoseIncorrectlyFeedback.value = false;
+      }, 1000)
+    }
 }

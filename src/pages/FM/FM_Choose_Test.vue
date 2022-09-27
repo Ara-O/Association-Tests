@@ -3,12 +3,12 @@
     <h3 class="choose-fm">Choose type</h3>
     <section v-if="fmType == ''">
       <main-button
-        routeTo="/IAT_Choose_Test"
+        routeTo="/FM_Choose_Test"
         @click="fmType = 'categorization'"
         >Categorizaton Test</main-button
       >
       <main-button
-        routeTo="/IAT_Choose_Test"
+        routeTo="/FM_Choose_Test"
         @click="fmType = 'identification'"
         >Identification Test
       </main-button>

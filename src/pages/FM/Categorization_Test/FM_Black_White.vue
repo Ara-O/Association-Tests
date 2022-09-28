@@ -52,7 +52,7 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { generatePracticeTrials } from "../../../modules/generateFaceMatchingTrials/generateBlackWhiteTrials";
+import { generatePracticeTrials } from "../../../modules/generateFaceMatchingTrials/CT/generateBlackWhiteTrials";
 import {
   startFaceMatching,
   handleUserSelection,

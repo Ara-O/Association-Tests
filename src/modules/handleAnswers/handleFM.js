@@ -43,7 +43,7 @@ export function handleUserSelection(testHasStarted, userChoice, trials, currentT
           //of tests, if it is, thats the end!
           if(currentTest.value === trials.length -1){
             console.log("full test has ended")
-            router.push("/FM_Black_White_Feedback")
+            router.push("/FM_Categorization_Black_White_Feedback")
 
           }else {
             currentTest.value++;

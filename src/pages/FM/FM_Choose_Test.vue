@@ -24,7 +24,7 @@
     </section>
 
     <section v-if="fmType === 'categorization'">
-      <main-button routeTo="FM_Black_White"> Black-White Categorization Test </main-button>
+      <main-button routeTo="FM_Categorization_Black_White"> Black-White Categorization Test </main-button>
       <main-button routeTo=""> Black-Asian Categorization Test </main-button>
       <main-button routeTo=""> Asian-White Categorization Test </main-button>
       <h3
@@ -36,7 +36,7 @@
     </section>
 
     <section v-if="fmType === 'identification'">
-      <main-button routeTo=""> Black-White Identfication Test </main-button>
+      <main-button routeTo="FM_Identification_Black_White"> Black-White Identfication Test </main-button>
       <main-button routeTo=""> Black-Asian Identfication Test </main-button>
       <main-button routeTo=""> Asian-White Identfication Test </main-button>
 

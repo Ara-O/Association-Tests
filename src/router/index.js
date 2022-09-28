@@ -92,8 +92,12 @@ import IBT_Feedback from "../pages/IBT/IBT_Feedback.vue"
 
 // Face matching
 import Face_Matching_Choose_Test from "../pages/FM/FM_Choose_Test.vue"
-import FM_Black_White from "../pages/FM/Categorization_Test/FM_Black_White.vue"
-import FM_Black_White_Feedback from "../pages/FM/Categorization_Test/FM_Black_White_Feedback.vue"
+import FM_Categorization_Black_White from "../pages/FM/Categorization_Test/FM_Black_White.vue"
+import FM_Categorization_Black_White_Feedback from "../pages/FM/Categorization_Test/FM_Black_White_Feedback.vue"
+
+//Identification
+import FM_Identification_Black_White from "../pages/FM/Identification_Test/FM_Black_White.vue"
+import FM_Identification_Black_White_Feedback from "../pages/FM/Identification_Test/FM_Black_White_Feedback.vue"
 const routes = [
   {
     path: "/",
@@ -309,12 +313,20 @@ const routes = [
     component: Face_Matching_Choose_Test,
   },
   {
-    path: '/FM_Black_White',
-    component: FM_Black_White,
+    path: '/FM_Categorization_Black_White',
+    component: FM_Categorization_Black_White,
   },
   {
-    path: '/FM_Black_White_Feedback',
-    component: FM_Black_White_Feedback,
+    path: '/FM_Categorization_Black_White_Feedback',
+    component: FM_Categorization_Black_White_Feedback,
+  },
+  {
+    path: '/FM_Identification_Black_White',
+    component: FM_Identification_Black_White,
+  },
+  {
+    path: '/FM_Identification_Black_White_Feedback',
+    component: FM_Identification_Black_White_Feedback,
   }
 
 ]

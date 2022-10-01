@@ -125,6 +125,7 @@ function generatePracticeTrials (trials, practice = false){
         rightImage: "W_M04",
         accuracy: 100
         correctImagePosition: "left"
+        trialType: "practice"
     }]
     */
     

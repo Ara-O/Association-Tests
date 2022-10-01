@@ -1,5 +1,6 @@
 <template>
   <main>
+    <section id="test-border">
     <div v-if="notStarted" class="instruction">
       <h3
         style="line-height: 37px; margin-top: 4px"
@@ -35,6 +36,7 @@
         class="wrong-icon"
       />
     </div>
+    </section>
   </main>
 </template>
 

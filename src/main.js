@@ -5,7 +5,7 @@ import store from "./store";
 import * as firebase from 'firebase/app';
 import 'firebase/database'
 import clicker from "../src/components/Buttons/TouchscreenButtons.vue"
-
+import "./styles/styles.css"
 // Configuring firebase 
 const config = {
     apiKey:  import.meta.env.VITE_API_KEY,

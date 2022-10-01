@@ -1,5 +1,15 @@
 <template>
   <main class="test">
+    <section id="test-border">
+      <div id="wrong" style="display: none">
+      <!-- <h3></h3> -->
+      <h4>Incorrect. Try again to progress!</h4>
+      <img
+        src="../../../../assets/App_Icons/incorrectImg.png"
+        alt="Wrong icon"
+        class="wrong-icon"
+      />
+    </div>
     <section class="instruction" v-if="notStarted">
       <h3 v-html="fullTest[currentBlock]?.instructions"></h3>
       <img
@@ -19,15 +29,7 @@
         />
       </div>
     </div>
-    <div id="wrong" style="display: none">
-      <!-- <h3></h3> -->
-      <h4>Incorrect. Try again to progress!</h4>
-      <img
-        src="../../../../assets/App_Icons/incorrectImg.png"
-        alt="Wrong icon"
-        class="wrong-icon"
-      />
-    </div>
+  
     <clicker>
       <template #left>
         <img
@@ -44,6 +46,7 @@
         />
       </template>
     </clicker>
+  </section>
   </main>
 </template>
 

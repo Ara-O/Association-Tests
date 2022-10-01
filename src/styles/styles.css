@@ -1,0 +1,26 @@
+/* Fill entire background with green? */
+#test-border{
+    width: 63vw;
+    height: 99vh;
+    border: solid 9px #85E9BF;
+    /* border-top: none; */
+    /* border-bottom: none; */
+    /* border-radius: 49px; */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column
+}
+
+#wrong{
+    position: absolute;
+    top: 17vh;
+}
+
+@media (max-width: 890px){
+   #test-border{
+       border: none;
+       width: 100vw
+    }
+}

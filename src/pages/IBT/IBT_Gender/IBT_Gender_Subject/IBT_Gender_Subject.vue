@@ -1,5 +1,6 @@
 <template>
   <main>
+    <section id="test-border">
     <section v-if="notFinishedInstructions">
       <implicit-bias-test-instructions @finishedInstructions="finishedInstructions">
         {{ irbt_trials[section].practice_instruction }}
@@ -37,8 +38,8 @@
           >
             <img :src="getImage(trial.image)" class="trialimg ibt-trial-img" />
           </div>
-          <div class="irbt-wrong-wrapper">
-            <h3 class="irbt-wrong" style="display: none">
+          <div class="irbt-wrong-wrapper" id="wrong-ibt">
+            <h3 class="irbt-wrong"  style="display: none">
               Incorrect. Try again to progress!
             </h3>
             <img
@@ -65,6 +66,7 @@
           class="faceRight ibt-icon"
         />
       </div>
+      </section>
     </section>
   </main>
 </template>

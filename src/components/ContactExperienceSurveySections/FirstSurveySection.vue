@@ -51,11 +51,8 @@
   </button>
 </template>
 
-<style scoped>
-@import url("../../styles/Contact_Experience.css");
-</style>
-
 <script>
+import "../../styles/Contact_Experience.css";
 export default {
   emits: ["emit-data"],
   data() {

@@ -1,5 +1,5 @@
 /* Fill entire background with green? */
-#test-border{
+#test-border {
     width: 63vw;
     height: 99vh;
     border: solid 9px #85E9BF;
@@ -10,17 +10,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column
+    flex-direction: column;
+    min-width: 400px
 }
 
-#wrong{
+#wrong {
     position: absolute;
-    top: 17vh;
+    top: 17.5vh;
 }
 
-@media (max-width: 890px){
-   #test-border{
-       border: none;
-       width: 100vw
+#wrong-ibt {
+    top: 13vh;
+    position: absolute;
+}
+
+@media (max-width: 500px) {
+    #test-border {
+        border: none;
+        width: 100vw
     }
 }

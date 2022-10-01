@@ -1,5 +1,6 @@
 <template>
   <main class="test">
+    <section id="test-border">
     <section class="instruction" v-if="notStarted">
       <h3 v-html="fullTest[currentBlock]?.instructions"></h3>
       <img
@@ -46,6 +47,7 @@
         />
       </template>
     </clicker>
+    </section>
   </main>
 </template>
 

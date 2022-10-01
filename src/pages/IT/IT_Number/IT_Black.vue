@@ -317,7 +317,7 @@ export default {
     },
 
     getImg(img) {
-      return new URL(`../../../assets/IT_Name_Faces/${img}`, import.meta.url).href;
+      return new URL(`../../../assets/IT_Faces/${img}`, import.meta.url).href;
     },
 
     shuffleObjects(array) {

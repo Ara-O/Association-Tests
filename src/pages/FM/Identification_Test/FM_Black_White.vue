@@ -1,5 +1,6 @@
 <template class="fm-black-white">
     <main>
+      <section id="test-border">
       <section v-if="!testHasStarted" class="instruction">
         <h4>{{ trials[currentTest].instruction }}</h4>
         <img
@@ -45,6 +46,7 @@
           class="right"
         />
         <h4 v-if="userChoseIncorrectly">Incorrect, Please try again!</h4>
+      </section>
       </section>
     </main>
   </template>

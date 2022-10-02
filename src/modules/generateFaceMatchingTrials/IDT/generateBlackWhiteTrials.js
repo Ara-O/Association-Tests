@@ -116,6 +116,9 @@ function generatePracticeTrials (trials, practice = false){
     }
 
     let fullDataSet = shuffleObjects(dataset);
+    fullDataSet.forEach((data)=> {
+        practice ? data.testType = "Practice" : data.testType = "Test"
+    })
     console.table(fullDataSet)
     
     return fullDataSet

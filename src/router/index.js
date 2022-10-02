@@ -8,16 +8,24 @@ import IAT_Feedback from "../pages/IAT/IAT_Feedback.vue";
 // ------------
 // IAT GENDER
 
-import IAT_Gender_Toy from "../pages/IAT/IAT_Gender/IAT_Gender_Toy/IAT_Gender_Toy.vue";
-import IAT_Gender_Toy_Touchscreen from "../pages/IAT/IAT_Gender/IAT_Gender_Toy/IAT_Gender_Toy_Touchscreen.vue";
-import IAT_Gender_Toy_Survey from "../pages/IAT/IAT_Gender/IAT_Gender_Toy/IAT_Gender_Survey.vue";
+const IAT_Gender_Toy = () => import("../pages/IAT/IAT_Gender/IAT_Gender_Toy/IAT_Gender_Toy.vue")
+const IAT_Gender_Toy_Touchscreen = () => import("../pages/IAT/IAT_Gender/IAT_Gender_Toy/IAT_Gender_Toy_Touchscreen.vue")
+const IAT_Gender_Toy_Survey = () => import("../pages/IAT/IAT_Gender/IAT_Gender_Toy/IAT_Gender_Survey.vue")
+// import IAT_Gender_Toy from "../pages/IAT/IAT_Gender/IAT_Gender_Toy/IAT_Gender_Toy.vue";
+// import IAT_Gender_Toy_Touchscreen from "../pages/IAT/IAT_Gender/IAT_Gender_Toy/IAT_Gender_Toy_Touchscreen.vue";
+// import IAT_Gender_Toy_Survey from "../pages/IAT/IAT_Gender/IAT_Gender_Toy/IAT_Gender_Survey.vue";
 
 
 //---------
 //IAT Gender-Roles
-import IAT_Gender_Roles from "../pages/IAT/IAT_Gender/IAT_Gender_Roles/IAT_Gender_Roles.vue";
-import IAT_Gender_Roles_Touchscreen from "../pages/IAT/IAT_Gender/IAT_Gender_Roles/IAT_Gender_Roles_Touchscreen.vue";
-import IAT_Gender_Roles_Survey from "../pages/IAT/IAT_Gender/IAT_Gender_Roles/IAT_Gender_Roles_Survey.vue";
+
+const IAT_Gender_Roles = () => import("../pages/IAT/IAT_Gender/IAT_Gender_Roles/IAT_Gender_Roles.vue")
+const IAT_Gender_Roles_Touchscreen = () => import("../pages/IAT/IAT_Gender/IAT_Gender_Roles/IAT_Gender_Roles_Touchscreen.vue")
+const IAT_Gender_Roles_Survey = () => import("../pages/IAT/IAT_Gender/IAT_Gender_Roles/IAT_Gender_Roles_Survey.vue")
+
+// import IAT_Gender_Roles from "../pages/IAT/IAT_Gender/IAT_Gender_Roles/IAT_Gender_Roles.vue";
+// import IAT_Gender_Roles_Touchscreen from "../pages/IAT/IAT_Gender/IAT_Gender_Roles/IAT_Gender_Roles_Touchscreen.vue";
+// import IAT_Gender_Roles_Survey from "../pages/IAT/IAT_Gender/IAT_Gender_Roles/IAT_Gender_Roles_Survey.vue";
 
 
 //---------

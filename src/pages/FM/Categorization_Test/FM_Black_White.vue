@@ -1,52 +1,56 @@
 <template class="fm-black-white">
   <main>
     <section id="test-border">
-    <section v-if="!testHasStarted" class="instruction">
-      <h4>{{ trials[currentTest].instruction }}</h4>
-      <img
-        src="../../../assets/App_Icons/rightArrow.png"
-        alt="Right arrow"
-        @click="startTest"
-        class="right-arrow"
-      />
-    </section>
-    <section v-else>
-      <!-- <h3 class="in-test-instructions">
+      <section v-if="!testHasStarted" class="instruction">
+        <h4>{{ trials[currentTest].instruction }}</h4>
+        <img
+          src="../../../assets/App_Icons/rightArrow.png"
+          alt="Right arrow"
+          @click="startTest"
+          class="right-arrow"
+        />
+      </section>
+      <section v-else>
+        <!-- <h3 class="in-test-instructions">
         {{ trials[currentTest].instruction }}
       </h3> -->
-      <img
-        src="../../../assets/IT_Faces/star.jpg"
-        alt="star"
-        class="star"
-        v-if="userChoseCorrectly"
-      />
-      <img
-        :src="
-          getImage(trials[currentTest].trialDataSet[currentTrial].stimulusImage)
-        "
-        class="face-img"
-        v-if="!userChoseCorrectly"
-      />
-      <img
-        :src="
-          getImage(trials[currentTest].trialDataSet[currentTrial].leftImage)
-        "
-        alt="Left image"
-        @click="handleUserChoice('left')"
-        v-if="!userChoseCorrectly"
-        class="left"
-      />
-      <img
-        v-if="!userChoseCorrectly"
-        :src="
-          getImage(trials[currentTest].trialDataSet[currentTrial].rightImage)
-        "
-        alt="Right image"
-        @click="handleUserChoice('right')"
-        class="right"
-      />
-      <h4 v-if="userChoseIncorrectly">Incorrect, Please try again!</h4>
-    </section>
+        <img
+          src="../../../assets/IT_Faces/star.jpg"
+          alt="star"
+          class="star"
+          v-if="userChoseCorrectly"
+        />
+        <img
+          :src="
+            getImage(
+              trials[currentTest].trialDataSet[currentTrial].stimulusImage
+            )
+          "
+          class="stimulus-img"
+          v-if="!userChoseCorrectly"
+        />
+        <img
+          :src="
+            getImage(trials[currentTest].trialDataSet[currentTrial].leftImage)
+          "
+          alt="Left image"
+          @click="handleUserChoice('left')"
+          v-if="!userChoseCorrectly"
+          class="left"
+        />
+        <img
+          v-if="!userChoseCorrectly"
+          :src="
+            getImage(trials[currentTest].trialDataSet[currentTrial].rightImage)
+          "
+          alt="Right image"
+          @click="handleUserChoice('right')"
+          class="right"
+        />
+
+        <!-- !Going to be changed for an entire screen of a cross -->
+        <h4 v-if="userChoseIncorrectly" id="wrong">Incorrect, Please try again!</h4>
+      </section>
     </section>
   </main>
 </template>
@@ -75,7 +79,7 @@ let trials = [
   {
     instruction:
       "Practice over, Match the categories as fast as possible. When you are ready, please click the green arrow below to start.",
-    trialDataSet: generatePracticeTrials(12, true),
+    trialDataSet: generatePracticeTrials(12, false),
   },
 ];
 
@@ -125,18 +129,11 @@ function startTest() {
   font-size: 16px;
 }
 
-.face-img {
-  height: 358px;
-  /* border: solid 1px lightgray; */
-  border-radius: 25px;
-  padding: 2px;
-  background: white;
-}
-
 .left,
 .right {
   position: absolute;
   width: 200px;
+  /* aspect-ratio: 1/1.2; */
 }
 
 .left {
@@ -155,8 +152,31 @@ function startTest() {
   margin: auto;
 }
 
-.instruction h4{
-    line-height: 31.4px;
-    font-weight: 400;
-    }
+.instruction h4 {
+  line-height: 31.4px;
+  font-weight: 400;
+}
+.stimulus-img {
+  width: 200px;
+}
+
+@media(max-width: 950px){
+  .stimulus-img{
+    margin-top: -235px
+  }
+}
+
+@media(max-width:715px){
+  .left, .right{
+    width: 150px
+  }
+}
+
+
+@media (max-width: 695px) {
+  .instruction{
+    width: 360px;
+    margin-bottom: 70px;
+  }
+}
 </style>

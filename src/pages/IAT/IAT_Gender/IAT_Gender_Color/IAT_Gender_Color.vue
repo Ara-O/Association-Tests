@@ -110,6 +110,8 @@ export default {
     start(e) {
       let that = this;
       if (e.key === " ") {
+        document.querySelector(".instruction").style.display= "none";
+        setTimeout(()=> {
         handleAnswers(
           this,
           this.fullTest[this.currentBlock].data,
@@ -118,6 +120,7 @@ export default {
         );
         this.notStarted = false;
         window.removeEventListener("keyup", that.start);
+      }, 500)
       }
     },
   },

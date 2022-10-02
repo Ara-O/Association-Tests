@@ -64,7 +64,8 @@
 }
 
 .fullinstruction {
-    width: 600px;
+    width: auto;
+    max-width: 600px;
     line-height: 28px;
     /* border: solid 1px #b9b9b9; */
     padding: 30px;
@@ -80,11 +81,13 @@
 
 .welcomejpg {
     border-radius: 8px;
-
+    width: 64vw;
+    box-shadow: rgb(222 222 222) -2px 3px 7px, rgb(250 250 250) 2px -2px 0px;
+    max-width: 717px;
 }
 
 .ibt-icon {
-    width: 160px
+    width: 105px
 }
 
 
@@ -130,7 +133,7 @@
 
 @media (max-width: 852px) {
     main {
-        background: white;
+        /* background: white; */
         /* height: auto; */
     }
 
@@ -148,7 +151,7 @@
     }
 
     main {
-        background: white;
+        /* background: white; */
     }
 
     .faceLeft {

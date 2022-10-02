@@ -479,7 +479,7 @@ li img {
 
 @media (max-width: 852px) {
   main {
-    background: white;
+    /* background: white; */
   }
   .instructions {
     width: auto !important;

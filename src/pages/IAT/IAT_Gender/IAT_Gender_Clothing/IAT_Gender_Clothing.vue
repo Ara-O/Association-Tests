@@ -110,14 +110,17 @@ export default {
     start(e) {
       let that = this;
       if (e.key === " ") {
-        handleAnswers(
-          this,
-          this.fullTest[this.currentBlock].data,
-          this.fullTest[this.currentBlock].block,
-          "IAT_Gender_Clothing"
-        );
-        this.notStarted = false;
-        window.removeEventListener("keyup", that.start);
+        document.querySelector(".instruction").style.display= "none";
+        setTimeout(()=> {
+          handleAnswers(
+            this,
+            this.fullTest[this.currentBlock].data,
+            this.fullTest[this.currentBlock].block,
+            "IAT_Gender_Clothing"
+          );
+          this.notStarted = false;
+          window.removeEventListener("keyup", that.start);
+        }, 500)
       }
     },
   },

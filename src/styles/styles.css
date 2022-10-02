@@ -1,17 +1,19 @@
 /* Fill entire background with green? */
 #test-border {
     width: 63vw;
-    height: 99vh;
+    height: 93vh;
     border: solid 9px #85E9BF;
-    /* border-top: none; */
-    /* border-bottom: none; */
-    /* border-radius: 49px; */
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    min-width: 400px
+    min-width: 400px;
+    padding: 0px 20px;
+}
+
+#test-border main{
+    background: transparent
 }
 
 #wrong {
@@ -19,8 +21,15 @@
     top: 17.5vh;
 }
 
+#wrong h4{
+    min-width: 269px;
+    font-weight: 400;
+    margin: auto;
+    font-size: 16px;
+}
+
 #wrong-ibt {
-    top: 13vh;
+    top: 11vh;
     position: absolute;
 }
 

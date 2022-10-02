@@ -4,7 +4,6 @@
       <img
         :src="getPracticeSource"
         alt="Welcome Instruction"
-        style="width: 100vh; box-shadow: -2px 3px 7px #dedede, 2px -2px 0px #fafafa"
         class="welcomejpg"
       />
     </div>
@@ -17,7 +16,6 @@
       <img
         :src="getPracticeInstruction"
         alt="Practice instruction"
-        style="width: 100vh; box-shadow: -2px 3px 7px #dedede, 2px -2px 0px #fafafa"
         class="welcomejpg"
       />
     </div>

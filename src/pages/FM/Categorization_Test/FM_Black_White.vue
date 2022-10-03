@@ -159,6 +159,11 @@ function startTest() {
 .stimulus-img {
   width: 200px;
 }
+.right-arrow {
+  width: 67px;
+  margin-top: 10px;
+  cursor: pointer;
+}
 
 @media(max-width: 950px){
   .stimulus-img{

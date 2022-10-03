@@ -50,6 +50,8 @@
 </template>
 
 <script>
+    import "../../../../styles/IAT.css"
+import "../../../../styles/IAT_TS.css"
 import {
   testData_Block1,
   testData_Block2,
@@ -154,8 +156,12 @@ export default {
     },
 
     start() {
-      this.notStarted = false;
-      this.arrayIndex = 0;
+      document.querySelector('.instruction').style.display="none";
+       let that = this;
+      setTimeout(function(){
+      that.notStarted = false;
+      that.arrayIndex = 0;
+      }, 500)
     },
 
     handleAnswer(e) {
@@ -179,7 +185,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-@import url("../../../../styles/IAT_TS.css");
-</style>

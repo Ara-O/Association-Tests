@@ -50,6 +50,7 @@
 
 <script>
 import "../../../../styles/IAT_TS.css"
+import "../../../../styles/IAT.css"
 import {
   testData_Block1,
   testData_Block2,
@@ -155,8 +156,12 @@ export default {
     },
 
     start() {
+      document.querySelector('.instruction').style.display="none";
+       let that = this;
+      setTimeout(function(){
       this.notStarted = false;
       this.arrayIndex = 0;
+      }, 500)
     },
 
     handleAnswer(e) {

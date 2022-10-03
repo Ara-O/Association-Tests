@@ -36,7 +36,7 @@ function handleAnswer(thiskeyword, Data, whereToStore, version) {
 
         //Checking if the test isnt over yet, and the entry is accurate
         if (keyClicked == currentChallenge.key && test.arrayIndex !== Data.length) {
-
+          testIsPaused = true;
           //Proceeds to the next name while adding the speed used to answer the question
           document.querySelector("#wrong").style.display = "none";
           currentChallenge.visibility = "none";
@@ -45,11 +45,8 @@ function handleAnswer(thiskeyword, Data, whereToStore, version) {
           
           // Making sure the test isnt over yet
           if (test.arrayIndex !== Data.length - 1) {
-            console.log("Starting the pause")
-            testIsPaused = true;
             // Creating a delay
             setTimeout(function () {
-              console.log("Finishing the pause ")
               Data[test.arrayIndex + 1].visibility = "block";
               startTimer();
               test.arrayIndex += 1;

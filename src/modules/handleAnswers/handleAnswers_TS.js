@@ -19,10 +19,11 @@ function stopTimer() {
   ms = (endTime - startTime);
   // console.log("ending timer - ", ms)
 }
+let testIsPaused = false;
 
 function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {
   const test = thiskeyword;
-  if (!test.notStarted) {
+  if (!test.notStarted && !testIsPaused) {
     let keyClicked = target;
     const currentChallenge = Data[test.arrayIndex];
     if (keyClicked.classList.contains("left") || keyClicked.classList.contains("left-choice")) {
@@ -36,18 +37,21 @@ function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {
     //Checking accuracy
     if (keyClicked === "Left" || keyClicked === "Right") {
       if (keyClicked == currentChallenge.key && test.arrayIndex !== Data.length) {
+        testIsPaused = true;
         //Proceeds to the next name while adding the speed used to answer the question
         document.querySelector("#wrong").style.display = "none";
         currentChallenge.visibility = "none";
         stopTimer();
         currentChallenge.ms = ms;
         
-        
         // Making sure the test isnt over yet
         if (test.arrayIndex !== Data.length - 1) {
-          startTimer();
-          Data[test.arrayIndex + 1].visibility = "block";
-          test.arrayIndex += 1;
+          setTimeout(function(){
+            startTimer();
+            Data[test.arrayIndex + 1].visibility = "block";
+            test.arrayIndex += 1;
+            testIsPaused = false;
+          }, 500) 
         } else {
 
           //Storing data in vuex

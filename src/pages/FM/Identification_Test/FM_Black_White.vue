@@ -150,6 +150,12 @@ function startTest() {
   margin: auto;
 }
 
+.right-arrow {
+  width: 67px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
 .instruction h4 {
   line-height: 31.4px;
   font-weight: 400;

@@ -245,16 +245,17 @@
 </template>
 
 <script>
-// import IT_Trials from "../../../modules/individuationTrainingTrials";
-import { IT_Name_Trials } from "../../../modules/individuationTrainingTrials";
-import * as handleIT from "../../../modules/handleAnswers/handleITTrials_Name";
-// import ExplicitAttitudesIbt from "../../../components/PreTestSurveyQuestions/ExplicitAttitudesIBT.vue";
-import BasicQuestions from "../../../components/PreTestSurveyQuestions/BasicQuestions.vue";
-
+  // import IT_Trials from "../../../modules/individuationTrainingTrials";
+  import { IT_Name_Trials } from "../../../modules/individuationTrainingTrials";
+  import * as handleIT from "../../../modules/handleAnswers/handleITTrials_Name";
+  // import ExplicitAttitudesIbt from "../../../components/PreTestSurveyQuestions/ExplicitAttitudesIBT.vue";
+  import BasicQuestions from "../../../components/PreTestSurveyQuestions/BasicQuestions.vue";
+  import "../../../styles/IT.css"
 export default {
   components: {
     BasicQuestions,
   },
+  
 
   data() {
     return {
@@ -363,178 +364,3 @@ export default {
   },
 };
 </script>
-
-<style >
-.next {
-  /* position: absolute;
-  bottom: 58px;
-  right: 58px; */
-  width: 67px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.instructions {
-  line-height: 31px;
-  width: 700px;
-  max-height: 380px;
-}
-
-h3.instructions.midinstructions {
-  font-size: 15.5px;
-  font-weight: 400;
-}
-
-.faces_displayed {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.number {
-  cursor: pointer;
-}
-
-.choices {
-  display: flex;
-  column-gap: 20px;
-  justify-content: center;
-}
-
-li {
-  list-style: none;
-}
-
-li img {
-  cursor: pointer;
-}
-
-.star {
-  width: 130px;
-  display: none;
-}
-
-.centerstar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.stardiv {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 4;
-}
-
-.faces_flexbox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.choice-name {
-  height: 50px;
-  font-size: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 101px;
-  box-shadow: inset 0px 0px 2px #b2b2b2;
-  border-radius: 2px;
-  background: white;
-}
-
-.cross {
-  width: 130px;
-  display: none;
-}
-
-.correctchoice {
-  display: none;
-}
-
-.instructionsforincorrectchoice {
-  display: none;
-}
-
-.midinstructions {
-  background: white;
-  padding: 48px;
-  border-radius: 14px;
-  color: black;
-  box-shadow: -3px -3px 7px #eeeeeeb2, 4px 4px 5px rgb(218 218 219 / 95%);
-}
-
-.midinstructions h3 {
-  font-size: 16.5px;
-  font-weight: 400;
-}
-
-.face_img {
-  width: 480px;
-}
-
-.faces_flexbox div:nth-of-type(2) img {
-  width: 450px;
-}
-
-@media (max-width: 852px) {
-  main {
-    background: white;
-  }
-  .instructions {
-    width: auto !important;
-    font-size: 15px;
-    overflow: auto;
-  }
-
-  .next {
-    bottom: 19px;
-    right: 19px;
-    width: 55px;
-  }
-
-  .face_img {
-    bottom: 18px;
-    right: 43px;
-    width: 300px;
-  }
-
-  .img-of-face {
-    width: 300px;
-  }
-
-  .choices {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .faces {
-    margin-left: -23px;
-  }
-
-  .faces_flexbox {
-    flex-direction: column;
-    row-gap: 13px;
-  }
-
-  li img {
-    width: 90px;
-  }
-
-  .star {
-    width: 100px;
-  }
-
-  .cross {
-    width: 65px;
-    margin-bottom: 40px;
-  }
-
-  .correctchoice h3 {
-    font-size: 15px;
-  }
-}
-</style>

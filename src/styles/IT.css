@@ -1,5 +1,22 @@
+
+.next {
+  /* position: absolute;
+  bottom: 58px;
+  right: 58px; */
+  width: 67px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
 .instructions {
+  line-height: 31px;
   width: 700px;
+  max-height: 380px;
+}
+
+h3.instructions.midinstructions {
+  font-size: 15.5px;
+  font-weight: 400;
 }
 
 .faces_displayed {
@@ -15,6 +32,7 @@
 
 .choices {
   display: flex;
+  column-gap: 20px;
   justify-content: center;
 }
 
@@ -27,7 +45,7 @@ li img {
 }
 
 .star {
-  width: 150px;
+  width: 130px;
   display: none;
 }
 
@@ -50,8 +68,20 @@ li img {
   align-items: center;
 }
 
+.choice-name {
+  height: 50px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 101px;
+  box-shadow: inset 0px 0px 2px #b2b2b2;
+  border-radius: 2px;
+  background: white;
+}
+
 .cross {
-  width: 150px;
+  width: 130px;
   display: none;
 }
 
@@ -59,12 +89,29 @@ li img {
   display: none;
 }
 
-.face_img {
-  width: 537px;
-}
-
 .instructionsforincorrectchoice {
   display: none;
+}
+
+.midinstructions {
+  background: white;
+  padding: 48px;
+  border-radius: 14px;
+  color: black;
+  box-shadow: -3px -3px 7px #eeeeeeb2, 4px 4px 5px rgb(218 218 219 / 95%);
+}
+
+.midinstructions h3 {
+  font-size: 16.5px;
+  font-weight: 400;
+}
+
+.face_img {
+  width: 480px;
+}
+
+.faces_flexbox div:nth-of-type(2) img {
+  width: 450px;
 }
 
 @media (max-width: 852px) {
@@ -74,12 +121,11 @@ li img {
   .instructions {
     width: auto !important;
     font-size: 15px;
-    max-height: 380px;
     overflow: auto;
   }
 
   .next {
-     bottom: 19px;
+    bottom: 19px;
     right: 19px;
     width: 55px;
   }
@@ -87,7 +133,7 @@ li img {
   .face_img {
     bottom: 18px;
     right: 43px;
-    width: 337px;
+    width: 300px;
   }
 
   .img-of-face {
@@ -108,7 +154,20 @@ li img {
     row-gap: 13px;
   }
 
-  li img{
+  li img {
     width: 90px;
+  }
+
+  .star {
+    width: 100px;
+  }
+
+  .cross {
+    width: 65px;
+    margin-bottom: 40px;
+  }
+
+  .correctchoice h3 {
+    font-size: 15px;
   }
 }

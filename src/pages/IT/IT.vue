@@ -12,26 +12,26 @@
       </h3>
     </section>
     <section v-if="version === 'Number'">
-      <jelly-button routeTo="/IT_Number_White" class="test-btn"
-        >White</jelly-button
+      <main-button routeTo="/IT_Number_White" 
+        >White</main-button
       >
-      <jelly-button routeTo="/IT_Number_Black" class="test-btn"
-        >Black</jelly-button
+      <main-button routeTo="/IT_Number_Black" 
+        >Black</main-button
       >
-      <jelly-button routeTo="/IT_Number_EastAsian" class="test-btn"
-        >East Asian</jelly-button
+      <main-button routeTo="/IT_Number_EastAsian" 
+        >East Asian</main-button
       >
       <h4 @click="version = ''" class="go-back">Go back</h4>
     </section>
     <section v-if="version === 'Name'">
-      <jelly-button routeTo="/IT_Name_White" class="test-btn"
-        >White</jelly-button
+      <main-button routeTo="/IT_Name_White" 
+        >White</main-button
       >
-      <jelly-button routeTo="/IT_Name_Black" class="test-btn"
-        >Black</jelly-button
+      <main-button routeTo="/IT_Name_Black" 
+        >Black</main-button
       >
-      <jelly-button routeTo="/IT_Name_EastAsian" class="test-btn">
-        East Asian</jelly-button
+      <main-button routeTo="/IT_Name_EastAsian" >
+        East Asian</main-button
       >
       <h4 @click="version = ''" class="go-back">Go back</h4>
     </section>
@@ -39,7 +39,11 @@
 </template>
 
 <script>
+import MainButton from '../../components/Buttons/MainButton.vue';
 export default {
+  components: {
+    'main-button': MainButton
+  },
   data() {
     return {
       version: "",

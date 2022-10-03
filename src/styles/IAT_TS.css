@@ -78,9 +78,8 @@
 
 @media (max-width: 1125px) {
   .choice {
-    height: 200px !important;
-    width: 220px !important;
-    /* background: pink ; */
+    height: 167px !important;
+    width: 167px !important;
   }
 
   #wrong {
@@ -125,9 +124,6 @@
     box-sizing: border-box;
   }
 
-  .instruction {
-    width: 100vw
-  }
 
   .instruction h3 {
     font-size: 14px;

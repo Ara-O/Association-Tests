@@ -1,9 +1,10 @@
 <template>
   <main>
+    <section id="test-border">
     <section v-if="notFinishedInstructions">
-      <ibt-instructions @finishedInstructions="finishedInstructions">
+      <implicit-bias-test-instructions @finishedInstructions="finishedInstructions">
         {{ irbt_trials[section].practice_instruction }}
-      </ibt-instructions>
+      </implicit-bias-test-instructions>
     </section>
     <section v-else>
       <div v-if="testNotStarted">
@@ -37,7 +38,7 @@
           >
             <img :src="getImage(trial.image)" class="trialimg ibt-trial-img" />
           </div>
-          <div class="irbt-wrong-wrapper">
+          <div class="irbt-wrong-wrapper" id="wrong-ibt">
             <h3 class="irbt-wrong" style="display: none">
               Incorrect. Try again to progress!
             </h3>
@@ -66,17 +67,18 @@
         />
       </div>
     </section>
+    </section>
   </main>
 </template>
 
 <script>
-import IbtInstructions from "../../../../components/IbtInstructions.vue";
+import ImplicitBiasTestInstructions from "../../../../components/ImplicitBiasTestInstructions.vue";
 import { genderAndToy } from "../../../../modules/generateIbtTrials/generateIbtTrialsGender";
 import * as irbt from "../../../../modules/handleAnswers/handleIbtAnswers";
 
 export default {
   components: {
-    IbtInstructions,
+    ImplicitBiasTestInstructions,
   },
 
   data() {
@@ -155,13 +157,13 @@ export default {
 
     getFacesPosition() {
       let face = irbt.getFacesPosition(this, "male.jpg", "female.jpg");
-      return require(`../../../../assets/IBT_Faces/${face}`);
+      return new URL(`../../../../assets/IBT_Faces/${face}`, import.meta.url).href;
     },
 
     //does the reverse of the first method for the second image
     getFacesPosition2() {
       let face = irbt.getFacesPosition2(this, "male.jpg", "female.jpg");
-      return require(`../../../../assets/IBT_Faces/${face}`);
+      return new URL(`../../../../assets/IBT_Faces/${face}`, import.meta.url).href;
     },
 
     finishedInstructions() {
@@ -185,8 +187,7 @@ export default {
     },
 
     getImage(url) {
-      return require(`../../../../assets/IAT_Gender_Toy/${url}`);
-    },
+      return new URL(`../../../../assets/IAT_Gender_Toy/${url}`, import.meta.url).href;    },
 
     next() {
       this.testNotStarted = false;

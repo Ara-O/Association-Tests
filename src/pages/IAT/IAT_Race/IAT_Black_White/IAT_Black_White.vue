@@ -1,5 +1,6 @@
 <template>
   <main>
+    <section id="test-border">
     <div v-if="notStarted" class="instruction">
       <h3
         style="line-height: 37px; margin-top: 4px"
@@ -39,6 +40,7 @@
         class="wrong-icon"
       />
     </div>
+    </section>
   </main>
 </template>
 
@@ -84,7 +86,7 @@ export default {
         {
           block: "Block4",
           instructions:
-            "The images are reversed now!<br/>Click I for black faces and sad faces and E for white faces and sad faces. Remember, you should tap as fast as you can!",
+            "The images are reversed now!<br/>Click E for black faces and I for white faces. Remember, you should tap as fast as you can!",
           data: testData_Block1("I", "E", 16),
         },
         // {
@@ -122,6 +124,8 @@ export default {
     start(e) {
       let that = this;
       if (e.key === " ") {
+        document.querySelector(".instruction").style.display= "none";
+        setTimeout(()=> {
         handleAnswers(
           this,
           this.fullTest[this.currentBlock].data,
@@ -130,6 +134,7 @@ export default {
         );
         this.notStarted = false;
         window.removeEventListener("keyup", that.start);
+        }, 500)
       }
     },
   },

@@ -135,6 +135,8 @@
 </template>
 
 <script>
+import "../../../styles/pre-test-survey.css";
+
 import ExplicitAttitudesIbt from "../../../components/PreTestSurveyQuestions/ExplicitAttitudesIBT.vue";
 import BasicQuestions from "../../../components/PreTestSurveyQuestions/BasicQuestions.vue";
 
@@ -187,7 +189,3 @@ export default {
   mounted() {},
 };
 </script>
-
-<style scoped>
-@import url("../../../styles/pre-test-survey.css");
-</style>

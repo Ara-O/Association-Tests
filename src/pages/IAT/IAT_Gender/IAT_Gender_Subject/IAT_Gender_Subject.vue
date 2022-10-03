@@ -1,5 +1,6 @@
 <template>
   <main>
+    <section id="test-border">
     <div v-if="notStarted" class="instruction">
       <h3
         style="line-height: 37px; margin-top: 4px"
@@ -35,6 +36,7 @@
         class="wrong-icon"
       />
     </div>
+    </section>
   </main>
 </template>
 
@@ -108,6 +110,8 @@ export default {
     start(e) {
       let that = this;
       if (e.key === " ") {
+        document.querySelector(".instruction").style.display= "none";
+        setTimeout(()=> {
         handleAnswers(
           this,
           this.fullTest[this.currentBlock].data,
@@ -116,6 +120,7 @@ export default {
         );
         this.notStarted = false;
         window.removeEventListener("keyup", that.start);
+        }, 500)
       }
     },
   },

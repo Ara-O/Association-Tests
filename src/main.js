@@ -5,10 +5,8 @@ import store from "./store";
 import * as firebase from 'firebase/app';
 import 'firebase/database'
 import clicker from "../src/components/Buttons/TouchscreenButtons.vue"
-import jellybtn from "../src/components/Buttons/MainButton.vue"
-
+import "./styles/styles.css"
 // Configuring firebase 
-
 const config = {
     apiKey:  import.meta.env.VITE_API_KEY,
     authDomain:  import.meta.env.VITE_AUTH_DOMAIN,
@@ -22,5 +20,4 @@ let firebaseapp = firebase.initializeApp(config)
 
 const app = createApp(App);
 app.component("clicker", clicker)
-app.component("jelly-button", jellybtn)
 app.use(store).use(router).use(firebaseapp).mount("#app");

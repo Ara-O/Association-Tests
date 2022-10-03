@@ -9,19 +9,19 @@
 
  <style scoped>
 .choice {
-  background: #85e9bf; 
-  height: 28vw;
-  width: 28vw;
-    max-width: 257px;
-    max-height: 240px;
-  border-radius: 12%;
-  position: absolute;
-  bottom: 20px;
-  box-shadow: -2px 3px 4px grey;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
+  background: #85e9bf;
+    height: 16vw;
+    width: 28vw;
+    max-width: 201px;
+    max-height: 190px;
+    border-radius: 12%;
+    position: absolute;
+    bottom: 20px;
+    box-shadow: -2px 3px 4px grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
 }
 
 .choice:active {

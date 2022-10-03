@@ -156,7 +156,7 @@ export default {
 
   methods: {
     getImg(img) {
-      return require(`../../assets/${img}`);
+      return new URL(`../../assets/${img}`, import.meta.url).href;
     },
 
     getCurrentTestTrimmed(target, index) {

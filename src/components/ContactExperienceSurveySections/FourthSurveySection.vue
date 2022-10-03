@@ -110,7 +110,9 @@
     Move on
   </button>
 </template>
+
 <script>
+import "../../styles/Contact_Experience.css";
 export default {
   emits: ["emit-data"],
   data() {
@@ -147,7 +149,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-@import url("../../styles/Contact_Experience.css");
-</style>

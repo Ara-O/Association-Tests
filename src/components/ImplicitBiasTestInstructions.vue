@@ -4,7 +4,6 @@
       <img
         :src="getPracticeSource"
         alt="Welcome Instruction"
-        style="width: 100vh; box-shadow: -2px 3px 7px #dedede, 2px -2px 0px #fafafa"
         class="welcomejpg"
       />
     </div>
@@ -17,7 +16,6 @@
       <img
         :src="getPracticeInstruction"
         alt="Practice instruction"
-        style="width: 100vh; box-shadow: -2px 3px 7px #dedede, 2px -2px 0px #fafafa"
         class="welcomejpg"
       />
     </div>
@@ -46,15 +44,15 @@ export default {
       if(this.$store.getters.getCurrentTest !== "IBT_Cat_Dog"){
         return new URL(`../assets/IBT_Faces/welcome_instruction.jpg`, import.meta.url).href
       } else{
-        return require("../assets/IBT_Faces/cat_dog_welcome_img.jpg")
+        return new URL(`../assets/IBT_Faces/cat_dog_welcome_img.jpg`, import.meta.url).href;
       }
     },
 
     getPracticeInstruction(){
         if(this.$store.getters.getCurrentTest !== "IBT_Cat_Dog"){
-        return require("../assets/IBT_Faces/practice_instruction.jpg")
+          return new URL(`../assets/IBT_Faces/practice_instruction.jpg`, import.meta.url).href;
       } else{
-        return require("../assets/IBT_Faces/cat_dog_practice_img.jpg")
+        return new URL("../assets/IBT_Faces/cat_dog_practice_img.jpg", import.meta.url).href;
       }
     }
   },

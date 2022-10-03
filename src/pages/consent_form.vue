@@ -145,6 +145,7 @@ let participating = ref(true);
   padding: 47px 48px;
   background: white;
   overflow: auto;
+  font-size: 14px;
   line-height: 35px;
   box-sizing: border-box;
   border: solid 1px #e5e5e5;

@@ -315,7 +315,7 @@ export default {
     },
 
     getImg(img) {
-      return require(`../../../assets/IT_Faces/${img}`);
+      return new URL(`../../../assets/IT_faces/${img}`, import.meta.url).href;
     },
 
     shuffleObjects(array) {

@@ -1,52 +1,54 @@
 <template>
   <main class="test">
-    <section class="instruction" v-if="notStarted">
-      <h3 v-html="fullTest[currentBlock]?.instructions"></h3>
+    <section id="test-border">
+      <section class="instruction" v-if="notStarted">
+        <h3 v-html="fullTest[currentBlock]?.instructions"></h3>
 
-      <img
-        src="../../../../assets/App_Icons/rightArrow.png"
-        alt="Right arrow"
-        @click="start"
-        class="right-arrow"
-      />
-    </section>
-    <div v-for="data in fullTest[currentBlock].data" :key="data.id" v-else>
-      <div class="imagecontainer">
         <img
-          class="face-img"
-          loading="eager"
-          :style="{ display: data.visibility }"
-          :src="getImage(data.image)"
+          src="../../../../assets/App_Icons/rightArrow.png"
+          alt="Right arrow"
+          @click="start"
+          class="right-arrow"
+        />
+      </section>
+      <div v-for="data in fullTest[currentBlock].data" :key="data.id" v-else>
+        <div class="imagecontainer">
+          <img
+            class="face-img"
+            loading="eager"
+            :style="{ display: data.visibility }"
+            :src="getImage(data.image)"
+          />
+        </div>
+      </div>
+      <div id="wrong" style="display: none">
+        <!-- <h3></h3> -->
+        <h4>Incorrect. Try again to progress!</h4>
+        <img
+          src="../../../../assets/App_Icons/incorrectImg.png"
+          alt="Wrong icon"
+          class="wrong-icon"
         />
       </div>
-    </div>
-    <div id="wrong" style="display: none">
-      <!-- <h3></h3> -->
-      <h4>Incorrect. Try again to progress!</h4>
-      <img
-        src="../../../../assets/App_Icons/incorrectImg.png"
-        alt="Wrong icon"
-        class="wrong-icon"
-      />
-    </div>
-    <clicker>
-      <template #left>
-        <img
-          :src="getImageClicker(fullTest[currentBlock].clickerLeft)"
-          alt="Clicker left"
-          class="clickerImage left"
-          :class="calculateClass"
-        />
-      </template>
-      <template #right>
-        <img
-          :src="getImageClicker(fullTest[currentBlock].clickerRight)"
-          alt="Clicker left"
-          class="clickerImage right"
-          :class="calculateClass"
-        />
-      </template>
-    </clicker>
+      <clicker>
+        <template #left>
+          <img
+            :src="getImageClicker(fullTest[currentBlock].clickerLeft)"
+            alt="Clicker left"
+            class="clickerImage left"
+            :class="calculateClass"
+          />
+        </template>
+        <template #right>
+          <img
+            :src="getImageClicker(fullTest[currentBlock].clickerRight)"
+            alt="Clicker left"
+            class="clickerImage right"
+            :class="calculateClass"
+          />
+        </template>
+      </clicker>
+    </section>
   </main>
 </template>
 
@@ -77,7 +79,8 @@ export default {
         },
         {
           block: "Block2_TS",
-          instructions: "Tap left for happy faces, and right for sad faces. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
+          instructions:
+            "Tap left for happy faces, and right for sad faces. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block2("Left", "Right", 16),
           clickerLeft: "Happy_Face.jpg",
           clickerRight: "Sad_Face.jpg",
@@ -133,7 +136,7 @@ export default {
         document
           .querySelector(".test")
           .removeEventListener("click", this.handleAnswer);
-         this.$router.push("/IAT_Feedback");
+        this.$router.push("/IAT_Feedback");
       }
     },
 
@@ -146,16 +149,26 @@ export default {
 
   methods: {
     getImage(url) {
-      return new URL(`../../../../assets/Stimulus_Faces/${url}`, import.meta.url).href;
+      return new URL(
+        `../../../../assets/Stimulus_Faces/${url}`,
+        import.meta.url
+      ).href;
     },
 
     getImageClicker(url) {
-      return new URL(`../../../../assets/Clicker_Images/IAT_Black_White/${url}`, import.meta.url).href;
+      return new URL(
+        `../../../../assets/Clicker_Images/IAT_Black_White/${url}`,
+        import.meta.url
+      ).href;
     },
 
     start() {
-      this.notStarted = false;
-      this.arrayIndex = 0;
+      document.querySelector(".instruction").style.display = "none";
+      let that = this;
+      setTimeout(function () {
+        that.notStarted = false;
+        that.arrayIndex = 0;
+      }, 500);
     },
 
     handleAnswer(e) {
@@ -187,7 +200,7 @@ export default {
   },
 
   mounted() {
-        this.$store.commit("changeCurrentTest", "IAT_Black_White_Touchscreen")
+    this.$store.commit("changeCurrentTest", "IAT_Black_White_Touchscreen");
     this.$store.state["IAT_Black_White_Touchscreen"] = [];
     let that = this;
     document

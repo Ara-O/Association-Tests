@@ -18,28 +18,30 @@
           src="../../../assets/IT_Faces/star.jpg"
           alt="star"
           class="star"
-          v-if="userChoseCorrectly"
+          v-show="userChoseCorrectly"
         />
-        <img
-          :src="
-            getImage(
-              trials[currentTest].trialDataSet[currentTrial].stimulusImage
-            )
-          "
-          class="stimulus-img"
-          v-if="!userChoseCorrectly"
-        />
+
+        <!-- trial images -->
+        <div v-show="!userChoseCorrectly">
+          <div v-for="trial in trials[currentTest].trialDataSet">
+            <img           
+            :src="getImage(trial.stimulusImage)"
+            :style="{display: trial.visibility}"
+            class="stimulus-img"
+          />
+        </div>
+        </div>
         <img
           :src="
             getImage(trials[currentTest].trialDataSet[currentTrial].leftImage)
           "
           alt="Left image"
           @click="handleUserChoice('left')"
-          v-if="!userChoseCorrectly"
+          v-show="!userChoseCorrectly"
           class="left"
         />
         <img
-          v-if="!userChoseCorrectly"
+          v-show="!userChoseCorrectly"
           :src="
             getImage(trials[currentTest].trialDataSet[currentTrial].rightImage)
           "
@@ -52,12 +54,14 @@
         <h4 v-if="userChoseIncorrectly" id="wrong">Incorrect, Please try again!</h4>
       </section>
     </section>
+  
   </main>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
+import {useStore} from "vuex"
 import { generatePracticeTrials } from "../../../modules/generateFaceMatchingTrials/CT/generateBlackWhiteTrials";
 import {
   startFaceMatching,
@@ -65,6 +69,7 @@ import {
 } from "../../../modules/handleAnswers/handleFM";
 
 let router = useRouter();
+let store = useStore()
 let currentTest = ref(0);
 let currentTrial = ref(0);
 let userChoseCorrectly = ref(false);
@@ -74,12 +79,12 @@ let trials = [
   {
     instruction:
       "This is the practice test. Match the categories as fast as possible. When you are ready, please click the green arrow below to start.",
-    trialDataSet: generatePracticeTrials(8, true),
+    trialDataSet: generatePracticeTrials(20, true),
   },
   {
     instruction:
       "Practice over, Match the categories as fast as possible. When you are ready, please click the green arrow below to start.",
-    trialDataSet: generatePracticeTrials(12, false),
+    trialDataSet: generatePracticeTrials(20, false),
   },
 ];
 
@@ -93,10 +98,14 @@ function handleUserChoice(direction) {
     currentTrial,
     userChoseCorrectly,
     userChoseIncorrectly,
-    router
+    router,
+    store
   );
 }
 
+onMounted(()=> {
+  store.commit("changeCurrentTest", "FM_Black_White")
+})
 function getImage(img) {
   return new URL(`../../../assets/stimulus_faces/${img}.jpg`, import.meta.url)
     .href;
@@ -133,6 +142,8 @@ function startTest() {
 .right {
   position: absolute;
   width: 200px;
+    height: 218px;
+    object-fit: scale-down;  
   /* aspect-ratio: 1/1.2; */
 }
 

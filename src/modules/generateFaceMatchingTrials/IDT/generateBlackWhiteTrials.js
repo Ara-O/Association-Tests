@@ -97,7 +97,7 @@ function generatePracticeTrials (trials, practice = false){
             dataToPush.stimulusImage = chosenFemaleWhiteImages[i];
             dataToPush.accuracy = 100;
 
-
+            
                 //!create left, right, and correct options here
                 let randomNo = Math.floor(Math.random() * 10);
                 if(randomNo % 2 === 0){
@@ -120,6 +120,10 @@ function generatePracticeTrials (trials, practice = false){
         practice ? data.testType = "Practice" : data.testType = "Test"
     })
     console.table(fullDataSet)
+
+    
+    fullDataSet.forEach((trial) => trial.visibility = "none")
+    fullDataSet[0].visibility = "block"
     
     return fullDataSet
 }

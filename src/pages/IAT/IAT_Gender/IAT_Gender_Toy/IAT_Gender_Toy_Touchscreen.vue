@@ -159,8 +159,8 @@ export default {
       document.querySelector('.instruction').style.display="none";
        let that = this;
       setTimeout(function(){
-      this.notStarted = false;
-      this.arrayIndex = 0;
+      that.notStarted = false;
+      that.arrayIndex = 0;
       }, 500)
     },
 

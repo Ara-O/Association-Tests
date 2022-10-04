@@ -18,28 +18,28 @@
           src="../../../assets/IT_Faces/star.jpg"
           alt="star"
           class="star"
-          v-if="userChoseCorrectly"
+          v-show="userChoseCorrectly"
         />
-        <img
-          :src="
-            getImage(
-              trials[currentTest].trialDataSet[currentTrial].stimulusImage
-            )
-          "
-          class="stimulus-img"
-          v-if="!userChoseCorrectly"
-        />
+        <div v-show="!userChoseCorrectly">
+          <div  v-for="trial in trials[currentTest].trialDataSet">
+            <img           
+            :src="getImage(trial.stimulusImage)"
+            :style="{display: trial.visibility}"
+            class="stimulus-img"
+          />
+        </div>
+        </div>
         <img
           :src="
             getImage(trials[currentTest].trialDataSet[currentTrial].leftImage)
           "
           alt="Left image"
           @click="handleUserChoice('left')"
-          v-if="!userChoseCorrectly"
+          v-show="!userChoseCorrectly"
           class="left"
         />
         <img
-          v-if="!userChoseCorrectly"
+          v-show="!userChoseCorrectly"
           :src="
             getImage(trials[currentTest].trialDataSet[currentTrial].rightImage)
           "
@@ -130,8 +130,9 @@ function startTest() {
 .left,
 .right {
   position: absolute;
-  width: 200px;
-  /* aspect-ratio: 1/1.2; */
+    width: 200px;
+    height: 218px;
+    object-fit: scale-down;  /* aspect-ratio: 1/1.2; */
 }
 
 .left {

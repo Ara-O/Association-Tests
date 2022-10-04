@@ -15,7 +15,6 @@ function shuffleObjects(array) {
 
 function rollRandomIndex(dataset, indexNotAllowed) {
     let randomNumber = Math.floor(Math.random() * dataset.length);
-    console.log(indexNotAllowed, " - ", randomNumber)
     if (randomNumber === indexNotAllowed) {
         return rollRandomIndex(dataset, indexNotAllowed)
     } else {
@@ -25,10 +24,10 @@ function rollRandomIndex(dataset, indexNotAllowed) {
 
 function generatePracticeTrials(trials, practice = false) {
 
-    let chosenMaleBlackImages = shuffleObjects(practice ? maleBlackImages : [...maleBlackImages, ...maleBlackImages])
-    let chosenMaleWhiteImages = shuffleObjects(practice ? maleWhiteImages : [...maleWhiteImages, ...maleWhiteImages])
-    let chosenFemaleBlackImages = shuffleObjects(practice ? femaleBlackImages : [...femaleBlackImages, ...femaleBlackImages])
-    let chosenFemaleWhiteImages = shuffleObjects(practice ? femaleWhiteImages : [...femaleWhiteImages, ...femaleWhiteImages])
+    let chosenMaleBlackImages = shuffleObjects(maleBlackImages)
+    let chosenMaleWhiteImages = shuffleObjects(maleWhiteImages)
+    let chosenFemaleBlackImages = shuffleObjects(femaleBlackImages)
+    let chosenFemaleWhiteImages = shuffleObjects(femaleWhiteImages)
 
     let dataset = [];
     //LOOP FOR MALES
@@ -129,7 +128,6 @@ function generatePracticeTrials(trials, practice = false) {
     fullDataSet.forEach((data) => {
         practice ? data.testType = "Practice" : data.testType = "Test"
     })
-    console.table(fullDataSet)
 
     /*
     [{
@@ -142,6 +140,8 @@ function generatePracticeTrials(trials, practice = false) {
     }]
     */
 
+    fullDataSet.forEach((trial) => trial.visibility = "none")
+    fullDataSet[0].visibility = "block"
     return fullDataSet
 }
 

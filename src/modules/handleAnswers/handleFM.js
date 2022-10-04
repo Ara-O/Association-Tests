@@ -21,20 +21,20 @@ export function startFaceMatching(){
   startTimer();
 }
 
-export function handleUserSelection(testHasStarted, userChoice, trials, currentTest, currentTrial, userChoseCorrectlyStarFeedback, userChoseIncorrectlyFeedback, router){
+export function handleUserSelection(testHasStarted, userChoice, trials, currentTest, currentTrial, userChoseCorrectlyStarFeedback, userChoseIncorrectlyFeedback, router, store){
     //!check if user is right or not, if user is right,
     //!increment the currentTrial, if not, show error, etc etc
-    console.log("user choice: ", userChoice, " correct choice: ", trials[currentTest.value].trialDataSet[currentTrial.value].correctImagePosition)
+    // console.log("user choice: ", userChoice, " correct choice: ", trials[currentTest.value].trialDataSet[currentTrial.value].correctImagePosition)
   
     
     if(userChoice === trials[currentTest.value].trialDataSet[currentTrial.value].correctImagePosition){
       console.log('they got it right')
       stopTimer();
+      trials[currentTest.value].trialDataSet[currentTrial.value].visibility = "none"
       trials[currentTest.value].trialDataSet[currentTrial.value].reactionTime = ms;
-      startTimer();
       userChoseIncorrectlyFeedback.value = false
       userChoseCorrectlyStarFeedback.value = true
-
+      
       setTimeout(function(){
         //if we are at the end of one test
         if(currentTrial.value === trials[currentTest.value].trialDataSet.length - 1) {
@@ -43,8 +43,8 @@ export function handleUserSelection(testHasStarted, userChoice, trials, currentT
           //of tests, if it is, thats the end!
           if(currentTest.value === trials.length -1){
             console.log("full test has ended")
+            store.state[store.getters.getCurrentTest] = trials
             router.push("/FM_Categorization_Black_White_Feedback")
-
           }else {
             currentTest.value++;
             currentTrial.value = 0;
@@ -52,7 +52,9 @@ export function handleUserSelection(testHasStarted, userChoice, trials, currentT
             console.error("too big! this is the endd")     
           }
         } else {
+          startTimer();
           currentTrial.value++
+          trials[currentTest.value].trialDataSet[currentTrial.value].visibility = "block"
         }
        userChoseCorrectlyStarFeedback.value = false
      }, 1000)

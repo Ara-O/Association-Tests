@@ -3,8 +3,6 @@
     <h3>Congratulations! You have finished the test</h3>
     <div style="display: flex; column-gap: 20px">
       <main-button routeTo="/Home" @click="storeFMData">Go back to home page</main-button>
-      <main-button routeTo="">Take IAT test</main-button>
-      <main-button routeTo="">Take IBT test</main-button>
     </div>
 
     <div class="feedbacks">
@@ -35,6 +33,13 @@
         </div>
       </div>
     </div>
+<br>
+    <!-- <div class="feedbacks">
+      <div class="feedback-wrapper">
+
+      <h4>hah</h4>
+      </div>
+</div> -->
   </main>
 </template>
 
@@ -42,7 +47,9 @@
 import "../../../styles/Feedback_Page.css";
 import MainButton from "../../../components/Buttons/MainButton.vue";
 import { useStore } from "vuex";
-import { reactive } from "vue";
+import { onMounted, reactive } from "vue";
+import storingDataFm from "../../../modules/storingData/storingDataFM"
+import * as confetti from "canvas-confetti";
 
 let speedData = reactive({
   practice: 0,
@@ -79,9 +86,47 @@ trialData.forEach((trialdataloop) => {
   });
 });
 
-function storeFMData(){
-  console.log(store.state[store.getters.getCurrentTest])
+function launchConfetti(){
+      var myCanvas = document.querySelector(".gender-feedback-main");
+
+      var myConfetti = confetti.create(myCanvas, { resize: true });
+
+      // do this for 1 seconds
+      var duration = 10 * 100;
+      var end = Date.now() + duration;
+
+      (function frame() {
+        // launch a few confetti from the left edge
+        myConfetti({
+          particleCount: 7,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+        });
+        // and launch a few from the right edge
+        myConfetti({
+          particleCount: 7,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+        });
+
+        // keep going until we are out of time
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      })();
 }
+
+function storeFMData(){
+  let testData =  store.state[store.getters.getCurrentTest] ;
+  storingDataFm(testData, store, "Face_Matching_Black_White")
+
+}
+
+onMounted(()=> {
+  launchConfetti()
+})
 </script>
 
 <style scoped>
@@ -99,5 +144,10 @@ function storeFMData(){
   flex-direction: column;
   box-sizing: border-box;
   padding: 32px 41px;
+}
+
+.feedback-wrapper{
+  border-radius: 5px;
+    box-shadow: -2px 4px 4px -1px #cbcbcb87, 0px 0px 4px #e4e4e48a;
 }
 </style>

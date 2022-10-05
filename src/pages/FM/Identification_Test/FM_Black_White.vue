@@ -123,7 +123,7 @@ function startTest() {
 .in-test-instructions {
   line-height: 32px;
   font-weight: 400;
-  width: 530px;
+  width: 560px;
   font-size: 16px;
 }
 

@@ -99,12 +99,13 @@ function handleUserChoice(direction) {
     userChoseCorrectly,
     userChoseIncorrectly,
     router,
-    store
+    store,
+    "FM_Categorization_Black_White_Feedback"
   );
 }
 
 onMounted(()=> {
-  store.commit("changeCurrentTest", "FM_Black_White")
+  store.commit("changeCurrentTest", "FM_Categorization_Black_White")
 })
 function getImage(img) {
   return new URL(`../../../assets/stimulus_faces/${img}.jpg`, import.meta.url)

@@ -120,7 +120,7 @@ function launchConfetti(){
 
 function storeFMData(){
   let testData =  store.state[store.getters.getCurrentTest] ;
-  storingDataFm(testData, store, "Face_Matching_Black_White")
+  storingDataFm(testData, store, "Face_Matching_Categorization_Black_White")
 
 }
 

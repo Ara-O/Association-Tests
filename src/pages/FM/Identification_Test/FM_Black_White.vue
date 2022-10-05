@@ -54,14 +54,16 @@
 </template>
   
   <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 import { generatePracticeTrials } from "../../../modules/generateFaceMatchingTrials/IDT/generateBlackWhiteTrials";
 import {
   startFaceMatching,
   handleUserSelection,
 } from "../../../modules/handleAnswers/handleFM";
 
+let store = useStore();
 let router = useRouter();
 let currentTest = ref(0);
 let currentTrial = ref(0);
@@ -72,12 +74,12 @@ let trials = [
   {
     instruction:
       "This is the practice test. Match the categories as fast as possible. When you are ready, please click the green arrow below to start.",
-    trialDataSet: generatePracticeTrials(8, true),
+    trialDataSet: generatePracticeTrials(2, true),
   },
   {
     instruction:
       "Practice over, Match the categories as fast as possible. When you are ready, please click the green arrow below to start.",
-    trialDataSet: generatePracticeTrials(12, false),
+    trialDataSet: generatePracticeTrials(4, false),
   },
 ];
 
@@ -91,9 +93,15 @@ function handleUserChoice(direction) {
     currentTrial,
     userChoseCorrectly,
     userChoseIncorrectly,
-    router
+    router,
+    store,
+    "FM_Identification_Black_White_Feedback"
   );
 }
+
+onMounted(()=> {
+  store.commit("changeCurrentTest", "FM_Identification_Black_White")
+})
 
 function getImage(img) {
   return new URL(`../../../assets/stimulus_faces/${img}.jpg`, import.meta.url)

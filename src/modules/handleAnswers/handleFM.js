@@ -21,14 +21,13 @@ export function startFaceMatching(){
   startTimer();
 }
 
-export function handleUserSelection(testHasStarted, userChoice, trials, currentTest, currentTrial, userChoseCorrectlyStarFeedback, userChoseIncorrectlyFeedback, router, store){
+export function handleUserSelection(testHasStarted, userChoice, trials, currentTest, currentTrial, userChoseCorrectlyStarFeedback, userChoseIncorrectlyFeedback, router, store, routeTo){
     //!check if user is right or not, if user is right,
     //!increment the currentTrial, if not, show error, etc etc
     // console.log("user choice: ", userChoice, " correct choice: ", trials[currentTest.value].trialDataSet[currentTrial.value].correctImagePosition)
   
     
     if(userChoice === trials[currentTest.value].trialDataSet[currentTrial.value].correctImagePosition){
-      console.log('they got it right')
       stopTimer();
       trials[currentTest.value].trialDataSet[currentTrial.value].visibility = "none"
       trials[currentTest.value].trialDataSet[currentTrial.value].reactionTime = ms;
@@ -44,7 +43,7 @@ export function handleUserSelection(testHasStarted, userChoice, trials, currentT
           if(currentTest.value === trials.length -1){
             console.log("full test has ended")
             store.state[store.getters.getCurrentTest] = trials
-            router.push("/FM_Categorization_Black_White_Feedback")
+            router.push(`/${routeTo}`)
           }else {
             currentTest.value++;
             currentTrial.value = 0;
@@ -59,7 +58,6 @@ export function handleUserSelection(testHasStarted, userChoice, trials, currentT
      }, 1000)
      
     }else {
-      console.log('they got it wrong')
       trials[currentTest.value].trialDataSet[currentTrial.value].accuracy = 0;
       userChoseIncorrectlyFeedback.value = true
       setTimeout(function(){

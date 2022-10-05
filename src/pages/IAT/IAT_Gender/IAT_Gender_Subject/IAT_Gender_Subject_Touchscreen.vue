@@ -84,16 +84,16 @@ export default {
           clickerLeft: "Math.png",
           clickerRight: "Reading.png",
         },
-        // {
-        //   block: "Block3_TS",
-        //   instructions:
-        //     "Practice: Click the left box for Male images/Math images, and the right box for Female images/Reading images",
-        //   data: testData_Block3("Left", "Right", 8, true),
-        //   clickerLeft: "Male_And_Math.png",
-        //   clickerRight: "Female_And_Reading.png",
-        // },
         {
           block: "Block3_TS",
+          instructions:
+            "Practice: Click the left box for Male images/Math images, and the right box for Female images/Reading images",
+          data: testData_Block3("Left", "Right", 8, true),
+          clickerLeft: "Male_And_Math.png",
+          clickerRight: "Female_And_Reading.png",
+        },
+        {
+          block: "Block4_TS",
           instructions:
             "Tap left for male images and math images, and right for female images and reading images. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block3("Left", "Right", 32),
@@ -101,23 +101,23 @@ export default {
           clickerRight: "Female_And_Reading.png",
         },
         {
-          block: "Block4_TS",
+          block: "Block5_TS",
           instructions:
             "Tap right for male images and left for female images. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block1("Right", "Left", 16),
           clickerLeft: "Female.png",
           clickerRight: "Male.png",
         },
-        // {
-        //   block: "Block6_TS",
-        //   instructions:
-        //     "Practice: Click the right for Male images/Reading images, and the left for Female images/Math images",
-        //   data: testData_Block4("Right", "Left", 8, true),
-        //   clickerLeft: "Female_And_Math.png",
-        //   clickerRight: "Male_And_Reading.png",
-        // },
         {
-          block: "Block5_TS",
+          block: "Block6_TS",
+          instructions:
+            "Practice: Click the right for Male images/Reading images, and the left for Female images/Math images",
+          data: testData_Block4("Right", "Left", 8, true),
+          clickerLeft: "Female_And_Math.png",
+          clickerRight: "Male_And_Reading.png",
+        },
+        {
+          block: "Block7_TS",
           instructions:
             "Tap right for male images and reading images, and left for female images and math images. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block4("Right", "Left", 32),

@@ -62,28 +62,28 @@ export default {
           instructions: "Click E for math images, and I for reading images. Remember, you should tap as fast as you can!",
           data: trials.testData_Block2("E", "I", 16),
         },
-        // {
-        //   block: "Block3",
-        //   instructions: "Practice: Click E for Male images/Math images, and I for Female images/Reading images",
-        //   data:  trials.testData_Block3("E", "I", 8, true),
-        // },
         {
           block: "Block3",
+          instructions: "Practice: Click E for Male images/Math images, and I for Female images/Reading images",
+          data:  trials.testData_Block3("E", "I", 8, true),
+        },
+        {
+          block: "Block4",
           instructions: "Click E for male images and math images, and I for female images and reading images. Remember, you should tap as fast as you can!",
           data:  trials.testData_Block3("E", "I", 32),
         },
         {
-          block: "Block4",
+          block: "Block5",
           instructions: "Click I for male images and E for female images. Remember, you should tap as fast as you can!",
           data: trials.testData_Block1("I", "E", 16),
         },
-        // {
-        //   block: "Block6",
-        //   instructions: "Practice: Click I for Male images and Reading images, and E for Female images and Math images",
-        //   data:  trials.testData_Block4("I", "E", 8, true),
-        // },
         {
-          block: "Block5",
+          block: "Block6",
+          instructions: "Practice: Click I for Male images and Reading images, and E for Female images and Math images",
+          data:  trials.testData_Block4("I", "E", 8, true),
+        },
+        {
+          block: "Block7",
           instructions: "Click I for male images and reading images, and E for female images and math images. Remember, you should tap as fast as you can!",
           data:  trials.testData_Block4("I", "E", 32),
         }

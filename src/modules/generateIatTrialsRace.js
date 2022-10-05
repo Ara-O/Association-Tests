@@ -129,7 +129,7 @@ function testData_Block2(happy, sad, trials) {
 
 // White and happy faces, black and sad faces
 //  IAT block 3 and 4
-function testData_Block3(white_happy, black_sad, trials) {
+function testData_Block3(white_happy, black_sad, trials, practice = false) {
     let fullData = [];
 
     let white_happy_faces = shuffleObjects(JSON.parse(JSON.stringify([...white_children_images, ...happy_face_images])));
@@ -150,14 +150,18 @@ function testData_Block3(white_happy, black_sad, trials) {
 
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
-        el.description = "White faces/Happy faces are grouped together, while Black faces/Sad faces are grouped together"
+        if(practice){
+            el.description = "Practice: White faces/Happy faces are grouped together, while Black faces/Sad faces are grouped together"
+        } else {
+            el.description = "White faces/Happy faces are grouped together, while Black faces/Sad faces are grouped together"
+        }
     })
 
     return fullData
 }
 
 // IAT block 6 and 7
-function testData_Block4(white_sad, black_happy, trials) {
+function testData_Block4(white_sad, black_happy, trials, practice = false) {
 
     let fullData = [];
 
@@ -179,7 +183,11 @@ function testData_Block4(white_sad, black_happy, trials) {
 
     fullData.forEach((el, index) => {
         index === 0 ? el.visibility = "block" : el.visibility = "none";
-        el.description = "White faces/Happy faces are grouped together, while Black faces/Sad faces are grouped together"
+        if(practice){
+            el.description = "Practice: White faces/Sad faces are grouped together, while Black faces/Happy faces are grouped together"
+        }else {
+            el.description = "White faces/Sad faces are grouped together, while Black faces/Happy faces are grouped together"
+        }
     })
 
     return fullData

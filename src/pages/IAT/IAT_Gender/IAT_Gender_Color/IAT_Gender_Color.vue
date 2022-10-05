@@ -62,28 +62,28 @@ export default {
           instructions: "Click E for blue colors, and I for pink colors. Remember, you should tap as fast as you can!",
           data: testData_Block2("E", "I", 16),
         },
-        // {
-        //   block: "Block3",
-        //   instructions: "Practice: Click E for Male images/Blue colors, and I for Female images/Pink colors",
-        //   data:  testData_Block3("E", "I", 8, true),
-        // },
         {
           block: "Block3",
+          instructions: "Practice: Click E for Male images/Blue colors, and I for Female images/Pink colors",
+          data:  testData_Block3("E", "I", 8, true),
+        },
+        {
+          block: "Block4",
           instructions: "Click E for male images and blue colors, and I for female images and pink colors. Remember, you should tap as fast as you can!",
           data:  testData_Block3("E", "I", 32),
         },
         {
-          block: "Block4",
+          block: "Block5",
           instructions: "Click I for male images and E for female images. Remember, you should tap as fast as you can!",
           data:  testData_Block1("I", "E", 16),
         },
-        // {
-        //   block: "Block6",
-        //   instructions: "Practice: Click I for Male images and Pink colors, and E for Female images and Blue colors",
-        //   data:  testData_Block4("I", "E", 8, true),
-        // },
         {
-          block: "Block5",
+          block: "Block6",
+          instructions: "Practice: Click I for Male images and Pink colors, and E for Female images and Blue colors",
+          data:  testData_Block4("I", "E", 8, true),
+        },
+        {
+          block: "Block7",
           instructions: "Click I for male images and pink colors, and E for female images and blue colors. Remember, you should tap as fast as you can!",
           data:  testData_Block4("I", "E", 32),
         }

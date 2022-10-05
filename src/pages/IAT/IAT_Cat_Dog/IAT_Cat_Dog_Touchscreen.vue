@@ -86,16 +86,16 @@ export default {
           clickerLeft: "Happy.png",
           clickerRight: "Sad.png",
         },
-        // {
-        //   block: "Block3_TS",
-        //   instructions:
-        //     "Practice: Click the left box for Dog images/Happy faces, and the right box for Cat images/Sad faces",
-        //   data: testData_Block3("Left", "Right", 8, true),
-        //   clickerLeft: "Dog_And_Happy_Face.png",
-        //   clickerRight: "Cat_And_Sad_Face.png",
-        // },
         {
           block: "Block3_TS",
+          instructions:
+            "Practice: Click the left box for Dog images/Happy faces, and the right box for Cat images/Sad faces",
+          data: testData_Block3("Left", "Right", 8, true),
+          clickerLeft: "Dog_And_Happy_Face.png",
+          clickerRight: "Cat_And_Sad_Face.png",
+        },
+        {
+          block: "Block4_TS",
           instructions:
             "Tap left for dog images and happy faces and right for cat images and sad faces. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block3("Left", "Right", 32),
@@ -103,23 +103,23 @@ export default {
           clickerRight: "Cat_And_Sad_Face.png",
         },
         {
-          block: "Block4_TS",
+          block: "Block5_TS",
           instructions:
             "The images are reversed now!<br/>Tap left for dog images and right for cat images. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block1("Right", "Left", 16),
           clickerLeft: "Dog.png",
           clickerRight: "Cat.png",
         },
-        // {
-        //   block: "Block6_TS",
-        //   instructions:
-        //     "Practice: Click the right for Dog images/Sad faces, and the left for Female Cat images/Happy faces",
-        //   data: testData_Block4("Right", "Left", 8, true),
-        //   clickerLeft: "Cat_And_Happy_Face.png",
-        //   clickerRight: "Dog_And_Sad_Face.png",
-        // },
         {
-          block: "Block5_TS",
+          block: "Block6_TS",
+          instructions:
+            "Practice: Click the right for Dog images/Sad faces, and the left for Female Cat images/Happy faces",
+          data: testData_Block4("Right", "Left", 8, true),
+          clickerLeft: "Cat_And_Happy_Face.png",
+          clickerRight: "Dog_And_Sad_Face.png",
+        },
+        {
+          block: "Block7_TS",
           instructions:
             "Tap left for cat images and happy faces and right for dog images and sad faces. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block4("Right", "Left", 32),

@@ -1,6 +1,15 @@
 <template>
   <main class="test">
     <section id="test-border">
+      <div id="wrong" style="display: none">
+        <!-- <h3></h3> -->
+        <h4>Incorrect. Try again to progress!</h4>
+        <img
+          src="../../../assets/App_Icons/incorrectImg.png"
+          alt="Wrong icon"
+          class="wrong-icon"
+        />
+      </div>
     <section class="instruction" v-if="notStarted">
       <h3 v-html="fullTest[currentBlock]?.instructions"></h3>
       <img
@@ -19,15 +28,6 @@
           :src="getImage(data.image)"
         />
       </div>
-    </div>
-    <div id="wrong" style="display: none">
-      <!-- <h3></h3> -->
-      <h4>Incorrect. Try again to progress!</h4>
-      <img
-        src="../../../assets/App_Icons/incorrectImg.png"
-        alt="Wrong icon"
-        class="wrong-icon"
-      />
     </div>
     <clicker>
       <template #left>
@@ -165,7 +165,7 @@ export default {
     },
   },
 
-  methods: {
+  methods: { 
     getImage(url) {
       return new URL(`../../../assets/IAT_Cat_Dog/${url}`, import.meta.url).href;
     },

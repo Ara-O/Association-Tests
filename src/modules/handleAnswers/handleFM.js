@@ -48,8 +48,7 @@ export function handleUserSelection(testHasStarted, userChoice, trials, currentT
           }else {
             currentTest.value++;
             currentTrial.value = 0;
-            testHasStarted.value = false,
-            console.error("too big! this is the endd")     
+            testHasStarted.value = false;
           }
         } else {
           startTimer();

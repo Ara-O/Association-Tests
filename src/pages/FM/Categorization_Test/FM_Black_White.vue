@@ -79,12 +79,12 @@ let trials = [
   {
     instruction:
       "This is the practice test. Match the categories as fast as possible. When you are ready, please click the green arrow below to start.",
-    trialDataSet: generatePracticeTrials(20, true),
+    trialDataSet: generatePracticeTrials(4, true),
   },
   {
     instruction:
       "Practice over, Match the categories as fast as possible. When you are ready, please click the green arrow below to start.",
-    trialDataSet: generatePracticeTrials(20, false),
+    trialDataSet: generatePracticeTrials(4, false),
   },
 ];
 

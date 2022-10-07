@@ -12,11 +12,11 @@
           <div class="image-wrapper"></div>
           <div class="feedback-message-wrapper">
             <h3 class="feedback-message">
-              Accuracy: {{ accuracyData.practice }}%
+              Accuracy: {{ accuracyData.practice.toFixed(2) }}%
             </h3>
             <h3 class="feedback-message">
               Speed:
-              {{ speedData.practice }}ms
+              {{ speedData.practice.toFixed(2) }}ms
             </h3>
           </div>
         </div>
@@ -25,10 +25,10 @@
           <!-- image here -->
           <div class="image-wrapper"></div>
           <div class="feedback-message-wrapper">
-            <h3 class="feedback-message">Accuracy: {{ accuracyData.test }}%</h3>
+            <h3 class="feedback-message">Accuracy: {{ accuracyData.test.toFixed(2) }}%</h3>
             <h3 class="feedback-message">
               Speed:
-              {{ speedData.test }}ms
+              {{ speedData.test.toFixed(2) }}ms
             </h3>
           </div>
         </div>

@@ -35,22 +35,17 @@
               alt="star"
               class="irbt_star"
             />
+            <img
+              src="../../../../assets/IT_Faces/cross.jpg"
+              alt="cross"
+              class="ibt-cross"
+            />
             <div
               v-for="trial in irbt_trials[section].trials"
               :key="trial.id"
               :style="{ display: trial.visibility }"
             >
               <img :src="getImage(trial.image)" class="trialimg" />
-            </div>
-            <div class="irbt-wrong-wrapper" id="wrong-ibt">
-              <h3 class="irbt-wrong" style="display: none">
-                Incorrect. Try again to progress!
-              </h3>
-              <img
-                src="../../../../assets/App_Icons/incorrectImg.png"
-                alt="Wrong icon"
-                class="irbt-wrong-img"
-              />
             </div>
           </div>
           <img
@@ -208,7 +203,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 @import url("../../../../styles/IBT.css");

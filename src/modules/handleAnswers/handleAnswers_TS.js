@@ -22,7 +22,7 @@ function stopTimer() {
 let testIsPaused = false;
 
 function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {
-  const test = thiskeyword;
+  const test = thiskeyword; 
   if (!test.notStarted && !testIsPaused) {
     let keyClicked = target;
     const currentChallenge = Data[test.arrayIndex];
@@ -46,8 +46,8 @@ function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {
         
         // Making sure the test isnt over yet
         if (test.arrayIndex !== Data.length - 1) {
-          setTimeout(function(){
-            startTimer();
+           setTimeout(function(){
+             startTimer();
             Data[test.arrayIndex + 1].visibility = "block";
             test.arrayIndex += 1;
             testIsPaused = false;
@@ -63,6 +63,7 @@ function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {
           } else {
             test.currentBlock++;
             test.notStarted = true;
+            testIsPaused = false;
           }
         }
       } else {

@@ -36,6 +36,5 @@
 @media (max-width: 500px) {
     #test-border {
         border: none;
-        width: 100vw
     }
 }

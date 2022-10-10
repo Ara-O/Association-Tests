@@ -71,32 +71,32 @@ export default {
           instructions: "Click E for happy faces and I for sad faces. Remember, you should tap as fast as you can!",
           data: testData_Block2("E", "I", 16),
         },
-        // {
-        //   block: "Block3",
-        //   instructions:
-        //     "Practice: Click E for White faces/Happy faces, and I for Black faces/Sad faces",
-        //   data: testData_Block3("E", "I", 2),
-        // },
         {
           block: "Block3",
+          instructions:
+            "Practice: Click E for White faces/Happy faces, and I for Black faces/Sad faces",
+          data: testData_Block3("E", "I", 8, true),
+        },
+        {
+          block: "Block4",
           instructions:
             "Let's Continue:  Click E for white faces and happy faces, and I for black faces and sad faces. Remember, you should tap as fast as you can!",
           data: testData_Block3("E", "I", 32),
         },
         {
-          block: "Block4",
+          block: "Block5",
           instructions:
             "The images are reversed now!<br/>Click E for black faces and I for white faces. Remember, you should tap as fast as you can!",
           data: testData_Block1("I", "E", 16),
         },
-        // {
-        //   block: "Block6",
-        //   instructions:
-        //     "Practice: Click E for Black faces/Happy faces, and I for white faces/Sad faces",
-        //   data: testData_Block4("I", "E", 2),
-        // },
         {
-          block: "Block5",
+          block: "Block6",
+          instructions:
+            "Practice: Click E for Black faces/Happy faces, and I for white faces/Sad faces",
+          data: testData_Block4("I", "E", 8, true),
+        },
+        {
+          block: "Block7",
           instructions:
             "Let's Continue: Click E for black faces and happy faces, and I for white faces and sad faces. Remember, you should tap as fast as you can!",
           data: testData_Block4("I", "E", 32),

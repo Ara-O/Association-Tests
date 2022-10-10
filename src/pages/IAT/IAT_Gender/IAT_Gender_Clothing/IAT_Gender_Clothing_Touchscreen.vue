@@ -85,16 +85,16 @@ export default {
           clickerLeft: "Male_Clothing.png",
           clickerRight: "Female_Clothing.png",
         },
-        // {
-        //   block: "Block3_TS",
-        //   instructions:
-        //     "Practice: Click the left box for Male images/Male clothing, and the right box for Female images/Female clothing",
-        //   data: testData_Block3("Left", "Right", 8, true),
-        //   clickerLeft: "Male_And_Male_Clothing.png",
-        //   clickerRight: "Female_And_Female_Clothing.png",
-        // },
         {
           block: "Block3_TS",
+          instructions:
+            "Practice: Click the left box for Male images/Male clothing, and the right box for Female images/Female clothing",
+          data: testData_Block3("Left", "Right", 8, true),
+          clickerLeft: "Male_And_Male_Clothing.png",
+          clickerRight: "Female_And_Female_Clothing.png",
+        },
+        {
+          block: "Block4_TS",
           instructions:
             "Tap left for male images and male clothing, and right for female images and female clothing. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block3("Left", "Right", 32),
@@ -102,23 +102,23 @@ export default {
           clickerRight: "Female_And_Female_Clothing.png",
         },
         {
-          block: "Block4_TS",
+          block: "Block5_TS",
           instructions:
             "Tap right for male images and the left for female images. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block1("Right", "Left", 16),
           clickerLeft: "Female.png",
           clickerRight: "Male.png",
         },
-        // {
-        //   block: "Block6_TS",
-        //   instructions:
-        //     "Practice: Click the right for Male images/Female clothing, and the left for Female images/Male clothing",
-        //   data: testData_Block4("Right", "Left", 8, true),
-        //   clickerLeft: "Female_And_Male_Clothing.png",
-        //   clickerRight: "Male_And_Female_Clothing.png",
-        // },
         {
-          block: "Block5_TS",
+          block: "Block6_TS",
+          instructions:
+            "Practice: Click the right for Male images/Female clothing, and the left for Female images/Male clothing",
+          data: testData_Block4("Right", "Left", 8, true),
+          clickerLeft: "Female_And_Male_Clothing.png",
+          clickerRight: "Male_And_Female_Clothing.png",
+        },
+        {
+          block: "Block7_TS",
           instructions:
             "Tap right for male images and female clothing, and left for female images and male clothing. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block4("Right", "Left", 32),

@@ -37,7 +37,7 @@
     column-gap: 30px;
 }
 
-.irbt_star {
+.irbt_star, .ibt_cross {
     display: none;
     width: 110px;
 }
@@ -150,10 +150,7 @@
         font-size: 14px;
     }
 
-    main {
-        /* background: white; */
-    }
-
+ 
     .faceLeft {
         max-width: 120px;
     }

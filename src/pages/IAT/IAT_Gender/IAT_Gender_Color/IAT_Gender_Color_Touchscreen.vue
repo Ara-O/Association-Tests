@@ -84,16 +84,16 @@ export default {
           clickerLeft: "Blue.png",
           clickerRight: "Pink.png",
         },
-        // {
-        //   block: "Block3_TS",
-        //   instructions:
-        //     "Practice: Click the left box for Male images/Blue colors, and the right box for Female images/Pink colors",
-        //   data: testData_Block3("Left", "Right", 8, true),
-        //   clickerLeft: "Male_And_Blue.png",
-        //   clickerRight: "Female_And_Pink.png",
-        // },
         {
           block: "Block3_TS",
+          instructions:
+            "Practice: Click the left box for Male images/Blue colors, and the right box for Female images/Pink colors",
+          data: testData_Block3("Left", "Right", 8, true),
+          clickerLeft: "Male_And_Blue.png",
+          clickerRight: "Female_And_Pink.png",
+        },
+        {
+          block: "Block4_TS",
           instructions:
             "Tap left for male images and blue colors, and right for female images and pink colors. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block3("Left", "Right", 32),
@@ -101,23 +101,23 @@ export default {
           clickerRight: "Female_And_Pink.png",
         },
         {
-          block: "Block4_TS",
+          block: "Block5_TS",
           instructions:
             "Tap right for male images and left for female images. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block1("Right", "Left", 16),
           clickerLeft: "Female.png",
           clickerRight: "Male.png",
         },
-        // {
-        //   block: "Block6_TS",
-        //   instructions:
-        //     "Practice: Click the right for Male images/Pink colors, and the left for Female images/Blue colors",
-        //   data: testData_Block4("Right", "Left", 8, true),
-        //   clickerLeft: "Female_And_Blue.png",
-        //   clickerRight: "Male_And_Pink.png",
-        // },
         {
-          block: "Block5_TS",
+          block: "Block6_TS",
+          instructions:
+            "Practice: Click the right for Male images/Pink colors, and the left for Female images/Blue colors",
+          data: testData_Block4("Right", "Left", 8, true),
+          clickerLeft: "Female_And_Blue.png",
+          clickerRight: "Male_And_Pink.png",
+        },
+        {
+          block: "Block7_TS",
           instructions:
             "Tap right for male images and pink colors, and left for female images and blue colors. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block4("Right", "Left", 32),

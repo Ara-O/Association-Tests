@@ -85,16 +85,16 @@ export default {
           clickerLeft: "Happy_Face.jpg",
           clickerRight: "Sad_Face.jpg",
         },
-        // {
-        //   block: "Block3_TS",
-        //   instructions:
-        //     "Practice: Click the left for White faces/Happy faces, and the right for Black faces/Sad faces",
-        //   data: testData_Block3("Left", "Right", 10),
-        //   clickerLeft: "White_And_Happy_Face.png",
-        //   clickerRight: "Black_And_Sad_Face.png",
-        // },
         {
           block: "Block3_TS",
+          instructions:
+            "Practice: Click the left for White faces/Happy faces, and the right for Black faces/Sad faces",
+          data: testData_Block3("Left", "Right", 10),
+          clickerLeft: "White_And_Happy_Face.png",
+          clickerRight: "Black_And_Sad_Face.png",
+        },
+        {
+          block: "Block4_TS",
           instructions:
             "Tap  left for white faces and happy faces, and the right for black faces and sad faces. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block3("Left", "Right", 32),
@@ -102,23 +102,23 @@ export default {
           clickerRight: "Black_And_Sad_Face.png",
         },
         {
-          block: "Block4_TS",
+          block: "Block5_TS",
           instructions:
             "Click the left for images of black people or the right for images of white people. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block1("Right", "Left", 16),
           clickerLeft: "Black_Face.png",
           clickerRight: "White_Face.png",
         },
-        // {
-        //   block: "Block6_TS",
-        //   instructions:
-        //     "Practice: Click the left for Black faces/Happy faces  and the left for White faces/Sad faces",
-        //   data: testData_Block4("Right", "Left", 10),
-        //   clickerLeft: "Black_And_Happy_Face.png",
-        //   clickerRight: "White_And_Sad_Face.png",
-        // },
         {
-          block: "Block5_TS",
+          block: "Block6_TS",
+          instructions:
+            "Practice: Click the left for Black faces/Happy faces  and the left for White faces/Sad faces",
+          data: testData_Block4("Right", "Left", 10),
+          clickerLeft: "Black_And_Happy_Face.png",
+          clickerRight: "White_And_Sad_Face.png",
+        },
+        {
+          block: "Block7_TS",
           instructions:
             "Click the right for white faces and sad faces, and the left for black faces and happy faces. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
           data: testData_Block4("Right", "Left", 32),

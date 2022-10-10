@@ -22,7 +22,7 @@ export default createStore({
     IBT_Gender_Toy: [],
     IT_trials: {},
     IT_trials_text: [],
-    uid: 0,
+    uid: "",
   },
 
 

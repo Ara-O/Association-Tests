@@ -11,52 +11,56 @@
         />
       </section>
       <section v-else>
-        <!-- <h3 class="in-test-instructions">
+        <section v-show="!paused">
+          <!-- <h3 class="in-test-instructions">
         {{ trials[currentTest].instruction }}
       </h3> -->
-        <img
-          src="../../../assets/IT_Faces/star.jpg"
-          alt="star"
-          class="star"
-          v-show="userChoseCorrectly"
-        />
-
-        <!-- trial images -->
-        <div v-show="!userChoseCorrectly">
-          <div
-            v-for="trial in trials[currentTest].trialDataSet"
-            :key="trial.id"
-          >
-            <img
-              :src="getImage(trial.stimulusImage)"
-              :style="{ display: trial.visibility }"
-              class="stimulus-img"
-            />
+          <img
+            src="../../../assets/IT_Faces/star.jpg"
+            alt="star"
+            class="star"
+            v-show="userChoseCorrectly"
+          />
+          <img
+            src="../../../assets/IT_Faces/cross.jpg"
+            alt="cross"
+            class="cross"
+            v-if="userChoseIncorrectly"
+          />
+          <!-- trial images -->
+          <div v-show="!userChoseCorrectly && !userChoseIncorrectly">
+            <div
+              v-for="trial in trials[currentTest].trialDataSet"
+              :key="trial.id"
+            >
+              <img
+                :src="getImage(trial.stimulusImage)"
+                :style="{ display: trial.visibility }"
+                class="stimulus-img"
+              />
+            </div>
           </div>
-        </div>
-        <img
-          :src="
-            getImage(trials[currentTest].trialDataSet[currentTrial].leftImage)
-          "
-          alt="Left image"
-          @click="handleUserChoice('left')"
-          v-show="!userChoseCorrectly"
-          class="left"
-        />
-        <img
-          v-show="!userChoseCorrectly"
-          :src="
-            getImage(trials[currentTest].trialDataSet[currentTrial].rightImage)
-          "
-          alt="Right image"
-          @click="handleUserChoice('right')"
-          class="right"
-        />
-
-        <!-- !Going to be changed for an entire screen of a cross -->
-        <h4 v-if="userChoseIncorrectly" id="wrong">
-          Incorrect, Please try again!
-        </h4>
+          <img
+            :src="
+              getImage(trials[currentTest].trialDataSet[currentTrial].leftImage)
+            "
+            alt="Left image"
+            @click="handleUserChoice('left')"
+            v-show="!userChoseCorrectly && !userChoseIncorrectly"
+            class="left"
+          />
+          <img
+            v-show="!userChoseCorrectly && !userChoseIncorrectly"
+            :src="
+              getImage(
+                trials[currentTest].trialDataSet[currentTrial].rightImage
+              )
+            "
+            alt="Right image"
+            @click="handleUserChoice('right')"
+            class="right"
+          />
+        </section>
       </section>
     </section>
   </main>
@@ -77,6 +81,7 @@ let store = useStore();
 let currentTest = ref(0);
 let currentTrial = ref(0);
 let userChoseCorrectly = ref(false);
+let paused = ref(false);
 let userChoseIncorrectly = ref(false);
 let testHasStarted = ref(false);
 let trials = [
@@ -103,21 +108,28 @@ function handleUserChoice(direction) {
     userChoseCorrectly,
     userChoseIncorrectly,
     router,
-    store,
-    "FM_Categorization_Black_White_Feedback"
+    paused,
+    "FM_Categorization_Black_White_Feedback",
+    store
   );
 }
 
 onMounted(() => {
   store.commit("changeCurrentTest", "FM_Categorization_Black_White");
 });
+
 function getImage(img) {
   return new URL(`../../../assets/stimulus_faces/${img}.jpg`, import.meta.url)
     .href;
 }
+
 function startTest() {
   testHasStarted.value = true;
-  startFaceMatching();
+  paused.value = true;
+  setTimeout(function () {
+    paused.value = false;
+    startFaceMatching();
+  }, 1000);
 }
 </script>
 

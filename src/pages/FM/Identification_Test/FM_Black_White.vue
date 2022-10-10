@@ -11,7 +11,7 @@
         />
       </section>
       <section v-else>
-        <section v-if="!paused">
+        <section v-show="!paused">
           <!-- <h3 class="in-test-instructions">
           {{ trials[currentTest].instruction }}
         </h3> -->
@@ -27,26 +27,30 @@
             class="cross"
             v-if="userChoseIncorrectly"
           />
-          <img
-            :src="
-              getImage(
-                trials[currentTest].trialDataSet[currentTrial].stimulusImage
-              )
-            "
-            class="stimulus-img"
-            v-if="!userChoseCorrectly && !userChoseIncorrectly"
-          />
+          <!-- trial images -->
+          <div v-show="!userChoseCorrectly && !userChoseIncorrectly">
+            <div
+              v-for="trial in trials[currentTest].trialDataSet"
+              :key="trial.id"
+            >
+              <img
+                :src="getImage(trial.stimulusImage)"
+                :style="{ display: trial.visibility }"
+                class="stimulus-img"
+              />
+            </div>
+          </div>
           <img
             :src="
               getImage(trials[currentTest].trialDataSet[currentTrial].leftImage)
             "
             alt="Left image"
             @click="handleUserChoice('left')"
-            v-if="!userChoseCorrectly && !userChoseIncorrectly"
+            v-show="!userChoseCorrectly && !userChoseIncorrectly"
             class="left"
           />
           <img
-            v-if="!userChoseCorrectly && !userChoseIncorrectly"
+            v-show="!userChoseCorrectly && !userChoseIncorrectly"
             :src="
               getImage(
                 trials[currentTest].trialDataSet[currentTrial].rightImage
@@ -63,7 +67,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { generatePracticeTrials } from "../../../modules/generateFaceMatchingTrials/IDT/generateBlackWhiteTrials";
@@ -104,7 +108,9 @@ function handleUserChoice(direction) {
     userChoseCorrectly,
     userChoseIncorrectly,
     router,
-    paused
+    paused,
+    "/FM_Identification_Black_White_Feedback",
+    store
   );
 }
 
@@ -116,6 +122,7 @@ function getImage(img) {
   return new URL(`../../../assets/stimulus_faces/${img}.jpg`, import.meta.url)
     .href;
 }
+
 function startTest() {
   testHasStarted.value = true;
   paused.value = true;

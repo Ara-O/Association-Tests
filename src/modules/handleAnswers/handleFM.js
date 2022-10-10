@@ -1,3 +1,5 @@
+import storingDataFM from "../storingData/storingDataFM";
+
 let ms = 0;
 let startTime;
 let currentDate = new Date();
@@ -30,17 +32,12 @@ export function handleUserSelection(
   userChoseCorrectlyStarFeedback,
   userChoseIncorrectlyFeedback,
   router,
-  paused
+  paused,
+  routeTo,
+  store
 ) {
   //!check if user is right or not, if user is right,
   //!increment the currentTrial, if not, show error, etc etc
-  console.log(
-    "user choice: ",
-    userChoice,
-    " correct choice: ",
-    trials[currentTest.value].trialDataSet[currentTrial.value]
-      .correctImagePosition
-  );
 
   if (
     userChoice ===
@@ -70,7 +67,8 @@ export function handleUserSelection(
         //of tests, if it is, thats the end!
         if (currentTest.value === trials.length - 1) {
           console.log("full test has ended");
-          router.push("/FM_Categorization_Black_White_Feedback");
+          store.state[store.getters.getCurrentTest] = trials;
+          router.push(routeTo);
         } else {
           currentTest.value++;
           currentTrial.value = 0;
@@ -78,11 +76,16 @@ export function handleUserSelection(
         }
       } else {
         //Second timer for white screen
+        trials[currentTest.value].trialDataSet[currentTrial.value].visibility =
+          "none";
         currentTrial.value++;
+        trials[currentTest.value].trialDataSet[currentTrial.value].visibility =
+          "block";
+
         setTimeout(function () {
           paused.value = false;
           startTimer();
-        }, 500);
+        }, 1000);
       }
     }, 1000);
   } else {

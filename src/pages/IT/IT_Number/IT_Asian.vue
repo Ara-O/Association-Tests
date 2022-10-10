@@ -112,125 +112,134 @@
     </div>
   </main>
   <main v-if="goToTest">
-    <div v-if="progress === 1" class="midinstructions">
-      <h3>Can you remember all the people?</h3>
-      <h3>Press the right arrow to get started</h3>
-      <img
-        src="../../../assets/App_Icons/rightArrow.png"
-        alt="Right Arrow"
-        class="next"
-        @click="moveForward"
-      />
-    </div>
+    <section id="test-border">
+      <div v-if="progress === 1" class="midinstructions">
+        <h3>Can you remember all the people?</h3>
+        <h3>Press the right arrow to get started</h3>
+        <img
+          src="../../../assets/App_Icons/rightArrow.png"
+          alt="Right Arrow"
+          class="next"
+          @click="moveForward"
+        />
+      </div>
 
-    <!-- ----------------  -->
+      <!-- ----------------  -->
 
-    <div v-if="progress === 2">
-      <h3 class="instructions midinstructions">
-        You will need to remember {{ facesNumber }} faces and numbers. Each face
-        will appear in the middle of the screen with a number below it. Memorize
-        the face and the number. Once you feel that you memorized the face and
-        number, tap on the number. Tap the arrow on the bottom right of the page
-        to get started
-      </h3>
-      <br />
-      <img
-        src="../../../assets/App_Icons/rightArrow.png"
-        alt="Right Arrow"
-        class="next"
-        @click="moveForward"
-      />
-    </div>
+      <div v-if="progress === 2">
+        <h3 class="instructions midinstructions">
+          You will need to remember {{ facesNumber }} faces and numbers. Each
+          face will appear in the middle of the screen with a number below it.
+          Memorize the face and the number. Once you feel that you memorized the
+          face and number, tap on the number. Tap the arrow on the bottom right
+          of the page to get started
+        </h3>
+        <br />
+        <img
+          src="../../../assets/App_Icons/rightArrow.png"
+          alt="Right Arrow"
+          class="next"
+          @click="moveForward"
+        />
+      </div>
 
-    <!-- -------------------- -->
+      <!-- -------------------- -->
 
-    <div class="stardiv">
-      <img src="../../../assets/IT_Faces/star.jpg" class="star" alt="" />
-    </div>
+      <div class="stardiv">
+        <img src="../../../assets/IT_Faces/star.jpg" class="star" alt="" />
+      </div>
 
-    <div v-if="progress === 3">
-      <div v-for="data in facedataclone" :key="data.id" class="faces_displayed">
-        <div>
+      <div v-if="progress === 3">
+        <div
+          v-for="data in facedataclone"
+          :key="data.id"
+          class="faces_displayed"
+        >
+          <div>
+            <img
+              :src="getImg(data.img)"
+              alt=""
+              :style="{ display: data.visibility }"
+              class="face_img"
+            />
+          </div>
           <img
-            :src="getImg(data.img)"
+            :src="getImg(data.cN)"
             alt=""
             :style="{ display: data.visibility }"
-            class="face_img"
+            class="number"
+            @click="nextFaceToMemorize()"
           />
+          <!-- <img src="../../../assets/IT_Faces/White/White_1.jpg" alt=""> -->
         </div>
-        <img
-          :src="getImg(data.cN)"
-          alt=""
-          :style="{ display: data.visibility }"
-          class="number"
-          @click="nextFaceToMemorize()"
-        />
-        <!-- <img src="../../../assets/IT_Faces/White/White_1.jpg" alt=""> -->
       </div>
-    </div>
 
-    <!-- -------------------- -->
+      <!-- -------------------- -->
 
-    <div v-if="progress === 4" class="progress4">
-      <h3 class="instructions midinstructions" v-html="createInstruction"></h3>
-      <img
-        src="../../../assets/App_Icons/rightArrow.png"
-        alt="Right Arrow"
-        class="next"
-        @click="moveForward"
-      />
-    </div>
+      <div v-if="progress === 4" class="progress4">
+        <h3
+          class="instructions midinstructions"
+          v-html="createInstruction"
+        ></h3>
+        <img
+          src="../../../assets/App_Icons/rightArrow.png"
+          alt="Right Arrow"
+          class="next"
+          @click="moveForward"
+        />
+      </div>
 
-    <!-- -------------------- -->
+      <!-- -------------------- -->
 
-    <div v-if="progress === 5">
-      <div>
-        <ul class="faces">
-          <!--LOOPING THROUGH THE IMAGE -->
+      <div v-if="progress === 5">
+        <div>
+          <ul class="faces">
+            <!--LOOPING THROUGH THE IMAGE -->
 
-          <div class="faces_flexbox">
-            <div class="crossdiv">
-              <img
-                src="../../../assets/IT_Faces/cross.jpg"
-                alt=""
-                class="cross"
-              />
-            </div>
-            <div>
-              <li v-for="(data, index) in facedata" :key="data.id">
+            <div class="faces_flexbox">
+              <div class="crossdiv">
                 <img
-                  :src="getImg(data.img)"
-                  :style="{ display: facedata[index].visibility }"
-                  :class="facedata[index].id"
-                  class="img-of-face"
+                  src="../../../assets/IT_Faces/cross.jpg"
+                  alt=""
+                  class="cross"
+                />
+              </div>
+              <div>
+                <li v-for="(data, index) in facedata" :key="data.id">
+                  <img
+                    :src="getImg(data.img)"
+                    :style="{ display: facedata[index].visibility }"
+                    :class="facedata[index].id"
+                    class="img-of-face"
+                  />
+                </li>
+              </div>
+              <div class="correctchoice">
+                <img
+                  src="../../../assets/IT_Faces/N2.jpg"
+                  alt="correct choice"
+                  class="correctchoice-img"
+                  @click="proceedAfterIncorrectChoice"
+                />
+                <h3 style="width: 164px">Click the number above to continue</h3>
+              </div>
+            </div>
+
+            <!-- NUMBER 1 to 5 -->
+
+            <div class="choices">
+              <li v-for="choice in choiceImages" :key="choice.id">
+                <img
+                  :src="getImg(choice)"
+                  alt=""
+                  @click="validateChoice(choice)"
                 />
               </li>
             </div>
-            <div class="correctchoice">
-              <img
-                src="../../../assets/IT_Faces/N2.jpg"
-                alt="correct choice"
-                class="correctchoice-img"
-                @click="proceedAfterIncorrectChoice"
-              />
-              <h3 style="width: 164px">Click the number above to continue</h3>
-            </div>
-          </div>
-
-          <!-- NUMBER 1 to 5 -->
-
-          <div class="choices">
-            <li v-for="choice in choiceImages" :key="choice.id">
-              <img
-                :src="getImg(choice)"
-                alt=""
-                @click="validateChoice(choice)"
-              />
-            </li>
-          </div>
-        </ul>
+          </ul>
+        </div>
       </div>
-    </div>
+    </section>
   </main>
   <section v-if="redirectToHome" class="redirectToHome">
     <router-link to="/Home" class="btn_survey"
@@ -245,7 +254,7 @@ import * as handleIT from "../../../modules/handleAnswers/handleITTrials";
 import BasicQuestions from "../../../components/PreTestSurveyQuestions/BasicQuestions.vue";
 
 export default {
-    components: {
+  components: {
     BasicQuestions,
   },
   data() {
@@ -293,12 +302,11 @@ export default {
   },
 
   methods: {
-     startIndividuationTraining(userData) {
+    startIndividuationTraining(userData) {
       this.userData = userData;
       this.goToTest = true;
       this.$store.state.userData = this.userData;
     },
-
 
     startTimer() {
       handleIT.startTimer();
@@ -355,4 +363,3 @@ export default {
   },
 };
 </script>
-

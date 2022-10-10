@@ -112,130 +112,141 @@
     </div>
   </main>
   <main v-if="goToTest">
-    <div v-if="progress === 1" class="midinstructions">
-      <h3>Can you remember all the people?</h3>
-      <h3>Press the right arrow to get started</h3>
-      <img
-        src="../../../assets/App_Icons/rightArrow.png"
-        alt="Right Arrow"
-        class="next"
-        v-if="progress !== 3 && progress !== 5"
-        @click="moveForward"
-      />
-    </div>
+    <section id="test-border">
+      <div v-if="progress === 1" class="midinstructions">
+        <h3>Can you remember all the people?</h3>
+        <h3>Press the right arrow to get started</h3>
+        <img
+          src="../../../assets/App_Icons/rightArrow.png"
+          alt="Right Arrow"
+          class="next"
+          v-if="progress !== 3 && progress !== 5"
+          @click="moveForward"
+        />
+      </div>
 
-    <!-- ----------------  -->
+      <!-- ----------------  -->
 
-    <div v-if="progress === 2" class="midinstructions">
-      <h3 class="instructions">
-        You will need to remember {{ facesNumber }} faces and names. Each face
-        will appear in the middle of the screen with a name below it. Memorize
-        the face and the name. Once you feel that you memorized the face and
-        name, tap on the name. Tap the arrow on the bottom right of the page to
-        get started
-      </h3>
-      <br />
-      <img
-        src="../../../assets/App_Icons/rightArrow.png"
-        alt="Right Arrow"
-        class="next"
-        @click="moveForward"
-      />
-    </div>
+      <div v-if="progress === 2" class="midinstructions">
+        <h3 class="instructions">
+          You will need to remember {{ facesNumber }} faces and names. Each face
+          will appear in the middle of the screen with a name below it. Memorize
+          the face and the name. Once you feel that you memorized the face and
+          name, tap on the name. Tap the arrow on the bottom right of the page
+          to get started
+        </h3>
+        <br />
+        <img
+          src="../../../assets/App_Icons/rightArrow.png"
+          alt="Right Arrow"
+          class="next"
+          @click="moveForward"
+        />
+      </div>
 
-    <!-- -------------------- -->
+      <!-- -------------------- -->
 
-    <div class="stardiv">
-      <img src="../../../assets/IT_Faces/star.jpg" class="star" alt="" />
-    </div>
+      <div class="stardiv">
+        <img src="../../../assets/IT_Faces/star.jpg" class="star" alt="" />
+      </div>
 
-    <div v-if="progress === 3">
-      <div
-        v-for="data in faceDataToMemorize"
-        :key="data.img"
-        class="faces_displayed"
-      >
-        <div>
-          <img
-            :src="getImg(data.img)"
-            alt=""
-            :style="{ display: data.visibility }"
-            class="face_img"
-          />
-        </div>
+      <div v-if="progress === 3">
         <div
-          :style="{ display: data.visibility }"
-          style="font-size: 25px"
-          class="number"
-          @click="nextFaceToMemorize()"
+          v-for="data in faceDataToMemorize"
+          :key="data.img"
+          class="faces_displayed"
         >
-          {{ data.name }}
+          <div>
+            <img
+              :src="getImg(data.img)"
+              alt=""
+              :style="{ display: data.visibility }"
+              class="face_img"
+            />
+          </div>
+          <div
+            :style="{ display: data.visibility }"
+            style="font-size: 25px"
+            class="number"
+            @click="nextFaceToMemorize()"
+          >
+            {{ data.name }}
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- -------------------- -->
+      <!-- -------------------- -->
 
-    <div v-if="progress === 4" class="progress4">
-      <h3 class="instructions midinstructions" v-html="createInstruction"></h3>
-      <img
-        src="../../../assets/App_Icons/rightArrow.png"
-        alt="Right Arrow"
-        class="next"
-        @click="moveForward"
-      />
-    </div>
-
-    <!-- -------------------- -->
-
-    <div v-if="progress === 5">
-      <div>
-        <ul class="faces">
-          <!--LOOPING THROUGH THE IMAGE -->
-
-          <div class="faces_flexbox">
-            <div class="crossdiv">
-              <img
-                src="../../../assets/IT_Faces/cross.jpg"
-                alt=""
-                class="cross"
-              />
-            </div>
-            <div>
-              <li v-for="(data, index) in facedata" :key="data.id">
-                <!-- :class="facedata[index].id" -->
-                <img
-                  :src="getImg(data.img)"
-                  :style="{ display: facedata[index].visibility }"
-                  class="img-of-face"
-                />
-              </li>
-            </div>
-            <div class="correctchoice">
-              <h3
-                @click="proceedAfterIncorrectChoice"
-                style="font-size: 21px; font-weight: 600"
-              >
-                {{ facedata[this.currentlyVisible].name }}
-              </h3>
-              <h3 style="font-size: 16px; width: 166px">
-                Click the name above to continue
-              </h3>
-            </div>
-          </div>
-
-          <!-- All the names -->
-
-          <div class="choices">
-            <h3 @click="validateChoice('Lucas')" class="choice-name">Lucas</h3>
-            <h3 @click="validateChoice('David')" class="choice-name">David</h3>
-            <h3 @click="validateChoice('Mark')" class="choice-name">Mark</h3>
-            <h3 @click="validateChoice('Jacob')" class="choice-name">Jacob</h3>
-            <h3 @click="validateChoice('Paul')" class="choice-name">Paul</h3>
-          </div>
-        </ul>
+      <div v-if="progress === 4" class="progress4">
+        <h3
+          class="instructions midinstructions"
+          v-html="createInstruction"
+        ></h3>
+        <img
+          src="../../../assets/App_Icons/rightArrow.png"
+          alt="Right Arrow"
+          class="next"
+          @click="moveForward"
+        />
       </div>
-    </div>
+
+      <!-- -------------------- -->
+
+      <div v-if="progress === 5">
+        <div>
+          <ul class="faces">
+            <!--LOOPING THROUGH THE IMAGE -->
+
+            <div class="faces_flexbox">
+              <div class="crossdiv">
+                <img
+                  src="../../../assets/IT_Faces/cross.jpg"
+                  alt=""
+                  class="cross"
+                />
+              </div>
+              <div>
+                <li v-for="(data, index) in facedata" :key="data.id">
+                  <!-- :class="facedata[index].id" -->
+                  <img
+                    :src="getImg(data.img)"
+                    :style="{ display: facedata[index].visibility }"
+                    class="img-of-face"
+                  />
+                </li>
+              </div>
+              <div class="correctchoice">
+                <h3
+                  @click="proceedAfterIncorrectChoice"
+                  style="font-size: 21px; font-weight: 600"
+                >
+                  {{ facedata[this.currentlyVisible].name }}
+                </h3>
+                <h3 style="font-size: 16px; width: 166px">
+                  Click the name above to continue
+                </h3>
+              </div>
+            </div>
+
+            <!-- All the names -->
+
+            <div class="choices">
+              <h3 @click="validateChoice('Lucas')" class="choice-name">
+                Lucas
+              </h3>
+              <h3 @click="validateChoice('David')" class="choice-name">
+                David
+              </h3>
+              <h3 @click="validateChoice('Mark')" class="choice-name">Mark</h3>
+              <h3 @click="validateChoice('Jacob')" class="choice-name">
+                Jacob
+              </h3>
+              <h3 @click="validateChoice('Paul')" class="choice-name">Paul</h3>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </section>
   </main>
   <section v-if="redirectToHome" class="redirectToHome">
     <router-link to="/Home" class="btn_survey"
@@ -272,7 +283,7 @@ export default {
       block: 1,
       numberOfTimesToMemorize: 1,
       notAgreedToConsentForm: true,
-      redirectToHome: false,  
+      redirectToHome: false,
       userData: {},
       goToTest: false,
     };
@@ -318,7 +329,8 @@ export default {
     },
 
     getImg(img) {
-      return new URL(`../../../assets/IT_Name_Faces/${img}`, import.meta.url).href;
+      return new URL(`../../../assets/IT_Name_Faces/${img}`, import.meta.url)
+        .href;
     },
 
     shuffleObjects(array) {
@@ -361,178 +373,3 @@ export default {
   },
 };
 </script>
-
-<style >
-.next {
-  /* position: absolute;
-  bottom: 58px;
-  right: 58px; */
-  width: 67px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.instructions {
-  line-height: 31px;
-  width: 700px;
-  max-height: 380px;
-}
-
-h3.instructions.midinstructions {
-  font-size: 15.5px;
-  font-weight: 400;
-}
-
-.faces_displayed {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.number {
-  cursor: pointer;
-}
-
-.choices {
-  display: flex;
-  column-gap: 20px;
-  justify-content: center;
-}
-
-li {
-  list-style: none;
-}
-
-li img {
-  cursor: pointer;
-}
-
-.star {
-  width: 130px;
-  display: none;
-}
-
-.centerstar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.stardiv {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 4;
-}
-
-.faces_flexbox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.choice-name {
-  height: 50px;
-  font-size: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 101px;
-  box-shadow: inset 0px 0px 2px #b2b2b2;
-  border-radius: 2px;
-  background: white;
-}
-
-.cross {
-  width: 130px;
-  display: none;
-}
-
-.correctchoice {
-  display: none;
-}
-
-.instructionsforincorrectchoice {
-  display: none;
-}
-
-.midinstructions {
-  background: white;
-  padding: 48px;
-  border-radius: 14px;
-  color: black;
-  box-shadow: -3px -3px 7px #eeeeeeb2, 4px 4px 5px rgb(218 218 219 / 95%);
-}
-
-.midinstructions h3 {
-  font-size: 16.5px;
-  font-weight: 400;
-}
-
-.face_img {
-  width: 480px;
-}
-
-.faces_flexbox div:nth-of-type(2) img {
-  width: 450px;
-}
-
-@media (max-width: 852px) {
-  main {
-    background: white;
-  }
-  .instructions {
-    width: auto !important;
-    font-size: 15px;
-    overflow: auto;
-  }
-
-  .next {
-    bottom: 19px;
-    right: 19px;
-    width: 55px;
-  }
-
-  .face_img {
-    bottom: 18px;
-    right: 43px;
-    width: 300px;
-  }
-
-  .img-of-face {
-    width: 300px;
-  }
-
-  .choices {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .faces {
-    margin-left: -23px;
-  }
-
-  .faces_flexbox {
-    flex-direction: column;
-    row-gap: 13px;
-  }
-
-  li img {
-    width: 90px;
-  }
-
-  .star {
-    width: 100px;
-  }
-
-  .cross {
-    width: 65px;
-    margin-bottom: 40px;
-  }
-
-  .correctchoice h3 {
-    font-size: 15px;
-  }
-}
-</style>

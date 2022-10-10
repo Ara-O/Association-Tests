@@ -23,13 +23,16 @@
 
         <!-- trial images -->
         <div v-show="!userChoseCorrectly">
-          <div v-for="trial in trials[currentTest].trialDataSet">
-            <img           
-            :src="getImage(trial.stimulusImage)"
-            :style="{display: trial.visibility}"
-            class="stimulus-img"
-          />
-        </div>
+          <div
+            v-for="trial in trials[currentTest].trialDataSet"
+            :key="trial.id"
+          >
+            <img
+              :src="getImage(trial.stimulusImage)"
+              :style="{ display: trial.visibility }"
+              class="stimulus-img"
+            />
+          </div>
         </div>
         <img
           :src="
@@ -51,17 +54,18 @@
         />
 
         <!-- !Going to be changed for an entire screen of a cross -->
-        <h4 v-if="userChoseIncorrectly" id="wrong">Incorrect, Please try again!</h4>
+        <h4 v-if="userChoseIncorrectly" id="wrong">
+          Incorrect, Please try again!
+        </h4>
       </section>
     </section>
-  
   </main>
 </template>
 
 <script setup>
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
-import {useStore} from "vuex"
+import { useStore } from "vuex";
 import { generatePracticeTrials } from "../../../modules/generateFaceMatchingTrials/CT/generateBlackWhiteTrials";
 import {
   startFaceMatching,
@@ -69,7 +73,7 @@ import {
 } from "../../../modules/handleAnswers/handleFM";
 
 let router = useRouter();
-let store = useStore()
+let store = useStore();
 let currentTest = ref(0);
 let currentTrial = ref(0);
 let userChoseCorrectly = ref(false);
@@ -104,9 +108,9 @@ function handleUserChoice(direction) {
   );
 }
 
-onMounted(()=> {
-  store.commit("changeCurrentTest", "FM_Categorization_Black_White")
-})
+onMounted(() => {
+  store.commit("changeCurrentTest", "FM_Categorization_Black_White");
+});
 function getImage(img) {
   return new URL(`../../../assets/stimulus_faces/${img}.jpg`, import.meta.url)
     .href;
@@ -142,10 +146,9 @@ function startTest() {
 .left,
 .right {
   position: absolute;
+  height: 240px;
   width: 200px;
-    height: 218px;
-    object-fit: scale-down;  
-  /* aspect-ratio: 1/1.2; */
+  object-fit: contain;
 }
 
 .left {
@@ -177,21 +180,21 @@ function startTest() {
   cursor: pointer;
 }
 
-@media(max-width: 950px){
-  .stimulus-img{
-    margin-top: -235px
+@media (max-width: 950px) {
+  .stimulus-img {
+    margin-top: -235px;
   }
 }
 
-@media(max-width:715px){
-  .left, .right{
-    width: 150px
+@media (max-width: 715px) {
+  .left,
+  .right {
+    width: 150px;
   }
 }
-
 
 @media (max-width: 695px) {
-  .instruction{
+  .instruction {
     width: 360px;
     margin-bottom: 70px;
   }

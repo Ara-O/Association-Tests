@@ -49,7 +49,9 @@
         />
 
         <!-- !Going to be changed for an entire screen of a cross -->
-        <h4 v-if="userChoseIncorrectly" id="wrong">Incorrect, Please try again!</h4>
+        <h4 v-if="userChoseIncorrectly" id="wrong">
+          Incorrect, Please try again!
+        </h4>
       </section>
     </section>
   </main>
@@ -132,8 +134,9 @@ function startTest() {
 .left,
 .right {
   position: absolute;
+  height: 240px;
   width: 200px;
-  /* aspect-ratio: 1/1.2; */
+  object-fit: contain;
 }
 
 .left {
@@ -165,21 +168,21 @@ function startTest() {
   cursor: pointer;
 }
 
-@media(max-width: 950px){
-  .stimulus-img{
-    margin-top: -235px
+@media (max-width: 950px) {
+  .stimulus-img {
+    margin-top: -235px;
   }
 }
 
-@media(max-width:715px){
-  .left, .right{
-    width: 150px
+@media (max-width: 715px) {
+  .left,
+  .right {
+    width: 150px;
   }
 }
-
 
 @media (max-width: 695px) {
-  .instruction{
+  .instruction {
     width: 360px;
     margin-bottom: 70px;
   }

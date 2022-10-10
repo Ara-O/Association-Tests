@@ -11,49 +11,58 @@
         />
       </section>
       <section v-else>
-        <!-- <h3 class="in-test-instructions">
+        <section v-if="!paused">
+          <!-- <h3 class="in-test-instructions">
           {{ trials[currentTest].instruction }}
         </h3> -->
-        <img
-          src="../../../assets/IT_Faces/star.jpg"
-          alt="star"
-          class="star"
-          v-if="userChoseCorrectly"
-        />
-        <img
-          :src="
-            getImage(
-              trials[currentTest].trialDataSet[currentTrial].stimulusImage
-            )
-          "
-          class="stimulus-img"
-          v-if="!userChoseCorrectly"
-        />
-        <img
-          :src="
-            getImage(trials[currentTest].trialDataSet[currentTrial].leftImage)
-          "
-          alt="Left image"
-          @click="handleUserChoice('left')"
-          v-if="!userChoseCorrectly"
-          class="left"
-        />
-        <img
-          v-if="!userChoseCorrectly"
-          :src="
-            getImage(trials[currentTest].trialDataSet[currentTrial].rightImage)
-          "
-          alt="Right image"
-          @click="handleUserChoice('right')"
-          class="right"
-        />
-        <h4 v-if="userChoseIncorrectly">Incorrect, Please try again!</h4>
+          <img
+            src="../../../assets/IT_Faces/star.jpg"
+            alt="star"
+            class="star"
+            v-if="userChoseCorrectly"
+          />
+          <img
+            src="../../../assets/IT_Faces/cross.jpg"
+            alt="cross"
+            class="cross"
+            v-if="userChoseIncorrectly"
+          />
+          <img
+            :src="
+              getImage(
+                trials[currentTest].trialDataSet[currentTrial].stimulusImage
+              )
+            "
+            class="stimulus-img"
+            v-if="!userChoseCorrectly && !userChoseIncorrectly"
+          />
+          <img
+            :src="
+              getImage(trials[currentTest].trialDataSet[currentTrial].leftImage)
+            "
+            alt="Left image"
+            @click="handleUserChoice('left')"
+            v-if="!userChoseCorrectly && !userChoseIncorrectly"
+            class="left"
+          />
+          <img
+            v-if="!userChoseCorrectly && !userChoseIncorrectly"
+            :src="
+              getImage(
+                trials[currentTest].trialDataSet[currentTrial].rightImage
+              )
+            "
+            alt="Right image"
+            @click="handleUserChoice('right')"
+            class="right"
+          />
+        </section>
       </section>
     </section>
   </main>
 </template>
-  
-  <script setup>
+
+<script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { generatePracticeTrials } from "../../../modules/generateFaceMatchingTrials/IDT/generateBlackWhiteTrials";
@@ -66,6 +75,7 @@ let router = useRouter();
 let currentTest = ref(0);
 let currentTrial = ref(0);
 let userChoseCorrectly = ref(false);
+let paused = ref(false);
 let userChoseIncorrectly = ref(false);
 let testHasStarted = ref(false);
 let trials = [
@@ -91,7 +101,8 @@ function handleUserChoice(direction) {
     currentTrial,
     userChoseCorrectly,
     userChoseIncorrectly,
-    router
+    router,
+    paused
   );
 }
 
@@ -101,11 +112,15 @@ function getImage(img) {
 }
 function startTest() {
   testHasStarted.value = true;
-  startFaceMatching();
+  paused.value = true;
+  setTimeout(function () {
+    paused.value = false;
+    startFaceMatching();
+  }, 1000);
 }
 </script>
-  
-  <style scoped>
+
+<style scoped>
 .instruction {
   width: 469px;
   height: auto;
@@ -130,8 +145,9 @@ function startTest() {
 .left,
 .right {
   position: absolute;
+  height: 240px;
   width: 200px;
-  /* aspect-ratio: 1/1.2; */
+  object-fit: contain;
 }
 
 .left {
@@ -144,7 +160,8 @@ function startTest() {
   right: 40px;
 }
 
-.star {
+.star,
+.cross {
   width: 130px;
   display: block;
   margin: auto;
@@ -178,7 +195,7 @@ function startTest() {
 }
 
 @media (max-width: 695px) {
-  .instruction{
+  .instruction {
     width: 360px;
     margin-bottom: 70px;
   }

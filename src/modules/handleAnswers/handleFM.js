@@ -8,7 +8,7 @@ let startTime;
 // let cYear = currentDate.getFullYear();
 
 function startTimer() {
-  // console.log("starting timer");
+  console.log("starting timer");
   ms = 0;
   startTime = new Date();
 }
@@ -16,7 +16,7 @@ function startTimer() {
 function stopTimer() {
   const endTime = new Date();
   ms = endTime - startTime;
-  // console.log("ending timer - ", ms);
+  console.log("ending timer - ", ms);
 }
 
 export function startFaceMatching() {
@@ -38,7 +38,6 @@ export function handleUserSelection(
 ) {
   //!check if user is right or not, if user is right,
   //!increment the currentTrial, if not, show error, etc etc
-
   if (
     userChoice ===
     trials[currentTest.value].trialDataSet[currentTrial.value]
@@ -85,9 +84,9 @@ export function handleUserSelection(
         setTimeout(function () {
           paused.value = false;
           startTimer();
-        }, 1000);
+        }, 500);
       }
-    }, 1000);
+    }, 500);
   } else {
     // console.log("they got it wrong");
     trials[currentTest.value].trialDataSet[currentTrial.value].accuracy = 0;
@@ -96,6 +95,6 @@ export function handleUserSelection(
     //Adding a delay
     setTimeout(function () {
       userChoseIncorrectlyFeedback.value = false;
-    }, 1000);
+    }, 500);
   }
 }

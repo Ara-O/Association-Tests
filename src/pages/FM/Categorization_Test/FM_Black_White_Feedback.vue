@@ -2,12 +2,14 @@
   <main>
     <h3>Congratulations! You have finished the test</h3>
     <div style="display: flex; column-gap: 20px">
-      <main-button routeTo="/Home" @click="storeFMData">Go back to home page</main-button>
+      <main-button routeTo="/Home" @click="storeFMData"
+        >Go back to home page</main-button
+      >
     </div>
 
     <div class="feedbacks">
       <div class="feedback-wrapper">
-        <h3 style="font-weight: 400;">Practice: </h3>
+        <h3 style="font-weight: 400">Practice:</h3>
         <!-- image here -->
         <div class="image-wrapper"></div>
         <div class="feedback-message-wrapper">
@@ -21,11 +23,13 @@
         </div>
       </div>
       <div class="feedback-wrapper">
-        <h3 style="font-weight: 400;">Test: </h3>
+        <h3 style="font-weight: 400">Test:</h3>
         <!-- image here -->
         <div class="image-wrapper"></div>
         <div class="feedback-message-wrapper">
-          <h3 class="feedback-message">Accuracy: {{ accuracyData.test.toFixed(2) }}%</h3>
+          <h3 class="feedback-message">
+            Accuracy: {{ accuracyData.test.toFixed(2) }}%
+          </h3>
           <h3 class="feedback-message">
             Speed:
             {{ speedData.test.toFixed(2) }}ms
@@ -33,13 +37,7 @@
         </div>
       </div>
     </div>
-<br>
-    <!-- <div class="feedbacks">
-      <div class="feedback-wrapper">
-
-      <h4>hah</h4>
-      </div>
-</div> -->
+    <br />
   </main>
 </template>
 
@@ -48,7 +46,7 @@ import "../../../styles/Feedback_Page.css";
 import MainButton from "../../../components/Buttons/MainButton.vue";
 import { useStore } from "vuex";
 import { onMounted, reactive } from "vue";
-import storingDataFm from "../../../modules/storingData/storingDataFM"
+import storingDataFm from "../../../modules/storingData/storingDataFM";
 import * as confetti from "canvas-confetti";
 
 let speedData = reactive({
@@ -86,47 +84,46 @@ trialData.forEach((trialdataloop) => {
   });
 });
 
-function launchConfetti(){
-      var myCanvas = document.querySelector(".gender-feedback-main");
+function launchConfetti() {
+  var myCanvas = document.querySelector(".gender-feedback-main");
 
-      var myConfetti = confetti.create(myCanvas, { resize: true });
+  var myConfetti = confetti.create(myCanvas, { resize: true });
 
-      // do this for 1 seconds
-      var duration = 10 * 100;
-      var end = Date.now() + duration;
+  // do this for 1 seconds
+  var duration = 10 * 100;
+  var end = Date.now() + duration;
 
-      (function frame() {
-        // launch a few confetti from the left edge
-        myConfetti({
-          particleCount: 7,
-          angle: 60,
-          spread: 55,
-          origin: { x: 0 },
-        });
-        // and launch a few from the right edge
-        myConfetti({
-          particleCount: 7,
-          angle: 120,
-          spread: 55,
-          origin: { x: 1 },
-        });
+  (function frame() {
+    // launch a few confetti from the left edge
+    myConfetti({
+      particleCount: 7,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+    });
+    // and launch a few from the right edge
+    myConfetti({
+      particleCount: 7,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+    });
 
-        // keep going until we are out of time
-        if (Date.now() < end) {
-          requestAnimationFrame(frame);
-        }
-      })();
+    // keep going until we are out of time
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
 }
 
-function storeFMData(){
-  let testData =  store.state[store.getters.getCurrentTest] ;
-  storingDataFm(testData, store, "Face_Matching_Categorization_Black_White")
-
+function storeFMData() {
+  let testData = store.state[store.getters.getCurrentTest];
+  storingDataFm(testData, store, "Face_Matching_Categorization_Black_White");
 }
 
-onMounted(()=> {
-  launchConfetti()
-})
+onMounted(() => {
+  launchConfetti();
+});
 </script>
 
 <style scoped>
@@ -146,8 +143,8 @@ onMounted(()=> {
   padding: 32px 41px;
 }
 
-.feedback-wrapper{
+.feedback-wrapper {
   border-radius: 5px;
-    box-shadow: -2px 4px 4px -1px #cbcbcb87, 0px 0px 4px #e4e4e48a;
+  box-shadow: -2px 4px 4px -1px #cbcbcb87, 0px 0px 4px #e4e4e48a;
 }
 </style>

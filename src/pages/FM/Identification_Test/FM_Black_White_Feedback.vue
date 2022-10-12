@@ -49,7 +49,7 @@
 
 <script setup>
 import "../../../styles/Feedback_Page.css";
-// import MainButton from "../../../components/Buttons/MainButton.vue";
+import MainButton from "../../../components/Buttons/MainButton.vue";
 import { useStore } from "vuex";
 import { onMounted, reactive } from "vue";
 import storingDataFm from "../../../modules/storingData/storingDataFM";

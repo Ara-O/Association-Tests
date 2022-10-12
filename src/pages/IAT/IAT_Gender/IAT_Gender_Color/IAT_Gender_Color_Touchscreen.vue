@@ -19,14 +19,16 @@
           class="right-arrow"
         />
       </section>
-      <div v-for="data in fullTest[currentBlock].data" :key="data.id" v-else>
-        <div class="imagecontainer">
-          <img
-            class="face-img"
-            loading="eager"
-            :style="{ display: data.visibility }"
-            :src="getImage(data.image)"
-          />
+      <div :class="{ hide: notStarted }">
+        <div v-for="data in fullTest[currentBlock].data" :key="data.id">
+          <div class="imagecontainer">
+            <img
+              class="face-img"
+              loading="eager"
+              :style="{ display: data.visibility }"
+              :src="getImage(data.image)"
+            />
+          </div>
         </div>
       </div>
       <clicker>

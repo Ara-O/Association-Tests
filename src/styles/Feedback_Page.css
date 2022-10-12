@@ -48,7 +48,7 @@
   text-decoration: none;
   padding: 23px 34px;
   font-size: 14px;
-  border: none
+  border: none;
 }
 
 .role-label {
@@ -63,7 +63,7 @@
 }
 
 .image-wrapper img {
-  width: 220px
+  width: 220px;
 }
 
 .feedback-wrapper {
@@ -94,47 +94,44 @@
 }
 
 .left-congratulations {
-  left: 15vw
+  left: 15vw;
 }
 
 .right-congratulations {
-  right: 15vw
+  right: 15vw;
 }
 
-.iat-cat-dog-feedback-text h3{
+.iat-cat-dog-feedback-text h3 {
   font-size: 14px;
-  font-weight: 400 ;
+  font-weight: 400;
 }
-.iat-cat-dog-feedback-text{
+.iat-cat-dog-feedback-text {
   display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 906px;
-    width: auto;
-    column-gap: 33px;
-    padding: 20px 52px;
-    border-radius: 5px;
-    box-shadow: -2px 4px 4px -1px #cbcbcb, 0px 0px 4px #e4e4e4;
+  justify-content: center;
+  align-items: center;
+  max-width: 883px;
+  width: auto;
+  column-gap: 33px;
+  padding: 20px 52px;
+  border-radius: 5px;
+  box-shadow: -2px 4px 4px -1px #cbcbcb, 0px 0px 4px #e4e4e4;
 }
 
 @media (max-width: 1372px) {
-
   .left-congratulations {
-    left: 9vw
+    left: 9vw;
   }
 
   .right-congratulations {
-    right: 9vw
+    right: 9vw;
   }
 }
 
 @media (max-width: 1172px) {
-
   .left-congratulations,
   .right-congratulations {
     display: none;
   }
-
 }
 
 @media (max-height: 600px) {

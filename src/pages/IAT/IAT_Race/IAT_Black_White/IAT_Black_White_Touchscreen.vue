@@ -1,6 +1,15 @@
 <template>
   <main class="test">
     <section id="test-border">
+      <div id="wrong" style="display: none">
+        <!-- <h3></h3> -->
+        <h4>Incorrect. Try again to progress!</h4>
+        <img
+          src="../../../../assets/App_Icons/incorrectImg.png"
+          alt="Wrong icon"
+          class="wrong-icon"
+        />
+      </div>
       <section class="instruction" v-if="notStarted">
         <h3 v-html="fullTest[currentBlock]?.instructions"></h3>
 
@@ -11,24 +20,17 @@
           class="right-arrow"
         />
       </section>
-      <div v-for="data in fullTest[currentBlock].data" :key="data.id" v-else>
-        <div class="imagecontainer">
-          <img
-            class="face-img"
-            loading="eager"
-            :style="{ display: data.visibility }"
-            :src="getImage(data.image)"
-          />
+      <div :class="{ hide: notStarted }">
+        <div v-for="data in fullTest[currentBlock].data" :key="data.id">
+          <div class="imagecontainer">
+            <img
+              class="face-img"
+              loading="eager"
+              :style="{ display: data.visibility }"
+              :src="getImage(data.image)"
+            />
+          </div>
         </div>
-      </div>
-      <div id="wrong" style="display: none">
-        <!-- <h3></h3> -->
-        <h4>Incorrect. Try again to progress!</h4>
-        <img
-          src="../../../../assets/App_Icons/incorrectImg.png"
-          alt="Wrong icon"
-          class="wrong-icon"
-        />
       </div>
       <clicker>
         <template #left>

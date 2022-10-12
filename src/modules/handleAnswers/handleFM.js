@@ -1,14 +1,14 @@
-import storingDataFM from "../storingData/storingDataFM";
+// import storingDataFM from "../storingData/storingDataFM";
 
 let ms = 0;
 let startTime;
-let currentDate = new Date();
-let cDay = currentDate.getDate();
-let cMonth = currentDate.getMonth() + 1;
-let cYear = currentDate.getFullYear();
+// let currentDate = new Date();
+// let cDay = currentDate.getDate();
+// let cMonth = currentDate.getMonth() + 1;
+// let cYear = currentDate.getFullYear();
 
 function startTimer() {
-  console.log("starting timer");
+  // console.log("starting timer");
   ms = 0;
   startTime = new Date();
 }
@@ -16,7 +16,7 @@ function startTimer() {
 function stopTimer() {
   const endTime = new Date();
   ms = endTime - startTime;
-  console.log("ending timer - ", ms);
+  // console.log("ending timer - ", ms);
 }
 
 export function startFaceMatching() {
@@ -44,7 +44,7 @@ export function handleUserSelection(
     trials[currentTest.value].trialDataSet[currentTrial.value]
       .correctImagePosition
   ) {
-    console.log("they got it right");
+    // console.log("they got it right");
 
     stopTimer();
     trials[currentTest.value].trialDataSet[currentTrial.value].reactionTime =
@@ -66,7 +66,7 @@ export function handleUserSelection(
         //if we at the end of one test, check whether thats not the end of the series
         //of tests, if it is, thats the end!
         if (currentTest.value === trials.length - 1) {
-          console.log("full test has ended");
+          // console.log("full test has ended");
           store.state[store.getters.getCurrentTest] = trials;
           router.push(routeTo);
         } else {
@@ -89,7 +89,7 @@ export function handleUserSelection(
       }
     }, 1000);
   } else {
-    console.log("they got it wrong");
+    // console.log("they got it wrong");
     trials[currentTest.value].trialDataSet[currentTrial.value].accuracy = 0;
     userChoseIncorrectlyFeedback.value = true;
 

@@ -8,7 +8,7 @@
           {{ irbt_trials[section].practice_instruction }}
         </implicit-bias-test-instructions>
       </section>
-      <section v-else>
+      <section :class="{ hide: notFinishedInstructions }">
         <div v-if="testNotStarted">
           <h3>Instruction</h3>
           <br />
@@ -26,7 +26,7 @@
             class="continue"
           />
         </div>
-        <div v-else-if="testNotStarted === false">
+        <div :class="{ hide: testNotStarted || paused }">
           <div
             style="display: flex; flex-direction: column; align-items: center"
           >
@@ -92,6 +92,7 @@ export default {
       notFinishedInstructions: true,
       currentUserTrial: 0,
       leftFace: "",
+      paused: true,
       rightFace: "",
       irbt_trials: [
         {
@@ -171,8 +172,13 @@ export default {
     },
 
     finishedInstructions() {
-      this.notFinishedInstructions = false;
-      irbt.startTimer();
+      let that = this;
+      that.notFinishedInstructions = false;
+      setTimeout(function () {
+        that.testNotStarted = false;
+        that.paused = false;
+        irbt.startTimer();
+      }, 500);
     },
 
     leftFaceAction() {
@@ -198,8 +204,15 @@ export default {
     },
 
     next() {
-      this.testNotStarted = false;
-      irbt.startTimer();
+      console.log("starting real test");
+      let that = this;
+      that.testNotStarted = false;
+      setTimeout(function () {
+        that.paused = false;
+        document.querySelector(".faceRight").style.display = "block";
+        document.querySelector(".faceLeft").style.display = "block";
+        irbt.startTimer();
+      }, 500);
     },
   },
 

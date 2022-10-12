@@ -9,7 +9,7 @@
     </div>
     <div v-else-if="section === 1">
       <h3 class="fullinstruction">
-       <slot></slot>
+        <slot></slot>
       </h3>
     </div>
     <div v-else-if="section === 2">
@@ -19,7 +19,9 @@
         class="welcomejpg"
       />
     </div>
-    <h3 class="continue-instruction">Click green arrow below to continue</h3>
+    <h3 class="continue-instruction">
+      Click the green arrow below to continue
+    </h3>
     <img
       src="../assets/App_Icons/rightArrow.png"
       alt="Right arraw"
@@ -34,36 +36,48 @@ export default {
   emits: ["finishedInstructions"],
   data() {
     return {
-        section: 0,
-        tes: 'welcome_instruction.jpg'
+      section: 0,
+      tes: "welcome_instruction.jpg",
     };
   },
 
   computed: {
-    getPracticeSource(){
-      if(this.$store.getters.getCurrentTest !== "IBT_Cat_Dog"){
-        return new URL(`../assets/IBT_Faces/welcome_instruction.jpg`, import.meta.url).href
-      } else{
-        return new URL(`../assets/IBT_Faces/cat_dog_welcome_img.jpg`, import.meta.url).href;
+    getPracticeSource() {
+      if (this.$store.getters.getCurrentTest !== "IBT_Cat_Dog") {
+        return new URL(
+          `../assets/IBT_Faces/welcome_instruction.jpg`,
+          import.meta.url
+        ).href;
+      } else {
+        return new URL(
+          `../assets/IBT_Faces/cat_dog_welcome_img.jpg`,
+          import.meta.url
+        ).href;
       }
     },
 
-    getPracticeInstruction(){
-        if(this.$store.getters.getCurrentTest !== "IBT_Cat_Dog"){
-          return new URL(`../assets/IBT_Faces/practice_instruction.jpg`, import.meta.url).href;
-      } else{
-        return new URL("../assets/IBT_Faces/cat_dog_practice_img.jpg", import.meta.url).href;
+    getPracticeInstruction() {
+      if (this.$store.getters.getCurrentTest !== "IBT_Cat_Dog") {
+        return new URL(
+          `../assets/IBT_Faces/practice_instruction.jpg`,
+          import.meta.url
+        ).href;
+      } else {
+        return new URL(
+          "../assets/IBT_Faces/cat_dog_practice_img.jpg",
+          import.meta.url
+        ).href;
       }
-    }
+    },
   },
 
   watch: {
-      section(val){
-          if(val === 3){
-            this.$emit("finishedInstructions")
-          }
+    section(val) {
+      if (val === 3) {
+        this.$emit("finishedInstructions");
       }
-  }
+    },
+  },
 };
 </script>
 

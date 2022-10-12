@@ -10,11 +10,13 @@ let cYear = currentDate.getFullYear();
 function startTimer() {
   ms = 0;
   startTime = new Date();
+  console.log("starting timer");
 }
 
 function stopTimer() {
   const endTime = new Date();
   ms = endTime - startTime;
+  console.log("stopping tim");
 }
 
 //If the random number is 0, the left face will be that face
@@ -64,13 +66,18 @@ function handleCorrectAnswer(thiskeyword, whereToStore, version) {
       that.currentUserTrial <
       Object.keys(that.irbt_trials[that.section].trials).length - 1
     ) {
-      that.currentUserTrial++;
       document.querySelector(".irbt_star").style.display = "none";
-      that.irbt_trials[that.section].trials[that.currentUserTrial].visibility =
-        "block";
-      document.querySelector(".faceRight").style.display = "block";
-      document.querySelector(".faceLeft").style.display = "block";
-      startTimer();
+
+      setTimeout(function () {
+        that.currentUserTrial++;
+        that.irbt_trials[that.section].trials[
+          that.currentUserTrial
+        ].visibility = "block";
+
+        document.querySelector(".faceRight").style.display = "block";
+        document.querySelector(".faceLeft").style.display = "block";
+        startTimer();
+      }, 500);
     } else {
       // The section has ended, storing the data in vuex store
       ibt_data[that.section] = that.irbt_trials[that.section].trials;
@@ -89,6 +96,7 @@ function handleCorrectAnswer(thiskeyword, whereToStore, version) {
         document.querySelector(".irbt_star").style.display = "none";
         //Checking to see if the sections have all being exhausted, if so, store data to firebase
         that.testNotStarted = true;
+        that.paused = true;
         that.section++;
         that.currentUserTrial = 0;
         stopTimer();
@@ -98,7 +106,7 @@ function handleCorrectAnswer(thiskeyword, whereToStore, version) {
         ibt_data = [];
       }
     }
-  }, 1000);
+  }, 500);
 }
 
 function handleIncorrectAnswer(that) {
@@ -112,11 +120,12 @@ function handleIncorrectAnswer(that) {
   setTimeout(function () {
     // document.querySelector(".irbt-wrong").style.display = "none";
     document.querySelector(".ibt-cross").style.display = "none";
+
     document.querySelector(".faceRight").style.display = "block";
+    document.querySelector(".faceLeft").style.display = "block";
     that.irbt_trials[that.section].trials[that.currentUserTrial].visibility =
       "block";
-    document.querySelector(".faceLeft").style.display = "block";
-  }, 1000);
+  }, 500);
 }
 
 function leftFaceAction(that, objectKey, whereToStore) {

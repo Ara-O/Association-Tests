@@ -1,6 +1,7 @@
 <template>
   <main>
     <section id="test-border">
+      <!-- Section for if the user has not finished the three instructions with the images -->
       <section v-if="notFinishedInstructions">
         <implicit-bias-test-instructions
           @finishedInstructions="finishedInstructions"
@@ -8,7 +9,9 @@
           {{ irbt_trials[section].practice_instruction }}
         </implicit-bias-test-instructions>
       </section>
-      <section v-else>
+
+      <!-- Once the user has finished those instructions, doesnt show up for practice trials-->
+      <section :class="{ hide: notFinishedInstructions }">
         <div v-if="testNotStarted">
           <h3>Instruction</h3>
           <br />
@@ -26,7 +29,9 @@
             class="continue"
           />
         </div>
-        <div v-else-if="testNotStarted === false">
+
+        <!-- Hide this section -->
+        <div :class="{ hide: testNotStarted || paused }">
           <div
             style="display: flex; flex-direction: column; align-items: center"
           >
@@ -101,11 +106,12 @@ export default {
       testNotStarted: false,
       notFinishedInstructions: true,
       currentUserTrial: 0,
+      paused: true,
       leftFace: "",
       rightFace: "",
       irbt_trials: [
         {
-          trials: catAndDog("happy.jpg", "sad.jpg", 8),
+          trials: catAndDog("happy.jpg", "sad.jpg", 4),
           section: "practice",
           practice_instruction: `There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Dog you should touch the
@@ -117,7 +123,7 @@ export default {
         the screen.`,
         },
         {
-          trials: catAndDog("happy.jpg", "sad.jpg", 24),
+          trials: catAndDog("happy.jpg", "sad.jpg", 2),
           section: "section_1",
           instruction: `There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Dog you should touch the
@@ -129,7 +135,7 @@ export default {
         the screen.`,
         },
         {
-          trials: catAndDog("sad.jpg", "happy.jpg", 8),
+          trials: catAndDog("sad.jpg", "happy.jpg", 4),
           section: "practice_2",
           instruction: `Practice: There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Cat you should touch the
@@ -141,7 +147,7 @@ export default {
         the screen.`,
         },
         {
-          trials: catAndDog("sad.jpg", "happy.jpg", 24),
+          trials: catAndDog("sad.jpg", "happy.jpg", 4),
           section: "section_2",
           instruction: `There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Cat you should touch the
@@ -179,8 +185,13 @@ export default {
     },
 
     finishedInstructions() {
-      this.notFinishedInstructions = false;
-      irbt.startTimer();
+      let that = this;
+      that.notFinishedInstructions = false;
+      setTimeout(function () {
+        that.testNotStarted = false;
+        that.paused = false;
+        irbt.startTimer();
+      }, 500);
     },
 
     leftFaceAction() {
@@ -204,8 +215,14 @@ export default {
     },
 
     next() {
-      this.testNotStarted = false;
-      irbt.startTimer();
+      let that = this;
+      that.testNotStarted = false;
+      setTimeout(function () {
+        that.paused = false;
+        document.querySelector(".faceRight").style.display = "block";
+        document.querySelector(".faceLeft").style.display = "block";
+        irbt.startTimer();
+      }, 500);
     },
   },
 

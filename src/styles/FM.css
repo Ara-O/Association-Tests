@@ -19,20 +19,20 @@
   font-size: 16px;
 }
 
-.left,
-.right {
+.left-fm,
+.right-fm {
   position: absolute;
   height: 240px;
   width: 200px;
   object-fit: contain;
 }
 
-.left {
+.left-fm {
   bottom: 20px;
   left: 40px;
 }
 
-.right {
+.right-fm {
   bottom: 20px;
   right: 40px;
 }
@@ -64,8 +64,8 @@
 }
 
 @media (max-width: 715px) {
-  .left,
-  .right {
+  .left-fm,
+  .right-fm {
     width: 150px;
   }
 }

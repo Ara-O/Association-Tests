@@ -5,10 +5,15 @@
   ></contact-experience>
   <main class="gender-feedback-main" v-else>
     <br />
-    <button @click="routeToHome" class="return-to-home-btn">
-      Go back to home page
-    </button>
-       <img
+    <div style="display: flex; column-gap: 20px">
+      <button @click="routeToHome" class="return-to-home-btn">
+        Go back to home page
+      </button>
+      <button @click="routeToFaceMatching" class="return-to-home-btn">
+        Go to Face Matching Tests
+      </button>
+    </div>
+    <img
       src="../../assets/App_Icons/congratulations.png"
       alt="Congratulations image"
       class="left-congratulations"
@@ -16,14 +21,14 @@
     <h4 style="font-weight: 400">
       Congratulations! You have finished the test!
     </h4>
-      <img
+    <img
       src="../../assets/App_Icons/congratulations.png"
       alt="Congratulations image"
       class="right-congratulations"
     />
     <!-- <h4>Congratulations! You have finished the test.</h4> -->
     <div class="feedbacks">
-       <div class="feedback-wrapper">
+      <div class="feedback-wrapper">
         <!-- image here -->
         <div class="image-wrapper">
           <div v-for="(n, index) in 2" :key="n">
@@ -44,7 +49,7 @@
           </h3>
         </div>
       </div>
-       <div class="feedback-wrapper">
+      <div class="feedback-wrapper">
         <!-- image here -->
         <div class="image-wrapper">
           <div v-for="(n, index) in 2" :key="n">
@@ -61,7 +66,7 @@
           </h3>
           <h3 class="feedback-message">
             Speed:
-            {{ this.calculateSpeed(3)}}
+            {{ this.calculateSpeed(3) }}
           </h3>
         </div>
       </div>
@@ -91,7 +96,7 @@ export default {
     return {
       surveyNotComplete: true,
       wasGroupTest: false,
-       IBT_Gender_Toy_Target_0: [
+      IBT_Gender_Toy_Target_0: [
         "Clicker_Images/IAT_Gender_Toy/Male_And_Male_Toy.png",
         "Clicker_Images/IAT_Gender_Toy/Female_And_Female_Toy.png",
       ],
@@ -160,7 +165,7 @@ export default {
     },
 
     getCurrentTestTrimmed(target, index) {
-        return this[`${this.getCurrentTest}_Target_${target}`][index];
+      return this[`${this.getCurrentTest}_Target_${target}`][index];
     },
 
     calculateAccuracy(trialIndex) {
@@ -182,14 +187,13 @@ export default {
     },
 
     surveyComplete(userData) {
-      this.launchConfetti()
+      this.launchConfetti();
       if (userData !== "opted-out") {
         storeContactExperience(userData, this.getCurrentTest, this);
       }
       this.surveyNotComplete = false;
     },
 
-    
     launchConfetti() {
       var myCanvas = document.querySelector(".gender-feedback-main");
 
@@ -221,7 +225,6 @@ export default {
         }
       })();
     },
-
 
     storeDataWithNewUniqueId(role, individualUid, uid) {
       // console.log(role, individualUid, uid);
@@ -255,6 +258,11 @@ export default {
       }
       this.$router.push("/Home");
     },
+
+    routeToFaceMatching() {
+      storeData.storeIBTIndividualData(this.getCurrentTest, this);
+      this.$router.push("/FM_Choose_Test");
+    },
   },
   mounted() {
     this.wasGroupTest = false;
@@ -263,6 +271,6 @@ export default {
 };
 </script>
 
-<style scoped >
+<style scoped>
 @import url("../../styles/Feedback_Page.css");
 </style>

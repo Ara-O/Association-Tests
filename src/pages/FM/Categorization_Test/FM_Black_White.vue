@@ -44,7 +44,7 @@
             alt="Left image"
             @click="handleUserChoice('left')"
             v-show="!userChoseCorrectly && !userChoseIncorrectly"
-            class="left"
+            class="left-fm"
           />
           <img
             v-show="!userChoseCorrectly && !userChoseIncorrectly"
@@ -55,7 +55,7 @@
             "
             alt="Right image"
             @click="handleUserChoice('right')"
-            class="right"
+            class="right-fm"
           />
         </section>
       </section>
@@ -86,12 +86,12 @@ let trials = [
   {
     instruction:
       "This is the practice test. Match the categories as fast as possible. When you are ready, please click the green arrow below to start.",
-    trialDataSet: generatePracticeTrials(4, true),
+    trialDataSet: generatePracticeTrials(8, true),
   },
   {
     instruction:
       "Practice over, Match the categories as fast as possible. When you are ready, please click the green arrow below to start.",
-    trialDataSet: generatePracticeTrials(4, false),
+    trialDataSet: generatePracticeTrials(40, false),
   },
 ];
 

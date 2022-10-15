@@ -1,6 +1,6 @@
 <template>
   <main>
-    <h3>Congratulations! You have finished the test</h3>
+    <h3 style="width: 80vw">Congratulations! You have finished the test</h3>
     <div style="display: flex; column-gap: 20px">
       <main-button routeTo="/Home" @click="storeFMData"
         >Go back to home page</main-button

@@ -5,12 +5,15 @@
   ></contact-experience>
   <main class="gender-feedback-main" v-else>
     <br />
-    <button @click="routeToHome" class="return-to-home-btn">
-      Go back to home page
-    </button>
-    <!-- Going to face matching -->
-    <!-- <button @click="routeToHome" class="return-to-home-btn">Go To</button> -->
-
+    <div style="display: flex; column-gap: 20px">
+      <button @click="routeToHome" class="return-to-home-btn">
+        Go back to home page
+      </button>
+      <!-- Going to face matching -->
+      <button @click="routeToFaceMatching" class="return-to-home-btn">
+        Go To Face Matching Tests
+      </button>
+    </div>
     <img
       src="../../assets/App_Icons/congratulations.png"
       alt="Congratulations image"
@@ -287,6 +290,11 @@ export default {
         storeData.storeIATIndividualData(this.getCurrentTest, this);
       }
       this.$router.push("/Home");
+    },
+
+    routeToFaceMatching() {
+      storeData.storeIATIndividualData(this.getCurrentTest, this);
+      this.$router.push("/FM_Choose_Test");
     },
   },
   mounted() {

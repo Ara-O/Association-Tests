@@ -187,12 +187,18 @@
   }
 }
 
-@media (max-width: 582px) {
+@media (max-width: 602px) {
   .welcomejpg {
     width: 41vh !important;
   }
 
   .continue-instruction {
     font-size: 15px;
+  }
+}
+
+@media (max-height: 700px) {
+  .welcomejpg {
+    width: 87vh;
   }
 }

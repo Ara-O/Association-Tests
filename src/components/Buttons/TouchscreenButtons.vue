@@ -7,21 +7,22 @@
   </div>
 </template>
 
- <style scoped>
+<style scoped>
 .choice {
   background: #85e9bf;
-    height: 16vw;
-    width: 28vw;
-    max-width: 201px;
-    max-height: 190px;
-    border-radius: 12%;
-    position: absolute;
-    bottom: 20px;
-    box-shadow: -2px 3px 4px grey;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
+  height: 16vw;
+  width: 28vw;
+  max-width: 201px;
+  max-height: 190px;
+  border-radius: 12%;
+  min-height: 200px;
+  position: absolute;
+  bottom: 20px;
+  box-shadow: -2px 3px 4px grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
 }
 
 .choice:active {
@@ -38,7 +39,7 @@
   font-size: 2.4vh;
 }
 
-@media (max-width: 595px) {
+@media (max-width: 750px) {
   .left,
   .right {
     font-size: 2.5vh;
@@ -58,6 +59,12 @@
   .choice {
     height: 35vw !important;
     width: 38vw !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .choice {
+    width: 41vw !important;
   }
 }
 </style>

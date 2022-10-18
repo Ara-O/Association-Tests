@@ -34,14 +34,18 @@
 }
 
 @media (max-width: 500px) {
-  #test-border {
+  /* #test-border {
     border: none;
-  }
+  } */
 }
 
 @media (max-height: 715px) {
   #test-border {
     width: 86vw;
+  }
+
+  #wrong {
+    top: 12px;
   }
 }
 
@@ -56,5 +60,15 @@
 
   #test-border .left-choice {
     left: 10px;
+  }
+
+  #wrong {
+    top: 12px;
+  }
+}
+
+@media (max-width: 450px) {
+  #test-border {
+    min-width: 344px;
   }
 }

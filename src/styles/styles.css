@@ -1,40 +1,60 @@
 /* Fill entire background with green? */
 #test-border {
-    width: 63vw;
-    height: 93vh;
-    border: solid 9px #85E9BF;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    min-width: 400px;
-    padding: 0px 20px;
+  width: 63vw;
+  height: 93vh;
+  border: solid 9px #85e9bf;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 400px;
+  padding: 0px 20px;
 }
 
-#test-border main{
-    background: transparent
+#test-border main {
+  background: transparent;
 }
 
 #wrong {
-    position: absolute;
-    top: 17.5vh;
+  position: absolute;
+  top: 17.5vh;
 }
 
-#wrong h4{
-    min-width: 269px;
-    font-weight: 400;
-    margin: auto;
-    font-size: 16px;
+#wrong h4 {
+  min-width: 269px;
+  font-weight: 400;
+  margin: auto;
+  font-size: 16px;
 }
 
 #wrong-ibt {
-    top: 11vh;
-    position: absolute;
+  top: 11vh;
+  position: absolute;
 }
 
 @media (max-width: 500px) {
-    #test-border {
-        border: none;
-    }
+  #test-border {
+    border: none;
+  }
+}
+
+@media (max-height: 715px) {
+  #test-border {
+    width: 86vw;
+  }
+}
+
+@media (max-height: 715px) and (max-width: 1050px) {
+  #test-border {
+    width: 86vw;
+  }
+
+  #test-border .right-choice {
+    right: 10px;
+  }
+
+  #test-border .left-choice {
+    left: 10px;
+  }
 }

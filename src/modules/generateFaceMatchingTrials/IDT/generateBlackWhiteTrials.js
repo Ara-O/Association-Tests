@@ -197,7 +197,7 @@ function generatePracticeTrials(trials, practice = false) {
   fullDataSet.forEach((data) => {
     practice ? (data.testType = "Practice") : (data.testType = "Test");
   });
-  console.table(fullDataSet);
+  //   console.table(fullDataSet);
 
   fullDataSet.forEach((trial) => (trial.visibility = "none"));
   fullDataSet[0].visibility = "block";

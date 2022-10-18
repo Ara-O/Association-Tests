@@ -120,12 +120,12 @@ function generatePracticeTrials(trials, practice = false) {
       // console.log("loop through black")
     } else {
       let dataToPush = {};
-      console.log(
-        "Male white: ",
-        chosenMaleWhiteImages[whiteMaleCounter],
-        "i - ",
-        whiteMaleCounter
-      );
+      // console.log(
+      //   "Male white: ",
+      //   chosenMaleWhiteImages[whiteMaleCounter],
+      //   "i - ",
+      //   whiteMaleCounter
+      // );
       dataToPush.stimulusImage = chosenMaleWhiteImages[whiteMaleCounter];
       whiteMaleCounter++;
       dataToPush.accuracy = 100;
@@ -240,7 +240,7 @@ function generatePracticeTrials(trials, practice = false) {
         trialType: "practice"
     }]
     */
-  console.table(fullDataSet);
+  // console.table(fullDataSet);
 
   fullDataSet.forEach((trial) => (trial.visibility = "none"));
   fullDataSet[0].visibility = "block";

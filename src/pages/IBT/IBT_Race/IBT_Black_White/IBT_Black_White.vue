@@ -198,7 +198,7 @@ export default {
     },
 
     next() {
-      console.log("starting real test");
+      // console.log("starting real test");
       let that = this;
       that.testNotStarted = false;
       setTimeout(function () {

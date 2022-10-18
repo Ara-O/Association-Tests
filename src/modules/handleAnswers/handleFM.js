@@ -2,21 +2,30 @@
 
 let ms = 0;
 let startTime;
-// let currentDate = new Date();
-// let cDay = currentDate.getDate();
-// let cMonth = currentDate.getMonth() + 1;
-// let cYear = currentDate.getFullYear();
+let pausedTime, continuedTime;
+let durationOfPause = 0;
 
 function startTimer() {
-  console.log("starting timer");
+  // console.log("starting timer");
   ms = 0;
   startTime = new Date();
 }
 
 function stopTimer() {
   const endTime = new Date();
-  ms = endTime - startTime;
-  console.log("ending timer - ", ms);
+  ms = endTime - startTime - durationOfPause;
+  durationOfPause = 0;
+}
+
+function pauseTimer() {
+  // console.log("Pausing timer");
+  pausedTime = new Date();
+}
+
+function continueTimer() {
+  // console.log("Continuing timer");
+  continuedTime = new Date();
+  durationOfPause += continuedTime - pausedTime;
 }
 
 export function startFaceMatching() {
@@ -80,7 +89,6 @@ export function handleUserSelection(
         currentTrial.value++;
         trials[currentTest.value].trialDataSet[currentTrial.value].visibility =
           "block";
-
         setTimeout(function () {
           paused.value = false;
           startTimer();
@@ -91,9 +99,10 @@ export function handleUserSelection(
     // console.log("they got it wrong");
     trials[currentTest.value].trialDataSet[currentTrial.value].accuracy = 0;
     userChoseIncorrectlyFeedback.value = true;
-
+    pauseTimer();
     //Adding a delay
     setTimeout(function () {
+      continueTimer();
       userChoseIncorrectlyFeedback.value = false;
     }, 500);
   }

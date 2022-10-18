@@ -2,21 +2,35 @@
 import * as storeData from "../storingData/storingDataIBT";
 let ms = 0;
 let startTime;
+let pausedTime, continuedTime;
+let durationOfPause = 0;
 let currentDate = new Date();
 let cDay = currentDate.getDate();
 let cMonth = currentDate.getMonth() + 1;
 let cYear = currentDate.getFullYear();
 
 function startTimer() {
+  // console.log("Starting timer");
   ms = 0;
   startTime = new Date();
-  console.log("starting timer");
 }
 
 function stopTimer() {
+  // console.log("Stopped: duration of pause: " + durationOfPause);
   const endTime = new Date();
-  ms = endTime - startTime;
-  console.log("stopping tim");
+  ms = endTime - startTime - durationOfPause;
+  durationOfPause = 0;
+}
+
+function pauseTimer() {
+  // console.log("Pausing timer");
+  pausedTime = new Date();
+}
+
+function continueTimer() {
+  // console.log("Continuing timer");
+  continuedTime = new Date();
+  durationOfPause += continuedTime - pausedTime;
 }
 
 //If the random number is 0, the left face will be that face
@@ -51,6 +65,7 @@ function getFacesPosition2(thiskeyword, face_0, face_1) {
 let ibt_data = [];
 
 function handleCorrectAnswer(thiskeyword, whereToStore, version) {
+  // durationOfPause = 0;
   stopTimer();
   let that = thiskeyword;
   that.irbt_trials[that.section].trials[that.currentUserTrial].visibility =
@@ -117,6 +132,7 @@ function handleIncorrectAnswer(that) {
     "none";
   that.irbt_trials[that.section].trials[that.currentUserTrial].accuracy = 0;
   // document.querySelector(".irbt-wrong-img").style.display = "block";
+  pauseTimer();
   setTimeout(function () {
     // document.querySelector(".irbt-wrong").style.display = "none";
     document.querySelector(".ibt-cross").style.display = "none";
@@ -125,6 +141,7 @@ function handleIncorrectAnswer(that) {
     document.querySelector(".faceLeft").style.display = "block";
     that.irbt_trials[that.section].trials[that.currentUserTrial].visibility =
       "block";
+    continueTimer();
   }, 500);
 }
 

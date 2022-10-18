@@ -1,43 +1,63 @@
 <!DOCTYPE html>
 <html lang="">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="./logo.png">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="./logo.png" />
     <script type="module" src="./src/main.js"></script>
+    <script
+      type="text/javascript"
+      src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
     <title>Implicit Association Tests</title>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but this site doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong
+        >We're sorry but this site doesn't work properly without JavaScript
+        enabled. Please enable it to continue.</strong
+      >
     </noscript>
     <div id="app"></div>
+    <div id="google_translate_element"></div>
+
     <!-- built files will be auto injected -->
   </body>
 </html>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400&display=swap');
-  *{
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400&display=swap");
+  * {
     user-select: none;
     font-family: "Poppins";
+  }
+
+  .consent b {
     font-weight: 500;
   }
 
-  main{
+  main {
     height: 100vh;
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
   }
+  /* 
+  .goog-te-banner-frame {
+    display: none;
+    height: 0 !important;
+    visibility: hidden;
+  }
+
+  #google_translate_element {
+    display: none;
+  } */
 
   /* @media (max-height: 600px) and (max-width: 600px) {
     main{
       height: auto;
     }
   } */
-
-
 </style>

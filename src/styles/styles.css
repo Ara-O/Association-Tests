@@ -1,4 +1,9 @@
 /* Fill entire background with green? */
+
+*,
+font {
+  font-weight: 500;
+}
 #test-border {
   width: 63vw;
   height: 93vh;

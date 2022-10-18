@@ -131,4 +131,8 @@
     font-weight: 400;
     line-height: 27px;
   }
+
+  .clickerImageCombined {
+    width: 145px;
+  }
 }

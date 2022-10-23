@@ -2,7 +2,7 @@
 
 *,
 font {
-  font-weight: 500;
+  font-weight: inherit;
 }
 #test-border {
   width: 63vw;

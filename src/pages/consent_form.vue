@@ -124,8 +124,9 @@ let participating = ref(true);
   align-items: center;
 }
 .jumbotron {
-  background: linear-gradient(45deg, #3e9c3e, #32976d);
-  width: 263px;
+  background: linear-gradient(144deg, #4bac32, #389820);
+  width: auto;
+  padding: 0px 24px;
   border-radius: 1px;
   color: white;
   box-shadow: 0px 0px 4px lightgray;

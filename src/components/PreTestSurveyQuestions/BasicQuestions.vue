@@ -1,6 +1,6 @@
 <template>
   <div v-if="!userHasPutInUserID" class="collect-user-id">
-    <h3 style="font-size: 18px">Before we start!</h3>
+    <h3 style="font-size: 18px; font-weight: 500">Before we start!</h3>
     <h3 class="input-user-id-text">
       What is your unique testing ID? ( You will be given this by a lab
       assistant )
@@ -93,12 +93,15 @@ export default {
       }
 
       //generate random number if they skip
-      if(this.uid.trim() === "" && this.$store.getters.getUID === ''){
-        this.$store.commit("changeUserID", String(Math.floor(Math.random() * 10000)));
+      if (this.uid.trim() === "" && this.$store.getters.getUID === "") {
+        this.$store.commit(
+          "changeUserID",
+          String(Math.floor(Math.random() * 10000))
+        );
         this.userHasPutInUserID = true;
       }
-      
-      if(this.$store.getters.getUID !== ''){
+
+      if (this.$store.getters.getUID !== "") {
         this.userHasPutInUserID = true;
       }
     },

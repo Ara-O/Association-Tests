@@ -7,7 +7,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../pages/home.vue";
 import Consent_Form from "../pages/consent_form.vue";
 import Explore_Studies from "../pages/explore_studies.vue";
-
+import NotFound from "../pages/404-page.vue";
 // ------------
 
 import IT from "../pages/IT/IT.vue";
@@ -190,6 +190,7 @@ const routes = [
     path: "/FM_Identification_Black_White_Feedback",
     component: FM_Identification_Black_White_Feedback,
   },
+  { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
 ];
 
 const router = createRouter({

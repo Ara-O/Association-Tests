@@ -126,6 +126,13 @@ li img {
     overflow: auto;
   }
 
+  .midinstructions h3 {
+    font-size: 14.5px;
+  }
+  .midinstructions {
+    padding: 41px 27px;
+  }
+
   .next {
     bottom: 19px;
     right: 19px;
@@ -135,11 +142,15 @@ li img {
   .face_img {
     bottom: 18px;
     right: 43px;
-    width: 300px;
+    width: 318px;
   }
 
   .img-of-face {
     width: 300px;
+  }
+
+  .faces_flexbox div:nth-of-type(2) img {
+    width: 317px;
   }
 
   .choices {

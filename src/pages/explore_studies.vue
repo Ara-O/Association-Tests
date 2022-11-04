@@ -54,16 +54,18 @@ let selectedLanguage = ref("English");
 let store = useStore();
 
 onMounted(() => {
-  new google.translate.TranslateElement(
-    {
-      layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
-      pageLanguage: "en",
-      includedLanguages: "en,es,fr,zh-TW",
-    },
-    "google_translate_element"
-  );
+  setTimeout(() => {
+    google.translate.TranslateElement(
+      {
+        // layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        pageLanguage: "en",
+        includedLanguages: "en,es,fr,zh-TW",
+      },
+      "google_translate_element"
+    );
 
-  document.querySelector(".skiptranslate").style.display = "none";
+    document.querySelector(".skiptranslate").style.display = "none";
+  }, 1000);
 });
 </script>
 

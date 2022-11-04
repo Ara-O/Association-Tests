@@ -15,7 +15,7 @@
           <img
             src="../../../assets/IT_Faces/star.jpg"
             alt="star"
-            class="star"
+            class="star star-fm"
             v-show="userChoseCorrectly"
           />
           <img

@@ -37,10 +37,14 @@
   right: 40px;
 }
 
+.star-fm {
+  display: block;
+}
+
 .star,
 .cross {
   width: 130px;
-  display: block;
+  /* display: block; */
   margin: auto;
 }
 

@@ -74,6 +74,14 @@ font {
 
 @media (max-width: 450px) {
   #test-border {
+    /* 323px */
     min-width: 344px;
+  }
+}
+
+@media (max-width: 400px) {
+  #test-border {
+    /* 323px */
+    min-width: 323px;
   }
 }

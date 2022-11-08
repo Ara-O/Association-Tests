@@ -1,50 +1,50 @@
 <template>
   <h3 style="font-size: 18px">Explicit Attitudes</h3>
   <h4>
-    {{userWouldPrefer}} 
+    {{ userWouldPrefer }}
   </h4>
   <div class="gender-toy-stereotype-option">
-      <div class="child-img-survey-option-container">
-        <label for="child-img-survey-option1-user">
-          <div v-if="leftImgPersonal">
-            <img
-              :src="getImage(leftImgPersonal)"
-              alt="Toy 1"
-              class="child-img-survey child-img-survey-option"
-            />
-          </div>
-        </label>
-        <input
-          type="radio"
-          id="child-img-survey-option1-user"
-          name="child-img-survey-user1"
-          :value="generateOptionValue(leftImgPersonal)"
-          v-model="userData.userWouldPrefer"
-        />
-      </div>
-      <div class="child-img-survey-option-container">
-        <label for="child-img-survey-option2-user2">
-          <div v-if="rightImgPersonal">
-            <img
-              :src="getImage(rightImgPersonal)"
-              alt="Toy 2"
-              class="child-img-survey child-img-survey-option"
-            />
-          </div>
-        </label>
-        <input
-          type="radio"
-          id="child-img-survey-option2-user2"
-          name="child-img-survey-user2"
-          :value="generateOptionValue(rightImgPersonal)"
-          v-model="userData.userWouldPrefer"
-        />
-      </div>
-    </div>  
+    <div class="child-img-survey-option-container">
+      <label for="child-img-survey-option1-user">
+        <div v-if="leftImgPersonal">
+          <img
+            :src="getImage(leftImgPersonal)"
+            alt="Toy 1"
+            class="child-img-survey child-img-survey-option"
+          />
+        </div>
+      </label>
+      <input
+        type="radio"
+        id="child-img-survey-option1-user"
+        name="child-img-survey-user1"
+        :value="generateOptionValue(leftImgPersonal)"
+        v-model="userData.userWouldPrefer"
+      />
+    </div>
+    <div class="child-img-survey-option-container">
+      <label for="child-img-survey-option2-user2">
+        <div v-if="rightImgPersonal">
+          <img
+            :src="getImage(rightImgPersonal)"
+            alt="Toy 2"
+            class="child-img-survey child-img-survey-option"
+          />
+        </div>
+      </label>
+      <input
+        type="radio"
+        id="child-img-survey-option2-user2"
+        name="child-img-survey-user2"
+        :value="generateOptionValue(rightImgPersonal)"
+        v-model="userData.userWouldPrefer"
+      />
+    </div>
+  </div>
 
-<!-- The stereotype section is not visible for IAT CAT and DOG -->
-  <br v-if="!checkStereotypeVisibility">
-  <br v-if="!checkStereotypeVisibility">
+  <!-- The stereotype section is not visible for IAT CAT and DOG -->
+  <br v-if="!checkStereotypeVisibility" />
+  <br v-if="!checkStereotypeVisibility" />
   <!-- Stereotype section -->
   <div v-if="checkStereotypeVisibility">
     <h4>{{ opinionTitle1 }}</h4>
@@ -152,7 +152,6 @@
       >
         Start Test
       </button>
-
     </div>
     <br />
     <button
@@ -179,8 +178,8 @@ export default {
     },
     userWouldPrefer: String,
     visible: {
-      default: true
-    }
+      default: true,
+    },
   },
   emits: ["start_test", "goBackEmit"],
   data() {
@@ -203,13 +202,13 @@ export default {
   },
 
   computed: {
-    checkStereotypeVisibility(){
-      if(this.visible == "false"){
-        return false
-      }else {
-        return true
+    checkStereotypeVisibility() {
+      if (this.visible == "false") {
+        return false;
+      } else {
+        return true;
       }
-    }
+    },
   },
 
   methods: {
@@ -251,7 +250,7 @@ export default {
         if (img[0] === "b") {
           return "Blue color";
         } else if (img[0] === "p") {
-          return "Female color";
+          return "Pink color";
         }
       }
 
@@ -273,7 +272,10 @@ export default {
     },
 
     getImage(img) {
-      return new URL(`../../assets/${this.fileLocation}/${img}.jpg`, import.meta.url).href;
+      return new URL(
+        `../../assets/${this.fileLocation}/${img}.jpg`,
+        import.meta.url
+      ).href;
     },
 
     generateStereotypeOptions() {
@@ -310,7 +312,7 @@ export default {
           ? this.stereotypeImages2[randomNoStereotype2]
           : this.stereotypeImages1[randomNoStereotype1];
 
-          // USER PERSONAL STEREOTPYE
+      // USER PERSONAL STEREOTPYE
       randomNo = Math.floor(Math.random() * 2);
       randomNoStereotype2 = Math.floor(
         Math.random() * this.stereotypeImages2.length
@@ -337,7 +339,7 @@ export default {
 </script>
 
 <style scoped>
-.child-img-survey-option-container input{
-  margin-left: 0px
+.child-img-survey-option-container input {
+  margin-left: 0px;
 }
 </style>

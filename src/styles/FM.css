@@ -80,3 +80,12 @@
     margin-bottom: 70px;
   }
 }
+
+@media (max-width: 500px) {
+  .left-fm {
+    left: 20px;
+  }
+  .right-fm {
+    right: 20px;
+  }
+}

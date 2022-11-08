@@ -1,5 +1,6 @@
 .trialimg {
   width: 170px;
+  object-fit: scale-down;
 }
 
 .hide {

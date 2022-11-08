@@ -357,7 +357,7 @@ export default {
         if (img[0] === "b") {
           return "Blue color";
         } else if (img[0] === "p") {
-          return "Female color";
+          return "Pink color";
         }
       }
 

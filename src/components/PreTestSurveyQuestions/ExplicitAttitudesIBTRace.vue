@@ -156,7 +156,7 @@
         class="btn btn_basic_survey"
         style="margin-top: 5px; width: 150px; padding: 24px 18px"
       >
-         Start Test
+        Start Test
       </button>
     </div>
     <br />
@@ -180,7 +180,7 @@ export default {
     "currentRace1",
     "currentRace2",
   ],
-  emits: [ "start_test", "goBackEmit"],
+  emits: ["start_test", "goBackEmit"],
   data() {
     return {
       leftImg: "",
@@ -203,7 +203,8 @@ export default {
     },
 
     getImage(img) {
-      return new URL(`../../assets/Stimulus_Faces/${img}.jpg`, import.meta.url).href;
+      return new URL(`../../assets/Stimulus_Faces/${img}.jpg`, import.meta.url)
+        .href;
     },
 
     generateOptionValue(img) {
@@ -217,12 +218,18 @@ export default {
       }
     },
 
-    start_test(){
-        this.$emit("start_test")
+    start_test() {
+      // userDataProp refers to the userdata outside the component that will be stored
+      this.userDataProp.howUserFeelsTowardsBlackChildren =
+        this.userData.slider1;
+      this.userDataProp.howUserFeelsTowardsWhiteChildren =
+        this.userData.slider2;
+      this.userDataProp.userWouldPrefer = this.userData.userWouldPrefer;
+      this.$emit("start_test");
     },
 
-     goToTest() {
-        this.$router.push("/IBT_Black_White");
+    goToTest() {
+      this.$router.push("/IBT_Black_White");
     },
 
     generateChildrenOptions() {
@@ -246,12 +253,10 @@ export default {
   },
 
   mounted() {
-    this.userData.gender = this.userDataProp.gender;
-    // delete this.userData.boyWouldPrefer;
-    // delete this.userData.girlWouldPrefer;
-    this.userData.chosenethnicity = this.userDataProp.chosenethnicity;
-    this.userData.slider1 = this.userDataProp.slider1 || 50;
-    this.userData.slider2 = this.userDataProp.slider2 || 50;
+    console.log(this.userDataProp);
+    delete this.userDataProp.girlWouldPrefer;
+    delete this.userDataProp.boyWouldPrefer;
+
     this.generateChildrenOptions();
   },
 };

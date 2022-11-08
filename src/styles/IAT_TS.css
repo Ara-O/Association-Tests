@@ -167,3 +167,9 @@
     border: solid 3px #ffffff;
   }
 }
+
+@media (max-width: 500px) {
+  .face-img {
+    margin-top: -80px;
+  }
+}

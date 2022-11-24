@@ -57,6 +57,10 @@ import IAT_Black_White_Touchscreen from "../pages/IAT/IAT_Race/IAT_Black_White/I
 import IAT_Black_White_Survey from "../pages/IAT/IAT_Race/IAT_Black_White/IAT_Black_White_Survey.vue";
 
 // ---------------
+//IAT Gender Occupation
+import IAT_Gender_Occupation_Survey from "../pages/IAT/IAT_Gender/IAT_Gender_Occupation/IAT_Gender_Occupation_Survey";
+import IAT_Gender_Occupation from "../pages/IAT/IAT_Gender/IAT_Gender_Occupation/IAT_Gender_Occupation";
+import IAT_Gender_Occupation_Touchscreen from "../pages/IAT/IAT_Gender/IAT_Gender_Occupation/IAT_Gender_Occupation_Touchscreen";
 
 //IAT FUN
 // const IAT_Cat_Dog = () => import("../pages/IAT/IAT_Cat_Dog/IAT_Cat_Dog.vue");
@@ -66,7 +70,6 @@ import IAT_Black_White_Survey from "../pages/IAT/IAT_Race/IAT_Black_White/IAT_Bl
 import IAT_Cat_Dog from "../pages/IAT/IAT_Cat_Dog/IAT_Cat_Dog.vue";
 import IAT_Cat_Dog_Touchscreen from "../pages/IAT/IAT_Cat_Dog/IAT_Cat_Dog_Touchscreen.vue";
 import IAT_Cat_Dog_Survey from "../pages/IAT/IAT_Cat_Dog/IAT_Cat_Dog_Survey.vue";
-
 // const IAT_Feedback = () => import("../pages/IAT/IAT_Feedback.vue");
 // const IAT_Choose_Test = () => import("../pages/IAT/IAT_Choose_Test.vue");
 import IAT_Choose_Test from "../pages/IAT/IAT_Choose_Test.vue";
@@ -165,5 +168,17 @@ export default [
   {
     path: "/IAT_Black_White_Touchscreen",
     component: IAT_Black_White_Touchscreen,
+  },
+  {
+    path: "/IAT_Gender_Occupation_Survey",
+    component: IAT_Gender_Occupation_Survey,
+  },
+  {
+    path: "/IAT_Gender_Occupation_Touchscreen",
+    component: IAT_Gender_Occupation_Touchscreen,
+  },
+  {
+    path: "/IAT_Gender_Occupation",
+    component: IAT_Gender_Occupation,
   },
 ];

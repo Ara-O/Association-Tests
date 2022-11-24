@@ -141,7 +141,7 @@ let participating = ref(true);
 .consent {
   width: auto;
   min-height: 618px;
-  height: 75vh;
+  height: 92vh;
   max-width: 668px;
   padding: 47px 48px;
   background: white;

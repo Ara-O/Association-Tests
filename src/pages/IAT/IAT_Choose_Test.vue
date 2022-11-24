@@ -49,6 +49,10 @@
         Gender-Subject IAT
       </main-button>
 
+      <main-button routeTo="/IAT_Gender_Occupation_Survey">
+        Nurse-Doctor IAT
+      </main-button>
+
       <h3
         style="text-decoration: underline; cursor: pointer; font-size: 16px"
         @click="iatType = ''"
@@ -97,7 +101,6 @@ function handleRace() {
   justify-content: center;
   align-items: center;
 }
-
 
 .choose-iat {
   font-size: 34px;

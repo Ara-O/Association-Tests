@@ -168,6 +168,14 @@ export default {
         "Clicker_Images/IAT_Gender_Subject/Male_And_Reading.png",
         "Clicker_Images/IAT_Gender_Subject/Female_And_Math.png",
       ],
+      IAT_Gender_Occupation_Target_0: [
+        "Clicker_Images/IAT_Gender_Occupation/Male_And_Doctor.png",
+        "Clicker_Images/IAT_Gender_Occupation/Female_And_Nurse.png",
+      ],
+      IAT_Gender_Occupation_Target_1: [
+        "Clicker_Images/IAT_Gender_Occupation/Male_And_Nurse.png",
+        "Clicker_Images/IAT_Gender_Occupation/Female_And_Doctor.png",
+      ],
       IAT_Cat_Dog_Target_0: [
         "Clicker_Images/IAT_Cat_Dog/Dog_And_Happy_Face.png",
         "Clicker_Images/IAT_Cat_Dog/Cat_And_Sad_Face.png",
@@ -198,7 +206,7 @@ export default {
     },
 
     calculateAccuracy(trialIndex) {
-      let trials = [2, 4];
+      let trials = [3, 6];
       let nsum = 0;
       this.$store.state[this.getCurrentTest][trials[trialIndex]].forEach(
         (trial) => {
@@ -210,7 +218,7 @@ export default {
     },
 
     calculateSpeed(trialIndex) {
-      let trials = [2, 4];
+      let trials = [3, 6];
       let nsum = 0;
       this.$store.state[this.getCurrentTest][trials[trialIndex]].forEach(
         (trial) => {

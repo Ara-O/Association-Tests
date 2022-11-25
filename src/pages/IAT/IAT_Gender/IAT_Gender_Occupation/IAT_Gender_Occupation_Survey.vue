@@ -64,9 +64,8 @@
             ><em><strong>Parent Section</strong></em></i
           >
         </h4>
-
         <!-- SECTION -->
-        <div v-for="question in surveyQuestions" :key="question.name">
+        <div v-for="question in surveyQuestionsParent" :key="question.name">
           <label :for="question.name">{{ question.question }}</label>
           <br />
           <input
@@ -125,14 +124,73 @@
           <button @click="next" class="btn_basic_survey">next</button>
         </div>
       </div>
-      <div class="basic-questions" v-if="surveySection == 1">
+      <div
+        class="basic-questions"
+        id="second-survey-section"
+        v-if="surveySection == 1"
+      >
         <h3>Basic questions</h3>
         <img
           src="../../../../assets/App_Icons/diverseimg.jpg"
           alt="Image"
           style="width: 273px"
         />
-        <h4>Childrens</h4>
+        <h4>Child Section</h4>
+        <div v-for="question in surveyQuestionsChild" :key="question.name">
+          <label :for="question.name">{{ question.question }}</label>
+          <br />
+          <input
+            v-if="question.inputType == 'date'"
+            :type="question.inputType"
+            :id="question.name"
+            v-model="userDataChildren[question.name]"
+            class="input-form"
+          />
+          <input
+            v-if="question.inputType == 'number'"
+            :type="question.inputType"
+            :id="question.name"
+            v-model="userDataChildren[question.name]"
+            class="input-form"
+          />
+          <input
+            v-if="question.inputType == 'text'"
+            :type="question.inputType"
+            :id="question.name"
+            v-model="userDataChildren[question.name]"
+            class="input-form"
+          />
+          <select
+            v-if="question.inputType == 'select'"
+            :id="question.name"
+            v-model="userDataChildren[question.name]"
+            class="input-select"
+          >
+            <option
+              v-for="questionOption in question.questionOptions"
+              :value="questionOption"
+            >
+              {{ questionOption }}
+            </option>
+          </select>
+          <br />
+          <input
+            type="text"
+            v-if="
+              userDataChildren[question.name] == 'Other' ||
+              userDataChildren[question.name] == 'Other religion/denomination'
+            "
+            placeholder="Please enter"
+            v-model="userDataChildren[question.name + '-other']"
+            class="input-form input-form-other"
+          />
+        </div>
+        <button @click="startTest('Touchscreen')" class="btn_basic_survey">
+          Touchscreen version
+        </button>
+        <button @click="startTest('Keyboard')" class="btn_basic_survey">
+          Keyboard version
+        </button>
       </div>
     </div>
   </main>
@@ -162,7 +220,7 @@ export default {
       // stereotypeImages2: ["pink1", "pink2", "pink3", "pink4"],
       userHasPutInUserID: false,
       uid: "",
-      surveyQuestions: [
+      surveyQuestionsParent: [
         {
           question: "What is your birthdate?",
           name: "birthDate",
@@ -278,6 +336,82 @@ export default {
           inputType: "text",
         },
       ],
+      surveyQuestionsChild: [
+        {
+          question: "What is your child's birthdate?",
+          name: "birthDate",
+          inputType: "date",
+        },
+        {
+          question: "Please indicate your child's gender?",
+          name: "gender",
+          inputType: "select",
+          questionOptions: [
+            "Male",
+            "Female",
+            "Transgender",
+            "Prefer not to say",
+          ],
+        },
+        {
+          question: "What is your child's ethnicity?",
+          name: "ethnicity",
+          inputType: "select",
+          questionOptions: [
+            "Aboriginal (Inuit, Métis, North American Indian)",
+            "Arab/West Asian (e.g. Armenian, Egyptian, Iranian, Lebanese, Moroccan, etc.)",
+            "Black (e.g., African, Haitian, Jamaican, Somali, etc.)",
+            "East Asian (e.g. Japanese, Chinese, Korean, etc.)",
+            "Latin American",
+            "South Asian (e.g. India, Pakistan)",
+            "South East Asian (e.g. Thailand, Singapore, etc.)",
+            "White/Caucasian",
+            "Other",
+          ],
+        },
+        {
+          question: "Is English your child's first language?:",
+          name: "englishAsFirstLanguage",
+          inputType: "select",
+          questionOptions: ["Yes", "No"],
+        },
+        {
+          question: "If not, please state all languages they speak",
+          name: "allLanguagesSpoken",
+          inputType: "text",
+        },
+        {
+          question:
+            "How Likely is it that your child will enjoy playing with a girl gendered toy? (E.g Doll, kitchen playset, makeup, etc.)",
+          name: "likelihoodOfChildPlayingWithGirlGenderedToy",
+          inputType: "select",
+          questionOptions: [
+            "Very Unlikely",
+            "Unlikely",
+            "Neutral",
+            "Likely",
+            "Very Likely",
+          ],
+        },
+        {
+          question:
+            "How Likely is it that your child will enjoy playing with a boy gendered toy? (E.g hardware, toy cars, footballs, etc.)",
+          name: "likelihoodOfChildPlayingWithBoyGenderedToy",
+          inputType: "select",
+          questionOptions: [
+            "Very Unlikely",
+            "Unlikely",
+            "Neutral",
+            "Likely",
+            "Very Likely",
+          ],
+        },
+        {
+          question: "Please name three toys your child enjoys to play with: ",
+          name: "threeToysChildEnjoys",
+          inputType: "text",
+        },
+      ],
       userDataParents: {},
       userDataChildren: {},
     };
@@ -286,6 +420,8 @@ export default {
   methods: {
     next() {
       this.surveySection++;
+      let myDiv = document.querySelector(".survey_container");
+      myDiv.scrollTo(0, 0);
     },
 
     storeUserID() {
@@ -308,14 +444,17 @@ export default {
       }
     },
 
-    progress_ts() {
-      this.$store.state.userData = this.userData;
-      this.$router.push("IAT_Gender_Color_Touchscreen");
-    },
-
-    progress_kb() {
-      this.$store.state.userData = this.userData;
-      this.$router.push("IAT_Gender_Color");
+    startTest(version) {
+      this.$store.state.userData = {
+        parentData: this.userDataParents,
+        childData: this.userDataChildren,
+      };
+      if (version === "Keyboard") {
+        this.$router.push("IAT_Gender_Occupation");
+      }
+      if (version === "Touchscreen") {
+        this.$router.push("IAT_Gender_Occupation_Touchscreen");
+      }
     },
   },
 
@@ -365,10 +504,12 @@ export default {
   max-width: 300px;
   width: auto;
   box-sizing: border-box;
-  padding: 0px 20px;
+  /* padding: 0px 20px; */
 }
 .survey_container {
   padding: 45px;
+  max-width: 57vh !important;
+  max-height: 91vh;
 }
 
 .input-form {
@@ -378,9 +519,6 @@ export default {
   border: solid 1px #d0d0d0;
   text-align: center;
   /* box-shadow: -1px 1px 2px #eeeeeeb2, 0px 1px 2px rgb(164 164 164 / 95%); */
-}
-
-.input-form-other {
 }
 
 @media (max-width: 852px) {

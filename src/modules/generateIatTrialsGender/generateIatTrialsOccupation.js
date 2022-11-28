@@ -42,17 +42,17 @@ const female_images = [
 ];
 
 let doctor_images = [
-  { accuracy: 100, image: "Doctor1.png" },
-  { accuracy: 100, image: "Doctor2.png" },
-  { accuracy: 100, image: "Doctor3.png" },
-  { accuracy: 100, image: "Doctor4.png" },
+  { accuracy: 100, image: "Doctor1.jpg" },
+  { accuracy: 100, image: "Doctor2.jpg" },
+  { accuracy: 100, image: "Doctor3.jpg" },
+  { accuracy: 100, image: "Doctor4.jpg" },
 ];
 
 const nurse_images = [
-  { accuracy: 100, image: "Nurse1.png" },
-  { accuracy: 100, image: "Nurse2.png" },
-  { accuracy: 100, image: "Nurse3.png" },
-  { accuracy: 100, image: "Nurse4.png" },
+  { accuracy: 100, image: "Nurse1.jpg" },
+  { accuracy: 100, image: "Nurse2.jpg" },
+  { accuracy: 100, image: "Nurse3.jpg" },
+  { accuracy: 100, image: "Nurse4.jpg" },
 ];
 
 export function testData_Block1(male, female, trials) {

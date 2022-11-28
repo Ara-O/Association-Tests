@@ -58,7 +58,8 @@ import IAT_Black_White_Survey from "../pages/IAT/IAT_Race/IAT_Black_White/IAT_Bl
 
 // ---------------
 //IAT Gender Occupation
-import IAT_Gender_Occupation_Survey from "../pages/IAT/IAT_Gender/IAT_Gender_Occupation/IAT_Gender_Occupation_Survey";
+import IAT_Gender_Occupation_Pre_Survey from "../pages/IAT/IAT_Gender/IAT_Gender_Occupation/IAT_Gender_Occupation_Pre_Survey";
+import IAT_Gender_Occupation_Post_Survey from "../pages/IAT/IAT_Gender/IAT_Gender_Occupation/IAT_Gender_Occupation_Post_Survey";
 import IAT_Gender_Occupation from "../pages/IAT/IAT_Gender/IAT_Gender_Occupation/IAT_Gender_Occupation";
 import IAT_Gender_Occupation_Touchscreen from "../pages/IAT/IAT_Gender/IAT_Gender_Occupation/IAT_Gender_Occupation_Touchscreen";
 
@@ -170,8 +171,12 @@ export default [
     component: IAT_Black_White_Touchscreen,
   },
   {
-    path: "/IAT_Gender_Occupation_Survey",
-    component: IAT_Gender_Occupation_Survey,
+    path: "/IAT_Gender_Occupation_Pre_Survey",
+    component: IAT_Gender_Occupation_Pre_Survey,
+  },
+  {
+    path: "/IAT_Gender_Occupation_Post_Survey",
+    component: IAT_Gender_Occupation_Post_Survey,
   },
   {
     path: "/IAT_Gender_Occupation_Touchscreen",

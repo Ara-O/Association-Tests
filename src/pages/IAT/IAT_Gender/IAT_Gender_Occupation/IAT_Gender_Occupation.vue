@@ -120,7 +120,7 @@ export default {
     },
 
     testOver() {
-      this.$router.push("/IAT_Feedback");
+      this.$router.push("/IAT_Gender_Occupation_Post_Survey");
     },
 
     start(e) {

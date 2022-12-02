@@ -26,6 +26,7 @@ import IT_Name_EastAsian from "../pages/IT/IT_Name/IT_Name_Asian.vue";
 
 import IBT_Choose_Test from "../pages/IBT/IBT_Choose_Test.vue";
 import IBT_Black_White from "../pages/IBT/IBT_Race/IBT_Black_White/IBT_Black_White.vue";
+import IBT_Brief_Black_White from "../pages/IBT/IBT_Race/IBT_Brief_Black_White/IBT_Brief_Black_White.vue";
 import IBT_Black_White_Survey from "../pages/IBT/IBT_Race/IBT_Black_White/IBT_Black_White_Survey.vue";
 import IBT_Cat_Dog from "../pages/IBT/IBT_Cat_Dog/IBT_Cat_Dog.vue";
 import IBT_Cat_Dog_Survey from "../pages/IBT/IBT_Cat_Dog/IBT_Cat_Dog_Survey.vue";
@@ -109,6 +110,10 @@ const routes = [
   {
     path: "/IBT_Black_White",
     component: IBT_Black_White,
+  },
+  {
+    path: "/IBT_Brief_Black_White",
+    component: IBT_Brief_Black_White,
   },
   {
     path: "/IBT_Gender_Toy",

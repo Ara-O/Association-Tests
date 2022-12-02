@@ -8,9 +8,7 @@
       <btn routeTo="/IBT_Choose_Test" class="button" @click="handleRace"
         >Race IBT</btn
       >
-      <btn routeTo="/IBT_Cat_Dog_Survey" class="button"
-        >Cat-Dog IBT</btn
-      >
+      <btn routeTo="/IBT_Cat_Dog_Survey" class="button">Cat-Dog IBT</btn>
       <router-link
         style="text-decoration: underline; cursor: pointer; font-size: 16px"
         class="router-link-back"
@@ -30,7 +28,6 @@
       >
         Gender-Toy IBT
       </router-link>
-
 
       <router-link
         to="/IBT_Gender_Clothing_Survey"
@@ -79,11 +76,26 @@
       >
         Black-White IBT
       </router-link>
-      <router-link to="/IBT_Choose_Test" class="routerlink test_btn" tag="button">
+      <router-link
+        to="/IBT_Choose_Test"
+        class="routerlink test_btn"
+        tag="button"
+      >
         Black-Asian IBT
       </router-link>
-      <router-link to="/IBT_Choose_Test" class="routerlink test_btn" tag="button">
+      <router-link
+        to="/IBT_Choose_Test"
+        class="routerlink test_btn"
+        tag="button"
+      >
         Asian-White IBT
+      </router-link>
+      <router-link
+        to="IBT_Brief_Black_White"
+        class="routerlink test_btn"
+        tag="button"
+      >
+        Brief Black-White IBT
       </router-link>
       <h3
         style="text-decoration: underline; cursor: pointer; font-size: 16px"
@@ -95,9 +107,8 @@
   </main>
 </template>
 
-
 <script>
-import btn from "../../components/Buttons/MainButton.vue"
+import btn from "../../components/Buttons/MainButton.vue";
 export default {
   components: {
     btn,

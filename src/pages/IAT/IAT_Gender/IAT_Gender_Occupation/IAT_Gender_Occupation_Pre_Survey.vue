@@ -73,7 +73,7 @@ export default {
 
   data() {
     return {
-      notAgreedToConsentForm: false,
+      notAgreedToConsentForm: true,
       redirectToHome: false,
       surveySection: 0,
       moveon: true,

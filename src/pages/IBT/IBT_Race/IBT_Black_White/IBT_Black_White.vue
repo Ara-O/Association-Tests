@@ -167,7 +167,6 @@ export default {
         .href;
     },
 
-    //does the reverse of the first method for the second image
     getFacesPosition2() {
       let face = irbt.getFacesPosition2(this, "happy.jpg", "sad.jpg");
       return new URL(`../../../../assets/IBT_Faces/${face}`, import.meta.url)

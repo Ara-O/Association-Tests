@@ -121,7 +121,7 @@ export default {
         },
         {
           trials: genderAndToy("female.jpg", "male.jpg", 8),
-          section: "section_2",
+          section: "practice_2",
           instruction: `Practice: There will be a picture of a Female toy or a Male toy in the
         middle of the screen. When you see a picture of the Female toy you should
         touch the male face at the bottom of the screen; when you see a Male toy, you should touch

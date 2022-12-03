@@ -1,18 +1,18 @@
 <template>
   <main>
-    <div v-if="section === 0">
+    <div v-show="section === 0">
       <img
         :src="getPracticeSource"
         alt="Welcome Instruction"
         class="welcomejpg"
       />
     </div>
-    <div v-else-if="section === 1">
+    <div v-show="section === 1">
       <h3 class="fullinstruction">
         <slot></slot>
       </h3>
     </div>
-    <div v-else-if="section === 2">
+    <div v-show="section === 2">
       <img
         :src="getPracticeInstruction"
         alt="Practice instruction"

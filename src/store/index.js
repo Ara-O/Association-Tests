@@ -25,22 +25,21 @@ export default createStore({
     uid: "",
   },
 
-
   getters: {
-    getUID(state){
+    getUID(state) {
       return state.uid;
     },
-    getCurrentTest(state){
+    getCurrentTest(state) {
       return state.currentTest;
-    }
+    },
   },
   mutations: {
-    changeUserID(state, payload){
+    changeUserID(state, payload) {
       state.uid = payload;
     },
 
-    changeCurrentTest(state, payload){
+    changeCurrentTest(state, payload) {
       state.currentTest = payload;
-    }
+    },
   },
 });

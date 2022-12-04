@@ -50,7 +50,7 @@ function handleAnswer(thiskeyword, Data, whereToStore) {
             //Proceeds to the next name while adding the speed used to answer the question
             thisData.userGotStimulusWrong = false;
             currentChallenge.visibility = "none";
-            currentChallenge.ms = ms;
+            currentChallenge.reactionTime = ms;
             // Making sure the test isnt over yet
             if (thisData.currentTrial !== Data.length - 1) {
               thisData.userGotStimulusRight = true;
@@ -75,7 +75,8 @@ function handleAnswer(thiskeyword, Data, whereToStore) {
                 thisData.$store.state[whereToStore] = ibtData;
                 console.log("full test ends");
                 thisData.$router.push("/IBT_Brief_Black_White_Feedback");
-                storeData.storeBriefIBTData();
+                storeData.storeBriefIBTData(ibtData, thisData);
+                ibtData = [];
                 //Route to feedback
               } else {
                 ibtData.push(Data);

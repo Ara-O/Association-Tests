@@ -118,7 +118,7 @@ export default {
       paused: true,
       userGotStimulusRight: false,
       userGotStimulusWrong: false,
-      notFinishedInstructions: false,
+      notFinishedInstructions: true,
       testNotStarted: true,
       ibt_trials: [
         {
@@ -216,11 +216,18 @@ export default {
 
     finishedInstructions() {
       let that = this;
+      that.testNotStarted = false;
       that.notFinishedInstructions = false;
       setTimeout(function () {
-        that.testNotStarted = false;
         that.paused = false;
-        console.log("start timer from finished instructions");
+        handleAnswer(
+          that,
+          that.ibt_trials[that.section].trials,
+          "IBT_Brief_Black_White",
+          "/IBT_Brief_Black_White_Feedback"
+        );
+        document.querySelector(".faceRight").style.display = "block";
+        document.querySelector(".faceLeft").style.display = "block";
       }, 500);
     },
 

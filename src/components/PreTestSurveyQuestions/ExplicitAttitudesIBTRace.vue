@@ -253,7 +253,7 @@ export default {
   },
 
   mounted() {
-    console.log(this.userDataProp);
+    // console.log(this.userDataProp);
     delete this.userDataProp.girlWouldPrefer;
     delete this.userDataProp.boyWouldPrefer;
 

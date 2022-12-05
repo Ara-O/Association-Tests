@@ -85,7 +85,7 @@ export function testData_Block1(male, female, trials) {
   });
 
   fullData[0].visibility = "block";
-  console.log("Test data 1: ", fullDataShuffled);
+  // console.log("Test data 1: ", fullDataShuffled);
 
   return fullData;
 }
@@ -115,7 +115,7 @@ export function testData_Block2(doctor, nurse, trials) {
   });
   fullData[0].visibility = "block";
 
-  console.log("Test data 2: ", fullData);
+  // console.log("Test data 2: ", fullData);
 
   return fullData;
 }
@@ -159,7 +159,7 @@ export function testData_Block3(
 
   fullData[0].visibility = "block";
 
-  console.log("Test data 3: ", fullData);
+  // console.log("Test data 3: ", fullData);
 
   return fullData;
 }
@@ -202,7 +202,7 @@ export function testData_Block4(
   });
 
   fullData[0].visibility = "block";
-  console.log("Test data 4: ", fullData);
+  // console.log("Test data 4: ", fullData);
 
   return fullData;
 }

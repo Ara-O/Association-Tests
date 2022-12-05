@@ -156,7 +156,7 @@
         class="btn btn_basic_survey"
         style="margin-top: 5px; width: 195px; padding: 24px 18px"
       >
-        Touch Screen Version
+        Touchscreen Version
       </button>
       <button
         @click="progress_kb"
@@ -216,7 +216,8 @@ export default {
     },
 
     getImage(img) {
-      return new URL(`../../assets/Stimulus_Faces/${img}.jpg`, import.meta.url).href;
+      return new URL(`../../assets/Stimulus_Faces/${img}.jpg`, import.meta.url)
+        .href;
     },
 
     generateOptionValue(img) {

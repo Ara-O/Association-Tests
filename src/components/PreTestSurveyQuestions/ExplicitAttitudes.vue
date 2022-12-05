@@ -246,7 +246,7 @@
         class="btn btn_basic_survey"
         style="margin-top: 5px; width: 195px"
       >
-        Touch Screen Version
+        Touchscreen Version
       </button>
       <button
         @click="progress_kb"

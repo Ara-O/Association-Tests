@@ -7,15 +7,11 @@
       <h3>Pre-Test Consent Form</h3>
     </div>
     <br />
-
-    <object
-      data="https://azure-alfi-90.tiiny.site/"
-      type="application/pdf"
-      height="860px"
-      width="750px"
-    >
-      <div>No online PDF viewer installed</div>
-    </object>
+    <img
+      src="./consent-form.png"
+      alt="Consent form"
+      class="consent-form-images"
+    />
     <br />
     <div class="arrange-btns">
       <button

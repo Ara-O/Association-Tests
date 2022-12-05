@@ -74,7 +74,7 @@
 .survey_container {
   width: auto;
   max-width: 600px;
-  max-height: 600px;
+  max-height: 719px;
   height: auto;
   overflow: auto;
   background: white;
@@ -190,6 +190,12 @@ label {
   /* margin-top: 30px; */
   font-weight: 300;
   height: 47px;
+}
+
+.consent-form-images {
+  width: 656px;
+  box-shadow: 0px 0px 4px lightgrey;
+  padding: 23px 8px;
 }
 
 .arrange-btns {

@@ -32,7 +32,7 @@ const firebaseConfigUow = {
 const app = initializeApp(firebaseConfigUow, "secondary");
 
 export function storeBriefIBTData(dataToStore, thisData) {
-  console.log("data gets stored now - ", dataToStore);
+  // console.log("data gets stored now - ", dataToStore);
   dataToStore.forEach((element, outerIndex) => {
     element.forEach((trial) => {
       trial.browser = navigator["userAgent"];
@@ -53,7 +53,7 @@ export function storeBriefIBTData(dataToStore, thisData) {
       delete trial.randomNo;
       delete trial.visibility;
     });
-    console.log(element);
+    // console.log(element);
   });
 
   const db = getDatabase(app);

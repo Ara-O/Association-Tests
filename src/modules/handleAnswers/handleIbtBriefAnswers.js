@@ -5,25 +5,25 @@ let startTime;
 let pausedTime, continuedTime;
 let durationOfPause = 0;
 function startTimer() {
-  console.log("Starting timer");
+  // console.log("Starting timer");
   ms = 0;
   startTime = new Date();
 }
 
 function stopTimer() {
-  console.log("Stopped: duration of pause: " + durationOfPause);
+  // console.log("Stopped: duration of pause: " + durationOfPause);
   const endTime = new Date();
   ms = endTime - startTime - durationOfPause;
   durationOfPause = 0;
 }
 
 function pauseTimer() {
-  console.log("Pausing timer");
+  // console.log("Pausing timer");
   pausedTime = new Date();
 }
 
 function continueTimer() {
-  console.log("Continuing timer");
+  // console.log("Continuing timer");
   continuedTime = new Date();
   durationOfPause += continuedTime - pausedTime;
 }
@@ -32,7 +32,7 @@ let ibtData = [];
 function handleAnswer(thiskeyword, Data, whereToStore) {
   const thisData = thiskeyword;
   if (!thisData.testNotStarted) {
-    console.log("starting timer from handle answer");
+    // console.log("starting timer from handle answer");
     startTimer();
     document.addEventListener("click", function handleInput(e) {
       if (!thisData.paused) {
@@ -73,7 +73,7 @@ function handleAnswer(thiskeyword, Data, whereToStore) {
                 document.removeEventListener("click", handleInput);
                 ibtData.push(Data);
                 thisData.$store.state[whereToStore] = ibtData;
-                console.log("full test ends");
+                // console.log("full test ends");
                 thisData.$router.push("/IBT_Brief_Black_White_Feedback");
                 storeData.storeBriefIBTData(ibtData, thisData);
                 ibtData = [];
@@ -88,7 +88,7 @@ function handleAnswer(thiskeyword, Data, whereToStore) {
                 thisData.userGotStimulusRight = false;
                 thisData.userGotStimulusWrong = false;
                 thisData.currentTrial = 0;
-                console.log("end of section");
+                // console.log("end of section");
               }
             }
           } else {

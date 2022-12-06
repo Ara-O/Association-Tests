@@ -135,18 +135,6 @@ export function updateIBTData(
         data.boyWouldPrefer = "N/A";
         data.girlWouldPrefer = "N/A";
       } else {
-        console.log("IBT RACE");
-        //Only for ibt race
-        // if (test.$store.state.userData.slider1 === 0 || test.$store.state.userData.slider1) {
-        //     data.howUserFeelsTowardsRace1 = test.$store.state.userData.slider1
-        // } else {
-        //     data.howUserFeelsTowardsBoys = "Not provided";
-        // }
-        // if (test.$store.state.userData.slider2 === 0 || test.$store.state.userData.slider2) {
-        //     data.howUserFeelsTowardsRace2 = test.$store.state.userData.slider2
-        // } else {
-        //     data.howUserFeelsTowardsBoys = "Not provided";
-        // }
         data.howUserFeelsTowardsBlackChildren =
           test.$store.state.userData.howUserFeelsTowardsBlackChildren;
         data.howUserFeelsTowardsWhiteChildren =
@@ -175,20 +163,85 @@ export function storeIBTGroupData(
   familyUid
 ) {
   const db = getDatabase();
+
+  if (
+    localStorage.getItem(
+      `${test.$store.getters.getCurrentTest}_Family_${familyUid}_${role}_${individualUid}_Times_Taken`
+    ) === null
+  ) {
+    localStorage.setItem(
+      `${test.$store.getters.getCurrentTest}_Family_${familyUid}_${role}_${individualUid}_Times_Taken`,
+      1
+    );
+  }
+
+  let numberOfTimesTestWasTaken = localStorage.getItem(
+    `${test.$store.getters.getCurrentTest}_Family_${familyUid}_${role}_${individualUid}_Times_Taken`
+  );
+
   set(
     ref(
       db,
-      `Group-data/Family-${familyUid}/${role}-${individualUid}/${version}`
+      `Group-data/Family-${familyUid}/${role}-${individualUid}-${numberOfTimesTestWasTaken.padStart(
+        2,
+        0
+      )}/${version}`
     ),
     {
       data: test.$store.state[version],
     }
   );
+
+  localStorage.setItem(
+    `${test.$store.getters.getCurrentTest}_Family_${familyUid}_${role}_${individualUid}_Times_Taken`,
+    Number(
+      localStorage.getItem(
+        `${test.$store.getters.getCurrentTest}_Family_${familyUid}_${role}_${individualUid}_Times_Taken`
+      )
+    ) + 1
+  );
 }
 
 export function storeIBTIndividualData(version, test) {
   const db = getDatabase();
-  set(ref(db, `${version}/User-${test.$store.state.uid}`), {
-    data: test.$store.state[version],
-  });
+
+  if (
+    localStorage.getItem(
+      `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`
+    ) === null
+  ) {
+    localStorage.setItem(
+      `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`,
+      1
+    );
+  }
+
+  let numberOfTimesTestWasTaken = localStorage.getItem(
+    `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`
+  );
+
+  set(
+    ref(
+      db,
+      `${version}/User-${
+        test.$store.state.uid
+      }-${numberOfTimesTestWasTaken.padStart(2, 0)}`
+    ),
+    {
+      data: test.$store.state[version],
+    }
+  );
+
+  localStorage.setItem(
+    `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`,
+    Number(
+      localStorage.getItem(
+        `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`
+      )
+    ) + 1
+  );
+  // const db = getDatabase();
+  // set(ref(db, `${version}/User-${test.$store.state.uid}`), {
+  //   data: test.$store.state[version],
+  // });
 }

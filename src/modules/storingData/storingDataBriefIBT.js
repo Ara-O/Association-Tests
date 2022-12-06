@@ -63,7 +63,6 @@ export function storeBriefIBTData(dataToStore, thisData) {
       `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`
     ) === null
   ) {
-    console.log("user hasnt taken test before");
     localStorage.setItem(
       `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`,
       1

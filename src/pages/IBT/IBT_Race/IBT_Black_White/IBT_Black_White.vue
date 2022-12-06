@@ -95,8 +95,8 @@ export default {
           section: "practice",
           practice_instruction: `Practice: There will be a picture of a Black person or a White person in the
         middle of the screen. When you see a picture of the White person you should
-        touch the crying face; when you see the Black person, you should touch
-        the smiling face. Smiling and crying faces will appear at the bottom of
+        touch the smiling face; when you see the Black person, you should touch
+        the crying face. Smiling and crying faces will appear at the bottom of
         the screen either on the left or right. Pay attention because the
         smiling and crying faces may change places. Please respond
         quickly and correctly. You can only use one hand to touch
@@ -107,8 +107,8 @@ export default {
           section: "section_1",
           instruction: `There will be a picture of a Black person or a White person in the
         middle of the screen. When you see a picture of the White person you should
-        touch the crying face; when you see the Black person, you should touch
-        the smiling face. Smiling and crying faces will appear at the bottom of
+        touch the smiling face; when you see the Black person, you should touch
+        the crying face. Smiling and crying faces will appear at the bottom of
         the screen either on the left or right. Pay attention because the
         smiling and crying faces may change places. Please respond
         quickly and correctly. You can only use one hand to touch
@@ -116,7 +116,7 @@ export default {
         },
         {
           trials: generateIBTtrialsRace("sad.jpg", "happy.jpg", 8),
-          section: "section_1",
+          section: "practice_1",
           instruction: `Practice: There will be a picture of a Black person or a White person in the middle
       of screen. When you see a picture of the White person you should touch the
       crying face; when you see the Black person, you should touch the smiling
@@ -127,7 +127,7 @@ export default {
         },
         {
           trials: generateIBTtrialsRace("sad.jpg", "happy.jpg", 24),
-          section: "practice_2",
+          section: "section_2",
           instruction: `There will be a picture of a Black person or a White person in the middle
       of screen. When you see a picture of the White person you should touch the
       crying face; when you see the Black person, you should touch the smiling

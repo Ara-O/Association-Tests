@@ -6,7 +6,12 @@
     <br />
     <section>
       <div v-if="participating">
-        <h4 class="consent">
+        <img
+          src="../assets/app_icons/consent-form.png"
+          alt="Consent form"
+          class="consent-form-image"
+        />
+        <!-- <h4 class="consent">
           Thank you for participating in our study!
           <br /><br />
           <b>Key Information</b>
@@ -89,7 +94,7 @@
 
           <br />
           Please double click below if you agree to participate in this study.
-        </h4>
+        </h4> -->
         <br />
         <div class="arrange-btns">
           <btn
@@ -136,6 +141,17 @@ let participating = ref(true);
 .jumbotron h3 {
   font-size: 16px;
   font-weight: 300;
+}
+
+.consent-form-image {
+  max-width: 665px;
+  box-shadow: 0px 0px 4px lightgrey;
+  padding: 28px 6px;
+  width: 100%;
+  margin-bottom: 30px;
+  padding-bottom: 0px;
+  max-height: 1011px;
+  height: 100%;
 }
 
 .consent {

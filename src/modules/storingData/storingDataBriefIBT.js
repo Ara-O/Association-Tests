@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, set, onValue, get } from "firebase/database";
 
 /*
 accuracy: 0
@@ -55,9 +55,62 @@ export function storeBriefIBTData(dataToStore, thisData) {
     });
     // console.log(element);
   });
+  debugger;
 
+  let dataStored = false;
+  let trialTakenIndex = 2;
+  let dataAlreadyExists = false;
   const db = getDatabase(app);
-  set(ref(db, `IBT_Brief_Black_White/User-${thisData.$store.state.uid}/`), {
-    data: dataToStore,
-  });
+  console.log("a loop hath gone");
+  debugger;
+  let currentTrialData = ref(db, `IBT_Brief_Black_White/User-32`);
+  onValue(
+    currentTrialData,
+    (snapshot) => {
+      debugger;
+      if (snapshot.exists()) {
+        console.log("there is already data here");
+        dataAlreadyExists = true;
+      } else {
+        debugger;
+        console.log("first instance of data just got stored");
+        set(ref(db, `IBT_Brief_Black_White/User-32`), {
+          data: dataToStore,
+        });
+        localStorage.setItem(
+          `${thisData.$store.getters.getCurrentTest}_Times_Taken`,
+          1
+        );
+      }
+
+      if (dataAlreadyExists) {
+        debugger;
+        set(
+          ref(
+            db,
+            `IBT_Brief_Black_White/User-32-${localStorage.getItem(
+              `${thisData.$store.getters.getCurrentTest}_Times_Taken`
+            )}`
+          ),
+          {
+            data: dataToStore,
+          }
+        );
+        debugger;
+        localStorage.setItem(
+          `${thisData.$store.getters.getCurrentTest}_Times_Taken`,
+          Number(
+            localStorage.getItem(
+              `${thisData.$store.getters.getCurrentTest}_Times_Taken`
+            )
+          ) + 1
+        );
+      }
+    },
+    {
+      onlyOnce: true,
+    }
+  );
+
+  // set(ref(db, `IBT_Brief_Black_White/User-${thisData.$store.state.uid}/`), {
 }

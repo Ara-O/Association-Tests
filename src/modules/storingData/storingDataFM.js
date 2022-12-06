@@ -20,7 +20,39 @@ export default function storingDataFM(trial_data, store, version) {
   });
 
   const db = getDatabase();
-  set(ref(db, `${version}/User-${store.getters.getUID}`), {
-    data: [trial_data[0].trialDataSet, trial_data[1].trialDataSet],
-  });
+  if (
+    localStorage.getItem(
+      `${store.getters.getCurrentTest}_${store.state.uid}_Times_Taken`
+    ) === null
+  ) {
+    localStorage.setItem(
+      `${store.getters.getCurrentTest}_${store.state.uid}_Times_Taken`,
+      1
+    );
+  }
+
+  let numberOfTimesTestWasTaken = localStorage.getItem(
+    `${store.getters.getCurrentTest}_${store.state.uid}_Times_Taken`
+  );
+
+  set(
+    ref(
+      db,
+      `${version}/User-${
+        store.getters.getUID
+      }-${numberOfTimesTestWasTaken.padStart(2, 0)}`
+    ),
+    {
+      data: [trial_data[0].trialDataSet, trial_data[1].trialDataSet],
+    }
+  );
+
+  localStorage.setItem(
+    `${store.getters.getCurrentTest}_${store.state.uid}_Times_Taken`,
+    Number(
+      localStorage.getItem(
+        `${store.getters.getCurrentTest}_${store.state.uid}_Times_Taken`
+      )
+    ) + 1
+  );
 }

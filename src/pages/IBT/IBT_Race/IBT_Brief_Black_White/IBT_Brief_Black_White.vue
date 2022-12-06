@@ -21,7 +21,7 @@
         </section>
 
         <section :class="{ hide: notFinishedInstructions }">
-          <div v-if="testNotStarted">
+          <div v-show="testNotStarted">
             <h3>Instruction</h3>
             <br />
             <h3
@@ -207,7 +207,7 @@ export default {
       let allTrialsShuffled = [];
       let allTrials = [
         {
-          trials: generateIBTtrialsRace("Happy", "Sad", 8),
+          trials: generateIBTtrialsRace("Happy", "Sad", 2),
           section: "practice",
           practice_instruction: `Practice: There will be a picture of a Black person or a White person in the
         middle of the screen. When you see a picture of the White person you should
@@ -219,7 +219,7 @@ export default {
         the screen.`,
         },
         {
-          trials: generateIBTtrialsRace("Happy", "Sad", 20),
+          trials: generateIBTtrialsRace("Happy", "Sad", 2),
           section: "section_1",
           instruction: `There will be a picture of a Black person or a White person in the
         middle of the screen. When you see a picture of the White person you should
@@ -231,7 +231,7 @@ export default {
         the screen.`,
         },
         {
-          trials: generateIBTtrialsRace("Sad", "Happy", 8),
+          trials: generateIBTtrialsRace("Sad", "Happy", 2),
           section: "practice_2",
           practice_instruction: `Practice: There will be a picture of a Black person or a White person in the middle
       of screen. When you see a picture of the White person you should touch the
@@ -242,7 +242,7 @@ export default {
       can only use one hand to touch the screen.`,
         },
         {
-          trials: generateIBTtrialsRace("Sad", "Happy", 20),
+          trials: generateIBTtrialsRace("Sad", "Happy", 2),
           section: "section_2",
           instruction: `There will be a picture of a Black person or a White person in the middle
       of screen. When you see a picture of the White person you should touch the

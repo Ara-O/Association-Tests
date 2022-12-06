@@ -111,7 +111,7 @@ export default {
       rightFace: "",
       irbt_trials: [
         {
-          trials: catAndDog("happy.jpg", "sad.jpg", 4),
+          trials: catAndDog("happy.jpg", "sad.jpg", 8),
           section: "practice",
           practice_instruction: `There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Dog you should touch the
@@ -123,7 +123,7 @@ export default {
         the screen.`,
         },
         {
-          trials: catAndDog("happy.jpg", "sad.jpg", 2),
+          trials: catAndDog("happy.jpg", "sad.jpg", 24),
           section: "section_1",
           instruction: `There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Dog you should touch the
@@ -135,7 +135,7 @@ export default {
         the screen.`,
         },
         {
-          trials: catAndDog("sad.jpg", "happy.jpg", 4),
+          trials: catAndDog("sad.jpg", "happy.jpg", 8),
           section: "practice_2",
           instruction: `Practice: There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Cat you should touch the
@@ -147,7 +147,7 @@ export default {
         the screen.`,
         },
         {
-          trials: catAndDog("sad.jpg", "happy.jpg", 4),
+          trials: catAndDog("sad.jpg", "happy.jpg", 24),
           section: "section_2",
           instruction: `There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Cat you should touch the

@@ -79,20 +79,23 @@ function handleAnswer(thiskeyword, Data, whereToStore) {
                 ibtData = [];
                 //Route to feedback
               } else {
+                thisData.userGotStimulusRight = true;
                 ibtData.push(Data);
-                thisData.$store.state[whereToStore] = ibtData;
-                document.removeEventListener("click", handleInput);
-                thisData.paused = true;
-                thisData.section++;
-                thisData.testNotStarted = true;
-                thisData.userGotStimulusRight = false;
-                thisData.userGotStimulusWrong = false;
-                thisData.currentTrial = 0;
-                // console.log("end of section");
+                setTimeout(function () {
+                  thisData.$store.state[whereToStore] = ibtData;
+                  document.removeEventListener("click", handleInput);
+                  thisData.paused = true;
+                  thisData.section++;
+                  thisData.testNotStarted = true;
+                  thisData.userGotStimulusRight = false;
+                  thisData.userGotStimulusWrong = false;
+                  thisData.currentTrial = 0;
+                  // console.log("end of section");
+                }, 500);
               }
             }
           } else {
-            //!Pause timer
+            //!Pause timer, user got stimulus wrong
             pauseTimer();
             thisData.paused = true;
             thisData.userGotStimulusWrong = true;

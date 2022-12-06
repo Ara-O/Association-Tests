@@ -55,62 +55,42 @@ export function storeBriefIBTData(dataToStore, thisData) {
     });
     // console.log(element);
   });
-  debugger;
 
-  let dataStored = false;
-  let trialTakenIndex = 2;
-  let dataAlreadyExists = false;
   const db = getDatabase(app);
-  console.log("a loop hath gone");
-  debugger;
-  let currentTrialData = ref(db, `IBT_Brief_Black_White/User-32`);
-  onValue(
-    currentTrialData,
-    (snapshot) => {
-      debugger;
-      if (snapshot.exists()) {
-        console.log("there is already data here");
-        dataAlreadyExists = true;
-      } else {
-        debugger;
-        console.log("first instance of data just got stored");
-        set(ref(db, `IBT_Brief_Black_White/User-32`), {
-          data: dataToStore,
-        });
-        localStorage.setItem(
-          `${thisData.$store.getters.getCurrentTest}_Times_Taken`,
-          1
-        );
-      }
 
-      if (dataAlreadyExists) {
-        debugger;
-        set(
-          ref(
-            db,
-            `IBT_Brief_Black_White/User-32-${localStorage.getItem(
-              `${thisData.$store.getters.getCurrentTest}_Times_Taken`
-            )}`
-          ),
-          {
-            data: dataToStore,
-          }
-        );
-        debugger;
-        localStorage.setItem(
-          `${thisData.$store.getters.getCurrentTest}_Times_Taken`,
-          Number(
-            localStorage.getItem(
-              `${thisData.$store.getters.getCurrentTest}_Times_Taken`
-            )
-          ) + 1
-        );
-      }
-    },
+  if (
+    localStorage.getItem(
+      `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`
+    ) === null
+  ) {
+    console.log("user hasnt taken test before");
+    localStorage.setItem(
+      `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`,
+      1
+    );
+  }
+
+  let numberOfTimesTestWasTaken = localStorage.getItem(
+    `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`
+  );
+  set(
+    ref(
+      db,
+      `IBT_Brief_Black_White/User-${
+        thisData.$store.state.uid
+      }-${numberOfTimesTestWasTaken.padStart(2, 0)}`
+    ),
     {
-      onlyOnce: true,
+      data: dataToStore,
     }
   );
 
-  // set(ref(db, `IBT_Brief_Black_White/User-${thisData.$store.state.uid}/`), {
+  localStorage.setItem(
+    `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`,
+    Number(
+      localStorage.getItem(
+        `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`
+      )
+    ) + 1
+  );
 }

@@ -26,7 +26,10 @@
             <br />
             <h3
               class="fullinstruction"
-              v-html="ibt_trials[section]?.instruction"
+              v-html="
+                ibt_trials[section]?.instruction ||
+                ibt_trials[section]?.practice_instruction
+              "
             ></h3>
 
             <br />
@@ -120,54 +123,7 @@ export default {
       userGotStimulusWrong: false,
       notFinishedInstructions: true,
       testNotStarted: true,
-      ibt_trials: [
-        {
-          trials: generateIBTtrialsRace("Happy", "Sad", 2),
-          section: "practice",
-          practice_instruction: `Practice: There will be a picture of a Black person or a White person in the
-        middle of the screen. When you see a picture of the White person you should
-        touch the smiling face; when you see the Black person, you should touch
-        the crying face. Smiling and crying faces will appear at the bottom of
-        the screen either on the left or right. Pay attention because the
-        smiling and crying faces may change places. Please respond
-        quickly and correctly. You can only use one hand to touch
-        the screen.`,
-        },
-        {
-          trials: generateIBTtrialsRace("Happy", "Sad", 2),
-          section: "section_1",
-          instruction: `There will be a picture of a Black person or a White person in the
-        middle of the screen. When you see a picture of the White person you should
-        touch the smiling face; when you see the Black person, you should touch
-        the crying face. Smiling and crying faces will appear at the bottom of
-        the screen either on the left or right. Pay attention because the
-        smiling and crying faces may change places. Please respond
-        quickly and correctly. You can only use one hand to touch
-        the screen.`,
-        },
-        {
-          trials: generateIBTtrialsRace("Sad", "Happy", 2),
-          section: "practice_2",
-          instruction: `Practice: There will be a picture of a Black person or a White person in the middle
-      of screen. When you see a picture of the White person you should touch the
-      crying face; when you see the Black person, you should touch the smiling
-      face. Smiling and crying faces will appear at the bottom of the screen
-      either on the left or right. Pay attention because the smiling and crying
-      faces may change places. Please respond quickly and correctly. You
-      can only use one hand to touch the screen.`,
-        },
-        {
-          trials: generateIBTtrialsRace("Sad", "Happy", 2),
-          section: "section_2",
-          instruction: `There will be a picture of a Black person or a White person in the middle
-      of screen. When you see a picture of the White person you should touch the
-      crying face; when you see the Black person, you should touch the smiling
-      face. Smiling and crying faces will appear at the bottom of the screen
-      either on the left or right. Pay attention because the smiling and crying
-      faces may change places. Please respond quickly and correctly. You
-      can only use one hand to touch the screen.`,
-        },
-      ],
+      ibt_trials: [],
     };
   },
 
@@ -247,8 +203,76 @@ export default {
         document.querySelector(".faceLeft").style.display = "block";
       }, 500);
     },
+    randomizeTrialCongruency() {
+      let allTrialsShuffled = [];
+      let allTrials = [
+        {
+          trials: generateIBTtrialsRace("Happy", "Sad", 2),
+          section: "practice",
+          practice_instruction: `Practice: There will be a picture of a Black person or a White person in the
+        middle of the screen. When you see a picture of the White person you should
+        touch the smiling face; when you see the Black person, you should touch
+        the crying face. Smiling and crying faces will appear at the bottom of
+        the screen either on the left or right. Pay attention because the
+        smiling and crying faces may change places. Please respond
+        quickly and correctly. You can only use one hand to touch
+        the screen.`,
+        },
+        {
+          trials: generateIBTtrialsRace("Happy", "Sad", 2),
+          section: "section_1",
+          instruction: `There will be a picture of a Black person or a White person in the
+        middle of the screen. When you see a picture of the White person you should
+        touch the smiling face; when you see the Black person, you should touch
+        the crying face. Smiling and crying faces will appear at the bottom of
+        the screen either on the left or right. Pay attention because the
+        smiling and crying faces may change places. Please respond
+        quickly and correctly. You can only use one hand to touch
+        the screen.`,
+        },
+        {
+          trials: generateIBTtrialsRace("Sad", "Happy", 2),
+          section: "practice_2",
+          practice_instruction: `Practice: There will be a picture of a Black person or a White person in the middle
+      of screen. When you see a picture of the White person you should touch the
+      crying face; when you see the Black person, you should touch the smiling
+      face. Smiling and crying faces will appear at the bottom of the screen
+      either on the left or right. Pay attention because the smiling and crying
+      faces may change places. Please respond quickly and correctly. You
+      can only use one hand to touch the screen.`,
+        },
+        {
+          trials: generateIBTtrialsRace("Sad", "Happy", 2),
+          section: "section_2",
+          instruction: `There will be a picture of a Black person or a White person in the middle
+      of screen. When you see a picture of the White person you should touch the
+      crying face; when you see the Black person, you should touch the smiling
+      face. Smiling and crying faces will appear at the bottom of the screen
+      either on the left or right. Pay attention because the smiling and crying
+      faces may change places. Please respond quickly and correctly. You
+      can only use one hand to touch the screen.`,
+        },
+      ];
+      let randomNo = Math.floor(Math.random() * 2);
+      if (randomNo === 0) {
+        allTrialsShuffled = allTrials;
+      } else {
+        allTrialsShuffled.push(
+          allTrials[2],
+          allTrials[3],
+          allTrials[0],
+          allTrials[1]
+        );
+      }
+
+      this.ibt_trials = allTrialsShuffled;
+    },
   },
 
+  //Make sure that the IBT trial congruency tests are randomized
+  created() {
+    this.randomizeTrialCongruency();
+  },
   mounted() {
     this.$store.state["IBT_Brief_Black_White"] = [];
     this.$store.commit("changeCurrentTest", "IBT_Brief_Black_White");

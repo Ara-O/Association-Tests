@@ -177,7 +177,7 @@ export default {
       let allTrialsShuffled = [];
       let allTrials = [
         {
-          trials: genderAndSubject("Male", "Female", 2),
+          trials: genderAndSubject("Male", "Female", 8),
           section: "practice_1",
           practice_instruction: `Practice: There will be a picture of a Letter or a Number in the middle of
         screen. When you see a letter you should touch the
@@ -189,7 +189,7 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndSubject("Male", "Female", 2),
+          trials: genderAndSubject("Male", "Female", 24),
           section: "section_1",
           instruction: `There will be a picture of a Letter or a Number in the middle of
         screen. When you see a letter you should touch the
@@ -201,7 +201,7 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndSubject("Female", "Male", 2),
+          trials: genderAndSubject("Female", "Male", 8),
           section: "practice_2",
           practice_instruction: `Practice: There will be a picture of a Letter or a Number in the middle of
         screen. When you see a number you should touch the
@@ -213,7 +213,7 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndSubject("Female", "Male", 2),
+          trials: genderAndSubject("Female", "Male", 24),
           section: "section_2",
           instruction: `There will be a picture of a Letter or a Number in the middle of
         screen. When you see a number you should touch the

@@ -176,7 +176,7 @@ export default {
       let allTrialsShuffled = [];
       let allTrials = [
         {
-          trials: genderAndColor("Male", "Female", 2),
+          trials: genderAndColor("Male", "Female", 8),
           section: "practice_1",
           practice_instruction: `Practice: There will be a picture of a Blue color or a Pink color in the
         middle of the screen. When you see a picture of a Pink color, you should
@@ -188,7 +188,7 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndColor("Male", "Female", 2),
+          trials: genderAndColor("Male", "Female", 24),
           section: "section_1",
           instruction: `There will be a picture of a Blue color or a Pink color in the
         middle of the screen. When you see a picture of a Pink color, you should
@@ -200,7 +200,7 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndColor("Female", "Male", 2),
+          trials: genderAndColor("Female", "Male", 8),
           section: "practice_2",
           practice_instruction: `Practice: There will be a picture of a Blue color or a Pink color in the
         middle of the screen. When you see a picture of a Blue color, you should
@@ -212,7 +212,7 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndColor("Female", "Male", 2),
+          trials: genderAndColor("Female", "Male", 24),
           section: "section_2",
           instruction: `There will be a picture of a Blue color or a Pink color in the
         middle of the screen. When you see a picture of a Blue color, you should

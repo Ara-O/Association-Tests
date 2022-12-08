@@ -183,7 +183,7 @@ export default {
       let allTrialsShuffled = [];
       let allTrials = [
         {
-          trials: genderAndClothing("Male", "Female", 2),
+          trials: genderAndClothing("Male", "Female", 8),
           section: "practice_1",
           practice_instruction: `Practice: There will be a picture of a Female clothing or a Male clothing in the
         middle of screen. When you see a picture of the Female clothing you
@@ -195,7 +195,7 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndClothing("Male", "Female", 2),
+          trials: genderAndClothing("Male", "Female", 24),
           section: "section_1",
           instruction: `There will be a picture of a Female clothing or a Male clothing in the
         middle of the screen. When you see a picture of the Female clothing you should
@@ -207,7 +207,7 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndClothing("Female", "Male", 2),
+          trials: genderAndClothing("Female", "Male", 8),
           section: "practice_2",
           practice_instruction: `Practice: There will be a picture of a Female clothing or a Male clothing in the
         middle of screen. When you see a picture of the Female clothing you
@@ -220,7 +220,7 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndClothing("Female", "Male", 2),
+          trials: genderAndClothing("Female", "Male", 24),
           section: "section_2",
           instruction: `There will be a picture of a Female clothing or a Male clothing in the
         middle of the screen. When you see a picture of the Female clothing you should

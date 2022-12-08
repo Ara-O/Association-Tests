@@ -176,7 +176,7 @@ export default {
       let allTrialsShuffled = [];
       let allTrials = [
         {
-          trials: genderAndRoles("Male", "Female", 2),
+          trials: genderAndRoles("Male", "Female", 8),
           section: "practice_1",
           practice_instruction: `Practice: There will be a picture of a Kitchen item or an Office item in the
         middle of the screen. When you see a picture of a Kitchen item, you should
@@ -188,7 +188,7 @@ export default {
         the screen`,
         },
         {
-          trials: genderAndRoles("Male", "Female", 2),
+          trials: genderAndRoles("Male", "Female", 24),
           section: "section_1",
           instruction: `There will be a picture of a Kitchen item or an Office item in the
         middle of the screen. When you see a picture of a Kitchen item, you should
@@ -200,7 +200,7 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndRoles("Female", "Male", 2),
+          trials: genderAndRoles("Female", "Male", 8),
           section: "practice_2",
           practice_instruction: `Practice: There will be a picture of a Kitchen item or an Office item in the
         middle of the screen. When you see a picture of an Office item, you should
@@ -212,7 +212,7 @@ export default {
         the screen.`,
         },
         {
-          trials: genderAndRoles("Female", "Male", 2),
+          trials: genderAndRoles("Female", "Male", 24),
           section: "section_2",
           instruction: `There will be a picture of a Kitchen item or an Office item in the
         middle of the screen. When you see a picture of an Office item, you should

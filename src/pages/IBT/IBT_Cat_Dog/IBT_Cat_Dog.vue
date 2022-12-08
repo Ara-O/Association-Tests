@@ -131,7 +131,7 @@ export default {
       let allTrialsShuffled = [];
       let allTrials = [
         {
-          trials: catAndDog("Happy", "Sad", 2),
+          trials: catAndDog("Happy", "Sad", 8),
           section: "practice_1",
           practice_instruction: `There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Dog you should touch the
@@ -143,7 +143,7 @@ export default {
         the screen.`,
         },
         {
-          trials: catAndDog("Happy", "Sad", 2),
+          trials: catAndDog("Happy", "Sad", 24),
           section: "section_1",
           instruction: `There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Dog you should touch the
@@ -155,7 +155,7 @@ export default {
         the screen.`,
         },
         {
-          trials: catAndDog("Sad", "Happy", 2),
+          trials: catAndDog("Sad", "Happy", 8),
           section: "practice_2",
           practice_instruction: `Practice: There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Cat you should touch the
@@ -167,7 +167,7 @@ export default {
         the screen.`,
         },
         {
-          trials: catAndDog("Sad", "Happy", 2),
+          trials: catAndDog("Sad", "Happy", 24),
           section: "section_2",
           instruction: `There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Cat you should touch the
@@ -244,7 +244,8 @@ export default {
           that,
           that.ibt_trials[that.section].trials,
           "IBT_Cat_Dog",
-          "IBT_Feedback"
+          "IBT_Feedback",
+          "stimulusEmotion"
         );
       }, 500);
       document.querySelector(".faceRight").style.display = "block";

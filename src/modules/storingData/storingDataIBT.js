@@ -18,21 +18,7 @@ export function updateIBTData(
       data.currentTest = whereToStore;
       data.browser = navigator["userAgent"];
       data.dateTaken = `${cMonth}-${cDay}-${cYear}`;
-      if (test.testType === "IBT_Gender_Toy") {
-        if (outerIndex === 0) {
-          data.description =
-            "Practice: User clicks the male face for an image of a male toy, and the female face for an image of a female toy";
-        } else if (outerIndex === 1) {
-          data.description =
-            "User clicks the male face for an image of a male toy, and the female face for an image of a female toy";
-        } else if (outerIndex === 2) {
-          data.description =
-            "User clicks the female face for an image of a male toy, and the male face for an image of a female toy";
-        } else if (outerIndex === 3) {
-          data.description =
-            "Practice: User clicks the female face for an image of a male toy, and the male face for an image of a female toy";
-        }
-      } else if (test.testType === "IBT_Gender_Subject") {
+      if (test.testType === "IBT_Gender_Subject") {
         if (outerIndex === 0) {
           data.description =
             "Practice: User clicks the male face for an image of a letter, and the female face for an image of a number";
@@ -73,20 +59,6 @@ export function updateIBTData(
         } else if (outerIndex === 3) {
           data.description =
             "User clicks the female face for an image of a blue color, and the male face for an image of a pink color";
-        }
-      } else if (test.testType === "IBT_Gender_Clothing") {
-        if (outerIndex === 0) {
-          data.description =
-            "Practice: User clicks the male face for an image of a male clothing, and the female face for an image of a female clothing";
-        } else if (outerIndex === 1) {
-          data.description =
-            "User clicks the male face for an image of a male clothing, and the female face for an image of a female clothing";
-        } else if (outerIndex === 2) {
-          data.description =
-            "Practice: User clicks the female face for an image of a male clothing, and the male face for an image of a female clothing";
-        } else if (outerIndex === 3) {
-          data.description =
-            "User clicks the female face for an image of a male clothing, and the male face for an image of a female clothing";
         }
       }
 

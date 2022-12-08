@@ -28,8 +28,14 @@ function continueTimer() {
   continuedTime = new Date();
   durationOfPause += continuedTime - pausedTime;
 }
-let ibtData = [];
-function handleAnswer(thiskeyword, Data, whereToStore, feedbackPageRoute) {
+
+function handleAnswer(
+  thiskeyword,
+  Data,
+  whereToStore,
+  feedbackPageRoute,
+  dataKey
+) {
   const thisData = thiskeyword;
   if (!thisData.testNotStarted) {
     startTimer();
@@ -45,7 +51,7 @@ function handleAnswer(thiskeyword, Data, whereToStore, feedbackPageRoute) {
         ) {
           const currentChallenge = Data[thisData.currentTrial];
           //User got stimulus right, store the reaction time
-          if (currentChallenge.stimulusEmotion === buttonClickedStimulusMood) {
+          if (currentChallenge[dataKey] === buttonClickedStimulusMood) {
             stopTimer();
             thisData.paused = true;
             thisData.userGotStimulusWrong = false;
@@ -74,9 +80,9 @@ function handleAnswer(thiskeyword, Data, whereToStore, feedbackPageRoute) {
                 let cMonth = currentDate.getMonth() + 1;
                 let cYear = currentDate.getFullYear();
                 document.removeEventListener("click", handleInput);
-                ibtData.push(Data);
+                thisData.ibtData.push(Data);
                 let modifiedData = storeData.updateIBTData(
-                  ibtData,
+                  thisData.ibtData,
                   thisData,
                   cMonth,
                   cDay,
@@ -89,7 +95,7 @@ function handleAnswer(thiskeyword, Data, whereToStore, feedbackPageRoute) {
                   thisData.ibt_trials;
                 thisData.$router.push(feedbackPageRoute);
                 //Don't need to store data here because it will be stored in feedback page
-                ibtData = [];
+                thisData.ibtData = [];
               } else {
                 let currentDate = new Date();
                 let cDay = currentDate.getDate();
@@ -99,9 +105,9 @@ function handleAnswer(thiskeyword, Data, whereToStore, feedbackPageRoute) {
 
                 //Pushing to ibt data, modifying all the data first,
                 //then pushing to modifiedData
-                ibtData.push(Data);
+                thisData.ibtData.push(Data);
                 let modifiedData = storeData.updateIBTData(
-                  ibtData,
+                  thisData.ibtData,
                   thisData,
                   cMonth,
                   cDay,

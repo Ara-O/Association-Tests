@@ -104,6 +104,7 @@ export default {
       userGotStimulusRight: false,
       userGotStimulusWrong: false,
       ibt_trials: [],
+      ibtData: [],
     };
   },
 
@@ -128,7 +129,8 @@ export default {
           that,
           that.ibt_trials[that.section].trials,
           "IBT_Black_White",
-          "IBT_Feedback"
+          "IBT_Feedback",
+          "stimulusEmotion"
         );
       }, 500);
       document.querySelector(".faceRight").style.display = "block";
@@ -157,7 +159,8 @@ export default {
           that,
           that.ibt_trials[that.section].trials,
           "IBT_Black_White",
-          "IBT_Feedback"
+          "IBT_Feedback",
+          "stimulusEmotion"
         );
       }, 500);
       document.querySelector(".faceRight").style.display = "block";

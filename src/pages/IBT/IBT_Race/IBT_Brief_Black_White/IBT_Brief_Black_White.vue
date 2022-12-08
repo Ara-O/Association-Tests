@@ -121,6 +121,7 @@ export default {
       notFinishedInstructions: true,
       testNotStarted: true,
       ibt_trials: [],
+      ibtData: [],
     };
   },
 

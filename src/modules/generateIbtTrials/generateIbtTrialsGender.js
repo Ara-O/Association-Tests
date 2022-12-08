@@ -21,39 +21,39 @@ export function genderAndToy(male_toy, female_toy, trials) {
     visibility: "none" */
 
   let toy_stimuli_male_toy = [
-    { accuracy: 100, image: "T_M01.jpg", gender: male_toy },
-    { accuracy: 100, image: "T_M02.jpg", gender: male_toy },
-    { accuracy: 100, image: "T_M03.jpg", gender: male_toy },
-    { accuracy: 100, image: "T_M04.jpg", gender: male_toy },
-    { accuracy: 100, image: "T_M05.jpg", gender: male_toy },
-    { accuracy: 100, image: "T_M01.jpg", gender: male_toy },
-    { accuracy: 100, image: "T_M02.jpg", gender: male_toy },
-    { accuracy: 100, image: "T_M03.jpg", gender: male_toy },
-    { accuracy: 100, image: "T_M04.jpg", gender: male_toy },
-    { accuracy: 100, image: "T_M05.jpg", gender: male_toy },
-    { accuracy: 100, image: "T_M01.jpg", gender: male_toy },
-    { accuracy: 100, image: "T_M02.jpg", gender: male_toy },
-    { accuracy: 100, image: "T_M03.jpg", gender: male_toy },
-    { accuracy: 100, image: "T_M04.jpg", gender: male_toy },
-    { accuracy: 100, image: "T_M05.jpg", gender: male_toy },
+    { accuracy: 100, image: "T_M01.jpg", stimulusGender: male_toy },
+    { accuracy: 100, image: "T_M02.jpg", stimulusGender: male_toy },
+    { accuracy: 100, image: "T_M03.jpg", stimulusGender: male_toy },
+    { accuracy: 100, image: "T_M04.jpg", stimulusGender: male_toy },
+    { accuracy: 100, image: "T_M05.jpg", stimulusGender: male_toy },
+    { accuracy: 100, image: "T_M01.jpg", stimulusGender: male_toy },
+    { accuracy: 100, image: "T_M02.jpg", stimulusGender: male_toy },
+    { accuracy: 100, image: "T_M03.jpg", stimulusGender: male_toy },
+    { accuracy: 100, image: "T_M04.jpg", stimulusGender: male_toy },
+    { accuracy: 100, image: "T_M05.jpg", stimulusGender: male_toy },
+    { accuracy: 100, image: "T_M01.jpg", stimulusGender: male_toy },
+    { accuracy: 100, image: "T_M02.jpg", stimulusGender: male_toy },
+    { accuracy: 100, image: "T_M03.jpg", stimulusGender: male_toy },
+    { accuracy: 100, image: "T_M04.jpg", stimulusGender: male_toy },
+    { accuracy: 100, image: "T_M05.jpg", stimulusGender: male_toy },
   ];
 
   let toy_stimuli_female_toy = [
-    { accuracy: 100, image: "T_F01.jpg", gender: female_toy },
-    { accuracy: 100, image: "T_F02.jpg", gender: female_toy },
-    { accuracy: 100, image: "T_F03.jpg", gender: female_toy },
-    { accuracy: 100, image: "T_F04.jpg", gender: female_toy },
-    { accuracy: 100, image: "T_F05.jpg", gender: female_toy },
-    { accuracy: 100, image: "T_F01.jpg", gender: female_toy },
-    { accuracy: 100, image: "T_F02.jpg", gender: female_toy },
-    { accuracy: 100, image: "T_F03.jpg", gender: female_toy },
-    { accuracy: 100, image: "T_F04.jpg", gender: female_toy },
-    { accuracy: 100, image: "T_F05.jpg", gender: female_toy },
-    { accuracy: 100, image: "T_F01.jpg", gender: female_toy },
-    { accuracy: 100, image: "T_F02.jpg", gender: female_toy },
-    { accuracy: 100, image: "T_F03.jpg", gender: female_toy },
-    { accuracy: 100, image: "T_F04.jpg", gender: female_toy },
-    { accuracy: 100, image: "T_F05.jpg", gender: female_toy },
+    { accuracy: 100, image: "T_F01.jpg", stimulusGender: female_toy },
+    { accuracy: 100, image: "T_F02.jpg", stimulusGender: female_toy },
+    { accuracy: 100, image: "T_F03.jpg", stimulusGender: female_toy },
+    { accuracy: 100, image: "T_F04.jpg", stimulusGender: female_toy },
+    { accuracy: 100, image: "T_F05.jpg", stimulusGender: female_toy },
+    { accuracy: 100, image: "T_F01.jpg", stimulusGender: female_toy },
+    { accuracy: 100, image: "T_F02.jpg", stimulusGender: female_toy },
+    { accuracy: 100, image: "T_F03.jpg", stimulusGender: female_toy },
+    { accuracy: 100, image: "T_F04.jpg", stimulusGender: female_toy },
+    { accuracy: 100, image: "T_F05.jpg", stimulusGender: female_toy },
+    { accuracy: 100, image: "T_F01.jpg", stimulusGender: female_toy },
+    { accuracy: 100, image: "T_F02.jpg", stimulusGender: female_toy },
+    { accuracy: 100, image: "T_F03.jpg", stimulusGender: female_toy },
+    { accuracy: 100, image: "T_F04.jpg", stimulusGender: female_toy },
+    { accuracy: 100, image: "T_F05.jpg", stimulusGender: female_toy },
   ];
 
   let full_data = [];
@@ -76,11 +76,11 @@ export function genderAndToy(male_toy, female_toy, trials) {
     //Setting the position of the clicker faces randomized
     full_data[i].randomNo = randomNo;
     if (randomNo === 0) {
-      full_data[i].maleFacePosition = "Left";
-      full_data[i].femaleFacePosition = "Right";
+      full_data[i].leftClickerGender = "Male";
+      full_data[i].rightClickerGender = "Female";
     } else {
-      full_data[i].maleFacePosition = "Right";
-      full_data[i].femaleFacePosition = "Left";
+      full_data[i].rightClickerGender = "Male";
+      full_data[i].leftClickerGender = "Female";
     }
 
     full_data[i].accuracy = 100;
@@ -96,33 +96,33 @@ export function genderAndToy(male_toy, female_toy, trials) {
 // !HERE
 export function genderAndClothing(male_clothing, female_clothing, trials) {
   let female_clothing_images = [
-    { accuracy: 100, image: "CL_F01.jpg", gender: female_clothing },
-    { accuracy: 100, image: "CL_F02.jpg", gender: female_clothing },
-    { accuracy: 100, image: "CL_F03.jpg", gender: female_clothing },
-    { accuracy: 100, image: "CL_F04.jpg", gender: female_clothing },
-    { accuracy: 100, image: "CL_F01.jpg", gender: female_clothing },
-    { accuracy: 100, image: "CL_F02.jpg", gender: female_clothing },
-    { accuracy: 100, image: "CL_F03.jpg", gender: female_clothing },
-    { accuracy: 100, image: "CL_F04.jpg", gender: female_clothing },
-    { accuracy: 100, image: "CL_F01.jpg", gender: female_clothing },
-    { accuracy: 100, image: "CL_F02.jpg", gender: female_clothing },
-    { accuracy: 100, image: "CL_F03.jpg", gender: female_clothing },
-    { accuracy: 100, image: "CL_F04.jpg", gender: female_clothing },
+    { accuracy: 100, image: "CL_F01.jpg", stimulusGender: female_clothing },
+    { accuracy: 100, image: "CL_F02.jpg", stimulusGender: female_clothing },
+    { accuracy: 100, image: "CL_F03.jpg", stimulusGender: female_clothing },
+    { accuracy: 100, image: "CL_F04.jpg", stimulusGender: female_clothing },
+    { accuracy: 100, image: "CL_F01.jpg", stimulusGender: female_clothing },
+    { accuracy: 100, image: "CL_F02.jpg", stimulusGender: female_clothing },
+    { accuracy: 100, image: "CL_F03.jpg", stimulusGender: female_clothing },
+    { accuracy: 100, image: "CL_F04.jpg", stimulusGender: female_clothing },
+    { accuracy: 100, image: "CL_F01.jpg", stimulusGender: female_clothing },
+    { accuracy: 100, image: "CL_F02.jpg", stimulusGender: female_clothing },
+    { accuracy: 100, image: "CL_F03.jpg", stimulusGender: female_clothing },
+    { accuracy: 100, image: "CL_F04.jpg", stimulusGender: female_clothing },
   ];
 
   let male_clothing_images = [
-    { accuracy: 100, image: "CL_M01.jpg", gender: male_clothing },
-    { accuracy: 100, image: "CL_M02.jpg", gender: male_clothing },
-    { accuracy: 100, image: "CL_M03.jpg", gender: male_clothing },
-    { accuracy: 100, image: "CL_M04.jpg", gender: male_clothing },
-    { accuracy: 100, image: "CL_M01.jpg", gender: male_clothing },
-    { accuracy: 100, image: "CL_M02.jpg", gender: male_clothing },
-    { accuracy: 100, image: "CL_M03.jpg", gender: male_clothing },
-    { accuracy: 100, image: "CL_M04.jpg", gender: male_clothing },
-    { accuracy: 100, image: "CL_M01.jpg", gender: male_clothing },
-    { accuracy: 100, image: "CL_M02.jpg", gender: male_clothing },
-    { accuracy: 100, image: "CL_M03.jpg", gender: male_clothing },
-    { accuracy: 100, image: "CL_M04.jpg", gender: male_clothing },
+    { accuracy: 100, image: "CL_M01.jpg", stimulusGender: male_clothing },
+    { accuracy: 100, image: "CL_M02.jpg", stimulusGender: male_clothing },
+    { accuracy: 100, image: "CL_M03.jpg", stimulusGender: male_clothing },
+    { accuracy: 100, image: "CL_M04.jpg", stimulusGender: male_clothing },
+    { accuracy: 100, image: "CL_M01.jpg", stimulusGender: male_clothing },
+    { accuracy: 100, image: "CL_M02.jpg", stimulusGender: male_clothing },
+    { accuracy: 100, image: "CL_M03.jpg", stimulusGender: male_clothing },
+    { accuracy: 100, image: "CL_M04.jpg", stimulusGender: male_clothing },
+    { accuracy: 100, image: "CL_M01.jpg", stimulusGender: male_clothing },
+    { accuracy: 100, image: "CL_M02.jpg", stimulusGender: male_clothing },
+    { accuracy: 100, image: "CL_M03.jpg", stimulusGender: male_clothing },
+    { accuracy: 100, image: "CL_M04.jpg", stimulusGender: male_clothing },
   ];
   let full_data = [];
 
@@ -144,11 +144,11 @@ export function genderAndClothing(male_clothing, female_clothing, trials) {
     //Setting the position of the clicker faces randomized
     full_data[i].randomNo = randomNo;
     if (randomNo === 0) {
-      full_data[i].maleFacePosition = "Left";
-      full_data[i].femaleFacePosition = "Right";
+      full_data[i].leftClickerGender = "Male";
+      full_data[i].rightClickerGender = "Female";
     } else {
-      full_data[i].maleFacePosition = "Right";
-      full_data[i].femaleFacePosition = "Left";
+      full_data[i].rightClickerGender = "Male";
+      full_data[i].leftClickerGender = "Female";
     }
 
     full_data[i].accuracy = 100;
@@ -164,32 +164,32 @@ export function genderAndClothing(male_clothing, female_clothing, trials) {
 // !HERE
 export function genderAndSubject(math, reading, trials) {
   let female_reading_images = [
-    { accuracy: 100, image: "Reading_01.jpg", gender: reading },
-    { accuracy: 100, image: "Reading_02.jpg", gender: reading },
-    { accuracy: 100, image: "Reading_03.jpg", gender: reading },
-    { accuracy: 100, image: "Reading_04.jpg", gender: reading },
-    { accuracy: 100, image: "Reading_01.jpg", gender: reading },
-    { accuracy: 100, image: "Reading_02.jpg", gender: reading },
-    { accuracy: 100, image: "Reading_03.jpg", gender: reading },
-    { accuracy: 100, image: "Reading_04.jpg", gender: reading },
-    { accuracy: 100, image: "Reading_01.jpg", gender: reading },
-    { accuracy: 100, image: "Reading_02.jpg", gender: reading },
-    { accuracy: 100, image: "Reading_03.jpg", gender: reading },
-    { accuracy: 100, image: "Reading_04.jpg", gender: reading },
+    { accuracy: 100, image: "Reading_01.jpg", stimulusGender: reading },
+    { accuracy: 100, image: "Reading_02.jpg", stimulusGender: reading },
+    { accuracy: 100, image: "Reading_03.jpg", stimulusGender: reading },
+    { accuracy: 100, image: "Reading_04.jpg", stimulusGender: reading },
+    { accuracy: 100, image: "Reading_01.jpg", stimulusGender: reading },
+    { accuracy: 100, image: "Reading_02.jpg", stimulusGender: reading },
+    { accuracy: 100, image: "Reading_03.jpg", stimulusGender: reading },
+    { accuracy: 100, image: "Reading_04.jpg", stimulusGender: reading },
+    { accuracy: 100, image: "Reading_01.jpg", stimulusGender: reading },
+    { accuracy: 100, image: "Reading_02.jpg", stimulusGender: reading },
+    { accuracy: 100, image: "Reading_03.jpg", stimulusGender: reading },
+    { accuracy: 100, image: "Reading_04.jpg", stimulusGender: reading },
   ];
   let male_math_images = [
-    { accuracy: 100, image: "Math_01.jpg", gender: math },
-    { accuracy: 100, image: "Math_02.jpg", gender: math },
-    { accuracy: 100, image: "Math_03.jpg", gender: math },
-    { accuracy: 100, image: "Math_04.jpg", gender: math },
-    { accuracy: 100, image: "Math_01.jpg", gender: math },
-    { accuracy: 100, image: "Math_02.jpg", gender: math },
-    { accuracy: 100, image: "Math_03.jpg", gender: math },
-    { accuracy: 100, image: "Math_04.jpg", gender: math },
-    { accuracy: 100, image: "Math_01.jpg", gender: math },
-    { accuracy: 100, image: "Math_02.jpg", gender: math },
-    { accuracy: 100, image: "Math_03.jpg", gender: math },
-    { accuracy: 100, image: "Math_04.jpg", gender: math },
+    { accuracy: 100, image: "Math_01.jpg", stimulusGender: math },
+    { accuracy: 100, image: "Math_02.jpg", stimulusGender: math },
+    { accuracy: 100, image: "Math_03.jpg", stimulusGender: math },
+    { accuracy: 100, image: "Math_04.jpg", stimulusGender: math },
+    { accuracy: 100, image: "Math_01.jpg", stimulusGender: math },
+    { accuracy: 100, image: "Math_02.jpg", stimulusGender: math },
+    { accuracy: 100, image: "Math_03.jpg", stimulusGender: math },
+    { accuracy: 100, image: "Math_04.jpg", stimulusGender: math },
+    { accuracy: 100, image: "Math_01.jpg", stimulusGender: math },
+    { accuracy: 100, image: "Math_02.jpg", stimulusGender: math },
+    { accuracy: 100, image: "Math_03.jpg", stimulusGender: math },
+    { accuracy: 100, image: "Math_04.jpg", stimulusGender: math },
   ];
   let full_data = [];
 
@@ -211,11 +211,11 @@ export function genderAndSubject(math, reading, trials) {
     //Setting the position of the clicker faces randomized
     full_data[i].randomNo = randomNo;
     if (randomNo === 0) {
-      full_data[i].maleFacePosition = "Left";
-      full_data[i].femaleFacePosition = "Right";
+      full_data[i].leftClickerGender = "Male";
+      full_data[i].rightClickerGender = "Female";
     } else {
-      full_data[i].maleFacePosition = "Right";
-      full_data[i].femaleFacePosition = "Left";
+      full_data[i].rightClickerGender = "Male";
+      full_data[i].leftClickerGender = "Female";
     }
 
     full_data[i].accuracy = 100;
@@ -230,44 +230,44 @@ export function genderAndSubject(math, reading, trials) {
 
 export function genderAndRoles(office, kitchen, trials) {
   let office_images = [
-    { accuracy: 100, image: "W01-chair.jpg", gender: office },
-    { accuracy: 100, image: "W02-computer.jpg", gender: office },
-    { accuracy: 100, image: "W03-desk.jpg", gender: office },
-    { accuracy: 100, image: "W04-filecabinet.jpg", gender: office },
-    { accuracy: 100, image: "W05-pen.jpg", gender: office },
-    { accuracy: 100, image: "W06-phone.jpg", gender: office },
-    { accuracy: 100, image: "W01-chair.jpg", gender: office },
-    { accuracy: 100, image: "W02-computer.jpg", gender: office },
-    { accuracy: 100, image: "W03-desk.jpg", gender: office },
-    { accuracy: 100, image: "W04-filecabinet.jpg", gender: office },
-    { accuracy: 100, image: "W05-pen.jpg", gender: office },
-    { accuracy: 100, image: "W06-phone.jpg", gender: office },
-    { accuracy: 100, image: "W01-chair.jpg", gender: office },
-    { accuracy: 100, image: "W02-computer.jpg", gender: office },
-    { accuracy: 100, image: "W03-desk.jpg", gender: office },
-    { accuracy: 100, image: "W04-filecabinet.jpg", gender: office },
-    { accuracy: 100, image: "W05-pen.jpg", gender: office },
-    { accuracy: 100, image: "W06-phone.jpg", gender: office },
+    { accuracy: 100, image: "W01-chair.jpg", stimulusGender: office },
+    { accuracy: 100, image: "W02-computer.jpg", stimulusGender: office },
+    { accuracy: 100, image: "W03-desk.jpg", stimulusGender: office },
+    { accuracy: 100, image: "W04-filecabinet.jpg", stimulusGender: office },
+    { accuracy: 100, image: "W05-pen.jpg", stimulusGender: office },
+    { accuracy: 100, image: "W06-phone.jpg", stimulusGender: office },
+    { accuracy: 100, image: "W01-chair.jpg", stimulusGender: office },
+    { accuracy: 100, image: "W02-computer.jpg", stimulusGender: office },
+    { accuracy: 100, image: "W03-desk.jpg", stimulusGender: office },
+    { accuracy: 100, image: "W04-filecabinet.jpg", stimulusGender: office },
+    { accuracy: 100, image: "W05-pen.jpg", stimulusGender: office },
+    { accuracy: 100, image: "W06-phone.jpg", stimulusGender: office },
+    { accuracy: 100, image: "W01-chair.jpg", stimulusGender: office },
+    { accuracy: 100, image: "W02-computer.jpg", stimulusGender: office },
+    { accuracy: 100, image: "W03-desk.jpg", stimulusGender: office },
+    { accuracy: 100, image: "W04-filecabinet.jpg", stimulusGender: office },
+    { accuracy: 100, image: "W05-pen.jpg", stimulusGender: office },
+    { accuracy: 100, image: "W06-phone.jpg", stimulusGender: office },
   ];
   let kitchen_images = [
-    { accuracy: 100, image: "H01-cookerhood.jpg", gender: kitchen },
-    { accuracy: 100, image: "H02-cuttingboard.jpg", gender: kitchen },
-    { accuracy: 100, image: "H03-pan.jpg", gender: kitchen },
-    { accuracy: 100, image: "H04-refrigerator.jpg", gender: kitchen },
-    { accuracy: 100, image: "H05-spatula.jpg", gender: kitchen },
-    { accuracy: 100, image: "H06-washingsink.jpg", gender: kitchen },
-    { accuracy: 100, image: "H01-cookerhood.jpg", gender: kitchen },
-    { accuracy: 100, image: "H02-cuttingboard.jpg", gender: kitchen },
-    { accuracy: 100, image: "H03-pan.jpg", gender: kitchen },
-    { accuracy: 100, image: "H04-refrigerator.jpg", gender: kitchen },
-    { accuracy: 100, image: "H05-spatula.jpg", gender: kitchen },
-    { accuracy: 100, image: "H06-washingsink.jpg", gender: kitchen },
-    { accuracy: 100, image: "H01-cookerhood.jpg", gender: kitchen },
-    { accuracy: 100, image: "H02-cuttingboard.jpg", gender: kitchen },
-    { accuracy: 100, image: "H03-pan.jpg", gender: kitchen },
-    { accuracy: 100, image: "H04-refrigerator.jpg", gender: kitchen },
-    { accuracy: 100, image: "H05-spatula.jpg", gender: kitchen },
-    { accuracy: 100, image: "H06-washingsink.jpg", gender: kitchen },
+    { accuracy: 100, image: "H01-cookerhood.jpg", stimulusGender: kitchen },
+    { accuracy: 100, image: "H02-cuttingboard.jpg", stimulusGender: kitchen },
+    { accuracy: 100, image: "H03-pan.jpg", stimulusGender: kitchen },
+    { accuracy: 100, image: "H04-refrigerator.jpg", stimulusGender: kitchen },
+    { accuracy: 100, image: "H05-spatula.jpg", stimulusGender: kitchen },
+    { accuracy: 100, image: "H06-washingsink.jpg", stimulusGender: kitchen },
+    { accuracy: 100, image: "H01-cookerhood.jpg", stimulusGender: kitchen },
+    { accuracy: 100, image: "H02-cuttingboard.jpg", stimulusGender: kitchen },
+    { accuracy: 100, image: "H03-pan.jpg", stimulusGender: kitchen },
+    { accuracy: 100, image: "H04-refrigerator.jpg", stimulusGender: kitchen },
+    { accuracy: 100, image: "H05-spatula.jpg", stimulusGender: kitchen },
+    { accuracy: 100, image: "H06-washingsink.jpg", stimulusGender: kitchen },
+    { accuracy: 100, image: "H01-cookerhood.jpg", stimulusGender: kitchen },
+    { accuracy: 100, image: "H02-cuttingboard.jpg", stimulusGender: kitchen },
+    { accuracy: 100, image: "H03-pan.jpg", stimulusGender: kitchen },
+    { accuracy: 100, image: "H04-refrigerator.jpg", stimulusGender: kitchen },
+    { accuracy: 100, image: "H05-spatula.jpg", stimulusGender: kitchen },
+    { accuracy: 100, image: "H06-washingsink.jpg", stimulusGender: kitchen },
   ];
   let full_data = [];
 
@@ -289,11 +289,11 @@ export function genderAndRoles(office, kitchen, trials) {
     //Setting the position of the clicker faces randomized
     full_data[i].randomNo = randomNo;
     if (randomNo === 0) {
-      full_data[i].maleFacePosition = "Left";
-      full_data[i].femaleFacePosition = "Right";
+      full_data[i].leftClickerGender = "Male";
+      full_data[i].rightClickerGender = "Female";
     } else {
-      full_data[i].maleFacePosition = "Right";
-      full_data[i].femaleFacePosition = "Left";
+      full_data[i].rightClickerGender = "Male";
+      full_data[i].leftClickerGender = "Female";
     }
 
     full_data[i].accuracy = 100;
@@ -309,32 +309,32 @@ export function genderAndRoles(office, kitchen, trials) {
 // !HERE
 export function genderAndColor(blue, pink, trials) {
   let blue_images = [
-    { accuracy: 100, image: "blue1.jpg", gender: blue },
-    { accuracy: 100, image: "blue2.jpg", gender: blue },
-    { accuracy: 100, image: "blue3.jpg", gender: blue },
-    { accuracy: 100, image: "blue4.jpg", gender: blue },
-    { accuracy: 100, image: "blue1.jpg", gender: blue },
-    { accuracy: 100, image: "blue2.jpg", gender: blue },
-    { accuracy: 100, image: "blue3.jpg", gender: blue },
-    { accuracy: 100, image: "blue4.jpg", gender: blue },
-    { accuracy: 100, image: "blue1.jpg", gender: blue },
-    { accuracy: 100, image: "blue2.jpg", gender: blue },
-    { accuracy: 100, image: "blue3.jpg", gender: blue },
-    { accuracy: 100, image: "blue4.jpg", gender: blue },
+    { accuracy: 100, image: "blue1.jpg", stimulusGender: blue },
+    { accuracy: 100, image: "blue2.jpg", stimulusGender: blue },
+    { accuracy: 100, image: "blue3.jpg", stimulusGender: blue },
+    { accuracy: 100, image: "blue4.jpg", stimulusGender: blue },
+    { accuracy: 100, image: "blue1.jpg", stimulusGender: blue },
+    { accuracy: 100, image: "blue2.jpg", stimulusGender: blue },
+    { accuracy: 100, image: "blue3.jpg", stimulusGender: blue },
+    { accuracy: 100, image: "blue4.jpg", stimulusGender: blue },
+    { accuracy: 100, image: "blue1.jpg", stimulusGender: blue },
+    { accuracy: 100, image: "blue2.jpg", stimulusGender: blue },
+    { accuracy: 100, image: "blue3.jpg", stimulusGender: blue },
+    { accuracy: 100, image: "blue4.jpg", stimulusGender: blue },
   ];
   let pink_images = [
-    { accuracy: 100, image: "pink1.jpg", gender: pink },
-    { accuracy: 100, image: "pink2.jpg", gender: pink },
-    { accuracy: 100, image: "pink3.jpg", gender: pink },
-    { accuracy: 100, image: "pink4.jpg", gender: pink },
-    { accuracy: 100, image: "pink1.jpg", gender: pink },
-    { accuracy: 100, image: "pink2.jpg", gender: pink },
-    { accuracy: 100, image: "pink3.jpg", gender: pink },
-    { accuracy: 100, image: "pink4.jpg", gender: pink },
-    { accuracy: 100, image: "pink1.jpg", gender: pink },
-    { accuracy: 100, image: "pink2.jpg", gender: pink },
-    { accuracy: 100, image: "pink3.jpg", gender: pink },
-    { accuracy: 100, image: "pink4.jpg", gender: pink },
+    { accuracy: 100, image: "pink1.jpg", stimulusGender: pink },
+    { accuracy: 100, image: "pink2.jpg", stimulusGender: pink },
+    { accuracy: 100, image: "pink3.jpg", stimulusGender: pink },
+    { accuracy: 100, image: "pink4.jpg", stimulusGender: pink },
+    { accuracy: 100, image: "pink1.jpg", stimulusGender: pink },
+    { accuracy: 100, image: "pink2.jpg", stimulusGender: pink },
+    { accuracy: 100, image: "pink3.jpg", stimulusGender: pink },
+    { accuracy: 100, image: "pink4.jpg", stimulusGender: pink },
+    { accuracy: 100, image: "pink1.jpg", stimulusGender: pink },
+    { accuracy: 100, image: "pink2.jpg", stimulusGender: pink },
+    { accuracy: 100, image: "pink3.jpg", stimulusGender: pink },
+    { accuracy: 100, image: "pink4.jpg", stimulusGender: pink },
   ];
   let full_data = [];
 
@@ -356,11 +356,11 @@ export function genderAndColor(blue, pink, trials) {
     //Setting the position of the clicker faces randomized
     full_data[i].randomNo = randomNo;
     if (randomNo === 0) {
-      full_data[i].maleFacePosition = "Left";
-      full_data[i].femaleFacePosition = "Right";
+      full_data[i].leftClickerGender = "Male";
+      full_data[i].rightClickerGender = "Female";
     } else {
-      full_data[i].maleFacePosition = "Right";
-      full_data[i].femaleFacePosition = "Left";
+      full_data[i].rightClickerGender = "Male";
+      full_data[i].leftClickerGender = "Female";
     }
 
     full_data[i].accuracy = 100;

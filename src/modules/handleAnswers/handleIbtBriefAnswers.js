@@ -28,7 +28,6 @@ function continueTimer() {
   durationOfPause += continuedTime - pausedTime;
 }
 
-let ibtData = [];
 function handleAnswer(thiskeyword, Data, whereToStore) {
   const thisData = thiskeyword;
   if (!thisData.testNotStarted) {
@@ -71,18 +70,18 @@ function handleAnswer(thiskeyword, Data, whereToStore) {
               //If full test is over
               if (thisData.ibt_trials.length - 1 == thisData.section) {
                 document.removeEventListener("click", handleInput);
-                ibtData.push(Data);
-                thisData.$store.state[whereToStore] = ibtData;
+                thisData.ibtData.push(Data);
+                thisData.$store.state[whereToStore] = thisData.ibtData;
                 // console.log("full test ends");
                 thisData.$router.push("/IBT_Brief_Black_White_Feedback");
-                storeData.storeBriefIBTData(ibtData, thisData);
-                ibtData = [];
+                storeData.storeBriefIBTData(thisData.ibtData, thisData);
+                thisData.ibtData = [];
                 //Route to feedback
               } else {
                 thisData.userGotStimulusRight = true;
-                ibtData.push(Data);
+                thisData.ibtData.push(Data);
                 setTimeout(function () {
-                  thisData.$store.state[whereToStore] = ibtData;
+                  thisData.$store.state[whereToStore] = thisData.ibtData;
                   document.removeEventListener("click", handleInput);
                   thisData.paused = true;
                   thisData.section++;

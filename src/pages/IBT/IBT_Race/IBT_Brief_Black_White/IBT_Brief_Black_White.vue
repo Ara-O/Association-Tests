@@ -204,8 +204,8 @@ export default {
       let allTrialsShuffled = [];
       let allTrials = [
         {
-          trials: generateIBTtrialsRace("Happy", "Sad", 8),
-          section: "practice",
+          trials: generateIBTtrialsRace("Happy", "Sad", 2),
+          section: "practice_1",
           practice_instruction: `Practice: There will be a picture of a Black person or a White person in the
         middle of the screen. When you see a picture of the White person you should
         touch the smiling face; when you see the Black person, you should touch
@@ -216,7 +216,7 @@ export default {
         the screen.`,
         },
         {
-          trials: generateIBTtrialsRace("Happy", "Sad", 20),
+          trials: generateIBTtrialsRace("Happy", "Sad", 2),
           section: "section_1",
           instruction: `There will be a picture of a Black person or a White person in the
         middle of the screen. When you see a picture of the White person you should
@@ -228,7 +228,7 @@ export default {
         the screen.`,
         },
         {
-          trials: generateIBTtrialsRace("Sad", "Happy", 8),
+          trials: generateIBTtrialsRace("Sad", "Happy", 2),
           section: "practice_2",
           practice_instruction: `Practice: There will be a picture of a Black person or a White person in the middle
       of screen. When you see a picture of the White person you should touch the
@@ -239,7 +239,7 @@ export default {
       can only use one hand to touch the screen.`,
         },
         {
-          trials: generateIBTtrialsRace("Sad", "Happy", 20),
+          trials: generateIBTtrialsRace("Sad", "Happy", 2),
           section: "section_2",
           instruction: `There will be a picture of a Black person or a White person in the middle
       of screen. When you see a picture of the White person you should touch the
@@ -252,7 +252,28 @@ export default {
       ];
       let randomNo = Math.floor(Math.random() * 2);
       if (randomNo === 0) {
+        //Starting with congruency test, so updating the descriptions
         allTrialsShuffled = allTrials;
+        allTrialsShuffled.forEach((trialArray, index) => {
+          trialArray.trials.forEach((trial) => {
+            if (index === 0) {
+              trial.description =
+                "Practice: User clicks a happy face for an image of a white person, and a sad face for an image of a black person";
+            }
+            if (index === 1) {
+              trial.description =
+                "User clicks a happy face for an image of a white person, and a sad face for an image of a black person";
+            }
+            if (index === 2) {
+              trial.description =
+                "Practice: User clicks a happy face for an image of a black person, and a sad face for an image of a white person";
+            }
+            if (index === 3) {
+              trial.description =
+                "Practice: User clicks a happy face for an image of a black person, and a sad face for an image of a white person";
+            }
+          });
+        });
       } else {
         allTrialsShuffled.push(
           allTrials[2],
@@ -260,6 +281,28 @@ export default {
           allTrials[0],
           allTrials[1]
         );
+
+        //Setting the updated description for the allTrialsShuffled - for incongruent tests
+        allTrialsShuffled.forEach((trialArray, index) => {
+          trialArray.trials.forEach((trial) => {
+            if (index === 0) {
+              trial.description =
+                "Practice: User clicks a happy face for an image of a black person, and a sad face for an image of a white person";
+            }
+            if (index === 1) {
+              trial.description =
+                "User clicks a happy face for an image of a black person, and a sad face for an image of a white person";
+            }
+            if (index === 2) {
+              trial.description =
+                "Practice: User clicks a happy face for an image of a white person, and a sad face for an image of a black person";
+            }
+            if (index === 3) {
+              trial.description =
+                "User clicks a happy face for an image of a white person, and a sad face for an image of a black person";
+            }
+          });
+        });
       }
 
       this.ibt_trials = allTrialsShuffled;

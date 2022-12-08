@@ -12,27 +12,13 @@ export function updateIBTData(
   //test -> this value
   //
   let dataclone = JSON.parse(JSON.stringify(Data));
-  dataclone.forEach((outerdata, outerIndex) => {
-    outerdata.forEach((data, innerIndex) => {
+  dataclone.forEach((dataouter, outerIndex) => {
+    dataouter.forEach((data, innerIndex) => {
       //adding the current test, browser type, and the date taken
       data.currentTest = whereToStore;
       data.browser = navigator["userAgent"];
       data.dateTaken = `${cMonth}-${cDay}-${cYear}`;
-      if (test.testType === "IBT_Black_White") {
-        if (outerIndex === 0) {
-          data.description =
-            "Practice: User clicks a happy face for an image of a white person, and a sad face for an image of a black person";
-        } else if (outerIndex === 1) {
-          data.description =
-            "User clicks a happy face for an image of a white person, and a sad face for an image of a black person";
-        } else if (outerIndex === 2) {
-          data.description =
-            "Practice: User clicks a sad face for an image of a white person, and a happy face for an image of a black person";
-        } else if (outerIndex === 3) {
-          data.description =
-            "User clicks a sad face for an image of a white person, and a happy face for an image of a black person";
-        }
-      } else if (test.testType === "IBT_Gender_Toy") {
+      if (test.testType === "IBT_Gender_Toy") {
         if (outerIndex === 0) {
           data.description =
             "Practice: User clicks the male face for an image of a male toy, and the female face for an image of a female toy";
@@ -102,20 +88,6 @@ export function updateIBTData(
           data.description =
             "User clicks the female face for an image of a male clothing, and the male face for an image of a female clothing";
         }
-      } else if (test.testType === "IBT_Cat_Dog") {
-        if (outerIndex === 0) {
-          data.description =
-            "Practice: User clicks the dog for a happy face, and the cat for a sad face";
-        } else if (outerIndex === 1) {
-          data.description =
-            "User clicks the dog for a happy face, and the cat for a sad face";
-        } else if (outerIndex === 2) {
-          data.description =
-            "Practice: User clicks the dog for a sad face, and the cat for a happy face";
-        } else if (outerIndex === 3) {
-          data.description =
-            "User clicks the dog for a sad face, and the cat for a happy face";
-        }
       }
 
       data.userWouldPrefer =
@@ -136,9 +108,11 @@ export function updateIBTData(
         data.girlWouldPrefer = "N/A";
       } else {
         data.howUserFeelsTowardsBlackChildren =
-          test.$store.state.userData.howUserFeelsTowardsBlackChildren;
+          test.$store.state.userData.howUserFeelsTowardsBlackChildren ??
+          "Not provided";
         data.howUserFeelsTowardsWhiteChildren =
-          test.$store.state.userData.howUserFeelsTowardsWhiteChildren;
+          test.$store.state.userData.howUserFeelsTowardsWhiteChildren ??
+          "Not provided";
       }
 
       data.stimulus = data.image;
@@ -152,7 +126,7 @@ export function updateIBTData(
       delete data.currentTest;
     });
   });
-  test.$store.state[version] = dataclone;
+  return dataclone;
 }
 
 export function storeIBTGroupData(

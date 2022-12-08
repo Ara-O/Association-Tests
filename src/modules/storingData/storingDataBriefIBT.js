@@ -34,22 +34,10 @@ const app = initializeApp(firebaseConfigUow, "secondary");
 export function storeBriefIBTData(dataToStore, thisData) {
   // console.log("data gets stored now - ", dataToStore);
   dataToStore.forEach((element, outerIndex) => {
-    element.forEach((trial) => {
+    element.forEach((trial, innerIndex) => {
       trial.browser = navigator["userAgent"];
       trial.dateTaken = `${cMonth}-${cDay}-${cYear}`;
-      if (outerIndex === 0) {
-        trial.description =
-          "Practice: User clicks a happy face for an image of a white person, and a sad face for an image of a black person";
-      } else if (outerIndex === 1) {
-        trial.description =
-          "User clicks a happy face for an image of a white person, and a sad face for an image of a black person";
-      } else if (outerIndex === 2) {
-        trial.description =
-          "Practice: User clicks a sad face for an image of a white person, and a happy face for an image of a black person";
-      } else if (outerIndex === 3) {
-        trial.description =
-          "User clicks a sad face for an image of a white person, and a happy face for an image of a black person";
-      }
+      trial.stimulusOrder = innerIndex + 1;
       delete trial.randomNo;
       delete trial.visibility;
     });

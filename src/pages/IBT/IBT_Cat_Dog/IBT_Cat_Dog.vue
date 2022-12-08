@@ -182,6 +182,26 @@ export default {
       let randomNo = Math.floor(Math.random() * 2);
       if (randomNo === 0) {
         allTrialsShuffled = allTrials;
+        allTrialsShuffled.forEach((trialArray, index) => {
+          trialArray.trials.forEach((trial) => {
+            if (index === 0) {
+              trial.description =
+                "Practice: User clicks the happy face for an image of a dog, and the sad face for an image of a cat";
+            }
+            if (index === 1) {
+              trial.description =
+                "User clicks the happy face for an image of a dog, and the sad face for an image of a cat";
+            }
+            if (index === 2) {
+              trial.description =
+                "Practice: User clicks the sad face for an image of a dog, and the happy face for an image of a cat";
+            }
+            if (index === 3) {
+              trial.description =
+                "User clicks the sad face for an image of a dog, and the happy face for an image of a cat";
+            }
+          });
+        });
       } else {
         allTrialsShuffled.push(
           allTrials[2],
@@ -189,8 +209,27 @@ export default {
           allTrials[0],
           allTrials[1]
         );
+        allTrialsShuffled.forEach((trialArray, index) => {
+          trialArray.trials.forEach((trial) => {
+            if (index === 0) {
+              trial.description =
+                "Practice: User clicks the sad face for an image of a dog, and the happy face for an image of a cat";
+            }
+            if (index === 1) {
+              trial.description =
+                "User clicks the sad face for an image of a dog, and the happy face for an image of a cat";
+            }
+            if (index === 2) {
+              trial.description =
+                "Practice: User clicks the happy face for an image of a dog, and the sad face for an image of a cat";
+            }
+            if (index === 3) {
+              trial.description =
+                " User clicks the happy face for an image of a dog, and the sad face for an image of a cat";
+            }
+          });
+        });
       }
-
       this.ibt_trials = allTrialsShuffled;
     },
 

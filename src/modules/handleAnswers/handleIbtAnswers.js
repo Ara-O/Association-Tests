@@ -69,19 +69,48 @@ function handleAnswer(thiskeyword, Data, whereToStore, feedbackPageRoute) {
             } else {
               //Full test is over
               if (thisData.ibt_trials.length - 1 == thisData.section) {
+                let currentDate = new Date();
+                let cDay = currentDate.getDate();
+                let cMonth = currentDate.getMonth() + 1;
+                let cYear = currentDate.getFullYear();
                 document.removeEventListener("click", handleInput);
                 ibtData.push(Data);
-                thisData.$store.state[whereToStore] = ibtData;
+                let modifiedData = storeData.updateIBTData(
+                  ibtData,
+                  thisData,
+                  cMonth,
+                  cDay,
+                  cYear,
+                  whereToStore,
+                  whereToStore
+                );
+                thisData.$store.state[whereToStore] = modifiedData;
                 thisData.$store.state["ibtDataForFeedbackPage"] =
                   thisData.ibt_trials;
                 thisData.$router.push(feedbackPageRoute);
                 //Don't need to store data here because it will be stored in feedback page
                 ibtData = [];
               } else {
+                let currentDate = new Date();
+                let cDay = currentDate.getDate();
+                let cMonth = currentDate.getMonth() + 1;
+                let cYear = currentDate.getFullYear();
                 thisData.userGotStimulusRight = true;
+
+                //Pushing to ibt data, modifying all the data first,
+                //then pushing to modifiedData
                 ibtData.push(Data);
+                let modifiedData = storeData.updateIBTData(
+                  ibtData,
+                  thisData,
+                  cMonth,
+                  cDay,
+                  cYear,
+                  whereToStore,
+                  whereToStore
+                );
+                thisData.$store.state[whereToStore] = modifiedData;
                 setTimeout(function () {
-                  thisData.$store.state[whereToStore] = ibtData;
                   document.removeEventListener("click", handleInput);
                   thisData.paused = true;
                   thisData.section++;

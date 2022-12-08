@@ -87,7 +87,7 @@ export function genderAndToy(male_toy, female_toy, trials) {
   }
 
   let updated_full_data = shuffleObjects(full_data);
-  updated_full_data = validateTrialData(updated_full_data, "gender");
+  updated_full_data = validateTrialData(updated_full_data, "stimulusGender");
 
   updated_full_data[0].visibility = "block";
   return updated_full_data;
@@ -155,7 +155,7 @@ export function genderAndClothing(male_clothing, female_clothing, trials) {
   }
 
   let updated_full_data = shuffleObjects(full_data);
-  updated_full_data = validateTrialData(updated_full_data, "gender");
+  updated_full_data = validateTrialData(updated_full_data, "stimulusGender");
 
   updated_full_data[0].visibility = "block";
   return updated_full_data;
@@ -222,7 +222,7 @@ export function genderAndSubject(math, reading, trials) {
   }
 
   let updated_full_data = shuffleObjects(full_data);
-  updated_full_data = validateTrialData(updated_full_data, "gender");
+  updated_full_data = validateTrialData(updated_full_data, "stimulusGender");
 
   updated_full_data[0].visibility = "block";
   return updated_full_data;
@@ -300,7 +300,7 @@ export function genderAndRoles(office, kitchen, trials) {
   }
 
   let updated_full_data = shuffleObjects(full_data);
-  updated_full_data = validateTrialData(updated_full_data, "gender");
+  updated_full_data = validateTrialData(updated_full_data, "stimulusGender");
 
   updated_full_data[0].visibility = "block";
   return updated_full_data;
@@ -367,7 +367,7 @@ export function genderAndColor(blue, pink, trials) {
   }
 
   let updated_full_data = shuffleObjects(full_data);
-  updated_full_data = validateTrialData(updated_full_data, "gender");
+  updated_full_data = validateTrialData(updated_full_data, "stimulusGender");
 
   updated_full_data[0].visibility = "block";
   return updated_full_data;

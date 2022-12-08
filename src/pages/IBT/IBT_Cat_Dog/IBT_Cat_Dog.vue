@@ -112,6 +112,7 @@ export default {
       userGotStimulusRight: false,
       userGotStimulusWrong: false,
       ibt_trials: [],
+      ibtData: [],
     };
   },
 
@@ -131,7 +132,7 @@ export default {
       let allTrials = [
         {
           trials: catAndDog("Happy", "Sad", 2),
-          section: "practice",
+          section: "practice_1",
           practice_instruction: `There will be a picture of a Cat or a Dog in the middle of
         screen. When you see a picture of the Dog you should touch the
         smiley face at the bottom of the screen; when you see a Cat, you

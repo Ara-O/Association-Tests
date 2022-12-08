@@ -5,7 +5,7 @@
         <implicit-bias-test-instructions
           @finishedInstructions="finishedInstructions"
         >
-          {{ irbt_trials[section].practice_instruction }}
+          {{ ibt_trials[section].practice_instruction }}
         </implicit-bias-test-instructions>
       </section>
       <section :class="{ hide: notFinishedInstructions }">
@@ -14,7 +14,10 @@
           <br />
           <h3
             class="fullinstruction"
-            v-html="irbt_trials[section]?.instruction"
+            v-html="
+              ibt_trials[section]?.instruction ||
+              ibt_trials[section]?.practice_instruction
+            "
           ></h3>
 
           <br />
@@ -22,26 +25,28 @@
           <img
             src="../../../../assets/App_Icons/rightArrow.png"
             alt="Right arrow"
-            @click="next"
+            @click="startTest"
             class="continue"
           />
         </div>
+        <img
+          src="../../../../assets/IT_Faces/star.jpg"
+          alt="star"
+          class="ibt-star"
+          v-show="userGotStimulusRight"
+        />
+        <img
+          src="../../../../assets/IT_Faces/cross.jpg"
+          alt="cross"
+          class="ibt-cross"
+          v-show="userGotStimulusWrong"
+        />
         <div :class="{ hide: testNotStarted || paused }">
           <div
             style="display: flex; flex-direction: column; align-items: center"
           >
-            <img
-              src="../../../../assets/IT_Faces/star.jpg"
-              alt="star"
-              class="irbt_star"
-            />
-            <img
-              src="../../../../assets/IT_Faces/cross.jpg"
-              alt="cross"
-              class="ibt-cross"
-            />
             <div
-              v-for="trial in irbt_trials[section].trials"
+              v-for="trial in ibt_trials[section].trials"
               :key="trial.id"
               :style="{ display: trial.visibility }"
             >
@@ -49,24 +54,34 @@
                 :src="getImage(trial.image)"
                 class="trialimg ibt-trial-img"
               />
+              <img
+                :src="
+                  getClickerImage(
+                    trial.leftClickerGender == 'Male'
+                      ? 'male.jpg'
+                      : 'female.jpg'
+                  )
+                "
+                alt="Left face"
+                ref="leftFace"
+                :data-mood="trial.leftClickerGender"
+                class="faceLeft ibt-icon"
+              />
+              <img
+                :src="
+                  getClickerImage(
+                    trial.rightClickerGender == 'Male'
+                      ? 'male.jpg'
+                      : 'female.jpg'
+                  )
+                "
+                alt="Right face"
+                :data-mood="trial.rightClickerGender"
+                ref="rightFace"
+                class="faceRight ibt-icon"
+              />
             </div>
           </div>
-          <img
-            :src="getFacesPosition()"
-            alt="Left face"
-            ref="leftFace"
-            @click="leftFaceAction"
-            :data-mood="this.leftFace"
-            class="faceLeft ibt-icon"
-          />
-          <img
-            :src="getFacesPosition2()"
-            alt="Right face"
-            ref="rightFace"
-            @click="rightFaceAction"
-            :data-mood="this.rightFace"
-            class="faceRight ibt-icon"
-          />
         </div>
       </section>
     </section>
@@ -76,7 +91,7 @@
 <script>
 import ImplicitBiasTestInstructions from "../../../../components/ImplicitBiasTestInstructions.vue";
 import { genderAndColor } from "../../../../modules/generateIbtTrials/generateIbtTrialsGender";
-import * as irbt from "../../../../modules/handleAnswers/handleIbtAnswers";
+import { handleAnswer } from "../../../../modules/handleAnswers/handleIbtAnswers";
 
 export default {
   components: {
@@ -88,62 +103,14 @@ export default {
       section: 0,
       testType: "IBT_Gender_Color",
       routeTo: "/IBT_Feedback",
-      testNotStarted: false,
+      testNotStarted: true,
       notFinishedInstructions: true,
-      currentUserTrial: 0,
-      leftFace: "",
+      currentTrial: 0,
       paused: true,
-      rightFace: "",
-      irbt_trials: [
-        {
-          trials: genderAndColor("male.jpg", "female.jpg", 8),
-          section: "practice",
-          practice_instruction: `Practice: There will be a picture of a Blue color or a Pink color in the
-        middle of the screen. When you see a picture of a Pink color, you should
-        touch the female face at the bottom of the screen; when you see a Blue color, you should touch
-        the Male face. Male faces and Female faces will appear at the bottom of
-        the screen either on the left or right. Pay attention because the
-        male and female faces may change places. Please respond
-      quickly and correctly. You can only use one hand to touch
-        the screen.`,
-        },
-        {
-          trials: genderAndColor("male.jpg", "female.jpg", 24),
-          section: "section_1",
-          instruction: `There will be a picture of a Blue color or a Pink color in the
-        middle of the screen. When you see a picture of a Pink color, you should
-        touch the female face at the bottom of the screen; when you see a Blue color, you should touch
-        the Male face. Male faces and Female faces will appear at the bottom of
-        the screen either on the left or right. Pay attention because the
-        male and female faces may change places. Please respond
-      quickly and correctly. You can only use one hand to touch
-        the screen.`,
-        },
-        {
-          trials: genderAndColor("female.jpg", "male.jpg", 8),
-          section: "practice_2",
-          instruction: `Practice: There will be a picture of a Blue color or a Pink color in the
-        middle of the screen. When you see a picture of a Blue color, you should
-        touch the female face at the bottom of the screen; when you see a Pink color, you should touch
-        the Male face. Male faces and Female faces will appear at the bottom of
-        the screen either on the left or right. Pay attention because the
-        male and female faces may change places. Please respond
-      quickly and correctly. You can only use one hand to touch
-        the screen.`,
-        },
-        {
-          trials: genderAndColor("female.jpg", "male.jpg", 24),
-          section: "section_2",
-          instruction: `There will be a picture of a Blue color or a Pink color in the
-        middle of the screen. When you see a picture of a Blue color, you should
-        touch the female face at the bottom of the screen; when you see a Pink color, you should touch
-        the Male face. Male faces and Female faces will appear at the bottom of
-        the screen either on the left or right. Pay attention because the
-        male and female faces may change places. Please respond
-      quickly and correctly. You can only use one hand to touch
-        the screen.`,
-        },
-      ],
+      userGotStimulusRight: false,
+      userGotStimulusWrong: false,
+      ibt_trials: [],
+      ibtData: [],
     };
   },
 
@@ -158,42 +125,27 @@ export default {
       return array;
     },
 
-    getFacesPosition() {
-      let face = irbt.getFacesPosition(this, "male.jpg", "female.jpg");
-      return new URL(`../../../../assets/IBT_Faces/${face}`, import.meta.url)
-        .href;
-    },
-
-    //does the reverse of the first method for the second image
-    getFacesPosition2() {
-      let face = irbt.getFacesPosition2(this, "male.jpg", "female.jpg");
-      return new URL(`../../../../assets/IBT_Faces/${face}`, import.meta.url)
-        .href;
-    },
-
     finishedInstructions() {
       let that = this;
+      that.testNotStarted = false;
       that.notFinishedInstructions = false;
       setTimeout(function () {
-        that.testNotStarted = false;
         that.paused = false;
-        irbt.startTimer();
+        handleAnswer(
+          that,
+          that.ibt_trials[that.section].trials,
+          "IBT_Gender_Color",
+          "IBT_Feedback",
+          "stimulusGender"
+        );
       }, 500);
+      document.querySelector(".faceRight").style.display = "block";
+      document.querySelector(".faceLeft").style.display = "block";
     },
 
-    leftFaceAction() {
-      irbt.leftFaceAction(this, "gender", "IBT_Gender_Color");
-    },
-    rightFaceAction() {
-      irbt.rightFaceAction(this, "gender", "IBT_Gender_Color");
-    },
-
-    handleCorrectAnswer() {
-      irbt.handleCorrectAnswer(this, "IBT_Gender_Color", "IBT_Gender_Color");
-    },
-
-    handleIncorrectAnswer() {
-      irbt.handleIncorrectAnswer(this);
+    getClickerImage(url) {
+      return new URL(`../../../../assets/IBT_Faces/${url}`, import.meta.url)
+        .href;
     },
 
     getImage(url) {
@@ -203,16 +155,133 @@ export default {
       ).href;
     },
 
-    next() {
+    startTest() {
       let that = this;
       that.testNotStarted = false;
       setTimeout(function () {
         that.paused = false;
-        document.querySelector(".faceRight").style.display = "block";
-        document.querySelector(".faceLeft").style.display = "block";
-        irbt.startTimer();
+        handleAnswer(
+          that,
+          that.ibt_trials[that.section].trials,
+          "IBT_Gender_Color",
+          "IBT_Feedback",
+          "stimulusGender"
+        );
       }, 500);
+      document.querySelector(".faceRight").style.display = "block";
+      document.querySelector(".faceLeft").style.display = "block";
     },
+
+    randomizeTrialCongruency() {
+      let allTrialsShuffled = [];
+      let allTrials = [
+        {
+          trials: genderAndColor("Male", "Female", 2),
+          section: "practice_1",
+          practice_instruction: `Practice: There will be a picture of a Blue color or a Pink color in the
+        middle of the screen. When you see a picture of a Pink color, you should
+        touch the female face at the bottom of the screen; when you see a Blue color, you should touch
+        the Male face. Male faces and Female faces will appear at the bottom of
+        the screen either on the left or right. Pay attention because the
+        male and female faces may change places. Please respond
+      quickly and correctly. You can only use one hand to touch
+        the screen.`,
+        },
+        {
+          trials: genderAndColor("Male", "Female", 2),
+          section: "section_1",
+          instruction: `There will be a picture of a Blue color or a Pink color in the
+        middle of the screen. When you see a picture of a Pink color, you should
+        touch the female face at the bottom of the screen; when you see a Blue color, you should touch
+        the Male face. Male faces and Female faces will appear at the bottom of
+        the screen either on the left or right. Pay attention because the
+        male and female faces may change places. Please respond
+      quickly and correctly. You can only use one hand to touch
+        the screen.`,
+        },
+        {
+          trials: genderAndColor("Female", "Male", 2),
+          section: "practice_2",
+          practice_instruction: `Practice: There will be a picture of a Blue color or a Pink color in the
+        middle of the screen. When you see a picture of a Blue color, you should
+        touch the female face at the bottom of the screen; when you see a Pink color, you should touch
+        the Male face. Male faces and Female faces will appear at the bottom of
+        the screen either on the left or right. Pay attention because the
+        male and female faces may change places. Please respond
+      quickly and correctly. You can only use one hand to touch
+        the screen.`,
+        },
+        {
+          trials: genderAndColor("Female", "Male", 2),
+          section: "section_2",
+          instruction: `There will be a picture of a Blue color or a Pink color in the
+        middle of the screen. When you see a picture of a Blue color, you should
+        touch the female face at the bottom of the screen; when you see a Pink color, you should touch
+        the Male face. Male faces and Female faces will appear at the bottom of
+        the screen either on the left or right. Pay attention because the
+        male and female faces may change places. Please respond
+      quickly and correctly. You can only use one hand to touch
+        the screen.`,
+        },
+      ];
+      let randomNo = Math.floor(Math.random() * 2);
+      if (randomNo === 0) {
+        //For congruency test first
+        allTrialsShuffled = allTrials;
+        allTrialsShuffled.forEach((trialArray, index) => {
+          trialArray.trials.forEach((trial) => {
+            if (index === 0) {
+              trial.description =
+                "Practice: User clicks the male face for an image of a blue color, and the female face for an image of a pink color";
+            }
+            if (index === 1) {
+              trial.description =
+                "User clicks the male face for an image of a blue color, and the female face for an image of a pink color";
+            }
+            if (index === 2) {
+              trial.description =
+                "Practice: User clicks the female face for an image of a blue color, and the male face for an image of a pink color";
+            }
+            if (index === 3) {
+              trial.description =
+                "User clicks the female face for an image of a blue color, and the male face for an image of a pink color";
+            }
+          });
+        });
+      } else {
+        allTrialsShuffled.push(
+          allTrials[2],
+          allTrials[3],
+          allTrials[0],
+          allTrials[1]
+        );
+        allTrialsShuffled.forEach((trialArray, index) => {
+          trialArray.trials.forEach((trial) => {
+            if (index === 0) {
+              trial.description =
+                "Practice: User clicks the female face for an image of a blue color, and the male face for an image of a pink color";
+            }
+            if (index === 1) {
+              trial.description =
+                "User clicks the female face for an image of a blue color, and the male face for an image of a pink color";
+            }
+            if (index === 2) {
+              trial.description =
+                "Practice: User clicks the male face for an image of a blue color, and the female face for an image of a pink color";
+            }
+            if (index === 3) {
+              trial.description =
+                "User clicks the male face for an image of a blue color, and the female face for an image of a pink color";
+            }
+          });
+        });
+      }
+      this.ibt_trials = allTrialsShuffled;
+    },
+  },
+
+  created() {
+    this.randomizeTrialCongruency();
   },
 
   mounted() {
@@ -224,4 +293,9 @@ export default {
 
 <style scoped>
 @import url("../../../../styles/IBT.css");
+.ibt-star,
+.ibt-cross {
+  display: block;
+  width: 110px;
+}
 </style>

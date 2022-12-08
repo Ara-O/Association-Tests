@@ -18,50 +18,6 @@ export function updateIBTData(
       data.currentTest = whereToStore;
       data.browser = navigator["userAgent"];
       data.dateTaken = `${cMonth}-${cDay}-${cYear}`;
-      if (test.testType === "IBT_Gender_Subject") {
-        if (outerIndex === 0) {
-          data.description =
-            "Practice: User clicks the male face for an image of a letter, and the female face for an image of a number";
-        } else if (outerIndex === 1) {
-          data.description =
-            "User clicks the male face for an image of a letter, and the female face for an image of a number";
-        } else if (outerIndex === 2) {
-          data.description =
-            "Practice: User clicks the female face for an image of a letter, and the male face for an image of a number";
-        } else if (outerIndex === 3) {
-          data.description =
-            "User clicks the female face for an image of a letter, and the male face for an image of a number";
-        }
-      } else if (test.testType === "IBT_Gender_Roles") {
-        if (outerIndex === 0) {
-          data.description =
-            "Practice: User clicks the male face for an image of a kitchen item, and the female face for an image of a office item";
-        } else if (outerIndex === 1) {
-          data.description =
-            "User clicks the male face for an image of a kitchen item, and the female face for an image of a office item";
-        } else if (outerIndex === 2) {
-          data.description =
-            "Practice: User clicks the female face for an image of a kitchen item, and the male face for an image of a office item";
-        } else if (outerIndex === 3) {
-          data.description =
-            "User clicks the female face for an image of a kitchen item, and the male face for an image of a office item";
-        }
-      } else if (test.testType === "IBT_Gender_Color") {
-        if (outerIndex === 0) {
-          data.description =
-            "Practice: User clicks the male face for an image of a blue color, and the female face for an image of a pink color";
-        } else if (outerIndex === 1) {
-          data.description =
-            "User clicks the male face for an image of a blue color, and the female face for an image of a pink color";
-        } else if (outerIndex === 2) {
-          data.description =
-            "Practice: User clicks the female face for an image of a blue color, and the male face for an image of a pink color";
-        } else if (outerIndex === 3) {
-          data.description =
-            "User clicks the female face for an image of a blue color, and the male face for an image of a pink color";
-        }
-      }
-
       data.userWouldPrefer =
         test.$store.state.userData.userWouldPrefer || "Not provided";
       data.gender = test.$store.state.userData.gender || "Not provided";

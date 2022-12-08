@@ -45,8 +45,8 @@ function handleAnswer(thiskeyword, Data, whereToStore) {
           const currentChallenge = Data[thisData.currentTrial];
           if (currentChallenge.stimulusEmotion === buttonClickedStimulusMood) {
             //Stops timer
-            thisData.paused = true;
             stopTimer();
+            thisData.paused = true;
             //Proceeds to the next name while adding the speed used to answer the question
             thisData.userGotStimulusWrong = false;
             currentChallenge.visibility = "none";
@@ -112,4 +112,4 @@ function handleAnswer(thiskeyword, Data, whereToStore) {
   }
 }
 
-export { handleAnswer, stopTimer, startTimer };
+export { handleAnswer };

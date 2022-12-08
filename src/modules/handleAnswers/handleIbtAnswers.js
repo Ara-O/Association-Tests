@@ -4,10 +4,6 @@ let ms = 0;
 let startTime;
 let pausedTime, continuedTime;
 let durationOfPause = 0;
-let currentDate = new Date();
-let cDay = currentDate.getDate();
-let cMonth = currentDate.getMonth() + 1;
-let cYear = currentDate.getFullYear();
 
 function startTimer() {
   // console.log("Starting timer");
@@ -32,151 +28,87 @@ function continueTimer() {
   continuedTime = new Date();
   durationOfPause += continuedTime - pausedTime;
 }
+let ibtData = [];
+function handleAnswer(thiskeyword, Data, whereToStore, feedbackPageRoute) {
+  const thisData = thiskeyword;
+  if (!thisData.testNotStarted) {
+    startTimer();
+    document.addEventListener("click", function handleInput(e) {
+      //If the test is not paused
+      if (!thisData.paused) {
+        let buttonClicked = e.target;
+        let buttonClickedStimulusMood = buttonClicked.dataset.mood;
 
-//If the random number is 0, the left face will be that face
-//If not, the right face will be the face shown
-function getFacesPosition(that, face_0, face_1) {
-  let face;
-  if (
-    that.irbt_trials[that.section].trials[that.currentUserTrial]?.randomNo === 0
-  ) {
-    face = face_0;
-  } else {
-    face = face_1;
-  }
-  that.leftFace = face;
-  return face;
-}
+        if (
+          buttonClicked.classList.contains("faceRight") ||
+          buttonClicked.classList.contains("faceLeft")
+        ) {
+          const currentChallenge = Data[thisData.currentTrial];
+          //User got stimulus right, store the reaction time
+          if (currentChallenge.stimulusEmotion === buttonClickedStimulusMood) {
+            stopTimer();
+            thisData.paused = true;
+            thisData.userGotStimulusWrong = false;
+            currentChallenge.visibility = "none";
+            currentChallenge.reactionTime = ms;
 
-function getFacesPosition2(thiskeyword, face_0, face_1) {
-  let that = thiskeyword;
-  let face;
-  if (
-    that.irbt_trials[that.section].trials[that.currentUserTrial]?.randomNo === 0
-  ) {
-    face = face_1;
-  } else {
-    face = face_0;
-  }
-  that.rightFace = face;
-  return face;
-}
-
-let ibt_data = [];
-
-function handleCorrectAnswer(thiskeyword, whereToStore, version) {
-  // durationOfPause = 0;
-  stopTimer();
-  let that = thiskeyword;
-  that.irbt_trials[that.section].trials[that.currentUserTrial].visibility =
-    "none";
-  that.irbt_trials[that.section].trials[that.currentUserTrial].ms = ms;
-  document.querySelector(".ibt-cross").style.display = "none";
-  document.querySelector(".irbt_star").style.display = "block";
-  document.querySelector(".faceRight").style.display = "none";
-  document.querySelector(".faceLeft").style.display = "none";
-  setTimeout(function () {
-    //Checking from trial to trial, once it reaches the end of the trials, increment the section
-    if (
-      that.currentUserTrial <
-      Object.keys(that.irbt_trials[that.section].trials).length - 1
-    ) {
-      document.querySelector(".irbt_star").style.display = "none";
-
-      setTimeout(function () {
-        that.currentUserTrial++;
-        that.irbt_trials[that.section].trials[
-          that.currentUserTrial
-        ].visibility = "block";
-
-        document.querySelector(".faceRight").style.display = "block";
-        document.querySelector(".faceLeft").style.display = "block";
-        startTimer();
-      }, 500);
-    } else {
-      // The section has ended, storing the data in vuex store
-      ibt_data[that.section] = that.irbt_trials[that.section].trials;
-      storeData.updateIBTData(
-        ibt_data,
-        that,
-        cMonth,
-        cDay,
-        cYear,
-        whereToStore,
-        version
-      );
-
-      // console.log("section has ended")
-      if (that.section + 1 !== that.irbt_trials.length) {
-        document.querySelector(".irbt_star").style.display = "none";
-        //Checking to see if the sections have all being exhausted, if so, store data to firebase
-        that.testNotStarted = true;
-        that.paused = true;
-        that.section++;
-        that.currentUserTrial = 0;
-        stopTimer();
-      } else {
-        //Test is over
-        that.$router.push(that.routeTo);
-        ibt_data = [];
+            // Making sure the test isnt over yet
+            if (thisData.currentTrial !== Data.length - 1) {
+              thisData.userGotStimulusRight = true;
+              // Creating a delay
+              setTimeout(function () {
+                thisData.userGotStimulusRight = false;
+                setTimeout(function () {
+                  Data[thisData.currentTrial + 1].visibility = "block";
+                  thisData.userGotStimulusRight = false;
+                  thisData.currentTrial++;
+                  thisData.paused = false;
+                  startTimer();
+                }, 500);
+              }, 500);
+            } else {
+              //Full test is over
+              if (thisData.ibt_trials.length - 1 == thisData.section) {
+                document.removeEventListener("click", handleInput);
+                ibtData.push(Data);
+                thisData.$store.state[whereToStore] = ibtData;
+                thisData.$store.state["ibtDataForFeedbackPage"] =
+                  thisData.ibt_trials;
+                thisData.$router.push(feedbackPageRoute);
+                //Don't need to store data here because it will be stored in feedback page
+                ibtData = [];
+              } else {
+                thisData.userGotStimulusRight = true;
+                ibtData.push(Data);
+                setTimeout(function () {
+                  thisData.$store.state[whereToStore] = ibtData;
+                  document.removeEventListener("click", handleInput);
+                  thisData.paused = true;
+                  thisData.section++;
+                  thisData.testNotStarted = true;
+                  thisData.userGotStimulusRight = false;
+                  thisData.userGotStimulusWrong = false;
+                  thisData.currentTrial = 0;
+                  // console.log("end of section");
+                }, 500);
+              }
+            }
+          } else {
+            //User got stimulus wrong
+            pauseTimer();
+            thisData.paused = true;
+            thisData.userGotStimulusWrong = true;
+            currentChallenge.accuracy = 0;
+            setTimeout(function () {
+              thisData.userGotStimulusWrong = false;
+              thisData.paused = false;
+              continueTimer();
+            }, 500);
+          }
+        }
       }
-    }
-  }, 500);
-}
-
-function handleIncorrectAnswer(that) {
-  document.querySelector(".ibt-cross").style.display = "block";
-  document.querySelector(".faceRight").style.display = "none";
-  document.querySelector(".faceLeft").style.display = "none";
-  that.irbt_trials[that.section].trials[that.currentUserTrial].visibility =
-    "none";
-  that.irbt_trials[that.section].trials[that.currentUserTrial].accuracy = 0;
-  // document.querySelector(".irbt-wrong-img").style.display = "block";
-  pauseTimer();
-  setTimeout(function () {
-    // document.querySelector(".irbt-wrong").style.display = "none";
-    document.querySelector(".ibt-cross").style.display = "none";
-
-    document.querySelector(".faceRight").style.display = "block";
-    document.querySelector(".faceLeft").style.display = "block";
-    that.irbt_trials[that.section].trials[that.currentUserTrial].visibility =
-      "block";
-    continueTimer();
-  }, 500);
-}
-
-function leftFaceAction(that, objectKey, whereToStore) {
-  const faceBeingShown =
-    that.irbt_trials[that.section].trials[that.currentUserTrial][objectKey];
-  // console.log(faceBeingShown)
-  // console.log(faceBeingShown, " ", that.leftFace);
-  if (faceBeingShown === that.leftFace) {
-    handleCorrectAnswer(that, whereToStore, whereToStore);
-  } else {
-    handleIncorrectAnswer(that);
+    });
   }
 }
 
-function rightFaceAction(that, objectKey, whereToStore) {
-  const faceBeingShown =
-    that.irbt_trials[that.section].trials[that.currentUserTrial][objectKey];
-  // console.log(faceBeingShown)
-  // console.log(faceBeingShown, " ", that.rightFace);
-  if (faceBeingShown === that.rightFace) {
-    // console.log("right is answer");
-    handleCorrectAnswer(that, whereToStore, whereToStore);
-  } else {
-    handleIncorrectAnswer(that);
-  }
-}
-
-export {
-  getFacesPosition,
-  getFacesPosition2,
-  handleCorrectAnswer,
-  handleIncorrectAnswer,
-  leftFaceAction,
-  rightFaceAction,
-  stopTimer,
-  startTimer,
-};
+export { handleAnswer };

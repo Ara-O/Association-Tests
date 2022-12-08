@@ -5,7 +5,7 @@
         <implicit-bias-test-instructions
           @finishedInstructions="finishedInstructions"
         >
-          {{ irbt_trials[section].practice_instruction }}
+          {{ ibt_trials[section].practice_instruction }}
         </implicit-bias-test-instructions>
       </section>
       <section :class="{ hide: notFinishedInstructions }">
@@ -14,56 +14,70 @@
           <br />
           <h3
             class="fullinstruction"
-            v-html="irbt_trials[section]?.instruction"
+            v-html="
+              ibt_trials[section]?.instruction ||
+              ibt_trials[section]?.practice_instruction
+            "
           ></h3>
-
           <br />
           <h4>Click the right arrow to continue</h4>
           <img
             src="../../../../assets/App_Icons/rightArrow.png"
             alt="Right arrow"
-            @click="next"
+            @click="startTest"
             class="continue"
           />
         </div>
+        <img
+          src="../../../../assets/IT_Faces/star.jpg"
+          alt="star"
+          class="ibt-star"
+          v-show="userGotStimulusRight"
+        />
+        <img
+          src="../../../../assets/IT_Faces/cross.jpg"
+          alt="cross"
+          class="ibt-cross"
+          v-show="userGotStimulusWrong"
+        />
         <div :class="{ hide: testNotStarted || paused }">
           <div
             style="display: flex; flex-direction: column; align-items: center"
           >
-            <img
-              src="../../../../assets/IT_Faces/star.jpg"
-              alt="star"
-              class="irbt_star"
-            />
-            <img
-              src="../../../../assets/IT_Faces/cross.jpg"
-              alt="cross"
-              class="ibt-cross"
-            />
             <div
-              v-for="trial in irbt_trials[section].trials"
+              v-for="trial in ibt_trials[section].trials"
               :key="trial.id"
               :style="{ display: trial.visibility }"
             >
               <img :src="getImage(trial.image)" class="trialimg" />
+              <img
+                :src="
+                  getClickerImage(
+                    trial.leftClickerFaceEmotion == 'Sad'
+                      ? 'sad.jpg'
+                      : 'happy.jpg'
+                  )
+                "
+                alt="Left face"
+                ref="leftFace"
+                :data-mood="trial.leftClickerFaceEmotion"
+                class="faceLeft ibt-icon"
+              />
+              <img
+                :src="
+                  getClickerImage(
+                    trial.rightClickerFaceEmotion == 'Sad'
+                      ? 'sad.jpg'
+                      : 'happy.jpg'
+                  )
+                "
+                alt="Right face"
+                :data-mood="trial.rightClickerFaceEmotion"
+                ref="rightFace"
+                class="faceRight ibt-icon"
+              />
             </div>
           </div>
-          <img
-            :src="getFacesPosition()"
-            alt="Left face"
-            ref="leftFace"
-            @click="leftFaceAction"
-            :data-mood="this.leftFace"
-            class="faceLeft ibt-icon"
-          />
-          <img
-            :src="getFacesPosition2()"
-            alt="Right face"
-            ref="rightFace"
-            @click="rightFaceAction"
-            :data-mood="this.rightFace"
-            class="faceRight ibt-icon"
-          />
         </div>
       </section>
     </section>
@@ -73,7 +87,7 @@
 <script>
 import generateIBTtrialsRace from "../../../../modules/generateIbtTrials/generateIbtTrialsRace";
 import ImplicitBiasTestInstructions from "../../../../components/ImplicitBiasTestInstructions.vue";
-import * as irbt from "../../../../modules/handleAnswers/handleIbtAnswers";
+import { handleAnswer } from "../../../../modules/handleAnswers/handleIbtAnswers";
 export default {
   components: {
     ImplicitBiasTestInstructions,
@@ -83,60 +97,13 @@ export default {
       section: 0,
       testType: "Black_White",
       routeTo: "/IBT_Feedback",
-      testNotStarted: false,
+      testNotStarted: true,
       notFinishedInstructions: true,
-      currentUserTrial: 0,
+      currentTrial: 0,
       paused: true,
-      leftFace: "",
-      rightFace: "",
-      irbt_trials: [
-        {
-          trials: generateIBTtrialsRace("happy.jpg", "sad.jpg", 8),
-          section: "practice",
-          practice_instruction: `Practice: There will be a picture of a Black person or a White person in the
-        middle of the screen. When you see a picture of the White person you should
-        touch the smiling face; when you see the Black person, you should touch
-        the crying face. Smiling and crying faces will appear at the bottom of
-        the screen either on the left or right. Pay attention because the
-        smiling and crying faces may change places. Please respond
-        quickly and correctly. You can only use one hand to touch
-        the screen.`,
-        },
-        {
-          trials: generateIBTtrialsRace("happy.jpg", "sad.jpg", 24),
-          section: "section_1",
-          instruction: `There will be a picture of a Black person or a White person in the
-        middle of the screen. When you see a picture of the White person you should
-        touch the smiling face; when you see the Black person, you should touch
-        the crying face. Smiling and crying faces will appear at the bottom of
-        the screen either on the left or right. Pay attention because the
-        smiling and crying faces may change places. Please respond
-        quickly and correctly. You can only use one hand to touch
-        the screen.`,
-        },
-        {
-          trials: generateIBTtrialsRace("sad.jpg", "happy.jpg", 8),
-          section: "practice_1",
-          instruction: `Practice: There will be a picture of a Black person or a White person in the middle
-      of screen. When you see a picture of the White person you should touch the
-      crying face; when you see the Black person, you should touch the smiling
-      face. Smiling and crying faces will appear at the bottom of the screen
-      either on the left or right. Pay attention because the smiling and crying
-      faces may change places. Please respond quickly and correctly. You
-      can only use one hand to touch the screen.`,
-        },
-        {
-          trials: generateIBTtrialsRace("sad.jpg", "happy.jpg", 24),
-          section: "section_2",
-          instruction: `There will be a picture of a Black person or a White person in the middle
-      of screen. When you see a picture of the White person you should touch the
-      crying face; when you see the Black person, you should touch the smiling
-      face. Smiling and crying faces will appear at the bottom of the screen
-      either on the left or right. Pay attention because the smiling and crying
-      faces may change places. Please respond quickly and correctly. You
-      can only use one hand to touch the screen.`,
-        },
-      ],
+      userGotStimulusRight: false,
+      userGotStimulusWrong: false,
+      ibt_trials: [],
     };
   },
 
@@ -153,40 +120,24 @@ export default {
 
     finishedInstructions() {
       let that = this;
+      that.testNotStarted = false;
       that.notFinishedInstructions = false;
       setTimeout(function () {
-        that.testNotStarted = false;
         that.paused = false;
-        irbt.startTimer();
+        handleAnswer(
+          that,
+          that.ibt_trials[that.section].trials,
+          "IBT_Black_White",
+          "IBT_Feedback"
+        );
       }, 500);
+      document.querySelector(".faceRight").style.display = "block";
+      document.querySelector(".faceLeft").style.display = "block";
     },
 
-    getFacesPosition() {
-      let face = irbt.getFacesPosition(this, "happy.jpg", "sad.jpg");
-      return new URL(`../../../../assets/IBT_Faces/${face}`, import.meta.url)
+    getClickerImage(url) {
+      return new URL(`../../../../assets/IBT_Faces/${url}`, import.meta.url)
         .href;
-    },
-
-    getFacesPosition2() {
-      let face = irbt.getFacesPosition2(this, "happy.jpg", "sad.jpg");
-      return new URL(`../../../../assets/IBT_Faces/${face}`, import.meta.url)
-        .href;
-    },
-
-    leftFaceAction() {
-      irbt.leftFaceAction(this, "emotion", "IBT_Black_White");
-    },
-
-    rightFaceAction() {
-      irbt.rightFaceAction(this, "emotion", "IBT_Black_White");
-    },
-
-    handleCorrectAnswer() {
-      irbt.handleCorrectAnswer(this, "IBT_Black_White", "IBT_Black_White");
-    },
-
-    handleIncorrectAnswer() {
-      irbt.handleIncorrectAnswer(this);
     },
 
     getImage(url) {
@@ -196,17 +147,92 @@ export default {
       ).href;
     },
 
-    next() {
+    startTest() {
       // console.log("starting real test");
       let that = this;
       that.testNotStarted = false;
       setTimeout(function () {
         that.paused = false;
-        document.querySelector(".faceRight").style.display = "block";
-        document.querySelector(".faceLeft").style.display = "block";
-        irbt.startTimer();
+        handleAnswer(
+          that,
+          that.ibt_trials[that.section].trials,
+          "IBT_Black_White",
+          "IBT_Feedback"
+        );
       }, 500);
+      document.querySelector(".faceRight").style.display = "block";
+      document.querySelector(".faceLeft").style.display = "block";
     },
+
+    randomizeTrialCongruency() {
+      let allTrialsShuffled = [];
+      let allTrials = [
+        {
+          trials: generateIBTtrialsRace("Happy", "Sad", 2),
+          section: "practice_1",
+          practice_instruction: `Practice: There will be a picture of a Black person or a White person in the
+        middle of the screen. When you see a picture of the White person you should
+        touch the smiling face; when you see the Black person, you should touch
+        the crying face. Smiling and crying faces will appear at the bottom of
+        the screen either on the left or right. Pay attention because the
+        smiling and crying faces may change places. Please respond
+        quickly and correctly. You can only use one hand to touch
+        the screen.`,
+        },
+        {
+          trials: generateIBTtrialsRace("Happy", "Sad", 2),
+          section: "section_1",
+          instruction: `There will be a picture of a Black person or a White person in the
+        middle of the screen. When you see a picture of the White person you should
+        touch the smiling face; when you see the Black person, you should touch
+        the crying face. Smiling and crying faces will appear at the bottom of
+        the screen either on the left or right. Pay attention because the
+        smiling and crying faces may change places. Please respond
+        quickly and correctly. You can only use one hand to touch
+        the screen.`,
+        },
+        {
+          trials: generateIBTtrialsRace("Sad", "Happy", 2),
+          section: "practice_2",
+          practice_instruction: `Practice: There will be a picture of a Black person or a White person in the middle
+      of screen. When you see a picture of the White person you should touch the
+      crying face; when you see the Black person, you should touch the smiling
+      face. Smiling and crying faces will appear at the bottom of the screen
+      either on the left or right. Pay attention because the smiling and crying
+      faces may change places. Please respond quickly and correctly. You
+      can only use one hand to touch the screen.`,
+        },
+        {
+          trials: generateIBTtrialsRace("Sad", "Happy", 2),
+          section: "section_2",
+          instruction: `There will be a picture of a Black person or a White person in the middle
+      of screen. When you see a picture of the White person you should touch the
+      crying face; when you see the Black person, you should touch the smiling
+      face. Smiling and crying faces will appear at the bottom of the screen
+      either on the left or right. Pay attention because the smiling and crying
+      faces may change places. Please respond quickly and correctly. You
+      can only use one hand to touch the screen.`,
+        },
+      ];
+      let randomNo = Math.floor(Math.random() * 2);
+      if (randomNo === 0) {
+        allTrialsShuffled = allTrials;
+      } else {
+        allTrialsShuffled.push(
+          allTrials[2],
+          allTrials[3],
+          allTrials[0],
+          allTrials[1]
+        );
+      }
+
+      this.ibt_trials = allTrialsShuffled;
+    },
+  },
+
+  //Make sure that the IBT trial congruency tests are randomized
+  created() {
+    this.randomizeTrialCongruency();
   },
 
   mounted() {
@@ -218,4 +244,9 @@ export default {
 
 <style scoped>
 @import url("../../../../styles/IBT.css");
+.ibt-star,
+.ibt-cross {
+  display: block;
+  width: 110px;
+}
 </style>

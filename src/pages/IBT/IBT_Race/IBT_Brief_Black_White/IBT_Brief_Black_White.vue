@@ -103,10 +103,7 @@ import generateIBTtrialsRace from "../../../../modules/generateIbtTrials/generat
 import ImplicitBiasTestInstructions from "../../../../components/ImplicitBiasTestInstructions.vue";
 import "../../../../styles/pre-test-survey.css";
 import "../../../../styles/IBT.css";
-import {
-  startTimer,
-  handleAnswer,
-} from "../../../../modules/handleAnswers/handleIbtBriefAnswers";
+import { handleAnswer } from "../../../../modules/handleAnswers/handleIbtBriefAnswers";
 
 export default {
   components: {

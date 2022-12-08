@@ -1,3 +1,7 @@
+<!-- Get data from vuex
+loop through the data, if it sees that the section is section1, store
+that under congruency data, if the sectrion is section2, store that under incongruency data
+now put that all inside an array with the data of the image necessary -->
 <template>
   <contact-experience
     v-if="surveyNotComplete"
@@ -31,42 +35,47 @@
       <div class="feedback-wrapper">
         <!-- image here -->
         <div class="image-wrapper">
-          <div v-for="(n, index) in 2" :key="n">
-            <img
-              :src="getImg(getCurrentTestTrimmed(0, index))"
-              alt="Feedback image"
-            />
-            <h3 v-if="index === 0" style="margin: 0px">+</h3>
-          </div>
+          <img
+            :src="getImg(congruencyTest.matchingImage1)"
+            alt="Feedback image"
+          />
+          <h3 style="margin: 0px">+</h3>
+          <img
+            :src="getImg(congruencyTest.matchingImage2)"
+            alt="Feedback image"
+          />
         </div>
         <div class="feedback-message-wrapper">
           <h3 class="feedback-message">
-            Accuracy: {{ this.calculateAccuracy(1) }}
+            Accuracy: {{ congruencyTest.averageAccuracy.toFixed(2) }}%
           </h3>
           <h3 class="feedback-message">
             Speed:
-            {{ this.calculateSpeed(1) }}
+            {{ congruencyTest.averageSpeed.toFixed(2) }}ms
           </h3>
         </div>
       </div>
+
       <div class="feedback-wrapper">
         <!-- image here -->
         <div class="image-wrapper">
-          <div v-for="(n, index) in 2" :key="n">
-            <img
-              :src="getImg(getCurrentTestTrimmed(1, index))"
-              alt="Feedback image"
-            />
-            <h3 v-if="index === 0" style="margin: 0px">+</h3>
-          </div>
+          <img
+            :src="getImg(incongruencyTest.matchingImage1)"
+            alt="Feedback image"
+          />
+          <h3 style="margin: 0px">+</h3>
+          <img
+            :src="getImg(incongruencyTest.matchingImage2)"
+            alt="Feedback image"
+          />
         </div>
         <div class="feedback-message-wrapper">
           <h3 class="feedback-message">
-            Accuracy: {{ this.calculateAccuracy(3) }}
+            Accuracy: {{ incongruencyTest.averageAccuracy.toFixed(2) }}%
           </h3>
           <h3 class="feedback-message">
             Speed:
-            {{ this.calculateSpeed(3) }}
+            {{ incongruencyTest.averageSpeed.toFixed(2) }}ms
           </h3>
         </div>
       </div>
@@ -96,6 +105,9 @@ export default {
     return {
       surveyNotComplete: true,
       wasGroupTest: false,
+      testOrder: "",
+      congruencyTest: {},
+      incongruencyTest: {},
       IBT_Gender_Toy_Target_0: [
         "Clicker_Images/IAT_Gender_Toy/Male_And_Male_Toy.png",
         "Clicker_Images/IAT_Gender_Toy/Female_And_Female_Toy.png",
@@ -168,22 +180,85 @@ export default {
       return this[`${this.getCurrentTest}_Target_${target}`][index];
     },
 
-    calculateAccuracy(trialIndex) {
-      let nsum = 0;
-      this.$store.state[this.getCurrentTest][trialIndex].forEach((trial) => {
-        nsum += trial.accuracy;
+    calculateAccuracyNew() {
+      let ibtDataFromVuex = this.$store.state["ibtDataForFeedbackPage"];
+      //If the first test is section 2, this means that the incongruency test went first
+      if (ibtDataFromVuex[0].section.includes("2")) {
+        this.testOrder = "incongruencyFirst";
+      } else {
+        this.testOrder = "congruencyFirst";
+      }
+
+      //the two main trials
+      let mainTrials = [1, 3];
+
+      //Loops through trials 1 and 3 to avoid repeated code
+      mainTrials.forEach((trialNumber) => {
+        //Gets the current tests from the mainTrials index and gets the accuracy
+        let ibtTrialData = this.$store.state[this.getCurrentTest];
+        let trialAccuracysum = 0;
+        ibtTrialData[trialNumber].forEach((trial) => {
+          trialAccuracysum += trial.accuracy;
+        });
+        trialAccuracysum /= ibtTrialData[trialNumber].length;
+
+        //If the test has incongruencies set first, set the trialaccuracysum to the
+        //appropriate data place
+        if (this.testOrder === "incongruencyFirst") {
+          this.incongruencyTest.averageAccuracy = trialAccuracysum;
+          this.incongruencyTest.matchingImage1 = this.getCurrentTestTrimmed(
+            1,
+            0
+          );
+          this.incongruencyTest.matchingImage2 = this.getCurrentTestTrimmed(
+            1,
+            1
+          );
+        } else if (this.testOrder === "congruencyFirst") {
+          this.congruencyTest.averageAccuracy = trialAccuracysum;
+          this.congruencyTest.matchingImage1 = this.getCurrentTestTrimmed(0, 0);
+          this.congruencyTest.matchingImage2 = this.getCurrentTestTrimmed(0, 1);
+        }
+
+        if (this.testOrder == "incongruencyFirst") {
+          this.testOrder = "congruencyFirst";
+        } else {
+          this.testOrder = "incongruencyFirst";
+        }
       });
-      nsum /= this.$store.state[this.getCurrentTest][trialIndex].length;
-      return `${nsum.toFixed(2)}%`;
     },
 
-    calculateSpeed(trialIndex) {
-      let nsum = 0;
-      this.$store.state[this.getCurrentTest][trialIndex].forEach((trial) => {
-        nsum += trial.ms;
+    calculateSpeedNew() {
+      let ibtDataFromVuex = this.$store.state["ibtDataForFeedbackPage"];
+      if (ibtDataFromVuex[0].section.includes("2")) {
+        this.testOrder = "incongruencyFirst";
+      } else {
+        this.testOrder = "congruencyFirst";
+      }
+
+      let mainTrials = [1, 3];
+      mainTrials.forEach((trialNumber) => {
+        let ibtTrialData = this.$store.state[this.getCurrentTest];
+        let trialReactionTimesum = 0;
+        ibtTrialData[trialNumber].forEach((trial) => {
+          trialReactionTimesum += trial.reactionTime;
+        });
+        trialReactionTimesum /= ibtTrialData[trialNumber].length;
+
+        //If the test has incongruencies set first, set the trialReactionTimesum to the
+        //appropriate data place
+        if (this.testOrder === "incongruencyFirst") {
+          this.incongruencyTest.averageSpeed = trialReactionTimesum;
+        } else if (this.testOrder === "congruencyFirst") {
+          this.congruencyTest.averageSpeed = trialReactionTimesum;
+        }
+
+        if (this.testOrder == "incongruencyFirst") {
+          this.testOrder = "congruencyFirst";
+        } else {
+          this.testOrder = "incongruencyFirst";
+        }
       });
-      nsum /= this.$store.state[this.getCurrentTest][trialIndex].length;
-      return `${nsum.toFixed(2)}ms`;
     },
 
     surveyComplete(userData) {
@@ -266,6 +341,8 @@ export default {
   },
   mounted() {
     this.wasGroupTest = false;
+    this.calculateAccuracyNew();
+    this.calculateSpeedNew();
     // console.log(this.$store.state[this.getCurrentTest]);
   },
 };

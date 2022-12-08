@@ -271,7 +271,8 @@ export default {
           that,
           that.ibt_trials[that.section].trials,
           "IBT_Cat_Dog",
-          "IBT_Feedback"
+          "IBT_Feedback",
+          "stimulusEmotion"
         );
       }, 500);
       document.querySelector(".faceRight").style.display = "block";

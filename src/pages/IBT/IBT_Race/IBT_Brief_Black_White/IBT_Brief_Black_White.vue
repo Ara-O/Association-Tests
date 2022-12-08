@@ -217,7 +217,7 @@ export default {
         the screen.`,
         },
         {
-          trials: generateIBTtrialsRace("Happy", "Sad", 20),
+          trials: generateIBTtrialsRace("Happy", "Sad", 8),
           section: "section_1",
           instruction: `There will be a picture of a Black person or a White person in the
         middle of the screen. When you see a picture of the White person you should
@@ -240,7 +240,7 @@ export default {
       can only use one hand to touch the screen.`,
         },
         {
-          trials: generateIBTtrialsRace("Sad", "Happy", 20),
+          trials: generateIBTtrialsRace("Sad", "Happy", 8),
           section: "section_2",
           instruction: `There will be a picture of a Black person or a White person in the middle
       of screen. When you see a picture of the White person you should touch the

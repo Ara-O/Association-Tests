@@ -1,4 +1,4 @@
-// import storingDataFM from "../storingData/storingDataFM";
+import storingDataFM from "../storingData/storingDataFM";
 
 let ms = 0;
 let startTime;
@@ -43,7 +43,8 @@ export function handleUserSelection(
   router,
   paused,
   routeTo,
-  store
+  store,
+  fullData
 ) {
   //!check if user is right or not, if user is right,
   //!increment the currentTrial, if not, show error, etc etc
@@ -74,13 +75,21 @@ export function handleUserSelection(
         //if we at the end of one test, check whether thats not the end of the series
         //of tests, if it is, thats the end!
         if (currentTest.value === trials.length - 1) {
+          fullData.push(trials[currentTest.value].trialDataSet);
+
           // console.log("full test has ended");
           store.state[store.getters.getCurrentTest] = trials;
+          storingDataFM(store, store.getters.getCurrentTest, true, fullData);
           router.push(routeTo);
         } else {
+          fullData.push(trials[currentTest.value].trialDataSet);
+          //Storing in between blocks
+          storingDataFM(store, store.getters.getCurrentTest, false, fullData);
           currentTest.value++;
+          paused.value = true;
           currentTrial.value = 0;
           testHasStarted.value = false;
+          console.log(currentTest.value);
         }
       } else {
         //Second timer for white screen

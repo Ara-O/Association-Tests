@@ -46,7 +46,6 @@ import "../../../styles/Feedback_Page.css";
 import MainButton from "../../../components/Buttons/MainButton.vue";
 import { useStore } from "vuex";
 import { onMounted, reactive } from "vue";
-import storingDataFm from "../../../modules/storingData/storingDataFM";
 import * as confetti from "canvas-confetti";
 
 let speedData = reactive({
@@ -117,8 +116,8 @@ function launchConfetti() {
 }
 
 function storeFMData() {
-  let testData = store.state[store.getters.getCurrentTest];
-  storingDataFm(testData, store, "Face_Matching_Categorization_Black_White");
+  // let testData = store.state[store.getters.getCurrentTest];
+  // storingDataFm(testData, store, "Face_Matching_Categorization_Black_White");
 }
 
 onMounted(() => {

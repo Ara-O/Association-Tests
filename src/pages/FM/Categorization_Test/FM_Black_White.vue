@@ -82,6 +82,8 @@ let userChoseCorrectly = ref(false);
 let paused = ref(false);
 let userChoseIncorrectly = ref(false);
 let testHasStarted = ref(false);
+let fullData = [];
+
 let trials = [
   {
     instruction:
@@ -108,7 +110,8 @@ function handleUserChoice(direction) {
     router,
     paused,
     "FM_Categorization_Black_White_Feedback",
-    store
+    store,
+    fullData
   );
 }
 

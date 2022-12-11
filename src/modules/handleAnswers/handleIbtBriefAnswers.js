@@ -53,6 +53,7 @@ function handleAnswer(thiskeyword, Data, whereToStore) {
             // Making sure the test isnt over yet
             if (thisData.currentTrial !== Data.length - 1) {
               thisData.userGotStimulusRight = true;
+
               // Creating a delay
               setTimeout(function () {
                 thisData.userGotStimulusRight = false;
@@ -80,6 +81,9 @@ function handleAnswer(thiskeyword, Data, whereToStore) {
               } else {
                 thisData.userGotStimulusRight = true;
                 thisData.ibtData.push(Data);
+
+                //Storing data everytime user finishes a block
+                storeData.storeBriefIBTData(thisData.ibtData, thisData, false);
                 setTimeout(function () {
                   thisData.$store.state[whereToStore] = thisData.ibtData;
                   document.removeEventListener("click", handleInput);

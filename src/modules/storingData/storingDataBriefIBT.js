@@ -31,7 +31,18 @@ const firebaseConfigUow = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfigUow, "secondary");
 
-export function storeBriefIBTData(dataToStore, thisData) {
+export function storeBriefIBTData(
+  dataToStore,
+  thisData,
+  updateLocalStorage = true
+) {
+  if (!thisData.$store.state.uid) {
+    this.$store.commit(
+      "changeUserID",
+      String(Math.floor(Math.random() * 10000))
+    );
+  }
+
   // console.log("data gets stored now - ", dataToStore);
   dataToStore.forEach((element, outerIndex) => {
     element.forEach((trial, innerIndex) => {
@@ -72,12 +83,14 @@ export function storeBriefIBTData(dataToStore, thisData) {
     }
   );
 
-  localStorage.setItem(
-    `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`,
-    Number(
-      localStorage.getItem(
-        `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`
-      )
-    ) + 1
-  );
+  if (updateLocalStorage) {
+    localStorage.setItem(
+      `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`,
+      Number(
+        localStorage.getItem(
+          `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`
+        )
+      ) + 1
+    );
+  }
 }

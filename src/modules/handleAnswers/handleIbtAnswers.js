@@ -93,6 +93,10 @@ function handleAnswer(
                 thisData.$store.state[whereToStore] = modifiedData;
                 thisData.$store.state["ibtDataForFeedbackPage"] =
                   thisData.ibt_trials;
+                storeData.storeIBTIndividualData(
+                  thisData.$store.getters.getCurrentTest,
+                  thisData
+                );
                 thisData.$router.push(feedbackPageRoute);
                 //Don't need to store data here because it will be stored in feedback page
                 thisData.ibtData = [];
@@ -115,7 +119,15 @@ function handleAnswer(
                   whereToStore,
                   whereToStore
                 );
+
+                //Storing data per block
                 thisData.$store.state[whereToStore] = modifiedData;
+                storeData.storeIBTIndividualData(
+                  thisData.$store.getters.getCurrentTest,
+                  thisData,
+                  false
+                );
+
                 setTimeout(function () {
                   document.removeEventListener("click", handleInput);
                   thisData.paused = true;

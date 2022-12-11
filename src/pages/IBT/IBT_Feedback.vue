@@ -328,14 +328,10 @@ export default {
     },
 
     routeToHome() {
-      if (!this.wasGroupTest) {
-        storeData.storeIBTIndividualData(this.getCurrentTest, this);
-      }
       this.$router.push("/Home");
     },
 
     routeToFaceMatching() {
-      storeData.storeIBTIndividualData(this.getCurrentTest, this);
       this.$router.push("/FM_Choose_Test");
     },
   },

@@ -37,7 +37,7 @@ export function storeBriefIBTData(
   updateLocalStorage = true
 ) {
   if (!thisData.$store.state.uid) {
-    this.$store.commit(
+    thisData.$store.commit(
       "changeUserID",
       String(Math.floor(Math.random() * 10000))
     );

@@ -104,7 +104,17 @@ export function storeIBTGroupData(
   );
 }
 
-export function storeIBTIndividualData(version, test) {
+export function storeIBTIndividualData(
+  version,
+  test,
+  updateLocalStorage = true
+) {
+  if (!test.$store.state.uid) {
+    test.$store.commit(
+      "changeUserID",
+      String(Math.floor(Math.random() * 10000))
+    );
+  }
   const db = getDatabase();
 
   if (
@@ -134,14 +144,16 @@ export function storeIBTIndividualData(version, test) {
     }
   );
 
-  localStorage.setItem(
-    `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`,
-    Number(
-      localStorage.getItem(
-        `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`
-      )
-    ) + 1
-  );
+  if (updateLocalStorage) {
+    localStorage.setItem(
+      `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`,
+      Number(
+        localStorage.getItem(
+          `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`
+        )
+      ) + 1
+    );
+  }
   // const db = getDatabase();
   // set(ref(db, `${version}/User-${test.$store.state.uid}`), {
   //   data: test.$store.state[version],

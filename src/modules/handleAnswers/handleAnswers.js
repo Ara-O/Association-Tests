@@ -68,8 +68,19 @@ function handleAnswer(thiskeyword, Data, whereToStore, version) {
               //If test is over, call the test over function, or else,increment the current block
               if (test.currentBlock == test.fullTest.length - 1) {
                 document.removeEventListener("keyup", handleInput);
+                storeData.storeIATIndividualData(
+                  test.$store.getters.getCurrentTest,
+                  test,
+                  true
+                );
                 test.testOver();
               } else {
+                //store data here per block
+                storeData.storeIATIndividualData(
+                  test.$store.getters.getCurrentTest,
+                  test,
+                  false
+                );
                 document.removeEventListener("keyup", handleInput);
                 test.notStarted = true;
                 test.currentBlock++;

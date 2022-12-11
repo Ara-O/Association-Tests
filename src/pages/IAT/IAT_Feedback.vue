@@ -294,14 +294,14 @@ export default {
     },
 
     routeToHome() {
-      if (!this.wasGroupTest) {
-        storeData.storeIATIndividualData(this.getCurrentTest, this);
-      }
+      // if (!this.wasGroupTest) {
+      //   // storeData.storeIATIndividualData(this.getCurrentTest, this);
+      // }
       this.$router.push("/Home");
     },
 
     routeToFaceMatching() {
-      storeData.storeIATIndividualData(this.getCurrentTest, this);
+      // storeData.storeIATIndividualData(this.getCurrentTest, this);
       this.$router.push("/FM_Choose_Test");
     },
   },

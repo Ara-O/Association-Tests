@@ -112,7 +112,18 @@ export function storeIATGroupData(
   );
 }
 
-export function storeIATIndividualData(version, test) {
+export function storeIATIndividualData(
+  version,
+  test,
+  updateLocalStorage = true
+) {
+  if (!test.$store.state.uid) {
+    test.$store.commit(
+      "changeUserID",
+      String(Math.floor(Math.random() * 10000))
+    );
+  }
+
   if (
     localStorage.getItem(
       `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`
@@ -140,12 +151,15 @@ export function storeIATIndividualData(version, test) {
       data: test.$store.state[version],
     }
   );
-  localStorage.setItem(
-    `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`,
-    Number(
-      localStorage.getItem(
-        `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`
-      )
-    ) + 1
-  );
+
+  if (updateLocalStorage) {
+    localStorage.setItem(
+      `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`,
+      Number(
+        localStorage.getItem(
+          `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`
+        )
+      ) + 1
+    );
+  }
 }

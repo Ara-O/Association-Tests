@@ -75,13 +75,14 @@ function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {
 
           //If test is over, call the test over function, or else,increment the current block
           if (test.currentBlock == test.fullTest.length - 1) {
-            test.testOver = true;
             storeData.storeIATIndividualData(
               test.$store.getters.getCurrentTest,
               test,
               true
             );
+            test.testOver = true;
           } else {
+            //Storing data at the end of the block
             storeData.storeIATIndividualData(
               test.$store.getters.getCurrentTest,
               test,

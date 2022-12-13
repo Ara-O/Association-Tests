@@ -108,6 +108,13 @@ export function storeITIndividualData(
   test,
   updateLocalStorage = true
 ) {
+  if (!test.$store.state.uid) {
+    test.$store.commit(
+      "changeUserID",
+      String(Math.floor(Math.random() * 10000))
+    );
+  }
+
   if (
     localStorage.getItem(
       `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`

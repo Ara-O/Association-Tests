@@ -49,7 +49,7 @@
 <script>
 import handleAnswers from "../../../../modules/handleAnswers/handleAnswers";
 import * as trials from "../../../../modules/generateIatTrialsGender/generateIatTrialsRoles";
-
+import { removeHandleInput } from "../../../../modules/handleAnswers/handleAnswers";
 export default {
   data() {
     return {
@@ -126,6 +126,7 @@ export default {
     start(e) {
       let that = this;
       if (e.key === " ") {
+        window.removeEventListener("keyup", that.start);
         document.querySelector(".instruction").style.display = "none";
         setTimeout(() => {
           handleAnswers(
@@ -135,13 +136,19 @@ export default {
             "IAT_Gender_Roles"
           );
           this.notStarted = false;
-          window.removeEventListener("keyup", that.start);
         }, 500);
       }
     },
   },
 
+  beforeUnmount() {
+    let that = this;
+    removeHandleInput();
+    window.removeEventListener("keyup", that.start);
+  },
+
   mounted() {
+    removeHandleInput();
     let that = this;
     this.$store.commit("changeCurrentTest", "IAT_Gender_Roles");
     this.$store.state["IAT_Gender_Roles"] = [];

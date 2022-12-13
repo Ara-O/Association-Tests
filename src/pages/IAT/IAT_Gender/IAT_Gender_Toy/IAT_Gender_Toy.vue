@@ -49,6 +49,7 @@
 <script>
 import "../../../../styles/IAT.css";
 import handleAnswers from "../../../../modules/handleAnswers/handleAnswers";
+import { removeHandleInput } from "../../../../modules/handleAnswers/handleAnswers";
 import {
   testData_Block1,
   testData_Block2,
@@ -132,6 +133,7 @@ export default {
     start(e) {
       let that = this;
       if (e.key === " ") {
+        window.removeEventListener("keyup", that.start);
         document.querySelector(".instruction").style.display = "none";
         setTimeout(() => {
           handleAnswers(
@@ -141,13 +143,19 @@ export default {
             "IAT_Gender_Toy"
           );
           this.notStarted = false;
-          window.removeEventListener("keyup", that.start);
         }, 500);
       }
     },
   },
 
+  beforeUnmount() {
+    let that = this;
+    removeHandleInput();
+    window.removeEventListener("keyup", that.start);
+  },
+
   mounted() {
+    removeHandleInput();
     let that = this;
     this.$store.commit("changeCurrentTest", "IAT_Gender_Toy");
     this.$store.state["IAT_Gender_Toy"] = [];

@@ -54,6 +54,7 @@ import {
   testData_Block3,
   testData_Block4,
 } from "../../../../modules/generateIatTrialsGender/generateIatTrialsColor";
+import { removeHandleInput } from "../../../../modules/handleAnswers/handleAnswers";
 
 export default {
   data() {
@@ -131,6 +132,7 @@ export default {
     start(e) {
       let that = this;
       if (e.key === " ") {
+        window.removeEventListener("keyup", that.start);
         document.querySelector(".instruction").style.display = "none";
         setTimeout(() => {
           handleAnswers(
@@ -140,13 +142,19 @@ export default {
             "IAT_Gender_Color"
           );
           this.notStarted = false;
-          window.removeEventListener("keyup", that.start);
         }, 500);
       }
     },
   },
 
+  beforeUnmount() {
+    let that = this;
+    removeHandleInput();
+    window.removeEventListener("keyup", that.start);
+  },
+
   mounted() {
+    removeHandleInput();
     let that = this;
     this.$store.commit("changeCurrentTest", "IAT_Gender_Color");
     this.$store.state["IAT_Gender_Color"] = [];

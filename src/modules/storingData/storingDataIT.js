@@ -103,7 +103,11 @@ export function storeITGroupData(
   );
 }
 
-export function storeITIndividualData(version, test) {
+export function storeITIndividualData(
+  version,
+  test,
+  updateLocalStorage = true
+) {
   if (
     localStorage.getItem(
       `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`
@@ -132,12 +136,14 @@ export function storeITIndividualData(version, test) {
     }
   );
 
-  localStorage.setItem(
-    `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`,
-    Number(
-      localStorage.getItem(
-        `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`
-      )
-    ) + 1
-  );
+  if (updateLocalStorage) {
+    localStorage.setItem(
+      `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`,
+      Number(
+        localStorage.getItem(
+          `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`
+        )
+      ) + 1
+    );
+  }
 }

@@ -35,130 +35,139 @@
   </main>
   <main v-if="goToTest">
     <section id="test-border">
-    <div v-if="progress === 1" class="midinstructions">
-      <h3>Can you remember all the people?</h3>
-      <h3>Press the right arrow to get started</h3>
-      <img
-        src="../../../assets/App_Icons/rightArrow.png"
-        alt="Right Arrow"
-        class="next"
-        v-if="progress !== 3 && progress !== 5"
-        @click="moveForward"
-      />
-    </div>
+      <div v-if="progress === 1" class="midinstructions">
+        <h3>Can you remember all the people?</h3>
+        <h3>Press the right arrow to get started</h3>
+        <img
+          src="../../../assets/App_Icons/rightArrow.png"
+          alt="Right Arrow"
+          class="next"
+          v-if="progress !== 3 && progress !== 5"
+          @click="moveForward"
+        />
+      </div>
 
-    <!-- ----------------  -->
+      <!-- ----------------  -->
 
-    <div v-if="progress === 2" class="midinstructions">
-      <h3 class="instructions">
-        You will need to remember {{ facesNumber }} faces and names. Each face
-        will appear in the middle of the screen with a name below it. Memorize
-        the face and the name. Once you feel that you memorized the face and
-        name, tap on the name. Tap the arrow on the bottom right of the page to
-        get started
-      </h3>
-      <br />
-      <img
-        src="../../../assets/App_Icons/rightArrow.png"
-        alt="Right Arrow"
-        class="next"
-        @click="moveForward"
-      />
-    </div>
+      <div v-if="progress === 2" class="midinstructions">
+        <h3 class="instructions">
+          You will need to remember {{ facesNumber }} faces and names. Each face
+          will appear in the middle of the screen with a name below it. Memorize
+          the face and the name. Once you feel that you memorized the face and
+          name, tap on the name. Tap the arrow on the bottom right of the page
+          to get started
+        </h3>
+        <br />
+        <img
+          src="../../../assets/App_Icons/rightArrow.png"
+          alt="Right Arrow"
+          class="next"
+          @click="moveForward"
+        />
+      </div>
 
-    <!-- -------------------- -->
+      <!-- -------------------- -->
 
-    <div class="stardiv">
-      <img src="../../../assets/IT_Faces/star.jpg" class="star" alt="" />
-    </div>
+      <div class="stardiv">
+        <img src="../../../assets/IT_Faces/star.jpg" class="star" alt="" />
+      </div>
 
-    <div v-if="progress === 3">
-      <div
-        v-for="data in faceDataToMemorize"
-        :key="data.img"
-        class="faces_displayed"
-      >
-        <div>
-          <img
-            :src="getImg(data.img)"
-            alt=""
-            :style="{ display: data.visibility }"
-            class="face_img"
-          />
-        </div>
+      <div v-if="progress === 3">
         <div
-          :style="{ display: data.visibility }"
-          style="font-size: 25px"
-          class="number"
-          @click="nextFaceToMemorize()"
+          v-for="data in faceDataToMemorize"
+          :key="data.img"
+          class="faces_displayed"
         >
-          {{ data.name }}
+          <div>
+            <img
+              :src="getImg(data.img)"
+              alt=""
+              :style="{ display: data.visibility }"
+              class="face_img"
+            />
+          </div>
+          <div
+            :style="{ display: data.visibility }"
+            style="font-size: 25px"
+            class="number"
+            @click="nextFaceToMemorize()"
+          >
+            {{ data.name }}
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- -------------------- -->
+      <!-- -------------------- -->
 
-    <div v-if="progress === 4" class="progress4">
-      <h3 class="instructions midinstructions" v-html="createInstruction"></h3>
-      <img
-        src="../../../assets/App_Icons/rightArrow.png"
-        alt="Right Arrow"
-        class="next"
-        @click="moveForward"
-      />
-    </div>
-
-    <!-- -------------------- -->
-
-    <div v-if="progress === 5">
-      <div>
-        <ul class="faces">
-          <!--LOOPING THROUGH THE IMAGE -->
-
-          <div class="faces_flexbox">
-            <div class="crossdiv">
-              <img
-                src="../../../assets/IT_Faces/cross.jpg"
-                alt=""
-                class="cross"
-              />
-            </div>
-            <div>
-              <li v-for="(data, index) in facedata" :key="data.id">
-                <!-- :class="facedata[index].id" -->
-                <img
-                  :src="getImg(data.img)"
-                  :style="{ display: facedata[index].visibility }"
-                  class="img-of-face"
-                />
-              </li>
-            </div>
-            <div class="correctchoice">
-              <h3
-                @click="proceedAfterIncorrectChoice"
-                style="font-size: 21px; font-weight: 600"
-              >
-                {{ facedata[this.currentlyVisible].name }}
-              </h3>
-              <h3 style="font-size: 16px; width: 166px">
-                Click the name above to continue
-              </h3>
-            </div>
-          </div>
-
-          <!-- All the names -->
-
-          <div class="choices">
-            <h3 @click="validateChoice('Lucas')" class="choice-name">Lucas</h3>
-            <h3 @click="validateChoice('David')" class="choice-name">David</h3>
-            <h3 @click="validateChoice('Mark')" class="choice-name">Mark</h3>
-            <h3 @click="validateChoice('Jacob')" class="choice-name">Jacob</h3>
-            <h3 @click="validateChoice('Paul')" class="choice-name">Paul</h3>
-          </div>
-        </ul>
+      <div v-if="progress === 4" class="progress4">
+        <h3
+          class="instructions midinstructions"
+          v-html="createInstruction"
+        ></h3>
+        <img
+          src="../../../assets/App_Icons/rightArrow.png"
+          alt="Right Arrow"
+          class="next"
+          @click="moveForward"
+        />
       </div>
-    </div>
+
+      <!-- -------------------- -->
+
+      <div v-if="progress === 5">
+        <div>
+          <ul class="faces">
+            <!--LOOPING THROUGH THE IMAGE -->
+
+            <div class="faces_flexbox">
+              <div class="crossdiv">
+                <img
+                  src="../../../assets/IT_Faces/cross.jpg"
+                  alt=""
+                  class="cross"
+                />
+              </div>
+              <div>
+                <li v-for="(data, index) in facedata" :key="data.id">
+                  <!-- :class="facedata[index].id" -->
+                  <img
+                    :src="getImg(data.img)"
+                    :style="{ display: facedata[index].visibility }"
+                    class="img-of-face"
+                  />
+                </li>
+              </div>
+              <div class="correctchoice">
+                <h3
+                  @click="proceedAfterIncorrectChoice"
+                  style="font-size: 21px; font-weight: 600"
+                >
+                  {{ facedata[this.currentlyVisible].name }}
+                </h3>
+                <h3 style="font-size: 16px; width: 166px">
+                  Click the name above to continue
+                </h3>
+              </div>
+            </div>
+
+            <!-- All the names -->
+
+            <div class="choices">
+              <h3 @click="validateChoice('Lucas')" class="choice-name">
+                Lucas
+              </h3>
+              <h3 @click="validateChoice('David')" class="choice-name">
+                David
+              </h3>
+              <h3 @click="validateChoice('Mark')" class="choice-name">Mark</h3>
+              <h3 @click="validateChoice('Jacob')" class="choice-name">
+                Jacob
+              </h3>
+              <h3 @click="validateChoice('Paul')" class="choice-name">Paul</h3>
+            </div>
+          </ul>
+        </div>
+      </div>
     </section>
   </main>
   <section v-if="redirectToHome" class="redirectToHome">

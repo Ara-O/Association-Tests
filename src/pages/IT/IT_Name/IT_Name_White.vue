@@ -279,6 +279,7 @@ export default {
   },
 
   mounted() {
+    
     this.$store.commit("changeCurrentTest", "IT_White_Name");
     this.facedata = IT_Name_Trials("White", 2);
     this.faceDataToMemorize = JSON.parse(JSON.stringify(this.facedata));

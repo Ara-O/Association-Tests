@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set, onValue, get } from "firebase/database";
+import { getDatabase, ref, set } from "firebase/database";
 
 /*
 accuracy: 0

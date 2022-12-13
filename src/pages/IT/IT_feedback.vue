@@ -41,7 +41,7 @@ export default {
 
   methods: {
     surveyComplete(userData) {
-      this.launchConfetti()
+      this.launchConfetti();
       if (userData !== "opted-out") {
         storeContactExperience(userData, "IT", this);
       }
@@ -75,13 +75,12 @@ export default {
     },
 
     routeToHome() {
-      if(!this.wasGroupTest){
-        storeData.storeITIndividualData(this.getCurrentTest, this);
-      }
+      // if(!this.wasGroupTest){
+      //   storeData.storeITIndividualData(this.getCurrentTest, this);
+      // }
       this.$router.push("/Home");
     },
 
-    
     launchConfetti() {
       var myCanvas = document.querySelector(".it-feedback-main");
 
@@ -113,31 +112,29 @@ export default {
         }
       })();
     },
-
   },
-
 };
 </script>
 <style scoped>
 .gohome {
-      display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(185deg, #7eefbf, #389820);
-    border-radius: 47px;
-    box-shadow: -2px 4px 4px -1px #cbcbcb;
-    cursor: pointer;
-    margin-bottom: 25px;
-    transition: all 250ms ease-in-out;
-    color: white;
-    text-decoration: none;
-    font-size: 15px;
-    padding: 9px 24px;
-    font-weight: 300;
-    margin-bottom: 20px;
-    height: 54px;
-    width: 170px;
-    border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(185deg, #7eefbf, #389820);
+  border-radius: 47px;
+  box-shadow: -2px 4px 4px -1px #cbcbcb;
+  cursor: pointer;
+  margin-bottom: 25px;
+  transition: all 250ms ease-in-out;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 9px 24px;
+  font-weight: 300;
+  margin-bottom: 20px;
+  height: 54px;
+  width: 170px;
+  border: none;
 }
 
 .gohome:hover {

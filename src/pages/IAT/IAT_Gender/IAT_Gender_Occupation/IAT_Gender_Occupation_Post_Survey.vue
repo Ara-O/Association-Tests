@@ -404,7 +404,7 @@ export default {
         childData: this.userDataChildren,
       };
 
-      this.$router.push("/IAT_Feedback");
+      this.$router.push("/IAT_Gender_Occupation_Feedback");
     },
   },
 

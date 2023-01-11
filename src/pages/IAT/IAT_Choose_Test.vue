@@ -50,7 +50,7 @@
       </main-button>
 
       <main-button routeTo="/IAT_Gender_Occupation_Pre_Survey">
-        Nurse-Doctor IAT
+        Occupation IAT
       </main-button>
 
       <h3

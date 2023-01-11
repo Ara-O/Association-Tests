@@ -75,6 +75,7 @@ import IAT_Cat_Dog_Survey from "../pages/IAT/IAT_Cat_Dog/IAT_Cat_Dog_Survey.vue"
 // const IAT_Choose_Test = () => import("../pages/IAT/IAT_Choose_Test.vue");
 import IAT_Choose_Test from "../pages/IAT/IAT_Choose_Test.vue";
 import IAT_Feedback from "../pages/IAT/IAT_Feedback.vue";
+import IAT_Gender_Occupation_Feedback from "../pages/IAT/IAT_Gender_Occupation_Feedback.vue";
 export default [
   {
     path: "/IAT_Choose_Test",
@@ -185,5 +186,9 @@ export default [
   {
     path: "/IAT_Gender_Occupation",
     component: IAT_Gender_Occupation,
+  },
+  {
+    path: "/IAT_Gender_Occupation_Feedback",
+    component: IAT_Gender_Occupation_Feedback,
   },
 ];

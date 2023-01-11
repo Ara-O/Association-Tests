@@ -1,4 +1,5 @@
 import * as storeData from "../storingData/storingDataIAT";
+import * as storeDataOccupationIAT from "../storingData/storingDataOccupationIAT";
 
 // Timer
 let ms = 0;
@@ -23,6 +24,7 @@ let testIsPaused = false;
 
 function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {
   const test = thiskeyword;
+  // rome-ignore lint/complexity/useSimplifiedLogicExpression: <explanation>
   if (!test.notStarted && !testIsPaused) {
     let keyClicked = target;
     const currentChallenge = Data[test.arrayIndex];
@@ -43,7 +45,7 @@ function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {
     //Checking accuracy
     if (keyClicked === "Left" || keyClicked === "Right") {
       if (
-        keyClicked == currentChallenge.key &&
+        keyClicked === currentChallenge.key &&
         test.arrayIndex !== Data.length
       ) {
         testIsPaused = true;
@@ -63,31 +65,67 @@ function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {
           }, 500);
         } else {
           //Storing data in vuex
-          storeData.updateIATData(
-            Data,
-            thiskeyword,
-            cMonth,
-            cDay,
-            cYear,
-            whereToStore,
-            version
-          );
-
-          //If test is over, call the test over function, or else,increment the current block
-          if (test.currentBlock == test.fullTest.length - 1) {
-            storeData.storeIATIndividualData(
-              test.$store.getters.getCurrentTest,
-              test,
-              true
+          if (
+            test.$store.getters.getCurrentTest ===
+            "IAT_Gender_Occupation_Touchscreen"
+          ) {
+            storeDataOccupationIAT.updateIATData(
+              Data,
+              thiskeyword,
+              cMonth,
+              cDay,
+              cYear,
+              whereToStore,
+              version
             );
+          } else {
+            storeData.updateIATData(
+              Data,
+              thiskeyword,
+              cMonth,
+              cDay,
+              cYear,
+              whereToStore,
+              version
+            );
+          }
+          //If test is over, call the test over function, or else,increment the current block
+          if (test.currentBlock === test.fullTest.length - 1) {
+            if (
+              test.$store.getters.getCurrentTest ===
+              "IAT_Gender_Occupation_Touchscreen"
+            ) {
+              storeDataOccupationIAT.storeIATIndividualData(
+                test.$store.getters.getCurrentTest,
+                test,
+                true
+              );
+            } else {
+              storeData.storeIATIndividualData(
+                test.$store.getters.getCurrentTest,
+                test,
+                true
+              );
+            }
             test.testOver = true;
           } else {
             //Storing data at the end of the block
-            storeData.storeIATIndividualData(
-              test.$store.getters.getCurrentTest,
-              test,
-              false
-            );
+            if (
+              test.$store.getters.getCurrentTest ===
+              "IAT_Gender_Occupation_Touchscreen"
+            ) {
+              storeDataOccupationIAT.storeIATIndividualData(
+                test.$store.getters.getCurrentTest,
+                test,
+                false
+              );
+            } else {
+              storeData.storeIATIndividualData(
+                test.$store.getters.getCurrentTest,
+                test,
+                false
+              );
+            }
             test.currentBlock++;
             test.notStarted = true;
             testIsPaused = false;

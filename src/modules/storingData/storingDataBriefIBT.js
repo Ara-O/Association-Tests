@@ -49,7 +49,9 @@ export function storeBriefIBTData(
       trial.browser = navigator["userAgent"];
       trial.dateTaken = `${cMonth}-${cDay}-${cYear}`;
       trial.stimulusOrder = innerIndex + 1;
+      // rome-ignore lint/performance/noDelete: <explanation>
       delete trial.randomNo;
+      // rome-ignore lint/performance/noDelete: <explanation>
       delete trial.visibility;
     });
     // console.log(element);

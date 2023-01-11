@@ -81,7 +81,7 @@ onMounted(() => {
       {
         // layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
         pageLanguage: "en",
-        includedLanguages: "en,es,fr,zh-TW",
+        includedLanguages: "en,es,fr,zh-TW,ar",
       },
       "google_translate_element"
     );

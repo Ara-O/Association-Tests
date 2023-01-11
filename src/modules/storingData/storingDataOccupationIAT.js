@@ -1,5 +1,19 @@
 import { getDatabase, ref, set } from "firebase/database";
+import { initializeApp } from "firebase/app";
 
+const firebaseConfigOccupation = {
+  apiKey: import.meta.env.VITE_API_KEY_GENDER_OCCUPATION,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN_GENDER_OCCUPATION,
+  databaseURL: import.meta.env.VITE_DATABASE_URL_GENDER_OCCUPATION,
+  projectId: import.meta.env.VITE_PROJECT_ID_GENDER_OCCUPATION,
+  storageBucket: import.meta.env.STORAGE_BUCKET_GENDER_OCCUPATION,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID_GENDER_OCCUPATION,
+  appId: import.meta.env.VITE_APP_ID_GENDER_OCCUPATION,
+  measurementId: import.meta.env.VITE_MEASUREMENT_ID_GENDER_OCCUPATION,
+};
+
+// Initialize Firebase
+const app3 = initializeApp(firebaseConfigOccupation, "tertiary");
 export function updateIATData(
   Data,
   test,
@@ -76,7 +90,7 @@ export function storeIATGroupData(
   individualUid,
   familyUid
 ) {
-  const db = getDatabase();
+  const db = getDatabase(app3);
 
   if (
     localStorage.getItem(
@@ -143,7 +157,7 @@ export function storeIATIndividualData(
     `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`
   );
 
-  const db = getDatabase();
+  const db = getDatabase(app3);
   set(
     ref(
       db,

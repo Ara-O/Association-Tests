@@ -139,7 +139,7 @@ export default {
         document
           .querySelector(".test")
           .removeEventListener("click", this.handleAnswer);
-        this.$router.push("/IAT_Feedback");
+        this.$router.push("/IAT_Gender_Occupation_Post_Survey");
       }
     },
 

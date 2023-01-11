@@ -1,4 +1,5 @@
 import * as storeData from "../storingData/storingDataIAT";
+import * as storeDataOccupationIAT from "../storingData/storingDataOccupationIAT";
 
 // * Timer
 let ms = 0;
@@ -20,6 +21,7 @@ function stopTimer() {
   // console.log("ending timer - ", ms);
 }
 
+// rome-ignore lint/style/useSingleVarDeclarator: <explanation>
 let test, Data, whereToStore, version, testIsPaused;
 
 function removeHandleInput() {
@@ -39,10 +41,10 @@ function handleUserInput(e) {
     const keyClicked = e.key.toUpperCase();
     const currentChallenge = Data[test.arrayIndex];
     //First check to make sure that what was entered is either I or E
-    if (keyClicked == "I" || keyClicked == "E") {
+    if (keyClicked === "I" || keyClicked === "E") {
       //Checking if the test isnt over yet, and the entry is accurate
       if (
-        keyClicked == currentChallenge.key &&
+        keyClicked === currentChallenge.key &&
         test.arrayIndex !== Data.length
       ) {
         testIsPaused = true;
@@ -62,32 +64,65 @@ function handleUserInput(e) {
           }, 500);
         } else {
           //Store data in vuex
-          storeData.updateIATData(
-            Data,
-            test,
-            cMonth,
-            cDay,
-            cYear,
-            whereToStore,
-            version
-          );
+          if (test.$store.getters.getCurrentTest === "IAT_Gender_Occupation") {
+            storeDataOccupationIAT.updateIATData(
+              Data,
+              test,
+              cMonth,
+              cDay,
+              cYear,
+              whereToStore,
+              version
+            );
+          } else {
+            storeData.updateIATData(
+              Data,
+              test,
+              cMonth,
+              cDay,
+              cYear,
+              whereToStore,
+              version
+            );
+          }
 
           //If test is over, call the test over function, or else,increment the current block
-          if (test.currentBlock == test.fullTest.length - 1) {
+          if (test.currentBlock === test.fullTest.length - 1) {
             document.removeEventListener("keyup", handleInput);
-            storeData.storeIATIndividualData(
-              test.$store.getters.getCurrentTest,
-              test,
-              true
-            );
+
+            if (
+              test.$store.getters.getCurrentTest === "IAT_Gender_Occupation"
+            ) {
+              storeDataOccupationIAT.storeIATIndividualData(
+                test.$store.getters.getCurrentTest,
+                test,
+                true
+              );
+            } else {
+              storeData.storeIATIndividualData(
+                test.$store.getters.getCurrentTest,
+                test,
+                true
+              );
+            }
             test.testOver();
           } else {
             //store data here per block
-            storeData.storeIATIndividualData(
-              test.$store.getters.getCurrentTest,
-              test,
-              false
-            );
+            if (
+              test.$store.getters.getCurrentTest === "IAT_Gender_Occupation"
+            ) {
+              storeDataOccupationIAT.storeIATIndividualData(
+                test.$store.getters.getCurrentTest,
+                test,
+                false
+              );
+            } else {
+              storeData.storeIATIndividualData(
+                test.$store.getters.getCurrentTest,
+                test,
+                false
+              );
+            }
             document.removeEventListener("keyup", handleInput);
             test.notStarted = true;
             test.currentBlock++;

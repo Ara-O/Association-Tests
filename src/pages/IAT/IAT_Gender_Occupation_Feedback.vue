@@ -120,54 +120,6 @@ export default {
     return {
       surveyNotComplete: true,
       wasGroupTest: false,
-      IAT_Black_White_Target_0: [
-        "Clicker_Images/IAT_Black_White/White_And_Happy_Face.png",
-        "Clicker_Images/IAT_Black_White/Black_And_Sad_Face.png",
-      ],
-      IAT_Black_White_Target_1: [
-        "Clicker_Images/IAT_Black_White/White_And_Sad_Face.png",
-        "Clicker_Images/IAT_Black_White/Black_And_Happy_Face.png",
-      ],
-      IAT_Gender_Toy_Target_0: [
-        "Clicker_Images/IAT_Gender_Toy/Male_And_Male_Toy.png",
-        "Clicker_Images/IAT_Gender_Toy/Female_And_Female_Toy.png",
-      ],
-      IAT_Gender_Toy_Target_1: [
-        "Clicker_Images/IAT_Gender_Toy/Male_And_Female_Toy.png",
-        "Clicker_Images/IAT_Gender_Toy/Female_And_Male_Toy.png",
-      ],
-      IAT_Gender_Color_Target_0: [
-        "Clicker_Images/IAT_Gender_Color/Male_And_Blue.png",
-        "Clicker_Images/IAT_Gender_Color/Female_And_Pink.png",
-      ],
-      IAT_Gender_Color_Target_1: [
-        "Clicker_Images/IAT_Gender_Color/Male_And_Pink.png",
-        "Clicker_Images/IAT_Gender_Color/Female_And_Blue.png",
-      ],
-      IAT_Gender_Clothing_Target_0: [
-        "Clicker_Images/IAT_Gender_Clothing/Male_And_Male_Clothing.png",
-        "Clicker_Images/IAT_Gender_Clothing/Female_And_Female_Clothing.png",
-      ],
-      IAT_Gender_Clothing_Target_1: [
-        "Clicker_Images/IAT_Gender_Clothing/Male_And_Female_Clothing.png",
-        "Clicker_Images/IAT_Gender_Clothing/Female_And_Male_Clothing.png",
-      ],
-      IAT_Gender_Roles_Target_0: [
-        "Clicker_Images/IAT_Gender_Roles/Male_And_Office.png",
-        "Clicker_Images/IAT_Gender_Roles/Female_And_Kitchen.png",
-      ],
-      IAT_Gender_Roles_Target_1: [
-        "Clicker_Images/IAT_Gender_Roles/Male_And_Kitchen.png",
-        "Clicker_Images/IAT_Gender_Roles/Female_And_Office.png",
-      ],
-      IAT_Gender_Subject_Target_0: [
-        "Clicker_Images/IAT_Gender_Subject/Male_And_Math.png",
-        "Clicker_Images/IAT_Gender_Subject/Female_And_Reading.png",
-      ],
-      IAT_Gender_Subject_Target_1: [
-        "Clicker_Images/IAT_Gender_Subject/Male_And_Reading.png",
-        "Clicker_Images/IAT_Gender_Subject/Female_And_Math.png",
-      ],
       IAT_Gender_Occupation_Target_0: [
         "Clicker_Images/IAT_Gender_Occupation/Male_And_Doctor.png",
         "Clicker_Images/IAT_Gender_Occupation/Female_And_Nurse.png",
@@ -175,14 +127,6 @@ export default {
       IAT_Gender_Occupation_Target_1: [
         "Clicker_Images/IAT_Gender_Occupation/Male_And_Nurse.png",
         "Clicker_Images/IAT_Gender_Occupation/Female_And_Doctor.png",
-      ],
-      IAT_Cat_Dog_Target_0: [
-        "Clicker_Images/IAT_Cat_Dog/Dog_And_Happy_Face.png",
-        "Clicker_Images/IAT_Cat_Dog/Cat_And_Sad_Face.png",
-      ],
-      IAT_Cat_Dog_Target_1: [
-        "Clicker_Images/IAT_Cat_Dog/Dog_And_Sad_Face.png",
-        "Clicker_Images/IAT_Cat_Dog/Cat_And_Happy_Face.png",
       ],
     };
   },
@@ -306,6 +250,7 @@ export default {
     },
   },
   mounted() {
+    storeData.storeQuestionnaireData(this);
     this.wasGroupTest = false;
   },
 };

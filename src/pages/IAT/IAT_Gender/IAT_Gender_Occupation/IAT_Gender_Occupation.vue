@@ -81,13 +81,13 @@ export default {
           block: "Block4",
           instructions:
             "Click E for male images and doctor images, and I for female images and nurse images. Remember, you should tap as fast as you can!",
-          data: trials.testData_Block3("E", "I", 8),
+          data: trials.testData_Block3("E", "I", 20),
         },
         {
           block: "Block5",
           instructions:
             "Click I for male images and E for female images. Remember, you should tap as fast as you can!",
-          data: trials.testData_Block1("I", "E", 8),
+          data: trials.testData_Block1("I", "E", 20),
         },
         {
           block: "Block6",
@@ -99,7 +99,7 @@ export default {
           block: "Block7",
           instructions:
             "Click I for male images and nurse images, and E for female images and doctor images. Remember, you should tap as fast as you can!",
-          data: trials.testData_Block4("I", "E", 8),
+          data: trials.testData_Block4("I", "E", 20),
         },
       ],
     };

@@ -100,7 +100,7 @@ export default {
           block: "Block4_TS",
           instructions:
             "Tap left for male images and doctor images, and right for female images and nurse images. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
-          data: testData_Block3("Left", "Right", 8),
+          data: testData_Block3("Left", "Right", 20),
           clickerLeft: "Male_And_Doctor.png",
           clickerRight: "Female_And_Nurse.png",
         },
@@ -108,7 +108,7 @@ export default {
           block: "Block5_TS",
           instructions:
             "Tap right for male images and left for female images. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
-          data: testData_Block1("Right", "Left", 8),
+          data: testData_Block1("Right", "Left", 20),
           clickerLeft: "Female.png",
           clickerRight: "Male.png",
         },
@@ -124,7 +124,7 @@ export default {
           block: "Block7_TS",
           instructions:
             "Tap right for male images and nurse images, and left for female images and doctor images. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
-          data: testData_Block4("Right", "Left", 8),
+          data: testData_Block4("Right", "Left", 20),
           clickerLeft: "Female_And_Doctor.png",
           clickerRight: "Male_And_Nurse.png",
         },

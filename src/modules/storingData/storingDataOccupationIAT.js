@@ -119,6 +119,19 @@ export function storeIATGroupData(
       data: test.$store.state[version],
     }
   );
+  // store post survey data
+  // set(
+  //   ref(
+  //     db,
+  //     `Group-data/Family-${familyUid}/${role}-${individualUid}-${numberOfTimesTestWasTaken.padStart(
+  //       2,
+  //       0
+  //     )}/${version}-Questionnaire`
+  //   ),
+  //   {
+  //     data: test.$store.state?.userDataQuestionnaire,
+  //   }
+  // );
 
   localStorage.setItem(
     `${test.$store.getters.getCurrentTest}_Family_${familyUid}_${role}_${individualUid}_Times_Taken`,
@@ -178,6 +191,30 @@ export function storeIATIndividualData(
           `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`
         )
       ) + 1
+    );
+  }
+}
+
+export function storeQuestionnaireData(test) {
+  // TODO: Remove data key so that the data doesnt have repetitive "data" keyword?
+  //NOTE: Leaving the number of times taken means that they can take multiple surveys, but if it
+  //is left out, any subsequent survey will be overwritten
+  const db = getDatabase(app3);
+  let numberOfTimesTestWasTaken = localStorage.getItem(
+    `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`
+  );
+
+  if (Object.entries(test.$store.state?.userDataQuestionnaire) !== 0) {
+    set(
+      ref(
+        db,
+        `IAT-Gender-Occupation-Post-Survey-Questionnaire/User-${
+          test.$store.state.uid
+        }-${String(Number(numberOfTimesTestWasTaken - 1)).padStart(2, 0)}`
+      ),
+      {
+        data: test.$store.state?.userDataQuestionnaire,
+      }
     );
   }
 }

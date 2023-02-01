@@ -16,12 +16,4 @@
 <script setup>
 import "../styles/home.css";
 import MainButton from "../components/Buttons/MainButton.vue";
-// import { onMounted } from "@vue/runtime-core";
-// import {useStore} from "vuex";
-
-// let store = useStore();
-
-// onMounted(() => {
-//   store.commit("changeCurrentTest", "")
-// })
 </script>

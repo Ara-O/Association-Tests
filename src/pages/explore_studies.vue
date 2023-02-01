@@ -26,7 +26,6 @@
         class="explore-studies"
         >Explore Studies</main-button
       >
-      <div id="google_translate_element"></div>
     </section>
     <section
       v-show="exploreStudies"
@@ -66,29 +65,11 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from "vue";
-import { useStore } from "vuex";
+import { ref } from "vue";
 import mainButton from "../components/Buttons/MainButton.vue";
 let participating = ref(true);
-let selectedLanguage = ref("English");
-let store = useStore();
 
 let exploreStudies = ref(false);
-
-onMounted(() => {
-  setTimeout(() => {
-    google.translate.TranslateElement(
-      {
-        // layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
-        pageLanguage: "en",
-        includedLanguages: "en,es,fr,zh-TW,ar",
-      },
-      "google_translate_element"
-    );
-
-    document.querySelector(".skiptranslate").style.display = "none";
-  }, 1000);
-});
 </script>
 
 <style scoped>

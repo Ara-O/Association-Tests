@@ -22,12 +22,12 @@
       <br />
       <main-button
         routeTo="/"
-        @click="exploreStudies = true"
+        @click="routeToExploreStudies"
         class="explore-studies"
         >Explore Studies</main-button
       >
     </section>
-    <section
+    <!-- <section
       v-show="exploreStudies"
       class="consent-form-main"
       style="height: auto; flex-direction: column"
@@ -60,16 +60,23 @@
           <h4>You can close out of this page</h4>
         </div>
       </section>
-    </section>
+    </section> -->
   </main>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import mainButton from "../components/Buttons/MainButton.vue";
-let participating = ref(true);
+import { useRouter } from "vue-router";
+
+let router = useRouter();
+// let participating = ref(true);
 
 let exploreStudies = ref(false);
+
+function routeToExploreStudies() {
+  router.push("/consent-form");
+}
 </script>
 
 <style scoped>

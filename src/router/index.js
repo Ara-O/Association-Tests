@@ -5,7 +5,7 @@ import iatroutes from "./iat-routing";
 
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../pages/home.vue";
-// import Consent_Form from "../pages/consent_form.vue";
+import Consent_Form from "../pages/consent_form.vue";
 import Explore_Studies from "../pages/explore_studies.vue";
 import NotFound from "../pages/404-page.vue";
 // ------------
@@ -62,11 +62,11 @@ const routes = [
     name: "Explore studies",
     component: Explore_Studies,
   },
-  // {
-  //   path: "/consent-form",
-  //   name: "Consent Form",
-  //   component: Consent_Form,
-  // },
+  {
+    path: "/consent-form",
+    name: "Consent Form",
+    component: Consent_Form,
+  },
   {
     path: "/Home",
     name: "Home",

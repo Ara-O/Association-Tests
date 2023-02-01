@@ -27,20 +27,17 @@ watch(route, (newval) => {
 });
 
 onMounted(() => {
-  let newdiv = document.createElement("div");
-  newdiv.classList.add("google_translate_element");
-  newdiv.setAttribute("id", "google_translate_element");
-  document.querySelector("body").appendChild(newdiv);
-  new google.translate.TranslateElement(
-    {
-      // layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
-      pageLanguage: "en",
-      includedLanguages: "en,es,fr,ar,zh-CN",
-    },
-    "google_translate_element"
-  );
-
-  document.querySelector(".skiptranslate").style.display = "none";
+  setTimeout(() => {
+    google.translate.TranslateElement(
+      {
+        // layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        pageLanguage: "en",
+        includedLanguages: "en,es,fr,ar,zh-CN",
+      },
+      "google_translate_element"
+    );
+    // document.querySelector(".skiptranslate").style.display = "none";
+  }, 500);
 });
 </script>
 <style>

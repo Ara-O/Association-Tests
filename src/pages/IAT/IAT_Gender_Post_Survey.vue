@@ -5,7 +5,7 @@
     <div class="survey_container">
       <div class="basic-questions" v-if="surveySection == 0">
         <img
-          src="../../../../assets/App_Icons/diverseimg.jpg"
+          src="../../assets/App_Icons/diverseimg.jpg"
           alt="Image"
           style="width: 273px"
         />
@@ -74,10 +74,10 @@
         <!-- CONTINUE -->
         <div class="progress">
           <!-- <router-link
-              to="/IAT_Choose_Test"
-              class="btn_basic_survey router-link"
-              >Back</router-link
-            > -->
+                to="/IAT_Choose_Test"
+                class="btn_basic_survey router-link"
+                >Back</router-link
+              > -->
           <button @click="next" class="btn_basic_survey">next</button>
         </div>
       </div>
@@ -88,7 +88,7 @@
       >
         <h3>Basic questions</h3>
         <img
-          src="../../../../assets/App_Icons/diverseimg.jpg"
+          src="../../assets/App_Icons/diverseimg.jpg"
           alt="Image"
           style="width: 273px"
         />
@@ -154,6 +154,7 @@
 </template>
 
 <script>
+import { getDatabase, ref, set } from "firebase/database";
 export default {
   data() {
     return {
@@ -376,7 +377,25 @@ export default {
         childData: this.userDataChildren,
       };
 
-      this.$router.push("/IAT_Gender_Occupation_Feedback");
+      //store data
+      const db = getDatabase();
+      //   let numberOfTimesTestWasTaken = localStorage.getItem(
+      //     `${this.$store.getters.getCurrentTest}_${this.$store.state.uid}_Times_Taken`
+      //   );
+      let test = this;
+      if (Object.entries(test.$store.state?.userDataQuestionnaire) !== 0) {
+        set(
+          ref(
+            db,
+            `${test.$store.getters.getCurrentTest}-Post-Survey-Questionnaire/User-${test.$store.state.uid}`
+          ),
+          {
+            data: test.$store.state?.userDataQuestionnaire,
+          }
+        );
+      }
+
+      this.$router.push("/IAT_Feedback");
     },
   },
 
@@ -385,7 +404,7 @@ export default {
 </script>
 
 <style scoped>
-@import url("../../../../styles/pre-test-survey.css");
+@import url("../../styles/pre-test-survey.css");
 .collect-user-id {
   width: auto;
   max-width: 600px;

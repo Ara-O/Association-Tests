@@ -36,8 +36,7 @@ onMounted(() => {
       },
       "google_translate_element"
     );
-    // document.querySelector(".skiptranslate").style.display = "none";
-  }, 500);
+  }, 1000);
 });
 </script>
 <style>

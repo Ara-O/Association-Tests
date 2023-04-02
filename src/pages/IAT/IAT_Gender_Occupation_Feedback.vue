@@ -20,7 +20,8 @@
       class="left-congratulations"
     />
     <h4 style="font-weight: 400">
-      Congratulations! You have finished the test! Tis is occupation feedback
+      Congratulations! You have finished the test! This is your occupation test
+      feedback!
     </h4>
     <img
       src="../../assets/App_Icons/congratulations.png"
@@ -250,6 +251,7 @@ export default {
     },
   },
   mounted() {
+    //Storing questionnaire data
     storeData.storeQuestionnaireData(this);
     this.wasGroupTest = false;
   },

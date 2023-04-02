@@ -75,7 +75,7 @@ export default {
           block: "Block1_TS",
           instructions:
             "Tap left for male images and right for female images. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
-          data: testData_Block1("Left", "Right", 16),
+          data: testData_Block1("Left", "Right", 2),
           clickerLeft: "Male.png",
           clickerRight: "Female.png",
         },
@@ -83,7 +83,7 @@ export default {
           block: "Block2_TS",
           instructions:
             "Tap the left for male toys, and right for female toys. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
-          data: testData_Block2("Left", "Right", 16),
+          data: testData_Block2("Left", "Right", 2),
           clickerLeft: "Male_Toy.png",
           clickerRight: "Female_Toy.png",
         },
@@ -91,7 +91,7 @@ export default {
           block: "Block3_TS",
           instructions:
             "Practice: Click the left box for Male images/Male toys, and the right box for Female images/Female toys",
-          data: testData_Block3("Left", "Right", 8, true),
+          data: testData_Block3("Left", "Right", 2, true),
           clickerLeft: "Male_And_Male_Toy.png",
           clickerRight: "Female_And_Female_Toy.png",
         },
@@ -99,7 +99,7 @@ export default {
           block: "Block4_TS",
           instructions:
             "Tap left for male images and male toys, and right for female images and female toys. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
-          data: testData_Block3("Left", "Right", 32),
+          data: testData_Block3("Left", "Right", 2),
           clickerLeft: "Male_And_Male_Toy.png",
           clickerRight: "Female_And_Female_Toy.png",
         },
@@ -107,7 +107,7 @@ export default {
           block: "Block5_TS",
           instructions:
             "Tap right for male images and left for female images. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
-          data: testData_Block1("Right", "Left", 16),
+          data: testData_Block1("Right", "Left", 2),
           clickerLeft: "Female.png",
           clickerRight: "Male.png",
         },
@@ -115,7 +115,7 @@ export default {
           block: "Block6_TS",
           instructions:
             "Practice: Click the right for Male images/Female toys, and the left for Female images/Male toys",
-          data: testData_Block4("Right", "Left", 8, true),
+          data: testData_Block4("Right", "Left", 2, true),
           clickerLeft: "Female_And_Male_Toy.png",
           clickerRight: "Male_And_Female_Toy.png",
         },
@@ -123,7 +123,7 @@ export default {
           block: "Block7_TS",
           instructions:
             "Tap the right for male images and female toys, and left for female images and male toys. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
-          data: testData_Block4("Right", "Left", 32),
+          data: testData_Block4("Right", "Left", 2),
           clickerLeft: "Female_And_Male_Toy.png",
           clickerRight: "Male_And_Female_Toy.png",
         },
@@ -138,7 +138,8 @@ export default {
         document
           .querySelector(".iat-gender-toy-touchscreen-main")
           .removeEventListener("click", this.handleAnswer);
-        this.$router.push("/IAT_Feedback");
+        // this.$router.push("/IAT_Feedback");
+        this.$router.push("/IAT_Gender_Post_Survey");
       }
     },
 

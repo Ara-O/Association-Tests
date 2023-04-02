@@ -248,7 +248,14 @@
       >
         Touchscreen Version
       </button>
+
+      <!-- TODO: Keeping this here for April 2 updates of no keyboard version on Toy, Roles, and Occupation IAT -->
       <button
+        v-if="
+          currentTest != 'IAT_Gender_Occupation' &&
+          currentTest != 'IAT_Gender_Roles' &&
+          currentTest != 'IAT_Gender_Toy'
+        "
         @click="progress_kb"
         class="btn btn_basic_survey kb_btn"
         style="margin-top: 5px; width: 150px; padding: 24px 18px"

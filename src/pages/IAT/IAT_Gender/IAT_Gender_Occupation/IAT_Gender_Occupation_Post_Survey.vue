@@ -17,6 +17,12 @@
           questionnaire below should take you anywhere between 10-15 minutes.
           Thank you for participating!
         </h3>
+        <h4>
+          <router-link to="/IAT_Gender_Occupation_Feedback"
+            >Skip Questionnaire Here</router-link
+          >
+        </h4>
+
         <h4><b>Demographic Questionnaire</b></h4>
         <h4 style="font-weight: 600">
           <i><em>Parent Section</em></i>

@@ -200,21 +200,13 @@ export function storeQuestionnaireData(test) {
   //NOTE: Leaving the number of times taken means that they can take multiple surveys, but if it
   //is left out, any subsequent survey will be overwritten
   const db = getDatabase(app3);
-  let numberOfTimesTestWasTaken = localStorage.getItem(
-    `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`
-  );
+  // let numberOfTimesTestWasTaken = localStorage.getItem(
+  //   `${test.$store.getters.getCurrentTest}_${test.$store.state.uid}_Times_Taken`
+  // );
 
-  if (Object.entries(test.$store.state?.userDataQuestionnaire) !== 0) {
-    set(
-      ref(
-        db,
-        `IAT-Gender-Occupation-Post-Survey-Questionnaire/User-${
-          test.$store.state.uid
-        }-${String(Number(numberOfTimesTestWasTaken - 1)).padStart(2, 0)}`
-      ),
-      {
-        data: test.$store.state?.userDataQuestionnaire,
-      }
-    );
+  if (test.$store.state?.userDataQuestionnaire != null) {
+    set(ref(db, `Post-Survey-Questionnaire/User-${test.$store.state.uid}`), {
+      data: test.$store.state?.userDataQuestionnaire,
+    });
   }
 }

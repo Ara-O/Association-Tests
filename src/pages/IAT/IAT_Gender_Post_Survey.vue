@@ -17,6 +17,9 @@
           questionnaire below should take you anywhere between 10-15 minutes.
           Thank you for participating!
         </h3>
+        <h4>
+          <router-link to="/IAT_Feedback">Skip Questionnaire Here</router-link>
+        </h4>
         <h4><b>Demographic Questionnaire</b></h4>
         <h4 style="font-weight: 600">
           <i><em>Parent Section</em></i>
@@ -385,10 +388,7 @@ export default {
       let test = this;
       if (Object.entries(test.$store.state?.userDataQuestionnaire) !== 0) {
         set(
-          ref(
-            db,
-            `${test.$store.getters.getCurrentTest}-Post-Survey-Questionnaire/User-${test.$store.state.uid}`
-          ),
+          ref(db, `Post-Survey-Questionnaire/User-${test.$store.state.uid}`),
           {
             data: test.$store.state?.userDataQuestionnaire,
           }
@@ -398,8 +398,6 @@ export default {
       this.$router.push("/IAT_Feedback");
     },
   },
-
-  mounted() {},
 };
 </script>
 

@@ -252,7 +252,9 @@ export default {
   },
   mounted() {
     //Storing questionnaire data
+
     storeData.storeQuestionnaireData(this);
+
     this.wasGroupTest = false;
   },
 };

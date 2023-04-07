@@ -32,7 +32,10 @@
     </div>
 
     <!-- EXPLICIT ATTITUDES -->
-    <div v-else class="survey_container">
+    <div
+      v-else-if="moveon === false && finishedAllSurvey === false"
+      class="survey_container"
+    >
       <explicit-attitudes
         :userDataProp="userData"
         @progress_kb="progress_kb"
@@ -48,6 +51,11 @@
       >
       </explicit-attitudes>
     </div>
+    <section v-if="finishedAllSurvey">
+      <router-link to="/IAT_Gender_Roles_Touchscreen" class="btn_survey"
+        >Touchscreen Version</router-link
+      >
+    </section>
   </main>
   <section v-if="redirectToHome" class="redirectToHome">
     <router-link to="/Home" class="btn_survey"
@@ -70,6 +78,7 @@ export default {
       notAgreedToConsentForm: true,
       redirectToHome: false,
       moveon: true,
+      finishedAllSurvey: false,
       stereotypeImages1: [
         "H01-cookerhood",
         "H02-cuttingboard",
@@ -98,12 +107,16 @@ export default {
 
     progress_ts() {
       this.$store.state.userData = this.userData;
-      this.$router.push("IAT_Gender_Roles_Touchscreen");
+      this.finishedAllSurvey = true;
+
+      // this.$router.push("IAT_Gender_Roles_Touchscreen");
     },
 
     progress_kb() {
       this.$store.state.userData = this.userData;
-      this.$router.push("IAT_Gender_Roles");
+      this.finishedAllSurvey = true;
+
+      // this.$router.push("IAT_Gender_Roles");
     },
   },
 

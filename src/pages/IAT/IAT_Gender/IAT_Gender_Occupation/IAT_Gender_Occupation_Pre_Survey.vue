@@ -34,7 +34,10 @@
     </div>
 
     <!-- EXPLICIT ATTITUDES -->
-    <div v-else class="survey_container">
+    <div
+      v-else-if="moveon === false && finishedAllSurvey === false"
+      class="survey_container"
+    >
       <explicit-attitudes
         :userDataProp="userData"
         @progress_kb="startTest('Keyboard')"
@@ -50,6 +53,11 @@
       >
       </explicit-attitudes>
     </div>
+    <section v-if="finishedAllSurvey">
+      <router-link to="/IAT_Gender_Occupation_Touchscreen" class="btn_survey"
+        >Touchscreen Version</router-link
+      >
+    </section>
   </main>
   <section v-if="redirectToHome" class="redirectToHome">
     <router-link to="/Home" class="btn_survey"
@@ -73,6 +81,7 @@ export default {
       redirectToHome: false,
       surveySection: 0,
       moveon: true,
+      finishedAllSurvey: false,
       stereotypeImages1: ["Doctor1", "Doctor2", "Doctor3", "Doctor4"],
       stereotypeImages2: ["Nurse1", "Nurse2", "Nurse3", "Nurse4"],
       userHasPutInUserID: false,
@@ -306,12 +315,13 @@ export default {
 
     startTest(version) {
       this.$store.state.userData = this.userData;
-      if (version === "Keyboard") {
-        this.$router.push("IAT_Gender_Occupation");
-      }
-      if (version === "Touchscreen") {
-        this.$router.push("IAT_Gender_Occupation_Touchscreen");
-      }
+      this.finishedAllSurvey = true;
+      // if (version === "Keyboard") {
+      //   this.$router.push("IAT_Gender_Occupation");
+      // }
+      // if (version === "Touchscreen") {
+      //   this.$router.push("IAT_Gender_Occupation_Touchscreen");
+      // }
     },
   },
 

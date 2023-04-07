@@ -32,7 +32,10 @@
     </div>
 
     <!-- EXPLICIT ATTITUDES -->
-    <div v-else class="survey_container">
+    <div
+      v-else-if="moveon === false && finishedAllSurvey === false"
+      class="survey_container"
+    >
       <explicit-attitudes
         :userDataProp="userData"
         @progress_kb="progress_kb"
@@ -48,7 +51,13 @@
       >
       </explicit-attitudes>
     </div>
+    <section v-if="finishedAllSurvey">
+      <router-link to="/IAT_Gender_Toy_Touchscreen" class="btn_survey"
+        >Touchscreen Version</router-link
+      >
+    </section>
   </main>
+
   <section v-if="redirectToHome" class="redirectToHome">
     <router-link to="/Home" class="btn_survey"
       >Click here to redirect to home</router-link
@@ -70,6 +79,7 @@ export default {
     return {
       notAgreedToConsentForm: true,
       redirectToHome: false,
+      finishedAllSurvey: false,
       moveon: true,
       stereotypeImages1: ["T_F01", "T_F02", "T_F03", "T_F04", "T_F05"],
       stereotypeImages2: ["T_M01", "T_M02", "T_M03", "T_M04", "T_M05"],
@@ -85,12 +95,14 @@ export default {
 
     progress_ts() {
       this.$store.state.userData = this.userData;
-      this.$router.push("IAT_Gender_Toy_Touchscreen");
+      this.finishedAllSurvey = true;
+      // this.$router.push("IAT_Gender_Toy_Touchscreen");
     },
 
     progress_kb() {
       this.$store.state.userData = this.userData;
-      this.$router.push("IAT_Gender_Toy");
+      this.finishedAllSurvey = true;
+      // this.$router.push("IAT_Gender_Toy");
     },
   },
 };

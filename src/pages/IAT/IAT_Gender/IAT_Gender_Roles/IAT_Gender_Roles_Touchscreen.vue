@@ -76,7 +76,7 @@ export default {
           block: "Block1_TS",
           instructions:
             "Tap left for male images and right for female images. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
-          data: testData_Block1("Left", "Right", 16),
+          data: testData_Block1("Left", "Right", 2),
           clickerLeft: "Male.png",
           clickerRight: "Female.png",
         },
@@ -84,7 +84,7 @@ export default {
           block: "Block2_TS",
           instructions:
             "Tap left for office items, and right for kitchen items. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
-          data: testData_Block2("Left", "Right", 16),
+          data: testData_Block2("Left", "Right", 2),
           clickerLeft: "Office.png",
           clickerRight: "Kitchen.png",
         },
@@ -92,7 +92,7 @@ export default {
           block: "Block3_TS",
           instructions:
             "Practice: Click the left box for Male images/Office items, and the right box for Female images/Kitchen items",
-          data: testData_Block3("Left", "Right", 8, true),
+          data: testData_Block3("Left", "Right", 2, true),
           clickerLeft: "Male_And_Office.png",
           clickerRight: "Female_And_Kitchen.png",
         },
@@ -100,7 +100,7 @@ export default {
           block: "Block4_TS",
           instructions:
             "Tap left for male images and office items, and right for female images and kitchen items. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
-          data: testData_Block3("Left", "Right", 32),
+          data: testData_Block3("Left", "Right", 2),
           clickerLeft: "Male_And_Office.png",
           clickerRight: "Female_And_Kitchen.png",
         },
@@ -108,7 +108,7 @@ export default {
           block: "Block5_TS",
           instructions:
             "Tap right for male images and left for female images. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
-          data: testData_Block1("Right", "Left", 16),
+          data: testData_Block1("Right", "Left", 2),
           clickerLeft: "Female.png",
           clickerRight: "Male.png",
         },
@@ -116,7 +116,7 @@ export default {
           block: "Block6_TS",
           instructions:
             "Practice: Click the right for Male images/Kitchen items, and the left for Female images/Office items",
-          data: testData_Block4("Right", "Left", 8, true),
+          data: testData_Block4("Right", "Left", 2, true),
           clickerLeft: "Female_And_Office.png",
           clickerRight: "Male_And_Kitchen.png",
         },
@@ -124,7 +124,7 @@ export default {
           block: "Block7_TS",
           instructions:
             "Tap right for male images and kitchen items, and left for female images and office items. When you are ready, please tap the below green arrow to start. Remember, you should tap as fast as you can!",
-          data: testData_Block4("Right", "Left", 32),
+          data: testData_Block4("Right", "Left", 2),
           clickerLeft: "Female_And_Office.png",
           clickerRight: "Male_And_Kitchen.png",
         },

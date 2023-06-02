@@ -97,6 +97,13 @@
       >
         Brief Black-White IBT
       </router-link>
+      <router-link
+        to="IBT_Brief_Black_White_UCSC"
+        class="routerlink test_btn"
+        tag="button"
+      >
+        UCSC
+      </router-link>
       <h3
         style="text-decoration: underline; cursor: pointer; font-size: 16px"
         @click="ibt = ''"

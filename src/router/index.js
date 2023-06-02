@@ -28,6 +28,8 @@ import IBT_Choose_Test from "../pages/IBT/IBT_Choose_Test.vue";
 import IBT_Black_White from "../pages/IBT/IBT_Race/IBT_Black_White/IBT_Black_White.vue";
 import IBT_Brief_Black_White from "../pages/IBT/IBT_Race/IBT_Brief_Black_White/IBT_Brief_Black_White.vue";
 import IBT_Brief_Black_White_Feedback from "../pages/IBT/IBT_Race/IBT_Brief_Black_White/IBT_Brief_Black_White_Feedback.vue";
+import IBT_Brief_Black_White_UCSC from "../pages/IBT/IBT_Race/IBT_Brief_Black_White_UCSC/IBT_Brief_Black_White_UCSC.vue";
+import IBT_Brief_Black_White_UCSC_Feedback from "../pages/IBT/IBT_Race/IBT_Brief_Black_White_UCSC/IBT_Brief_Black_White_UCSC_Feedback.vue";
 import IBT_Black_White_Survey from "../pages/IBT/IBT_Race/IBT_Black_White/IBT_Black_White_Survey.vue";
 import IBT_Cat_Dog from "../pages/IBT/IBT_Cat_Dog/IBT_Cat_Dog.vue";
 import IBT_Cat_Dog_Survey from "../pages/IBT/IBT_Cat_Dog/IBT_Cat_Dog_Survey.vue";
@@ -119,6 +121,14 @@ const routes = [
   {
     path: "/IBT_Brief_Black_White_Feedback",
     component: IBT_Brief_Black_White_Feedback,
+  },
+  {
+    path: "/IBT_Brief_Black_White_UCSC",
+    component: IBT_Brief_Black_White_UCSC,
+  },
+  {
+    path: "/IBT_Brief_Black_White_UCSC_Feedback",
+    component: IBT_Brief_Black_White_UCSC_Feedback,
   },
   {
     path: "/IBT_Gender_Toy",

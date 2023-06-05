@@ -20,7 +20,6 @@ let cYear = currentDate.getFullYear();
 const firebaseConfigUCSC = {
   apiKey: import.meta.env.VITE_API_KEY_UCSC,
   authDomain: import.meta.env.VITE_AUTH_DOMAIN_UCSC,
-  databaseURL: import.meta.env.VITE_DATABASE_URL_UCSC,
   projectId: import.meta.env.VITE_PROJECT_ID_UCSC,
   storageBucket: import.meta.env.STORAGE_BUCKET_UCSC,
   messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID_UCSC,

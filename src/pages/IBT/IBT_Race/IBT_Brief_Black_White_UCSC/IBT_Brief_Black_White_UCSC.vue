@@ -72,7 +72,11 @@
                   :key="trial.id"
                   :style="{ display: trial.visibility }"
                 >
-                  <img :src="getImage(trial.image)" class="trialimg" />
+                  <img
+                    :src="getImage(trial.image)"
+                    class="trialimg"
+                    style="width: 240px"
+                  />
                   <img
                     :src="
                       getClickerImage(
@@ -111,7 +115,7 @@
 
 <script>
 import ConsentForm from "./IBT_Brief_Black_White_UCSC_Consent_Form.vue";
-import generateIBTtrialsRace from "../../../../modules/generateIbtTrials/generateIbtBriefTrialsRace";
+import generateIBTtrialsRace from "./generateIbtUCSCTrials";
 import ImplicitBiasTestInstructions from "../../../../components/ImplicitBiasTestInstructions.vue";
 import "../../../../styles/pre-test-survey.css";
 import "../../../../styles/IBT.css";
@@ -172,7 +176,7 @@ export default {
 
     getImage(url) {
       return new URL(
-        `../../../../assets/IBT_Black_White/${url}`,
+        `../../../../assets/IBT_Race_UCSC/${url}.png`,
         import.meta.url
       ).href;
     },
@@ -205,21 +209,21 @@ export default {
       that.testNotStarted = false;
       setTimeout(function () {
         that.paused = false;
+        document.querySelector(".faceRight").style.display = "block";
+        document.querySelector(".faceLeft").style.display = "block";
         handleAnswer(
           that,
           that.ibt_trials[that.section].trials,
           "IBT_Brief_Black_White_UCSC",
           "/IBT_Brief_Black_White_UCSC_Feedback"
         );
-        document.querySelector(".faceRight").style.display = "block";
-        document.querySelector(".faceLeft").style.display = "block";
       }, 500);
     },
     randomizeTrialCongruency() {
       let allTrialsShuffled = [];
       let allTrials = [
         {
-          trials: generateIBTtrialsRace("Happy", "Sad", 2),
+          trials: generateIBTtrialsRace("Happy", "Sad", 8),
           section: "practice_1",
           practice_instruction: `Practice: There will be a picture of a Black person or a White person in the
           middle of the screen. When you see a picture of the White person you should
@@ -231,7 +235,7 @@ export default {
           the screen.`,
         },
         {
-          trials: generateIBTtrialsRace("Happy", "Sad", 2),
+          trials: generateIBTtrialsRace("Happy", "Sad", 20),
           section: "section_1",
           instruction: `There will be a picture of a Black person or a White person in the
           middle of the screen. When you see a picture of the White person you should
@@ -243,7 +247,7 @@ export default {
           the screen.`,
         },
         {
-          trials: generateIBTtrialsRace("Sad", "Happy", 2),
+          trials: generateIBTtrialsRace("Sad", "Happy", 8),
           section: "practice_2",
           practice_instruction: `Practice: There will be a picture of a Black person or a White person in the middle
         of screen. When you see a picture of the White person you should touch the

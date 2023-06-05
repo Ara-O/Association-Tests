@@ -1,5 +1,6 @@
 // import { getDatabase, ref, set } from "firebase/database";
 import * as storeData from "../storingData/storingDataBriefIBT";
+import * as storeDataUCSC from "../storingData/storingDateBriefIBTUCSC";
 let ms = 0;
 let startTime;
 let pausedTime, continuedTime;
@@ -31,8 +32,8 @@ function continueTimer() {
 function handleAnswer(thiskeyword, Data, whereToStore) {
   const thisData = thiskeyword;
   if (!thisData.testNotStarted) {
-    // console.log("starting timer from handle answer");
     startTimer();
+    // console.time("test");
     document.addEventListener("click", function handleInput(e) {
       if (!thisData.paused) {
         let buttonClicked = e.target;
@@ -43,6 +44,7 @@ function handleAnswer(thiskeyword, Data, whereToStore) {
         ) {
           const currentChallenge = Data[thisData.currentTrial];
           if (currentChallenge.stimulusEmotion === buttonClickedStimulusMood) {
+            // console.timeEnd("test");
             //Stops timer
             stopTimer();
             thisData.paused = true;
@@ -63,7 +65,7 @@ function handleAnswer(thiskeyword, Data, whereToStore) {
                   startTimer();
                   thisData.currentTrial++;
                   thisData.paused = false;
-                }, 500);
+                }, 250);
               }, 500);
 
               //IF THE USER has finished one round of testing
@@ -75,15 +77,48 @@ function handleAnswer(thiskeyword, Data, whereToStore) {
                 thisData.$store.state[whereToStore] = thisData.ibtData;
                 // console.log("full test ends");
                 thisData.$router.push("/IBT_Brief_Black_White_Feedback");
-                storeData.storeBriefIBTData(thisData.ibtData, thisData);
+                if (
+                  thisData.$store.getters.getCurrentTest ===
+                  "IBT_Brief_Black_White_UCSC"
+                ) {
+                  storeDataUCSC.storeBriefIBTData(thisData.ibtData, thisData);
+                }
+
+                if (
+                  thisData.$store.getters.getCurrentTest ===
+                  "IBT_Brief_Black_White"
+                ) {
+                  storeData.storeBriefIBTData(thisData.ibtData, thisData);
+                }
                 thisData.ibtData = [];
                 //Route to feedback
               } else {
                 thisData.userGotStimulusRight = true;
                 thisData.ibtData.push(Data);
 
-                //Storing data everytime user finishes a block
-                storeData.storeBriefIBTData(thisData.ibtData, thisData, false);
+                if (
+                  thisData.$store.getters.getCurrentTest ===
+                  "IBT_Brief_Black_White_UCSC"
+                ) {
+                  //Storing data everytime user finishes a block
+                  storeDataUCSC.storeBriefIBTData(
+                    thisData.ibtData,
+                    thisData,
+                    false
+                  );
+                }
+
+                if (
+                  thisData.$store.getters.getCurrentTest ===
+                  "IBT_Brief_Black_White"
+                ) {
+                  //Storing data everytime user finishes a block
+                  storeData.storeBriefIBTData(
+                    thisData.ibtData,
+                    thisData,
+                    false
+                  );
+                }
                 setTimeout(function () {
                   thisData.$store.state[whereToStore] = thisData.ibtData;
                   document.removeEventListener("click", handleInput);

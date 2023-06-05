@@ -104,9 +104,8 @@
 
 <script setup>
 import { ref } from "vue";
-import btn from "../../../../components/Buttons/MainButton.vue";
 let participating = ref(true);
-defineEmits("userHasAgreed");
+defineEmits(["userHasAgreed"]);
 </script>
 
 <style scoped>

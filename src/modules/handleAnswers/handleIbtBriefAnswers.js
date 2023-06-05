@@ -65,7 +65,7 @@ function handleAnswer(thiskeyword, Data, whereToStore) {
                   startTimer();
                   thisData.currentTrial++;
                   thisData.paused = false;
-                }, 250);
+                }, 500);
               }, 500);
 
               //IF THE USER has finished one round of testing

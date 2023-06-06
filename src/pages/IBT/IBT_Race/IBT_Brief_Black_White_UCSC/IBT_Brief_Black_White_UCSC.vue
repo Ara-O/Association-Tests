@@ -1,8 +1,16 @@
 <template>
-  <main style="height: auto" v-if="userHasNotFinishedConsentForm">
-    <ConsentForm
+  <main style="height: 100vh" v-if="userHasNotFinishedConsentForm">
+    <!-- <ConsentForm
       @userHasAgreed="userHasNotFinishedConsentForm = false"
-    ></ConsentForm>
+    ></ConsentForm> -->
+    <h3 style="font-weight: 500">Welcome to the UCSC IBT!</h3>
+    <button
+      @click="userHasNotFinishedConsentForm = false"
+      class="btn_basic_survey"
+      style="margin-top: 10px"
+    >
+      Start Test
+    </button>
   </main>
   <main v-else>
     <section>
@@ -20,9 +28,9 @@
         <section id="test-border">
           <section v-if="notFinishedInstructions">
             <implicit-bias-test-instructions
+              :instruction="ibt_trials[section].instruction"
               @finishedInstructions="finishedInstructions"
             >
-              {{ ibt_trials[section].practice_instruction }}
             </implicit-bias-test-instructions>
           </section>
 
@@ -32,10 +40,7 @@
               <br />
               <h3
                 class="fullinstruction"
-                v-html="
-                  ibt_trials[section]?.instruction ||
-                  ibt_trials[section]?.practice_instruction
-                "
+                v-html="ibt_trials[section].instruction"
               ></h3>
 
               <br />
@@ -116,7 +121,7 @@
 <script>
 import ConsentForm from "./IBT_Brief_Black_White_UCSC_Consent_Form.vue";
 import generateIBTtrialsRace from "./generateIbtUCSCTrials";
-import ImplicitBiasTestInstructions from "../../../../components/ImplicitBiasTestInstructions.vue";
+import ImplicitBiasTestInstructions from "./IBT_Brief_Black_White_UCSC_Instructions.vue";
 import "../../../../styles/pre-test-survey.css";
 import "../../../../styles/IBT.css";
 import { handleAnswer } from "../../../../modules/handleAnswers/handleIbtBriefAnswers";
@@ -225,47 +230,47 @@ export default {
         {
           trials: generateIBTtrialsRace("Happy", "Sad", 8),
           section: "practice_1",
-          practice_instruction: `Practice: There will be a picture of a Black person or a White person in the
-          middle of the screen. When you see a picture of the White person you should
-          touch the smiling face; when you see the Black person, you should touch
-          the crying face. Smiling and crying faces will appear at the bottom of
+          instruction: `Practice: There will be a picture of a <span style="font-weight: bold; color: #e40000"> Black person </span> or a <span style="font-weight: bold; color: #e40000">White person</span> in the
+          middle of the screen. When you see a picture of the <span style="font-weight: bold; color: #e40000">White person</span> you should
+          touch the <span style="font-weight: bold; color: #e40000">smiling face</span>; when you see the <span style="font-weight: bold; color: #e40000">Black person</span>, you should touch
+          the <span style="font-weight: bold; color: #e40000">crying face</span>. <span style="font-weight: bold; color: #e40000">Smiling and Crying faces</span> will appear at the bottom of
           the screen either on the left or right. Pay attention because the
-          smiling and crying faces may change places. Please respond
+          <span style="font-weight: bold; color: #e40000">smiling</span> and <span style="font-weight: bold; color: #e40000">crying faces</span> may change places. Please respond
           quickly and correctly. You can only use one hand to touch
           the screen.`,
         },
         {
           trials: generateIBTtrialsRace("Happy", "Sad", 20),
           section: "section_1",
-          instruction: `There will be a picture of a Black person or a White person in the
-          middle of the screen. When you see a picture of the White person you should
-          touch the smiling face; when you see the Black person, you should touch
-          the crying face. Smiling and crying faces will appear at the bottom of
+          instruction: `There will be a picture of a <span style="font-weight: bold; color: #e40000">Black person</span> or a <span style="font-weight: bold; color: #e40000">White person</span> in the
+          middle of the screen. When you see a picture of the <span style="font-weight: bold; color: #e40000">White person</span> you should
+          touch the <span style="font-weight: bold; color: #e40000">smiling face</span>; when you see the<span style="font-weight: bold; color: #e40000"> Black person</span>, you should touch
+          <span style="font-weight: bold; color: #e40000">the crying face</span>. <span style="font-weight: bold; color: #e40000">Smiling and Crying faces</span> will appear at the bottom of
           the screen either on the left or right. Pay attention because the
-          smiling and crying faces may change places. Please respond
+          <span style="font-weight: bold; color: #e40000">smiling </span> and <span style="font-weight: bold; color: #e40000">crying faces</span> may change places. Please respond
           quickly and correctly. You can only use one hand to touch
           the screen.`,
         },
         {
           trials: generateIBTtrialsRace("Sad", "Happy", 8),
           section: "practice_2",
-          practice_instruction: `Practice: There will be a picture of a Black person or a White person in the middle
-        of screen. When you see a picture of the White person you should touch the
-        crying face; when you see the Black person, you should touch the smiling
-        face. Smiling and crying faces will appear at the bottom of the screen
-        either on the left or right. Pay attention because the smiling and crying
+          instruction: `Practice: There will be a picture of a <span style="font-weight: bold; color: red">Black person</span> or a <span style="font-weight: bold; color: #e40000">White person</span> in the middle
+        of screen. When you see a picture of the <span style="font-weight: bold; color: #e40000">White person</span> you should touch the
+        <span style="font-weight: bold; color: #e40000">crying face</span>; when you see the <span style="font-weight: bold; color: #e40000">Black person</span>, you should touch the <span style="font-weight: bold; color: #e40000">smiling
+        face </span>. <span style="font-weight: bold; color: #e40000">Smiling and Crying faces </span> will appear at the bottom of the screen
+        either on the left or right. Pay attention because the <span style="font-weight: bold; color: #e40000">smiling</span> and<span style="font-weight: bold; color: #e40000"> crying</span>
         faces may change places. Please respond quickly and correctly. You
         can only use one hand to touch the screen.`,
         },
         {
           trials: generateIBTtrialsRace("Sad", "Happy", 20),
           section: "section_2",
-          instruction: `There will be a picture of a Black person or a White person in the middle
-        of screen. When you see a picture of the White person you should touch the
-        crying face; when you see the Black person, you should touch the smiling
-        face. Smiling and crying faces will appear at the bottom of the screen
-        either on the left or right. Pay attention because the smiling and crying
-        faces may change places. Please respond quickly and correctly. You
+          instruction: `There will be a picture of a <span style="font-weight: bold; color: red">Black person</span> or a <span style="font-weight: bold; color: #e40000">White person</span> in the middle
+        of screen. When you see a picture of the <span style="font-weight: bold; color: #e40000">White person</span> you should touch the
+        <span style="font-weight: bold; color: #e40000">crying face</span>; when you see the<span style="font-weight: bold; color: #e40000"> Black person</span>, you should touch the<span style="font-weight: bold; color: #e40000"> smiling
+        face </span>. <span style="font-weight: bold; color: #e40000">Smiling and Crying faces</span> will appear at the bottom of the screen
+        either on the left or right. Pay attention because the <span style="font-weight: bold; color: #e40000">smiling</span> and<span style="font-weight: bold; color: #e40000"> crying
+        faces</span> may change places. Please respond quickly and correctly. You
         can only use one hand to touch the screen.`,
         },
       ];

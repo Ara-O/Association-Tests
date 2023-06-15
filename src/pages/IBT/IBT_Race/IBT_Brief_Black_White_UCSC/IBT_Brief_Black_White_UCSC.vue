@@ -181,7 +181,7 @@ export default {
 
     getImage(url) {
       return new URL(
-        `../../../../assets/IBT_Race_UCSC/${url}.png`,
+        `../../../../assets/IBT_Race_UCSC/${url}.jpg`,
         import.meta.url
       ).href;
     },
@@ -254,7 +254,7 @@ export default {
         {
           trials: generateIBTtrialsRace("Sad", "Happy", 8),
           section: "practice_2",
-          instruction: `Practice: There will be a picture of a <span style="font-weight: bold; color: red">Black person</span> or a <span style="font-weight: bold; color: #e40000">White person</span> in the middle
+          instruction: `Practice: There will be a picture of a <span style="font-weight: bold; color:#e40000">Black person</span> or a <span style="font-weight: bold; color: #e40000">White person</span> in the middle
         of screen. When you see a picture of the <span style="font-weight: bold; color: #e40000">White person</span> you should touch the
         <span style="font-weight: bold; color: #e40000">crying face</span>; when you see the <span style="font-weight: bold; color: #e40000">Black person</span>, you should touch the <span style="font-weight: bold; color: #e40000">smiling
         face </span>. <span style="font-weight: bold; color: #e40000">Smiling and Crying faces </span> will appear at the bottom of the screen
@@ -265,7 +265,7 @@ export default {
         {
           trials: generateIBTtrialsRace("Sad", "Happy", 20),
           section: "section_2",
-          instruction: `There will be a picture of a <span style="font-weight: bold; color: red">Black person</span> or a <span style="font-weight: bold; color: #e40000">White person</span> in the middle
+          instruction: `There will be a picture of a <span style="font-weight: bold; color:#e40000">Black person</span> or a <span style="font-weight: bold; color: #e40000">White person</span> in the middle
         of screen. When you see a picture of the <span style="font-weight: bold; color: #e40000">White person</span> you should touch the
         <span style="font-weight: bold; color: #e40000">crying face</span>; when you see the<span style="font-weight: bold; color: #e40000"> Black person</span>, you should touch the<span style="font-weight: bold; color: #e40000"> smiling
         face </span>. <span style="font-weight: bold; color: #e40000">Smiling and Crying faces</span> will appear at the bottom of the screen

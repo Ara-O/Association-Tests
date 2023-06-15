@@ -13,33 +13,52 @@ function shuffleObjects(array) {
 //Current limit - 10 trials
 export default function (white, black, trials) {
   let all_stimulus_black = [
-    { image: "R00_Stimuli_ChildIAT_BF-029", stimulusEmotion: black },
-    { image: "R00_Stimuli_ChildIAT_BF-030", stimulusEmotion: black },
-    { image: "R00_Stimuli_ChildIAT_BF-045", stimulusEmotion: black },
-    { image: "R00_Stimuli_ChildIAT_BM-003", stimulusEmotion: black },
-    { image: "R00_Stimuli_ChildIAT_BM-028", stimulusEmotion: black },
-    { image: "R00_Stimuli_ChildIAT_BM-238", stimulusEmotion: black },
-    { image: "R00_Stimuli_ChildIAT_BF-029", stimulusEmotion: black },
-    { image: "R00_Stimuli_ChildIAT_BF-030", stimulusEmotion: black },
-    { image: "R00_Stimuli_ChildIAT_BF-045", stimulusEmotion: black },
-    { image: "R00_Stimuli_ChildIAT_BM-003", stimulusEmotion: black },
-    { image: "R00_Stimuli_ChildIAT_BM-028", stimulusEmotion: black },
-    { image: "R00_Stimuli_ChildIAT_BM-238", stimulusEmotion: black },
+    // { image: "R00_Stimuli_ChildIAT_BF-029", stimulusEmotion: black },
+    // { image: "R00_Stimuli_ChildIAT_BF-030", stimulusEmotion: black },
+    // { image: "R00_Stimuli_ChildIAT_BF-045", stimulusEmotion: black },
+    // { image: "R00_Stimuli_ChildIAT_BM-003", stimulusEmotion: black },
+    // { image: "R00_Stimuli_ChildIAT_BM-028", stimulusEmotion: black },
+    // { image: "R00_Stimuli_ChildIAT_BM-238", stimulusEmotion: black },
+    // { image: "R00_Stimuli_ChildIAT_BF-029", stimulusEmotion: black },
+    // { image: "R00_Stimuli_ChildIAT_BF-030", stimulusEmotion: black },
+    // { image: "R00_Stimuli_ChildIAT_BF-045", stimulusEmotion: black },
+    // { image: "R00_Stimuli_ChildIAT_BM-003", stimulusEmotion: black },
+    // { image: "R00_Stimuli_ChildIAT_BM-028", stimulusEmotion: black },
+    { image: "bf1", stimulusEmotion: black },
+    { image: "bf2", stimulusEmotion: black },
+    { image: "bl_label", stimulusEmotion: black },
+    { image: "bm1", stimulusEmotion: black },
+    { image: "bm2", stimulusEmotion: black },
+    { image: "bf1", stimulusEmotion: black },
+    { image: "bf2", stimulusEmotion: black },
+    { image: "bl_label", stimulusEmotion: black },
+    { image: "bm1", stimulusEmotion: black },
+    { image: "bm2", stimulusEmotion: black },
   ];
 
   let all_stimulus_white = [
-    { image: "R00_Stimuli_ChildIAT_WF-006", stimulusEmotion: white },
-    { image: "R00_Stimuli_ChildIAT_WF-009", stimulusEmotion: white },
-    { image: "R00_Stimuli_ChildIAT_WF-011", stimulusEmotion: white },
-    { image: "R00_Stimuli_ChildIAT_WM-015", stimulusEmotion: white },
-    { image: "R00_Stimuli_ChildIAT_WM-034", stimulusEmotion: white },
-    { image: "R00_Stimuli_ChildIAT_WM-036", stimulusEmotion: white },
-    { image: "R00_Stimuli_ChildIAT_WF-006", stimulusEmotion: white },
-    { image: "R00_Stimuli_ChildIAT_WF-009", stimulusEmotion: white },
-    { image: "R00_Stimuli_ChildIAT_WF-011", stimulusEmotion: white },
-    { image: "R00_Stimuli_ChildIAT_WM-015", stimulusEmotion: white },
-    { image: "R00_Stimuli_ChildIAT_WM-034", stimulusEmotion: white },
-    { image: "R00_Stimuli_ChildIAT_WM-036", stimulusEmotion: white },
+    // { image: "R00_Stimuli_ChildIAT_WF-006", stimulusEmotion: white },
+    // { image: "R00_Stimuli_ChildIAT_WF-009", stimulusEmotion: white },
+    // { image: "R00_Stimuli_ChildIAT_WF-011", stimulusEmotion: white },
+    // { image: "R00_Stimuli_ChildIAT_WM-015", stimulusEmotion: white },
+    // { image: "R00_Stimuli_ChildIAT_WM-034", stimulusEmotion: white },
+    // { image: "R00_Stimuli_ChildIAT_WM-036", stimulusEmotion: white },
+    // { image: "R00_Stimuli_ChildIAT_WF-006", stimulusEmotion: white },
+    // { image: "R00_Stimuli_ChildIAT_WF-009", stimulusEmotion: white },
+    // { image: "R00_Stimuli_ChildIAT_WF-011", stimulusEmotion: white },
+    // { image: "R00_Stimuli_ChildIAT_WM-015", stimulusEmotion: white },
+    // { image: "R00_Stimuli_ChildIAT_WM-034", stimulusEmotion: white },
+    // { image: "R00_Stimuli_ChildIAT_WM-036", stimulusEmotion: white },
+    { image: "wf1", stimulusEmotion: white },
+    { image: "wf2", stimulusEmotion: white },
+    { image: "wh_label", stimulusEmotion: white },
+    { image: "wm1", stimulusEmotion: white },
+    { image: "wm2", stimulusEmotion: white },
+    { image: "wf1", stimulusEmotion: white },
+    { image: "wf2", stimulusEmotion: white },
+    { image: "wh_label", stimulusEmotion: white },
+    { image: "wm1", stimulusEmotion: white },
+    { image: "wm2", stimulusEmotion: white },
   ];
   let ibt_data = [];
 
@@ -83,7 +102,7 @@ export default function (white, black, trials) {
   }
 
   let updated_ibt_data = shuffleObjects(ibt_data);
-  updated_ibt_data = validateTrialData(updated_ibt_data, "stimulusEmotion");
+  // updated_ibt_data = validateTrialData(updated_ibt_data, "stimulusEmotion");
   updated_ibt_data[0].visibility = "block";
 
   return updated_ibt_data;

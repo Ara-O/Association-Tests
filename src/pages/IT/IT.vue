@@ -7,42 +7,38 @@
       <button class="it-btn" @click="version = 'Number'">Number Version</button>
       <button class="it-btn" @click="version = 'Name'">Name Version</button>
 
-      <h3 style="text-decoration: underline; cursor: pointer; font-size: 16px; margin-top: 0px" @click="goToHome">
+      <h3
+        style="
+          text-decoration: underline;
+          cursor: pointer;
+          font-size: 16px;
+          margin-top: 0px;
+        "
+        @click="goToHome"
+      >
         Go back
       </h3>
     </section>
     <section v-if="version === 'Number'">
-      <main-button routeTo="/IT_Number_White" 
-        >White</main-button
-      >
-      <main-button routeTo="/IT_Number_Black" 
-        >Black</main-button
-      >
-      <main-button routeTo="/IT_Number_EastAsian" 
-        >East Asian</main-button
-      >
+      <main-button routeTo="/IT_Number_White">White</main-button>
+      <main-button routeTo="/IT_Number_Black">Black</main-button>
+      <main-button routeTo="/IT_Number_EastAsian">East Asian</main-button>
       <h4 @click="version = ''" class="go-back">Go back</h4>
     </section>
     <section v-if="version === 'Name'">
-      <main-button routeTo="/IT_Name_White" 
-        >White</main-button
-      >
-      <main-button routeTo="/IT_Name_Black" 
-        >Black</main-button
-      >
-      <main-button routeTo="/IT_Name_EastAsian" >
-        East Asian</main-button
-      >
+      <main-button routeTo="/IT_Name_White">White</main-button>
+      <main-button routeTo="/IT_Name_Black">Black</main-button>
+      <main-button routeTo="/IT_Name_EastAsian"> East Asian</main-button>
       <h4 @click="version = ''" class="go-back">Go back</h4>
     </section>
   </main>
 </template>
 
 <script>
-import MainButton from '../../components/Buttons/MainButton.vue';
+import MainButton from "../../components/Buttons/MainButton.vue";
 export default {
   components: {
-    'main-button': MainButton
+    "main-button": MainButton,
   },
   data() {
     return {
@@ -51,16 +47,16 @@ export default {
   },
 
   methods: {
-    goToHome(){
-      this.$router.push("/Home")
-    }
-  }
+    goToHome() {
+      this.$router.push("/Home");
+    },
+  },
 };
 </script>
 
-<style scoped >
+<style scoped>
 main {
-  background: url("../../assets/App_Icons/patternbg.jpg");
+  background: url("../../assets/app_icons/patternbg.jpg");
   background-size: 433px;
   background-repeat: repeat;
   display: flex;
@@ -75,21 +71,21 @@ main {
   margin-bottom: 20px;
 }
 .it-btn {
-    background: linear-gradient(185deg, #7eefbf, #389820);
-    border-radius: 47px;
-    box-shadow: -2px 4px 4px -1px #cbcbcb;
-    cursor: pointer;
-    margin-bottom: 25px;
-    transition: all 250ms ease-in-out;
-    color: white;
-    text-decoration: none;
-    padding: 23px 34px;
-    height: 60px;
-    display: flex;
-    font-size: 14px;
-    align-items: center;
-    border: none;
-    font-weight: 300;
+  background: linear-gradient(185deg, #7eefbf, #389820);
+  border-radius: 47px;
+  box-shadow: -2px 4px 4px -1px #cbcbcb;
+  cursor: pointer;
+  margin-bottom: 25px;
+  transition: all 250ms ease-in-out;
+  color: white;
+  text-decoration: none;
+  padding: 23px 34px;
+  height: 60px;
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  border: none;
+  font-weight: 300;
 }
 
 .it-section {

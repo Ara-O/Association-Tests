@@ -57,6 +57,9 @@ import FM_Categorization_Black_White_Feedback from "../pages/FM/Categorization_T
 import FM_Identification_Black_White from "../pages/FM/Identification_Test/FM_Black_White.vue";
 import FM_Identification_Black_White_Feedback from "../pages/FM/Identification_Test/FM_Black_White_Feedback.vue";
 
+// LD IBT
+import LD_IBT_Survey from "../pages/IBT/LD_IBT/LD_IBT_Survey.vue";
+
 const routes = [
   ...iatroutes,
   {
@@ -209,6 +212,10 @@ const routes = [
   {
     path: "/FM_Identification_Black_White_Feedback",
     component: FM_Identification_Black_White_Feedback,
+  },
+  {
+    path: "/LD_IBT_Survey",
+    component: LD_IBT_Survey,
   },
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
 ];

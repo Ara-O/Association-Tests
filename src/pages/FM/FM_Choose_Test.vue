@@ -2,14 +2,10 @@
   <main class="fm-choose-test-main">
     <h3 class="choose-fm">Choose type</h3>
     <section v-if="fmType == ''">
-      <main-button
-        routeTo="/FM_Choose_Test"
-        @click="fmType = 'categorization'"
+      <main-button routeTo="/FM_Choose_Test" @click="fmType = 'categorization'"
         >Categorizaton Test</main-button
       >
-      <main-button
-        routeTo="/FM_Choose_Test"
-        @click="fmType = 'identification'"
+      <main-button routeTo="/FM_Choose_Test" @click="fmType = 'identification'"
         >Identification Test
       </main-button>
 
@@ -24,7 +20,9 @@
     </section>
 
     <section v-if="fmType === 'categorization'">
-      <main-button routeTo="FM_Categorization_Black_White"> Black-White Categorization Test </main-button>
+      <main-button routeTo="FM_Categorization_Black_White">
+        Black-White Categorization Test
+      </main-button>
       <main-button routeTo=""> Black-Asian Categorization Test </main-button>
       <main-button routeTo=""> Asian-White Categorization Test </main-button>
       <h3
@@ -36,7 +34,9 @@
     </section>
 
     <section v-if="fmType === 'identification'">
-      <main-button routeTo="FM_Identification_Black_White"> Black-White Identfication Test </main-button>
+      <main-button routeTo="FM_Identification_Black_White">
+        Black-White Identfication Test
+      </main-button>
       <main-button routeTo=""> Black-Asian Identfication Test </main-button>
       <main-button routeTo=""> Asian-White Identfication Test </main-button>
 
@@ -49,17 +49,17 @@
     </section>
   </main>
 </template>
-  
-  <script setup>
+
+<script setup>
 import { ref } from "vue";
 import MainButton from "../../components/Buttons/MainButton.vue";
 
 let fmType = ref("");
 </script>
-  
-  <style scoped>
+
+<style scoped>
 .fm-choose-test-main {
-  background: url("../../assets/App_Icons/patternbg.jpg");
+  background: url("../../assets/app_icons/patternbg.jpg");
   background-repeat: repeat;
   background-size: 433px;
   display: flex;

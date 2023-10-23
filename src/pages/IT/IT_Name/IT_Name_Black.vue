@@ -39,7 +39,7 @@
         <h3>Can you remember all the people?</h3>
         <h3>Press the right arrow to get started</h3>
         <img
-          src="../../../assets/App_Icons/rightArrow.png"
+          src="../../../assets/app_icons/rightArrow.png"
           alt="Right Arrow"
           class="next"
           v-if="progress !== 3 && progress !== 5"
@@ -59,7 +59,7 @@
         </h3>
         <br />
         <img
-          src="../../../assets/App_Icons/rightArrow.png"
+          src="../../../assets/app_icons/rightArrow.png"
           alt="Right Arrow"
           class="next"
           @click="moveForward"
@@ -105,7 +105,7 @@
           v-html="createInstruction"
         ></h3>
         <img
-          src="../../../assets/App_Icons/rightArrow.png"
+          src="../../../assets/app_icons/rightArrow.png"
           alt="Right Arrow"
           class="next"
           @click="moveForward"

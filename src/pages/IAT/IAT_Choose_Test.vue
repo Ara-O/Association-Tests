@@ -94,7 +94,7 @@ function handleRace() {
 
 <style scoped>
 .iat-choose-test-main {
-  background: url("../../assets/App_Icons/patternbg.jpg");
+  background: url("../../assets/app_icons/patternbg.jpg");
   background-repeat: repeat;
   background-size: 433px;
   display: flex;

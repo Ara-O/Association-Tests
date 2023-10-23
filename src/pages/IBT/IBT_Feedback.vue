@@ -18,7 +18,7 @@ now put that all inside an array with the data of the image necessary -->
       </button>
     </div>
     <img
-      src="../../assets/App_Icons/congratulations.png"
+      src="../../assets/app_icons/congratulations.png"
       alt="Congratulations image"
       class="left-congratulations"
     />
@@ -26,7 +26,7 @@ now put that all inside an array with the data of the image necessary -->
       Congratulations! You have finished the test!
     </h4>
     <img
-      src="../../assets/App_Icons/congratulations.png"
+      src="../../assets/app_icons/congratulations.png"
       alt="Congratulations image"
       class="right-congratulations"
     />

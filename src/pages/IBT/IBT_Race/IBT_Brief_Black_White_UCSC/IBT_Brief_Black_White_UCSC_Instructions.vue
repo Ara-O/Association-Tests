@@ -21,8 +21,8 @@
       Click the green arrow below to continue
     </h3>
     <img
-      src="../../../../assets/App_Icons/rightArrow.png"
-      alt="Right arraw"
+      src="../../../../assets/app_icons/rightArrow.png"
+      alt="Right arrow"
       @click="section++"
       class="continue"
     />

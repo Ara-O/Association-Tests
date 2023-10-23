@@ -22,7 +22,7 @@
           <br />
           <h4>Click the right arrow to continue</h4>
           <img
-            src="../../../../assets/App_Icons/rightArrow.png"
+            src="../../../../assets/app_icons/rightArrow.png"
             alt="Right arrow"
             @click="startTest"
             class="continue"

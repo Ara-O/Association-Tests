@@ -11,7 +11,7 @@ import MainButton from "../components/Buttons/MainButton.vue";
 
 <style scoped>
 .page404 {
-  background: url("../assets/App_Icons/patternbg.jpg");
+  background: url("../assets/app_icons/patternbg.jpg");
   background-repeat: repeat;
   background-size: 433px;
   display: flex;

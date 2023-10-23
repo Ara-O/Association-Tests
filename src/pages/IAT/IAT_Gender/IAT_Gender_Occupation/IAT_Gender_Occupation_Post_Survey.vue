@@ -5,7 +5,7 @@
     <div class="survey_container">
       <div class="basic-questions" v-if="surveySection == 0">
         <img
-          src="../../../../assets/App_Icons/diverseimg.jpg"
+          src="../../../../assets/app_icons/diverseimg.jpg"
           alt="Image"
           style="width: 273px"
         />
@@ -94,7 +94,7 @@
       >
         <h3>Basic questions</h3>
         <img
-          src="../../../../assets/App_Icons/diverseimg.jpg"
+          src="../../../../assets/app_icons/diverseimg.jpg"
           alt="Image"
           style="width: 273px"
         />

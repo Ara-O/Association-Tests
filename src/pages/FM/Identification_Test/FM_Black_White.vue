@@ -4,7 +4,7 @@
       <section v-if="!testHasStarted" class="instruction">
         <h4>{{ trials[currentTest].instruction }}</h4>
         <img
-          src="../../../assets/App_Icons/rightArrow.png"
+          src="../../../assets/app_icons/rightArrow.png"
           alt="Right arrow"
           @click="startTest"
           class="right-arrow"

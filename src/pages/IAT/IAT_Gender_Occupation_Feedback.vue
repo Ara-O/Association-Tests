@@ -15,7 +15,7 @@
       </button>
     </div>
     <img
-      src="../../assets/App_Icons/congratulations.png"
+      src="../../assets/app_icons/congratulations.png"
       alt="Congratulations image"
       class="left-congratulations"
     />
@@ -24,7 +24,7 @@
       feedback!
     </h4>
     <img
-      src="../../assets/App_Icons/congratulations.png"
+      src="../../assets/app_icons/congratulations.png"
       alt="Congratulations image"
       class="right-congratulations"
     />

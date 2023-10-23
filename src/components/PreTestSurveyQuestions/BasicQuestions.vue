@@ -11,7 +11,7 @@
   <div class="basic-questions" v-else>
     <h3 class="basic-questions_title">Basic questions</h3>
     <img
-      src="../../assets/App_Icons/diverseimg.jpg"
+      src="../../assets/app_icons/diverseimg.jpg"
       alt="Image"
       style="width: 273px"
     />

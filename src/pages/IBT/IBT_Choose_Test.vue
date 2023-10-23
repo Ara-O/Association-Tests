@@ -9,6 +9,8 @@
         >Race IBT</btn
       >
       <btn routeTo="/IBT_Cat_Dog_Survey" class="button">Cat-Dog IBT</btn>
+
+      <btn routeTo="/LD_IBT_Survey" class="button">LD IBT</btn>
       <router-link
         style="text-decoration: underline; cursor: pointer; font-size: 16px"
         class="router-link-back"
@@ -141,7 +143,7 @@ export default {
 
 <style scoped>
 main {
-  background: url("../../assets/App_Icons/patternbg.jpg");
+  background: url("../../assets/app_icons/patternbg.jpg");
   background-repeat: repeat;
   background-size: 433px;
 }

@@ -1,6 +1,6 @@
 <template>
   <section class="main">
-    <section class="survey">
+    <section class="survey" v-if="userAgreesToTakeSurvey">
       <!-- Top images -->
       <div class="top-introductory-image">
         <img
@@ -151,14 +151,42 @@
       <!-- Button -->
       <br />
       <div class="buttons-section">
-        <button class="green">I agree</button>
-        <button class="red">I do not agree</button>
+        <router-link
+          to="/LD_IBT_Supplementary_Survey"
+          style="text-decoration: none"
+        >
+          <button class="green">I agree</button></router-link
+        >
+        <button class="red" @click="userDoesNotWantToTakeSurvey">
+          I do not agree
+        </button>
+      </div>
+    </section>
+    <section v-if="!userAgreesToTakeSurvey" class="survey-feedback">
+      <div class="no-survey">
+        <h3>You can close out of this page or go home</h3>
+        <router-link to="/Home" style="text-decoration: none"
+          ><button class="green">Go Home</button></router-link
+        >
       </div>
     </section>
   </section>
 </template>
 
+<script setup lang="ts">
+import { ref } from "vue";
+
+let userAgreesToTakeSurvey = ref<boolean>(true);
+
+function userDoesNotWantToTakeSurvey() {
+  userAgreesToTakeSurvey.value = false;
+}
+</script>
+
 <style scoped>
+* {
+  line-height: 22px;
+}
 .main {
   margin: 0px 40px;
   display: flex;
@@ -175,6 +203,13 @@
   box-shadow: -2px 4px 4px -1px #cbcbcb;
   border: solid 1px #f2f2f2;
 }
+
+.survey-feedback {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .top-introductory-image {
   display: flex;
   gap: 30px;
@@ -189,7 +224,7 @@
 }
 
 .top-introductory-image img:nth-child(1) {
-  width: 150px;
+  width: 137px;
 }
 
 * {
@@ -243,5 +278,11 @@ button {
   display: flex;
   justify-content: center;
   gap: 20px;
+}
+
+.no-survey {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

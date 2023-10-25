@@ -13,13 +13,13 @@
       <section :class="{ hide: !testHasStarted }">
         <section v-show="!paused">
           <img
-            src="../../../assets/IT_Faces/star.jpg"
+            src="../../../assets/IT_faces/star.jpg"
             alt="star"
             class="star star-fm"
             v-show="userChoseCorrectly"
           />
           <img
-            src="../../../assets/IT_Faces/cross.jpg"
+            src="../../../assets/IT_faces/cross.jpg"
             alt="cross"
             class="cross"
             v-show="userChoseIncorrectly"

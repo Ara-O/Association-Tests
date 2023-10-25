@@ -32,13 +32,13 @@
           />
         </div>
         <img
-          src="../../../assets/IT_Faces/star.jpg"
+          src="../../../assets/IT_faces/star.jpg"
           alt="star"
           class="ibt-star"
           v-show="userGotStimulusRight"
         />
         <img
-          src="../../../assets/IT_Faces/cross.jpg"
+          src="../../../assets/IT_faces/cross.jpg"
           alt="cross"
           class="ibt-cross"
           v-show="userGotStimulusWrong"

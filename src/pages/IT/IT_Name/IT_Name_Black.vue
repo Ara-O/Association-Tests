@@ -69,7 +69,7 @@
       <!-- -------------------- -->
 
       <div class="stardiv">
-        <img src="../../../assets/IT_Faces/star.jpg" class="star" alt="" />
+        <img src="../../../assets/IT_faces/star.jpg" class="star" alt="" />
       </div>
 
       <div v-if="progress === 3">
@@ -122,7 +122,7 @@
             <div class="faces_flexbox">
               <div class="crossdiv">
                 <img
-                  src="../../../assets/IT_Faces/cross.jpg"
+                  src="../../../assets/IT_faces/cross.jpg"
                   alt=""
                   class="cross"
                 />

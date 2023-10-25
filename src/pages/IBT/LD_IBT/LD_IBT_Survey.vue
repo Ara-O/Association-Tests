@@ -6,7 +6,7 @@
         <h3 style="font-weight: 500">
           Please provide us with your email address
         </h3>
-        <h4 style="font-size: 14px; line-height: 25px; font-weight: 300">
+        <h4 style="font-size: 14px; line-height: 30px; font-weight: 300">
           Note: Your email address will be used solely for payment purposes for
           taking part in this study and will not be used to identify you
           individually. Your participation in this study will remain anonymous.
@@ -62,12 +62,12 @@
     >
       <h3 style="font-weight: 500">Background Form</h3>
       <h4 style="font-size: 15px">Please answer the following questions</h4>
-      <form @submit="progressToSecondSectionOfSurvey">
+      <form @submit="currentStep++">
         <label for="country"
           >1. From which country/countries did you or your family originally
           arrive in Canada?</label
         >
-        <h4>
+        <h4 style="margin-top: 30px">
           Note: List all countries you have lived in before coming to Canada
           starting with the last country you were residing in
         </h4>
@@ -109,8 +109,20 @@
           <label for="family-years-in-canada">Your family: Years:</label>
           <input type="text" id="family-years-in-canada" />
         </div>
+        <button type="submit" style="margin-top: 30px">Next</button>
+      </form>
+    </section>
 
-        <!-- <label for="immigrant-status"
+    <!-- SURVEY SECTION 2 -->
+
+    <section
+      v-if="currentStep === Step.ShowBackgroundFormSurveyTwo"
+      class="survey-section"
+    >
+      <h3>Background Form</h3>
+      <h4>Please answer the following questions</h4>
+      <form @submit="currentStep++">
+        <label for="immigrant-status"
           >4. What is your immigrant status in Canada</label
         >
         <select id="immigrant-status">
@@ -127,7 +139,7 @@
         >
         <select id="what-user-considers-themselves">
           <option
-            value=" First generation immigrant (that is, you were born outside of Canada)"
+            value="First generation immigrant (that is, you were born outside of Canada)"
           >
             First generation immigrant (that is, you were born outside of
             Canada)
@@ -144,20 +156,206 @@
             Third generation immigrant (I and both my parents were born in
             Canada)
           </option>
-        </select> -->
+        </select>
 
-        <button type="submit">Next</button>
+        <label for="highest-education-level"
+          >6. Please select the highest level of education that you have
+          attained</label
+        >
+        <select id="highest-education-level">
+          <option value="Some school">Some school</option>
+          <option
+            value="Completed high school diploma and a professional qualification not from a college or university"
+          >
+            Completed high school diploma and a professional qualification not
+            from a college or university.
+          </option>
+          <option value="Completed a college diploma">
+            Completed a college diploma.
+          </option>
+          <option value="Completed an undergraduate university degree">
+            Completed an undergraduate university degree.
+          </option>
+          <option
+            value="Completed one or more graduate degrees (Masters/or Ph.D.)"
+          >
+            Completed one or more graduate degrees (Masters/or Ph.D.).
+          </option>
+          <option value=" Other (please specify):">
+            Other (please specify)
+          </option>
+        </select>
+
+        <label for="spouse-highest-education-level"
+          >7. What is your spouse's highest educational qualification</label
+        >
+        <select id="spouse-highest-education-level">
+          <option value="Some school">Some school</option>
+          <option
+            value="Completed high school diploma and a professional qualification not from a college or university"
+          >
+            Completed high school diploma and a professional qualification not
+            from a college or university.
+          </option>
+          <option value="Completed a college diploma">
+            Completed a college diploma.
+          </option>
+          <option value="Completed an undergraduate university degree">
+            Completed an undergraduate university degree.
+          </option>
+          <option
+            value="Completed one or more graduate degrees (Masters/or Ph.D.)"
+          >
+            Completed one or more graduate degrees (Masters/or Ph.D.).
+          </option>
+          <option value=" Other (please specify):">
+            Other (please specify)
+          </option>
+        </select>
+
+        <div class="full">
+          <label for="occupation">
+            8. What is your occupation in Canada? Note: If you are a new
+            Canadian and were employed before immigrating to Canada, please
+            indicate your occupation in your former country
+          </label>
+          <input type="text" id="occupation" placeholder="Year" />
+        </div>
+        <div class="test-buttons" style="margin-top: -10px">
+          <button @click="currentStep--">Back</button>
+          <button type="submit">Next</button>
+        </div>
       </form>
     </section>
 
-    <!-- SURVEY SECTION 2 -->
-
-    <section v-if="currentStep === Step.ShowBackgroundFormSurveyTwo">
-      <h3>Background Form</h3>
-      <h4>Please answer the following questions</h4>
-      <form @submit="progressToSecondSectionOfSurvey">
-        <h3>hi</h3>
-        <button type="submit">Next</button>
+    <!-- SECTION 3 -->
+    <section
+      v-if="currentStep === Step.ShowBackgroundFormSurveyThree"
+      class="survey-section"
+    >
+      <form action="">
+        <h3>Background Form</h3>
+        <h4>Please answer the following questions</h4>
+        <div class="full centered">
+          <label for="main-language"
+            >9. What is the main language you use at home on a daily basis?
+          </label>
+          <select id="main-language">
+            <option value="English">English</option>
+            <option value="French">French</option>
+            <option value="German">German</option>
+            <option value="Arabic">Arabic</option>
+            <option value="Portugese">Portugese</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Korean">Korean</option>
+            <option value="Bengali">Bengali</option>
+            <option value="Italian">Italian</option>
+            <option value="Punjabi">Punjabi</option>
+          </select>
+        </div>
+        <br />
+        <div class="full centered space-top">
+          <label for="other-language"
+            >10. Do you use any other language/languages besides the home
+            language indicated above? If yes, what is/are the additional
+            language/languages you use?
+          </label>
+          <select id="other-language">
+            <option value="English">English</option>
+            <option value="French">French</option>
+            <option value="German">German</option>
+            <option value="Arabic">Arabic</option>
+            <option value="Portugese">Portugese</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Korean">Korean</option>
+            <option value="Bengali">Bengali</option>
+            <option value="Italian">Italian</option>
+            <option value="Punjabi">Punjabi</option>
+          </select>
+        </div>
+        <br />
+        <div class="full centered space-top">
+          <label
+            >11. Are you aware of a child/adolescent in your community (for
+            example, among relatives, friends, neighbors, own religious or
+            ethnic groups that you are currently a part of) who is struggling
+            with their studies/learning process at school?
+          </label>
+          <select>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+        <br />
+        <div class="survey-table space-top">
+          <table>
+            <tr>
+              <td></td>
+              <td>Receives support from home</td>
+              <td>Receives support from school</td>
+              <td>Receives support from community</td>
+            </tr>
+            <tr>
+              <td>Yes</td>
+              <td><input type="checkbox" name="" id="" /></td>
+              <td><input type="checkbox" name="" id="" /></td>
+              <td><input type="checkbox" name="" id="" /></td>
+            </tr>
+            <tr>
+              <td>No</td>
+              <td><input type="checkbox" name="" id="" /></td>
+              <td><input type="checkbox" name="" id="" /></td>
+              <td><input type="checkbox" name="" id="" /></td>
+            </tr>
+          </table>
+        </div>
+        <br />
+        <div class="full centered space-top">
+          <label
+            >12. Are you aware of a child/adolescent in your country of origin
+            (for example, among relatives, friends, neighbors, own religious or
+            ethnic groups that you are currently a part of) who was struggling
+            with their studies/learning process at school?
+          </label>
+          <select>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+          <label>
+            If yes as far as you know, did this child receive any help at home,
+            school and/or community?
+          </label>
+          <div class="survey-table">
+            <table>
+              <tr>
+                <td></td>
+                <td>Receives support from home</td>
+                <td>Receives support from school</td>
+                <td>Receives support from community</td>
+              </tr>
+              <tr>
+                <td>Yes</td>
+                <td><input type="checkbox" name="" id="" /></td>
+                <td><input type="checkbox" name="" id="" /></td>
+                <td><input type="checkbox" name="" id="" /></td>
+              </tr>
+              <tr>
+                <td>No</td>
+                <td><input type="checkbox" name="" id="" /></td>
+                <td><input type="checkbox" name="" id="" /></td>
+                <td><input type="checkbox" name="" id="" /></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="test-buttons" style="margin-top: 10px">
+          <button @click="currentStep--">Back</button>
+          <button type="submit">Start Test</button>
+        </div>
       </form>
     </section>
   </section>
@@ -173,6 +371,7 @@ enum Step {
   ExplainTest,
   ShowBackgroundFormSurveyOne,
   ShowBackgroundFormSurveyTwo,
+  ShowBackgroundFormSurveyThree,
   StartTest,
 }
 
@@ -185,10 +384,6 @@ const router = useRouter();
 
 function startTest() {
   store.commit("storeLdEmail", ld_email.value);
-  currentStep.value++;
-}
-
-function progressToSecondSectionOfSurvey() {
   currentStep.value++;
 }
 </script>
@@ -265,7 +460,7 @@ h4 {
   margin-top: 0px;
   font-weight: 300;
   font-size: 14px;
-  line-height: 25px;
+  line-height: 30px;
 }
 
 .test-buttons {
@@ -299,24 +494,32 @@ form {
   box-sizing: border-box;
   height: 800px;
   overflow: auto;
-  padding: 25px 0px;
+  width: 100%;
+  max-width: 525px;
+  padding: 25px 20px;
   /* box-shadow: -3px 1px 7px #eeeeeeb2, 2px 3px 5px rgb(218 218 219 / 95%); */
 }
 
 input {
   width: 150px;
+  padding-left: 20px;
+  border: solid 1px gray;
+  font-weight: 300;
+  box-sizing: border-box;
 }
 
 .full {
   width: 100%;
   display: flex;
   align-items: start;
+  flex-wrap: wrap;
+  row-gap: 30px;
+  column-gap: 20px;
   justify-content: center;
-  gap: 25px;
 }
 
 .full label {
-  padding-top: 2px;
+  padding-top: 1px;
 }
 
 label {
@@ -325,5 +528,34 @@ label {
 
 .space-top {
   margin-top: 20px;
+}
+
+table {
+  border: solid 1px;
+  border-collapse: collapse;
+}
+
+table td {
+  padding: 5px;
+  font-size: 13.5px;
+  border: solid 1px;
+  width: 105px;
+}
+
+table input {
+  width: 40px;
+}
+
+.survey-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 564px) {
+  .full {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 </style>

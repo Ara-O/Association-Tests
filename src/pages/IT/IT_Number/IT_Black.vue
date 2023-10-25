@@ -69,7 +69,7 @@
       <!-- -------------------- -->
 
       <div class="stardiv">
-        <img src="../../../assets/IT_Faces/star.jpg" class="star" alt="" />
+        <img src="../../../assets/IT_faces/star.jpg" class="star" alt="" />
       </div>
 
       <div v-if="progress === 3">
@@ -121,7 +121,7 @@
             <div class="faces_flexbox">
               <div class="crossdiv">
                 <img
-                  src="../../../assets/IT_Faces/cross.jpg"
+                  src="../../../assets/IT_faces/cross.jpg"
                   alt=""
                   class="cross"
                 />
@@ -138,7 +138,7 @@
               </div>
               <div class="correctchoice">
                 <img
-                  src="../../../assets/IT_Faces/N2.jpg"
+                  src="../../../assets/IT_faces/N2.jpg"
                   alt="correct choice"
                   class="correctchoice-img"
                   @click="proceedAfterIncorrectChoice"
@@ -247,7 +247,7 @@ export default {
     },
 
     getImg(img) {
-      return new URL(`../../../assets/IT_Faces/${img}`, import.meta.url).href;
+      return new URL(`../../../assets/IT_faces/${img}`, import.meta.url).href;
     },
 
     shuffleObjects(array) {

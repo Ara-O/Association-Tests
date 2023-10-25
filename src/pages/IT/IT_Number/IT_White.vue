@@ -69,7 +69,7 @@
       <!-- -------------------- -->
 
       <div class="stardiv">
-        <img src="../../../assets/IT_Faces/star.jpg" class="star" alt="" />
+        <img src="../../../assets/IT_faces/star.jpg" class="star" alt="" />
       </div>
 
       <div v-if="progress === 3">
@@ -93,7 +93,7 @@
             class="number"
             @click="nextFaceToMemorize()"
           />
-          <!-- <img src="../../../assets/IT_Faces/White/White_1.jpg" alt=""> -->
+          <!-- <img src="../../../assets/IT_faces/White/White_1.jpg" alt=""> -->
         </div>
       </div>
 
@@ -122,7 +122,7 @@
             <div class="faces_flexbox">
               <div class="crossdiv">
                 <img
-                  src="../../../assets/IT_Faces/cross.jpg"
+                  src="../../../assets/IT_faces/cross.jpg"
                   alt=""
                   class="cross"
                 />
@@ -139,7 +139,7 @@
               </div>
               <div class="correctchoice">
                 <img
-                  src="../../../assets/IT_Faces/N2.jpg"
+                  src="../../../assets/IT_faces/N2.jpg"
                   alt="correct choice"
                   class="correctchoice-img"
                   @click="proceedAfterIncorrectChoice"

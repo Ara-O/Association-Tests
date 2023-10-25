@@ -3,8 +3,10 @@
     <!-- Email section -->
     <section v-if="currentStep === Step.AskForEmailAddress">
       <div class="survey-box">
-        <h3>Please provide us with your email address</h3>
-        <h4 style="font-size: 14px; line-height: 25px">
+        <h3 style="font-weight: 500">
+          Please provide us with your email address
+        </h3>
+        <h4 style="font-size: 14px; line-height: 25px; font-weight: 300">
           Note: Your email address will be used solely for payment purposes for
           taking part in this study and will not be used to identify you
           individually. Your participation in this study will remain anonymous.
@@ -58,7 +60,7 @@
       v-if="currentStep === Step.ShowBackgroundFormSurveyOne"
       class="survey-section"
     >
-      <h3>Background Form</h3>
+      <h3 style="font-weight: 500">Background Form</h3>
       <h4 style="font-size: 15px">Please answer the following questions</h4>
       <form @submit="progressToSecondSectionOfSurvey">
         <label for="country"
@@ -70,32 +72,45 @@
           starting with the last country you were residing in
         </h4>
 
-        <label for="province">Province (if applicable): </label>
+        <div class="full centered">
+          <label for="province">Province (if applicable): </label>
+          <input type="text" id="province" />
+        </div>
 
-        <input type="text" id="province" style="display: block" />
-
-        <label for="city">City: </label>
-        <input type="text" id="city" />
+        <div class="full centered space-top">
+          <label for="city">City: </label>
+          <input type="text" id="city" />
+        </div>
 
         <h4>2. When did you or your family come to Canada?</h4>
-        <input type="text" id="when-family-came-to-canada" />
+        <div class="full centered">
+          <label for="you">You: </label>
+          <input type="text" id="you" placeholder="Year" />
+        </div>
 
-        <label for="you">You: </label>
-        <input type="text" id="you" />
+        <div class="full centered space-top">
+          <label for="spouse-1">Your spouse (if applicable): </label>
+          <input type="text" id="spouse-1" placeholder="Year" />
+        </div>
 
-        <label for="spouse-1">Your spouse (if applicable): Year </label>
-        <input type="text" id="spouse-1" />
-
-        <label for="spouse-2">Your spouse (if applicable): Year </label>
-        <input type="text" id="spouse-2" />
+        <div class="full centered space-top">
+          <label for="parents">Your parents (if applicable): </label>
+          <input type="text" id="parents" placeholder="Year" />
+        </div>
 
         <h4>3. How long have you or your family been in Canada?</h4>
-        <label for="you-years-in-canada">You: Years:</label>
-        <input type="text" id="you-years-in-canada" />
-        <label for="family-years-in-canada">Your family: Years:</label>
-        <input type="text" id="family-years-in-canada" />
 
-        <label for="immigrant-status"
+        <div class="full centered">
+          <label for="you-years-in-canada">You: Years:</label>
+          <input type="text" id="you-years-in-canada" />
+        </div>
+
+        <div class="full centered space-top">
+          <label for="family-years-in-canada">Your family: Years:</label>
+          <input type="text" id="family-years-in-canada" />
+        </div>
+
+        <!-- <label for="immigrant-status"
           >4. What is your immigrant status in Canada</label
         >
         <select id="immigrant-status">
@@ -129,7 +144,7 @@
             Third generation immigrant (I and both my parents were born in
             Canada)
           </option>
-        </select>
+        </select> -->
 
         <button type="submit">Next</button>
       </form>
@@ -205,6 +220,9 @@ function progressToSecondSectionOfSurvey() {
   text-align: center;
   font-size: 14px;
   width: 300px;
+  font-weight: 300;
+  outline: none;
+  padding-bottom: 3px;
   height: 25px;
   border: solid 1px darkgray;
   border-width: 0px 0px 1px 0px;
@@ -245,6 +263,7 @@ h4 {
 
 .test-intro-message {
   margin-top: 0px;
+  font-weight: 300;
   font-size: 14px;
   line-height: 25px;
 }
@@ -285,6 +304,26 @@ form {
 }
 
 input {
-  width: 30px;
+  width: 150px;
+}
+
+.full {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  gap: 25px;
+}
+
+.full label {
+  padding-top: 2px;
+}
+
+label {
+  margin-top: 0px;
+}
+
+.space-top {
+  margin-top: 20px;
 }
 </style>

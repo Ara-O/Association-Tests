@@ -119,7 +119,7 @@ onMounted(() => {
 });
 
 function getImage(img) {
-  return new URL(`../../../assets/stimulus_faces/${img}.jpg`, import.meta.url)
+  return new URL(`../../../assets/Stimulus_Faces/${img}.jpg`, import.meta.url)
     .href;
 }
 

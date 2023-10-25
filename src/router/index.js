@@ -58,8 +58,8 @@ import FM_Identification_Black_White from "../pages/FM/Identification_Test/FM_Bl
 import FM_Identification_Black_White_Feedback from "../pages/FM/Identification_Test/FM_Black_White_Feedback.vue";
 
 // LD IBT
+import LD_IBT_Consent_Form from "../pages/IBT/LD_IBT/LD_IBT_Consent_Form.vue";
 import LD_IBT_Survey from "../pages/IBT/LD_IBT/LD_IBT_Survey.vue";
-import LD_IBT_Supplementary_Survey from "../pages/IBT/LD_IBT/LB_IBT_Supplementary_Survey.vue";
 
 const routes = [
   ...iatroutes,
@@ -215,12 +215,12 @@ const routes = [
     component: FM_Identification_Black_White_Feedback,
   },
   {
-    path: "/LD_IBT_Survey",
-    component: LD_IBT_Survey,
+    path: "/LD_IBT_Consent_Form",
+    component: LD_IBT_Consent_Form,
   },
   {
-    path: "/LD_IBT_Supplementary_Survey",
-    component: LD_IBT_Supplementary_Survey,
+    path: "/LD_IBT_Survey",
+    component: LD_IBT_Survey,
   },
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
 ];

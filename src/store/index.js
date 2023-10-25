@@ -23,6 +23,7 @@ export default createStore({
     IT_trials: {},
     IT_trials_text: [],
     uid: "",
+    ld_user_email: "",
   },
 
   getters: {
@@ -34,6 +35,10 @@ export default createStore({
     },
   },
   mutations: {
+    storeLdEmail(state, payload) {
+      state.ld_user_email = payload;
+    },
+
     changeUserID(state, payload) {
       state.uid = payload;
     },

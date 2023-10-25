@@ -10,7 +10,7 @@
       >
       <btn routeTo="/IBT_Cat_Dog_Survey" class="button">Cat-Dog IBT</btn>
 
-      <btn routeTo="/LD_IBT_Survey" class="button">LD IBT</btn>
+      <btn routeTo="/LD_IBT_Consent_Form" class="button">LD IBT</btn>
       <router-link
         style="text-decoration: underline; cursor: pointer; font-size: 16px"
         class="router-link-back"

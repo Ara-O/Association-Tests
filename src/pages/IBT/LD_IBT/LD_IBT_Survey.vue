@@ -1,7 +1,7 @@
 <template>
   <section class="main">
     <!-- Email section -->
-    <section v-if="currentStep === Step.AskForEmailAddress">
+    <section v-show="currentStep === Step.AskForEmailAddress">
       <div class="survey-box">
         <h3 style="font-weight: 500">
           Please provide us with your email address
@@ -20,13 +20,13 @@
           placeholder="Enter email address here"
         />
         <br />
-        <button @click="startTest">Next</button>
+        <button @click="finishEmailSection">Next</button>
       </div>
     </section>
 
     <!-- Test explanation section -->
     <section
-      v-if="currentStep === Step.ExplainTest"
+      v-show="currentStep === Step.ExplainTest"
       class="explain-test-section"
     >
       <div>
@@ -57,12 +57,12 @@
 
     <!-- Survey section 1 -->
     <section
-      v-if="currentStep === Step.ShowBackgroundFormSurveyOne"
+      v-show="currentStep === Step.ShowBackgroundFormSurveyOne"
       class="survey-section"
     >
       <h3 style="font-weight: 500">Background Form</h3>
       <h4 style="font-size: 15px">Please answer the following questions</h4>
-      <form @submit="currentStep++">
+      <form @submit.prevent="currentStep++">
         <label for="country"
           >1. From which country/countries did you or your family originally
           arrive in Canada?</label
@@ -101,13 +101,13 @@
         <h4>3. How long have you or your family been in Canada?</h4>
 
         <div class="full centered">
-          <label for="you-years-in-canada">You: Years:</label>
-          <input type="text" id="you-years-in-canada" />
+          <label for="you-years-in-canada">You: </label>
+          <input type="text" id="you-years-in-canada" placeholder="Years" />
         </div>
 
         <div class="full centered space-top">
-          <label for="family-years-in-canada">Your family: Years:</label>
-          <input type="text" id="family-years-in-canada" />
+          <label for="family-years-in-canada">Your family: </label>
+          <input type="text" id="family-years-in-canada" placeholder="Years" />
         </div>
         <button type="submit" style="margin-top: 30px">Next</button>
       </form>
@@ -116,12 +116,12 @@
     <!-- SURVEY SECTION 2 -->
 
     <section
-      v-if="currentStep === Step.ShowBackgroundFormSurveyTwo"
+      v-show="currentStep === Step.ShowBackgroundFormSurveyTwo"
       class="survey-section"
     >
       <h3>Background Form</h3>
       <h4>Please answer the following questions</h4>
-      <form @submit="currentStep++">
+      <form @submit.prevent="currentStep++">
         <label for="immigrant-status"
           >4. What is your immigrant status in Canada</label
         >
@@ -230,10 +230,10 @@
 
     <!-- SECTION 3 -->
     <section
-      v-if="currentStep === Step.ShowBackgroundFormSurveyThree"
+      v-show="currentStep === Step.ShowBackgroundFormSurveyThree"
       class="survey-section"
     >
-      <form action="">
+      <form @submit.prevent="startTest">
         <h3>Background Form</h3>
         <h4>Please answer the following questions</h4>
         <div class="full centered">
@@ -383,6 +383,11 @@ const store = useStore();
 const router = useRouter();
 
 function startTest() {
+  router.push("/LD_IBT");
+  console.log("test@");
+}
+
+function finishEmailSection() {
   store.commit("storeLdEmail", ld_email.value);
   currentStep.value++;
 }
@@ -432,7 +437,7 @@ button {
   transition: all 250ms ease-in-out;
   color: white;
   font-weight: 300;
-  font-size: 14px;
+  font-size: 13px;
   margin-top: 25px;
   height: 45px;
   width: 100px;
@@ -503,7 +508,7 @@ form {
 input {
   width: 150px;
   padding-left: 20px;
-  border: solid 1px gray;
+  border: solid 0.5px #6868689c;
   font-weight: 300;
   box-sizing: border-box;
 }

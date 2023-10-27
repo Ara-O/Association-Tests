@@ -1,9 +1,12 @@
-/* Fill entire background with green? */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 *,
 font {
   font-weight: inherit;
 }
+
 #test-border {
   width: 63vw;
   height: 93vh;

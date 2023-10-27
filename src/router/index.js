@@ -60,6 +60,7 @@ import FM_Identification_Black_White_Feedback from "../pages/FM/Identification_T
 // LD IBT
 import LD_IBT_Consent_Form from "../pages/IBT/LD_IBT/LD_IBT_Consent_Form.vue";
 import LD_IBT_Survey from "../pages/IBT/LD_IBT/LD_IBT_Survey.vue";
+import LD_IBT from "../pages/IBT/LD_IBT/LD_IBT.vue";
 
 const routes = [
   ...iatroutes,
@@ -221,6 +222,10 @@ const routes = [
   {
     path: "/LD_IBT_Survey",
     component: LD_IBT_Survey,
+  },
+  {
+    path: "/LD_IBT",
+    component: LD_IBT,
   },
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
 ];

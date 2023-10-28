@@ -66,22 +66,42 @@
 
       <div class="flex gap-3 items-center justify-center">
         <button @click="currentStep--">Back</button>
-        <button @click="currentStep++">Next</button>
+        <button @click="startTest">Next</button>
       </div>
     </section>
 
     <!-- TEST 1 -->
     <section v-show="currentStep === Steps.PracticeRound" class="section-box">
       <h3>Practice Round</h3>
+      <img src="../../../assets/IT_faces/star.jpg" alt="star" class="ibt-star" v-show="userGotStimulusRight" />
+      <img src="../../../assets/IT_faces/cross.jpg" alt="cross" class="ibt-cross" v-show="userGotStimulusWrong" />
+      <div :class="{ hide: testNotStarted || paused }">
+        <div style="display: flex; flex-direction: column; align-items: center">
+          <div v-for="(trial, index) in ibt_trials" :key="index" :style="{ display: trial.visibility }">
+            <h3>{{ trial.keyword }}</h3>
+            <img :src="getClickerImage(
+              trial.leftClickerFace === 'Sad' ? getClickerImage('sad-face.png') : getClickerImage('happy-face.png'))"
+              alt=" Left face" ref="leftFace" :data-mood="trial.leftClickerGender" class="faceLeft ibt-icon" />
+            <img :src="getClickerImage(
+              trial.leftClickerFace === 'Smiley' ? 'happy-face.png' : 'sad-face.png')" alt=" Left face" ref="leftFace"
+              class="faceRight ibt-icon" />
+          </div>
+        </div>
+      </div>
     </section>
   </section>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { generateLdTrials } from "../../../modules/generateIbtTrials/generatIbtTrialsLD"
 
 let currentStep = ref<number>(1)
+let testNotStarted = ref<boolean>(true)
+let section = ref<number>(0)
+let userGotStimulusRight = ref<boolean>(false)
+let userGotStimulusWrong = ref<boolean>(false)
+let paused = ref<boolean>(false)
 
 enum Steps {
   InstructionOne = 1,
@@ -90,9 +110,23 @@ enum Steps {
   ActualRound,
 }
 
-onMounted(() => {
-  console.log(generateLdTrials("E", "I", 8))
-})
+let ibt_trials = ref(generateLdTrials("Sad", "Smiley", 8))
+
+console.log(ibt_trials.value)
+
+function getClickerImage(url) {
+  return url
+}
+
+function startTest() {
+  currentStep.value++;
+  console.log("start test")
+  setTimeout(() => {
+    testNotStarted.value = false
+  }, 500);
+
+}
+
 </script>
 
 <style scoped>

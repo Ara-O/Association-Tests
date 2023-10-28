@@ -4,19 +4,15 @@
       @userHasAgreed="userHasNotFinishedConsentForm = false"
     ></ConsentForm> -->
     <h3 style="font-weight: 500">Welcome to the UCSC IBT!</h3>
-    <button
-      @click="userHasNotFinishedConsentForm = false"
-      class="btn_basic_survey"
-      style="margin-top: 10px"
-    >
+    <button @click="userHasNotFinishedConsentForm = false" class="btn_basic_survey" style="margin-top: 10px">
       Start Test
     </button>
   </main>
   <main v-else>
     <section>
-      <div v-show="!userHasPutInUserID" class="collect-user-id">
+      <div v-show="!userHasPutInUserID" class="collect-user-id pt-4">
         <h3 style="font-size: 18px; font-weight: 500">Before we start!</h3>
-        <h3 class="input-user-id-text">
+        <h3 class="input-user-id-text mt-6  mb-1">
           What is your unique testing ID? ( You will be given this by a lab
           assistant )
         </h3>
@@ -27,10 +23,8 @@
       <div v-show="userHasPutInUserID">
         <section id="test-border">
           <section v-if="notFinishedInstructions">
-            <implicit-bias-test-instructions
-              :instruction="ibt_trials[section].instruction"
-              @finishedInstructions="finishedInstructions"
-            >
+            <implicit-bias-test-instructions :instruction="ibt_trials[section].instruction"
+              @finishedInstructions="finishedInstructions">
             </implicit-bias-test-instructions>
           </section>
 
@@ -38,76 +32,38 @@
             <div v-show="testNotStarted">
               <h3>Instruction</h3>
               <br />
-              <h3
-                class="fullinstruction"
-                v-html="ibt_trials[section].instruction"
-              ></h3>
+              <h3 class="fullinstruction" v-html="ibt_trials[section].instruction"></h3>
 
               <br />
               <h4>Click the right arrow to continue</h4>
-              <img
-                src="../../../../assets/app_icons/rightArrow.png"
-                alt="Right arrow"
-                @click="startTest"
-                class="continue"
-              />
+              <img src="../../../../assets/app_icons/rightArrow.png" alt="Right arrow" @click="startTest"
+                class="continue" />
             </div>
-            <img
-              src="../../../../assets/IT_faces/star.jpg"
-              alt="star"
-              class="ibt-star"
-              v-show="userGotStimulusRight"
-            />
-            <img
-              src="../../../../assets/IT_faces/cross.jpg"
-              alt="cross"
-              class="ibt-cross"
-              v-show="userGotStimulusWrong"
-            />
+            <img src="../../../../assets/IT_faces/star.jpg" alt="star" class="ibt-star" v-show="userGotStimulusRight" />
+            <img src="../../../../assets/IT_faces/cross.jpg" alt="cross" class="ibt-cross"
+              v-show="userGotStimulusWrong" />
             <div :class="{ hide: testNotStarted || paused }">
-              <div
-                style="
+              <div style="
                   display: flex;
                   flex-direction: column;
                   align-items: center;
-                "
-              >
-                <div
-                  v-for="trial in ibt_trials[section].trials"
-                  :key="trial.id"
-                  :style="{ display: trial.visibility }"
-                >
-                  <img
-                    :src="getImage(trial.image)"
-                    class="trialimg"
-                    style="width: 240px"
-                  />
-                  <img
-                    :src="
-                      getClickerImage(
-                        trial.leftClickerFaceEmotion == 'Sad'
-                          ? 'sad.jpg'
-                          : 'happy.jpg'
-                      )
-                    "
-                    alt="Left face"
-                    ref="leftFace"
-                    :data-mood="trial.leftClickerFaceEmotion"
-                    class="faceLeft ibt-icon"
-                  />
-                  <img
-                    :src="
-                      getClickerImage(
-                        trial.rightClickerFaceEmotion == 'Sad'
-                          ? 'sad.jpg'
-                          : 'happy.jpg'
-                      )
-                    "
-                    alt="Right face"
-                    :data-mood="trial.rightClickerFaceEmotion"
-                    ref="rightFace"
-                    class="faceRight ibt-icon"
-                  />
+                ">
+                <div v-for="trial in ibt_trials[section].trials" :key="trial.id" :style="{ display: trial.visibility }">
+                  <img :src="getImage(trial.image)" class="trialimg" style="width: 240px" />
+                  <img :src="getClickerImage(
+                    trial.leftClickerFaceEmotion == 'Sad'
+                      ? 'sad.jpg'
+                      : 'happy.jpg'
+                  )
+                    " alt="Left face" ref="leftFace" :data-mood="trial.leftClickerFaceEmotion"
+                    class="faceLeft ibt-icon" />
+                  <img :src="getClickerImage(
+                    trial.rightClickerFaceEmotion == 'Sad'
+                      ? 'sad.jpg'
+                      : 'happy.jpg'
+                  )
+                    " alt="Right face" :data-mood="trial.rightClickerFaceEmotion" ref="rightFace"
+                    class="faceRight ibt-icon" />
                 </div>
               </div>
             </div>
@@ -358,11 +314,13 @@ export default {
   display: block;
   width: 110px;
 }
+
 .user-id {
   border-radius: 6px;
   border: solid 1px solid 1px #c2c2c2;
-  margin-top: 15px;
-  height: 25px;
+  margin-top: 25px;
+  height: 30px;
+  width: 250px;
   text-align: center;
 }
 

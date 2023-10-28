@@ -11,33 +11,20 @@
           taking part in this study and will not be used to identify you
           individually. Your participation in this study will remain anonymous.
         </h4>
-        <input
-          type="text"
-          name="user-email"
-          v-model="ld_email"
-          id="email"
-          class="ld-user-email"
-          placeholder="Enter email address here"
-        />
+        <input type="text" name="user-email" v-model="ld_email" id="email" class="ld-user-email"
+          placeholder="Enter email address here" />
         <br />
         <button @click="finishEmailSection">Next</button>
       </div>
     </section>
 
     <!-- Test explanation section -->
-    <section
-      v-show="currentStep === Step.ExplainTest"
-      class="explain-test-section"
-    >
+    <section v-show="currentStep === Step.ExplainTest" class="explain-test-section">
       <div>
         <h3 style="font-weight: 600">Welcome to the test</h3>
       </div>
       <div>
-        <img
-          src="../../../assets/LD_IBT/test-introduction-image.png"
-          alt="Test intro image"
-          class="test-intro-image"
-        />
+        <img src="../../../assets/LD_IBT/test-introduction-image.png" alt="Test intro image" class="test-intro-image" />
         <h4 class="test-intro-message">
           <span style="font-weight: 600">Instructions: </span>In this study you
           will complete an Implicit Bias Test (IBT) in which you will be asked
@@ -56,17 +43,12 @@
     </section>
 
     <!-- Survey section 1 -->
-    <section
-      v-show="currentStep === Step.ShowBackgroundFormSurveyOne"
-      class="survey-section"
-    >
+    <section v-show="currentStep === Step.ShowBackgroundFormSurveyOne" class="survey-section">
       <h3 style="font-weight: 500">Background Form</h3>
       <h4 style="font-size: 15px">Please answer the following questions</h4>
       <form @submit.prevent="currentStep++">
-        <label for="country"
-          >1. From which country/countries did you or your family originally
-          arrive in Canada?</label
-        >
+        <label for="country">1. From which country/countries did you or your family originally
+          arrive in Canada?</label>
         <h4 style="margin-top: 30px">
           Note: List all countries you have lived in before coming to Canada
           starting with the last country you were residing in
@@ -115,16 +97,11 @@
 
     <!-- SURVEY SECTION 2 -->
 
-    <section
-      v-show="currentStep === Step.ShowBackgroundFormSurveyTwo"
-      class="survey-section"
-    >
+    <section v-show="currentStep === Step.ShowBackgroundFormSurveyTwo" class="survey-section">
       <h3>Background Form</h3>
       <h4>Please answer the following questions</h4>
       <form @submit.prevent="currentStep++">
-        <label for="immigrant-status"
-          >4. What is your immigrant status in Canada</label
-        >
+        <label for="immigrant-status">4. What is your immigrant status in Canada</label>
         <select id="immigrant-status">
           <option value="Canadian Citizen">Canadian Citizen</option>
           <option value="Permanent Resident">Permanent Resident</option>
@@ -134,39 +111,28 @@
           <option value="Other">Other</option>
         </select>
 
-        <label for="what-user-considers-themselves"
-          >5. Do you consider yourself to be:</label
-        >
+        <label for="what-user-considers-themselves">5. Do you consider yourself to be:</label>
         <select id="what-user-considers-themselves">
-          <option
-            value="First generation immigrant (that is, you were born outside of Canada)"
-          >
+          <option value="First generation immigrant (that is, you were born outside of Canada)">
             First generation immigrant (that is, you were born outside of
             Canada)
           </option>
           <option
-            value="Second generation immigrant  (I was born in Canada and at least one of my parents was born outside Canada) "
-          >
+            value="Second generation immigrant  (I was born in Canada and at least one of my parents was born outside Canada) ">
             Second generation immigrant (I was born in Canada and at least one
             of my parents was born outside Canada)
           </option>
-          <option
-            value="Third generation immigrant (I and both my parents were born in Canada)"
-          >
+          <option value="Third generation immigrant (I and both my parents were born in Canada)">
             Third generation immigrant (I and both my parents were born in
             Canada)
           </option>
         </select>
 
-        <label for="highest-education-level"
-          >6. Please select the highest level of education that you have
-          attained</label
-        >
+        <label for="highest-education-level">6. Please select the highest level of education that you have
+          attained</label>
         <select id="highest-education-level">
           <option value="Some school">Some school</option>
-          <option
-            value="Completed high school diploma and a professional qualification not from a college or university"
-          >
+          <option value="Completed high school diploma and a professional qualification not from a college or university">
             Completed high school diploma and a professional qualification not
             from a college or university.
           </option>
@@ -176,9 +142,7 @@
           <option value="Completed an undergraduate university degree">
             Completed an undergraduate university degree.
           </option>
-          <option
-            value="Completed one or more graduate degrees (Masters/or Ph.D.)"
-          >
+          <option value="Completed one or more graduate degrees (Masters/or Ph.D.)">
             Completed one or more graduate degrees (Masters/or Ph.D.).
           </option>
           <option value=" Other (please specify):">
@@ -186,14 +150,10 @@
           </option>
         </select>
 
-        <label for="spouse-highest-education-level"
-          >7. What is your spouse's highest educational qualification</label
-        >
+        <label for="spouse-highest-education-level">7. What is your spouse's highest educational qualification</label>
         <select id="spouse-highest-education-level">
           <option value="Some school">Some school</option>
-          <option
-            value="Completed high school diploma and a professional qualification not from a college or university"
-          >
+          <option value="Completed high school diploma and a professional qualification not from a college or university">
             Completed high school diploma and a professional qualification not
             from a college or university.
           </option>
@@ -203,9 +163,7 @@
           <option value="Completed an undergraduate university degree">
             Completed an undergraduate university degree.
           </option>
-          <option
-            value="Completed one or more graduate degrees (Masters/or Ph.D.)"
-          >
+          <option value="Completed one or more graduate degrees (Masters/or Ph.D.)">
             Completed one or more graduate degrees (Masters/or Ph.D.).
           </option>
           <option value=" Other (please specify):">
@@ -229,16 +187,12 @@
     </section>
 
     <!-- SECTION 3 -->
-    <section
-      v-show="currentStep === Step.ShowBackgroundFormSurveyThree"
-      class="survey-section"
-    >
+    <section v-show="currentStep === Step.ShowBackgroundFormSurveyThree" class="survey-section">
       <form @submit.prevent="startTest">
         <h3>Background Form</h3>
         <h4>Please answer the following questions</h4>
         <div class="full centered">
-          <label for="main-language"
-            >9. What is the main language you use at home on a daily basis?
+          <label for="main-language">9. What is the main language you use at home on a daily basis?
           </label>
           <select id="main-language">
             <option value="English">English</option>
@@ -257,8 +211,7 @@
         </div>
         <br />
         <div class="full centered space-top">
-          <label for="other-language"
-            >10. Do you use any other language/languages besides the home
+          <label for="other-language">10. Do you use any other language/languages besides the home
             language indicated above? If yes, what is/are the additional
             language/languages you use?
           </label>
@@ -279,8 +232,7 @@
         </div>
         <br />
         <div class="full centered space-top">
-          <label
-            >11. Are you aware of a child/adolescent in your community (for
+          <label>11. Are you aware of a child/adolescent in your community (for
             example, among relatives, friends, neighbors, own religious or
             ethnic groups that you are currently a part of) who is struggling
             with their studies/learning process at school?
@@ -315,8 +267,7 @@
         </div>
         <br />
         <div class="full centered space-top">
-          <label
-            >12. Are you aware of a child/adolescent in your country of origin
+          <label>12. Are you aware of a child/adolescent in your country of origin
             (for example, among relatives, friends, neighbors, own religious or
             ethnic groups that you are currently a part of) who was struggling
             with their studies/learning process at school?
@@ -516,7 +467,7 @@ input {
 .full {
   width: 100%;
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   flex-wrap: wrap;
   row-gap: 30px;
   column-gap: 20px;

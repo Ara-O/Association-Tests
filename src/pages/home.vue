@@ -1,15 +1,9 @@
 <template>
   <main class="home">
     <h3 class="choose-test">Choose Test</h3>
-    <MainButton routeTo="/IAT_Choose_Test" style="width: 180px"
-      >Implicit Association Test</MainButton
-    >
-    <MainButton routeTo="/IBT_Choose_Test" style="width: 180px"
-      >Implicit Bias Test</MainButton
-    >
-    <MainButton routeTo="/IT" style="width: 180px"
-      >Individuation Training</MainButton
-    >
+    <MainButton routeTo="/IAT_Choose_Test" class="w-60">Implicit Association Test</MainButton>
+    <MainButton routeTo="/IBT_Choose_Test" class="w-60">Implicit Bias Test</MainButton>
+    <MainButton routeTo="/IT" class="w-60">Individuation Training</MainButton>
   </main>
 </template>
 

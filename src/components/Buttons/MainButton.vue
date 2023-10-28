@@ -1,19 +1,21 @@
 <template>
-<router-link :to="routeTo" class="btn" :class="{compressed: buttonType === 'compressed'}"><slot></slot></router-link>
+  <router-link :to="routeTo" class="btn" :class="{ compressed: buttonType === 'compressed' }">
+    <slot></slot>
+  </router-link>
 </template>
 
 <script setup>
- const props = defineProps({
-    routeTo: {
-      type: String,
-      requred: false
-    },
-    buttonType: {
-      type: String,
-      requred: false,
-      default: "normal"
-    }
-  })
+const props = defineProps({
+  routeTo: {
+    type: String,
+    requred: false
+  },
+  buttonType: {
+    type: String,
+    requred: false,
+    default: "normal"
+  }
+})
 </script>
 
 <style scoped>
@@ -29,13 +31,12 @@
   transition: all 250ms ease-in-out;
   color: white;
   text-decoration: none;
-  padding: 21px 34px;
   font-weight: 300;
   font-size: 14px;
-  height: 20px
+  height: auto
 }
 
-.compressed{
+.compressed {
   height: 15px;
 }
 

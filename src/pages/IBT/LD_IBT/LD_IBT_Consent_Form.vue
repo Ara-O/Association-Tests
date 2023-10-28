@@ -4,13 +4,9 @@
       <!-- Top images -->
       <div class="top-introductory-image">
         <img src="../../../assets/LD_IBT/ld-lab-image.png" alt="LB lab image" />
-        <img
-          src="../../../assets/LD_IBT/uni-toronto-image.png"
-          alt="University of toronto image"
-        />
+        <img src="../../../assets/LD_IBT/uni-toronto-image.png" alt="University of toronto image" />
       </div>
       <!-- Information section -->
-      <br />
       <div>
         <h3 class="ld-title">Information and Consent Form</h3>
         <h4 style="font-weight: 600">
@@ -26,7 +22,7 @@
           You are invited to participate in a survey consisting of four main
           sets of tests/questionnaires.
         </h4>
-        <ol>
+        <ol class="mt-6">
           <li>
             <span style="font-weight: bold">Implicit Association Test</span> (5
             minutes) - Measures your implicit attitudes towards learning
@@ -34,16 +30,14 @@
           </li>
           <br />
           <li>
-            <span style="font-weight: bold"
-              >Attributions Based Questionnaire
+            <span style="font-weight: bold">Attributions Based Questionnaire
             </span>
             (5 minutes) - Measures your beliefs about causes of learning
             difficulties.
           </li>
           <br />
           <li>
-            <span style="font-weight: bold"
-              >Explicit Attitudes Questionnaire
+            <span style="font-weight: bold">Explicit Attitudes Questionnaire
             </span>
             (5 minutes) - Measures your opinions on learning difficulties.
           </li>
@@ -67,7 +61,7 @@
           have the right to withdraw from the study without explanation or
           penalty if you experience any discomfort at any point.
         </h4>
-        <h4>
+        <h4 class="mt-6">
           <span style="font-weight: bold">
             What are the benefits of taking part in the study?
           </span>
@@ -77,13 +71,13 @@
           Immigrant communities, helping inform interventional support for
           children and families.
         </h4>
-        <h4>
+        <h4 class="mt-6">
           <span style="font-weight: bold">
             Will there be any compensation for taking part in the study?
           </span>
           You will receive a 20-dollar gift card for taking part in this study.
         </h4>
-        <h4>
+        <h4 class="mt-6">
           <span style="font-weight: bold">
             How will confidentiality be maintained?
           </span>
@@ -104,10 +98,8 @@
         you withdraw during the study, you will not need to give any explanation
         for the decision and your survey data will be discarded. If you decide
         to withdraw your data from the study after the survey is completed,
-        please inform the principal investigator Tehani Gunawardena (<a
-          target="_blank"
-          href="https://mail.google.com/mail/?view=cm&fs=1&to=tehani.gunawardena@mail.utoronto.ca"
-        >
+        please inform the principal investigator Tehani Gunawardena (<a target="_blank"
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=tehani.gunawardena@mail.utoronto.ca">
           tehani.gunawardena@mail.utoronto.ca
         </a>
         ) one week after the completion of the survey. Your data will thereafter
@@ -116,7 +108,7 @@
 
       <!-- Questions -->
 
-      <div>
+      <div class="mt-6">
         <h4 style="font-weight: bold">Questions about the study:</h4>
         <ul>
           <li>
@@ -127,9 +119,7 @@
             For questions or concerns about your rights as a participant,
             contact the Research Oversight and Compliance Office- Human Research
             Ethics Program at
-            <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=ethics.review@utoronto.ca"
-            >
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ethics.review@utoronto.ca">
               ethics.review@utoronto.ca
             </a>
             or 416-946-3273
@@ -149,8 +139,7 @@
       <br />
       <div class="buttons-section">
         <router-link to="/LD_IBT_Survey" style="text-decoration: none">
-          <button class="green">I agree</button></router-link
-        >
+          <button class="green">I agree</button></router-link>
         <button class="red" @click="userDoesNotWantToTakeSurvey">
           I do not agree
         </button>
@@ -159,9 +148,7 @@
     <section v-if="!userAgreesToConsentForm" class="survey-feedback">
       <div class="no-survey">
         <h3>You can close out of this page or go home</h3>
-        <router-link to="/Home" style="text-decoration: none"
-          ><button class="green">Go Home</button></router-link
-        >
+        <router-link to="/Home" style="text-decoration: none"><button class="green">Go Home</button></router-link>
       </div>
     </section>
   </section>
@@ -179,8 +166,9 @@ function userDoesNotWantToTakeSurvey() {
 
 <style scoped>
 * {
-  line-height: 22px;
+  line-height: 27px;
 }
+
 .main {
   margin: 0px 40px;
   display: flex;
@@ -226,8 +214,11 @@ function userDoesNotWantToTakeSurvey() {
 * {
   font-family: "Times New Roman", Times, serif;
 }
+
 .ld-title {
   font-size: 22px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 ol li {
@@ -242,6 +233,10 @@ a {
   color: blue;
   cursor: pointer;
   text-decoration: underline;
+}
+
+h4 {
+  line-height: 30px;
 }
 
 button {

@@ -1,7 +1,7 @@
 <template>
-  <div v-if="!userHasPutInUserID" class="collect-user-id">
+  <div v-if="!userHasPutInUserID" class="collect-user-id pt-4">
     <h3 style="font-size: 18px; font-weight: 500">Before we start!</h3>
-    <h3 class="input-user-id-text">
+    <h3 class="input-user-id-text mt-6 mb-1">
       What is your unique testing ID? ( You will be given this by a lab
       assistant )
     </h3>
@@ -10,11 +10,7 @@
   </div>
   <div class="basic-questions" v-else>
     <h3 class="basic-questions_title">Basic questions</h3>
-    <img
-      src="../../assets/app_icons/diverseimg.jpg"
-      alt="Image"
-      style="width: 273px"
-    />
+    <img src="../../assets/app_icons/diverseimg.jpg" alt="Image" style="width: 273px" />
     <h4>How do you identify your gender</h4>
     <div class="ethnicities">
       <select name="gender" id="gender" v-model="userData.gender">
@@ -26,21 +22,12 @@
         <option value="Prefer not to say">Prefer not to say</option>
       </select>
       <h4>Other, please specify</h4>
-      <input
-        autocomplete="false"
-        type="text"
-        class="ethnicity-input"
-        v-model="gender"
-      />
+      <input autocomplete="false" type="text" class="ethnicity-input" v-model="gender" />
     </div>
     <h4 style="margin-top: 26px">How would you identify your race/ethnicity</h4>
 
     <div class="ethnicities">
-      <select
-        name="ethnicity"
-        id="ethnicity"
-        v-model="userData.chosenethnicity"
-      >
+      <select name="ethnicity" id="ethnicity" v-model="userData.chosenethnicity">
         <option value="none" selected disabled>Choose your ethnicity</option>
         <option value="American Indian/Alaska Native">
           American Indian/Alaska Native
@@ -58,9 +45,7 @@
       <input type="text" class="ethnicity-input" v-model="chosenethnicity" />
     </div>
     <div class="progress">
-      <router-link to="/IAT_Choose_Test" class="btn_basic_survey router-link"
-        >Back</router-link
-      >
+      <router-link to="/IAT_Choose_Test" class="btn_basic_survey router-link">Back</router-link>
       <button @click="next" class="btn_basic_survey">next</button>
     </div>
   </div>
@@ -120,9 +105,17 @@ export default {
 </script>
 
 <style scoped>
+.basic-questions {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px
+}
+
 .basic-questions_title {
   font-size: 18px;
 }
+
 .input-user-id-text {
   max-width: 400px;
   width: auto;
@@ -134,8 +127,9 @@ export default {
 .user-id {
   border-radius: 6px;
   border: solid 1px solid 1px #c2c2c2;
-  margin-top: 15px;
-  height: 25px;
+  margin-top: 25px;
+  width: 250px;
+  height: 30px;
   text-align: center;
 }
 

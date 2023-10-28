@@ -3,17 +3,13 @@
     <div class="jumbotron">
       <h3>Consent Form</h3>
     </div>
-    <br />
-    <section>
+    <section class="mt-8">
       <div v-if="participating">
-        <div class="consent-form-pdf">
+        <div class="consent-form-pdf px-12 py-6 sm:py-[40px] sm:px-[80px] ">
           <div class="top-section">
-            <img
-              src="../assets/app_icons/consent-form-logo.png"
-              alt="University of Detroit Mercy Logo"
-              style="width: 250px"
-            />
-            <h4 style="text-align: left">
+            <img src="../assets/app_icons/consent-form-logo.png" alt="University of Detroit Mercy Logo"
+              style="width: 250px" />
+            <h4 style="text-align: left; width: 300px">
               Child Development Lab, Reno 218, <br />
               Department of Psychology <br />
               University of Detroit Mercy 4001 W McNichols Rd, Detroit, MI 48221
@@ -87,15 +83,9 @@
         </div>
         <br />
         <div class="arrange-btns">
-          <btn
-            class="disagreement"
-            routeTo="/consent-form"
-            @click="participating = false"
-            >No, I do not agree to participate</btn
-          >
-          <btn class="agreement" routeTo="/Home"
-            >Yes, I agree to participate</btn
-          >
+          <btn class="disagreement" routeTo="/consent-form" @click="participating = false">No, I do not agree to
+            participate</btn>
+          <btn class="agreement" routeTo="/Home">Yes, I agree to participate</btn>
         </div>
       </div>
       <div v-else>
@@ -120,16 +110,17 @@ let participating = ref(true);
 }
 
 .consent-form-pdf {
-  width: 750px;
+  max-width: 750px;
+  width: auto;
   box-sizing: border-box;
-  padding: 40px 80px;
   box-shadow: 0 0 2px #d3d3d3;
   border: solid 1px #e5e5e5;
 }
+
 .jumbotron {
   background: linear-gradient(144deg, #4bac32, #389820);
   width: auto;
-  padding: 0px 52px;
+  padding: 15px 52px;
   border-radius: 1px;
   color: white;
   box-shadow: 0px 0px 4px lightgray;
@@ -143,10 +134,10 @@ let participating = ref(true);
 
 .top-section {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
-  text-align: left;
-  column-gap: 49px;
+  justify-content: space-between;
+
 }
 
 .consent-form-image {
@@ -163,8 +154,10 @@ let participating = ref(true);
 h4 {
   text-align: left;
   font-size: 14px;
-  line-height: 24px;
+  line-height: 29px;
+  width: auto;
 }
+
 .consent {
   width: auto;
   min-height: 618px;
@@ -184,10 +177,9 @@ h4 {
 
 .agreement,
 .disagreement {
-  width: 190px;
-  /* margin-top: 30px; */
+  width: 255px;
   font-weight: 300;
-  height: 26px;
+  height: 67px;
 }
 
 .arrange-btns {

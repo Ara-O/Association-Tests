@@ -1,21 +1,14 @@
 <template>
   <main>
-    <h3 class="choose-iat">Select IBT</h3>
+    <h3 class="choose-iat mb-8">Select IBT</h3>
     <section v-if="ibt == ''">
-      <btn routeTo="/IBT_Choose_Test" class="button" @click="handleGender"
-        >Gender IBT</btn
-      >
-      <btn routeTo="/IBT_Choose_Test" class="button" @click="handleRace"
-        >Race IBT</btn
-      >
+      <btn routeTo="/IBT_Choose_Test" class="button" @click="handleGender">Gender IBT</btn>
+      <btn routeTo="/IBT_Choose_Test" class="button" @click="handleRace">Race IBT</btn>
       <btn routeTo="/IBT_Cat_Dog_Survey" class="button">Cat-Dog IBT</btn>
 
       <btn routeTo="/LD_IBT_Consent_Form" class="button">LD IBT</btn>
-      <router-link
-        style="text-decoration: underline; cursor: pointer; font-size: 16px"
-        class="router-link-back"
-        to="/Home"
-      >
+      <router-link style="text-decoration: underline; cursor: pointer; font-size: 16px" class="router-link-back"
+        to="/Home">
         Go back
       </router-link>
     </section>
@@ -23,93 +16,47 @@
     <!-- Second section -->
 
     <section v-if="ibt === 'gender'">
-      <router-link
-        to="/IBT_Gender_Toy_Survey"
-        class="routerlink test_btn"
-        tag="button"
-      >
+      <router-link to="/IBT_Gender_Toy_Survey" class="routerlink test_btn" tag="button">
         Gender-Toy IBT
       </router-link>
 
-      <router-link
-        to="/IBT_Gender_Clothing_Survey"
-        class="routerlink test_btn"
-        tag="button"
-      >
+      <router-link to="/IBT_Gender_Clothing_Survey" class="routerlink test_btn" tag="button">
         Gender-Clothing IBT
       </router-link>
 
-      <router-link
-        to="/IBT_Gender_Subject_Survey"
-        class="routerlink test_btn"
-        tag="button"
-      >
+      <router-link to="/IBT_Gender_Subject_Survey" class="routerlink test_btn" tag="button">
         Gender-Subject IBT
       </router-link>
 
-      <router-link
-        to="/IBT_Gender_Color_Survey"
-        class="routerlink test_btn"
-        tag="button"
-      >
+      <router-link to="/IBT_Gender_Color_Survey" class="routerlink test_btn" tag="button">
         Gender-Color IBT
       </router-link>
 
-      <router-link
-        to="/IBT_Gender_Roles_Survey"
-        class="routerlink test_btn"
-        tag="button"
-      >
+      <router-link to="/IBT_Gender_Roles_Survey" class="routerlink test_btn" tag="button">
         Gender-Roles IBT
       </router-link>
-      <h3
-        style="text-decoration: underline; cursor: pointer; font-size: 16px"
-        @click="ibt = ''"
-      >
+      <h3 style="text-decoration: underline; cursor: pointer; font-size: 16px" @click="ibt = ''">
         Go back
       </h3>
     </section>
 
     <section v-if="ibt === 'race'">
-      <router-link
-        to="/IBT_Black_White_Survey"
-        class="routerlink test_btn"
-        tag="button"
-      >
+      <router-link to="/IBT_Black_White_Survey" class="routerlink test_btn" tag="button">
         Black-White IBT
       </router-link>
-      <router-link
-        to="/IBT_Choose_Test"
-        class="routerlink test_btn"
-        tag="button"
-      >
+      <router-link to="/IBT_Choose_Test" class="routerlink test_btn" tag="button">
         Black-Asian IBT
       </router-link>
-      <router-link
-        to="/IBT_Choose_Test"
-        class="routerlink test_btn"
-        tag="button"
-      >
+      <router-link to="/IBT_Choose_Test" class="routerlink test_btn" tag="button">
         Asian-White IBT
       </router-link>
-      <router-link
-        to="IBT_Brief_Black_White"
-        class="routerlink test_btn"
-        tag="button"
-      >
+      <router-link to="IBT_Brief_Black_White" class="routerlink test_btn" tag="button">
         Brief Black-White IBT
       </router-link>
-      <router-link
-        to="IBT_Brief_Black_White_UCSC"
-        class="routerlink test_btn"
-        tag="button"
-      >
+      <router-link to="IBT_Brief_Black_White_UCSC" class="routerlink test_btn" tag="button">
         UCSC
       </router-link>
-      <h3
-        style="text-decoration: underline; cursor: pointer; font-size: 16px"
-        @click="ibt = ''"
-      >
+      <h3 style="text-decoration: underline; cursor: pointer; font-size: 16px" @click="ibt = ''">
         Go back
       </h3>
     </section>
@@ -150,7 +97,6 @@ main {
 
 .button {
   font-weight: 300;
-  width: 117px;
 }
 
 .test_btn {
@@ -160,12 +106,11 @@ main {
   background: linear-gradient(185deg, #7eefbf, #389820);
   min-height: 60px;
   border-radius: 47px;
-  width: 243px;
   box-shadow: -2px 4px 4px -1px #cbcbcb;
   cursor: pointer;
   margin-bottom: 25px;
   transition: all 250ms ease-in-out;
-  /* padding: 9px 34px; */
+  padding: 9px 34px;
   font-size: 14px;
 }
 

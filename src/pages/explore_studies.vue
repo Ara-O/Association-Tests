@@ -1,31 +1,15 @@
 <template>
   <main style="height: auto">
-    <section
-      v-show="!exploreStudies"
-      class="consent-form-main"
-      style="flex-direction: column; height: 100vh"
-    >
+    <section v-show="!exploreStudies" class="consent-form-main" style="flex-direction: column; height: 100vh">
       <h3 style="margin-bottom: 0px">Welcome!</h3>
-      <br />
-      <br />
-      <iframe
-        style="max-width: 560px; width: 100vw; border-radius: 10px"
-        height="315"
-        src="https://www.youtube.com/embed/NpEaa2P7qZI?controls=0"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; loop"
-        autoplay
-        loop
-      ></iframe>
-      <br />
-      <br />
-      <main-button
-        routeTo="/"
-        @click="routeToExploreStudies"
-        class="explore-studies"
-        >Explore Studies</main-button
-      >
+
+      <iframe class="mt-10" style="max-width: 560px; width: 100vw; border-radius: 10px" height="315"
+        src="https://www.youtube.com/embed/NpEaa2P7qZI?controls=0" title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; loop" autoplay
+        loop></iframe>
+
+      <main-button routeTo="/" @click="routeToExploreStudies" class="explore-studies mt-10 ">Explore
+        Studies</main-button>
     </section>
     <!-- <section
       v-show="exploreStudies"
@@ -87,10 +71,12 @@ function routeToExploreStudies() {
 select {
   width: 150px;
 }
+
 .explore-studies {
-  width: 130px;
+  width: 180px;
 }
 
+/* 
 .earth-icon {
   width: 30px;
 }
@@ -106,13 +92,15 @@ select {
 
 .choose-language-section h4 {
   cursor: pointer;
-}
+} */
+
 .consent-form-main {
   height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .jumbotron {
   background: linear-gradient(144deg, #4bac32, #389820);
   width: auto;

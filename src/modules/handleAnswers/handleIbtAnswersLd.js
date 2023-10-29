@@ -47,6 +47,7 @@ function handleAnswer(userChoice, testNotStarted, data, testIsPaused, currentTri
             if (currentTrial.value !== data.length - 1) {
                 // Making sure the test isnt over yet
                 userGotStimulusRight.value = true;
+
                 // Creating a delay
                 setTimeout(function () {
                     userGotStimulusRight.value = false;
@@ -62,8 +63,9 @@ function handleAnswer(userChoice, testNotStarted, data, testIsPaused, currentTri
                 console.log("done")
                 if (section.value === 1) {
                     console.log("fully done")
+                    finishedSection(true)
                 } else {
-                    finishedSection()
+                    finishedSection(false)
                 }
 
 

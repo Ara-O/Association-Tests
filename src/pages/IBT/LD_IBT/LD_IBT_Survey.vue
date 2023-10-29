@@ -100,7 +100,7 @@
     <section v-show="currentStep === Step.ShowBackgroundFormSurveyTwo" class="survey-section">
       <h3>Background Form</h3>
       <h4>Please answer the following questions</h4>
-      <form @submit.prevent="currentStep++">
+      <div class="form">
         <label for="immigrant-status">4. What is your immigrant status in Canada</label>
         <select id="immigrant-status">
           <option value="Canadian Citizen">Canadian Citizen</option>
@@ -181,14 +181,14 @@
         </div>
         <div class="test-buttons" style="margin-top: -10px">
           <button @click="currentStep--">Back</button>
-          <button type="submit">Next</button>
+          <button @click="currentStep++">Next</button>
         </div>
-      </form>
+      </div>
     </section>
 
     <!-- SECTION 3 -->
     <section v-show="currentStep === Step.ShowBackgroundFormSurveyThree" class="survey-section">
-      <form @submit.prevent="startTest">
+      <div class="form">
         <h3>Background Form</h3>
         <h4>Please answer the following questions</h4>
         <div class="full centered">
@@ -244,7 +244,7 @@
         </div>
         <br />
         <div class="survey-table space-top">
-          <table>
+          <table class="border-collapse">
             <tr>
               <td></td>
               <td>Receives support from home</td>
@@ -305,9 +305,9 @@
         </div>
         <div class="test-buttons" style="margin-top: 10px">
           <button @click="currentStep--">Back</button>
-          <button type="submit">Start Test</button>
+          <button @click="startTest">Start Test</button>
         </div>
-      </form>
+      </div>
     </section>
   </section>
 </template>
@@ -412,6 +412,11 @@ h4 {
   max-width: 400px;
 }
 
+select {
+  padding: 0px 20px;
+  box-sizing: border-box;
+}
+
 .test-intro-message {
   margin-top: 0px;
   font-weight: 300;
@@ -458,7 +463,8 @@ form {
 
 input {
   width: 150px;
-  padding-left: 20px;
+  border-radius: 5px;
+  text-align: center;
   border: solid 0.5px #6868689c;
   font-weight: 300;
   box-sizing: border-box;
@@ -489,6 +495,23 @@ label {
 table {
   border: solid 1px;
   border-collapse: collapse;
+}
+
+.form {
+  min-height: 675px;
+  width: 100%;
+  max-width: 550px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 14px 46px;
+  justify-content: center;
+  overflow: auto;
+  flex-flow: wrap;
+  /* max-height: 700px; */
 }
 
 table td {

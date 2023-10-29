@@ -1,7 +1,10 @@
 <template>
   <section class="main ">
-    <section v-show="currentStep === Steps.TestOne" class="section-box ">
-      <TestOne></TestOne>
+    <section v-show="currentStep === Steps.TestOne" class="section-box">
+      <TestOne @finished="currentStep++"></TestOne>
+    </section>
+    <section v-show="currentStep === Steps.TestTwo" class="section-box">
+      <TestTwo></TestTwo>
     </section>
   </section>
 </template>
@@ -9,11 +12,13 @@
 <script  setup>
 import { ref } from "vue"
 import TestOne from "./LD_IBT_Test1.vue"
+import TestTwo from "./LD_IBT_Test2.vue"
 
 let currentStep = ref(1)
 
 const Steps = Object.freeze({
-  TestOne: 1
+  TestOne: 1,
+  TestTwo: 2
 })
 
 const Rounds = Object.freeze({
@@ -51,7 +56,7 @@ b {
   padding: 30px 40px 40px 40px;
   border-radius: 5px;
   width: auto;
-  max-width: 500px;
+  /* max-width: 420px; */
 }
 
 button {

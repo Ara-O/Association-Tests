@@ -8,11 +8,8 @@
       <div v-if="participating">
         <div class="consent-form-pdf">
           <div class="top-section">
-            <img
-              src="../../../../assets/app_icons/consent-form-logo.png"
-              alt="University of Detroit Mercy Logo"
-              style="width: 250px"
-            />
+            <img src="../../../../assets/app_icons/consent-form-logo.png" alt="University of Detroit Mercy Logo"
+              style="width: 250px" />
             <h4 style="text-align: left">
               Child Development Lab, Reno 218, <br />
               Department of Psychology <br />
@@ -123,6 +120,7 @@ defineEmits(["userHasAgreed"]);
   box-shadow: -3px 1px 7px #eeeeeeb2, 2px 3px 5px rgb(218 218 219 / 95%);
   border: solid 0.2px #eeeeeeb2;
 }
+
 .jumbotron {
   background: linear-gradient(144deg, #4bac32, #389820);
   width: auto;
@@ -162,6 +160,7 @@ h4 {
   font-size: 14.5px;
   line-height: 30px;
 }
+
 .consent {
   width: auto;
   min-height: 618px;
@@ -182,7 +181,6 @@ h4 {
 .agreement,
 .disagreement {
   width: 190px;
-  /* margin-top: 30px; */
   font-weight: 300;
   height: 26px;
 }

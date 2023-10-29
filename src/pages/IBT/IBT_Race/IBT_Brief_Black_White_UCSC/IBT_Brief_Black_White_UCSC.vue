@@ -10,9 +10,9 @@
   </main>
   <main v-else>
     <section>
-      <div v-show="!userHasPutInUserID" class="collect-user-id pt-4">
+      <div v-show="!userHasPutInUserID" class="collect-user-id ">
         <h3 style="font-size: 18px; font-weight: 500">Before we start!</h3>
-        <h3 class="input-user-id-text mt-6  mb-1">
+        <h3 class="input-user-id-text">
           What is your unique testing ID? ( You will be given this by a lab
           assistant )
         </h3>
@@ -87,6 +87,7 @@ export default {
     ImplicitBiasTestInstructions,
     ConsentForm,
   },
+
   data() {
     return {
       uid: "",
@@ -317,10 +318,10 @@ export default {
 
 .user-id {
   border-radius: 6px;
-  border: solid 1px solid 1px #c2c2c2;
-  margin-top: 25px;
-  height: 30px;
+  border: solid 1px #f7f7f7;
+  margin-top: 15px;
   width: 250px;
+  height: 25px;
   text-align: center;
 }
 

@@ -11,40 +11,6 @@
       <main-button routeTo="/" @click="routeToExploreStudies" class="explore-studies mt-10 ">Explore
         Studies</main-button>
     </section>
-    <!-- <section
-      v-show="exploreStudies"
-      class="consent-form-main"
-      style="height: auto; flex-direction: column"
-    >
-      <div class="jumbotron">
-        <h3>Consent Form</h3>
-      </div>
-      <br />
-      <section>
-        <div v-if="participating">
-          <img
-            src="../assets/app_icons/consent-form.png"
-            alt="Consent form"
-            class="consent-form-image"
-          />
-          <br />
-          <div class="arrange-btns">
-            <main-button
-              class="disagreement"
-              routeTo="/"
-              @click="participating = false"
-              >No, I do not agree to participate</main-button
-            >
-            <main-button class="agreement" routeTo="/Home"
-              >Yes, I agree to participate</main-button
-            >
-          </div>
-        </div>
-        <div v-else>
-          <h4>You can close out of this page</h4>
-        </div>
-      </section>
-    </section> -->
   </main>
 </template>
 
@@ -73,7 +39,7 @@ select {
 }
 
 .explore-studies {
-  width: 180px;
+  width: 150px;
 }
 
 /* 
@@ -147,7 +113,6 @@ select {
 .agreement,
 .disagreement {
   width: 190px;
-  /* margin-top: 30px; */
   font-weight: 300;
   height: 26px;
 }

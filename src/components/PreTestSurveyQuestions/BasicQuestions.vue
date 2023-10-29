@@ -1,7 +1,7 @@
 <template>
-  <div v-if="!userHasPutInUserID" class="collect-user-id pt-4">
+  <div v-if="!userHasPutInUserID" class="collect-user-id ">
     <h3 style="font-size: 18px; font-weight: 500">Before we start!</h3>
-    <h3 class="input-user-id-text mt-6 mb-1">
+    <h3 class="input-user-id-text">
       What is your unique testing ID? ( You will be given this by a lab
       assistant )
     </h3>
@@ -46,7 +46,7 @@
     </div>
     <div class="progress">
       <router-link to="/IAT_Choose_Test" class="btn_basic_survey router-link">Back</router-link>
-      <button @click="next" class="btn_basic_survey">next</button>
+      <button @click="next" class="btn_basic_survey">Next</button>
     </div>
   </div>
 </template>
@@ -109,7 +109,6 @@ export default {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 30px
 }
 
 .basic-questions_title {
@@ -126,10 +125,10 @@ export default {
 
 .user-id {
   border-radius: 6px;
-  border: solid 1px solid 1px #c2c2c2;
-  margin-top: 25px;
+  border: solid 1px #f7f7f7;
+  margin-top: 15px;
   width: 250px;
-  height: 30px;
+  height: 25px;
   text-align: center;
 }
 

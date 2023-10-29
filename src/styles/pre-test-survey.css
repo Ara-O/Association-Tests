@@ -24,7 +24,7 @@
   border: none;
   font-weight: 300;
   margin-top: 33px;
-  font-size: 13px;
+  font-size: 14px;
   padding: 1px 26px;
   background: linear-gradient(185deg, #7eefbf, #389820);
   border-radius: 47px;
@@ -39,6 +39,11 @@
   justify-content: center;
   align-items: center;
   text-decoration: none;
+}
+
+.btn_basic_survey span,
+.kb_btn {
+  font-size: 14px;
 }
 
 .router-link {
@@ -169,7 +174,7 @@ label {
 .jumbotron {
   background: linear-gradient(45deg, #3e9c3e, #32976d);
   width: 263px;
-  padding: 12px;
+  /* padding: 12px; */
   border-radius: 1px;
   color: white;
   box-shadow: 0px 0px 4px lightgray;
@@ -199,9 +204,8 @@ label {
 .agreement,
 .disagreement {
   width: 190px;
-  /* margin-top: 30px; */
   font-weight: 300;
-  height: 47px;
+  height: 26px;
 }
 
 .consent-form-images {
@@ -293,10 +297,10 @@ input[type="radio"] {
 
 .user-id {
   border-radius: 6px;
-  border: solid 1px solid 1px #c2c2c2;
-  margin-top: 25px;
+  border: solid 1px #f7f7f7;
+  margin-top: 15px;
   width: 250px;
-  height: 30px;
+  height: 25px;
   text-align: center;
   box-shadow: -1px 1px 2px #eeeeeeb2, 0px 1px 2px rgb(164 164 164 / 95%);
 }

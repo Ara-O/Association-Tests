@@ -120,7 +120,7 @@ let participating = ref(true);
 .jumbotron {
   background: linear-gradient(144deg, #4bac32, #389820);
   width: auto;
-  padding: 15px 52px;
+  padding: 12px 52px;
   border-radius: 1px;
   color: white;
   box-shadow: 0px 0px 4px lightgray;
@@ -129,6 +129,7 @@ let participating = ref(true);
 
 .jumbotron h3 {
   font-size: 16px;
+  margin: 4px;
   font-weight: 300;
 }
 
@@ -177,9 +178,9 @@ h4 {
 
 .agreement,
 .disagreement {
-  width: 255px;
+  width: 190px;
   font-weight: 300;
-  height: 67px;
+  height: 26px;
 }
 
 .arrange-btns {

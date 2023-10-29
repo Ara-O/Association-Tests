@@ -31,9 +31,10 @@ const props = defineProps({
   transition: all 250ms ease-in-out;
   color: white;
   text-decoration: none;
+  padding: 21px 27px;
   font-weight: 300;
   font-size: 14px;
-  height: auto
+  height: 20px
 }
 
 .compressed {

@@ -12,23 +12,23 @@ function shuffleObjects(array) {
 
 export function generateLdTrials(difficulties_face, no_difficulties_face, trials) {
     let learning_difficulties = [
-        { keyword: "Slow Learner", stimilusKey: difficulties_face },
+        { keyword: "Slow Learner", stimulusKey: difficulties_face },
         { keyword: "Academic Challenges", stimulusKey: difficulties_face },
         { keyword: "Educational Barriers", stimulusKey: difficulties_face },
         { keyword: "Difficulties Learning", stimulusKey: difficulties_face },
         //Duplicated
-        { keyword: "Slow Learner", stimilusKey: difficulties_face },
+        { keyword: "Slow Learner", stimulusKey: difficulties_face },
         { keyword: "Academic Challenges", stimulusKey: difficulties_face },
         { keyword: "Educational Barriers", stimulusKey: difficulties_face },
         { keyword: "Difficulties Learning", stimulusKey: difficulties_face },
     ];
 
     let without_learning_difficulties = [
-        { keyword: "Typically developing", stimilusKey: no_difficulties_face },
+        { keyword: "Typically developing", stimulusKey: no_difficulties_face },
         { keyword: "Neurotypical", stimulusKey: no_difficulties_face },
         { keyword: "No diagnosis", stimulusKey: no_difficulties_face },
         //Duplicated
-        { keyword: "Typically developing", stimilusKey: no_difficulties_face },
+        { keyword: "Typically developing", stimulusKey: no_difficulties_face },
         { keyword: "Neurotypical", stimulusKey: no_difficulties_face },
         { keyword: "No diagnosis", stimulusKey: no_difficulties_face },
     ];
@@ -73,5 +73,7 @@ export function generateLdTrials(difficulties_face, no_difficulties_face, trials
 
 
     updated_full_data[0].visibility = "block";
+
+    console.log(updated_full_data)
     return updated_full_data;
 }

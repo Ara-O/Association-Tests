@@ -31,7 +31,7 @@ const props = defineProps({
   transition: all 250ms ease-in-out;
   color: white;
   text-decoration: none;
-  padding: 21px 27px;
+  padding: 21px 34px;
   font-weight: 300;
   font-size: 14px;
   height: 20px

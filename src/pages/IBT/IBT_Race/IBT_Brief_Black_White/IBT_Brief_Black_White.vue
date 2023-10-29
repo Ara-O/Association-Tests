@@ -303,7 +303,7 @@ export default {
   border: solid 1px #f7f7f7;
   margin-top: 15px;
   width: 250px;
-  height: 25px;
+  height: 30px;
   text-align: center;
 }
 

@@ -1,9 +1,9 @@
 <template>
     <div v-if="currentStep <= 2">
         <h3 class="text-md font-semibold">Implicit Association Test</h3>
-        <h3 class="text-[14px] font-semibold mt-5">{{ section === 0 ? "Practice" : "Round One" }} </h3>
+        <h3 class="text-lg font-semibold mt-5">{{ section === 0 ? "Practice" : "Round One" }} </h3>
     </div>
-    <div v-if="currentStep === 1">
+    <div v-if="currentStep === 1" class="max-w-[420px]">
         <h4 class="text-sm leading-6 mt-4">
             <b>Instructions: </b>On the screen, you will see two
             sets of words: one related to individuals with learning difficulties and
@@ -103,7 +103,7 @@
             <div class="mt-5 h-20 w-56">
                 <!-- Stars and Crosses -->
                 <div class="flex justify-center">
-                    <img src="../../../assets/IT_faces/star.jpg" alt="star" v-show="userGotStimulusRight"
+                    <img src="../../../assets/LD_IBT/check-mark.png" alt="star" v-show="userGotStimulusRight"
                         class="ibt-star h-20" />
                     <img src="../../../assets/IT_faces/cross.jpg" alt="cross" class="cross" v-show="userGotStimulusWrong" />
                 </div>
@@ -153,18 +153,18 @@ let paused = ref(false)
 let currentTrial = ref(0)
 let section = ref(0)
 let testNotStarted = ref(true)
-let currentStep = ref(2)
+let currentStep = ref(1)
 
 const emits = defineEmits(["finished"])
 
 let ibt_trials = [
     {
         section: "Practice",
-        trials: generateLdTrials("Smiley", "Sad", 4),
+        trials: generateLdTrials("Smiley", "Sad", 2),
     },
     {
         section: "Full test",
-        trials: generateLdTrials("Smiley", "Sad", 4),
+        trials: generateLdTrials("Smiley", "Sad", 2),
     },
 ]
 

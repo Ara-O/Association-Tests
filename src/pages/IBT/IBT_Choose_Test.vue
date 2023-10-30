@@ -110,7 +110,7 @@ main {
   cursor: pointer;
   margin-bottom: 25px;
   transition: all 250ms ease-in-out;
-  padding: 9px 34px;
+  padding: 5px 34px;
   font-size: 14px;
 }
 

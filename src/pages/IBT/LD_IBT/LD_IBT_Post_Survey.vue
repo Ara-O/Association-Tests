@@ -1,7 +1,7 @@
 <template>
     <section class="flex items-center justify-center h-screen" v-if="currentStep === 1">
         <div class="result-box">
-            <h3 class="font-medium">End of the Test</h3>
+            <h3 class="font-medium !text-lg">End of the Test</h3>
             <img src="../../../assets/LD_IBT/happy-children.png" alt="Happy children illustration" class="w-56">
             <h4 class="font-medium">Congratulations! You have reached the end of the Implicit Association Test.
             </h4>
@@ -24,7 +24,9 @@
                 It is important to foster understanding, empathy, and positive attitudes for the well-being and success of
                 individuals with learning difficulties.
                 Explore the following:
-                <a href="https://www.ldao.ca/introduction-to-ldsadhd/articles/about-lds/about-learning-disabilities/"> About
+                <a target="_blank"
+                    href="https://www.ldao.ca/introduction-to-ldsadhd/articles/about-lds/about-learning-disabilities/">
+                    About
                     Learning Disabilities – Learning Disabilities Association of Ontario – LDAO</a>
             </h3>
 
@@ -52,7 +54,7 @@
 
             <!-- First question -->
             <!-- <></div> -->
-            <div class="w-[460px] m-auto">
+            <div class="max-w-[460px] w-auto m-auto">
                 <h3 class="font-medium"> 1. On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the
                     future), how
                     soon do you think
@@ -158,7 +160,7 @@
             <!-- Sub question 1 -->
             <h3>1. Sam is struggling because he does not put enough effort into his schoolwork.
             </h3>
-            <div class="w-[460px] m-auto">
+            <div class="max-w-[460px] w-auto m-auto">
                 <div class="flex items-center justify-between">
                     <span>
                         <input type="radio" name="sam-struggling-question" value="1" id="q1" />
@@ -189,7 +191,7 @@
             </div>
             <!-- Sub question 2 -->
             <h3>2. Sam’s difficulties are due to differences in his brain function (which impact how he learns). </h3>
-            <div class="w-[460px] m-auto">
+            <div class="max-w-[460px] w-auto m-auto">
                 <div class="flex items-center justify-between">
                     <span>
                         <input type="radio" name="sam-brain-function-question" value="1" id="r1" />

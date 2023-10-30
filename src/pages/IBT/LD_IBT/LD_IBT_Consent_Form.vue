@@ -1,6 +1,6 @@
 <template>
   <section class="main">
-    <section class="survey" v-if="userAgreesToConsentForm">
+    <section class="survey" v-show="userAgreesToConsentForm">
       <!-- Top images -->
       <div class="top-introductory-image">
         <img src="../../../assets/LD_IBT/ld-lab-image.png" alt="LB lab image" />

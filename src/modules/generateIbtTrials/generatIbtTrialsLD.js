@@ -74,6 +74,5 @@ export function generateLdTrials(difficulties_face, no_difficulties_face, trials
 
     updated_full_data[0].visibility = "block";
 
-    console.log(updated_full_data)
     return updated_full_data;
 }

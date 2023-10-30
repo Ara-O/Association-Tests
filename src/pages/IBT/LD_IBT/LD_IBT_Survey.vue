@@ -335,7 +335,6 @@ const router = useRouter();
 
 function startTest() {
   router.push("/LD_IBT");
-  console.log("test@");
 }
 
 function finishEmailSection() {
@@ -374,7 +373,7 @@ function finishEmailSection() {
   font-weight: 300;
   outline: none;
   padding-bottom: 3px;
-  height: 25px;
+  height: 40px;
   border: solid 1px darkgray;
   border-width: 0px 0px 1px 0px;
 }

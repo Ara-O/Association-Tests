@@ -1,7 +1,7 @@
 <template>
     <div v-if="currentStep <= 2">
         <h3 class="text-md font-semibold">Implicit Association Test</h3>
-        <h3 class="text-lg font-semibold mt-5">{{ section === 0 ? "Practice" : "Round One" }} </h3>
+        <h3 class="text-lg font-semibold mt-5">{{ section === 0 ? "Practice " + position : "Round " + position }} </h3>
     </div>
     <div v-if="currentStep === 1" class="max-w-[420px]">
         <h4 class="text-sm leading-6 mt-4">
@@ -133,11 +133,6 @@
                 </div>
             </div>
         </section>
-
-
-        <!-- ACTUAL ROUND -->
-        <section v-if="currentStep === 4">
-        </section>
     </section>
 </template>
 
@@ -146,6 +141,7 @@ import { onMounted, ref, watch } from 'vue';
 import { generateLdTrials } from "../../../modules/generateIbtTrials/generatIbtTrialsLD"
 import { startTimer, handleAnswer } from "../../../modules/handleAnswers/handleIbtAnswersLd"
 import { routerKey } from 'vue-router';
+import router from '../../../router';
 
 let userGotStimulusRight = ref(false)
 let userGotStimulusWrong = ref(false)
@@ -155,16 +151,17 @@ let section = ref(0)
 let testNotStarted = ref(true)
 let currentStep = ref(1)
 
+const props = defineProps(["position"])
 const emits = defineEmits(["finished"])
 
 let ibt_trials = [
     {
         section: "Practice",
-        trials: generateLdTrials("Smiley", "Sad", 2),
+        trials: generateLdTrials("Smiley", "Sad", 4),
     },
     {
         section: "Full test",
-        trials: generateLdTrials("Smiley", "Sad", 2),
+        trials: generateLdTrials("Smiley", "Sad", 4),
     },
 ]
 
@@ -176,7 +173,6 @@ function getClickerImage(url) {
 
 function startTest() {
     currentStep.value++;
-    console.log("start test")
     setTimeout(() => {
         testNotStarted.value = false
         startTimer()
@@ -185,8 +181,13 @@ function startTest() {
 
 function finishedSection(fullyDone) {
     if (fullyDone) {
-        emits("finished")
-        return
+        if (props.position === 1) {
+            emits("finished")
+            return
+        } else {
+            router.push("/LD_IBT_Post_Survey")
+            return
+        }
     }
     testNotStarted.value = true
     currentTrial.value = 0

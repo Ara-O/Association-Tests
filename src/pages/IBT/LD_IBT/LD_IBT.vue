@@ -1,10 +1,21 @@
 <template>
   <section class="main ">
-    <section v-show="currentStep === Steps.TestOne" class="section-box">
-      <TestOne @finished="currentStep++"></TestOne>
+    <section v-if="testToStart === 0">
+      <section v-show="currentStep === Steps.TestOne" class="section-box">
+        <TestOne :position="1" @finished="currentStep++"></TestOne>
+      </section>
+      <section v-show="currentStep === Steps.TestTwo" class="section-box">
+        <TestTwo :position="2"></TestTwo>
+      </section>
     </section>
-    <section v-show="currentStep === Steps.TestTwo" class="section-box">
-      <TestTwo></TestTwo>
+
+    <section v-if="testToStart === 1">
+      <section v-show="currentStep === Steps.TestOne" class="section-box">
+        <TestTwo :position="1" @finished="currentStep++"></TestTwo>
+      </section>
+      <section v-show="currentStep === Steps.TestTwo" class="section-box">
+        <TestOne :position="2"></TestOne>
+      </section>
     </section>
   </section>
 </template>
@@ -15,6 +26,8 @@ import TestOne from "./LD_IBT_Test1.vue"
 import TestTwo from "./LD_IBT_Test2.vue"
 
 let currentStep = ref(1)
+
+let testToStart = Math.floor(Math.random() * 2)
 
 const Steps = Object.freeze({
   TestOne: 1,

@@ -1,7 +1,7 @@
 <template>
     <div v-if="currentStep <= 2">
         <h3 class="text-md font-semibold">Implicit Association Test</h3>
-        <h3 class="text-lg font-semibold mt-5">{{ section === 0 ? "Practice 2" : "Round Two" }} </h3>
+        <h3 class="text-lg font-semibold mt-5">{{ section === 0 ? "Practice " + position : "Round " + position }} </h3>
     </div>
     <div v-if="currentStep === 1" class="max-w-[420px]">
         <h4 class="text-sm leading-6 mt-4">
@@ -87,7 +87,7 @@
                     <tr>
                         <td>Average Learner, Typically Developing, Neurotypical, No Diagnosis </td>
                         <td>
-                            <img src="../../../assets/LD_IBT/sad-face.png" class="w-32" />
+                            <img src="../../../assets/LD_IBT/happy-face.png" class="w-32" />
                         </td>
                     </tr>
                     <tr>
@@ -95,7 +95,7 @@
                             Learning
                         </td>
                         <td>
-                            <img src="../../../assets/LD_IBT/happy-face.png" class="w-32" />
+                            <img src="../../../assets/LD_IBT/sad-face.png" class="w-32" />
                         </td>
                     </tr>
                 </table>
@@ -156,16 +156,17 @@ let testNotStarted = ref(true)
 let currentStep = ref(1)
 
 const router = useRouter()
+const props = defineProps(["position"])
 const emits = defineEmits(["finished"])
 
 let ibt_trials = [
     {
         section: "Practice",
-        trials: generateLdTrials("Sad", "Smiley", 2),
+        trials: generateLdTrials("Sad", "Smiley", 4),
     },
     {
         section: "Full test",
-        trials: generateLdTrials("Sad", "Smiley", 2),
+        trials: generateLdTrials("Sad", "Smiley", 4),
     },
 ]
 
@@ -177,7 +178,6 @@ function getClickerImage(url) {
 
 function startTest() {
     currentStep.value++;
-    console.log("start test")
     setTimeout(() => {
         testNotStarted.value = false
         startTimer()
@@ -185,7 +185,17 @@ function startTest() {
 }
 
 function finishedSection(fullyDone) {
+
     if (fullyDone) {
+        if (fullyDone) {
+            if (props.position === 1) {
+                emits("finished")
+                return
+            } else {
+                router.push("/LD_IBT_Post_Survey")
+                return
+            }
+        }
         router.push("/LD_IBT_Post_Survey")
         return
     }

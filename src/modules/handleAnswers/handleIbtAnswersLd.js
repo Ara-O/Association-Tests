@@ -36,7 +36,6 @@ function handleAnswer(userChoice, testNotStarted, data, testIsPaused, currentTri
 
 
         if (currentChallenge.stimulusKey === userChoice) {
-            console.log("Right")
             //Stops timer
             stopTimer();
             testIsPaused.value = true;
@@ -60,9 +59,7 @@ function handleAnswer(userChoice, testNotStarted, data, testIsPaused, currentTri
                     }, 500);
                 }, 500);
             } else {
-                console.log("done")
                 if (section.value === 1) {
-                    console.log("fully done")
                     finishedSection(true)
                 } else {
                     finishedSection(false)

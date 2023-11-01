@@ -444,13 +444,71 @@
     <!-- Question section 4 -->
     <section class="flex items-center justify-center h-screen " v-if="currentStep === 4">
         <div class="result-box-questions ">
-            <h3 class="font-medium">9.What other reasons might be contributing to Sam’s difficulty in achieving better at
+            <h3 class="font-medium">9. What other reasons might be contributing to Sam’s difficulty in achieving better at
                 school in comparison with his peers? </h3>
-            <div class="max-w-[365px] w-auto m-auto">
-                <textarea name="" id="" cols="30" rows="10"></textarea>
-
+            <textarea class="h-32 border border-gray-400" id="" cols="30" rows="10"></textarea>
+            <h3 class="font-medium">
+                10. If Sam’s parents come to you as a friend to ask about what they should do to help their child with his
+                academic work what would you advise them?
+            </h3>
+            <textarea class="h-32 border border-gray-400" id="" cols="30" rows="10"></textarea>
+            <br>
+            <div class="flex gap-5 justify-center">
+                <button @click="currentStep--">Back</button>
+                <button @click="currentStep++">Next</button>
             </div>
+        </div>
+    </section>
 
+    <!-- Question 5 -->
+    <section class="flex items-center justify-center h-screen " v-if="currentStep === 5">
+        <div class="result-box-questions ">
+            <h3 class="font-medium !text-[16px]">Appendix 4</h3>
+            <h4 class="text-[14px]">First Impressions Assessment Scale for Observers</h4>
+            <h5 class="leading-7">
+                <span class="underline">Task instructions: </span> You will be viewing brief video clips of people talking
+                about themselves. You will then
+                be asked to give your first impressions of that person on a number of characteristics by giving a rating
+                from strongly agree to strongly disagree. Please watch the entire video before giving your ratings, and try
+                to respond as quickly and honestly as possible.
+            </h5>
+            <h5 class="underline">After participants view each video: </h5>
+            <h5>Please indicate your rating</h5>
+
+
+            <table>
+                <tr>
+                    <td></td>
+                    <td>Strongly Agree</td>
+                    <td>Agree</td>
+                    <td>Disagree</td>
+                    <td>Strongly Disagree</td>
+                </tr>
+                <tr v-for="question in questions">
+                    <td class="!w-52">{{ question.question }}</td>
+                    <td><input type="radio"></td>
+                    <td><input type="radio"></td>
+                    <td><input type="radio"></td>
+                    <td><input type="radio"></td>
+                </tr>
+                <tr></tr>
+            </table>
+
+            <!--  -->
+            <div class="flex gap-5 justify-center">
+                <button @click="currentStep--">Back</button>
+                <button @click="currentStep++">Next</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secion 6 -->
+    <section class="flex items-center justify-center h-screen " v-if="currentStep === 6">
+        <div class="result-box-questions ">
+            <h3 class="font-medium !text-[16px]">Appendix 5 Parents and School Survey</h3>
+            <h5>Below are several statements. Please read them and circle the answer that best describes how much you agree
+                with the statement. It is most helpful if you try to answer honestly and accurately. This information helps
+                us plan how to make the program as helpful to parents as possible.</h5>
         </div>
     </section>
 </template>
@@ -460,6 +518,48 @@ import { ref } from 'vue';
 
 let currentStep = ref(1)
 let userSelectedSam = ref(false)
+let questions = ref([
+    {
+        question: "This person is socially awkward",
+        inputName: "sth"
+    },
+    {
+        question: "This person is attractive",
+        inputName: "sth"
+    },
+    {
+        question: "This person is trustworthy/honest",
+        inputName: "sth"
+    },
+    {
+        question: "This person is assertive",
+        inputName: "sth"
+    },
+    {
+        question: "This person is likeable",
+        inputName: "sth"
+    },
+    {
+        question: "This person is intelligent",
+        inputName: "sth"
+    },
+    {
+        question: "I would hang out with this person in my free time",
+        inputName: "sth"
+    },
+    {
+        question: "I wouldn’t like it if I had to live near this person",
+        inputName: "sth"
+    },
+    {
+        question: "I would be uncomfortable sitting next to this person",
+        inputName: "sth"
+    },
+    {
+        question: "I would start a conversation with this person",
+        inputName: "sth"
+    },
+])
 </script>
 
 <style scoped>
@@ -497,6 +597,13 @@ input {
 h3 {
     line-height: 1.75rem;
     font-size: 13px;
+}
+
+td {
+    font-size: 13px;
+    height: 36px;
+    width: 90px;
+    line-height: 24px;
 }
 
 .result-box-questions {

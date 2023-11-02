@@ -4,15 +4,15 @@
     <section v-show="currentStep === Step.AskForEmailAddress">
       <div class="survey-box">
         <h3 style="font-weight: 500">
-          Please provide us with your email address
+          Please provide us with your email address/phone number
         </h3>
         <h4 style="font-size: 14px; line-height: 30px; font-weight: 300">
-          Note: Your email address will be used solely for payment purposes for
+          Note: Your email address/phone number will be used solely for payment purposes for
           taking part in this study and will not be used to identify you
           individually. Your participation in this study will remain anonymous.
         </h4>
         <input type="text" name="user-email" v-model="ld_email" id="email" class="ld-user-email"
-          placeholder="Enter email address here" />
+          placeholder="Enter email address/phone number here" />
         <br />
         <button @click="finishEmailSection">Next</button>
       </div>
@@ -173,11 +173,16 @@
 
         <div class="full">
           <label for="occupation">
-            8. What is your occupation in Canada? Note: If you are a new
-            Canadian and were employed before immigrating to Canada, please
-            indicate your occupation in your former country
+            8. What is your occupation in Canada? Note
           </label>
           <input type="text" id="occupation" placeholder="Year" />
+        </div>
+        <div class="full">
+          <label for="occupation-2">
+            If you are a new
+            Canadian and were employed before immigrating to Canada, please
+            indicate your occupation in your former country </label>
+          <input type="text" id="occupation-2" placeholder="Year" />
         </div>
         <div class="test-buttons" style="margin-top: -10px">
           <button @click="currentStep--">Back</button>

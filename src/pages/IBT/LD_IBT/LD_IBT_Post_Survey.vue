@@ -504,11 +504,63 @@
 
     <!-- Secion 6 -->
     <section class="flex items-center justify-center h-screen " v-if="currentStep === 6">
-        <div class="result-box-questions ">
+        <div class="result-box-questions !max-w-[1000px]">
             <h3 class="font-medium !text-[16px]">Appendix 5 Parents and School Survey</h3>
-            <h5>Below are several statements. Please read them and circle the answer that best describes how much you agree
+            <h5 class="leading-7">Below are several statements. Please read them and circle the answer that best describes
+                how much you agree
                 with the statement. It is most helpful if you try to answer honestly and accurately. This information helps
                 us plan how to make the program as helpful to parents as possible.</h5>
+
+            <table>
+                <tr>
+                    <td></td>
+                    <td>Strongly Agree</td>
+                    <td>Agree</td>
+                    <td>Partially Agree/Partially disagree</td>
+                    <td>Disagree</td>
+                    <td>Strongly Disagree</td>
+                </tr>
+                <tr v-for="(question, index) in questionsAppendix6">
+                    <td class="!w-[32rem] text-left">{{ question.question }}</td>
+                    <td v-for="i in 5"> <input type="radio" :id="i + question.inputName" :name="question.inputName">
+                        <label :for="i + question.inputName" class="mt-0">{{ i }}</label>
+                    </td>
+                    <br>
+                </tr>
+                <tr></tr>
+            </table>
+
+            <h5 class="leading-7">Below are several statements. Please read them and circle the answer that best describes
+                How difficult do the following issues make involvement with your child’s school?
+            </h5>
+
+            <div class="flex justify-center">
+
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>A lot</td>
+                        <td>Some</td>
+                        <td>Not an Issue</td>
+                    </tr>
+                    <tr v-for="(question, index) in questionsAppendixFinal">
+                        <td class="!w-52">{{ question.question }}</td>
+                        <td v-for="i in 3"> <input type="radio" :id="i + question.inputName" :name="question.inputName">
+                            <label :for="i + question.inputName" class="mt-0">{{ i }}</label>
+                        </td>
+                        <br>
+                    </tr>
+                    <tr></tr>
+                </table>
+            </div>
+
+            <h5>If Other, Please specify</h5>
+            <input type="text">
+            <!--  -->
+            <div class="flex gap-5 justify-center">
+                <button @click="currentStep--">Back</button>
+                <button @click="">Finish test!</button>
+            </div>
         </div>
     </section>
 </template>
@@ -516,8 +568,132 @@
 <script setup>
 import { ref } from 'vue';
 
-let currentStep = ref(1)
+let currentStep = ref(5)
 let userSelectedSam = ref(false)
+let questionsAppendixFinal = ref([
+    {
+        question: "Lack of Time",
+        inputName: "sth"
+    },
+    {
+        question: "Timing of Programs",
+        inputName: "sth"
+    },
+    {
+        question: "Small Children",
+        inputName: "sth"
+    },
+    {
+        question: "Transportation",
+        inputName: "sth"
+    },
+    {
+        question: "Work Schedule",
+        inputName: "sth"
+    },
+    {
+        question: "Other",
+        inputName: "sth"
+    },
+])
+let questionsAppendix6 = ref([
+    {
+        question: "I feel very comfortable visiting my child’s school.",
+        inputName: "sth"
+    },
+    {
+        question: "My child’s schoolwork is always displayed in our home (e.g., hang papers on the refrigerator).",
+        inputName: "sth"
+    },
+    {
+        question: "If my child misbehaved at school, I would know about it soon afterward.",
+        inputName: "sth"
+    },
+    {
+        question: "I frequently explain difficult ideas to my child when she/he doesn’t understand.",
+        inputName: "sth"
+    },
+    {
+        question: "Every time my child does something well at school, I compliment him/her.",
+        inputName: "sth"
+    },
+    {
+        question: "Talking with my child’s principal makes me uncomfortable.",
+        inputName: "sth"
+    },
+    {
+        question: "I always know how well my child is doing in school.",
+        inputName: "sth"
+    },
+    {
+        question: "I am confused about my legal rights as a parent.",
+        inputName: "sth"
+    },
+    {
+        question: "I read to my child every day/I encourage my child to read every day.",
+        inputName: "sth"
+    },
+    {
+        question: "I talk with other parents frequently about educational issues.",
+        inputName: "sth"
+    },
+    {
+        question: "My child attends community programs (e.g:YMCA, park/rec, community theatre, religious institutes)",
+        inputName: "sth"
+    },
+    {
+        question: "I have visited my child’s classroom several times in the past year",
+        inputName: "sth"
+    },
+    {
+        question: "I have made suggestions to my child’s teachers about how to help my child learn.",
+        inputName: "sth"
+    },
+    {
+        question: "There are many children’s books in our house.",
+        inputName: "sth"
+    },
+    {
+        question: "In the past 12 months I have attended several times activities at my child’s school (e.g., fun nights performances, awards nights).",
+        inputName: "sth"
+    },
+    {
+        question: "My child misses’ school several days each semester.",
+        inputName: "sth"
+    },
+    {
+        question: "Talking with my child’s current teacher makes me somewhat uncomfortable.",
+        inputName: "sth"
+    },
+    {
+        question: "I don’t understand the assignments my child brings home.",
+        inputName: "sth"
+    },
+    {
+        question: "Reading books is a regular activity in our home.  ",
+        inputName: "sth"
+    },
+    {
+        question: "If my child was having trouble at school, I would not know how to get extra help for him / her.",
+        inputName: "sth"
+    },
+    {
+        question: "I am familiar with the Canadian laws governing schools well.",
+        inputName: "sth"
+    },
+    {
+        question: "In the past 12 months I attended several school board meetings.",
+        inputName: "sth"
+    },
+    {
+        question: "In the past 12 months I volunteered at my child’s school at least 3 times.",
+        inputName: "sth"
+    },
+    {
+        question: "I know about many programs for youth in my community. (As an example, Heritage Language schools)",
+        inputName: "sth"
+    },
+])
 let questions = ref([
     {
         question: "This person is socially awkward",

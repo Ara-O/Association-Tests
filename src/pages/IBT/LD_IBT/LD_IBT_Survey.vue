@@ -56,53 +56,54 @@
 
         <div class="full centered">
           <label for="province">Province (if applicable): </label>
-          <input type="text" id="province" />
+          <input type="text" id="province" v-model="surveyData.province" placeholder="Province" />
         </div>
 
         <div class="full centered space-top">
           <label for="city">City: </label>
-          <input type="text" id="city" />
+          <input type="text" id="city" v-model="surveyData.city" placeholder="City" />
         </div>
 
         <h4>2. When did you or your family come to Canada?</h4>
         <div class="full centered">
           <label for="you">You: </label>
-          <input type="text" id="you" placeholder="Year" />
+          <input type="text" id="you" v-model="surveyData.whenUserMovedToCanada" placeholder="Year" />
         </div>
 
         <div class="full centered space-top">
           <label for="spouse-1">Your spouse (if applicable): </label>
-          <input type="text" id="spouse-1" placeholder="Year" />
+          <input type="text" id="spouse-1" placeholder="Year" v-model="surveyData.whenSpouseMovedToCanada" />
         </div>
 
         <div class="full centered space-top">
           <label for="parents">Your parents (if applicable): </label>
-          <input type="text" id="parents" placeholder="Year" />
+          <input type="text" id="parents" placeholder="Year" v-model="surveyData.whenParentsMovedToCanada" />
         </div>
 
         <h4>3. How long have you or your family been in Canada?</h4>
 
         <div class="full centered">
           <label for="you-years-in-canada">You: </label>
-          <input type="text" id="you-years-in-canada" placeholder="Years" />
+          <input type="text" id="you-years-in-canada" v-model="surveyData.howLongUserHasBeenInCanada"
+            placeholder="Years" />
         </div>
 
         <div class="full centered space-top">
           <label for="family-years-in-canada">Your family: </label>
-          <input type="text" id="family-years-in-canada" placeholder="Years" />
+          <input type="text" id="family-years-in-canada" v-model="surveyData.howLongFamilyHasBeenInCanada"
+            placeholder="Years" />
         </div>
         <button type="submit" style="margin-top: 30px">Next</button>
       </form>
     </section>
 
     <!-- SURVEY SECTION 2 -->
-
     <section v-show="currentStep === Step.ShowBackgroundFormSurveyTwo" class="survey-section">
       <h3>Background Form</h3>
       <h4>Please answer the following questions</h4>
-      <div class="form">
+      <div class="form h-full">
         <label for="immigrant-status">4. What is your immigrant status in Canada</label>
-        <select id="immigrant-status">
+        <select id="immigrant-status" v-model="surveyData.immigrantStatus">
           <option value="Canadian Citizen">Canadian Citizen</option>
           <option value="Permanent Resident">Permanent Resident</option>
           <option value="Refugee">Refugee</option>
@@ -112,7 +113,7 @@
         </select>
 
         <label for="what-user-considers-themselves">5. Do you consider yourself to be:</label>
-        <select id="what-user-considers-themselves">
+        <select id="what-user-considers-themselves" v-model="surveyData.userGeneration">
           <option value="First generation immigrant (that is, you were born outside of Canada)">
             First generation immigrant (that is, you were born outside of
             Canada)
@@ -130,7 +131,7 @@
 
         <label for="highest-education-level">6. Please select the highest level of education that you have
           attained</label>
-        <select id="highest-education-level">
+        <select id="highest-education-level" v-model="surveyData.usersHighestEducationLevel">
           <option value="Some school">Some school</option>
           <option value="Completed high school diploma and a professional qualification not from a college or university">
             Completed high school diploma and a professional qualification not
@@ -145,13 +146,16 @@
           <option value="Completed one or more graduate degrees (Masters/or Ph.D.)">
             Completed one or more graduate degrees (Masters/or Ph.D.).
           </option>
-          <option value=" Other (please specify):">
+          <option value="Other (please specify)">
             Other (please specify)
           </option>
         </select>
 
-        <label for="spouse-highest-education-level">7. What is your spouse's highest educational qualification</label>
-        <select id="spouse-highest-education-level">
+        <input type="text" class="mt-3" v-if="surveyData.usersHighestEducationLevel === 'Other (please specify)'"
+          placeholder="Specify here" v-model="surveyData.usersHighestEducationLevelOther">
+
+        <label for="spouse-highest-education-level">7. What is your spouse's highest educational level</label>
+        <select id="spouse-highest-education-level" v-model="surveyData.spouseHighestEducationLevel">
           <option value="Some school">Some school</option>
           <option value="Completed high school diploma and a professional qualification not from a college or university">
             Completed high school diploma and a professional qualification not
@@ -166,25 +170,30 @@
           <option value="Completed one or more graduate degrees (Masters/or Ph.D.)">
             Completed one or more graduate degrees (Masters/or Ph.D.).
           </option>
-          <option value=" Other (please specify):">
+          <option value="Other (please specify)">
             Other (please specify)
           </option>
         </select>
+        <input type="text" class="mt-3" v-if="surveyData.spouseHighestEducationLevel === 'Other (please specify)'"
+          placeholder="Specify here" v-model="surveyData.spouseHighestEducationLevelOther">
+
 
         <div class="full">
           <label for="occupation">
-            8. What is your occupation in Canada? Note
+            8. What is your occupation in Canada?
           </label>
-          <input type="text" id="occupation" placeholder="Year" />
+          <input type="text" id="occupation" v-model="surveyData.userOccupationInCanada" placeholder="Occupation" />
         </div>
+
         <div class="full">
           <label for="occupation-2">
             If you are a new
             Canadian and were employed before immigrating to Canada, please
             indicate your occupation in your former country </label>
-          <input type="text" id="occupation-2" placeholder="Year" />
+          <input type="text" id="occupation-2" placeholder="Occupation"
+            v-model="surveyData.userOccupationInFormerCountry" />
         </div>
-        <div class="test-buttons" style="margin-top: -10px">
+        <div class=" test-buttons" style="margin-top: -10px">
           <button @click="currentStep--">Back</button>
           <button @click="currentStep++">Next</button>
         </div>
@@ -199,7 +208,7 @@
         <div class="full centered">
           <label for="main-language">9. What is the main language you use at home on a daily basis?
           </label>
-          <select id="main-language">
+          <select id="main-language" v-model="surveyData.mainLanguageUsedAtHome">
             <option value="English">English</option>
             <option value="French">French</option>
             <option value="German">German</option>
@@ -220,20 +229,7 @@
             language indicated above? If yes, what is/are the additional
             language/languages you use?
           </label>
-          <select id="other-language">
-            <option value="English">English</option>
-            <option value="French">French</option>
-            <option value="German">German</option>
-            <option value="Arabic">Arabic</option>
-            <option value="Portugese">Portugese</option>
-            <option value="Japanese">Japanese</option>
-            <option value="Hindi">Hindi</option>
-            <option value="Chinese">Chinese</option>
-            <option value="Korean">Korean</option>
-            <option value="Bengali">Bengali</option>
-            <option value="Italian">Italian</option>
-            <option value="Punjabi">Punjabi</option>
-          </select>
+          <input type="text" id="other-languages" v-model="surveyData.otherLanguagesUsedAtHome">
         </div>
         <br />
         <div class="full centered space-top">
@@ -242,7 +238,7 @@
             ethnic groups that you are currently a part of) who is struggling
             with their studies/learning process at school?
           </label>
-          <select>
+          <select v-model="surveyData.userIsAwareOfStrugglingChildInCommunity">
             <option value="Yes">Yes</option>
             <option value="No">No</option>
           </select>
@@ -331,9 +327,33 @@ enum Step {
   StartTest,
 }
 
-let currentStep = ref<number>(Step.AskForEmailAddress);
+let currentStep = ref<number>(5);
 
 let ld_email = ref<string>("");
+
+let surveyData = ref({
+  province: "",
+  city: "",
+  whenUserMovedToCanada: "",
+  whenSpouseMovedToCanada: "",
+  whenParentsMovedToCanada: "",
+  howLongUserHasBeenInCanada: "",
+  howLongFamilyHasBeenInCanada: "",
+  // Section 2
+  immigrantStatus: "",
+  userGeneration: "",
+  usersHighestEducationLevel: "",
+  usersHighestEducationLevelOther: "",
+  spouseHighestEducationLevel: "",
+  spouseHighestEducationLevelOther: "",
+  userOccupationInCanada: "",
+  userOccupationInFormerCountry: "",
+  // Sectuin 3
+  mainLanguageUsedAtHome: "",
+  otherLanguagesUsedAtHome: "",
+  userIsAwareOfStrugglingChildInCommunity: ""
+})
+
 
 const store = useStore();
 const router = useRouter();
@@ -343,7 +363,7 @@ function startTest() {
 }
 
 function finishEmailSection() {
-  store.commit("storeLdEmail", ld_email.value);
+  store.commit("storeLdPointOfContact", ld_email.value);
   currentStep.value++;
 }
 </script>
@@ -423,7 +443,7 @@ select {
 
 .test-intro-message {
   margin-top: 0px;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 14px;
   line-height: 30px;
 }
@@ -472,6 +492,8 @@ input {
   border: solid 0.5px #6868689c;
   font-weight: 300;
   box-sizing: border-box;
+  font-size: 13px;
+  padding: 2px 0px;
 }
 
 .full {

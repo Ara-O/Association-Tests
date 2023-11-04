@@ -24,6 +24,7 @@ export default createStore({
     IT_trials_text: [],
     uid: "",
     ld_point_of_contact: "",
+    ld_data: []
   },
 
   getters: {
@@ -46,5 +47,14 @@ export default createStore({
     changeCurrentTest(state, payload) {
       state.currentTest = payload;
     },
+
+    storeLd(state, payload) {
+      state.ld_data.push(payload)
+    },
+
+    clearStoredLd(state) {
+      state.ld_data = []
+
+    }
   },
 });

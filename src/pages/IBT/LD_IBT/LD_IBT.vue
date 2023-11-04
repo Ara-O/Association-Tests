@@ -27,7 +27,9 @@ import TestTwo from "./LD_IBT_Test2.vue"
 
 let currentStep = ref(1)
 
-let testToStart = Math.floor(Math.random() * 2)
+// Uncomment for random test starting
+// let testToStart = Math.floor(Math.random() * 2)
+let testToStart = 0
 
 const Steps = Object.freeze({
   TestOne: 1,
@@ -39,10 +41,6 @@ const Rounds = Object.freeze({
   ActualRound: 1
 
 })
-
-
-
-
 </script>
 
 <style scoped>

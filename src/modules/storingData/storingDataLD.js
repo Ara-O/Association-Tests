@@ -42,6 +42,7 @@ export function storeLDPreSurvey(uid, data) {
 
 }
 
+
 export function storeLDData(
     dataToStore,
     thisData,
@@ -54,55 +55,56 @@ export function storeLDData(
         );
     }
 
+    console.log(dataToStore)
     // console.log("data gets stored now - ", dataToStore);
-    dataToStore.forEach((element, outerIndex) => {
-        element.forEach((trial, innerIndex) => {
-            trial.browser = navigator["userAgent"];
-            trial.dateTaken = `${cMonth}-${cDay}-${cYear}`;
-            trial.stimulusOrder = innerIndex + 1;
-            // rome-ignore lint/performance/noDelete: <explanation>
-            delete trial.randomNo;
-            // rome-ignore lint/performance/noDelete: <explanation>
-            delete trial.visibility;
-        });
-        // console.log(element);
-    });
+    // dataToStore.forEach((element, outerIndex) => {
+    //     element.forEach((trial, innerIndex) => {
+    //         trial.browser = navigator["userAgent"];
+    //         trial.dateTaken = `${cMonth}-${cDay}-${cYear}`;
+    //         trial.stimulusOrder = innerIndex + 1;
+    //         // rome-ignore lint/performance/noDelete: <explanation>
+    //         delete trial.randomNo;
+    //         // rome-ignore lint/performance/noDelete: <explanation>
+    //         delete trial.visibility;
+    //     });
+    //     // console.log(element);
+    // });
 
-    const db = getDatabase(app);
+    // const db = getDatabase(app);
 
-    if (
-        localStorage.getItem(
-            `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`
-        ) === null
-    ) {
-        localStorage.setItem(
-            `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`,
-            1
-        );
-    }
+    // if (
+    //     localStorage.getItem(
+    //         `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`
+    //     ) === null
+    // ) {
+    //     localStorage.setItem(
+    //         `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`,
+    //         1
+    //     );
+    // }
 
-    let numberOfTimesTestWasTaken = localStorage.getItem(
-        `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`
-    );
-    set(
-        ref(
-            db,
-            `IBT_Brief_Black_White/User-${thisData.$store.state.uid
-            }-${numberOfTimesTestWasTaken.padStart(2, 0)}`
-        ),
-        {
-            data: dataToStore,
-        }
-    );
+    // let numberOfTimesTestWasTaken = localStorage.getItem(
+    //     `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`
+    // );
+    // set(
+    //     ref(
+    //         db,
+    //         `IBT_Brief_Black_White/User-${thisData.$store.state.uid
+    //         }-${numberOfTimesTestWasTaken.padStart(2, 0)}`
+    //     ),
+    //     {
+    //         data: dataToStore,
+    //     }
+    // );
 
-    if (updateLocalStorage) {
-        localStorage.setItem(
-            `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`,
-            Number(
-                localStorage.getItem(
-                    `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`
-                )
-            ) + 1
-        );
-    }
+    // if (updateLocalStorage) {
+    //     localStorage.setItem(
+    //         `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`,
+    //         Number(
+    //             localStorage.getItem(
+    //                 `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`
+    //             )
+    //         ) + 1
+    //     );
+    // }
 }

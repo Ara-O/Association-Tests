@@ -373,6 +373,7 @@ function startTest() {
   let userId = Math.floor(Math.random() * 10000)
   store.commit("changeUserID", userId)
   storeLDPreSurvey(userId, surveyData.value)
+  store.commit("clearStoredLd")
   router.push("/LD_IBT");
 }
 

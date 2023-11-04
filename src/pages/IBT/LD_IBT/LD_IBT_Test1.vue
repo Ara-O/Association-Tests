@@ -142,6 +142,7 @@ import { generateLdTrials } from "../../../modules/generateIbtTrials/generatIbtT
 import { startTimer, handleAnswer } from "../../../modules/handleAnswers/handleIbtAnswersLd"
 import { routerKey } from 'vue-router';
 import router from '../../../router';
+import { useStore } from 'vuex';
 
 let userGotStimulusRight = ref(false)
 let userGotStimulusWrong = ref(false)
@@ -151,6 +152,7 @@ let section = ref(0)
 let testNotStarted = ref(true)
 let currentStep = ref(1)
 
+const store = useStore()
 const props = defineProps(["position"])
 const emits = defineEmits(["finished"])
 
@@ -180,7 +182,12 @@ function startTest() {
 }
 
 function finishedSection(fullyDone) {
+    if (!fullyDone) {
+        store.commit("storeLd", ibt_trials[0].trials)
+    }
+
     if (fullyDone) {
+        store.commit("storeLd", ibt_trials[1].trials)
         if (props.position === 1) {
             emits("finished")
             return

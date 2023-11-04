@@ -61,7 +61,11 @@ function handleAnswer(userChoice, testNotStarted, data, testIsPaused, currentTri
             } else {
                 if (section.value === 1) {
                     finishedSection(true)
+                    console.log("Store second test")
+                    // 
                 } else {
+                    // Finished 1
+                    console.log("Store first test")
                     finishedSection(false)
                 }
 

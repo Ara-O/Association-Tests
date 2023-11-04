@@ -67,30 +67,30 @@
         <h4>2. When did you or your family come to Canada?</h4>
         <div class="full centered">
           <label for="you">You: </label>
-          <input type="text" id="you" v-model="surveyData.whenUserMovedToCanada" placeholder="Year" />
+          <input type="text" id="you" v-model="surveyData.yearUserMovedToCanada" placeholder="Year" />
         </div>
 
         <div class="full centered space-top">
           <label for="spouse-1">Your spouse (if applicable): </label>
-          <input type="text" id="spouse-1" placeholder="Year" v-model="surveyData.whenSpouseMovedToCanada" />
+          <input type="text" id="spouse-1" placeholder="Year" v-model="surveyData.yearSpouseMovedToCanada" />
         </div>
 
         <div class="full centered space-top">
           <label for="parents">Your parents (if applicable): </label>
-          <input type="text" id="parents" placeholder="Year" v-model="surveyData.whenParentsMovedToCanada" />
+          <input type="text" id="parents" placeholder="Year" v-model="surveyData.yearParentsMovedToCanada" />
         </div>
 
         <h4>3. How long have you or your family been in Canada?</h4>
 
         <div class="full centered">
           <label for="you-years-in-canada">You: </label>
-          <input type="text" id="you-years-in-canada" v-model="surveyData.howLongUserHasBeenInCanada"
+          <input type="text" id="you-years-in-canada" v-model="surveyData.userDurationOfStayInCanada"
             placeholder="Years" />
         </div>
 
         <div class="full centered space-top">
           <label for="family-years-in-canada">Your family: </label>
-          <input type="text" id="family-years-in-canada" v-model="surveyData.howLongFamilyHasBeenInCanada"
+          <input type="text" id="family-years-in-canada" v-model="surveyData.familyDurationOfStayInCanada"
             placeholder="Years" />
         </div>
         <button type="submit" style="margin-top: 30px">Next</button>
@@ -243,7 +243,11 @@
             <option value="No">No</option>
           </select>
         </div>
-        <br />
+
+        <label class="!mt-4 !mb-1">
+          If yes as far as you know, did this child receive any help at home,
+          school and/or community?
+        </label>
         <div class="survey-table space-top">
           <table class="border-collapse">
             <tr>
@@ -254,15 +258,16 @@
             </tr>
             <tr>
               <td>Yes</td>
-              <td><input type="checkbox" name="" id="" /></td>
-              <td><input type="checkbox" name="" id="" /></td>
-              <td><input type="checkbox" name="" id="" /></td>
+              <td><input type="checkbox" v-model="surveyData.childInCommunityReceivesSupportFromHome" />
+              </td>
+              <td><input type="checkbox" v-model="surveyData.childInCommunityReceivesSupportFromSchool"></td>
+              <td><input type="checkbox" v-model="surveyData.childInCommunityReceivesSupportFromCommunity" /></td>
             </tr>
             <tr>
               <td>No</td>
-              <td><input type="checkbox" name="" id="" /></td>
-              <td><input type="checkbox" name="" id="" /></td>
-              <td><input type="checkbox" name="" id="" /></td>
+              <td><input type="checkbox" /></td>
+              <td><input type="checkbox" /></td>
+              <td><input type="checkbox" /></td>
             </tr>
           </table>
         </div>
@@ -273,7 +278,7 @@
             ethnic groups that you are currently a part of) who was struggling
             with their studies/learning process at school?
           </label>
-          <select>
+          <select v-model="surveyData.userIsAwareOfStrugglingChildInCountry">
             <option value="Yes">Yes</option>
             <option value="No">No</option>
           </select>
@@ -291,15 +296,15 @@
               </tr>
               <tr>
                 <td>Yes</td>
-                <td><input type="checkbox" name="" id="" /></td>
-                <td><input type="checkbox" name="" id="" /></td>
-                <td><input type="checkbox" name="" id="" /></td>
+                <td><input type="checkbox" v-model="surveyData.childInCountryReceivesSupportFromHome" /></td>
+                <td><input type="checkbox" v-model="surveyData.childInCountryReceivesSupportFromSchool" /></td>
+                <td><input type="checkbox" v-model="surveyData.childInCountryReceivesSupportFromCommunity" /></td>
               </tr>
               <tr>
                 <td>No</td>
-                <td><input type="checkbox" name="" id="" /></td>
-                <td><input type="checkbox" name="" id="" /></td>
-                <td><input type="checkbox" name="" id="" /></td>
+                <td><input type="checkbox" /></td>
+                <td><input type="checkbox" /></td>
+                <td><input type="checkbox" /></td>
               </tr>
             </table>
           </div>
@@ -317,6 +322,7 @@
 import { useStore } from "vuex";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { storeLDPreSurvey } from "../../../modules/storingData/storingDataLD"
 
 enum Step {
   AskForEmailAddress = 1,
@@ -327,31 +333,36 @@ enum Step {
   StartTest,
 }
 
-let currentStep = ref<number>(5);
+let currentStep = ref<number>(Step.AskForEmailAddress);
 
 let ld_email = ref<string>("");
 
 let surveyData = ref({
-  province: "",
-  city: "",
-  whenUserMovedToCanada: "",
-  whenSpouseMovedToCanada: "",
-  whenParentsMovedToCanada: "",
-  howLongUserHasBeenInCanada: "",
-  howLongFamilyHasBeenInCanada: "",
-  // Section 2
-  immigrantStatus: "",
-  userGeneration: "",
-  usersHighestEducationLevel: "",
+  province: "province",
+  city: "city",
+  yearUserMovedToCanada: "yearsInCanada",
+  yearSpouseMovedToCanada: "spouseInCanada",
+  yearParentsMovedToCanada: "parentsMoved",
+  userDurationOfStayInCanada: "userDurationStay",
+  familyDurationOfStayInCanada: "familyDurationStay",
+  immigrantStatus: "iimmigr status",
+  userGeneration: "generation",
+  usersHighestEducationLevel: "highest ed level",
   usersHighestEducationLevelOther: "",
-  spouseHighestEducationLevel: "",
+  spouseHighestEducationLevel: "spouse ed level",
   spouseHighestEducationLevelOther: "",
-  userOccupationInCanada: "",
-  userOccupationInFormerCountry: "",
-  // Sectuin 3
-  mainLanguageUsedAtHome: "",
-  otherLanguagesUsedAtHome: "",
-  userIsAwareOfStrugglingChildInCommunity: ""
+  userOccupationInCanada: "user occ in cancada",
+  userOccupationInFormerCountry: "user occ in former country",
+  mainLanguageUsedAtHome: "main language",
+  otherLanguagesUsedAtHome: "other lang",
+  userIsAwareOfStrugglingChildInCommunity: "true",
+  childInCommunityReceivesSupportFromHome: false,
+  childInCommunityReceivesSupportFromSchool: false,
+  childInCommunityReceivesSupportFromCommunity: false,
+  userIsAwareOfStrugglingChildInCountry: "false",
+  childInCountryReceivesSupportFromHome: false,
+  childInCountryReceivesSupportFromSchool: false,
+  childInCountryReceivesSupportFromCommunity: false,
 })
 
 
@@ -359,6 +370,9 @@ const store = useStore();
 const router = useRouter();
 
 function startTest() {
+  let userId = Math.floor(Math.random() * 10000)
+  store.commit("changeUserID", userId)
+  storeLDPreSurvey(userId, surveyData.value)
   router.push("/LD_IBT");
 }
 

@@ -55,62 +55,65 @@ export function storeLDData(
 
     let data = store.state.ld_data
 
-    console.log('data', data)
-    if (data.length === 4) {
-        console.log("Update loc stor")
+    data.forEach((outer, index) => {
+        outer.forEach((inner, innerIndex) => {
+            // First two steps
+            if (index === 0 || index === 1) {
+                inner.description = "User chooses a sad face for words associated with 'without learning difficulty', and a happy face for words related to learning difficulties"
+            }
+            // Last two steps
+            if (index === 2 || index === 3) {
+                inner.description = "User chooses a smiley face for words associated with 'without learning difficulty', and a sad face for words related to learning difficulties"
+            }
+
+            if (index === 0 || index === 2) {
+                inner.description = "Practice: " + inner.description
+            }
+
+            inner.browser = navigator["userAgent"];
+            inner.dateTaken = `${cMonth}-${cDay}-${cYear}`;
+            inner.stimulusOrder = innerIndex + 1;
+            delete inner.visibility
+            delete inner.randomNo
+            console.log("-", inner)
+        })
+    })
+
+
+    if (
+        localStorage.getItem(
+            `IBT_LD_${store.state.uid}_Times_Taken`
+        ) === null
+    ) {
+        localStorage.setItem(
+            `IBT_LD_${store.state.uid}_Times_Taken`,
+            1
+        );
     }
 
-    // UPDATE USER INFO
 
-    // console.log("data gets stored now - ", dataToStore);
-    // dataToStore.forEach((element, outerIndex) => {
-    //     element.forEach((trial, innerIndex) => {
-    //         trial.browser = navigator["userAgent"];
-    //         trial.dateTaken = `${cMonth}-${cDay}-${cYear}`;
-    //         trial.stimulusOrder = innerIndex + 1;
-    //         // rome-ignore lint/performance/noDelete: <explanation>
-    //         delete trial.randomNo;
-    //         // rome-ignore lint/performance/noDelete: <explanation>
-    //         delete trial.visibility;
-    //     });
-    //     // console.log(element);
-    // });
+    // Store data
+    let numberOfTimesTestWasTaken = localStorage.getItem(
+        `IBT_LD_${store.state.uid}_Times_Taken`
+    );
 
-    // const db = getDatabase(app);
 
-    // if (
-    //     localStorage.getItem(
-    //         `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`
-    //     ) === null
-    // ) {
-    //     localStorage.setItem(
-    //         `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`,
-    //         1
-    //     );
-    // }
+    set(
+        ref(
+            db,
+            `Test-Data/User-${store.state.uid}-${numberOfTimesTestWasTaken.padStart(2, 0)}`
+        ),
+        data
+    );
 
-    // let numberOfTimesTestWasTaken = localStorage.getItem(
-    //     `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`
-    // );
-    // set(
-    //     ref(
-    //         db,
-    //         `IBT_Brief_Black_White/User-${thisData.$store.state.uid
-    //         }-${numberOfTimesTestWasTaken.padStart(2, 0)}`
-    //     ),
-    //     {
-    //         data: dataToStore,
-    //     }
-    // );
-
-    // if (updateLocalStorage) {
-    //     localStorage.setItem(
-    //         `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`,
-    //         Number(
-    //             localStorage.getItem(
-    //                 `${thisData.$store.getters.getCurrentTest}_${thisData.$store.state.uid}_Times_Taken`
-    //             )
-    //         ) + 1
-    //     );
-    // }
+    if (data.length === 4) {
+        localStorage.setItem(
+            `IBT_LD_${store.state.uid}_Times_Taken`,
+            Number(
+                localStorage.getItem(
+                    `IBT_LD_${store.state.uid}_Times_Taken`
+                )
+            ) + 1
+        );
+    }
 }

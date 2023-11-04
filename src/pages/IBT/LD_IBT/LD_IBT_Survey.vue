@@ -414,6 +414,7 @@ function finishEmailSection() {
   outline: none;
   padding-bottom: 3px;
   height: 40px;
+  border-radius: 0px;
   border: solid 1px darkgray;
   border-width: 0px 0px 1px 0px;
 }

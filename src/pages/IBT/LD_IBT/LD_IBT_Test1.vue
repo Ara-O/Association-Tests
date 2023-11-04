@@ -172,7 +172,6 @@ function getClickerImage(url) {
         .href;
 }
 
-
 function startTest() {
     currentStep.value++;
     setTimeout(() => {
@@ -213,7 +212,7 @@ function handleClick(userClicked) {
     if (userClicked === "Right") {
         userChoice = trial.rightClickerFace
     }
-    handleAnswer(userChoice, testNotStarted, ibt_trials[section.value].trials, paused, currentTrial, userGotStimulusRight, userGotStimulusWrong, finishedSection, section)
+    handleAnswer(userChoice, testNotStarted, ibt_trials[section.value].trials, paused, currentTrial, userGotStimulusRight, userGotStimulusWrong, finishedSection, section, store)
 }
 
 </script>

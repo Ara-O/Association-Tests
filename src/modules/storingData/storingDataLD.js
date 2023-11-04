@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set } from "firebase/database";
-
 /*
 accuracy: 0
 image: "B_CM03.jpg"
@@ -11,6 +10,7 @@ rightClickerFaceEmotion: "Sad"
 stimulusEmotion: "Happy"
 visibility: "none"
 */
+
 
 let currentDate = new Date();
 let cDay = currentDate.getDate();
@@ -44,18 +44,24 @@ export function storeLDPreSurvey(uid, data) {
 
 
 export function storeLDData(
-    dataToStore,
-    thisData,
-    updateLocalStorage = true
+    store
 ) {
-    if (!thisData.$store.state.uid) {
-        thisData.$store.commit(
+    if (!store.state.uid) {
+        store.commit(
             "changeUserID",
             String(Math.floor(Math.random() * 10000))
         );
     }
 
-    console.log(dataToStore)
+    let data = store.state.ld_data
+
+    console.log('data', data)
+    if (data.length === 4) {
+        console.log("Update loc stor")
+    }
+
+    // UPDATE USER INFO
+
     // console.log("data gets stored now - ", dataToStore);
     // dataToStore.forEach((element, outerIndex) => {
     //     element.forEach((trial, innerIndex) => {

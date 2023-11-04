@@ -1,5 +1,6 @@
 // import { getDatabase, ref, set } from "firebase/database";
 import * as storeData from "../storingData/storingDataBriefIBT";
+import { storeLDData } from "../storingData/storingDataLD";
 import * as storeDataUCSC from "../storingData/storingDateBriefIBTUCSC";
 let ms = 0;
 let startTime;
@@ -30,7 +31,7 @@ function continueTimer() {
     durationOfPause += continuedTime - pausedTime;
 }
 
-function handleAnswer(userChoice, testNotStarted, data, testIsPaused, currentTrial, userGotStimulusRight, userGotStimulusWrong, finishedSection, section) {
+function handleAnswer(userChoice, testNotStarted, data, testIsPaused, currentTrial, userGotStimulusRight, userGotStimulusWrong, finishedSection, section, store) {
     if (!testNotStarted.value && !testIsPaused.value) {
         const currentChallenge = data[currentTrial.value];
 
@@ -61,13 +62,15 @@ function handleAnswer(userChoice, testNotStarted, data, testIsPaused, currentTri
             } else {
                 if (section.value === 1) {
                     finishedSection(true)
-                    console.log("Store second test")
+                    console.log("Full done")
                     // 
                 } else {
                     // Finished 1
-                    console.log("Store first test")
+                    console.log("Practice done ")
                     finishedSection(false)
                 }
+
+                storeLDData(store)
 
 
             }

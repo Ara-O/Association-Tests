@@ -201,10 +201,8 @@ function finishedSection(fullyDone) {
             router.push("/LD_IBT_Post_Survey")
             return
         }
-
-        router.push("/LD_IBT_Post_Survey")
-        return
     }
+
     testNotStarted.value = true
     currentTrial.value = 0
     section.value++
@@ -222,7 +220,8 @@ function handleClick(userClicked) {
     if (userClicked === "Right") {
         userChoice = trial.rightClickerFace
     }
-    handleAnswer(userChoice, testNotStarted, ibt_trials[section.value].trials, paused, currentTrial, userGotStimulusRight, userGotStimulusWrong, finishedSection, section)
+
+    handleAnswer(userChoice, testNotStarted, ibt_trials[section.value].trials, paused, currentTrial, userGotStimulusRight, userGotStimulusWrong, finishedSection, section, store)
 }
 
 </script>

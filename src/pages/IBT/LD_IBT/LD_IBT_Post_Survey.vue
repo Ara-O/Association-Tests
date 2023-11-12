@@ -1,6 +1,6 @@
 <template>
     <section class="flex items-center justify-center h-screen" v-if="currentStep === 1">
-        <div class="result-box">
+        <div class="result-box" style="max-width: 500px">
             <h3 class="font-medium !text-lg">End of the Test</h3>
             <img src="../../../assets/LD_IBT/happy-children.png" alt="Happy children illustration" class="w-56">
             <h4 class="font-medium">Congratulations! You have reached the end of the Implicit Association Test.
@@ -54,47 +54,51 @@
 
             <!-- First question -->
             <!-- <></div> -->
-            <div class="max-w-[365px] ml-0 w-auto m-auto">
-                <h3 class="font-medium"> 1. On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the
+            <div class="flex ml-0 w-full m-auto gap-x-10 flex-wrap">
+                <h3 class="font-medium w-auto max-w-xs widen-width"> 1. On a scale of 1 (immediately) to 5 (waiting to see
+                    how Sam
+                    performs in the
                     future), how
                     soon do you think
                     Sam’s academic difficulties should be addressed at school?</h3>
 
-                <div class="flex items-center justify-between">
-                    <span>
-                        <input type="radio" value="1" id="1"
-                            v-model="surveyData['1. On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?']" />
-                        <label for="1">1</label>
-                    </span>
-                    <span>
-                        <input type="radio" value="2" id="2"
-                            v-model="surveyData['1. On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?']" />
-                        <label for="2">2</label>
-                    </span>
-                    <span>
-                        <input type="radio" value="3" id="3"
-                            v-model="surveyData['1. On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?']" />
+                <div class="w-[60%] appendix-question-1">
+                    <div class="flex items-center justify-between w-full ">
+                        <span>
+                            <input type="radio" value="1" id="1"
+                                v-model="surveyData['1. On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?']" />
+                            <label for="1">1</label>
+                        </span>
+                        <span>
+                            <input type="radio" value="2" id="2"
+                                v-model="surveyData['1. On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?']" />
+                            <label for="2">2</label>
+                        </span>
+                        <span>
+                            <input type="radio" value="3" id="3"
+                                v-model="surveyData['1. On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?']" />
 
-                        <label for="3">3</label>
-                    </span>
-                    <span>
-                        <input type="radio" value="4" id="4"
-                            v-model="surveyData['1. On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?']" />
+                            <label for="3">3</label>
+                        </span>
+                        <span>
+                            <input type="radio" value="4" id="4"
+                                v-model="surveyData['1. On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?']" />
 
-                        <label for="4">4</label>
-                    </span>
-                    <span>
-                        <input type="radio" value="5" id="5"
-                            v-model="surveyData['1. On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?']" />
+                            <label for="4">4</label>
+                        </span>
+                        <span>
+                            <input type="radio" value="5" id="5"
+                                v-model="surveyData['1. On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?']" />
 
-                        <label for="5">5</label>
-                    </span>
+                            <label for="5">5</label>
+                        </span>
+                    </div>
+                    <div class="flex justify-between">
+                        <h4 class="text-xs">Immediately</h4>
+                        <h4 class="text-xs w-36 text-right">Wait to see how Sam performs in the future</h4>
+                    </div>
                 </div>
 
-                <div class="flex justify-between">
-                    <h4 class="text-xs">Immediately</h4>
-                    <h4 class="text-xs w-36 text-right">Wait to see how Sam performs in the future</h4>
-                </div>
             </div>
 
             <!-- Question 2 -->
@@ -841,7 +845,7 @@ button {
     border: solid 1px rgb(233, 233, 233);
     padding: 30px 40px 40px 40px;
     border-radius: 5px;
-    max-width: 420px;
+    max-width: 800px;
     width: auto;
 }
 
@@ -869,10 +873,29 @@ td {
     border: solid 1px rgb(233, 233, 233);
     padding: 30px 40px 40px 40px;
     border-radius: 5px;
-    max-width: 500px;
+    max-width: 1000px;
     width: auto;
     max-height: 700px;
     text-align: left;
     overflow: auto;
+}
+
+@media (max-width:1015px) {
+    .appendix-question-1 {
+        width: 50%
+    }
+
+
+}
+
+@media (max-width:801px) {
+    .widen-width {
+        width: 100%;
+        max-width: none;
+    }
+
+    .appendix-question-1 {
+        width: 100%
+    }
 }
 </style>

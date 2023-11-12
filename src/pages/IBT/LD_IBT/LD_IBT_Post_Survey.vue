@@ -54,7 +54,7 @@
 
             <!-- First question -->
             <!-- <></div> -->
-            <div class="max-w-[365px] w-auto m-auto">
+            <div class="max-w-[365px] ml-0 w-auto m-auto">
                 <h3 class="font-medium"> 1. On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the
                     future), how
                     soon do you think
@@ -175,7 +175,7 @@
             <!-- Sub question 1 -->
             <h3>1. Sam is struggling because he does not put enough effort into his schoolwork.
             </h3>
-            <div class="max-w-[365px] w-auto m-auto">
+            <div class="max-w-[365px] ml-0 w-auto m-auto">
                 <div class="flex items-center justify-between">
                     <span>
                         <input type="radio" name="sam-struggling-question" value="1" id="q1"
@@ -211,7 +211,7 @@
             </div>
             <!-- Sub question 2 -->
             <h3>2. Sam’s difficulties are due to differences in his brain function (which impact how he learns).</h3>
-            <div class="max-w-[365px] w-auto m-auto">
+            <div class="max-w-[365px] ml-0 w-auto m-auto">
                 <div class="flex items-center justify-between">
                     <span>
                         <input type="radio" name="sam-brain-function-question" value="1" id="r1"
@@ -260,7 +260,7 @@
             <h3 class="font-medium">3. Sam is struggling because his family lacks the necessary financial and material
                 resources to succeed.
             </h3>
-            <div class="max-w-[365px] w-auto m-auto">
+            <div class="max-w-[365px] ml-0 w-auto m-auto">
                 <div class="flex items-center justify-between">
                     <span>
                         <input type="radio" name="sam-financial-struggle-question" value="1" id="s1"
@@ -301,7 +301,7 @@
             <h3 class="font-medium">4. Sam is struggling at school because of the bad deeds he engaged in during his past
                 life which impact him
                 negatively now (bad karma).</h3>
-            <div class="max-w-[365px] w-auto m-auto">
+            <div class="max-w-[365px] ml-0 w-auto m-auto">
                 <div class="flex items-center justify-between">
                     <span>
                         <input type="radio" name="sam-bad-deeds-question" value="1" id="t1"
@@ -339,7 +339,7 @@
 
             <!-- Question 5 -->
             <h3 class="font-medium">5. Sam is struggling because his teachers do not give him enough academic support.</h3>
-            <div class="max-w-[365px] w-auto m-auto">
+            <div class="max-w-[365px] ml-0 w-auto m-auto">
                 <div class="flex items-center justify-between">
                     <span>
                         <input type="radio" name="sam-struggle-teachers-question" value="1" id="u1"
@@ -376,7 +376,7 @@
 
             <!-- Question 6 -->
             <h3 class="font-medium">6. Sam is struggling because his parents do not give him enough academic support.</h3>
-            <div class="max-w-[365px] w-auto m-auto">
+            <div class="max-w-[365px] ml-0 w-auto m-auto">
                 <div class="flex items-center justify-between">
                     <span>
                         <input type="radio" name="sam-no-academic-support-question" value="1" id="v1"
@@ -415,7 +415,7 @@
             <h3 class="font-medium">7. Sam is struggling because his teachers are unable to adapt their teaching style and
                 methods to meet the
                 different learning needs of their students.</h3>
-            <div class="max-w-[365px] w-auto m-auto">
+            <div class="max-w-[365px] ml-0 w-auto m-auto">
                 <div class="flex items-center justify-between">
                     <span>
                         <input type="radio" name="sam-unable-to-adapt-question" value="1" id="w1"
@@ -453,7 +453,7 @@
             <!-- Question 8 -->
             <h3 class="font-medium">All children are not made the same way in terms of their mental abilities and capacity
                 to learn. Sam is struggling because it is the Will of God.</h3>
-            <div class="max-w-[365px] w-auto m-auto">
+            <div class="max-w-[365px] ml-0 w-auto m-auto">
                 <div class="flex items-center justify-between">
                     <span>
                         <input type="radio" name="sam-will-of-god-question" value="1" id="x1"
@@ -617,7 +617,7 @@
             <!--  -->
             <div class="flex gap-5 justify-center">
                 <button @click="currentStep--">Back</button>
-                <button @click="">Finish test!</button>
+                <router-link to="/home"><button>Finish test!</button></router-link>
             </div>
         </div>
     </section>
@@ -872,5 +872,7 @@ td {
     max-width: 500px;
     width: auto;
     max-height: 700px;
+    text-align: left;
     overflow: auto;
-}</style>
+}
+</style>

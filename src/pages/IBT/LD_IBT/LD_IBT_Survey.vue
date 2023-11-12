@@ -3,16 +3,16 @@
     <!-- Email section -->
     <section v-show="currentStep === Step.AskForEmailAddress">
       <div class="survey-box">
-        <h3 style="font-weight: 500">
-          Please provide us with your email address/phone number
+        <h3 style="font-weight: 500" class="!text-center">
+          Please provide us with your email address
         </h3>
-        <h4 style="font-size: 14px; line-height: 30px; font-weight: 300">
-          Note: Your email address/phone number will be used solely for payment purposes for
+        <h4 style="font-size: 14px; line-height: 30px; font-weight: 300; text-align: center;">
+          Note: Your email address will be used solely for payment purposes for
           taking part in this study and will not be used to identify you
           individually. Your participation in this study will remain anonymous.
         </h4>
         <input type="text" name="user-email" v-model="ld_email" id="email" class="ld-user-email"
-          placeholder="Enter email address/phone number here" />
+          style="text-align: center !important;" placeholder="Enter email address" />
         <br />
         <button @click="finishEmailSection">Next</button>
       </div>
@@ -21,11 +21,11 @@
     <!-- Test explanation section -->
     <section v-show="currentStep === Step.ExplainTest" class="explain-test-section">
       <div>
-        <h3 style="font-weight: 600">Welcome to the test</h3>
+        <h3 style="font-weight: 600; text-align: center;">Welcome to the test</h3>
       </div>
       <div>
         <img src="../../../assets/LD_IBT/test-introduction-image.png" alt="Test intro image" class="test-intro-image" />
-        <h4 class="test-intro-message">
+        <h4 class="test-intro-message" style="text-align: center !important;">
           <span style="font-weight: 600">Instructions: </span>In this study you
           will complete an Implicit Bias Test (IBT) in which you will be asked
           to sort words into groups as fast as you can. In addition, there are
@@ -43,12 +43,20 @@
     </section>
 
     <!-- Survey section 1 -->
-    <section v-show="currentStep === Step.ShowBackgroundFormSurveyOne" class="survey-section">
+    <section v-show="currentStep === Step.ShowBackgroundFormSurveyOne" class="survey-section text-left">
       <h3 style="font-weight: 500">Background Form</h3>
       <h4 style="font-size: 15px">Please answer the following questions</h4>
-      <form @submit.prevent="currentStep++">
-        <label for="country">1. From which country/countries did you or your family originally
+      <form @submit.prevent="currentStep++" style="overflow: initial;">
+        <label for="country" class="block mb-0">1. From which country/countries did you or your family originally
           arrive in Canada?</label>
+
+        <div class="flex w-full items-start">
+          <select id="province" v-model="surveyData.countryOfOrigin" pclass=" block">
+            <option :value="country" v-for="country in countriesList">{{ country }}</option>
+          </select>
+
+        </div>
+
         <h4 style="margin-top: 30px">
           Note: List all countries you have lived in before coming to Canada
           starting with the last country you were residing in
@@ -56,7 +64,11 @@
 
         <div class="full centered">
           <label for="province">Province (if applicable): </label>
-          <input type="text" id="province" v-model="surveyData.province" placeholder="Province" />
+          <select id="province" v-model="surveyData.province">
+            <option :value="country" v-for="country in countriesList">
+              {{ country }}
+            </option>
+          </select>
         </div>
 
         <div class="full centered space-top">
@@ -93,99 +105,119 @@
           <input type="text" id="family-years-in-canada" v-model="surveyData.familyDurationOfStayInCanada"
             placeholder="Years" />
         </div>
-        <button type="submit" style="margin-top: 30px">Next</button>
+
+        <div class="full centered space-top">
+
+          <label for="immigrant-status">4. What is your immigrant status in Canada</label>
+          <select id="immigrant-status" v-model="surveyData.immigrantStatus">
+            <option value="Canadian Citizen">Canadian Citizen</option>
+            <option value="Permanent Resident">Permanent Resident</option>
+            <option value="Refugee">Refugee</option>
+            <option value="Student Visa">Student Visa</option>
+            <option value="Work Visa">Work Visa</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="full centered space-top">
+          <label for="what-user-considers-themselves">5. Do you consider yourself to be:</label>
+          <select id="what-user-considers-themselves" v-model="surveyData.userGeneration">
+            <option value="First generation immigrant (that is, you were born outside of Canada)">
+              First generation immigrant (that is, you were born outside of
+              Canada)
+            </option>
+            <option
+              value="Second generation immigrant  (I was born in Canada and at least one of my parents was born outside Canada) ">
+              Second generation immigrant (I was born in Canada and at least one
+              of my parents was born outside Canada)
+            </option>
+            <option value="Third generation immigrant (I and both my parents were born in Canada)">
+              Third generation immigrant (I and both my parents were born in
+              Canada)
+            </option>
+          </select>
+        </div>
+
+        <div class="full centered space-top">
+          <label for="highest-education-level">6. Please select the highest level of education that you have
+            attained</label>
+          <select id="highest-education-level" v-model="surveyData.usersHighestEducationLevel">
+            <option value="Some school">Some school</option>
+            <option
+              value="Completed high school diploma and a professional qualification not from a college or university">
+              Completed high school diploma and a professional qualification not
+              from a college or university.
+            </option>
+            <option value="Completed a college diploma">
+              Completed a college diploma.
+            </option>
+            <option value="Completed an undergraduate university degree">
+              Completed an undergraduate university degree.
+            </option>
+            <option value="Completed one or more graduate degrees (Masters/or Ph.D.)">
+              Completed one or more graduate degrees (Masters/or Ph.D.).
+            </option>
+            <option value="Other (please specify)">
+              Other (please specify)
+            </option>
+          </select>
+        </div>
+
+        <div class="w-full flex justify-start">
+          <button type="submit" style="margin-top: 30px">Next</button>
+        </div>
+
+
       </form>
     </section>
 
-    <!-- SURVEY SECTION 2 -->
+
+    <!-- SECTION 2 -->
     <section v-show="currentStep === Step.ShowBackgroundFormSurveyTwo" class="survey-section">
-      <h3>Background Form</h3>
-      <h4>Please answer the following questions</h4>
-      <div class="form h-full">
-        <label for="immigrant-status">4. What is your immigrant status in Canada</label>
-        <select id="immigrant-status" v-model="surveyData.immigrantStatus">
-          <option value="Canadian Citizen">Canadian Citizen</option>
-          <option value="Permanent Resident">Permanent Resident</option>
-          <option value="Refugee">Refugee</option>
-          <option value="Student Visa">Student Visa</option>
-          <option value="Work Visa">Work Visa</option>
-          <option value="Other">Other</option>
-        </select>
-
-        <label for="what-user-considers-themselves">5. Do you consider yourself to be:</label>
-        <select id="what-user-considers-themselves" v-model="surveyData.userGeneration">
-          <option value="First generation immigrant (that is, you were born outside of Canada)">
-            First generation immigrant (that is, you were born outside of
-            Canada)
-          </option>
-          <option
-            value="Second generation immigrant  (I was born in Canada and at least one of my parents was born outside Canada) ">
-            Second generation immigrant (I was born in Canada and at least one
-            of my parents was born outside Canada)
-          </option>
-          <option value="Third generation immigrant (I and both my parents were born in Canada)">
-            Third generation immigrant (I and both my parents were born in
-            Canada)
-          </option>
-        </select>
-
-        <label for="highest-education-level">6. Please select the highest level of education that you have
-          attained</label>
-        <select id="highest-education-level" v-model="surveyData.usersHighestEducationLevel">
-          <option value="Some school">Some school</option>
-          <option value="Completed high school diploma and a professional qualification not from a college or university">
-            Completed high school diploma and a professional qualification not
-            from a college or university.
-          </option>
-          <option value="Completed a college diploma">
-            Completed a college diploma.
-          </option>
-          <option value="Completed an undergraduate university degree">
-            Completed an undergraduate university degree.
-          </option>
-          <option value="Completed one or more graduate degrees (Masters/or Ph.D.)">
-            Completed one or more graduate degrees (Masters/or Ph.D.).
-          </option>
-          <option value="Other (please specify)">
-            Other (please specify)
-          </option>
-        </select>
-
-        <input type="text" class="mt-3" v-if="surveyData.usersHighestEducationLevel === 'Other (please specify)'"
-          placeholder="Specify here" v-model="surveyData.usersHighestEducationLevelOther">
-
-        <label for="spouse-highest-education-level">7. What is your spouse's highest educational level</label>
-        <select id="spouse-highest-education-level" v-model="surveyData.spouseHighestEducationLevel">
-          <option value="Some school">Some school</option>
-          <option value="Completed high school diploma and a professional qualification not from a college or university">
-            Completed high school diploma and a professional qualification not
-            from a college or university.
-          </option>
-          <option value="Completed a college diploma">
-            Completed a college diploma.
-          </option>
-          <option value="Completed an undergraduate university degree">
-            Completed an undergraduate university degree.
-          </option>
-          <option value="Completed one or more graduate degrees (Masters/or Ph.D.)">
-            Completed one or more graduate degrees (Masters/or Ph.D.).
-          </option>
-          <option value="Other (please specify)">
-            Other (please specify)
-          </option>
-        </select>
-        <input type="text" class="mt-3" v-if="surveyData.spouseHighestEducationLevel === 'Other (please specify)'"
-          placeholder="Specify here" v-model="surveyData.spouseHighestEducationLevelOther">
-
-
+      <div class="form">
+        <h3>Background Form</h3>
+        <h4>Please answer the following questions</h4>
         <div class="full">
+
+          <input type="text" class="mt-3" v-if="surveyData.usersHighestEducationLevel === 'Other (please specify)'"
+            placeholder="Specify here" v-model="surveyData.usersHighestEducationLevelOther">
+
+          <label for="spouse-highest-education-level">7. What is your spouse's highest educational level</label>
+          <select id="spouse-highest-education-level" v-model="surveyData.spouseHighestEducationLevel">
+            <option value="Some school">Some school</option>
+            <option
+              value="Completed high school diploma and a professional qualification not from a college or university">
+              Completed high school diploma and a professional qualification not
+              from a college or university.
+            </option>
+            <option value="Completed a college diploma">
+              Completed a college diploma.
+            </option>
+            <option value="Completed an undergraduate university degree">
+              Completed an undergraduate university degree.
+            </option>
+            <option value="Completed one or more graduate degrees (Masters/or Ph.D.)">
+              Completed one or more graduate degrees (Masters/or Ph.D.).
+            </option>
+            <option value="Other (please specify)">
+              Other (please specify)
+            </option>
+          </select>
+        </div>
+        <div class="full">
+
+          <input type="text" class="mt-3" v-if="surveyData.spouseHighestEducationLevel === 'Other (please specify)'"
+            placeholder="Specify here" v-model="surveyData.spouseHighestEducationLevelOther">
+        </div>
+
+        <div class="full mt-5">
           <label for="occupation">
             8. What is your occupation in Canada?
           </label>
           <input type="text" id="occupation" v-model="surveyData.userOccupationInCanada" placeholder="Occupation" />
         </div>
 
-        <div class="full">
+        <div class="full centered mt-5">
           <label for="occupation-2">
             If you are a new
             Canadian and were employed before immigrating to Canada, please
@@ -193,23 +225,19 @@
           <input type="text" id="occupation-2" placeholder="Occupation"
             v-model="surveyData.userOccupationInFormerCountry" />
         </div>
-        <div class=" test-buttons" style="margin-top: -10px">
-          <button @click="currentStep--">Back</button>
-          <button @click="currentStep++">Next</button>
-        </div>
-      </div>
-    </section>
 
-    <!-- SECTION 3 -->
-    <section v-show="currentStep === Step.ShowBackgroundFormSurveyThree" class="survey-section">
-      <div class="form">
-        <h3>Background Form</h3>
-        <h4>Please answer the following questions</h4>
-        <div class="full centered">
+        <div class="full centered mt-5">
           <label for="main-language">9. What is the main language you use at home on a daily basis?
           </label>
           <select id="main-language" v-model="surveyData.mainLanguageUsedAtHome">
             <option value="English">English</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Bangla">Bangla</option>
+            <option value="Kannada">Kannada</option>
+            <option value="Malayalam">Malayalam</option>
+            <option value="Sinhala">Sinhala</option>
+            <option value="Tamil">Tamil</option>
+            <option value="Urdu">Urdu</option>
             <option value="French">French</option>
             <option value="German">German</option>
             <option value="Arabic">Arabic</option>
@@ -323,13 +351,13 @@ import { useStore } from "vuex";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { storeLDPreSurvey } from "../../../modules/storingData/storingDataLD"
+import countriesList from "../../../modules/utils/countriesList";
 
 enum Step {
   AskForEmailAddress = 1,
   ExplainTest,
   ShowBackgroundFormSurveyOne,
   ShowBackgroundFormSurveyTwo,
-  ShowBackgroundFormSurveyThree,
   StartTest,
 }
 
@@ -339,6 +367,7 @@ let ld_email = ref<string>("");
 
 let surveyData = ref({
   province: "province",
+  countryOfOrigin: "US",
   city: "city",
   yearUserMovedToCanada: "yearsInCanada",
   yearSpouseMovedToCanada: "spouseInCanada",
@@ -396,6 +425,7 @@ function finishEmailSection() {
   align-items: center;
 }
 
+
 .survey-box {
   box-shadow: 0px 2px 4px -1px #cbcbcb;
   border: solid 1px rgb(233, 233, 233);
@@ -443,8 +473,11 @@ h4 {
   font-size: 14px;
 }
 
+
 h4 {
   line-height: 22px;
+  text-align: left;
+  width: 100%;
 }
 
 .test-intro-image {
@@ -455,6 +488,14 @@ h4 {
 select {
   padding: 0px 20px;
   box-sizing: border-box;
+}
+
+
+input,
+select {
+  text-align: left !important;
+  box-sizing: border-box;
+  padding-left: 20px !important;
 }
 
 .test-intro-message {
@@ -519,7 +560,13 @@ input {
   flex-wrap: wrap;
   row-gap: 30px;
   column-gap: 20px;
-  justify-content: center;
+
+}
+
+form {
+  text-align: left;
+  align-items: flex-start;
+  padding: 0px;
 }
 
 .full label {
@@ -527,6 +574,7 @@ input {
 }
 
 label {
+  text-align: left;
   margin-top: 0px;
 }
 
@@ -543,14 +591,14 @@ table {
   min-height: 675px;
   width: 100%;
   max-width: 550px;
+  max-height: initial;
   background: white;
   display: flex;
+  justify-content: flex-start;
   flex-direction: column;
   border-radius: 5px;
-  align-items: center;
   box-sizing: border-box;
-  padding: 14px 46px;
-  justify-content: center;
+  padding: 14px 0px;
   overflow: auto;
   flex-flow: wrap;
   /* max-height: 700px; */
@@ -573,10 +621,13 @@ table input {
   align-items: center;
 }
 
+h3 {
+  text-align: left;
+}
+
 @media (max-width: 564px) {
   .full {
     flex-direction: column;
-    align-items: center;
   }
 }
 </style>

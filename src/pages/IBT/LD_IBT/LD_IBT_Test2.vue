@@ -164,11 +164,11 @@ const emits = defineEmits(["finished"])
 let ibt_trials = [
     {
         section: "Practice",
-        trials: generateLdTrials("Sad", "Smiley", 4),
+        trials: generateLdTrials("Sad", "Smiley", 2),
     },
     {
         section: "Full test",
-        trials: generateLdTrials("Sad", "Smiley", 4),
+        trials: generateLdTrials("Sad", "Smiley", 2),
     },
 ]
 

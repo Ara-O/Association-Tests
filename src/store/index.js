@@ -52,9 +52,8 @@ export default createStore({
       state.ld_data.push(payload)
     },
 
-    clearStoredLd(state) {
+    clearStoredLdData(state) {
       state.ld_data = []
-
     }
   },
 });

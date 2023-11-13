@@ -500,27 +500,27 @@
                     <div class="flex items-center justify-between">
                         <span>
                             <input type="radio" name="sam-will-of-god-question" value="1" id="x1"
-                                v-model="surveyData['All children are not made the same way in terms of their mental abilities and capacity to learn. Sam is struggling because it is the Will of God.']" />
+                                v-model="surveyData['8. All children are not made the same way in terms of their mental abilities and capacity to learn. Sam is struggling because it is the Will of God.']" />
                             <label for="x1">1</label>
                         </span>
                         <span>
                             <input type="radio" name="sam-will-of-god-question" value="2" id="x2"
-                                v-model="surveyData['All children are not made the same way in terms of their mental abilities and capacity to learn. Sam is struggling because it is the Will of God.']" />
+                                v-model="surveyData['8. All children are not made the same way in terms of their mental abilities and capacity to learn. Sam is struggling because it is the Will of God.']" />
                             <label for="x2">2</label>
                         </span>
                         <span>
                             <input type="radio" name="sam-will-of-god-question" value="3" id="x3"
-                                v-model="surveyData['All children are not made the same way in terms of their mental abilities and capacity to learn. Sam is struggling because it is the Will of God.']" />
+                                v-model="surveyData['8. All children are not made the same way in terms of their mental abilities and capacity to learn. Sam is struggling because it is the Will of God.']" />
                             <label for="x3">3</label>
                         </span>
                         <span>
                             <input type="radio" name="sam-will-of-god-question" value="4" id="x4"
-                                v-model="surveyData['All children are not made the same way in terms of their mental abilities and capacity to learn. Sam is struggling because it is the Will of God.']" />
+                                v-model="surveyData['8. All children are not made the same way in terms of their mental abilities and capacity to learn. Sam is struggling because it is the Will of God.']" />
                             <label for="x4">4</label>
                         </span>
                         <span>
                             <input type="radio" name="sam-will-of-god-question" value="5" id="x5"
-                                v-model="surveyData['All children are not made the same way in terms of their mental abilities and capacity to learn. Sam is struggling because it is the Will of God.']" />
+                                v-model="surveyData['8. All children are not made the same way in terms of their mental abilities and capacity to learn. Sam is struggling because it is the Will of God.']" />
                             <label for="x5">5</label>
                         </span>
                     </div>
@@ -564,7 +564,7 @@
         </div>
     </section>
 
-    <!-- Question 5 -->
+    <!-- Question 5 - Appendix 4 -->
     <section class="flex items-center justify-center h-screen " v-if="currentStep === 5">
         <div class="result-box-questions ">
             <h3 class="font-medium !text-[16px]">Appendix 4</h3>
@@ -578,28 +578,28 @@
             </h5>
             <h5 class="underline">After participants view each video: </h5>
             <h5>Please indicate your rating</h5>
-
-
             <table>
                 <tr>
                     <td></td>
-                    <td>Strongly Agree</td>
-                    <td>Agree</td>
-                    <td>Disagree</td>
-                    <td>Strongly Disagree</td>
+                    <td>Strongly Agree (1)</td>
+                    <td>Agree (2)</td>
+                    <td>Disagree (3)</td>
+                    <td>Strongly Disagree (4)</td>
                 </tr>
                 <tr v-for="question in questions">
-                    <td class="!w-52">{{ question.question }}</td>
-                    <td><input type="radio"></td>
-                    <td><input type="radio"></td>
-                    <td><input type="radio"></td>
-                    <td><input type="radio"></td>
+                    <td class="!w-52 pr-10">{{ question.question }}</td>
+                    <td><input type="radio" :name="question.inputName" value="Strongly Agree"
+                            v-model="surveyData[question.inputName]"></td>
+                    <td><input type="radio" :name="question.inputName" value="Agree"
+                            v-model="surveyData[question.inputName]"></td>
+                    <td><input type="radio" :name="question.inputName" value="Disagree"
+                            v-model="surveyData[question.inputName]"></td>
+                    <td><input type="radio" :name="question.inputName" value="Strongly Disagree"
+                            v-model="surveyData[question.inputName]"></td>
                 </tr>
                 <tr></tr>
             </table>
-
-            <!--  -->
-            <div class="flex gap-5 justify-center">
+            <div class="flex gap-5 justify-start">
                 <button @click="currentStep--">Back</button>
                 <button @click="currentStep++">Next</button>
             </div>
@@ -618,16 +618,33 @@
             <table>
                 <tr>
                     <td></td>
-                    <td>Strongly Agree</td>
-                    <td>Agree</td>
-                    <td>Partially Agree/Partially disagree</td>
-                    <td>Disagree</td>
-                    <td>Strongly Disagree</td>
+                    <td>Strongly Agree (1)</td>
+                    <td>Agree (2)</td>
+                    <td>Partially Agree/Partially disagree (3)</td>
+                    <td>Disagree (4)</td>
+                    <td>Strongly Disagree (5)</td>
                 </tr>
-                <tr v-for="(question, index) in questionsAppendix6">
+                <tr v-for="(question, index) in questionsAppendix5">
                     <td class="!w-[32rem] text-left">{{ question.question }}</td>
-                    <td v-for="i in 5"> <input type="radio" :id="i + question.inputName" :name="question.inputName">
-                        <label :for="i + question.inputName" class="mt-0">{{ i }}</label>
+                    <td> <input type="radio" :name="question.inputName" value="Strongly Agree"
+                            v-model="surveyData[question.inputName]">
+                        <label :for="question.inputName" class="mt-0">1</label>
+                    </td>
+                    <td> <input type="radio" value="Agree" :name="question.inputName"
+                            v-model="surveyData[question.inputName]">
+                        <label :for="i + question.inputName" class="mt-0">2</label>
+                    </td>
+                    <td> <input type="radio" value="Partially Agree/Partially Disagree" :name="question.inputName"
+                            v-model="surveyData[question.inputName]">
+                        <label :for="i + question.inputName" class="mt-0">3</label>
+                    </td>
+                    <td> <input type="radio" value="Disagree" :name="question.inputName"
+                            v-model="surveyData[question.inputName]">
+                        <label :for="i + question.inputName" class="mt-0">4</label>
+                    </td>
+                    <td> <input type="radio" value="Strongly Disagree" :name="question.inputName"
+                            v-model="surveyData[question.inputName]">
+                        <label :for="i + question.inputName" class="mt-0">5</label>
                     </td>
                     <br>
                 </tr>
@@ -638,7 +655,7 @@
                 How difficult do the following issues make involvement with your child’s school?
             </h5>
 
-            <div class="flex justify-center">
+            <div class="flex justify-start">
 
                 <table>
                     <tr>
@@ -649,10 +666,10 @@
                     </tr>
                     <tr v-for="(question, index) in questionsAppendixFinal">
                         <td class="!w-52">{{ question.question }}</td>
-                        <td v-for="i in 3"> <input type="radio" :id="i + question.inputName" :name="question.inputName">
+                        <td v-for="i in 3" class="!w-32"> <input type="radio" :id="i + question.inputName"
+                                :name="question.inputName" v-model="question.inputName">
                             <label :for="i + question.inputName" class="mt-0">{{ i }}</label>
                         </td>
-                        <br>
                     </tr>
                     <tr></tr>
                 </table>
@@ -691,7 +708,7 @@ let surveyData = ref({
     "5. Sam is struggling because his teachers do not give him enough academic support.": "",
     "6. Sam is struggling because his parents do not give him enough academic support.": "",
     "7. Sam is struggling because his teachers are unable to adapt their teaching style and methods to meet the different learning needs of their students.": "",
-    "All children are not made the same way in terms of their mental abilities and capacity to learn. Sam is struggling because it is the Will of God.": "",
+    "8. All children are not made the same way in terms of their mental abilities and capacity to learn. Sam is struggling because it is the Will of God.": "",
     "9. What other reasons might be contributing to Sam’s difficulty in achieving better at school in comparison with his peers?": "",
     "10. If Sam’s parents come to you as a friend to ask about what they should do to help their child with his academic work what would you advise them?": "",
 
@@ -724,144 +741,145 @@ let questionsAppendixFinal = ref([
     },
 ])
 
-let questionsAppendix6 = ref([
+let questionsAppendix5 = ref([
     {
         question: "I feel very comfortable visiting my child’s school.",
-        inputName: "sth"
+        inputName: "I feel very comfortable visiting my child’s school."
     },
     {
         question: "My child’s schoolwork is always displayed in our home (e.g., hang papers on the refrigerator).",
-        inputName: "sth"
+        inputName: "My child’s schoolwork is always displayed in our home (e.g., hang papers on the refrigerator)."
     },
     {
         question: "If my child misbehaved at school, I would know about it soon afterward.",
-        inputName: "sth"
+        inputName: "If my child misbehaved at school, I would know about it soon afterward."
     },
     {
         question: "I frequently explain difficult ideas to my child when she/he doesn’t understand.",
-        inputName: "sth"
+        inputName: "I frequently explain difficult ideas to my child when she/he doesn’t understand."
     },
     {
         question: "Every time my child does something well at school, I compliment him/her.",
-        inputName: "sth"
+        inputName: "Every time my child does something well at school, I compliment him/her."
     },
     {
         question: "Talking with my child’s principal makes me uncomfortable.",
-        inputName: "sth"
+        inputName: "Talking with my child’s principal makes me uncomfortable."
     },
     {
         question: "I always know how well my child is doing in school.",
-        inputName: "sth"
+        inputName: "I always know how well my child is doing in school."
     },
     {
         question: "I am confused about my legal rights as a parent.",
-        inputName: "sth"
+        inputName: "I am confused about my legal rights as a parent."
     },
     {
         question: "I read to my child every day/I encourage my child to read every day.",
-        inputName: "sth"
+        inputName: "I read to my child every day/I encourage my child to read every day."
     },
     {
         question: "I talk with other parents frequently about educational issues.",
-        inputName: "sth"
+        inputName: "I talk with other parents frequently about educational issues."
     },
     {
         question: "My child attends community programs (e.g:YMCA, park/rec, community theatre, religious institutes)",
-        inputName: "sth"
+        inputName: "My child attends community programs (e.g:YMCA, park/rec, community theatre, religious institutes)"
     },
     {
         question: "I have visited my child’s classroom several times in the past year",
-        inputName: "sth"
+        inputName: "I have visited my child’s classroom several times in the past year"
     },
     {
         question: "I have made suggestions to my child’s teachers about how to help my child learn.",
-        inputName: "sth"
+        inputName: "I have made suggestions to my child’s teachers about how to help my child learn."
     },
     {
         question: "There are many children’s books in our house.",
-        inputName: "sth"
+        inputName: "There are many children’s books in our house."
     },
     {
         question: "In the past 12 months I have attended several times activities at my child’s school (e.g., fun nights performances, awards nights).",
-        inputName: "sth"
+        inputName: "In the past 12 months I have attended several times activities at my child’s school (e.g., fun nights performances, awards nights)."
     },
     {
         question: "My child misses’ school several days each semester.",
-        inputName: "sth"
+        inputName: "My child misses’ school several days each semester."
     },
     {
         question: "Talking with my child’s current teacher makes me somewhat uncomfortable.",
-        inputName: "sth"
+        inputName: "Talking with my child’s current teacher makes me somewhat uncomfortable."
     },
     {
         question: "I don’t understand the assignments my child brings home.",
-        inputName: "sth"
+        inputName: "I don’t understand the assignments my child brings home."
     },
     {
         question: "Reading books is a regular activity in our home.  ",
-        inputName: "sth"
+        inputName: "Reading books is a regular activity in our home.  "
     },
     {
         question: "If my child was having trouble at school, I would not know how to get extra help for him / her.",
-        inputName: "sth"
+        inputName: "If my child was having trouble at school, I would not know how to get extra help for him / her."
     },
     {
         question: "I am familiar with the Canadian laws governing schools well.",
-        inputName: "sth"
+        inputName: "I am familiar with the Canadian laws governing schools well."
     },
     {
         question: "In the past 12 months I attended several school board meetings.",
-        inputName: "sth"
+        inputName: "In the past 12 months I attended several school board meetings."
     },
     {
         question: "In the past 12 months I volunteered at my child’s school at least 3 times.",
-        inputName: "sth"
+        inputName: "In the past 12 months I volunteered at my child’s school at least 3 times."
     },
     {
         question: "I know about many programs for youth in my community. (As an example, Heritage Language schools)",
-        inputName: "sth"
+        inputName: "I know about many programs for youth in my community. (As an example, Heritage Language schools)"
     },
 ])
+
 let questions = ref([
     {
         question: "This person is socially awkward",
-        inputName: "sth"
+        inputName: "thisPersonIsSociallyAwkward"
     },
     {
         question: "This person is attractive",
-        inputName: "sth"
+        inputName: "thisPersonIsAttractive"
     },
     {
         question: "This person is trustworthy/honest",
-        inputName: "sth"
+        inputName: "thisPersonIsHonest"
     },
     {
         question: "This person is assertive",
-        inputName: "sth"
+        inputName: "thisPersonIsAssertive"
     },
     {
         question: "This person is likeable",
-        inputName: "sth"
+        inputName: "thisPersonIsLikeable"
     },
     {
         question: "This person is intelligent",
-        inputName: "sth"
+        inputName: "thisPersonIsIntelligent"
     },
     {
         question: "I would hang out with this person in my free time",
-        inputName: "sth"
+        inputName: "userWouldHangOutWithPersonInFreeTime"
     },
     {
         question: "I wouldn’t like it if I had to live near this person",
-        inputName: "sth"
+        inputName: "userWouldNotLikeToLiveNearThisPerson"
     },
     {
         question: "I would be uncomfortable sitting next to this person",
-        inputName: "sth"
+        inputName: "userIsComfortableSittingNextToThisPerson"
     },
     {
         question: "I would start a conversation with this person",
-        inputName: "sth"
+        inputName: "userWouldStartAConversation"
     },
 ])
 </script>
@@ -920,6 +938,27 @@ td {
     max-height: 700px;
     text-align: left;
     overflow: auto;
+}
+
+table {
+    border: solid 1px #cfcfcf;
+    border-radius: 5px;
+}
+
+/* Alternate row colors */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+td:not(:nth-child(1)) {
+    max-width: 200px;
+    width: 10%;
+    text-align: center;
+}
+
+/* Hover effect on rows */
+tr:hover {
+    background-color: #ddd;
 }
 
 @media (max-width:1015px) {

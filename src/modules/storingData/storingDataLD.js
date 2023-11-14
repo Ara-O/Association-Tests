@@ -121,3 +121,15 @@ export function storeLDData(
         );
     }
 }
+
+export function storeLDPostSurveyData(store, uid, data) {
+    data.pointOfContact = store.state.ld_point_of_contact
+
+    set(
+        ref(
+            db,
+            `User-Post-Survey-Data/User-${uid}`
+        ),
+        data
+    );
+}

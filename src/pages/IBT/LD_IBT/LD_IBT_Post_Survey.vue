@@ -630,21 +630,21 @@
                             v-model="surveyData[question.inputName]">
                         <label :for="question.inputName" class="mt-0">1</label>
                     </td>
-                    <td> <input type="radio" value="Agree" :name="question.inputName"
+                    <td> <input type="radio" :name="question.inputName" value="Agree"
                             v-model="surveyData[question.inputName]">
-                        <label :for="i + question.inputName" class="mt-0">2</label>
+                        <label class="mt-0">2</label>
                     </td>
                     <td> <input type="radio" value="Partially Agree/Partially Disagree" :name="question.inputName"
                             v-model="surveyData[question.inputName]">
-                        <label :for="i + question.inputName" class="mt-0">3</label>
+                        <label class="mt-0">3</label>
                     </td>
                     <td> <input type="radio" value="Disagree" :name="question.inputName"
                             v-model="surveyData[question.inputName]">
-                        <label :for="i + question.inputName" class="mt-0">4</label>
+                        <label class="mt-0">4</label>
                     </td>
                     <td> <input type="radio" value="Strongly Disagree" :name="question.inputName"
                             v-model="surveyData[question.inputName]">
-                        <label :for="i + question.inputName" class="mt-0">5</label>
+                        <label class="mt-0">5</label>
                     </td>
                     <br>
                 </tr>
@@ -666,9 +666,19 @@
                     </tr>
                     <tr v-for="(question, index) in questionsAppendixFinal">
                         <td class="!w-52">{{ question.question }}</td>
-                        <td v-for="i in 3" class="!w-32"> <input type="radio" :id="i + question.inputName"
-                                :name="question.inputName" v-model="question.inputName">
-                            <label :for="i + question.inputName" class="mt-0">{{ i }}</label>
+                        <td class="!w-32">
+                            <input value="A lot" type="radio" :name="question.inputName"
+                                v-model="surveyData[question.inputName]">
+                            <label class="mt-0">1</label>
+                        </td>
+                        <td class="!w-32">
+                            <input value="Some" type="radio" :name="question.inputName"
+                                v-model="surveyData[question.inputName]">
+                            <label class="mt-0">2</label>
+                        </td>
+                        <td class="!w-32"> <input value="Not an Issue" type="radio" :name="question.inputName"
+                                v-model="surveyData[question.inputName]">
+                            <label class="mt-0">3</label>
                         </td>
                     </tr>
                     <tr></tr>
@@ -676,7 +686,7 @@
             </div>
 
             <h5>If Other, Please specify</h5>
-            <input type="text">
+            <input type="text" v-model="otherEngagementIssue">
             <!--  -->
             <div class="flex gap-5 justify-center">
                 <button @click="currentStep--">Back</button>
@@ -690,7 +700,7 @@
 import { ref } from 'vue';
 
 let currentStep = ref(1)
-let userSelectedSam = ref(false)
+let otherEngagementIssue = ref("")
 
 let surveyData = ref({
     "1. On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?": "",
@@ -717,27 +727,27 @@ let surveyData = ref({
 let questionsAppendixFinal = ref([
     {
         question: "Lack of Time",
-        inputName: "sth"
+        inputName: "Engagement Issue: Lack of Time"
     },
     {
         question: "Timing of Programs",
-        inputName: "sth"
+        inputName: "Engagement Issue: Timing of Programs "
     },
     {
         question: "Small Children",
-        inputName: "sth"
+        inputName: "Engagement Issue: Lack of Time"
     },
     {
         question: "Transportation",
-        inputName: "sth"
+        inputName: "Engagement Issue: Transportation"
     },
     {
         question: "Work Schedule",
-        inputName: "sth"
+        inputName: "Engagement Issue: Work Schedule"
     },
     {
         question: "Other",
-        inputName: "sth"
+        inputName: otherEngagementIssue.value
     },
 ])
 

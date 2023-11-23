@@ -17,7 +17,12 @@ let visiblePaths = [
   "/IBT_Choose_Test",
   "/IT",
   "/FM_Choose_Test",
+  "/LD_IBT",
+  "/LD_IBT_Consent_Form",
+  "/LD_IBT_Survey"
+
 ];
+
 watch(route, (newval) => {
   if (visiblePaths.includes(newval.fullPath)) {
     shouldBeVisible.value = true;
@@ -32,7 +37,7 @@ onMounted(() => {
       {
         // layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
         pageLanguage: "en",
-        includedLanguages: "en,es,fr,ar,zh-CN",
+        includedLanguages: "en,es,fr,ar,zh-CN,bn,hi,kn,ms,mr,ta,ur",
       },
       "google_translate_element"
     );
@@ -47,6 +52,7 @@ onMounted(() => {
   text-align: center;
   color: #2c3e50;
 }
+
 body {
   margin: 0px !important;
 }

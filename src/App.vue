@@ -17,10 +17,8 @@ let visiblePaths = [
   "/IBT_Choose_Test",
   "/IT",
   "/FM_Choose_Test",
-  "/LD_IBT",
   "/LD_IBT_Consent_Form",
   "/LD_IBT_Survey"
-
 ];
 
 watch(route, (newval) => {
@@ -37,7 +35,7 @@ onMounted(() => {
       {
         // layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
         pageLanguage: "en",
-        includedLanguages: "en,es,fr,ar,zh-CN,bn,hi,kn,ms,mr,ta,ur",
+        includedLanguages: "en,es,fr,ar,zh-CN,bn,hi,kn,ms,mr,ml,ta,ur",
       },
       "google_translate_element"
     );

@@ -24,10 +24,10 @@ let testIsPaused = false;
 
 function handleAnswer_TS(target, thiskeyword, Data, whereToStore, version) {
   const test = thiskeyword;
-  console.log("handling answer");
+  // console.log("handling answer");
   // rome-ignore lint/complexity/useSimplifiedLogicExpression: <explanation>
   if (!test.notStarted && !testIsPaused) {
-    console.log("handling answer passed first if");
+    // console.log("handling answer passed first if");
     let keyClicked = target;
     const currentChallenge = Data[test.arrayIndex];
     if (

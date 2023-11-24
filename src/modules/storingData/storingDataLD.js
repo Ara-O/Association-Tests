@@ -79,7 +79,7 @@ export function storeLDData(
             inner.stimulusOrder = innerIndex + 1;
             delete inner.visibility
             delete inner.randomNo
-            console.log("-", inner)
+            // console.log("-", inner)
         })
     })
 

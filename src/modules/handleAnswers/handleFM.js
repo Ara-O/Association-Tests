@@ -89,7 +89,7 @@ export function handleUserSelection(
           paused.value = true;
           currentTrial.value = 0;
           testHasStarted.value = false;
-          console.log(currentTest.value);
+          // console.log(currentTest.value);
         }
       } else {
         //Second timer for white screen

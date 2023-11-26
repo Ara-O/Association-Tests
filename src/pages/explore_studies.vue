@@ -8,7 +8,8 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; loop" autoplay
         loop></iframe>
 
-      <main-button routeTo="/" @click="routeToExploreStudies" class="explore-studies mt-10 ">Explore
+      <main-button routeTo="/" @click="routeToExploreStudies" class="explore-studies mt-10"
+        style="padding:20px 30px">Explore
         Studies</main-button>
     </section>
   </main>

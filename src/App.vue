@@ -27,15 +27,12 @@ watch(route, (newval) => {
   } else {
     shouldBeVisible.value = false;
   }
-});
-
-onMounted(() => {
   setTimeout(() => {
     google.translate.TranslateElement(
       {
         // layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
         pageLanguage: "en",
-        includedLanguages: "en,es,fr,ar,zh-CN,bn,hi,kn,ms,mr,ml,ta,ur",
+        includedLanguages: "en,es,fr,ar,zh-CN,bn,hi,kn,ms,mr,ml,ta,ur,pn,pa,si",
       },
       "google_translate_element"
     );

@@ -1,5 +1,5 @@
 <template>
-    <section class="flex items-center justify-center h-screen" v-if="currentStep === 1">
+    <section class="flex items-center justify-center h-screen" v-show="currentStep === 1">
         <div class="result-box" style="max-width: 500px">
             <h3 class="font-medium !text-lg">End of the Test</h3>
             <img src="../../../assets/LD_IBT/happy-children.png" alt="Happy children illustration" class="w-56">
@@ -33,7 +33,7 @@
             <button @click="currentStep++">Next</button>
         </div>
     </section>
-    <section class="flex items-center justify-center h-screen " v-if="currentStep === 2">
+    <section class="flex items-center justify-center h-screen " v-show="currentStep === 2">
         <div class="result-box-questions ">
             <h3 class="font-medium !text-[15px]"> Attributions about Learning Difficulties
             </h3>
@@ -272,7 +272,7 @@
 
 
     <!-- SECTON 3 -->
-    <section class="flex items-center justify-center h-screen " v-if="currentStep === 3">
+    <section class="flex items-center justify-center h-screen " v-show="currentStep === 3">
         <div class="result-box-questions" style="width: 1000px !important">
             <div class="flex ml-0 w-full m-auto gap-x-10 flex-wrap items-center">
                 <h3 class="font-medium w-auto max-w-xs widen-width h-28 flex items-center">3. Sam is struggling because his
@@ -541,7 +541,7 @@
     </section>
 
     <!-- Question section 4 -->
-    <section class="flex items-center justify-center h-screen " v-if="currentStep === 4">
+    <section class="flex items-center justify-center h-screen " v-show="currentStep === 4">
         <div class="result-box-questions ">
             <h3 class="font-medium">9. What other reasons might be contributing to Sam’s difficulty in achieving better at
                 school in comparison with his peers? </h3>
@@ -565,7 +565,7 @@
     </section>
 
     <!-- Question 5 - Appendix 4 -->
-    <section class="flex items-center justify-center h-screen " v-if="currentStep === 5">
+    <section class="flex items-center justify-center h-screen " v-show="currentStep === 5">
         <div class="result-box-questions ">
             <h3 class="font-medium !text-[16px]">Appendix 4</h3>
             <h4 class="text-[14px]">First Impressions Assessment Scale for Observers</h4>
@@ -607,8 +607,8 @@
     </section>
 
     <!-- Secion 6 -->
-    <section class="flex items-center justify-center h-screen " v-if="currentStep === 6">
-        <div class="result-box-questions !max-w-[1000px]">
+    <section class="flex items-center justify-center h-screen " v-show="currentStep === 6">
+        <div class="result-box-questions result-box-questions-last !max-w-[1000px]">
             <h3 class="font-medium !text-[16px]">Appendix 5 Parents and School Survey</h3>
             <h5 class="leading-7">Below are several statements. Please read them and circle the answer that best describes
                 how much you agree
@@ -616,7 +616,7 @@
                 us plan how to make the program as helpful to parents as possible.</h5>
 
             <table>
-                <tr>
+                <tr class="top-row-numbers">
                     <td></td>
                     <td>Strongly Agree (1)</td>
                     <td>Agree (2)</td>
@@ -626,25 +626,25 @@
                 </tr>
                 <tr v-for="(question, index) in questionsAppendix5">
                     <td class="!w-[32rem] text-left">{{ question.question }}</td>
-                    <td> <input type="radio" :name="question.inputName" value="Strongly Agree"
+                    <td> <input type="radio" :name="question.inputName" class="!mr-0" value="Strongly Agree"
                             v-model="surveyData[question.inputName]">
-                        <label :for="question.inputName" class="mt-0">1</label>
+                        <label :for="question.inputName" class="mt-0"></label>
                     </td>
-                    <td> <input type="radio" :name="question.inputName" value="Agree"
+                    <td> <input type="radio" :name="question.inputName" value="Agree" class="!mr-0"
                             v-model="surveyData[question.inputName]">
-                        <label class="mt-0">2</label>
+                        <label class="mt-0"></label>
                     </td>
-                    <td> <input type="radio" value="Partially Agree/Partially Disagree" :name="question.inputName"
-                            v-model="surveyData[question.inputName]">
-                        <label class="mt-0">3</label>
+                    <td> <input type="radio" value="Partially Agree/Partially Disagree" class="!mr-0"
+                            :name="question.inputName" v-model="surveyData[question.inputName]">
+                        <label class="mt-0"></label>
                     </td>
-                    <td> <input type="radio" value="Disagree" :name="question.inputName"
+                    <td> <input type="radio" value="Disagree" :name="question.inputName" class="!mr-0"
                             v-model="surveyData[question.inputName]">
-                        <label class="mt-0">4</label>
+                        <label class="mt-0"></label>
                     </td>
-                    <td> <input type="radio" value="Strongly Disagree" :name="question.inputName"
+                    <td> <input type="radio" value="Strongly Disagree" :name="question.inputName" class="!mr-0"
                             v-model="surveyData[question.inputName]">
-                        <label class="mt-0">5</label>
+                        <label class="mt-0"></label>
                     </td>
                     <br>
                 </tr>
@@ -697,15 +697,25 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { storeLDPostSurveyData } from "../../../modules/storingData/storingDataLD"
 import { useStore } from 'vuex';
 
-let currentStep = ref(6)
+let currentStep = ref(1)
 const store = useStore()
 const router = useRouter()
 let otherEngagementIssue = ref("")
+
+onMounted(() => {
+    document.querySelector(".result-box-questions-last").addEventListener("scroll", () => {
+        if (document.querySelector(".result-box-questions-last").scrollTop >= 180) {
+            document.querySelector(".top-row-numbers").classList.add("fixed-top-section")
+        } else {
+            document.querySelector(".top-row-numbers").classList.remove("fixed-top-section")
+        }
+    })
+})
 
 let surveyData = ref({
     "On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?": "",
@@ -989,12 +999,27 @@ tr:hover {
     background-color: #ddd;
 }
 
+.fixed-top-section {
+    position: fixed;
+    top: 49px;
+    left: 51%;
+    transform: translate(-50%, -50%);
+    width: 68%;
+    max-width: 943px;
+    text-align: center;
+    min-width: 944px;
+}
+
+@media (max-width:1052px) {
+    .fixed-top-section {
+        min-width: 86%;
+    }
+}
+
 @media (max-width:1015px) {
     .appendix-question-1 {
         width: 50%
     }
-
-
 }
 
 @media (max-width:801px) {

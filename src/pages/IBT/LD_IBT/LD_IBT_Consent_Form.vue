@@ -1,6 +1,6 @@
 <template>
   <section class="main">
-    <section class="survey" v-show="userAgreesToConsentForm">
+    <section class="survey ld-survey-consent rounded-md" v-show="userAgreesToConsentForm">
       <!-- Top images -->
       <div class="top-introductory-image">
         <img src="../../../assets/LD_IBT/ld-lab-image.png" alt="LB lab image" />
@@ -182,7 +182,7 @@ function userDoesNotWantToTakeSurvey() {
   padding: 30px 50px;
   margin-bottom: 50px;
   box-sizing: border-box;
-  box-shadow: -2px 4px 4px -1px #cbcbcb;
+  box-shadow: -2px 2px 2px -1px #cbcbcb;
   border: solid 1px #f2f2f2;
 }
 
@@ -211,13 +211,15 @@ function userDoesNotWantToTakeSurvey() {
   width: 137px;
 }
 
-* {
-  font-family: "Times New Roman", Times, serif;
+.ld-survey-consent {
+  font-family: 'poppins', serif;
+  font-size: 13px;
 }
 
 .ld-title {
-  font-size: 22px;
-  margin-top: 20px;
+  font-size: 17px;
+  margin-top: 40px;
+  font-weight: 500;
   margin-bottom: 20px;
 }
 
@@ -253,7 +255,7 @@ button {
   text-decoration: none;
   padding: 25px 34px;
   font-weight: 300;
-  font-size: 15px;
+  font-size: 13px;
   height: 40px;
 }
 

@@ -65,11 +65,7 @@
 
         <span class="flex flex-wrap items-center gap-3">
           <label for="province" class="mt-0 mb-0">Province (if applicable): </label>
-          <select id="province" class="mt-0 mb-0" v-model="surveyData.province">
-            <option :value="province" v-for="province in canadianProvinces">
-              {{ province }}
-            </option>
-          </select>
+          <input id="province" class="mt-0 mb-0" v-model="surveyData.province" />
         </span>
 
         <span class="flex flex-wrap items-center gap-3 mt-5">
@@ -240,24 +236,14 @@
           </label>
           <select id="main-language" class="mb-0 mt-0" v-model="surveyData.mainLangUsedAtHome">
             <option value="English">English</option>
-            <option value="Spanish">Spanish</option>
             <option value="Bangla">Bangla</option>
+            <option value="Hindi">Hindi</option>
             <option value="Kannada">Kannada</option>
             <option value="Malayalam">Malayalam</option>
+            <option value="Punjabi">Punjabi</option>
             <option value="Sinhala">Sinhala</option>
             <option value="Tamil">Tamil</option>
             <option value="Urdu">Urdu</option>
-            <option value="French">French</option>
-            <option value="German">German</option>
-            <option value="Arabic">Arabic</option>
-            <option value="Portugese">Portugese</option>
-            <option value="Japanese">Japanese</option>
-            <option value="Hindi">Hindi</option>
-            <option value="Chinese">Chinese</option>
-            <option value="Korean">Korean</option>
-            <option value="Bengali">Bengali</option>
-            <option value="Italian">Italian</option>
-            <option value="Punjabi">Punjabi</option>
           </select>
         </span>
         <br />

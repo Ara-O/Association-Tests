@@ -45,14 +45,16 @@
     <!-- Survey section 1 -->
     <section v-show="currentStep === Step.ShowBackgroundFormSurveyOne" class="survey-section text-left">
       <h3 class="font-medium">Background Form</h3>
-      <h4 class="font-medium">Please answer the following questions</h4>
-      <form @submit.prevent="currentStep++" class="!max-h-none">
+      <h4 class="font-medium">Note: Green highlighted texts specify the questions. Please answer the following questions
+      </h4>
+      <form @submit.prevent="currentStep++" class="!max-h-none justify-start">
         <span class="flex flex-wrap items-center gap-3">
-          <label for="country" class="block mt-0 mb-0 font-medium">1. From which country/countries did you or your family
+          <label for="country" class="block mt-0 mb-0 font-medium bg-green-200">1. From which country/countries did you or
+            your family
             originally
             arrive in Canada?</label>
           <div class="flex items-start mt-0 mb-0">
-            <select id="COO" class="mt-0" v-model="surveyData.countryOfOrigin">
+            <select id="" class="mt-0" v-model="surveyData.countryOfOrigin">
               <option :value="country" v-for="country in countriesList">{{ country }}</option>
             </select>
           </div>
@@ -64,48 +66,49 @@
         </h4>
 
         <span class="flex flex-wrap items-center gap-3">
-          <label for="province" class="mt-0 mb-0">Province (if applicable): </label>
+          <label for="province" class="mt-0 mb-0 bg-green-200">Province (if applicable): </label>
           <input id="province" class="mt-0 mb-0" v-model="surveyData.province" />
         </span>
 
         <span class="flex flex-wrap items-center gap-3 mt-5">
-          <label for="city" class="mt-0 mb-0">City: </label>
+          <label for="city" class="mt-0 mb-0 bg-green-200">City: </label>
           <input type="text" id="city" class="mt-0 mb-0" v-model="surveyData.city" placeholder="City" />
         </span>
 
-        <h4 class="font-medium">2. When did you or your family come to Canada?</h4>
+        <h4 class="font-medium bg-green-200 inline-block !w-fit">2. When did you or your family come to Canada?</h4>
         <span class="flex flex-wrap items-center gap-3">
-          <label for="you" class="mb-0 mt-0">You: </label>
+          <label for="you" class="mb-0 mt-0 bg-green-200">You: </label>
           <input type="text" class="mt-0 mb-0" id="you" v-model="surveyData.yearUsrMovedToCanada" placeholder="Year" />
         </span>
 
         <span class="flex flex-wrap items-center gap-3 mt-5">
-          <label for="spouse-1" class="mb-0 mt-0">Your spouse (if applicable): </label>
+          <label for="spouse-1" class="mb-0 mt-0 bg-green-200">Your spouse (if applicable): </label>
           <input type="text" id="spouse-1" class="mb-0 mt-0" placeholder="Year"
             v-model="surveyData.yearSpouseMovedToCanada" />
         </span>
 
         <span class="flex flex-wrap items-center gap-3 mt-5">
-          <label for="parents" class="mb-0 mt-0">Your parents (if applicable): </label>
+          <label for="parents" class="mb-0 mt-0 bg-green-200">Your parents (if applicable): </label>
           <input type="text" class="mb-0 mt-0" id="parents" placeholder="Year"
             v-model="surveyData.yearParentsMovedToCanada" />
         </span>
 
-        <h4 class="font-medium">3. How long have you or your family been in Canada?</h4>
+        <h4 class="font-medium bg-green-200 !w-fit">3. How long have you or your family been in Canada?</h4>
         <span class="flex flex-wrap items-center gap-3">
-          <label class="mb-0 mt-0" for="you-years-in-canada">You: </label>
+          <label class="mb-0 mt-0 bg-green-200" for="you-years-in-canada">You: </label>
           <input class="mb-0 mt-0" type="text" id="you-years-in-canada" v-model="surveyData.usrDurOfStayInCanada"
             placeholder=" Years" />
         </span>
 
         <span class="flex flex-wrap items-center gap-3 mt-5">
-          <label class="mb-0 mt-0" for="family-years-in-canada">Your family: </label>
+          <label class="mb-0 mt-0 bg-green-200" for="family-years-in-canada">Your family: </label>
           <input type="text" class="mb-0 mt-0" id="family-years-in-canada" v-model="surveyData.familyDuOfStayInCanada"
             placeholder="Years" />
         </span>
 
         <span class="flex flex-wrap items-center gap-3 mt-5">
-          <label for="immigrant-status" class="mb-0 mt-0 font-medium">4. What is your immigrant status in Canada</label>
+          <label for="immigrant-status" class="mb-0 mt-0 font-medium bg-green-200">4. What is your immigrant status in
+            Canada</label>
           <select id="immigrant-status" class="mb-0 mt-0" v-model="surveyData.immigrantStatus">
             <option value="Canadian Citizen">Canadian Citizen</option>
             <option value="Permanent Resident">Permanent Resident</option>
@@ -117,7 +120,8 @@
         </span>
 
         <span class="flex flex-wrap items-center gap-3 mt-6">
-          <label for="what-user-considers-themselves" class="font-medium mb-0 mt-0">5. Do you consider yourself to
+          <label for="what-user-considers-themselves" class="font-medium mb-0 mt-0 bg-green-200">5. Do you consider
+            yourself to
             be:</label>
           <select id="what-user-considers-themselves" class="mb-0 mt-0" v-model="surveyData.usrGeneration">
             <option value="First generation immigrant (that is, you were born outside of Canada)">
@@ -137,7 +141,8 @@
         </span>
 
         <span class="flex flex-wrap items-center gap-3 mt-6">
-          <label for="highest-education-level" class="font-medium mb-0 mt-0">6. Please select the highest level of
+          <label for="highest-education-level" class="font-medium mb-0 mt-0 bg-green-200">6. Please select the highest
+            level of
             education that
             you have
             attained</label>
@@ -182,7 +187,8 @@
         <h4 class="font-medium text-sm">Please answer the following questions</h4>
 
         <span class="flex flex-wrap items-center gap-3">
-          <label for="spouse-highest-education-level" class="font-medium mb-0 mt-0">7. What is your spouse's highest
+          <label for="spouse-highest-education-level" class="font-medium mb-0 mt-0 bg-green-200">7. What is your spouse's
+            highest
             educational
             level</label>
           <select id="spouse-highest-education-level" v-model="surveyData.spouseHighestEduLvl" class="mb-0 mt-0">
@@ -214,7 +220,7 @@
         </div>
 
         <span class="flex flex-wrap items-center gap-3 mt-5">
-          <label for="occupation" class="mb-0 mt-0 font-medium">
+          <label for="occupation" class="mb-0 mt-0 font-medium bg-green-200">
             8. What is your occupation in Canada?
           </label>
           <input type="text" id="occupation" class="mb-0 mt-0" v-model="surveyData.usrOccupInCanada"
@@ -222,7 +228,7 @@
         </span>
 
         <span class="flex flex-wrap items-center gap-3 mt-5">
-          <label for="occupation-2" class="font-medium">
+          <label for="occupation-2" class="font-medium bg-green-200">
             If you are a new
             Canadian and were employed before immigrating to Canada, please
             indicate your occupation in your former country </label>
@@ -231,7 +237,8 @@
         </span>
 
         <span class="flex flex-wrap items-center gap-3 mt-5">
-          <label for="main-language" class="font-medium mt-0 mb-0">9. What is the main language you use at home on a daily
+          <label for="main-language" class="font-medium mt-0 mb-0 bg-green-200">9. What is the main language you use at
+            home on a daily
             basis?
           </label>
           <select id="main-language" class="mb-0 mt-0" v-model="surveyData.mainLangUsedAtHome">
@@ -248,7 +255,8 @@
         </span>
         <br />
         <div class="full centered space-top">
-          <label for="other-language" class="font-medium">10. Do you use any other language/languages besides the home
+          <label for="other-language" class="font-medium bg-green-200">10. Do you use any other language/languages besides
+            the home
             language indicated above? If yes, what is/are the additional
             language/languages you use?
           </label>
@@ -256,7 +264,7 @@
         </div>
         <br />
         <span class="full centered space-top">
-          <label class="font-medium">11. Are you aware of a child/adolescent in your community (for
+          <label class="font-medium bg-green-200">11. Are you aware of a child/adolescent in your community (for
             example, among relatives, friends, neighbors, own religious or
             ethnic groups that you are currently a part of) who is struggling
             with their studies/learning process at school?
@@ -267,7 +275,7 @@
           </select>
         </span>
 
-        <label class="!mt-4 !mb-1 font-medium">
+        <label class="!mt-4 !mb-1 font-medium bg-green-200">
           If yes as far as you know, did this child receive any help at home,
           school and/or community?
         </label>
@@ -296,7 +304,7 @@
         </div>
         <br />
         <div class="full centered space-top">
-          <label class="font-medium">12. Are you aware of a child/adolescent in your country of origin
+          <label class="font-medium bg-green-200">12. Are you aware of a child/adolescent in your country of origin
             (for example, among relatives, friends, neighbors, own religious or
             ethnic groups that you are currently a part of) who was struggling
             with their studies/learning process at school?
@@ -306,7 +314,7 @@
             <option value="No">No</option>
           </select>
           <br>
-          <h3 class="!text-sm block mt-0 mb-0 font-medium">
+          <h3 class="!text-sm block mt-0 mb-0 font-medium bg-green-200">
             If yes as far as you know, did this child receive any help at home,
             school and/or community?
           </h3>
@@ -495,6 +503,10 @@ h4 {
   font-size: 14px;
 }
 
+label {
+  font-size: 14.5px !important;
+}
+
 
 h4 {
   line-height: 22px;
@@ -592,7 +604,7 @@ input {
 
 form {
   text-align: left;
-  align-items: flex-start;
+  align-items: flex-start !important;
   padding: 0px;
 }
 
@@ -621,7 +633,7 @@ table {
   max-height: initial;
   background: white;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-start !important;
   flex-direction: column;
   border-radius: 5px;
   box-sizing: border-box;

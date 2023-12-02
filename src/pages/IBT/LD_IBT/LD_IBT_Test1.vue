@@ -76,31 +76,8 @@
     <!-- TEST -->
     <section v-if="currentStep === 3">
         <h3 class="underline mb-0">{{ ibt_trials[section].section }}</h3>
-        <section class="flex flex-wrap-reverse items-center justify-center gap-0 md:gap-12">
-            <div>
-                <h4 class="mt-4 text-sm">Reminder</h4>
-                <table class="w-96 text-sm remember-table border-collapse leading-6 mt-5">
-                    <tr>
-                        <td class="font-medium">If you see these words</td>
-                        <td class="font-medium">Press</td>
-                    </tr>
-                    <tr>
-                        <td>Average Learner, Typically Developing, Neurotypical, No Diagnosis </td>
-                        <td>
-                            <img src="../../../assets/LD_IBT/sad-face.png" class="w-32" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Learning Difficulties Slow Learner, Academic Challenges, Educational Barriers, Difficulties
-                            Learning
-                        </td>
-                        <td>
-                            <img src="../../../assets/LD_IBT/happy-face.png" class="w-32" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="mt-5 h-20 w-56">
+        <section class="flex flex-wrap-reverse items-center flex-col justify-center gap-0 md:gap-12">
+            <div class="mt-5 h-8 w-56">
                 <!-- Stars and Crosses -->
                 <div class="flex justify-center">
                     <img src="../../../assets/LD_IBT/check-mark.png" alt="star" v-show="userGotStimulusRight"
@@ -110,7 +87,7 @@
 
                 <div class="flex-col items-center" :class="{ hide: testNotStarted || paused }">
                     <div v-for="trial in ibt_trials[section].trials" :key="trial.id" :style="{ display: trial.visibility }"
-                        class="h-20 ">
+                        class="h-auto ">
                         <!-- Keyword -->
                         <h3 class="font-semibold text-xl">{{
                             trial.keyword }}</h3>
@@ -132,6 +109,33 @@
                     </div>
                 </div>
             </div>
+            <!-- TEST REMINDER -->
+            <div>
+                <details>
+                    <summary class="text-sm mt-5">Click here for a reminder</summary>
+                    <table class="w-96 mt-4 text-sm remember-table border-collapse leading-6">
+                        <tr>
+                            <td class="font-medium">If you see these words</td>
+                            <td class="font-medium">Press</td>
+                        </tr>
+                        <tr>
+                            <td>Average Learner, Typically Developing, Neurotypical, No Diagnosis </td>
+                            <td>
+                                <img src="../../../assets/LD_IBT/sad-face.png" class="w-32" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Learning Difficulties Slow Learner, Academic Challenges, Educational Barriers, Difficulties
+                                Learning
+                            </td>
+                            <td>
+                                <img src="../../../assets/LD_IBT/happy-face.png" class="w-32" />
+                            </td>
+                        </tr>
+                    </table>
+                </details>
+            </div>
+
         </section>
     </section>
 </template>

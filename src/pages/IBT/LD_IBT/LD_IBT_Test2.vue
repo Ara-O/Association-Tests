@@ -55,14 +55,14 @@
             <tr>
                 <td>Average Learner, Typically Developing, Neurotypical, No Diagnosis </td>
                 <td>
-                    <img src="../../../assets/LD_IBT/happy-face.png" class="w-32" />
+                    <img src="../../../assets/LD_IBT/sad-face.png" class="w-32" />
                 </td>
             </tr>
             <tr>
                 <td>Learning Difficulties Slow Learner, Academic Challenges, Educational Barriers, Difficulties Learning
                 </td>
                 <td>
-                    <img src="../../../assets/LD_IBT/sad-face.png" class="w-32" />
+                    <img src="../../../assets/LD_IBT/happy-face.png" class="w-32" />
                 </td>
             </tr>
         </table>
@@ -76,9 +76,8 @@
     <!-- TEST -->
     <section v-if="currentStep === 3">
         <h3 class="underline mb-0">{{ ibt_trials[section].section }}</h3>
-        <section class="flex flex-wrap-reverse items-center flex-col justify-center gap-0 md:gap-12">
-
-            <div class="mt-5 h-8 w-56">
+        <section class="flex flex-wrap-reverse items-center flex-col justify-center gap-0 ">
+            <div class="mt-9 w-56 min-h-[83px]">
                 <!-- Stars and Crosses -->
                 <div class="flex justify-center">
                     <img src="../../../assets/LD_IBT/check-mark.png" alt="star" v-show="userGotStimulusRight"
@@ -88,7 +87,7 @@
 
                 <div class="flex-col items-center" :class="{ hide: testNotStarted || paused }">
                     <div v-for="trial in ibt_trials[section].trials" :key="trial.id" :style="{ display: trial.visibility }"
-                        class="h-20 ">
+                        class="h-auto ">
                         <!-- Keyword -->
                         <h3 class="font-semibold text-xl">{{
                             trial.keyword }}</h3>
@@ -112,9 +111,9 @@
             </div>
             <!-- TEST REMINDER -->
             <div>
-                <details>
+                <details class="reminders-menu">
                     <summary class="text-sm mt-5">Click here for a reminder</summary>
-                    <table class="w-96 text-sm remember-table border-collapse leading-6 mt-5">
+                    <table class="w-96 mt-4 text-sm remember-table border-collapse leading-6">
                         <tr>
                             <td class="font-medium">If you see these words</td>
                             <td class="font-medium">Press</td>
@@ -122,7 +121,7 @@
                         <tr>
                             <td>Average Learner, Typically Developing, Neurotypical, No Diagnosis </td>
                             <td>
-                                <img src="../../../assets/LD_IBT/happy-face.png" class="w-32" />
+                                <img src="../../../assets/LD_IBT/sad-face.png" class="w-32" />
                             </td>
                         </tr>
                         <tr>
@@ -130,26 +129,23 @@
                                 Learning
                             </td>
                             <td>
-                                <img src="../../../assets/LD_IBT/sad-face.png" class="w-32" />
+                                <img src="../../../assets/LD_IBT/happy-face.png" class="w-32" />
                             </td>
                         </tr>
                     </table>
                 </details>
             </div>
+
         </section>
-
-
-        <!-- ACTUAL ROUND
-        <section v-if="currentStep === 4">
-        </section> -->
     </section>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { generateLdTrials } from "../../../modules/generateIbtTrials/generatIbtTrialsLD"
 import { startTimer, handleAnswer } from "../../../modules/handleAnswers/handleIbtAnswersLd"
-import { useRouter } from 'vue-router';
+import { routerKey } from 'vue-router';
+import router from '../../../router';
 import { useStore } from 'vuex';
 
 let userGotStimulusRight = ref(false)
@@ -160,7 +156,6 @@ let section = ref(0)
 let testNotStarted = ref(true)
 let currentStep = ref(1)
 
-const router = useRouter()
 const store = useStore()
 const props = defineProps(["position"])
 const emits = defineEmits(["finished"])
@@ -168,11 +163,11 @@ const emits = defineEmits(["finished"])
 let ibt_trials = [
     {
         section: "Practice",
-        trials: generateLdTrials("Sad", "Smiley", 2),
+        trials: generateLdTrials("Smiley", "Sad", 6),
     },
     {
         section: "Full test",
-        trials: generateLdTrials("Sad", "Smiley", 2),
+        trials: generateLdTrials("Smiley", "Sad", 12),
     },
 ]
 
@@ -180,7 +175,6 @@ function getClickerImage(url) {
     return new URL(`../../../assets/LD_IBT/${url}`, import.meta.url)
         .href;
 }
-
 
 function startTest() {
     currentStep.value++;
@@ -197,7 +191,6 @@ function finishedSection(fullyDone) {
 
     if (fullyDone) {
         store.commit("storeLd", ibt_trials[1].trials)
-
         if (props.position === 1) {
             emits("finished")
             return
@@ -206,7 +199,6 @@ function finishedSection(fullyDone) {
             return
         }
     }
-
     testNotStarted.value = true
     currentTrial.value = 0
     section.value++
@@ -225,6 +217,7 @@ function handleClick(userClicked) {
         userChoice = trial.rightClickerFace
     }
 
+    document.querySelector(".reminders-menu").removeAttribute("open")
     handleAnswer(userChoice, testNotStarted, ibt_trials[section.value].trials, paused, currentTrial, userGotStimulusRight, userGotStimulusWrong, finishedSection, section, store)
 }
 

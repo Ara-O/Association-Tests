@@ -20,34 +20,38 @@
         </h4>
         <h4>
           You are invited to participate in a survey consisting of four main
-          sets of tests/questionnaires.
+          sets of tasks/questionnaires.
         </h4>
-        <ol class="mt-6">
-          <li>
-            <span style="font-weight: bold">Implicit Association Test</span> (5
-            minutes) - Measures your implicit attitudes towards learning
-            difficulties.
-          </li>
-          <br />
-          <li>
-            <span style="font-weight: bold">Attributions Based Questionnaire
-            </span>
-            (5 minutes) - Measures your beliefs about causes of learning
-            difficulties.
-          </li>
-          <br />
-          <li>
-            <span style="font-weight: bold">Explicit Attitudes Questionnaire
-            </span>
-            (5 minutes) - Measures your opinions on learning difficulties.
-          </li>
-          <br />
-          <li>
-            <span style="font-weight: bold">Parental and School Survey </span>
-            (5 minutes) - Measures your involvement in your child’s academic
-            activities at home and school.
-          </li>
-        </ol>
+        <table class="border border-solid border-black">
+          <tr>
+            <th>Name</th>
+            <th>Duration</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>Implicit Association Task</td>
+            <td>5 minutes</td>
+            <td> Measures your implicit attitudes towards learning
+              difficulties.</td>
+          </tr>
+          <tr>
+            <td>Attributions Based Questionnaire</td>
+            <td>5 minutes</td>
+            <td>Measures your beliefs about causes of learning
+              difficulties.</td>
+          </tr>
+          <tr>
+            <td>Explicit Attitudes Questionnaire</td>
+            <td>5 minutes</td>
+            <td>Measures your opinion on learning difficulties.</td>
+          </tr>
+          <tr>
+            <td>Parental and School Survey</td>
+            <td>5 minutes</td>
+            <td>Measures your involvement in your child’s academic
+              activities at home and school.</td>
+          </tr>
+        </table>
       </div>
       <br />
       <!-- More FAQs -->
@@ -265,6 +269,15 @@ button {
 
 .red {
   background: linear-gradient(185deg, #ef7e7e, #982020);
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: solid 1px black;
 }
 
 .buttons-section {

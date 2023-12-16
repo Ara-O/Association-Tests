@@ -43,138 +43,144 @@
     </section>
 
     <!-- Survey section 1 -->
-    <section v-show="currentStep === Step.ShowBackgroundFormSurveyOne" class="survey-section text-left">
-      <h3 class="font-medium">Background Form</h3>
-      <h4 class="font-medium">Note: Green highlighted texts specify the questions. Please answer the following questions
-      </h4>
-      <form @submit.prevent="currentStep++" class="!max-h-none justify-start">
-        <span class="flex flex-wrap items-center gap-3">
-          <label for="country" class="block mt-0 mb-0 font-medium bg-green-200">1. From which country/countries did you or
-            your family
-            originally
-            arrive in Canada?</label>
-          <div class="flex items-start mt-0 mb-0">
-            <select id="" class="mt-0" v-model="surveyData.countryOfOrigin">
-              <option :value="country" v-for="country in countriesList">{{ country }}</option>
-            </select>
-          </div>
-        </span>
 
-        <h4>
-          Note: List all countries you have lived in before coming to Canada
-          starting with the last country you were residing in
+
+    <section class="main !mt-40 sm:!mt-10 mb-10" v-show="currentStep === Step.ShowBackgroundFormSurveyOne"
+      style="height: auto !important">
+      <section class="survey-section" style="padding-right: 45px;">
+        <h3 class="font-medium">Background Form</h3>
+        <h4 class="font-medium">Note: Green highlighted texts specify the questions. Please answer the following questions
         </h4>
+        <form @submit.prevent="currentStep++" class="!max-h-none justify-start">
+          <span class="flex flex-wrap items-center gap-3">
+            <label for="country" class="block mt-0 mb-0 font-medium bg-green-200">1. From which country/countries did you
+              or
+              your family
+              originally
+              arrive in Canada?</label>
+            <div class="flex items-start mt-0 mb-0">
+              <select id="" class="mt-0" v-model="surveyData.countryOfOrigin">
+                <option :value="country" v-for="country in countriesList">{{ country }}</option>
+              </select>
+            </div>
+          </span>
 
-        <span class="flex flex-wrap items-center gap-3">
-          <label for="province" class="mt-0 mb-0 bg-green-200">Province (if applicable): </label>
-          <input id="province" class="mt-0 mb-0" v-model="surveyData.province" />
-        </span>
+          <h4>
+            Note: List all countries you have lived in before coming to Canada
+            starting with the last country you were residing in
+          </h4>
 
-        <span class="flex flex-wrap items-center gap-3 mt-5">
-          <label for="city" class="mt-0 mb-0 bg-green-200">City: </label>
-          <input type="text" id="city" class="mt-0 mb-0" v-model="surveyData.city" placeholder="City" />
-        </span>
+          <span class="flex flex-wrap items-center gap-3">
+            <label for="province" class="mt-0 mb-0 bg-green-200">Province (if applicable): </label>
+            <input id="province" class="mt-0 mb-0" v-model="surveyData.province" />
+          </span>
 
-        <h4 class="font-medium bg-green-200 inline-block !w-fit">2. When did you or your family come to Canada?</h4>
-        <span class="flex flex-wrap items-center gap-3">
-          <label for="you" class="mb-0 mt-0 bg-green-200">You: </label>
-          <input type="text" class="mt-0 mb-0" id="you" v-model="surveyData.yearUsrMovedToCanada" placeholder="Year" />
-        </span>
+          <span class="flex flex-wrap items-center gap-3 mt-5">
+            <label for="city" class="mt-0 mb-0 bg-green-200">City: </label>
+            <input type="text" id="city" class="mt-0 mb-0" v-model="surveyData.city" placeholder="City" />
+          </span>
 
-        <span class="flex flex-wrap items-center gap-3 mt-5">
-          <label for="spouse-1" class="mb-0 mt-0 bg-green-200">Your spouse (if applicable): </label>
-          <input type="text" id="spouse-1" class="mb-0 mt-0" placeholder="Year"
-            v-model="surveyData.yearSpouseMovedToCanada" />
-        </span>
+          <h4 class="font-medium bg-green-200 inline-block !w-fit">2. When did you or your family come to Canada?</h4>
+          <span class="flex flex-wrap items-center gap-3">
+            <label for="you" class="mb-0 mt-0 bg-green-200">You: </label>
+            <input type="text" class="mt-0 mb-0" id="you" v-model="surveyData.yearUsrMovedToCanada" placeholder="Year" />
+          </span>
 
-        <span class="flex flex-wrap items-center gap-3 mt-5">
-          <label for="parents" class="mb-0 mt-0 bg-green-200">Your parents (if applicable): </label>
-          <input type="text" class="mb-0 mt-0" id="parents" placeholder="Year"
-            v-model="surveyData.yearParentsMovedToCanada" />
-        </span>
+          <span class="flex flex-wrap items-center gap-3 mt-5">
+            <label for="spouse-1" class="mb-0 mt-0 bg-green-200">Your spouse (if applicable): </label>
+            <input type="text" id="spouse-1" class="mb-0 mt-0" placeholder="Year"
+              v-model="surveyData.yearSpouseMovedToCanada" />
+          </span>
 
-        <h4 class="font-medium bg-green-200 !w-fit">3. How long have you or your family been in Canada?</h4>
-        <span class="flex flex-wrap items-center gap-3">
-          <label class="mb-0 mt-0 bg-green-200" for="you-years-in-canada">You: </label>
-          <input class="mb-0 mt-0" type="text" id="you-years-in-canada" v-model="surveyData.usrDurOfStayInCanada"
-            placeholder=" Years" />
-        </span>
+          <span class="flex flex-wrap items-center gap-3 mt-5">
+            <label for="parents" class="mb-0 mt-0 bg-green-200">Your parents (if applicable): </label>
+            <input type="text" class="mb-0 mt-0" id="parents" placeholder="Year"
+              v-model="surveyData.yearParentsMovedToCanada" />
+          </span>
 
-        <span class="flex flex-wrap items-center gap-3 mt-5">
-          <label class="mb-0 mt-0 bg-green-200" for="family-years-in-canada">Your family: </label>
-          <input type="text" class="mb-0 mt-0" id="family-years-in-canada" v-model="surveyData.familyDuOfStayInCanada"
-            placeholder="Years" />
-        </span>
+          <h4 class="font-medium bg-green-200 !w-fit">3. How long have you or your family been in Canada?</h4>
+          <span class="flex flex-wrap items-center gap-3">
+            <label class="mb-0 mt-0 bg-green-200" for="you-years-in-canada">You: </label>
+            <input class="mb-0 mt-0" type="text" id="you-years-in-canada" v-model="surveyData.usrDurOfStayInCanada"
+              placeholder=" Years" />
+          </span>
 
-        <span class="flex flex-wrap items-center gap-3 mt-5">
-          <label for="immigrant-status" class="mb-0 mt-0 font-medium bg-green-200">4. What is your immigrant status in
-            Canada</label>
-          <select id="immigrant-status" class="mb-0 mt-0" v-model="surveyData.immigrantStatus">
-            <option value="Canadian Citizen">Canadian Citizen</option>
-            <option value="Permanent Resident">Permanent Resident</option>
-            <option value="Refugee">Refugee</option>
-            <option value="Student Visa">Student Visa</option>
-            <option value="Work Visa">Work Visa</option>
-            <option value="Other">Other</option>
-          </select>
-        </span>
+          <span class="flex flex-wrap items-center gap-3 mt-5">
+            <label class="mb-0 mt-0 bg-green-200" for="family-years-in-canada">Your family: </label>
+            <input type="text" class="mb-0 mt-0" id="family-years-in-canada" v-model="surveyData.familyDuOfStayInCanada"
+              placeholder="Years" />
+          </span>
 
-        <span class="flex flex-wrap items-center gap-3 mt-6">
-          <label for="what-user-considers-themselves" class="font-medium mb-0 mt-0 bg-green-200">5. Do you consider
-            yourself to
-            be:</label>
-          <select id="what-user-considers-themselves" class="mb-0 mt-0" v-model="surveyData.usrGeneration">
-            <option value="First generation immigrant (that is, you were born outside of Canada)">
-              First generation immigrant (that is, you were born outside of
-              Canada)
-            </option>
-            <option
-              value="Second generation immigrant  (I was born in Canada and at least one of my parents was born outside Canada) ">
-              Second generation immigrant (I was born in Canada and at least one
-              of my parents was born outside Canada)
-            </option>
-            <option value="Third generation immigrant (I and both my parents were born in Canada)">
-              Third generation immigrant (I and both my parents were born in
-              Canada)
-            </option>
-          </select>
-        </span>
+          <span class="flex flex-wrap items-center gap-3 mt-5">
+            <label for="immigrant-status" class="mb-0 mt-0 font-medium bg-green-200">4. What is your immigrant status in
+              Canada</label>
+            <select id="immigrant-status" class="mb-0 mt-0" v-model="surveyData.immigrantStatus">
+              <option value="Canadian Citizen">Canadian Citizen</option>
+              <option value="Permanent Resident">Permanent Resident</option>
+              <option value="Refugee">Refugee</option>
+              <option value="Student Visa">Student Visa</option>
+              <option value="Work Visa">Work Visa</option>
+              <option value="Other">Other</option>
+            </select>
+          </span>
 
-        <span class="flex flex-wrap items-center gap-3 mt-6">
-          <label for="highest-education-level" class="font-medium mb-0 mt-0 bg-green-200">6. Please select the highest
-            level of
-            education that
-            you have
-            attained</label>
-          <select id="highest-education-level" class="mb-0 mt-0" v-model="surveyData.usrsHighestEduLvl">
-            <option value="Some school">Some school</option>
-            <option
-              value="Completed high school diploma and a professional qualification not from a college or university">
-              Completed high school diploma and a professional qualification not
-              from a college or university.
-            </option>
-            <option value="Completed a college diploma">
-              Completed a college diploma.
-            </option>
-            <option value="Completed an undergraduate university degree">
-              Completed an undergraduate university degree.
-            </option>
-            <option value="Completed one or more graduate degrees (Masters/or Ph.D.)">
-              Completed one or more graduate degrees (Masters/or Ph.D.).
-            </option>
-            <option value="Other (please specify)">
-              Other (please specify)
-            </option>
-          </select>
-          <br>
-          <input type="text" v-if="surveyData.usrsHighestEduLvl === 'Other (please specify)'" placeholder="Specify here"
-            v-model="surveyData.usrsHighestEduLvlOther">
-        </span>
+          <span class="flex flex-wrap items-center gap-3 mt-6">
+            <label for="what-user-considers-themselves" class="font-medium mb-0 mt-0 bg-green-200">5. Do you consider
+              yourself to
+              be:</label>
+            <select id="what-user-considers-themselves" class="mb-0 mt-0" v-model="surveyData.usrGeneration">
+              <option value="First generation immigrant (that is, you were born outside of Canada)">
+                First generation immigrant (that is, you were born outside of
+                Canada)
+              </option>
+              <option
+                value="Second generation immigrant  (I was born in Canada and at least one of my parents was born outside Canada) ">
+                Second generation immigrant (I was born in Canada and at least one
+                of my parents was born outside Canada)
+              </option>
+              <option value="Third generation immigrant (I and both my parents were born in Canada)">
+                Third generation immigrant (I and both my parents were born in
+                Canada)
+              </option>
+            </select>
+          </span>
 
-        <div class="w-full flex justify-start">
-          <button type="submit" style="margin-top: 20px">Next</button>
-        </div>
-      </form>
+          <span class="flex flex-wrap items-center gap-3 mt-6">
+            <label for="highest-education-level" class="font-medium mb-0 mt-0 bg-green-200">6. Please select the highest
+              level of
+              education that
+              you have
+              attained</label>
+            <select id="highest-education-level" class="mb-0 mt-0" v-model="surveyData.usrsHighestEduLvl">
+              <option value="Some school">Some school</option>
+              <option
+                value="Completed high school diploma and a professional qualification not from a college or university">
+                Completed high school diploma and a professional qualification not
+                from a college or university.
+              </option>
+              <option value="Completed a college diploma">
+                Completed a college diploma.
+              </option>
+              <option value="Completed an undergraduate university degree">
+                Completed an undergraduate university degree.
+              </option>
+              <option value="Completed one or more graduate degrees (Masters/or Ph.D.)">
+                Completed one or more graduate degrees (Masters/or Ph.D.).
+              </option>
+              <option value="Other (please specify)">
+                Other (please specify)
+              </option>
+            </select>
+            <br>
+            <input type="text" v-if="surveyData.usrsHighestEduLvl === 'Other (please specify)'" placeholder="Specify here"
+              v-model="surveyData.usrsHighestEduLvlOther">
+          </span>
+
+          <div class="w-full flex justify-start">
+            <button type="submit" style="margin-top: 20px">Next</button>
+          </div>
+        </form>
+      </section>
     </section>
   </section>
 
@@ -546,6 +552,10 @@ select {
   gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.bg-green-200 {
+  background: #dcffe8
 }
 
 .explain-test-section {

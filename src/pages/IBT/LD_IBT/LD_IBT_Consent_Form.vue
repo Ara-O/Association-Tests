@@ -1,10 +1,21 @@
 <template>
   <section class="main">
-    <section class="survey ld-survey-consent rounded-md" v-show="userAgreesToConsentForm">
+    <section
+      class="survey ld-survey-consent rounded-md text-left"
+      v-show="userAgreesToConsentForm"
+    >
       <!-- Top images -->
-      <div class="top-introductory-image">
-        <img src="../../../assets/LD_IBT/ld-lab-image.png" alt="LB lab image" />
-        <img src="../../../assets/LD_IBT/uni-toronto-image.png" alt="University of toronto image" />
+      <div class="top-introductory-image !items-start !content-start">
+        <img
+          src="../../../assets/LD_IBT/ld-lab-image.png"
+          alt="LB lab image"
+          class="rounded-md !border-none !shadow-none"
+        />
+        <img
+          src="../../../assets/LD_IBT/uni-toronto-image.png"
+          alt="University of toronto image"
+          class="rounded-md !border-none !shadow-none"
+        />
       </div>
       <!-- Information section -->
       <div>
@@ -14,42 +25,46 @@
           in Ontario, Canada
         </h4>
         <h4>
-          Thank you for your interest in this study, which aims to explore South
-          Asian Immigrants’ attitudes towards learning difficulties faced by
-          children and teenagers and their impact on parental involvement.
+          Thank you for your interest in this study, which explores South Asian
+          Immigrants’ attitudes towards learning difficulties faced and their
+          impact on parental involvement.
         </h4>
         <h4>
           You are invited to participate in a survey consisting of four main
-          sets of tasks/questionnaires.
+          sets of tests/questionnaires.
         </h4>
         <table class="border border-solid border-black">
-          <tr>
+          <tr class="font-medium">
             <th>Name</th>
-            <th>Duration</th>
+            <th class="w-24">Duration</th>
             <th>Description</th>
           </tr>
           <tr>
-            <td>Implicit Association Task</td>
+            <td class="font-medium">Implicit Association Task</td>
             <td>5 minutes</td>
-            <td> Measures your implicit attitudes towards learning
-              difficulties.</td>
+            <td>
+              Measures your implicit attitudes towards learning difficulties.
+            </td>
           </tr>
           <tr>
-            <td>Attributions Based Questionnaire</td>
+            <td class="font-medium">Attributions Based Questionnaire</td>
             <td>5 minutes</td>
-            <td>Measures your beliefs about causes of learning
-              difficulties.</td>
+            <td>
+              Measures your beliefs about causes of learning difficulties.
+            </td>
           </tr>
           <tr>
-            <td>Explicit Attitudes Questionnaire</td>
+            <td class="font-medium">Explicit Attitudes Questionnaire</td>
             <td>5 minutes</td>
             <td>Measures your opinion on learning difficulties.</td>
           </tr>
           <tr>
-            <td>Parental and School Survey</td>
+            <td class="font-medium">Parental and School Survey</td>
             <td>5 minutes</td>
-            <td>Measures your involvement in your child’s academic
-              activities at home and school.</td>
+            <td>
+              Measures your involvement in your child’s academic activities at
+              home and school.
+            </td>
           </tr>
         </table>
       </div>
@@ -58,72 +73,76 @@
       <div>
         <h4>
           <span style="font-weight: bold">
-            Are there any potential harms, risks, and discomfort caused by
-            taking part in the study?
+            Potential harms, risks, and discomfort caused by taking part in the
+            study
           </span>
+          <br />
           There are no potential harms or risks in taking part in the study. You
           have the right to withdraw from the study without explanation or
           penalty if you experience any discomfort at any point.
         </h4>
         <h4 class="mt-6">
           <span style="font-weight: bold">
-            What are the benefits of taking part in the study?
+            The benefits of taking part in the study?
           </span>
+          <br />
           Taking part in the survey will allow you to explore your attitudes
-          towards learning difficulties. Additionally, it offers the opportunity
-          to make a significant contribution to research involving South Asian
-          Immigrant communities, helping inform interventional support for
-          children and families.
+          towards learning difficulties and also to make a significant
+          contribution to research involving South Asian Immigrant communities.
         </h4>
         <h4 class="mt-6">
           <span style="font-weight: bold">
-            Will there be any compensation for taking part in the study?
+            Compensation for taking part in the study?
           </span>
+          <br />
           You will receive a 20-dollar gift card for taking part in this study.
         </h4>
         <h4 class="mt-6">
-          <span style="font-weight: bold">
-            How will confidentiality be maintained?
-          </span>
+          <span style="font-weight: bold"> Confidentiality </span>
+          <br />
           No personal information will be retained by the researchers throughout
           the survey. You will be identified only through a code number. All
           data will be strictly secured on a University of Toronto based server
           and a password protected computer. Your data may be shared with other
           researchers outside of the University of Toronto and/or with the
-          general public, as part of a journal publication. It will not contain
-          any information that can be used to identify you individually.
+          general public, as part of a journal publication. However, it will not
+          contain any information that can be used to identify you individually.
         </h4>
       </div>
 
       <!-- More info -->
       <h4>
         Participation in this study is completely voluntary. You may choose to
-        withdraw at any time during the interview without any consequences. If
-        you withdraw during the study, you will not need to give any explanation
-        for the decision and your survey data will be discarded. If you decide
-        to withdraw your data from the study after the survey is completed,
-        please inform the principal investigator Tehani Gunawardena (<a target="_blank"
-          href="https://mail.google.com/mail/?view=cm&fs=1&to=tehani.gunawardena@mail.utoronto.ca">
+        withdraw at any time without any consequences. If you withdraw during
+        the study, you will not need to give any explanation for the decision
+        and your survey data will be discarded. If you decide to withdraw your
+        data from the study after the survey is completed, please inform the
+        principal investigator Tehani Gunawardena (<a
+          target="_blank"
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=tehani.gunawardena@mail.utoronto.ca"
+        >
           tehani.gunawardena@mail.utoronto.ca
         </a>
-        ) one week after the completion of the survey. Your data will thereafter
-        be removed from the study.
+        ) within one week of completing this survey.
       </h4>
 
       <!-- Questions -->
 
       <div class="mt-6">
-        <h4 style="font-weight: bold">Questions about the study:</h4>
-        <ul>
+        <h4 style="font-weight: bold" class="mb-0">
+          Questions about the study:
+        </h4>
+        <ul class="!mt-0">
           <li>
-            For study-related inquiries, contact the principal investigator at
-            Tehani.gunawardena@mail.utoronto.ca.
+            For study-related inquiries:tehani.gunawardena@mail.utoronto.ca.
           </li>
           <li>
-            For questions or concerns about your rights as a participant,
-            contact the Research Oversight and Compliance Office- Human Research
-            Ethics Program at
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ethics.review@utoronto.ca">
+            For questions or concerns about your rights as a
+            participant-:Research Oversight and Compliance Office- Human
+            Research Ethics Program at
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=ethics.review@utoronto.ca"
+            >
               ethics.review@utoronto.ca
             </a>
             or 416-946-3273
@@ -133,17 +152,17 @@
 
       <!-- Final section -->
       <h4>
-        If you agree to take part in the study, please click on the “I agree”
-        button at the bottom of the screen. If you do not wish to participate in
-        the study, you can click on the “I do not agree” button or exit the
-        browser.
+        If you agree to take part in the study, please click on the “I agree” If
+        you do not wish to participate in the study, you can click on the “I do
+        not agree” button or exit the browser.
       </h4>
 
       <!-- Button -->
       <br />
       <div class="buttons-section">
         <router-link to="/LD_IBT_Survey" style="text-decoration: none">
-          <button class="green">I agree</button></router-link>
+          <button class="green">I agree</button></router-link
+        >
         <button class="red" @click="userDoesNotWantToTakeSurvey">
           I do not agree
         </button>
@@ -152,7 +171,9 @@
     <section v-if="!userAgreesToConsentForm" class="survey-feedback">
       <div class="no-survey">
         <h3>You can close out of this page or go home</h3>
-        <router-link to="/Home" style="text-decoration: none"><button class="green">Go Home</button></router-link>
+        <router-link to="/Home" style="text-decoration: none"
+          ><button class="green">Go Home</button></router-link
+        >
       </div>
     </section>
   </section>
@@ -201,8 +222,8 @@ function userDoesNotWantToTakeSurvey() {
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .top-introductory-image img {
@@ -216,7 +237,7 @@ function userDoesNotWantToTakeSurvey() {
 }
 
 .ld-survey-consent {
-  font-family: 'poppins', serif;
+  font-family: "poppins", serif;
   font-size: 13px;
 }
 
@@ -278,6 +299,7 @@ table {
 td,
 th {
   border: solid 1px black;
+  padding: 3px 10px;
 }
 
 .buttons-section {

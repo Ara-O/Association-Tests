@@ -32,8 +32,11 @@ const app = initializeApp(firebaseConfigLD, "ld");
 const db = getDatabase(app);
 
 export function storeLDPreSurvey(uid, data, store) {
-
-    data.pointOfContact = store.state.ld_point_of_contact
+    if (store.state.ld_point_of_contact) {
+        data.pointOfContact = store.state.ld_point_of_contact
+    } else {
+        data.pointOfContact = "Not Specified"
+    }
 
     set(
         ref(

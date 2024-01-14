@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .gradient-btn {
+    @apply no-underline flex justify-center items-center rounded-full shadow-md cursor-pointer border-0 mb-6 transition-all duration-200 ease-in-out text-white px-7 py-[25px] font-normal text-[13px] h-10 mt-6;
+  }
+}
+
+.gradient-green {
+  background: linear-gradient(185deg, #7eefbf, #389820);
+}
+
+.gradient-red {
+  background: linear-gradient(185deg, #ef7e7e, #982020);
+}
+
 *,
 font {
   font-weight: inherit;

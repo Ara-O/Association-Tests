@@ -1,83 +1,19 @@
 <template>
-  <section
-    class="main !min-h-screen !h-auto"
-    v-show="currentStep !== Step.ShowBackgroundFormSurveyTwo"
-  >
+  <section class="main !min-h-screen !h-auto" v-show="currentStep !== Step.ShowBackgroundFormSurveyTwo">
     <!-- Email section -->
     <section v-show="currentStep === Step.AskForEmailAddress">
-      <div class="survey-box">
-        <h3 style="font-weight: 500" class="!text-center">
-          Please provide us with your email address
-        </h3>
-        <h4 style="font-size: 14px; line-height: 30px; text-align: center">
-          Your email address will be used solely for payment purposes for taking
-          part in this study and will not be used to identify you individually.
-        </h4>
-        <form
-          @submit.prevent="finishEmailSection"
-          style="align-items: center !important"
-          class="!h-auto !min-h-0 !flex-col !flex-nowrap !items-center"
-        >
-          <input
-            type="text"
-            name="user-email"
-            v-model="ld_email"
-            id="email"
-            class="ld-user-email"
-            style="text-align: center !important"
-            placeholder="Enter email address"
-          />
-          <button type="submit">Next</button>
-        </form>
-      </div>
+      <EmailInput @finish="currentStep++"></EmailInput>
     </section>
 
     <!-- Test explanation section -->
-    <section
-      v-show="currentStep === Step.ExplainTest"
-      class="explain-test-section !mt-10 !mb-10"
-    >
-      <div>
-        <h3 class="font-semibold mt-0">Welcome to the Study 1!</h3>
-      </div>
-
-      <div>
-        <h4>
-          <span class="font-bold">Instructions:</span> In this study, you will
-          complete four main components:
-        </h4>
-        <h4 class="!mt-1 !mb-2">1. Demographic Form</h4>
-        <h4 class="!mt-1 !mb-2">2. Implicit Bias Task</h4>
-        <h4 class="!mt-1 !mb-2">
-          3. Case-based questionnaire measuring attributions about learning
-          difficulties
-        </h4>
-        <h4 class="!mt-1 !mb-2">
-          4. Questionnaires measuring explicit attitudes towards learning
-          difficulties and parental involvement
-        </h4>
-        <h4>The whole study will take around 20 minutes to complete</h4>
-      </div>
-      <div>
-        <img
-          src="../../../assets/LD_IBT/test-introduction-image-2.png"
-          alt="Test intro image"
-          class="test-intro-image"
-        />
-      </div>
-      <div class="test-buttons !justify-start !mt-0">
-        <button @click="currentStep--" class="!mt-0">Back</button>
-        <button @click="currentStep++" class="!mt-0">Next</button>
-      </div>
+    <section v-show="currentStep === Step.ExplainTest" class="explain-test-section !mt-10 !mb-10">
+      <StudyIntroduction></StudyIntroduction>
     </section>
 
     <!-- Survey section 1 -->
 
-    <section
-      class="main mt-10 mb-10"
-      v-show="currentStep === Step.ShowBackgroundFormSurveyOne"
-      style="height: auto !important"
-    >
+    <section class="main mt-10 mb-10" v-show="currentStep === Step.ShowBackgroundFormSurveyOne"
+      style="height: auto !important">
       <section class="survey-section" style="padding-right: 45px">
         <h3 class="font-semibold !text-lg">Demographic Form</h3>
         <h4 class="font-medium">
@@ -86,14 +22,11 @@
         </h4>
         <form @submit.prevent="currentStep++" class="!max-h-none justify-start">
           <span class="flex flex-wrap items-center gap-3">
-            <label
-              for="country"
-              class="block mt-0 mb-0 font-medium bg-green-200"
-              >1. From which country/countries did you or your family originally
-              arrive in Canada?</label
-            >
+            <label for="country" class="block mt-0 mb-0 font-medium bg-green-200">1. From which country/countries did you
+              or your family originally
+              arrive in Canada?</label>
             <div class="flex items-start mt-0 mb-0">
-              <select id="" class="mt-0" v-model="surveyData.countryOfOrigin">
+              <select id="" class="mt-0" v-model="surveyData.countryOfOrigin" required>
                 <option :value="country" v-for="country in countriesList">
                   {{ country }}
                 </option>
@@ -107,25 +40,14 @@
           </h4>
 
           <span class="flex flex-wrap items-center gap-3">
-            <label for="province" class="mt-0 mb-0 bg-green-200"
-              >Province (if applicable):
+            <label for="province" class="mt-0 mb-0 bg-green-200">Province (if applicable):
             </label>
-            <input
-              id="province"
-              class="mt-0 mb-0"
-              v-model="surveyData.province"
-            />
+            <input id="province" class="mt-0 mb-0" v-model="surveyData.province" />
           </span>
 
           <span class="flex flex-wrap items-center gap-3 mt-5">
             <label for="city" class="mt-0 mb-0 bg-green-200">City: </label>
-            <input
-              type="text"
-              id="city"
-              class="mt-0 mb-0"
-              v-model="surveyData.city"
-              placeholder="City"
-            />
+            <input type="text" id="city" class="mt-0 mb-0" v-model="surveyData.city" placeholder="City" required />
           </span>
 
           <h4 class="font-medium bg-green-200 inline-block !w-fit">
@@ -133,81 +55,45 @@
           </h4>
           <span class="flex flex-wrap items-center gap-3">
             <label for="you" class="mb-0 mt-0 bg-green-200">You: </label>
-            <input
-              type="text"
-              class="mt-0 mb-0"
-              id="you"
-              v-model="surveyData.yearUsrMovedToCanada"
-              placeholder="Year"
-            />
+            <input type="text" class="mt-0 mb-0" id="you" v-model="surveyData.yearUsrMovedToCanada" placeholder="Year"
+              required />
           </span>
 
           <span class="flex flex-wrap items-center gap-3 mt-5">
-            <label for="spouse-1" class="mb-0 mt-0 bg-green-200"
-              >Your spouse (if applicable):
+            <label for="spouse-1" class="mb-0 mt-0 bg-green-200">Your spouse (if applicable):
             </label>
-            <input
-              type="text"
-              id="spouse-1"
-              class="mb-0 mt-0"
-              placeholder="Year"
-              v-model="surveyData.yearSpouseMovedToCanada"
-            />
+            <input type="text" id="spouse-1" class="mb-0 mt-0" placeholder="Year"
+              v-model="surveyData.yearSpouseMovedToCanada" />
           </span>
 
           <span class="flex flex-wrap items-center gap-3 mt-5">
-            <label for="parents" class="mb-0 mt-0 bg-green-200"
-              >Your parents (if applicable):
+            <label for="parents" class="mb-0 mt-0 bg-green-200">Your parents (if applicable):
             </label>
-            <input
-              type="text"
-              class="mb-0 mt-0"
-              id="parents"
-              placeholder="Year"
-              v-model="surveyData.yearParentsMovedToCanada"
-            />
+            <input type="text" class="mb-0 mt-0" id="parents" placeholder="Year"
+              v-model="surveyData.yearParentsMovedToCanada" />
           </span>
 
           <h4 class="font-medium bg-green-200 !w-fit">
             3. How long have you or your family been in Canada?
           </h4>
           <span class="flex flex-wrap items-center gap-3">
-            <label class="mb-0 mt-0 bg-green-200" for="you-years-in-canada"
-              >You:
+            <label class="mb-0 mt-0 bg-green-200" for="you-years-in-canada">You:
             </label>
-            <input
-              class="mb-0 mt-0"
-              type="text"
-              id="you-years-in-canada"
-              v-model="surveyData.usrDurOfStayInCanada"
-              placeholder=" Years"
-            />
+            <input class="mb-0 mt-0" type="text" id="you-years-in-canada" v-model="surveyData.usrDurOfStayInCanada"
+              placeholder=" Years" required />
           </span>
 
           <span class="flex flex-wrap items-center gap-3 mt-5">
-            <label class="mb-0 mt-0 bg-green-200" for="family-years-in-canada"
-              >Your family:
+            <label class="mb-0 mt-0 bg-green-200" for="family-years-in-canada">Your family:
             </label>
-            <input
-              type="text"
-              class="mb-0 mt-0"
-              id="family-years-in-canada"
-              v-model="surveyData.familyDuOfStayInCanada"
-              placeholder="Years"
-            />
+            <input type="text" class="mb-0 mt-0" id="family-years-in-canada" v-model="surveyData.familyDuOfStayInCanada"
+              placeholder="Years" required />
           </span>
 
           <span class="flex flex-wrap items-center gap-3 mt-5">
-            <label
-              for="immigrant-status"
-              class="mb-0 mt-0 font-medium bg-green-200"
-              >4. What is your immigrant status in Canada</label
-            >
-            <select
-              id="immigrant-status"
-              class="mb-0 mt-0"
-              v-model="surveyData.immigrantStatus"
-            >
+            <label for="immigrant-status" class="mb-0 mt-0 font-medium bg-green-200">4. What is your immigrant status in
+              Canada</label>
+            <select id="immigrant-status" class="mb-0 mt-0" v-model="surveyData.immigrantStatus" required>
               <option value="Canadian Citizen">Canadian Citizen</option>
               <option value="Permanent Resident">Permanent Resident</option>
               <option value="Refugee">Refugee</option>
@@ -218,31 +104,19 @@
           </span>
 
           <span class="flex flex-wrap items-center gap-3 mt-6">
-            <label
-              for="what-user-considers-themselves"
-              class="font-medium mb-0 mt-0 bg-green-200"
-              >5. Do you consider yourself to be:</label
-            >
-            <select
-              id="what-user-considers-themselves"
-              class="mb-0 mt-0"
-              v-model="surveyData.usrGeneration"
-            >
-              <option
-                value="First generation immigrant (that is, you were born outside of Canada)"
-              >
+            <label for="what-user-considers-themselves" class="font-medium mb-0 mt-0 bg-green-200">5. Do you consider
+              yourself to be:</label>
+            <select id="what-user-considers-themselves" class="mb-0 mt-0" v-model="surveyData.usrGeneration" required>
+              <option value="First generation immigrant (that is, you were born outside of Canada)">
                 First generation immigrant (that is, you were born outside of
                 Canada)
               </option>
               <option
-                value="Second generation immigrant  (I was born in Canada and at least one of my parents was born outside Canada) "
-              >
+                value="Second generation immigrant  (I was born in Canada and at least one of my parents was born outside Canada) ">
                 Second generation immigrant (I was born in Canada and at least
                 one of my parents was born outside Canada)
               </option>
-              <option
-                value="Third generation immigrant (I and both my parents were born in Canada)"
-              >
+              <option value="Third generation immigrant (I and both my parents were born in Canada)">
                 Third generation immigrant (I and both my parents were born in
                 Canada)
               </option>
@@ -250,21 +124,13 @@
           </span>
 
           <span class="flex flex-wrap items-center gap-3 mt-6">
-            <label
-              for="highest-education-level"
-              class="font-medium mb-0 mt-0 bg-green-200"
-              >6. Please select the highest level of education that you have
-              attained</label
-            >
-            <select
-              id="highest-education-level"
-              class="mb-0 mt-0"
-              v-model="surveyData.usrsHighestEduLvl"
-            >
+            <label for="highest-education-level" class="font-medium mb-0 mt-0 bg-green-200">6. Please select the highest
+              level of education that you have
+              attained</label>
+            <select id="highest-education-level" class="mb-0 mt-0" v-model="surveyData.usrsHighestEduLvl" required>
               <option value="Some school">Some school</option>
               <option
-                value="Completed high school diploma and a professional qualification not from a college or university"
-              >
+                value="Completed high school diploma and a professional qualification not from a college or university">
                 Completed high school diploma and a professional qualification
                 not from a college or university.
               </option>
@@ -274,9 +140,7 @@
               <option value="Completed an undergraduate university degree">
                 Completed an undergraduate university degree.
               </option>
-              <option
-                value="Completed one or more graduate degrees (Masters/or Ph.D.)"
-              >
+              <option value="Completed one or more graduate degrees (Masters/or Ph.D.)">
                 Completed one or more graduate degrees (Masters/or Ph.D.).
               </option>
               <option value="Other (please specify)">
@@ -284,12 +148,8 @@
               </option>
             </select>
             <br />
-            <input
-              type="text"
-              v-if="surveyData.usrsHighestEduLvl === 'Other (please specify)'"
-              placeholder="Specify here"
-              v-model="surveyData.usrsHighestEduLvlOther"
-            />
+            <input type="text" v-if="surveyData.usrsHighestEduLvl === 'Other (please specify)'" placeholder="Specify here"
+              v-model="surveyData.usrsHighestEduLvlOther" />
           </span>
 
           <div class="w-full flex justify-start">
@@ -300,11 +160,8 @@
     </section>
   </section>
 
-  <section
-    class="main mt-10 mb-10"
-    v-show="currentStep === Step.ShowBackgroundFormSurveyTwo"
-    style="height: auto !important"
-  >
+  <section class="main mt-10 mb-10" v-show="currentStep === Step.ShowBackgroundFormSurveyTwo"
+    style="height: auto !important">
     <!-- SECTION 2 -->
     <section class="survey-section" style="padding-right: 45px">
       <div class="form !max-w-none !w-full">
@@ -314,20 +171,12 @@
         </h4>
 
         <span class="flex flex-wrap items-center gap-3">
-          <label
-            for="spouse-highest-education-level"
-            class="font-medium mb-0 mt-0 bg-green-200"
-            >7. What is your spouse's highest educational level</label
-          >
-          <select
-            id="spouse-highest-education-level"
-            v-model="surveyData.spouseHighestEduLvl"
-            class="mb-0 mt-0"
-          >
+          <label for="spouse-highest-education-level" class="font-medium mb-0 mt-0 bg-green-200">7. What is your spouse's
+            highest educational level</label>
+          <select id="spouse-highest-education-level" v-model="surveyData.spouseHighestEduLvl" class="mb-0 mt-0">
             <option value="Some school">Some school</option>
             <option
-              value="Completed high school diploma and a professional qualification not from a college or university"
-            >
+              value="Completed high school diploma and a professional qualification not from a college or university">
               Completed high school diploma and a professional qualification not
               from a college or university.
             </option>
@@ -337,9 +186,7 @@
             <option value="Completed an undergraduate university degree">
               Completed an undergraduate university degree.
             </option>
-            <option
-              value="Completed one or more graduate degrees (Masters/or Ph.D.)"
-            >
+            <option value="Completed one or more graduate degrees (Masters/or Ph.D.)">
               Completed one or more graduate degrees (Masters/or Ph.D.).
             </option>
             <option value="Other (please specify)">
@@ -349,26 +196,16 @@
         </span>
 
         <div class="full">
-          <input
-            type="text"
-            class="mt-3"
-            v-if="surveyData.spouseHighestEduLvl === 'Other (please specify)'"
-            placeholder="Specify here"
-            v-model="surveyData.spouseHighestEduLvlOther"
-          />
+          <input type="text" class="mt-3" v-if="surveyData.spouseHighestEduLvl === 'Other (please specify)'"
+            placeholder="Specify here" v-model="surveyData.spouseHighestEduLvlOther" />
         </div>
 
         <span class="flex flex-wrap items-center gap-3 mt-5">
           <label for="occupation" class="mb-0 mt-0 font-medium bg-green-200">
             8. What is your occupation in Canada?
           </label>
-          <input
-            type="text"
-            id="occupation"
-            class="mb-0 mt-0"
-            v-model="surveyData.usrOccupInCanada"
-            placeholder="Occupation"
-          />
+          <input type="text" id="occupation" class="mb-0 mt-0" v-model="surveyData.usrOccupInCanada"
+            placeholder="Occupation" />
         </span>
 
         <span class="flex flex-wrap items-center gap-3 mt-5">
@@ -376,24 +213,15 @@
             If you are a new Canadian and were employed before immigrating to
             Canada, please indicate your occupation in your former country
           </label>
-          <input
-            type="text"
-            id="occupation-2"
-            class="mt-5"
-            placeholder="Occupation"
-            v-model="surveyData.usrOccupInFormerCountry"
-          />
+          <input type="text" id="occupation-2" class="mt-5" placeholder="Occupation"
+            v-model="surveyData.usrOccupInFormerCountry" />
         </span>
 
         <span class="flex flex-wrap items-center gap-3 mt-5">
-          <label for="main-language" class="font-medium mt-0 mb-0 bg-green-200"
-            >9. What is the main language you use at home on a daily basis?
+          <label for="main-language" class="font-medium mt-0 mb-0 bg-green-200">9. What is the main language you use at
+            home on a daily basis?
           </label>
-          <select
-            id="main-language"
-            class="mb-0 mt-0"
-            v-model="surveyData.mainLangUsedAtHome"
-          >
+          <select id="main-language" class="mb-0 mt-0" v-model="surveyData.mainLangUsedAtHome">
             <option value="English">English</option>
             <option value="Bangla">Bangla</option>
             <option value="Hindi">Hindi</option>
@@ -407,16 +235,12 @@
         </span>
         <br />
         <div class="full centered space-top">
-          <label for="other-language" class="font-medium bg-green-200"
-            >10. Do you use any other language/languages besides the home
+          <label for="other-language" class="font-medium bg-green-200">10. Do you use any other language/languages besides
+            the home
             language indicated above? If yes, what is/are the additional
             language/languages you use?
           </label>
-          <input
-            type="text"
-            id="other-languages"
-            v-model="surveyData.otherLangsUsedAtHome"
-          />
+          <input type="text" id="other-languages" v-model="surveyData.otherLangsUsedAtHome" />
         </div>
         <br />
 
@@ -438,89 +262,52 @@
               <tr>
                 <td>Writing</td>
                 <td>
-                  <input
-                    type="radio"
-                    name="writing-home-language"
-                    value="Beginner"
-                    v-model="surveyData.usrProficiencyInHomeLngWriting"
-                  />
+                  <input type="radio" name="writing-home-language" value="Beginner"
+                    v-model="surveyData.usrProficiencyInHomeLngWriting" />
                 </td>
                 <td>
-                  <input
-                    type="radio"
-                    name="writing-home-language"
-                    value="Intermediate"
-                    v-model="surveyData.usrProficiencyInHomeLngWriting"
-                  />
+                  <input type="radio" name="writing-home-language" value="Intermediate"
+                    v-model="surveyData.usrProficiencyInHomeLngWriting" />
                 </td>
                 <td>
-                  <input
-                    type="radio"
-                    name="writing-home-language"
-                    value="Proficient"
-                    v-model="surveyData.usrProficiencyInHomeLngWriting"
-                  />
+                  <input type="radio" name="writing-home-language" value="Proficient"
+                    v-model="surveyData.usrProficiencyInHomeLngWriting" />
                 </td>
               </tr>
               <tr>
                 <td>Speaking</td>
                 <td>
-                  <input
-                    type="radio"
-                    name="speaking-home-language"
-                    value="Beginner"
-                    v-model="surveyData.usrProficiencyInHomeLngSpeaking"
-                  />
+                  <input type="radio" name="speaking-home-language" value="Beginner"
+                    v-model="surveyData.usrProficiencyInHomeLngSpeaking" />
                 </td>
                 <td>
-                  <input
-                    type="radio"
-                    name="speaking-home-language"
-                    value="Proficient"
-                    v-model="surveyData.usrProficiencyInHomeLngSpeaking"
-                  />
+                  <input type="radio" name="speaking-home-language" value="Proficient"
+                    v-model="surveyData.usrProficiencyInHomeLngSpeaking" />
                 </td>
                 <td>
-                  <input
-                    type="radio"
-                    name="speaking-home-language"
-                    value="Proficient"
-                    v-model="surveyData.usrProficiencyInHomeLngSpeaking"
-                  />
+                  <input type="radio" name="speaking-home-language" value="Proficient"
+                    v-model="surveyData.usrProficiencyInHomeLngSpeaking" />
                 </td>
               </tr>
               <tr>
                 <td>Reading</td>
                 <td>
-                  <input
-                    type="radio"
-                    name="reading-home-language"
-                    value="Beginner"
-                    v-model="surveyData.usrProficiencyInHomeLngReading"
-                  />
+                  <input type="radio" name="reading-home-language" value="Beginner"
+                    v-model="surveyData.usrProficiencyInHomeLngReading" />
                 </td>
                 <td>
-                  <input
-                    type="radio"
-                    name="reading-home-language"
-                    value="Intermediate"
-                    v-model="surveyData.usrProficiencyInHomeLngReading"
-                  />
+                  <input type="radio" name="reading-home-language" value="Intermediate"
+                    v-model="surveyData.usrProficiencyInHomeLngReading" />
                 </td>
                 <td>
-                  <input
-                    type="radio"
-                    name="reading-home-language"
-                    value="Proficient"
-                    v-model="surveyData.usrProficiencyInHomeLngReading"
-                  />
+                  <input type="radio" name="reading-home-language" value="Proficient"
+                    v-model="surveyData.usrProficiencyInHomeLngReading" />
                 </td>
               </tr>
             </table>
           </div>
           <div class="survey-table !mt-0 space-top">
             <h5 class="mt-0 bg-green-200">b. English:</h5>
-
             <table class="border-collapse">
               <tr>
                 <td></td>
@@ -531,82 +318,46 @@
               <tr>
                 <td>Writing</td>
                 <td>
-                  <input
-                    type="radio"
-                    value="Beginner"
-                    name="writing-english"
-                    v-model="surveyData.usrProficiencyInEnglishWriting"
-                  />
+                  <input type="radio" value="Beginner" name="writing-english"
+                    v-model="surveyData.usrProficiencyInEnglishWriting" />
                 </td>
                 <td>
-                  <input
-                    type="radio"
-                    value="Intermediate"
-                    name="writing-english"
-                    v-model="surveyData.usrProficiencyInEnglishWriting"
-                  />
+                  <input type="radio" value="Intermediate" name="writing-english"
+                    v-model="surveyData.usrProficiencyInEnglishWriting" />
                 </td>
                 <td>
-                  <input
-                    type="radio"
-                    value="Proficient"
-                    name="writing-english"
-                    v-model="surveyData.usrProficiencyInEnglishWriting"
-                  />
+                  <input type="radio" value="Proficient" name="writing-english"
+                    v-model="surveyData.usrProficiencyInEnglishWriting" />
                 </td>
               </tr>
               <tr>
                 <td>Speaking</td>
                 <td>
-                  <input
-                    type="radio"
-                    value="Beginner"
-                    name="speaking-english"
-                    v-model="surveyData.usrProficiencyInEnglishSpeaking"
-                  />
+                  <input type="radio" value="Beginner" name="speaking-english"
+                    v-model="surveyData.usrProficiencyInEnglishSpeaking" />
                 </td>
                 <td>
-                  <input
-                    type="radio"
-                    value="Intermediate"
-                    name="speaking-english"
-                    v-model="surveyData.usrProficiencyInEnglishSpeaking"
-                  />
+                  <input type="radio" value="Intermediate" name="speaking-english"
+                    v-model="surveyData.usrProficiencyInEnglishSpeaking" />
                 </td>
                 <td>
-                  <input
-                    type="radio"
-                    name="speaking-english"
-                    value="Proficient"
-                    v-model="surveyData.usrProficiencyInEnglishSpeaking"
-                  />
+                  <input type="radio" name="speaking-english" value="Proficient"
+                    v-model="surveyData.usrProficiencyInEnglishSpeaking" />
                 </td>
               </tr>
               <tr>
                 <td>Reading</td>
                 <td>
-                  <input
-                    type="radio"
-                    value="Beginner"
-                    name="reading-english"
-                    v-model="surveyData.usrProficiencyInEnglishReading"
-                  />
+                  <input type="radio" value="Beginner" name="reading-english"
+                    v-model="surveyData.usrProficiencyInEnglishReading" />
                 </td>
                 <td>
-                  <input
-                    type="radio"
-                    value="Intermediate"
-                    name="reading-english"
-                    v-model="surveyData.usrProficiencyInEnglishReading"
-                  />
+                  <input type="radio" value="Intermediate" name="reading-english"
+                    v-model="surveyData.usrProficiencyInEnglishReading" />
                 </td>
                 <td>
-                  <input
-                    type="radio"
-                    value="Proficient"
-                    name="reading-english"
-                    v-model="surveyData.usrProficiencyInEnglishReading"
-                  />
+                  <input type="radio" value="Proficient" name="reading-english"
+                    v-model="surveyData.usrProficiencyInEnglishReading" />
                 </td>
               </tr>
             </table>
@@ -616,8 +367,7 @@
 
         <!-- ANCHOR stop -->
         <span class="full centered space-top">
-          <label class="font-medium bg-green-200"
-            >11. Are you aware of a child/adolescent in your community (for
+          <label class="font-medium bg-green-200">12. Are you aware of a child/adolescent in your community (for
             example, among relatives, friends, neighbors, own religious or
             ethnic groups that you are currently a part of) who is struggling
             with their studies/learning process at school?
@@ -643,22 +393,13 @@
             <tr>
               <td>Yes</td>
               <td>
-                <input
-                  type="checkbox"
-                  v-model="surveyData.childInCmmntReceivesSupportFromHome"
-                />
+                <input type="checkbox" v-model="surveyData.childInCmmntReceivesSupportFromHome" />
               </td>
               <td>
-                <input
-                  type="checkbox"
-                  v-model="surveyData.childInCmmntReceivesSupportFromSchool"
-                />
+                <input type="checkbox" v-model="surveyData.childInCmmntReceivesSupportFromSchool" />
               </td>
               <td>
-                <input
-                  type="checkbox"
-                  v-model="surveyData.childInCmmntReceivesSupportFromCmmnt"
-                />
+                <input type="checkbox" v-model="surveyData.childInCmmntReceivesSupportFromCmmnt" />
               </td>
             </tr>
             <tr>
@@ -671,8 +412,7 @@
         </div>
         <br />
         <div class="full centered space-top">
-          <label class="font-medium bg-green-200"
-            >12. Are you aware of a child/adolescent in your country of origin
+          <label class="font-medium bg-green-200">13. Are you aware of a child/adolescent in your country of origin
             (for example, among relatives, friends, neighbors, own religious or
             ethnic groups that you are currently a part of) who was struggling
             with their studies/learning process at school?
@@ -697,24 +437,14 @@
               <tr>
                 <td>Yes</td>
                 <td>
-                  <input
-                    type="checkbox"
-                    v-model="surveyData.childInCountryReceivesSupportFromHome"
-                  />
+                  <input type="checkbox" v-model="surveyData.childInCountryReceivesSupportFromHome" />
                 </td>
                 <td>
-                  <input
-                    type="checkbox"
-                    v-model="surveyData.childInCountryReceivesSupportFromSchool"
-                  />
+                  <input type="checkbox" v-model="surveyData.childInCountryReceivesSupportFromSchool" />
                 </td>
                 <td>
-                  <input
-                    type="checkbox"
-                    v-model="
-                      surveyData.childInCountryReceivesSupportFromCommunity
-                    "
-                  />
+                  <input type="checkbox" v-model="surveyData.childInCountryReceivesSupportFromCommunity
+                    " />
                 </td>
               </tr>
               <tr>
@@ -741,6 +471,8 @@ import { ref, watch } from "vue";
 import { useRouter } from "vue-router";
 import { storeLDPreSurvey } from "../../../modules/storingData/storingDataLD";
 import countriesList from "../../../modules/utils/countriesList";
+import EmailInput from "./Components/EmailInput.vue";
+import StudyIntroduction from "./Components/StudyIntroduction.vue"
 
 enum Step {
   AskForEmailAddress = 1,
@@ -750,25 +482,7 @@ enum Step {
   StartTest,
 }
 
-const canadianProvinces = [
-  "Alberta",
-  "British Columbia",
-  "Manitoba",
-  "New Brunswick",
-  "Newfoundland and Labrador",
-  "Nova Scotia",
-  "Ontario",
-  "Prince Edward Island",
-  "Quebec",
-  "Saskatchewan",
-  "Northwest Territories",
-  "Nunavut",
-  "Yukon",
-];
-
 let currentStep = ref<number>(Step.AskForEmailAddress);
-
-let ld_email = ref<string>("");
 
 let surveyData = ref({
   province: "",
@@ -826,10 +540,7 @@ function startTest() {
   router.push("/LD_IBT");
 }
 
-function finishEmailSection() {
-  store.commit("storeLdPointOfContact", ld_email.value);
-  currentStep.value++;
-}
+
 </script>
 
 <style scoped>
@@ -845,15 +556,7 @@ function finishEmailSection() {
   align-items: center;
 }
 
-.survey-box {
-  box-shadow: 0px 2px 4px -1px #cbcbcb;
-  border: solid 1px rgb(233, 233, 233);
-  /* box-shadow: -3px 1px 7px #eeeeeeb2, 2px 3px 5px rgb(218 218 219 / 95%); */
-  padding: 20px 40px 40px 40px;
-  border-radius: 5px;
-  width: auto;
-  max-width: 450px;
-}
+.survey-box {}
 
 .ld-user-email {
   text-align: center;
@@ -906,10 +609,7 @@ h4 {
   width: 100%;
 }
 
-.test-intro-image {
-  width: 100%;
-  max-width: 400px;
-}
+
 
 select {
   padding: 0px 20px;

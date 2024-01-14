@@ -66,11 +66,11 @@ export function storeLDData(
         outer.forEach((inner, innerIndex) => {
             // First two steps
             if (index === 0 || index === 1) {
-                inner.description = "User chooses a smiley face for words associated with 'without learning difficulty', and a sad face for words related to learning difficulties"
+                inner.description = "User chooses a happy face for words associated with 'without learning difficulty', and a sad face for words related to learning difficulties"
             }
             // Last two steps
             if (index === 2 || index === 3) {
-                inner.description = "User chooses a sad face for words associated with 'without learning difficulty', and a smiley face for words related to learning difficulties"
+                inner.description = "User chooses a sad face for words associated with 'without learning difficulty', and a happy face for words related to learning difficulties"
             }
 
             if (index === 0 || index === 2) {
@@ -81,7 +81,6 @@ export function storeLDData(
             inner.dateTaken = `${cMonth}-${cDay}-${cYear}`;
             inner.stimulusOrder = innerIndex + 1;
             delete inner.visibility
-            delete inner.randomNo
             // console.log("-", inner)
         })
     })

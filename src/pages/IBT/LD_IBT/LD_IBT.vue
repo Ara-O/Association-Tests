@@ -4,7 +4,8 @@
       class="w-auto max-w-[600px] rounded-md py-10 px-12 pb-12 border border-solid border-gray-100 shadow-md text-left mt-10 mb-10">
       <TestOne :position="1" @finished="currentStep++"></TestOne>
     </section>
-    <section v-show="currentStep === Steps.TestTwo" class="section-box">
+    <section v-show="currentStep === Steps.TestTwo"
+      class="w-auto max-w-[600px] rounded-md py-10 px-12 pb-12 border border-solid border-gray-100 shadow-md text-left mt-10 mb-10">
       <TestTwo :position="2"></TestTwo>
     </section>
   </section>
@@ -22,9 +23,3 @@ const Steps = Object.freeze({
   TestTwo: 2
 })
 </script>
-
-<style scoped>
-b {
-  font-weight: 500;
-}
-</style>

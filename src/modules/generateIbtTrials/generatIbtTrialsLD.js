@@ -1,13 +1,36 @@
-import validateTrialData from "../../modules/validateTrials/validateTrialDataIBT";
-
-function shuffleObjects(array) {
-  for (var a = 0; a < array.length; a++) {
-    var x = array[a];
-    var y = Math.floor(Math.random() * (a + 1));
-    array[a] = array[y];
-    array[y] = x;
+function shuffleObjects(originalArray) {
+  const array = [...originalArray];
+  for (let i = 0; i < array.length; i++) {
+    const temp = array[i];
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    array[i] = array[randomIndex];
+    array[randomIndex] = temp;
   }
   return array;
+}
+
+function validateTrialData(originalData, key) {
+  let fullData = [...originalData];
+  while (true) {
+    let limit = 1;
+    let valid = true;
+    for (let index = 0; index < fullData.length - 1; index++) {
+      if (fullData[index][key] === fullData[index + 1][key]) {
+        limit++;
+      } else {
+        limit = 1;
+      }
+      if (limit === 3) {
+        valid = false;
+        break;
+      }
+    }
+    if (valid) {
+      break;
+    }
+    fullData = shuffleObjects(fullData);
+  }
+  return fullData;
 }
 
 export function generateLdTrials(
@@ -47,27 +70,47 @@ export function generateLdTrials(
     full_data.push(without_learning_difficulties[i]);
   }
 
-  for (let i = 0; i < full_data.length; i++) {
-    //setting the visibility to block for the first data
-    let randomNo = Math.floor(Math.random() * 2);
-    full_data[i].visibility = "none";
-
-    //Setting the position of the clicker faces randomized
-    full_data[i].randomNo = randomNo;
-    if (randomNo === 0) {
-      full_data[i].leftClickerFace = "Smiley";
-      full_data[i].rightClickerFace = "Sad";
-    } else {
-      full_data[i].rightClickerFace = "Smiley";
-      full_data[i].leftClickerFace = "Sad";
-    }
-
-    full_data[i].accuracy = 100;
-  }
-
   let updated_full_data = shuffleObjects(full_data);
 
   updated_full_data = validateTrialData(updated_full_data, "stimulusKey");
+
+  let lastThreeLeft = [];
+  let lastThreeRight = [];
+
+  for (let i = 0; i < updated_full_data.length; i++) {
+    let randomNo = Math.floor(Math.random() * 2);
+    updated_full_data[i].visibility = "none";
+
+    // Check if the last three faces on each side were the same
+    if (lastThreeLeft.length === 3 && lastThreeLeft.every(face => face === "Happy")) {
+      randomNo = 1; // Force the left face to be Sad
+    } else if (lastThreeRight.length === 3 && lastThreeRight.every(face => face === "Happy")) {
+      randomNo = 0; // Force the right face to be Sad
+    }
+
+    if (randomNo === 0) {
+      updated_full_data[i].leftClickerFace = "Happy";
+      updated_full_data[i].rightClickerFace = "Sad";
+      lastThreeLeft.push("Happy");
+      lastThreeRight.push("Sad");
+    } else {
+      updated_full_data[i].rightClickerFace = "Happy";
+      updated_full_data[i].leftClickerFace = "Sad";
+      lastThreeLeft.push("Sad");
+      lastThreeRight.push("Happy");
+    }
+
+    // Keep only the last three faces on each side
+    if (lastThreeLeft.length > 3) {
+      lastThreeLeft.shift();
+    }
+    if (lastThreeRight.length > 3) {
+      lastThreeRight.shift();
+    }
+
+    updated_full_data[i].accuracy = 100;
+  }
+
 
   updated_full_data[0].visibility = "block";
 

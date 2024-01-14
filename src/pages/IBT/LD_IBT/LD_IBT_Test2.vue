@@ -1,66 +1,68 @@
 <template>
-  <div v-if="currentStep <= 2">
-    <h3 class="text-md font-semibold">Implicit Association Test</h3>
-    <h3 class="text-lg font-semibold mt-5">
-      {{ section === 0 ? "Round 2: Practice " : "Round " + position }}
-    </h3>
-  </div>
-  <div v-if="currentStep === 1" class="max-w-[420px]">
-    <h4 class="text-sm leading-6 mt-4">
-      <b>Instructions: </b>On the screen, you will see two sets of words: one
-      related to individuals with learning difficulties and the other to those
-      without. These categories are presented in a table as follows:
-    </h4>
+  <section class="h-auto min-h-full">
+    <div v-if="currentStep <= 2" class="text-left">
+      <h3 class="text-lg font-semibold">Implicit Association Task 2</h3>
+      <h3 class="text-base font-semibold mt-5">
+        {{ section === 0 ? "Round 2: Practice " : "Round " + position }}
+      </h3>
+    </div>
+    <div v-if="currentStep === 1" class="max-w-[500px] text-left">
+      <h4 class="text-sm text-left leading-7 mt-4">
+        <b>Instructions: </b>On the screen, you will see two sets of words: one
+        related to individuals with learning difficulties and the other to those
+        without. These two categories and words linked with each category are
+        presented in a table as follows:
+      </h4>
 
-    <table class="border text-[13px] leading-6 mt-3 border-collapse">
-      <tr>
-        <th class="font-medium">Category</th>
-        <th></th>
-      </tr>
-      <tr>
-        <td>Learning Difficulties</td>
-        <td>Slow Learner, Academically Challenged, Difficulties Learning</td>
-      </tr>
-      <tr>
-        <td>Without Learning Difficulties</td>
-        <td>Typically Developing, Neurotypical, No Diagnosis</td>
-      </tr>
-    </table>
+      <table class="border text-[13px] leading-7 text-left box-border mt-3 border-collapse">
+        <tr>
+          <th class="font-medium">Category</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>Learning Difficulties</td>
+          <td>Slow Learner, Academically Challenged, Difficulties Learning</td>
+        </tr>
+        <tr>
+          <td>Without Learning Difficulties</td>
+          <td>Typically Developing, Neurotypical, No Diagnosis</td>
+        </tr>
+      </table>
 
-    <h3 class="mt-5 text-sm leading-6">
-      There will be words displayed in the middle of the screen related to
-      learning difficulties or without learning difficulties. When the screen
-      displays words associated<b class="font-semibold">
-        with learning difficulties </b
-      >, select the <b class="font-semibold">smiley face</b>. When you see words
-      related to <b class="font-semibold"> without learning difficulties</b>,
-      select the<b class="font-semibold"> sad face</b>. Smiley faces and sad
-      faces will appear at the bottom of the screen either on the left or right.
-      Pay attention because the smiley face and sad face may change places.
-      Please respond quickly and correctly. You can only use one hand to touch
-      the screen.
-    </h3>
-
-    <button @click="currentStep++">Next</button>
-  </div>
+      <h3 class="mt-5 text-sm text-left leading-7">
+        There will be words displayed in the middle of the screen. When the screen
+        displays words associated<b class="font-semibold">
+          with learning difficulties </b>, select the <b class="font-semibold">happy face</b>. When you see words
+        related to <b class="font-semibold"> without learning difficulties</b>,
+        select the<b class="font-semibold"> sad face</b>. Happy faces and sad
+        faces will appear at the bottom of the screen either on the left or right.
+        Pay attention because the happy face and sad face may change places.
+        Please respond quickly and correctly. You can only use one hand to touch
+        the screen.
+      </h3>
+      <h3 class="text-sm leading-7 mb-0"> <b class="font-semibold text-sm">Disclaimer:</b> If you are using touchscreen,
+        you
+        can only use hand to touch the screen</h3>
+      <button @click="currentStep++" class="gradient-green gradient-btn py-6 mb-0">Next</button>
+    </div>
+  </section>
 
   <!-- SECTION 2- REMEMBER* -->
   <section v-show="currentStep === 2" class="section-box">
     <h4 class="font-medium mt-4 text-sm">Remember*</h4>
-    <br />
     <table class="w-96 text-sm remember-table leading-6 border-collapse">
       <tr>
         <td class="font-medium">If you see these words</td>
         <td class="font-medium">Press</td>
       </tr>
       <tr>
-        <td>Typically Developing, Neurotypical, No Diagnosis</td>
+        <td class="leading-7">Typically Developing, Neurotypical, No Diagnosis</td>
         <td>
           <img src="../../../assets/LD_IBT/sad-face.png" class="w-32" />
         </td>
       </tr>
       <tr>
-        <td>
+        <td class="leading-7">
           Learning Difficulties Slow Learner, Academically Challenged,
           Difficulties Learning
         </td>
@@ -70,121 +72,57 @@
       </tr>
     </table>
 
-    <div class="flex gap-3 items-center justify-center">
-      <button @click="currentStep--" v-if="section === 0">Back</button>
-      <button @click="startTest">Start Test</button>
+    <div class="flex gap-3 items-start justify-start">
+      <button @click="currentStep--" class="gradient-green gradient-btn py-6 mb-0" v-if="section === 0">Back</button>
+      <button @click="startTest" class="gradient-green gradient-btn py-6 mb-0">Start Test</button>
     </div>
   </section>
 
-  <!-- TEST -->
-  <section v-if="currentStep === 3">
+  <!-- TASK -->
+  <section v-if="currentStep === 3" class="text-center">
     <h3 class="underline mb-0">{{ ibt_trials[section].section }}</h3>
-    <section
-      class="flex flex-wrap-reverse items-center flex-col justify-center gap-0"
-    >
+    <section class="flex flex-wrap-reverse items-center flex-col justify-center gap-0">
       <div class="mt-9 w-56 min-h-[83px]">
         <!-- Stars and Crosses -->
         <div class="flex justify-center">
-          <img
-            src="../../../assets/LD_IBT/check-mark.png"
-            alt="star"
-            v-show="userGotStimulusRight"
-            class="ibt-star h-20"
-          />
-          <img
-            src="../../../assets/IT_faces/cross.jpg"
-            alt="cross"
-            class="cross"
-            v-show="userGotStimulusWrong"
-          />
+          <img src="../../../assets/LD_IBT/check-mark.png" alt="star" v-show="userGotStimulusRight"
+            class="ibt-star h-20" />
+          <img src="../../../assets/IT_faces/cross.jpg" alt="cross" class="cross" v-show="userGotStimulusWrong" />
         </div>
 
-        <div
-          class="flex-col items-center"
-          :class="{ hide: testNotStarted || paused }"
-        >
-          <div
-            v-for="trial in ibt_trials[section].trials"
-            :key="trial.id"
-            :style="{ display: trial.visibility }"
-            class="h-auto"
-          >
+        <div class="flex-col items-center" :class="{ hide: testNotStarted || paused }">
+          <div v-for="trial in ibt_trials[section].trials" :key="trial.id" :style="{ display: trial.visibility }"
+            class="h-auto">
             <!-- Keyword -->
             <h3 class="font-semibold text-xl">{{ trial.keyword }}</h3>
 
             <!-- Clickers -->
-            <img
-              :src="
-                getClickerImage(
-                  trial.leftClickerFace == 'Smiley'
-                    ? 'happy-face.png'
-                    : 'sad-face.png'
-                )
-              "
-              alt="Left face"
-              ref="leftFace"
-              @click="() => handleClick('Left')"
-              class="faceLeft ibt-icon"
-            />
-            <img
-              :src="
-                getClickerImage(
-                  trial.rightClickerFace == 'Sad'
-                    ? 'sad-face.png'
-                    : 'happy-face.png'
-                )
-              "
-              alt="Right face"
-              @click="() => handleClick('Right')"
-              class="faceRight ibt-icon"
-            />
+            <img :src="getClickerImage(
+              trial.leftClickerFace == 'Happy'
+                ? 'happy-face.png'
+                : 'sad-face.png'
+            )
+              " alt="Left face" ref="leftFace" @click="() => handleClick('Left')" class="faceLeft ibt-icon" />
+            <img :src="getClickerImage(
+              trial.rightClickerFace == 'Sad'
+                ? 'sad-face.png'
+                : 'happy-face.png'
+            )
+              " alt="Right face" @click="() => handleClick('Right')" class="faceRight ibt-icon" />
           </div>
         </div>
-      </div>
-      <!-- TEST REMINDER -->
-      <div>
-        <details class="reminders-menu">
-          <summary class="text-sm mt-5">Click here for a reminder</summary>
-          <table
-            class="w-96 mt-4 text-sm remember-table border-collapse leading-6"
-          >
-            <tr>
-              <td class="font-medium">If you see these words</td>
-              <td class="font-medium">Press</td>
-            </tr>
-            <tr>
-              <td>
-                Average Learner, Typically Developing, Neurotypical, No
-                Diagnosis
-              </td>
-              <td>
-                <img src="../../../assets/LD_IBT/sad-face.png" class="w-32" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Learning Difficulties Slow Learner, Academic Challenges,
-                Educational Barriers, Difficulties Learning
-              </td>
-              <td>
-                <img src="../../../assets/LD_IBT/happy-face.png" class="w-32" />
-              </td>
-            </tr>
-          </table>
-        </details>
       </div>
     </section>
   </section>
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from "vue";
+import { ref } from "vue";
 import { generateLdTrials } from "../../../modules/generateIbtTrials/generatIbtTrialsLD";
 import {
   startTimer,
   handleAnswer,
 } from "../../../modules/handleAnswers/handleIbtAnswersLd";
-import { routerKey } from "vue-router";
 import router from "../../../router";
 import { useStore } from "vuex";
 
@@ -203,11 +141,11 @@ const emits = defineEmits(["finished"]);
 let ibt_trials = [
   {
     section: "Practice",
-    trials: generateLdTrials("Smiley", "Sad", 6),
+    trials: generateLdTrials("Happy", "Sad", 6),
   },
   {
     section: "Main Round",
-    trials: generateLdTrials("Smiley", "Sad", 12),
+    trials: generateLdTrials("Happy", "Sad", 12),
   },
 ];
 
@@ -235,7 +173,6 @@ function finishedSection(fullyDone) {
       return;
     } else {
       router.push("/LD_IBT_Post_Survey");
-      return;
     }
   }
   testNotStarted.value = true;
@@ -256,7 +193,6 @@ function handleClick(userClicked) {
     userChoice = trial.rightClickerFace;
   }
 
-  document.querySelector(".reminders-menu").removeAttribute("open");
   handleAnswer(
     userChoice,
     testNotStarted,
@@ -278,25 +214,11 @@ td,
 th {
   /* padding: 15px; */
   border: solid 1px black;
+  padding: 0px 10px
 }
 
 .remember-table td {
   padding: 15px;
-}
-
-button {
-  background: linear-gradient(185deg, #7eefbf, #389820);
-  border-radius: 47px;
-  box-shadow: -1px 3px 3px -1px #cbcbcb;
-  cursor: pointer;
-  border: none;
-  transition: all 250ms ease-in-out;
-  color: white;
-  font-weight: 300;
-  font-size: 13px;
-  margin-top: 25px;
-  height: 45px;
-  width: 100px;
 }
 
 .ibt-icon {
@@ -305,10 +227,6 @@ button {
 
 .visibilityHidden {
   visibility: hidden;
-}
-
-.section-box-test {
-  width: auto;
 }
 
 .ibt-star,

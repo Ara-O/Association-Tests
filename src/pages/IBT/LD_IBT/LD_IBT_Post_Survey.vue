@@ -3,12 +3,12 @@
     <div class="result-box text-left" style="max-width: 500px">
       <h3 class="font-medium !text-lg">End of the Study!</h3>
       <img src="../../../assets/LD_IBT/happy-children.png" alt="Happy children illustration" class="w-56" />
-      <h4 class="font-medium">
+      <h4 class="font-medium leading-7">
         Congratulations! You have reached the end of the Implicit Association
         Task.
       </h4>
 
-      <h5 class="leading-6 text-md font-medium">{{ feedbackMessage }}</h5>
+      <h5 class="leading-7 text-md font-medium">{{ feedbackMessage }}</h5>
 
       <h3 class="text-sm leading-7">
         Biases are mental shortcuts formed from our experiences. Implicit bias
@@ -32,7 +32,7 @@
   <!-- PART C -->
   <section class="flex items-center justify-center h-screen" v-show="currentStep === 2">
     <div class="result-box-questions">
-      <h3 class="font-semibold  !text-[15px]">
+      <h3 class="font-semibold !text-[15px]">
         Attributions about Learning Difficulties - PART C
       </h3>
 
@@ -57,511 +57,545 @@
         teacher/s to get feedback about his performance in the class.
       </h3>
 
-      <!-- First question -->
-      <!-- <></div> -->
-      <div class="flex ml-0 w-full m-auto gap-x-10 flex-wrap items-center">
-        <h3 class="font-medium w-auto max-w-xs widen-width h-28 flex items-center">
-          1. On a scale of 1 (immediately) to 5 (waiting to see how Sam performs
-          in the future), how soon do you think Sam’s academic difficulties
-          should be addressed at school?
-        </h3>
+      <form @submit.prevent="currentStep++"
+        class="shadow-none text-left flex justify-start border-none max-w-none p-0 max-h-none min-h-0 w-auto">
+        <div class="flex ml-0 w-full m-auto gap-x-10 flex-wrap items-center">
+          <h3 class="font-medium w-auto max-w-xs widen-width  flex items-center bg-green-100">
+            1. On a scale of 1 (immediately) to 5 (waiting to see how Sam performs
+            in the future), how soon do you think Sam’s academic difficulties
+            should be addressed at school?
+          </h3>
 
-        <div class="w-[60%] appendix-question-1">
-          <div class="flex items-center justify-between w-full">
-            <span>
-              <input type="radio" value="1" id="1" v-model="surveyData[
-                'On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?'
-              ]
-                " />
-              <label for="1">1</label>
-            </span>
-            <span>
-              <input type="radio" value="2" id="2" v-model="surveyData[
-                'On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?'
-              ]
-                " />
-              <label for="2">2</label>
-            </span>
-            <span>
-              <input type="radio" value="3" id="3" v-model="surveyData[
-                'On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?'
-              ]
-                " />
+          <div class="w-[60%] appendix-question-1">
+            <div class="flex items-center justify-between w-full">
+              <span>
+                <input type="radio" value="1" id="1" name="q1" v-model="surveyData[
+                  'On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?'
+                ]" required />
+                <label for="1">1</label>
+              </span>
+              <span>
+                <input type="radio" value="2" id="2" name="q1" v-model="surveyData[
+                  'On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?'
+                ]" required />
+                <label for="2">2</label>
+              </span>
+              <span>
+                <input type="radio" value="3" id="3" name="q1" v-model="surveyData[
+                  'On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?'
+                ]" required />
 
-              <label for="3">3</label>
-            </span>
-            <span>
-              <input type="radio" value="4" id="4" v-model="surveyData[
-                'On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?'
-              ]
-                " />
+                <label for="3">3</label>
+              </span>
+              <span>
+                <input type="radio" value="4" id="4" name="q1" v-model="surveyData[
+                  'On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?'
+                ]" required />
 
-              <label for="4">4</label>
-            </span>
-            <span>
-              <input type="radio" value="5" id="5" v-model="surveyData[
-                'On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?'
-              ]
-                " />
+                <label for="4">4</label>
+              </span>
+              <span>
+                <input type="radio" value="5" id="5" name="q1" v-model="surveyData[
+                  'On a scale of 1 (immediately) to 5 (waiting to see how Sam performs in the future), how soon do you think Sam’s academic difficulties should be addressed at school?'
+                ]" required />
 
-              <label for="5">5</label>
-            </span>
-          </div>
-          <div class="flex justify-between">
-            <h4 class="text-xs">Immediately</h4>
-            <h4 class="text-xs w-28 text-right">
-              Wait to see how Sam performs in the future
-            </h4>
+                <label for="5">5</label>
+              </span>
+            </div>
+            <div class="flex justify-between">
+              <h4 class="text-xs">Immediately</h4>
+              <h4 class="text-xs w-28 text-right">
+                Wait to see how Sam performs in the future
+              </h4>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Question 2 -->
-      <h3 class="font-medium mb-0">
-        2. The following statements are about different things that could be
-        contributing to Sam’s academic or learning difficulties; Please rate
-        each of these possible options with 1 being-contributing the most to 4-
-        contributing the least. Please tick the option that best match(s) your
-        opinion, and indicate the extent to which you feel each factor is
-        contributing to Sam’s difficulties in learning
-      </h3>
+        <!-- Question 2 -->
+        <h3 class="font-medium mb-0 bg-green-100">
+          2. The following statements are about different things that could be
+          contributing to Sam’s academic or learning difficulties; Please rate
+          each of these possible options with <span class="bg-blue-100">1 being-contributing the least</span>
+          to <span class="bg-blue-100">4-contributing the most</span>. Please tick the option that best match(s) your
+          opinion, and indicate the extent to which you feel each factor is
+          contributing to Sam’s difficulties in learning
+        </h3>
 
-      <div>
-        <span>
-          <input type="checkbox" name="" id="sam" />
-          <label for="sam" class="mr-3">Sam</label>
-          <input type="text" placeholder="Extent (1 - 5)" class="w-20 text-xs text-center py-0.5" v-model="surveyData[
-            'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-          ]['Sam']
-            " />
-        </span>
-        <br />
-        <span>
-          <input type="checkbox" name="" id="people-around" />
-          <label for="people-around" class="mr-3">The people around him (teachers, parents etc)</label>
-          <input type="text" placeholder="Extent (1 - 5)" class="w-20 text-xs text-center py-0.5" v-model="surveyData[
-            'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-          ]['The people around him (teachers, parents etc)']
-            " />
-        </span>
-        <br />
-        <span>
-          <input type="checkbox" name="" id="systemic-factors" />
-          <label for="systemic-factors" class="mr-3">Systemic factors (education system, health system)</label>
-          <input type="text" placeholder="Extent (1 - 5)" class="w-20 text-xs text-center py-0.5" id="systemic-factors"
-            v-model="surveyData[
+        <table class="border-collapse text-left mt-6">
+          <tr>
+            <td>Questions</td>
+            <td class="w-32">1 - Contributes the Least</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4 - Contributes the Most</td>
+          </tr>
+          <tr>
+            <td>Sam</td>
+            <td>
+              <input type="radio" name="least" value="1" v-model="surveyData[
+                'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
+              ]['Sam']" required />
+            </td>
+            <td>
+              <input type="radio" value="2" name="second" v-model="surveyData[
+                'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
+              ]['Sam']" required />
+            </td>
+            <td>
+              <input type="radio" value="3" name="third" v-model="surveyData[
+                'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
+              ]['Sam']" required />
+            </td>
+            <td>
+              <input type="radio" value="4" name="most" v-model="surveyData[
+                'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
+              ]['Sam']" required />
+            </td>
+          </tr>
+          <!-- --- -->
+          <tr>
+            <td>The people around him (teachers, parents etc)</td>
+            <td> <input type="radio" name="least" value="1" v-model="surveyData[
               'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-            ]['Systemic factors (education system, health system)']
-              " />
-        </span>
+            ]['The people around him (teachers, parents etc)']" required /></td>
+            <td>
+              <input type="radio" value="2" name="second" v-model="surveyData[
+                'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
+              ]['The people around him (teachers, parents etc)']" required />
+            </td>
+            <td>
+              <input type="radio" value="3" name="third" v-model="surveyData[
+                'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
+              ]['The people around him (teachers, parents etc)']" required />
+            </td>
+            <td>
+              <input type="radio" value="4" name="most" v-model="surveyData[
+                'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
+              ]['The people around him (teachers, parents etc)']" required />
+            </td>
+          </tr>
+
+          <!-- -- -->
+          <tr>
+            <td>Systemic factors (education system, health system)</td>
+            <td>
+              <input type="radio" name="least" value="1" id="systemic-factors" v-model="surveyData[
+                'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
+              ]['Systemic factors (education system, health system)']
+                " required />
+            </td>
+            <td>
+              <input type="radio" value="2" name="second" id="systemic-factors" v-model="surveyData[
+                'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
+              ]['Systemic factors (education system, health system)']
+                " required />
+            </td>
+            <td>
+              <input type="radio" value="3" name="third" id="systemic-factors" v-model="surveyData[
+                'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
+              ]['Systemic factors (education system, health system)']
+                " required />
+            </td>
+            <td>
+              <input type="radio" value="4" name="most" id="systemic-factors" v-model="surveyData[
+                'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
+              ]['Systemic factors (education system, health system)']
+                " required />
+            </td>
+          </tr>
+
+          <!-- -- -->
+          <tr>
+            <td>His financial or academic situation (As an example: lack of school resources that can support Sam's
+              learning)</td>
+            <td>
+              <input type="radio" name="least" value="1" id="systemic-factors" v-model="surveyData[
+                'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
+              ]['His financial or academic situation']
+                " required />
+            </td>
+            <td>
+              <input type="radio" value="2" name="second" id="systemic-factors" v-model="surveyData[
+                'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
+              ]['His financial or academic situation']
+                " required />
+            </td>
+            <td>
+              <input type="radio" value="3" name="third" id="systemic-factors" v-model="surveyData[
+                'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
+              ]['His financial or academic situation']
+                " required />
+            </td>
+            <td>
+              <input type="radio" value="4" name="most" id="systemic-factors" v-model="surveyData[
+                'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
+              ]['His financial or academic situation']
+                " required />
+            </td>
+          </tr>
+        </table>
+
+        <!-- Question 3 -->
+        <h3 class="font-medium mt-10 mb-0 bg-green-100">
+          3. Who or what is more responsible for changing or bringing about an
+          improvement in Sam’s situation (Tick all that apply)
+        </h3>
+
+        <div>
+          <label for="sam-himself" class="mr-3">Sam himself</label>
+          <input type="checkbox" name="q3" value="Sam himself" id="sam-himself" v-model="surveyData[
+            'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+          ]
+            " />
+          <br />
+          <label for="his-teachers" class="mr-3">His teachers</label>
+          <input type="checkbox" name="q3" value="His teachers" id="his-teachers" v-model="surveyData[
+            'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+          ]
+            " />
+          <br />
+          <label for="parents" class="mr-3">Parents</label>
+          <input type="checkbox" name="q3" value="Parents" id="parents" v-model="surveyData[
+            'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+          ]
+            " />
+          <br />
+          <label for="situational-changes" class="mr-3">Situational changes (e.g., providing more school resources and
+            funding
+            to provide better
+            support for students like Sam)</label>
+          <input type="checkbox" name="" value="Situational changes" id="situational-changes" v-model="surveyData[
+            'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+          ]
+            " />
+        </div>
         <br />
-        <span>
-          <input type="checkbox" name="" id="financial-or-academic" />
-          <label for="financial-or-academic" class="mr-3">His financial or academic situation (As an example: lack of
-            school resources that can support Sam’s
-            learning)</label>
-          <input type="text" placeholder="Extent (1 - 5)" class="w-20 text-xs text-center py-0.5"
-            id="financial-or-academic" v-model="surveyData[
-              'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-            ]['His financial or academic situation']
-              " />
-        </span>
-        <br />
-        <h4 class="text-sm">
-
-        </h4>
-      </div>
-
-      <!-- Question 3 -->
-      <h3 class="font-medium mt-10 mb-0">
-        3. Who or what is more responsible for changing or bringing about an
-        improvement in Sam’s situation (Tick all that apply)
-      </h3>
-
-      <label for="sam-himself" class="mr-3">Sam himself</label>
-      <input type="checkbox" name="q3" value="Sam himself" id="sam-himself" v-model="surveyData[
-        'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
-      ]
-        " />
-      <br />
-      <label for="his-teachers" class="mr-3">His teachers</label>
-      <input type="checkbox" name="q3" value="His teachers" id="his-teachers" v-model="surveyData[
-        'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
-      ]
-        " />
-      <br />
-      <label for="parents" class="mr-3">Parents</label>
-      <input type="checkbox" name="q3" value="Parents" id="parents" v-model="surveyData[
-        'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
-      ]
-        " />
-      <br />
-      <label for="situational-changes" class="mr-3">Situational changes (e.g., providing more school resources and funding
-        to provide better
-        support for students like Sam)</label>
-      <input type="checkbox" name="" value="Situational changes" id="situational-changes" v-model="surveyData[
-        'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
-      ]
-        " />
-      <br />
 
 
-      <div class="flex gap-5 justify-start">
-        <button @click="currentStep--">Back</button>
-        <button @click="currentStep++">Next</button>
-      </div>
+        <div class="flex gap-5 justify-start">
+          <button @click="currentStep--" type="button">Back</button>
+          <button type="submit">Next</button>
+        </div>
+      </form>
     </div>
   </section>
+
+  <!-- NEXT SECTION -->
 
   <!-- SECTON 3 -->
   <section class="flex items-center justify-center h-screen flex-col" v-show="currentStep === 3">
     <div class="result-box-questions" style="width: 1000px !important">
-      <h3 class="font-medium mt-7">
+      <h3 class="font-medium mt-7 bg-green-100">
         To what extent do you agree with the following statements? (1= Strongly
         disagree, 5 = Strongly agree)
       </h3>
 
-      <table>
-        <tr class="top-row-numbers-3">
-          <td></td>
-          <td>Strongly Disagree (1)</td>
-          <td>Agree (2)</td>
-          <td>Partially Agree/Partially disagree (3)</td>
-          <td>Disagree (4)</td>
-          <td>Strongly Agree (5)</td>
-        </tr>
-        <tr>
-          <td>
-            1. Sam is struggling because he does not put enough effort into his
-            schoolwork.
-          </td>
-          <td>
-            <input type="radio" name="sam-struggling-question" value="1" v-model="surveyData[
-              'Sam is struggling because he does not put enough effort into his schoolwork'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-struggling-question" value="2" v-model="surveyData[
-              'Sam is struggling because he does not put enough effort into his schoolwork'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-struggling-question" value="3" v-model="surveyData[
-              'Sam is struggling because he does not put enough effort into his schoolwork'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-struggling-question" value="4" v-model="surveyData[
-              'Sam is struggling because he does not put enough effort into his schoolwork'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-struggling-question" value="5" v-model="surveyData[
-              'Sam is struggling because he does not put enough effort into his schoolwork'
-            ]
-              " />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            2. Sam’s difficulties are due to differences in his brain function
-            (which impact how he learns).
-          </td>
-          <td>
-            <input type="radio" name="sam-brain-function-question" value="1" v-model="surveyData[
-              'Sam’s difficulties are due to differences in his brain function (which impact how he learns)'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-brain-function-question" value="2" v-model="surveyData[
-              'Sam’s difficulties are due to differences in his brain function (which impact how he learns)'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-brain-function-question" value="3" v-model="surveyData[
-              'Sam’s difficulties are due to differences in his brain function (which impact how he learns)'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-brain-function-question" value="4" v-model="surveyData[
-              'Sam’s difficulties are due to differences in his brain function (which impact how he learns)'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-brain-function-question" value="5" v-model="surveyData[
-              'Sam’s difficulties are due to differences in his brain function (which impact how he learns)'
-            ]
-              " />
-          </td>
-        </tr>
-        <tr class="text-xs">
-          <td>
-            3. Sam is struggling because his family lacks the necessary
-            financial and material resources to succeed
-          </td>
-          <td>
-            <input type="radio" name="sam-financial-struggle-question" value="1" v-model="surveyData[
-              'Sam is struggling because his family lacks the necessary financial and material resources to succeed'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-financial-struggle-question" value="2" v-model="surveyData[
-              'Sam is struggling because his family lacks the necessary financial and material resources to succeed'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-financial-struggle-question" value="3" v-model="surveyData[
-              'Sam is struggling because his family lacks the necessary financial and material resources to succeed'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-financial-struggle-question" value="4" v-model="surveyData[
-              'Sam is struggling because his family lacks the necessary financial and material resources to succeed'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-financial-struggle-question" value="5" v-model="surveyData[
-              'Sam is struggling because his family lacks the necessary financial and material resources to succeed'
-            ]
-              " />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            4. Sam is struggling at school because of the bad deeds he engaged
-            in during his past life which impact him negatively now (bad karma).
-          </td>
-          <td>
-            <input type="radio" name="sam-bad-deeds-question" value="1" v-model="surveyData[
-              'Sam is struggling at school because of the bad deeds he engaged in during his past life which impact him negatively now (bad karma)'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-bad-deeds-question" value="2" v-model="surveyData[
-              'Sam is struggling at school because of the bad deeds he engaged in during his past life which impact him negatively now (bad karma)'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-bad-deeds-question" value="3" v-model="surveyData[
-              'Sam is struggling at school because of the bad deeds he engaged in during his past life which impact him negatively now (bad karma)'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-bad-deeds-question" value="4" v-model="surveyData[
-              'Sam is struggling at school because of the bad deeds he engaged in during his past life which impact him negatively now (bad karma)'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-bad-deeds-question" value="5" v-model="surveyData[
-              'Sam is struggling at school because of the bad deeds he engaged in during his past life which impact him negatively now (bad karma)'
-            ]
-              " />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            5. Sam is struggling because his teachers do not give him enough
-            academic support
-          </td>
-          <td>
-            <input type="radio" name="sam-struggle-teachers-question" value="1" v-model="surveyData[
-              'Sam is struggling because his teachers do not give him enough academic support'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-struggle-teachers-question" value="2" v-model="surveyData[
-              'Sam is struggling because his teachers do not give him enough academic support'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-struggle-teachers-question" value="3" v-model="surveyData[
-              'Sam is struggling because his teachers do not give him enough academic support'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-struggle-teachers-question" value="4" v-model="surveyData[
-              'Sam is struggling because his teachers do not give him enough academic support'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-struggle-teachers-question" value="5" v-model="surveyData[
-              'Sam is struggling because his teachers do not give him enough academic support'
-            ]
-              " />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            6. Sam is struggling because his parents do not give him enough
-            academic support
-          </td>
-          <td>
-            <input type="radio" name="sam-no-academic-support-question" value="1" v-model="surveyData[
-              'Sam is struggling because his parents do not give him enough academic support'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-no-academic-support-question" value="2" v-model="surveyData[
-              'Sam is struggling because his parents do not give him enough academic support'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-no-academic-support-question" value="3" v-model="surveyData[
-              'Sam is struggling because his parents do not give him enough academic support'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-no-academic-support-question" value="4" v-model="surveyData[
-              'Sam is struggling because his parents do not give him enough academic support'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-no-academic-support-question" value="5" v-model="surveyData[
-              'Sam is struggling because his parents do not give him enough academic support'
-            ]
-              " />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            7. Sam is struggling because his teachers are unable to adapt their
-            teaching style and methods to meet the different learning needs of
-            their students
-          </td>
-          <td>
-            <input type="radio" name="sam-unable-to-adapt-question" value="1" v-model="surveyData[
-              'Sam is struggling because his teachers are unable to adapt their teaching style and methods to meet the different learning needs of their students'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-unable-to-adapt-question" value="2" v-model="surveyData[
-              'Sam is struggling because his teachers are unable to adapt their teaching style and methods to meet the different learning needs of their students'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-unable-to-adapt-question" value="3" v-model="surveyData[
-              'Sam is struggling because his teachers are unable to adapt their teaching style and methods to meet the different learning needs of their students'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-unable-to-adapt-question" value="4" v-model="surveyData[
-              'Sam is struggling because his teachers are unable to adapt their teaching style and methods to meet the different learning needs of their students'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-unable-to-adapt-question" value="5" v-model="surveyData[
-              'Sam is struggling because his teachers are unable to adapt their teaching style and methods to meet the different learning needs of their students'
-            ]
-              " />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            8. All children are not made the same way in terms of their mental
-            abilities and capacity to learn; Sam is struggling because it is the
-            Will of God
-          </td>
-          <td>
-            <input type="radio" name="sam-will-of-god-question" value="1" v-model="surveyData[
-              'All children are not made the same way in terms of their mental abilities and capacity to learn; Sam is struggling because it is the Will of God'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-will-of-god-question" value="2" v-model="surveyData[
-              'All children are not made the same way in terms of their mental abilities and capacity to learn; Sam is struggling because it is the Will of God'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-will-of-god-question" value="3" v-model="surveyData[
-              'All children are not made the same way in terms of their mental abilities and capacity to learn; Sam is struggling because it is the Will of God'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-will-of-god-question" value="4" v-model="surveyData[
-              'All children are not made the same way in terms of their mental abilities and capacity to learn; Sam is struggling because it is the Will of God'
-            ]
-              " />
-          </td>
-          <td>
-            <input type="radio" name="sam-will-of-god-question" value="5" v-model="surveyData[
-              'All children are not made the same way in terms of their mental abilities and capacity to learn; Sam is struggling because it is the Will of God'
-            ]
-              " />
-          </td>
-        </tr>
-      </table>
-      <div class="flex gap-5 justify-start">
-        <button @click="currentStep--">Back</button>
-        <button @click="currentStep++">Next</button>
-      </div>
+      <form @submit.prevent="currentStep++"
+        class="shadow-none text-left flex justify-start border-none max-w-none p-0 max-h-none min-h-0 w-auto">
+        <table>
+          <tr class="top-row-numbers-3">
+            <td></td>
+            <td>Strongly Disagree (1)</td>
+            <td>Agree (2)</td>
+            <td>Partially Agree/Partially disagree (3)</td>
+            <td>Disagree (4)</td>
+            <td>Strongly Agree (5)</td>
+          </tr>
+          <tr>
+            <td>
+              1. Sam is struggling because he does not put enough effort into his
+              schoolwork.
+            </td>
+            <td>
+              <input type="radio" name="sam-struggling-question" value="1" v-model="surveyData[
+                'Sam is struggling because he does not put enough effort into his schoolwork'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-struggling-question" value="2" v-model="surveyData[
+                'Sam is struggling because he does not put enough effort into his schoolwork'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-struggling-question" value="3" v-model="surveyData[
+                'Sam is struggling because he does not put enough effort into his schoolwork'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-struggling-question" value="4" v-model="surveyData[
+                'Sam is struggling because he does not put enough effort into his schoolwork'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-struggling-question" value="5" v-model="surveyData[
+                'Sam is struggling because he does not put enough effort into his schoolwork'
+              ]" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              2. Sam’s difficulties are due to differences in his brain function
+              (which impact how he learns).
+            </td>
+            <td>
+              <input type="radio" name="sam-brain-function-question" value="1" v-model="surveyData[
+                'Sam’s difficulties are due to differences in his brain function (which impact how he learns)'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-brain-function-question" value="2" v-model="surveyData[
+                'Sam’s difficulties are due to differences in his brain function (which impact how he learns)'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-brain-function-question" value="3" v-model="surveyData[
+                'Sam’s difficulties are due to differences in his brain function (which impact how he learns)'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-brain-function-question" value="4" v-model="surveyData[
+                'Sam’s difficulties are due to differences in his brain function (which impact how he learns)'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-brain-function-question" value="5" v-model="surveyData[
+                'Sam’s difficulties are due to differences in his brain function (which impact how he learns)'
+              ]" required />
+            </td>
+          </tr>
+          <tr class="text-xs">
+            <td>
+              3. Sam is struggling because his family lacks the necessary
+              financial and material resources to succeed
+            </td>
+            <td>
+              <input type="radio" name="sam-financial-struggle-question" value="1" v-model="surveyData[
+                'Sam is struggling because his family lacks the necessary financial and material resources to succeed'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-financial-struggle-question" value="2" v-model="surveyData[
+                'Sam is struggling because his family lacks the necessary financial and material resources to succeed'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-financial-struggle-question" value="3" v-model="surveyData[
+                'Sam is struggling because his family lacks the necessary financial and material resources to succeed'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-financial-struggle-question" value="4" v-model="surveyData[
+                'Sam is struggling because his family lacks the necessary financial and material resources to succeed'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-financial-struggle-question" value="5" v-model="surveyData[
+                'Sam is struggling because his family lacks the necessary financial and material resources to succeed'
+              ]" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              4. Sam is struggling at school because of the bad deeds he engaged
+              in during his past life which impact him negatively now (bad karma).
+            </td>
+            <td>
+              <input type="radio" name="sam-bad-deeds-question" value="1" v-model="surveyData[
+                'Sam is struggling at school because of the bad deeds he engaged in during his past life which impact him negatively now (bad karma)'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-bad-deeds-question" value="2" v-model="surveyData[
+                'Sam is struggling at school because of the bad deeds he engaged in during his past life which impact him negatively now (bad karma)'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-bad-deeds-question" value="3" v-model="surveyData[
+                'Sam is struggling at school because of the bad deeds he engaged in during his past life which impact him negatively now (bad karma)'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-bad-deeds-question" value="4" v-model="surveyData[
+                'Sam is struggling at school because of the bad deeds he engaged in during his past life which impact him negatively now (bad karma)'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-bad-deeds-question" value="5" v-model="surveyData[
+                'Sam is struggling at school because of the bad deeds he engaged in during his past life which impact him negatively now (bad karma)'
+              ]" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              5. Sam is struggling because his teachers do not give him enough
+              academic support
+            </td>
+            <td>
+              <input type="radio" name="sam-struggle-teachers-question" value="1" v-model="surveyData[
+                'Sam is struggling because his teachers do not give him enough academic support'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-struggle-teachers-question" value="2" v-model="surveyData[
+                'Sam is struggling because his teachers do not give him enough academic support'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-struggle-teachers-question" value="3" v-model="surveyData[
+                'Sam is struggling because his teachers do not give him enough academic support'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-struggle-teachers-question" value="4" v-model="surveyData[
+                'Sam is struggling because his teachers do not give him enough academic support'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-struggle-teachers-question" value="5" v-model="surveyData[
+                'Sam is struggling because his teachers do not give him enough academic support'
+              ]" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              6. Sam is struggling because his parents do not give him enough
+              academic support
+            </td>
+            <td>
+              <input type="radio" name="sam-no-academic-support-question" value="1" v-model="surveyData[
+                'Sam is struggling because his parents do not give him enough academic support'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-no-academic-support-question" value="2" v-model="surveyData[
+                'Sam is struggling because his parents do not give him enough academic support'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-no-academic-support-question" value="3" v-model="surveyData[
+                'Sam is struggling because his parents do not give him enough academic support'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-no-academic-support-question" value="4" v-model="surveyData[
+                'Sam is struggling because his parents do not give him enough academic support'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-no-academic-support-question" value="5" v-model="surveyData[
+                'Sam is struggling because his parents do not give him enough academic support'
+              ]" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              7. Sam is struggling because his teachers are unable to adapt their
+              teaching style and methods to meet the different learning needs of
+              their students
+            </td>
+            <td>
+              <input type="radio" name="sam-unable-to-adapt-question" value="1" v-model="surveyData[
+                'Sam is struggling because his teachers are unable to adapt their teaching style and methods to meet the different learning needs of their students'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-unable-to-adapt-question" value="2" v-model="surveyData[
+                'Sam is struggling because his teachers are unable to adapt their teaching style and methods to meet the different learning needs of their students'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-unable-to-adapt-question" value="3" v-model="surveyData[
+                'Sam is struggling because his teachers are unable to adapt their teaching style and methods to meet the different learning needs of their students'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-unable-to-adapt-question" value="4" v-model="surveyData[
+                'Sam is struggling because his teachers are unable to adapt their teaching style and methods to meet the different learning needs of their students'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-unable-to-adapt-question" value="5" v-model="surveyData[
+                'Sam is struggling because his teachers are unable to adapt their teaching style and methods to meet the different learning needs of their students'
+              ]" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              8. All children are not made the same way in terms of their mental
+              abilities and capacity to learn; Sam is struggling because it is the
+              Will of God
+            </td>
+            <td>
+              <input type="radio" name="sam-will-of-god-question" value="1" v-model="surveyData[
+                'All children are not made the same way in terms of their mental abilities and capacity to learn; Sam is struggling because it is the Will of God'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-will-of-god-question" value="2" v-model="surveyData[
+                'All children are not made the same way in terms of their mental abilities and capacity to learn; Sam is struggling because it is the Will of God'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-will-of-god-question" value="3" v-model="surveyData[
+                'All children are not made the same way in terms of their mental abilities and capacity to learn; Sam is struggling because it is the Will of God'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-will-of-god-question" value="4" v-model="surveyData[
+                'All children are not made the same way in terms of their mental abilities and capacity to learn; Sam is struggling because it is the Will of God'
+              ]" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-will-of-god-question" value="5" v-model="surveyData[
+                'All children are not made the same way in terms of their mental abilities and capacity to learn; Sam is struggling because it is the Will of God'
+              ]" required />
+            </td>
+          </tr>
+        </table>
+        <div class="flex gap-5 justify-start">
+          <button @click="currentStep--" type="button">Back</button>
+          <button type="submit">Next</button>
+        </div>
+      </form>
     </div>
   </section>
 
   <!-- Question section 4 -->
   <section class="flex items-center justify-center h-screen" v-show="currentStep === 4">
-    <div class="result-box-questions">
-      <h3 class="font-medium">
-        9. What other reasons might be contributing to Sam’s difficulty in
-        achieving better at school in comparison with his peers?
-      </h3>
-      <textarea class="h-32 resize-none border border-solid border-gray-400 w-full text-sm box-border p-3" id="" cols="30"
-        rows="10" v-model="surveyData[
-          '9. What other reasons might be contributing to Sam’s difficulty in achieving better at school in comparison with his peers?'
+    <form @submit.prevent="currentStep++"
+      class="shadow-none text-left flex justify-start border-none max-w-none p-0 max-h-none min-h-0 w-auto">
+      <div class="result-box-questions">
+        <h3 class="font-medium bg-green-100">
+          9. What other reasons might be contributing to Sam’s difficulty in
+          achieving better at school in comparison with his peers?
+        </h3>
+        <textarea class="h-32 text-sm resize-none border border-solid border-gray-300 w-full box-border p-3" id=""
+          cols="30" rows="10" v-model="surveyData[
+            '9. What other reasons might be contributing to Sam’s difficulty in achieving better at school in comparison with his peers?'
+          ]" placeholder="Type here" required></textarea>
+        <h3 class="font-medium bg-green-100">
+          10. If Sam’s parents come to you as a friend to ask about what they
+          should do to help their child with his academic work what would you
+          advise them?
+        </h3>
+        <textarea v-model="surveyData[
+          'If Sam’s parents come to you as a friend to ask about what they should do to help their child with his academic work what would you advise them?'
         ]
-          "></textarea>
-      <h3 class="font-medium">
-        10. If Sam’s parents come to you as a friend to ask about what they
-        should do to help their child with his academic work what would you
-        advise them?
-      </h3>
-      <textarea v-model="surveyData[
-        'If Sam’s parents come to you as a friend to ask about what they should do to help their child with his academic work what would you advise them?'
-      ]
-        " class="h-32 border resize-none border-solid border-gray-400 w-full text-sm box-border p-3" id="" cols="30"
-        rows="10"></textarea>
-      <br />
-      <div class="flex gap-5 justify-start">
-        <button @click="currentStep--">Back</button>
-        <button @click="currentStep++">Next</button>
+          " class="h-32 border resize-none border-solid border-gray-300 w-full text-sm box-border p-3" id="" cols="30"
+          rows="10" placeholder="Type here" required></textarea>
+        <br />
+        <div class="flex gap-5 justify-start">
+          <button @click="currentStep--" type="button">Back</button>
+          <button type="submit">Next</button>
+        </div>
       </div>
-    </div>
+    </form>
   </section>
 
   <!-- Question 5 - Appendix 4 -->
   <section class="flex items-center justify-center h-screen" v-show="currentStep === 5">
     <div class="result-box-questions">
-      <h3 class="font-medium !text-[16px]">Appendix 4</h3>
+      <h3 class="font-semibold !text-[16px]">Appendix 4 - PART D</h3>
       <h4 class="text-[14px]">
         First Impressions Assessment Scale for Observers
       </h4>
@@ -574,46 +608,50 @@
         try to respond as quickly and honestly as possible.
       </h5>
       <h5 class="underline">After participants view each video:</h5>
-      <h5>Please indicate your rating</h5>
-      <table>
-        <tr>
-          <td></td>
-          <td>Strongly Agree (1)</td>
-          <td>Agree (2)</td>
-          <td>Disagree (3)</td>
-          <td>Strongly Disagree (4)</td>
-        </tr>
-        <tr v-for="question in questions">
-          <td class="!w-52 pr-10">{{ question.question }}</td>
-          <td>
-            <input type="radio" :name="question.inputName" value="Strongly Agree"
-              v-model="surveyData[question.inputName]" />
-          </td>
-          <td>
-            <input type="radio" :name="question.inputName" value="Agree" v-model="surveyData[question.inputName]" />
-          </td>
-          <td>
-            <input type="radio" :name="question.inputName" value="Disagree" v-model="surveyData[question.inputName]" />
-          </td>
-          <td>
-            <input type="radio" :name="question.inputName" value="Strongly Disagree"
-              v-model="surveyData[question.inputName]" />
-          </td>
-        </tr>
-        <tr></tr>
-      </table>
-      <div class="flex gap-5 justify-start">
-        <button @click="currentStep--">Back</button>
-        <button @click="currentStep++">Next</button>
-      </div>
+      <h5 class="bg-green-100">Please indicate your rating</h5>
+      <form @submit.prevent="currentStep++"
+        class="shadow-none text-left flex flex-col items-start justify-start border-none max-w-none p-0 max-h-none min-h-0 w-auto">
+        <table>
+          <tr>
+            <td></td>
+            <td>Strongly Agree (1)</td>
+            <td>Agree (2)</td>
+            <td>Disagree (3)</td>
+            <td>Strongly Disagree (4)</td>
+          </tr>
+          <tr v-for="question in questions">
+            <td class="!w-52 pr-10">{{ question.question }}</td>
+            <td>
+              <input type="radio" :name="question.inputName" value="Strongly Agree"
+                v-model="surveyData[question.inputName]" required />
+            </td>
+            <td>
+              <input type="radio" :name="question.inputName" value="Agree" v-model="surveyData[question.inputName]"
+                required />
+            </td>
+            <td>
+              <input type="radio" :name="question.inputName" value="Disagree" v-model="surveyData[question.inputName]"
+                required />
+            </td>
+            <td>
+              <input type="radio" :name="question.inputName" value="Strongly Disagree"
+                v-model="surveyData[question.inputName]" required />
+            </td>
+          </tr>
+        </table>
+        <div class="flex gap-5 justify-start">
+          <button @click="currentStep--" type="button">Back</button>
+          <button type="submit">Next</button>
+        </div>
+      </form>
     </div>
   </section>
 
   <!-- Secion 6 -->
   <section class="flex items-center justify-center h-screen" v-show="currentStep === 6">
     <div class="result-box-questions result-box-questions-last !max-w-[1000px]">
-      <h3 class="font-medium !text-[16px]">
-        Appendix 5 Parents and School Survey
+      <h3 class="!text-[16px] font-semibold">
+        Appendix 5 Parents and School Survey - PART E
       </h3>
       <h5 class="leading-7">
         Below are several statements. Please read them and circle the answer
@@ -622,90 +660,95 @@
         helps us plan how to make the program as helpful to parents as possible.
       </h5>
 
-      <table>
-        <tr class="top-row-numbers">
-          <td></td>
-          <td>Strongly Agree (1)</td>
-          <td>Agree (2)</td>
-          <td>Partially Agree/Partially disagree (3)</td>
-          <td>Disagree (4)</td>
-          <td>Strongly Disagree (5)</td>
-        </tr>
-        <tr v-for="(question, index) in questionsAppendix5">
-          <td class="!w-[32rem] text-left">{{ question.question }}</td>
-          <td>
-            <input type="radio" :name="question.inputName" class="!mr-0" value="Strongly Agree"
-              v-model="surveyData[question.inputName]" />
-            <label :for="question.inputName" class="mt-0"></label>
-          </td>
-          <td>
-            <input type="radio" :name="question.inputName" value="Agree" class="!mr-0"
-              v-model="surveyData[question.inputName]" />
-            <label class="mt-0"></label>
-          </td>
-          <td>
-            <input type="radio" value="Partially Agree/Partially Disagree" class="!mr-0" :name="question.inputName"
-              v-model="surveyData[question.inputName]" />
-            <label class="mt-0"></label>
-          </td>
-          <td>
-            <input type="radio" value="Disagree" :name="question.inputName" class="!mr-0"
-              v-model="surveyData[question.inputName]" />
-            <label class="mt-0"></label>
-          </td>
-          <td>
-            <input type="radio" value="Strongly Disagree" :name="question.inputName" class="!mr-0"
-              v-model="surveyData[question.inputName]" />
-            <label class="mt-0"></label>
-          </td>
-          <br />
-        </tr>
-        <tr></tr>
-      </table>
-
-      <h5 class="leading-7">
-        How much do the following issues impact your involvement in your child’s
-        academic work at home or in school?
-      </h5>
-
-      <div class="flex justify-start">
+      <form @submit.prevent="finishTest"
+        class="shadow-none text-left flex flex-col items-start justify-start border-none max-w-none p-0 max-h-none min-h-0 w-auto">
         <table>
-          <tr>
+          <tr class="top-row-numbers">
             <td></td>
-            <td>A lot</td>
-            <td>Some</td>
-            <td>Not an Issue</td>
+            <td>Strongly Agree (1)</td>
+            <td>Agree (2)</td>
+            <td>Partially Agree/Partially disagree (3)</td>
+            <td>Disagree (4)</td>
+            <td>Strongly Disagree (5)</td>
           </tr>
-          <tr v-for="(question, index) in questionsAppendixFinal">
-            <td class="!w-52">{{ question.question }}</td>
-            <td class="!w-32">
-              <input value="A lot" type="radio" :name="question.inputName" v-model="surveyData[question.inputName]" />
+          <tr v-for="(question, index) in questionsAppendix5">
+            <td class="!w-[32rem] text-left">{{ question.question }}</td>
+            <td>
+              <input type="radio" :name="question.inputName" class="!mr-0" value="Strongly Agree"
+                v-model="surveyData[question.inputName]" required />
+              <label :for="question.inputName" class="mt-0"></label>
             </td>
-            <td class="!w-32">
-              <input value="Some" type="radio" :name="question.inputName" v-model="surveyData[question.inputName]" />
+            <td>
+              <input type="radio" :name="question.inputName" value="Agree" class="!mr-0"
+                v-model="surveyData[question.inputName]" required />
+              <label class="mt-0"></label>
             </td>
-            <td class="!w-32">
-              <input value="Not an Issue" type="radio" :name="question.inputName"
-                v-model="surveyData[question.inputName]" />
+            <td>
+              <input type="radio" value="Partially Agree/Partially Disagree" class="!mr-0" :name="question.inputName"
+                v-model="surveyData[question.inputName]" required />
+              <label class="mt-0"></label>
             </td>
+            <td>
+              <input type="radio" value="Disagree" :name="question.inputName" class="!mr-0"
+                v-model="surveyData[question.inputName]" required />
+              <label class="mt-0"></label>
+            </td>
+            <td>
+              <input type="radio" value="Strongly Disagree" :name="question.inputName" class="!mr-0"
+                v-model="surveyData[question.inputName]" required />
+              <label class="mt-0"></label>
+            </td>
+            <br />
           </tr>
           <tr></tr>
         </table>
-      </div>
 
-      <h5>If Other, Please specify</h5>
-      <input type="text" v-model="surveyData['Specified Engagement Issue']" />
-      <!--  -->
-      <div class="flex gap-5 justify-start">
-        <button @click="currentStep--">Back</button>
-        <button @click="finishTest">Finish task!</button>
-      </div>
+        <h5 class="leading-7 bg-green-100">
+          How much do the following issues impact your involvement in your child’s
+          academic work at home or in school?
+        </h5>
+
+        <div class="flex justify-start">
+          <table>
+            <tr>
+              <td></td>
+              <td>A lot</td>
+              <td>Some</td>
+              <td>Not an Issue</td>
+            </tr>
+            <tr v-for="(question, index) in questionsAppendixFinal">
+              <td class="!w-52">{{ question.question }}</td>
+              <td class="!w-32">
+                <input value="A lot" type="radio" :name="question.inputName" v-model="surveyData[question.inputName]"
+                  required />
+              </td>
+              <td class="!w-32">
+                <input value="Some" type="radio" :name="question.inputName" v-model="surveyData[question.inputName]"
+                  required />
+              </td>
+              <td class="!w-32">
+                <input value="Not an Issue" type="radio" :name="question.inputName"
+                  v-model="surveyData[question.inputName]" required />
+              </td>
+            </tr>
+            <tr></tr>
+          </table>
+        </div>
+
+        <h5>If Other, Please specify</h5>
+        <input type="text" v-model="surveyData['Specified Engagement Issue']" />
+        <!--  -->
+        <div class="flex gap-5 justify-start">
+          <button @click="currentStep--" type="button">Back</button>
+          <button type="submit">Finish task!</button>
+        </div>
+      </form>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { storeLDPostSurveyData } from "../../../modules/storingData/storingDataLD";
 import { useStore } from "vuex";
@@ -778,7 +821,7 @@ let questionsAppendixFinal = ref([
   },
   {
     question: "Small Children",
-    inputName: "Engagement Issue: Lack of Time",
+    inputName: "Engagement Issue: Small Children",
   },
   {
     question: "Transportation",
@@ -965,7 +1008,7 @@ let questions = ref([
 
 function finishTest() {
   let userId;
-  if (!store.state.uid) {
+  if (String(store.state.uid).length === 0) {
     userId = Math.floor(Math.random() * 10000);
     store.commit("changeUserID", userId);
   } else {
@@ -982,7 +1025,8 @@ onMounted(() => {
   let data = store.state.ld_data;
 
   if (data.length === 0) {
-    router.push("/LD_IBT_Survey");
+    // TODO: Uncomment here
+    // router.push("/LD_IBT_Survey");
   } else {
     // Happy + without learning difficulty
     let congruent = data[1];
@@ -1087,6 +1131,7 @@ td {
 table {
   border: solid 1px #cfcfcf;
   border-radius: 5px;
+  text-align: center;
 }
 
 /* Alternate row colors */
@@ -1098,10 +1143,14 @@ tr:nth-child(odd) {
   background-color: white;
 }
 
-td:not(:nth-child(1)) {
-  max-width: 200px;
-  width: 10%;
-  text-align: center;
+
+td:nth-child(1) {
+  width: 250px;
+}
+
+td {
+  width: 50%;
+  /* width: 100px; */
 }
 
 /* Hover effect on rows */
@@ -1112,12 +1161,16 @@ tr:hover {
 .fixed-top-section {
   position: fixed;
   top: 49px;
-  left: 51%;
+  left: 58%;
   transform: translate(-50%, -50%);
   width: 68%;
   max-width: 943px;
   text-align: center;
   min-width: 944px;
+}
+
+.top-row-numbers.fixed-top-section td {
+  border: none;
 }
 
 @media (max-width: 1052px) {
@@ -1141,5 +1194,18 @@ tr:hover {
   .appendix-question-1 {
     width: 100%;
   }
+}
+
+
+table {
+  border: solid 1px;
+  border-collapse: collapse;
+}
+
+table td {
+  padding: 5px;
+  font-size: 13.5px;
+  border: solid 1px;
+  width: 105px;
 }
 </style>

@@ -82,7 +82,7 @@
   <section v-if="currentStep === 3" class="text-center">
     <h3 class="underline mb-0">{{ ibt_trials[section].section }}</h3>
     <section class="flex flex-wrap-reverse items-center flex-col justify-center gap-0">
-      <div class="mt-9 w-56 min-h-[83px]">
+      <div class="mt-7 w-56 min-h-[83px] flex items-center justify-center">
         <!-- Stars and Crosses -->
         <div class="flex justify-center">
           <img src="../../../assets/LD_IBT/check-mark.png" alt="star" v-show="userGotStimulusRight"
@@ -93,7 +93,7 @@
         <div class="flex-col items-center" :class="{ hide: testNotStarted || paused }">
           <div v-for="trial in ibt_trials[section].trials" :key="trial.id" :style="{ display: trial.visibility }">
             <!-- Keyword -->
-            <h3 class="font-semibold text-xl">{{ trial.keyword }}</h3>
+            <h3 class="font-semibold text-xl my-0 leading-10">{{ trial.keyword }}</h3>
 
             <!-- Clickers -->
             <img :src="getClickerImage(

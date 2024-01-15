@@ -18,8 +18,8 @@
     <h4 class="text-sm mb-6">The whole study will take around 20 minutes to complete</h4>
 
     <div class="flex gap-6 justify-start mt-7 mb-0">
-        <button @click="emits('go-back')" class="my-0 gradient-btn gradient-green py-5">Back</button>
-        <button @click="emits('continue')" class="my-0 gradient-btn gradient-green py-5">Next</button>
+        <button @click="emits('go-back')" class="my-0 gradient-btn gradient-green py-6">Back</button>
+        <button @click="emits('continue')" class="my-0 gradient-btn gradient-green py-6">Next</button>
     </div>
 </template>
 

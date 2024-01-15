@@ -156,8 +156,8 @@
             </span>
 
             <div class="w-full flex justify-start gap-5">
-                <button type="button" class="gradient-green py-5 gradient-btn" @click="emits('go-back')">Back</button>
-                <button type="submit" class="gradient-green py-5 gradient-btn">Next</button>
+                <button type="button" class="gradient-green py-6 gradient-btn" @click="emits('go-back')">Back</button>
+                <button type="submit" class="gradient-green py-6 gradient-btn">Next</button>
             </div>
         </form>
     </section>

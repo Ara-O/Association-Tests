@@ -241,34 +241,117 @@
           improvement in Sam’s situation (Tick all that apply)
         </h3>
 
-        <div>
-          <label for="sam-himself" class="mr-3">Sam himself</label>
-          <input type="checkbox" name="q3" value="Sam himself" id="sam-himself" v-model="surveyData[
-            'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
-          ]
-            " />
-          <br />
-          <label for="his-teachers" class="mr-3">His teachers</label>
-          <input type="checkbox" name="q3" value="His teachers" id="his-teachers" v-model="surveyData[
-            'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
-          ]
-            " />
-          <br />
-          <label for="parents" class="mr-3">Parents</label>
-          <input type="checkbox" name="q3" value="Parents" id="parents" v-model="surveyData[
-            'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
-          ]
-            " />
-          <br />
-          <label for="situational-changes" class="mr-3">Situational changes (e.g., providing more school resources and
-            funding
-            to provide better
-            support for students like Sam)</label>
-          <input type="checkbox" name="" value="Situational changes" id="situational-changes" v-model="surveyData[
-            'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
-          ]
-            " />
-        </div>
+        <table class="mt-5">
+          <tr class="top-row-numbers-3">
+            <td>Rank</td>
+            <td>1 (Least responsible)</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4 (Most responsible)</td>
+          </tr>
+          <tr>
+            <td>
+              Sam himself
+            </td>
+            <td>
+              <input type="radio" name="sam-1" value="1" v-model="surveyData[
+                'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+              ]['Sam himself']" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-2" value="2" v-model="surveyData[
+                'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+              ]['Sam himself']" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-3" value="3" v-model="surveyData[
+                'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+              ]['Sam himself']" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-4" value="4" v-model="surveyData[
+                'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+              ]['Sam himself']" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              His teachers
+            </td>
+            <td>
+              <input type="radio" name="sam-1" value="1" v-model="surveyData[
+                'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+              ]['His teachers']" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-2" value="2" v-model="surveyData[
+                'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+              ]['His teachers']" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-3" value="3" v-model="surveyData[
+                'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+              ]['His teachers']" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-4" value="4" v-model="surveyData[
+                'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+              ]['His teachers']" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Parents
+            </td>
+            <td>
+              <input type="radio" name="sam-1" value="1" v-model="surveyData[
+                'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+              ]['Parents']" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-2" value="2" v-model="surveyData[
+                'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+              ]['Parents']" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-3" value="3" v-model="surveyData[
+                'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+              ]['Parents']" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-4" value="4" v-model="surveyData[
+                'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+              ]['Parents']" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Situational changes (e.g providing more school resources and funding to provide better support for students
+              like Sam)
+            </td>
+            <td>
+              <input type="radio" name="sam-1" value="1" v-model="surveyData[
+                'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+              ]['Situational Changes']" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-2" value="2" v-model="surveyData[
+                'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+              ]['Situational Changes']" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-3" value="3" v-model="surveyData[
+                'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+              ]['Situational Changes']" required />
+            </td>
+            <td>
+              <input type="radio" name="sam-4" value="4" v-model="surveyData[
+                'Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)'
+              ]['Situational Changes']" required />
+            </td>
+          </tr>
+        </table>
+
         <br />
 
 
@@ -787,7 +870,8 @@ let surveyData = ref({
     "His financial or academic situation": "",
   },
   "Who or what is more responsible for changing or bringing about an improvement in Sam’s situation (Tick all that apply)":
-    [],
+  {
+  },
   "Sam is struggling because he does not put enough effort into his schoolwork":
     "",
   "Sam’s difficulties are due to differences in his brain function (which impact how he learns)":

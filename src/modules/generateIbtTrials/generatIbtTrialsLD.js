@@ -74,45 +74,66 @@ export function generateLdTrials(
 
   updated_full_data = validateTrialData(updated_full_data, "stimulusKey");
 
-  let lastThreeLeft = [];
-  let lastThreeRight = [];
+
+  let lastThree = []
+
+  const LEFT = 0
+  const RIGHT = 1
 
   for (let i = 0; i < updated_full_data.length; i++) {
     let randomNo = Math.floor(Math.random() * 2);
     updated_full_data[i].visibility = "none";
 
     // Check if the last three faces on each side were the same
-    if (lastThreeLeft.length === 3 && lastThreeLeft.every(face => face === "Happy")) {
-      randomNo = 1; // Force the left face to be Sad
-    } else if (lastThreeRight.length === 3 && lastThreeRight.every(face => face === "Happy")) {
-      randomNo = 0; // Force the right face to be Sad
+    if (
+      lastThree.length === 3 &&
+      lastThree.every((position) => position === "Left")
+    ) {
+      randomNo = RIGHT; // Force the left face to be Sad
+    } else if (
+      lastThree.length === 3 &&
+      lastThree.every((position) => position === "Right")
+    ) {
+      randomNo = LEFT; // Force the right face to be Sad
     }
 
-    if (randomNo === 0) {
-      updated_full_data[i].leftClickerFace = "Happy";
-      updated_full_data[i].rightClickerFace = "Sad";
-      lastThreeLeft.push("Happy");
-      lastThreeRight.push("Sad");
+
+    //If the random number is 0, then left is going to be the right answer 
+    if (randomNo === LEFT) {
+      updated_full_data[i].leftClickerFace = updated_full_data[i].stimulusKey;
+      updated_full_data[i].rightClickerFace = updated_full_data[i].stimulusKey === "Happy" ? "Sad" : "Happy";
     } else {
-      updated_full_data[i].rightClickerFace = "Happy";
-      updated_full_data[i].leftClickerFace = "Sad";
-      lastThreeLeft.push("Sad");
-      lastThreeRight.push("Happy");
+      updated_full_data[i].rightClickerFace = updated_full_data[i].stimulusKey;
+      updated_full_data[i].leftClickerFace = updated_full_data[i].stimulusKey === "Happy" ? "Sad" : "Happy";
     }
+
+    //Anytime the answer is left, which it always will be if randomNo is left, then push that to the lastThree
+    if (updated_full_data[i].leftClickerFace === "Sad" && updated_full_data[i].stimulusKey === "Sad") {
+      lastThree.push("Left")
+    }
+    if (updated_full_data[i].leftClickerFace === "Happy" && updated_full_data[i].stimulusKey === "Happy") {
+      lastThree.push("Left")
+    }
+    if (updated_full_data[i].rightClickerFace === "Sad" && updated_full_data[i].stimulusKey === "Sad") {
+      lastThree.push("Right")
+    }
+    if (updated_full_data[i].rightClickerFace === "Happy" && updated_full_data[i].stimulusKey === "Happy") {
+      lastThree.push("Right")
+    }
+
+    //Note: the code above can be refactored by moving lastThree.push(...) to the if statement above, but
+    //this way is more imperative for better testing and seeing how the flow works
 
     // Keep only the last three faces on each side
-    if (lastThreeLeft.length > 3) {
-      lastThreeLeft.shift();
-    }
-    if (lastThreeRight.length > 3) {
-      lastThreeRight.shift();
+    if (lastThree.length > 3) {
+      lastThree.shift()
     }
 
     updated_full_data[i].accuracy = 100;
   }
 
-
   updated_full_data[0].visibility = "block";
 
+  console.log(updated_full_data)
   return updated_full_data;
 }

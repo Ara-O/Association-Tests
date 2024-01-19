@@ -14,7 +14,9 @@
         presented in a table as follows:
       </h4>
 
-      <table class="border text-[13px] leading-7 text-left box-border mt-3 border-collapse">
+      <table
+        class="border text-[13px] leading-7 text-left box-border mt-3 border-collapse"
+      >
         <tr>
           <th class="font-medium">Category</th>
           <th></th>
@@ -30,20 +32,26 @@
       </table>
 
       <h3 class="mt-5 text-sm text-left leading-7">
-        There will be words displayed in the middle of the screen. When the screen
-        displays words associated
+        There will be words displayed in the middle of the screen. When the
+        screen displays words associated
         <b class="font-semibold">with learning difficulties </b>, select the
         <b class="font-semibold">sad face</b>. When you see words related to
         <strong class="font-semibold"> without learning difficulties</strong>,
         select the <b class="font-semibold">happy face</b>. Happy faces and sad
-        faces will appear at the bottom of the screen either on the left or right.
-        Pay attention because the happy face and sad face may change places.
-        Please respond quickly and correctly.
+        faces will appear at the bottom of the screen either on the left or
+        right. Pay attention because the happy face and sad face may change
+        places. Please respond quickly and correctly.
       </h3>
-      <h3 class="text-sm leading-7 mb-0"> <b class="font-semibold text-sm">Disclaimer:</b> If you are using touchscreen,
-        you
-        can only use hand to touch the screen</h3>
-      <button @click="currentStep++" class="gradient-green gradient-btn py-6 mb-0">Next</button>
+      <h3 class="text-sm leading-7 mb-0">
+        <b class="font-semibold text-sm">Disclaimer:</b> If you are using
+        touchscreen, you can only use hand to touch the screen
+      </h3>
+      <button
+        @click="currentStep++"
+        class="gradient-green gradient-btn py-6 mb-0"
+      >
+        Next
+      </button>
     </div>
   </section>
 
@@ -56,7 +64,9 @@
         <td class="font-medium">Press</td>
       </tr>
       <tr>
-        <td class="leading-7">Typically Developing, Neurotypical, No Diagnosis</td>
+        <td class="leading-7">
+          Typically Developing, Neurotypical, No Diagnosis
+        </td>
         <td>
           <img src="../../../assets/LD_IBT/happy-face.png" class="w-32" />
         </td>
@@ -73,41 +83,82 @@
     </table>
 
     <div class="flex gap-3 items-start justify-start">
-      <button class="gradient-green gradient-btn py-6 mb-0" @click="currentStep--" v-if="section === 0">Back</button>
-      <button class="gradient-green gradient-btn py-6 mb-0" @click="startTest">Start Task</button>
+      <button
+        class="gradient-green gradient-btn py-6 mb-0"
+        @click="currentStep--"
+        v-if="section === 0"
+      >
+        Back
+      </button>
+      <button class="gradient-green gradient-btn py-6 mb-0" @click="startTest">
+        Start Task
+      </button>
     </div>
   </section>
 
-  <!-- TEST -->
+  <!-- TASK -->
   <section v-if="currentStep === 3" class="text-center">
     <h3 class="underline mb-0">{{ ibt_trials[section].section }}</h3>
-    <section class="flex flex-wrap-reverse items-center flex-col justify-center gap-0">
+    <section
+      class="flex flex-wrap-reverse items-center flex-col justify-center gap-0"
+    >
       <div class="mt-7 w-56 min-h-[83px] flex items-center justify-center">
         <!-- Stars and Crosses -->
         <div class="flex justify-center">
-          <img src="../../../assets/LD_IBT/check-mark.png" alt="star" v-show="userGotStimulusRight"
-            class="ibt-star h-20" />
-          <img src="../../../assets/IT_faces/cross.jpg" alt="cross" class="cross" v-show="userGotStimulusWrong" />
+          <img
+            src="../../../assets/LD_IBT/check-mark.png"
+            alt="star"
+            v-show="userGotStimulusRight"
+            class="ibt-star h-20"
+          />
+          <img
+            src="../../../assets/IT_faces/cross.jpg"
+            alt="cross"
+            class="cross"
+            v-show="userGotStimulusWrong"
+          />
         </div>
 
-        <div class="flex-col items-center" :class="{ hide: testNotStarted || paused }">
-          <div v-for="trial in ibt_trials[section].trials" :key="trial.id" :style="{ display: trial.visibility }">
+        <div
+          class="flex-col items-center"
+          :class="{ hide: testNotStarted || paused }"
+        >
+          <div
+            v-for="trial in ibt_trials[section].trials"
+            :key="trial.id"
+            :style="{ display: trial.visibility }"
+          >
             <!-- Keyword -->
-            <h3 class="font-semibold text-xl my-0 leading-10">{{ trial.keyword }}</h3>
+            <h3 class="font-semibold text-xl my-0 leading-10">
+              {{ trial.keyword }}
+            </h3>
 
             <!-- Clickers -->
-            <img :src="getClickerImage(
-              trial.leftClickerFace == 'Happy'
-                ? 'happy-face.png'
-                : 'sad-face.png'
-            )
-              " alt="Left face" ref="leftFace" @click="() => handleClick('Left')" class="faceLeft ibt-icon" />
-            <img :src="getClickerImage(
-              trial.rightClickerFace == 'Sad'
-                ? 'sad-face.png'
-                : 'happy-face.png'
-            )
-              " alt="Right face" @click="() => handleClick('Right')" class="faceRight ibt-icon" />
+            <img
+              :src="
+                getClickerImage(
+                  trial.leftClickerFace == 'Happy'
+                    ? 'happy-face.png'
+                    : 'sad-face.png'
+                )
+              "
+              alt="Left face"
+              ref="leftFace"
+              @click="() => handleClick('Left')"
+              class="faceLeft ibt-icon"
+            />
+            <img
+              :src="
+                getClickerImage(
+                  trial.rightClickerFace == 'Sad'
+                    ? 'sad-face.png'
+                    : 'happy-face.png'
+                )
+              "
+              alt="Right face"
+              @click="() => handleClick('Right')"
+              class="faceRight ibt-icon"
+            />
           </div>
         </div>
       </div>
@@ -217,7 +268,7 @@ td,
 th {
   /* padding: 15px; */
   border: solid 1px black;
-  padding: 0px 10px
+  padding: 0px 10px;
 }
 
 .remember-table td {

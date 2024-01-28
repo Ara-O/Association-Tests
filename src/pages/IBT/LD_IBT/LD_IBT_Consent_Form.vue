@@ -24,7 +24,7 @@
         </h4>
         <h4>
           You are invited to participate in a survey consisting of four main
-          sets of tests/questionnaires.
+          components.
         </h4>
         <table class="border border-solid border-black">
           <tr class="font-medium">

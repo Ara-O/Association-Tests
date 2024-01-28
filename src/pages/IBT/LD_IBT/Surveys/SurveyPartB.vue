@@ -76,12 +76,23 @@
             </span>
 
             <div>
-                <label for="other-language" class="font-medium bg-green-100">10. Do you use any other language/languages
-                    besides the home language indicated above? If yes, what is/are the additional language/languages you
+                <label for="other-language-yes-no" class="font-medium bg-green-100">10. Do you use any other
+                    language/languages
+                    besides the home language indicated above?
+                </label>
+                <!-- ?ANCHOR  -->
+                <select v-model="surveyData.otherLangsUsedAtHomeYesOrNo" required class="w-48">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div>
+                <label for="other-language" class="font-medium bg-green-100">If yes, what is/are the additional
+                    language/languages you
                     use?
                 </label>
-                <input type="text" id="other-languages" v-model="surveyData.otherLangsUsedAtHome"
-                    placeholder="Enter language/s"
+                <input type="text" id="other-languages" :disabled="surveyData.otherLangsUsedAtHomeYesOrNo === 'No'"
+                    v-model="surveyData.otherLangsUsedAtHome" placeholder="Enter language/s"
                     class="mt-5 mb-0 rounded-md border border-gray-300 border-solid px-3 py-1 box-border w-48 text-[12.5px]"
                     required />
             </div>

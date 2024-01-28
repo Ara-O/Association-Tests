@@ -79,6 +79,7 @@ let surveyData = ref<SurveyData>({
   usrProficiencyInHomeLngReading: "",
   usrProficiencyInHomeLngSpeaking: "",
   usrProficiencyInEnglishWriting: "",
+  otherLangsUsedAtHomeYesOrNo: "",
   usrProficiencyInEnglishReading: "",
   usrProficiencyInEnglishSpeaking: "",
 });

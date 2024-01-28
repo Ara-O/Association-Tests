@@ -8,6 +8,7 @@ export type SurveyData = {
     usrDurOfStayInCanada: string;
     familyDurOfStayInCanada: string;
     immigrantStatus: string;
+    otherLangsUsedAtHomeYesOrNo: string;
     immigrantStatusOther: string;
     usrGeneration: string;
     usrsHighestEduLvl: string;

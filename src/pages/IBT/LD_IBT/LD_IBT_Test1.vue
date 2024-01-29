@@ -21,16 +21,41 @@
         </tr>
         <tr>
           <td>Learning Difficulties</td>
-          <td>Slow Learner, Academically Challenged, Difficulties Learning</td>
+          <td>Learning Difficulties, Slow Learner, Academically Challenged, Difficulties Learning</td>
         </tr>
         <tr>
           <td>Without Learning Difficulties</td>
-          <td>Typically Developing, Neurotypical, No Diagnosis</td>
+          <td>Typically Developing, Neurotypical, No Diagnosed Condition</td>
         </tr>
       </table>
 
+      <ul class="mt-5 pl-3.5 text-sm text-left leading-7 list-disc">
+        <li class="list-disc">
+          There will be words displayed in the middle of the screen.
+        </li>
+        <li class="list-disc">
+          When the
+          screen displays words associated
+          <b class="font-semibold">with learning difficulties</b>, select the
+          <b class="font-semibold">sad face</b>.
+        </li>
+        <li class="list-disc">
+          When you see words related to
+          <strong class="font-semibold"> without learning difficulties</strong>,
+          select the <b class="font-semibold">happy face</b>.
+        </li>
+        <li class="list-disc">
+          Happy faces and sad
+          faces will appear at the bottom of the screen either on the left or
+          right.
+        </li>
+        <li class="list-disc">
+          Pay attention because the happy face and sad face may change
+          places. Please respond quickly and correctly.
+        </li>
+      </ul>
       <h3 class="mt-5 text-sm text-left leading-7">
-        There will be words displayed in the middle of the screen. When the
+        <!-- When the
         screen displays words associated
         <b class="font-semibold">with learning difficulties </b>, select the
         <b class="font-semibold">sad face</b>. When you see words related to
@@ -38,7 +63,8 @@
         select the <b class="font-semibold">happy face</b>. Happy faces and sad
         faces will appear at the bottom of the screen either on the left or
         right. Pay attention because the happy face and sad face may change
-        places. Please respond quickly and correctly.
+        places. Please respond quickly and correctly. -->
+
       </h3>
       <h3 class="text-sm leading-7 mb-0">
         <b class="font-semibold text-sm">Disclaimer:</b> If you are using
@@ -60,7 +86,7 @@
       </tr>
       <tr>
         <td class="leading-7">
-          Typically Developing, Neurotypical, No Diagnosis
+          Typically Developing, Neurotypical, No Diagnosed Condition
         </td>
         <td>
           <img src="../../../assets/LD_IBT/happy-face.png" class="w-32" />
@@ -68,7 +94,7 @@
       </tr>
       <tr>
         <td class="leading-7">
-          Learning Difficulties Slow Learner, Academically Challenged,
+          Learning Difficulties, Slow Learner, Academically Challenged,
           Difficulties Learning
         </td>
         <td>

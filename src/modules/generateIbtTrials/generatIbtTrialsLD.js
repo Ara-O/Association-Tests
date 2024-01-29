@@ -39,10 +39,12 @@ export function generateLdTrials(
   trials
 ) {
   let learning_difficulties = [
+    { keyword: "Learning Difficulties", stimulusKey: difficulties_face },
     { keyword: "Slow Learner", stimulusKey: difficulties_face },
     { keyword: "Academically Challenged", stimulusKey: difficulties_face },
     { keyword: "Difficulties Learning", stimulusKey: difficulties_face },
     //Duplicated
+    { keyword: "Learning Difficulties", stimulusKey: difficulties_face },
     { keyword: "Slow Learner", stimulusKey: difficulties_face },
     { keyword: "Academically Challenged", stimulusKey: difficulties_face },
     { keyword: "Difficulties Learning", stimulusKey: difficulties_face },
@@ -51,11 +53,11 @@ export function generateLdTrials(
   let without_learning_difficulties = [
     { keyword: "Typically developing", stimulusKey: no_difficulties_face },
     { keyword: "Neurotypical", stimulusKey: no_difficulties_face },
-    { keyword: "No diagnosis", stimulusKey: no_difficulties_face },
+    { keyword: "No Diagnosed Condition", stimulusKey: no_difficulties_face },
     //Duplicated
     { keyword: "Typically developing", stimulusKey: no_difficulties_face },
     { keyword: "Neurotypical", stimulusKey: no_difficulties_face },
-    { keyword: "No diagnosis", stimulusKey: no_difficulties_face },
+    { keyword: "No Diagnosed Condition", stimulusKey: no_difficulties_face },
   ];
 
   let full_data = [];

@@ -738,7 +738,7 @@
         </h3>
         <textarea class="h-32 text-sm resize-none border border-solid border-gray-300 w-full box-border p-3" id=""
           cols="30" rows="10" v-model="surveyData[
-            '9. What other reasons might be contributing to Sam’s difficulty in achieving better at school in comparison with his peers?'
+            'What other reasons might be contributing to Sam’s difficulty in achieving better at school in comparison with his peers?'
           ]
             " placeholder="Type here" required></textarea>
         <h3 class="font-medium bg-green-100">
@@ -962,11 +962,11 @@ onMounted(() => {
   document
     .querySelector(".result-box-questions-2").addEventListener("scroll", () => {
 
-      console.log(document.querySelector(".result-box-questions-2").scrollTop)
+      // console.log(document.querySelector(".result-box-questions-2").scrollTop)
       if (
         document.querySelector(".result-box-questions-2").scrollTop >= 180
       ) {
-        console.log("cris")
+        // console.log("cris")
         document
           .querySelector(".invisible-part-2")
           .classList.add("vis");
@@ -1019,7 +1019,7 @@ let questionsAppendixFinal = ref([
   },
   {
     question: "Timing of Programs",
-    inputName: "Engagement Issue: Timing of Programs ",
+    inputName: "Engagement Issue: Timing of Programs",
   },
   {
     question: "Small Children",
@@ -1042,59 +1042,59 @@ let questionsAppendixFinal = ref([
 let questionsAppendix5 = ref([
   {
     question: "I feel very comfortable visiting my child’s school.",
-    inputName: "I feel very comfortable visiting my child’s school.",
+    inputName: "I feel very comfortable visiting my child’s school",
   },
   {
     question:
       "My child’s schoolwork is always displayed in our home (e.g., hang papers on the refrigerator).",
     inputName:
-      "My child’s schoolwork is always displayed in our home (e.g., hang papers on the refrigerator).",
+      "My child’s schoolwork is always displayed in our home (for example, hang papers on the refrigerator)",
   },
   {
     question:
       "If my child misbehaved at school, I would know about it soon afterward.",
     inputName:
-      "If my child misbehaved at school, I would know about it soon afterward.",
+      "If my child misbehaved at school, I would know about it soon afterward",
   },
   {
     question:
       "I frequently explain difficult ideas to my child when she/he doesn’t understand.",
     inputName:
-      "I frequently explain difficult ideas to my child when she/he doesn’t understand.",
+      "I frequently explain difficult ideas to my child when she or he doesn’t understand",
   },
   {
     question:
       "Every time my child does something well at school, I compliment him/her.",
     inputName:
-      "Every time my child does something well at school, I compliment him/her.",
+      "Every time my child does something well at school, I compliment him or her",
   },
   {
     question: "Talking with my child’s principal makes me uncomfortable.",
-    inputName: "Talking with my child’s principal makes me uncomfortable.",
+    inputName: "Talking with my child’s principal makes me uncomfortable",
   },
   {
     question: "I always know how well my child is doing in school.",
-    inputName: "I always know how well my child is doing in school.",
+    inputName: "I always know how well my child is doing in school",
   },
   {
     question: "I am confused about my legal rights as a parent.",
-    inputName: "I am confused about my legal rights as a parent.",
+    inputName: "I am confused about my legal rights as a parent",
   },
   {
     question:
       "I read to my child every day/I encourage my child to read every day.",
     inputName:
-      "I read to my child every day/I encourage my child to read every day.",
+      "I read to my child every day or I encourage my child to read every day",
   },
   {
     question: "I talk with other parents frequently about educational issues.",
-    inputName: "I talk with other parents frequently about educational issues.",
+    inputName: "I talk with other parents frequently about educational issues",
   },
   {
     question:
       "My child attends community programs (e.g:YMCA, park/rec, community theatre, religious institutes)",
     inputName:
-      "My child attends community programs (e.g:YMCA, park/rec, community theatre, religious institutes)",
+      "My child attends community programs (for example, YMCA, park or rec, community theatre, religious institutes)",
   },
   {
     question:
@@ -1106,62 +1106,62 @@ let questionsAppendix5 = ref([
     question:
       "I have made suggestions to my child’s teachers about how to help my child learn.",
     inputName:
-      "I have made suggestions to my child’s teachers about how to help my child learn.",
+      "I have made suggestions to my child’s teachers about how to help my child learn",
   },
   {
     question: "There are many children’s books in our house.",
-    inputName: "There are many children’s books in our house.",
+    inputName: "There are many children’s books in our house",
   },
   {
     question:
       "In the past 12 months I have attended several times activities at my child’s school (e.g., fun nights performances, awards nights).",
     inputName:
-      "In the past 12 months I have attended several times activities at my child’s school (e.g., fun nights performances, awards nights).",
+      "In the past 12 months I have attended several times activities at my child’s school (for example, fun nights performances, awards nights)",
   },
   {
     question: "My child misses’ school several days each semester.",
-    inputName: "My child misses’ school several days each semester.",
+    inputName: "My child misses’ school several days each semester",
   },
   {
     question:
       "Talking with my child’s current teacher makes me somewhat uncomfortable.",
     inputName:
-      "Talking with my child’s current teacher makes me somewhat uncomfortable.",
+      "Talking with my child’s current teacher makes me somewhat uncomfortable",
   },
   {
     question: "I don’t understand the assignments my child brings home.",
-    inputName: "I don’t understand the assignments my child brings home.",
+    inputName: "I don’t understand the assignments my child brings home",
   },
   {
-    question: "Reading books is a regular activity in our home.  ",
-    inputName: "Reading books is a regular activity in our home.  ",
+    question: "Reading books is a regular activity in our home.",
+    inputName: "Reading books is a regular activity in our home",
   },
   {
     question:
       "If my child was having trouble at school, I would not know how to get extra help for him / her.",
     inputName:
-      "If my child was having trouble at school, I would not know how to get extra help for him / her.",
+      "If my child was having trouble at school, I would not know how to get extra help for him or her",
   },
   {
     question: "I am familiar with the Canadian laws governing schools well.",
-    inputName: "I am familiar with the Canadian laws governing schools well.",
+    inputName: "I am familiar with the Canadian laws governing schools well",
   },
   {
     question: "In the past 12 months I attended several school board meetings.",
     inputName:
-      "In the past 12 months I attended several school board meetings.",
+      "In the past 12 months I attended several school board meetings",
   },
   {
     question:
       "In the past 12 months I volunteered at my child’s school at least 3 times.",
     inputName:
-      "In the past 12 months I volunteered at my child’s school at least 3 times.",
+      "In the past 12 months I volunteered at my child’s school at least 3 times",
   },
   {
     question:
       "I know about many programs for youth in my community. (As an example, Heritage Language schools)",
     inputName:
-      "I know about many programs for youth in my community. (As an example, Heritage Language schools)",
+      "I know about many programs for youth in my community; (As an example, Heritage Language schools)",
   },
 ]);
 
@@ -1228,7 +1228,7 @@ onMounted(() => {
 
   if (data.length === 0) {
     // TODO: Uncomment here
-    router.push("/LD_IBT_Survey");
+    // router.push("/LD_IBT_Survey");
   } else {
     // Happy + without learning difficulty
     let congruent = data[1];

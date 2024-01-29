@@ -58,11 +58,11 @@ function handleAnswer(userChoice, testNotStarted, data, testIsPaused, currentTri
             } else {
                 if (section.value === 1) {
                     finishedSection(true)
-                    console.log("Full done")
+                    // console.log("Full done")
                     // 
                 } else {
                     // Finished 1
-                    console.log("Practice done ")
+                    // console.log("Practice done ")
                     finishedSection(false)
                 }
 

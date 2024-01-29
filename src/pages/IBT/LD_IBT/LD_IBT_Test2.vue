@@ -20,11 +20,11 @@
           <th></th>
         </tr>
         <tr>
-          <td>Learning Difficulties</td>
+          <td class="text-blue-700">Learning Difficulties</td>
           <td>Learning Difficulties, Slow Learner, Academically Challenged, Difficulties Learning</td>
         </tr>
         <tr>
-          <td>Without Learning Difficulties</td>
+          <td class="text-green-700">Without Learning Difficulties</td>
           <td>Typically Developing, Neurotypical, No Diagnosed Condition</td>
         </tr>
       </table>
@@ -35,14 +35,14 @@
         </li>
         <li class="list-disc">
           When the
-          screen displays words associated<b class="font-semibold">
-            with learning difficulties</b>, select the <b class="font-semibold">happy face</b>.
+          screen displays words associated<b class="font-semibold text-blue-700">
+            with learning difficulties</b>, select the <b class="font-semibold text-blue-700">happy face</b>.
         </li>
         <li class="list-disc">
           When you see
           words related to
-          <b class="font-semibold"> without learning difficulties</b>, select
-          the<b class="font-semibold"> sad face</b>.
+          <b class="font-semibold text-green-700"> without learning difficulties</b>, select
+          the<b class="font-semibold text-green-700"> sad face</b>.
         </li>
         <li class="list-disc">
           Happy faces and sad

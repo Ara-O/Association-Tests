@@ -921,7 +921,7 @@ import { useRouter } from "vue-router";
 import { storeLDPostSurveyData } from "../../../modules/storingData/storingDataLD";
 import { useStore } from "vuex";
 
-let currentStep = ref(3);
+let currentStep = ref(1);
 const store = useStore();
 const router = useRouter();
 let otherEngagementIssue = ref("");

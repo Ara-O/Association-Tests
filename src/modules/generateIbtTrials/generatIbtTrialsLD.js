@@ -134,6 +134,6 @@ export function generateLdTrials(
 
   updated_full_data[0].visibility = "block";
 
-  console.log(updated_full_data)
+  // console.log(updated_full_data)
   return updated_full_data;
 }

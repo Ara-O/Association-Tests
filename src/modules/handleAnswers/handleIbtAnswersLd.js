@@ -2,32 +2,29 @@
 import * as storeData from "../storingData/storingDataBriefIBT";
 import { storeLDData } from "../storingData/storingDataLD";
 import * as storeDataUCSC from "../storingData/storingDateBriefIBTUCSC";
-let ms = 0;
-let startTime;
-let pausedTime, continuedTime;
-let durationOfPause = 0;
+let startTime, pausedTime, continuedTime, durationOfPause = 0, ms = 0;
 
 function startTimer() {
     // console.log("Starting timer");
     ms = 0;
-    startTime = new Date();
+    startTime = performance.now();
 }
 
 function stopTimer() {
     // console.log("Stopped: duration of pause: " + durationOfPause);
-    const endTime = new Date();
+    const endTime = performance.now();
     ms = endTime - startTime - durationOfPause;
     durationOfPause = 0;
 }
 
 function pauseTimer() {
     // console.log("Pausing timer");
-    pausedTime = new Date();
+    pausedTime = performance.now();
 }
 
 function continueTimer() {
     // console.log("Continuing timer");
-    continuedTime = new Date();
+    continuedTime = performance.now();
     durationOfPause += continuedTime - pausedTime;
 }
 

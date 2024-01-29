@@ -81,7 +81,7 @@
                     besides the home language indicated above?
                 </label>
                 <!-- ?ANCHOR  -->
-                <select v-model="surveyData.otherLangsUsedAtHomeYesOrNo" required class="w-48">
+                <select v-model="surveyData.otherLangsUsedAtHomeYesOrNo" required class="w-48 ml-3">
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                 </select>
@@ -93,7 +93,7 @@
                 </label>
                 <input type="text" id="other-languages" :disabled="surveyData.otherLangsUsedAtHomeYesOrNo === 'No'"
                     v-model="surveyData.otherLangsUsedAtHome" placeholder="Enter language/s"
-                    class="mt-5 mb-0 rounded-md border border-gray-300 border-solid px-3 py-1 box-border w-48 text-[12.5px]"
+                    class="mt-5 mb-0 rounded-md border ml-3 border-gray-300 border-solid px-3 py-1 box-border w-48 text-[12.5px]"
                     required />
             </div>
 

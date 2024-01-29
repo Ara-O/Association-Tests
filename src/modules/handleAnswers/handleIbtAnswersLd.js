@@ -35,7 +35,6 @@ function handleAnswer(userChoice, testNotStarted, data, testIsPaused, currentTri
     if (!testNotStarted.value && !testIsPaused.value) {
         const currentChallenge = data[currentTrial.value];
 
-
         if (currentChallenge.stimulusKey === userChoice) {
             //Stops timer
             stopTimer();
@@ -54,9 +53,9 @@ function handleAnswer(userChoice, testNotStarted, data, testIsPaused, currentTri
                     setTimeout(function () {
                         data[currentTrial.value + 1].visibility = "block";
                         userGotStimulusRight.value = false;
-                        startTimer();
                         currentTrial.value++;
                         testIsPaused.value = false;
+                        startTimer();
                     }, 500);
                 }, 500);
             } else {

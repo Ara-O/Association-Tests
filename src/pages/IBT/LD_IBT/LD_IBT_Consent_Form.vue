@@ -33,7 +33,7 @@
             <th class="w-24">Duration</th>
           </tr>
           <tr>
-            <td class="font-medium">Implicit Association Task</td>
+            <td class="font-medium">Implicit Bias Task</td>
             <td>
               Measures your implicit attitudes towards learning difficulties.
             </td>

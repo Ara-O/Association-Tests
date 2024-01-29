@@ -221,28 +221,28 @@ const routes = [
     path: "/LD_IBT_Consent_Form",
     component: LD_IBT_Consent_Form,
     meta: {
-      title: "LD IBT",
+      title: "Implicit Bias Task",
     }
   },
   {
     path: "/LD_IBT_Survey",
     component: LD_IBT_Survey,
     meta: {
-      title: "LD IBT",
+      title: "Implicit Bias Task",
     }
   },
   {
     path: "/LD_IBT",
     component: LD_IBT,
     meta: {
-      title: "LD IBT",
+      title: "Implicit Bias Task",
     }
   },
   {
     path: "/LD_IBT_Post_Survey",
     component: LD_IBT_Post_Survey,
     meta: {
-      title: "LD IBT",
+      title: "Implicit Bias Task",
     }
   },
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },

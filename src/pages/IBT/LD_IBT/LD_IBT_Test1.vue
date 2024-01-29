@@ -1,7 +1,7 @@
 <template>
   <section class="h-auto min-h-full">
     <div v-if="currentStep <= 2" class="text-left">
-      <h3 class="text-lg font-semibold">Implicit Association Task</h3>
+      <h3 class="text-lg font-semibold">Implicit Bias Task</h3>
       <h3 class="text-base font-semibold mt-5">
         {{ section === 0 ? "Round 1: Practice " : "Round " + position }}
       </h3>
@@ -14,9 +14,7 @@
         presented in a table as follows:
       </h4>
 
-      <table
-        class="border text-[13px] leading-7 text-left box-border mt-3 border-collapse"
-      >
+      <table class="border text-[13px] leading-7 text-left box-border mt-3 border-collapse">
         <tr>
           <th class="font-medium">Category</th>
           <th></th>
@@ -46,10 +44,7 @@
         <b class="font-semibold text-sm">Disclaimer:</b> If you are using
         touchscreen, you can only use hand to touch the screen
       </h3>
-      <button
-        @click="currentStep++"
-        class="gradient-green gradient-btn py-6 mb-0"
-      >
+      <button @click="currentStep++" class="gradient-green gradient-btn py-6 mb-0">
         Next
       </button>
     </div>
@@ -83,11 +78,7 @@
     </table>
 
     <div class="flex gap-3 items-start justify-start">
-      <button
-        class="gradient-green gradient-btn py-6 mb-0"
-        @click="currentStep--"
-        v-if="section === 0"
-      >
+      <button class="gradient-green gradient-btn py-6 mb-0" @click="currentStep--" v-if="section === 0">
         Back
       </button>
       <button class="gradient-green gradient-btn py-6 mb-0" @click="startTest">
@@ -99,66 +90,35 @@
   <!-- TASK -->
   <section v-if="currentStep === 3" class="text-center">
     <h3 class="underline mb-0">{{ ibt_trials[section].section }}</h3>
-    <section
-      class="flex flex-wrap-reverse items-center flex-col justify-center gap-0"
-    >
+    <section class="flex flex-wrap-reverse items-center flex-col justify-center gap-0">
       <div class="mt-7 w-56 min-h-[83px] flex items-center justify-center">
         <!-- Stars and Crosses -->
         <div class="flex justify-center">
-          <img
-            src="../../../assets/LD_IBT/check-mark.png"
-            alt="star"
-            v-show="userGotStimulusRight"
-            class="ibt-star h-20"
-          />
-          <img
-            src="../../../assets/IT_faces/cross.jpg"
-            alt="cross"
-            class="cross"
-            v-show="userGotStimulusWrong"
-          />
+          <img src="../../../assets/LD_IBT/check-mark.png" alt="star" v-show="userGotStimulusRight"
+            class="ibt-star h-20" />
+          <img src="../../../assets/IT_faces/cross.jpg" alt="cross" class="cross" v-show="userGotStimulusWrong" />
         </div>
 
-        <div
-          class="flex-col items-center"
-          :class="{ hide: testNotStarted || paused }"
-        >
-          <div
-            v-for="trial in ibt_trials[section].trials"
-            :key="trial.id"
-            :style="{ display: trial.visibility }"
-          >
+        <div class="flex-col items-center" :class="{ hide: testNotStarted || paused }">
+          <div v-for="trial in ibt_trials[section].trials" :key="trial.id" :style="{ display: trial.visibility }">
             <!-- Keyword -->
             <h3 class="font-semibold text-xl my-0 leading-10">
               {{ trial.keyword }}
             </h3>
 
             <!-- Clickers -->
-            <img
-              :src="
-                getClickerImage(
-                  trial.leftClickerFace == 'Happy'
-                    ? 'happy-face.png'
-                    : 'sad-face.png'
-                )
-              "
-              alt="Left face"
-              ref="leftFace"
-              @click="() => handleClick('Left')"
-              class="faceLeft ibt-icon"
-            />
-            <img
-              :src="
-                getClickerImage(
-                  trial.rightClickerFace == 'Sad'
-                    ? 'sad-face.png'
-                    : 'happy-face.png'
-                )
-              "
-              alt="Right face"
-              @click="() => handleClick('Right')"
-              class="faceRight ibt-icon"
-            />
+            <img :src="getClickerImage(
+              trial.leftClickerFace == 'Happy'
+                ? 'happy-face.png'
+                : 'sad-face.png'
+            )
+              " alt="Left face" ref="leftFace" @click="() => handleClick('Left')" class="faceLeft ibt-icon" />
+            <img :src="getClickerImage(
+              trial.rightClickerFace == 'Sad'
+                ? 'sad-face.png'
+                : 'happy-face.png'
+            )
+              " alt="Right face" @click="() => handleClick('Right')" class="faceRight ibt-icon" />
           </div>
         </div>
       </div>

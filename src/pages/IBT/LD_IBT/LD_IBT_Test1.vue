@@ -8,9 +8,8 @@
     </div>
     <div v-if="currentStep === 1" class="max-w-[500px] text-left">
       <h4 class="text-sm text-left leading-7 mt-4">
-        <b>Instructions: </b>On the screen, you will see two sets of words: one
-        related to individuals with learning difficulties and the other to those
-        without. These two categories and words linked with each category are
+        <b>Instructions: </b>On the screen, you will see two sets of words: one related to individuals with learning
+        difficulties and the other to those without. These two categories and words linked with each category are
         presented in a table as follows:
       </h4>
 
@@ -21,27 +20,28 @@
         </tr>
         <tr>
           <td class="text-green-700">Learning Difficulties</td>
-          <td>Learning Difficulties, Slow Learner, Academically Challenged, Difficulties Learning</td>
+          <td>Slow Learner, Academically Challenged, Difficulties Learning</td>
         </tr>
         <tr>
           <td class="text-blue-700">Without Learning Difficulties</td>
-          <td>Typically Developing, Neurotypical, No Diagnosed Condition</td>
+          <td>Typically Developing, Typical Learner, No Diagnosed Condition</td>
         </tr>
       </table>
 
       <ul class="mt-5 pl-3.5 text-sm text-left leading-7 list-disc">
         <li class="list-disc">
-          There will be words displayed in the middle of the screen.
+          There will be words displayed in the middle of the screen that are related to learning difficulties or to not
+          having learning difficulties
         </li>
         <li class="list-disc">
           When the
-          screen displays words associated
-          <b class="font-semibold text-green-700">with learning difficulties</b>, select the
+          screen displays words related to
+          <b class="font-semibold text-green-700">learning difficulties</b>, select the
           <b class="font-semibold text-green-700">sad face</b>.
         </li>
         <li class="list-disc">
           When you see words related to
-          <strong class="font-semibold text-blue-700"> without learning difficulties</strong>,
+          <strong class="font-semibold text-blue-700">no learning difficulties</strong>,
           select the <b class="font-semibold text-blue-700">happy face</b>.
         </li>
         <li class="list-disc">
@@ -51,7 +51,7 @@
         </li>
         <li class="list-disc">
           Pay attention because the happy face and sad face may change
-          places. Please respond quickly and correctly.
+          places. Try to respond quickly and correctly.
         </li>
       </ul>
       <h3 class="mt-5 text-sm text-left leading-7">
@@ -67,6 +67,7 @@
 
       </h3>
       <h3 class="text-sm leading-7 mb-0">
+        <!-- CORRECTION TODO -->
         <b class="font-semibold text-sm">Disclaimer:</b> If you are using
         touchscreen, you can only use hand to touch the screen
       </h3>
@@ -93,8 +94,9 @@
         </td>
       </tr>
       <tr>
+        <!-- CORRECTION TODO : table?-->
         <td class="leading-7">
-          Learning Difficulties, Slow Learner, Academically Challenged,
+          Slow Learner, Academically Challenged,
           Difficulties Learning
         </td>
         <td>

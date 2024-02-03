@@ -1,38 +1,11 @@
 <template>
-  <section class="flex items-center justify-center h-screen" v-show="currentStep === 1">
-    <div class="result-box text-left" style="max-width: 500px">
-      <h3 class="font-medium !text-lg">End of the Study!</h3>
-      <img src="../../../assets/LD_IBT/happy-children.png" alt="Happy children illustration" class="w-56" />
-      <h4 class="font-medium leading-7">
-        Congratulations! You have reached the end of the Implicit Bias
-        Task.
-      </h4>
-
-      <h5 class="leading-7 text-md font-medium">{{ feedbackMessage }}</h5>
-
-      <h3 class="text-sm leading-7">
-        Biases are mental shortcuts formed from our experiences. Implicit bias
-        or unconscious bias impacts our judgement without our awareness.
-        Recognizing these biases is crucial because they can perpetuate societal
-        inequalities, lead to emotional distress, and hinder the growth of
-        inclusive, supportive communities. It is important to foster
-        understanding, empathy, and positive attitudes for the well-being and
-        success of individuals with learning difficulties. Explore the
-        following:
-        <a target="_blank"
-          href="https://www.ldao.ca/introduction-to-ldsadhd/articles/about-lds/about-learning-disabilities/">
-          About Learning Disabilities – Learning Disabilities Association of
-          Ontario – LDAO</a>
-      </h3>
-
-      <button @click="currentStep++">Next</button>
-    </div>
-  </section>
-
   <!-- PART C -->
-  <section class="flex items-center justify-center h-screen" v-show="currentStep === 2">
+  <section class="flex items-center justify-center h-screen" v-show="currentStep === 1">
     <div class="result-box-questions result-box-q-1">
       <h3 class="font-semibold !text-[15px]">
+        Post-task Survey
+      </h3>
+      <h3 class="font-semibold !text-[14px]">
         Attributions about Learning Difficulties - PART C
       </h3>
 
@@ -127,11 +100,7 @@
           which you feel each factor is contributing to Sam’s difficulties in
           learning
         </h3>
-        <!-- position: fixed;
-  top: 1%;
-  left: 10.6%;
-  width: 89.3%;
-  max-width: 1000px; -->
+
 
         <table class="border-collapse text-left mt-6">
           <tr class="questions-1-top">
@@ -399,7 +368,7 @@
   <!-- NEXT SECTION -->
 
   <!-- SECTON 3 -->
-  <section class="flex items-center justify-center h-screen flex-col" v-show="currentStep === 3">
+  <section class="flex items-center justify-center h-screen flex-col" v-show="currentStep === 2">
     <div class="result-box-questions result-box-questions-2" style="width: 1000px !important">
       <h3 class="font-medium mt-7 bg-green-100">
         To what extent do you agree with the following statements? (1= Strongly
@@ -728,7 +697,7 @@
   </section>
 
   <!-- Question section 4 -->
-  <section class="flex items-center justify-center h-screen" v-show="currentStep === 4">
+  <section class="flex items-center justify-center h-screen" v-show="currentStep === 3">
     <form @submit.prevent="currentStep++"
       class="shadow-none text-left flex justify-start border-none max-w-none p-0 max-h-none min-h-0 w-auto">
       <div class="result-box-questions">
@@ -761,7 +730,7 @@
   </section>
 
   <!-- Question 5 - Appendix 4 -->
-  <section class="flex items-center justify-center h-screen" v-show="currentStep === 5">
+  <section class="flex items-center justify-center h-screen" v-show="currentStep === 4">
     <div class="result-box-questions">
       <h3 class="font-semibold !text-[16px]">Appendix 4 - PART D</h3>
       <h4 class="text-[14px]">
@@ -816,7 +785,7 @@
   </section>
 
   <!-- Secion 6 -->
-  <section class="flex items-center justify-center h-screen" v-show="currentStep === 6">
+  <section class="flex items-center justify-center h-screen" v-show="currentStep === 5">
     <div class="result-box-questions result-box-questions-last !max-w-[1000px]">
       <h3 class="!text-[16px] font-semibold">
         Appendix 5 Parents and School Survey - PART E
@@ -827,6 +796,16 @@
         helpful if you try to answer honestly and accurately. This information
         helps us plan how to make the program as helpful to parents as possible.
       </h5>
+      <table class="absolute top-10 !border-none mr-[40px]">
+        <tr class="top-row-numbers-fixed-top !border-none border-collapse hidden">
+          <td class="!w-[27.9rem]"></td>
+          <td class="!w-[97.5px]">Strongly Agree (1)</td>
+          <td class="!w-[94px]">Agree (2)</td>
+          <td class="!w-[98px]">Partially Agree/Partially disagree (3)</td>
+          <td class="!w-[98px]">Disagree (4)</td>
+          <td class="!w-[99px]">Strongly Disagree (5)</td>
+        </tr>
+      </table>
 
       <form @submit.prevent="finishTest"
         class="shadow-none text-left flex flex-col items-start justify-start border-none max-w-none p-0 max-h-none min-h-0 w-auto">
@@ -908,9 +887,39 @@
         <!--  -->
         <div class="flex gap-5 justify-start">
           <button @click="currentStep--" type="button">Back</button>
-          <button type="submit">Finish task!</button>
+          <button type="submit">Finish Survey</button>
         </div>
       </form>
+    </div>
+  </section>
+
+  <section class="flex items-center justify-center h-screen" v-show="currentStep === 6">
+    <div class="result-box text-left" style="max-width: 500px">
+      <h3 class="font-medium !text-lg">End of the Study!</h3>
+      <img src="../../../assets/LD_IBT/happy-children.png" alt="Happy children illustration" class="w-56" />
+      <h4 class="font-medium leading-7">
+        Congratulations! You have reached the end of the Implicit Bias
+        Task.
+      </h4>
+
+      <h5 class="leading-7 text-md font-medium">{{ feedbackMessage }}</h5>
+
+      <h3 class="text-sm leading-7">
+        Bias is a prejudice or preference towards or against a person, group, thing, idea or belief.
+        Implicit bias or unconscious bias impacts our judgement without our awareness.
+        Recognizing the biases that we may have is crucial because such biases can perpetuate societal
+        inequalities, lead to emotional distress, and hinder the growth of
+        inclusive, supportive communities. It is important to foster
+        understanding, empathy, and positive attitudes for the well-being and
+        success of individuals with or without learning difficulties. Explore the
+        following:
+        <a target="_blank"
+          href="https://www.ldao.ca/introduction-to-ldsadhd/articles/about-lds/about-learning-disabilities/">
+          About Learning Disabilities – Learning Disabilities Association of
+          Ontario – LDAO</a>
+      </h3>
+
+      <button @click="router.push('/home')">Go Home</button>
     </div>
   </section>
 </template>
@@ -934,12 +943,13 @@ onMounted(() => {
         document.querySelector(".result-box-questions-last").scrollTop >= 180
       ) {
         document
-          .querySelector(".top-row-numbers")
-          .classList.add("fixed-top-section");
+          .querySelector(".top-row-numbers-fixed-top").classList.add("vis")
+        // .classList.add("fixed-top-section");
       } else {
-        document
-          .querySelector(".top-row-numbers")
-          .classList.remove("fixed-top-section");
+        document.querySelector(".top-row-numbers-fixed-top").classList.remove("vis")
+        // document
+        //   .querySelector(".top-row-numbers")
+        //   .classList.remove("fixed-top-section");
       }
     });
 
@@ -1218,7 +1228,7 @@ function finishTest() {
   }
 
   storeLDPostSurveyData(store, userId, surveyData.value);
-  router.push("/home");
+  currentStep.value++
 }
 
 let feedbackMessage = ref("");
@@ -1228,7 +1238,7 @@ onMounted(() => {
 
   if (data.length === 0) {
     // TODO: Uncomment here
-    // router.push("/LD_IBT_Survey");
+    router.push("/LD_IBT_Consent_Form");
   } else {
     // Happy + without learning difficulty
     let congruent = data[1];
@@ -1265,6 +1275,7 @@ onMounted(() => {
     // console.log("ACC, SPEED", congruentAccuracy, congruentSpeed)
     // console.log("ACC, SPEED", incongruentAccuracy, incongruentSpeed)
 
+    // Measuring results based on accuracy
     if (congruentAccuracy > incongruentAccuracy) {
       feedbackMessage.value = `You view people without learning difficulties in a positive manner
                 therefore, you have more positive bias towards individuals without learning difficulties.`;

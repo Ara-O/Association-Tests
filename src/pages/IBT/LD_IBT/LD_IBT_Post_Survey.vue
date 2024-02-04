@@ -369,7 +369,7 @@
 
   <!-- SECTON 3 -->
   <section class="flex items-center justify-center h-screen flex-col" v-show="currentStep === 2">
-    <div class="result-box-questions result-box-questions-2" style="width: 1000px !important">
+    <div class="result-box-questions result-box-questions-2 sam-table">
       <h3 class="font-medium mt-7 bg-green-100">
         To what extent do you agree with the following statements? (1= Strongly
         disagree, 5 = Strongly agree)
@@ -737,17 +737,18 @@
         First Impressions Assessment Scale for Observers
       </h4>
       <h5 class="leading-7">
-        <span class="underline">Task instructions: </span> You will be viewing
-        brief video clips of people talking about themselves. You will then be
-        asked to give your first impressions of that person on a number of
-        characteristics by giving a rating from strongly agree to strongly
-        disagree. Please watch the entire video before giving your ratings, and
-        try to respond as quickly and honestly as possible.
+        <span class="underline">Task instructions: </span> Please watch the
+        video clip shown below. A set of questions will follow which will ask you to give your first impression of the
+        person in the video clip. Please watch the entire video clip before answering the questions and try to respond and
+        quickly and honestly as possible."
       </h5>
-      <iframe width="560" class="rounded-md" height="315"
-        src="https://www.youtube.com/embed/0XHsbdHxqgk?si=ESb2TCSqaB4CuefU" title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
+      <div class="youtube-container">
+        <iframe width="560" height="315"
+          src="https://www.youtube.com/embed/0XHsbdHxqgk?si=W_tZ37uhELt97tmj&amp;controls=0" title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
       <h5 class="underline">After participants view each video:</h5>
       <h5 class="bg-green-100">Please indicate your rating</h5>
       <form @submit.prevent="currentStep++"
@@ -1242,7 +1243,7 @@ onMounted(() => {
 
   if (data.length === 0) {
     // TODO: Uncomment here
-    // router.push("/LD_IBT_Consent_Form");
+    router.push("/LD_IBT_Consent_Form");
   } else {
     // Happy + without learning difficulty
     let congruent = data[1];
@@ -1330,12 +1331,38 @@ h3 {
   font-size: 13px;
 }
 
+.ytp-cued-thumbnail-overlay-image {
+  display: none;
+}
+
+.youtube-container {
+  overflow: hidden;
+  width: 100%;
+  /* Keep it the right aspect-ratio */
+  aspect-ratio: 16/9;
+  /* No clicking/hover effects */
+  pointer-events: none;
+}
+
+.youtube-container iframe {
+  pointer-events: all;
+  /* Extend it beyond the viewport... */
+  width: 300%;
+  height: 100%;
+  /* ...and bring it back again */
+  margin-left: -100%;
+}
+
 td {
   font-size: 13px;
   height: 36px;
   width: 90px;
   line-height: 24px;
   padding: 3px 4px;
+}
+
+.sam-table {
+  width: 1000px !important
 }
 
 .result-box-questions {
@@ -1423,6 +1450,13 @@ tr:hover {
   }
 }
 
+@media (max-width: 1100px) {
+  .result-box-questions-2 {
+    width: auto !important;
+    overflow: auto;
+  }
+}
+
 @media (max-width: 801px) {
   .widen-width {
     width: 100%;
@@ -1432,6 +1466,8 @@ tr:hover {
   .appendix-question-1 {
     width: 100%;
   }
+
+
 }
 
 table {

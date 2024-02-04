@@ -94,7 +94,6 @@
         </td>
       </tr>
       <tr>
-        <!-- CORRECTION TODO : table?-->
         <td class="leading-7">
           Slow Learner, Academically Challenged,
           Difficulties Learning
@@ -110,7 +109,7 @@
         Back
       </button>
       <button class="gradient-green gradient-btn py-6 mb-0" @click="startTest">
-        Start Task
+        {{ ibt_trials[section].section === "Practice" ? "Start Practice Task" : "Start Task" }}
       </button>
     </div>
   </section>

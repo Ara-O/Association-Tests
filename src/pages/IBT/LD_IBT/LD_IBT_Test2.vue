@@ -99,7 +99,7 @@
         Back
       </button>
       <button @click="startTest" class="gradient-green gradient-btn py-6 mb-0">
-        Start Task
+        {{ ibt_trials[section]?.section === "Practice" ? "Start Practice Task" : "Start Task" }}
       </button>
     </div>
   </section>

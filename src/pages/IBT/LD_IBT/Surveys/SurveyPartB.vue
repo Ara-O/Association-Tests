@@ -251,12 +251,12 @@
                             <input type="checkbox" v-model="surveyData.childInCmmntReceivesSupportFromCmmnt" />
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td>No</td>
                         <td><input type="checkbox" /></td>
                         <td><input type="checkbox" /></td>
                         <td><input type="checkbox" /></td>
-                    </tr>
+                    </tr> -->
                 </table>
             </div>
             <br />
@@ -272,7 +272,7 @@
                 </select>
                 <br />
                 <h3 class="text-sm block mt-0 mb-5 font-medium bg-green-100">
-                    If yes as far as you know, did this child receive any help at home,
+                    If yes, as far as you know, did this child receive any help at home,
                     school and/or community?
                 </h3>
                 <div class="survey-table">
@@ -295,18 +295,18 @@
                                 <input type="checkbox" v-model="surveyData.childInCountryReceivesSupportFromCommunity" />
                             </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td>No</td>
                             <td><input type="checkbox" /></td>
                             <td><input type="checkbox" /></td>
                             <td><input type="checkbox" /></td>
-                        </tr>
+                        </tr> -->
                     </table>
                 </div>
             </div>
             <div class="mt-2 flex gap-8">
                 <button class="gradient-btn gradient-green" type="button" @click="emits('go-back')">Back</button>
-                <button class="gradient-btn gradient-green" type="submit">Start Test</button>
+                <button class="gradient-btn gradient-green" type="submit">Start Practice Task</button>
             </div>
         </form>
     </section>

@@ -744,6 +744,10 @@
         disagree. Please watch the entire video before giving your ratings, and
         try to respond as quickly and honestly as possible.
       </h5>
+      <iframe width="560" class="rounded-md" height="315"
+        src="https://www.youtube.com/embed/0XHsbdHxqgk?si=ESb2TCSqaB4CuefU" title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
       <h5 class="underline">After participants view each video:</h5>
       <h5 class="bg-green-100">Please indicate your rating</h5>
       <form @submit.prevent="currentStep++"
@@ -1238,7 +1242,7 @@ onMounted(() => {
 
   if (data.length === 0) {
     // TODO: Uncomment here
-    router.push("/LD_IBT_Consent_Form");
+    // router.push("/LD_IBT_Consent_Form");
   } else {
     // Happy + without learning difficulty
     let congruent = data[1];

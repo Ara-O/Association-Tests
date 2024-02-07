@@ -130,7 +130,7 @@
                     attained</label>
                 <select id="highest-education-level" class="mb-0 mt-0 text-[12.5px] w-48"
                     v-model="surveyData.usrsHighestEduLvl" required>
-                    <option value="Some school">Some school</option>
+                    <!-- <option value="Some school">Some school</option> -->
                     <option
                         value="Completed high school diploma and a professional qualification not from a college or university">
                         Completed high school diploma and a professional qualification

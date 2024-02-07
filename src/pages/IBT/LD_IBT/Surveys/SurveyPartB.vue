@@ -13,7 +13,7 @@
                 <select id="spouse-highest-education-level" v-model="surveyData.spouseHighestEduLvl"
                     class="mt-0 rounded-md border border-gray-300 border-solid px-3 py-1 box-border w-48 text-[12.5px]"
                     required>
-                    <option value="Some school">Some school</option>
+                    <!-- <option value="Some school">Some school</option> -->
                     <option
                         value="Completed high school diploma and a professional qualification not from a college or university">
                         Completed high school diploma and a professional qualification not
@@ -234,13 +234,11 @@
             <div class="survey-table space-top">
                 <table class="border-collapse text-center">
                     <tr>
-                        <td></td>
                         <td>Receives support from home</td>
                         <td>Receives support from school</td>
                         <td>Receives support from community</td>
                     </tr>
                     <tr>
-                        <td>Yes</td>
                         <td>
                             <input type="checkbox" v-model="surveyData.childInCmmntReceivesSupportFromHome" />
                         </td>
@@ -278,13 +276,11 @@
                 <div class="survey-table">
                     <table class="text-center">
                         <tr>
-                            <td></td>
                             <td>Receives support from home</td>
                             <td>Receives support from school</td>
                             <td>Receives support from community</td>
                         </tr>
                         <tr>
-                            <td>Yes</td>
                             <td>
                                 <input type="checkbox" v-model="surveyData.childInCountryReceivesSupportFromHome" />
                             </td>

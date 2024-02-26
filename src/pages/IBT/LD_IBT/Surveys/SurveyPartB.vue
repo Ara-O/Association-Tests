@@ -58,12 +58,15 @@
                     placeholder="Enter Occupation" v-model="surveyData.usrOccupInFormerCountry" required />
             </div>
 
-            <span class="flex flex-wrap items-center gap-3 mt-5">
-                <label for="main-language" class="font-medium mt-0 mb-0 bg-green-100">9. What is the main language you use
+            <span class="flex flex-wrap items-center gap-3 mt-5 mb-1.5">
+                <label for="main-language" class="font-medium mt-0 mb-0 bg-green-100">9. What is/are the main languages you
+                    use
                     at home on a daily basis?
                 </label>
-                <select id="main-language" class="mb-0 mt-0 w-48" v-model="surveyData.mainLangUsedAtHome" required>
-                    <option value="English">English</option>
+                <input id="main-language"
+                    class="rounded-md border border-gray-300 border-solid px-3 py-1 box-border w-48 text-[12.5px]"
+                    v-model="surveyData.mainLangUsedAtHome" required />
+                <!-- <option value="English">English</option>
                     <option value="Bangla">Bangla</option>
                     <option value="Hindi">Hindi</option>
                     <option value="Kannada">Kannada</option>
@@ -71,8 +74,8 @@
                     <option value="Punjabi">Punjabi</option>
                     <option value="Sinhala">Sinhala</option>
                     <option value="Tamil">Tamil</option>
-                    <option value="Urdu">Urdu</option>
-                </select>
+                    <option value="Urdu">Urdu</option> -->
+
             </span>
 
             <div>

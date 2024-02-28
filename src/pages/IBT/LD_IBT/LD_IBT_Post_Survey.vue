@@ -730,9 +730,9 @@
   </section>
 
   <!-- Question 5 - Appendix 4 -->
-  <section class="flex items-center justify-center h-screen" v-show="currentStep === 4">
+  <section class="flex items-center justify-center h-screen" v-show="currentStep === 5">
     <div class="result-box-questions">
-      <h3 class="font-semibold !text-[16px]">Appendix 4 - PART D</h3>
+      <h3 class="font-semibold !text-[16px]">Appendix 5 - PART E</h3>
       <h4 class="text-[14px]">
         First Impressions Assessment Scale for Observers
       </h4>
@@ -790,12 +790,14 @@
   </section>
 
   <!-- Secion 6 -->
-  <section class="flex items-center justify-center h-screen" v-show="currentStep === 5">
+  <section class="flex items-center justify-center h-screen" v-show="currentStep === 4">
     <div class="result-box-questions result-box-questions-last !max-w-[1000px]">
       <h3 class="!text-[16px] font-semibold">
-        Appendix 5 Parents and School Survey - PART E
+        Appendix 4 Parents and School Survey - PART D
       </h3>
       <h5 class="leading-7">
+        Imagine Sam is your child and answer the questions given below.
+        <br class="mb-2" />
         Below are several statements. Please read them and circle the answer
         that best describes how much you agree with the statement. It is most
         helpful if you try to answer honestly and accurately. This information
@@ -1243,7 +1245,7 @@ onMounted(() => {
 
   if (data.length === 0) {
     // TODO: Uncomment here
-    router.push("/LD_IBT_Consent_Form");
+    // router.push("/LD_IBT_Consent_Form");
   } else {
     // Happy + without learning difficulty
     let congruent = data[1];

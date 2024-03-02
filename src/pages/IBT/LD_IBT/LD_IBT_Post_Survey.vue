@@ -751,7 +751,7 @@
       </div>
       <h5 class="underline">After participants view each video:</h5>
       <h5 class="bg-green-100">Please indicate your rating</h5>
-      <form @submit.prevent="currentStep++"
+      <form @submit.prevent="finishTest"
         class="shadow-none text-left flex flex-col items-start justify-start border-none max-w-none p-0 max-h-none min-h-0 w-auto">
         <table>
           <tr>
@@ -781,10 +781,13 @@
             </td>
           </tr>
         </table>
+
         <div class="flex gap-5 justify-start">
           <button @click="currentStep--" type="button">Back</button>
-          <button type="submit">Next</button>
+          <button type="submit">Finish Survey</button>
         </div>
+
+
       </form>
     </div>
   </section>
@@ -795,7 +798,7 @@
       <h3 class="!text-[16px] font-semibold">
         Appendix 4 Parents and School Survey - PART D
       </h3>
-      <h5 class="leading-7">
+      <h5 class="leading-7 font-bold">
         Imagine Sam is your child and answer the questions given below.
         <br class="mb-2" />
         Below are several statements. Please read them and circle the answer
@@ -814,7 +817,7 @@
         </tr>
       </table>
 
-      <form @submit.prevent="finishTest"
+      <form @submit.prevent="currentStep++"
         class="shadow-none text-left flex flex-col items-start justify-start border-none max-w-none p-0 max-h-none min-h-0 w-auto">
         <table>
           <tr class="top-row-numbers">
@@ -894,7 +897,7 @@
         <!--  -->
         <div class="flex gap-5 justify-start">
           <button @click="currentStep--" type="button">Back</button>
-          <button type="submit">Finish Survey</button>
+          <button type="submit">Next</button>
         </div>
       </form>
     </div>
@@ -1245,7 +1248,7 @@ onMounted(() => {
 
   if (data.length === 0) {
     // TODO: Uncomment here
-    // router.push("/LD_IBT_Consent_Form");
+    router.push("/LD_IBT_Consent_Form");
   } else {
     // Happy + without learning difficulty
     let congruent = data[1];

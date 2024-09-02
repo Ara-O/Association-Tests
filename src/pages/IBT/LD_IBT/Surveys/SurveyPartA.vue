@@ -80,7 +80,7 @@
           </td>
         </tr>
         <tr>
-          <th class="border border-solid w-56 px-4 h-2">
+          <th class="border border-solid w-56 py-2 px-4 h-2">
             Your spouse (If applicable)
           </th>
           <td class="p-0 border border-solid">
@@ -93,7 +93,7 @@
           </td>
         </tr>
         <tr>
-          <th class="border border-solid w-32 px-4 h-2">
+          <th class="border border-solid w-32 py-2 px-4 h-2">
             Your parents (If applicable)
           </th>
           <td class="p-0 border border-solid">
@@ -123,7 +123,7 @@
           </td>
         </tr>
         <tr>
-          <th class="border border-solid w-32 px-4 h-2">
+          <th class="border border-solid w-32 py-2 px-4 h-2">
             Your spouse (If applicable)
           </th>
           <td class="p-0 border border-solid">
@@ -135,7 +135,7 @@
           </td>
         </tr>
         <tr>
-          <th class="border border-solid w-32 px-4 h-2">
+          <th class="border border-solid w-32 py-2 px-4 h-2">
             Your children (If applicable)
           </th>
           <td class="p-0 border border-solid">

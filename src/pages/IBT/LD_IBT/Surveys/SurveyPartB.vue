@@ -2,7 +2,7 @@
   <section
     class="shadow-md w-full max-w-[1100px] mb-32 border border-solid border-gray-100 py-7 px-10 rounded-md text-sm box-border"
   >
-    <h3 class="font-semibold text-lg">Background Form - PART B</h3>
+    <h3 class="font-semibold text-lg">PART B - Background Form</h3>
     <h4 class="font-medium text-sm">Please answer the following questions</h4>
     <form
       @submit.prevent="emits('continue')"
@@ -974,7 +974,7 @@
           Back
         </button>
         <button class="gradient-btn gradient-green" type="submit">
-          Start Practice Task
+          Start Implicit Bias Task
         </button>
       </div>
     </form>

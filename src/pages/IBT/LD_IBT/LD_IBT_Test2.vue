@@ -9,12 +9,15 @@
     <div v-if="currentStep === 1" class="max-w-[500px] text-left">
       <h4 class="text-sm text-left leading-7 mt-4">
         <!-- CORRECTION TODO -NT -->
-        <b>Instructions: </b>On the screen, you will see two sets of words: one describing individuals with learning
-        difficulties and the other to those without learning disabilities. These categories are
-        presented in a table as follows:
+        <b>Instructions: </b>On the screen, you will see two sets of words: one
+        describing individuals with learning difficulties and the other to those
+        without learning disabilities. These categories are presented in a table
+        as follows:
       </h4>
 
-      <table class="border text-[13px] leading-7 text-left box-border mt-3 border-collapse">
+      <table
+        class="border text-[13px] leading-7 text-left box-border mt-3 border-collapse"
+      >
         <tr>
           <th class="font-medium">Category</th>
           <th></th>
@@ -32,36 +35,37 @@
 
       <ul class="mt-5 pl-3.5 text-sm text-left leading-7 list-disc">
         <li class="list-disc">
-          There will be words displayed in the middle of the screen related to having or not having learning difficulties.
+          When the screen displays words associated<b
+            class="font-semibold text-indigo-700"
+          >
+            with learning difficulties</b
+          >, select the <b class="font-semibold text-indigo-700">happy face</b>.
         </li>
         <li class="list-disc">
-          When the
-          screen displays words associated<b class="font-semibold text-indigo-700">
-            with learning difficulties</b>, select the <b class="font-semibold text-indigo-700">happy face</b>.
+          When you see words related to
+          <b class="font-semibold text-orange-700">
+            without learning difficulties</b
+          >, select the<b class="font-semibold text-orange-700"> sad face</b>.
         </li>
         <li class="list-disc">
-          When you see
-          words related to
-          <b class="font-semibold text-orange-700"> without learning difficulties</b>, select
-          the<b class="font-semibold text-orange-700"> sad face</b>.
+          Happy faces and sad faces will appear at the bottom of the screen
+          either on the left or right.
         </li>
         <li class="list-disc">
-          Happy faces and sad
-          faces will appear at the bottom of the screen either on the left or
-          right.
-        </li>
-        <li class="list-disc">
-          Pay attention to the location of the happy and sad faces because the happy face and the sad face may change
-          places. Please respond quickly and correctly.
+          Pay attention to the location of the happy and sad faces because the
+          happy face and the sad face may change places. Please respond quickly
+          and correctly.
         </li>
       </ul>
 
-      <!-- CORRECTION TODO? -->
       <h3 class="text-sm leading-7 mb-0">
         <b class="font-semibold text-sm">Disclaimer:</b> If you are using
-        touchscreen, you can only use hand to touch the screen
+        touchscreen, you can only use one hand to touch the screen
       </h3>
-      <button @click="currentStep++" class="gradient-green gradient-btn py-6 mb-0">
+      <button
+        @click="currentStep++"
+        class="gradient-green gradient-btn py-6 mb-0"
+      >
         Next
       </button>
     </div>
@@ -85,8 +89,7 @@
       </tr>
       <tr>
         <td class="leading-7">
-          Slow Learner, Academically Challenged,
-          Difficulties Learning
+          Slow Learner, Academically Challenged, Difficulties Learning
         </td>
         <td>
           <img src="../../../assets/LD_IBT/happy-face.png" class="w-32" />
@@ -95,11 +98,19 @@
     </table>
 
     <div class="flex gap-3 items-start justify-start">
-      <button @click="currentStep--" class="gradient-green gradient-btn py-6 mb-0" v-if="section === 0">
+      <button
+        @click="currentStep--"
+        class="gradient-green gradient-btn py-6 mb-0"
+        v-if="section === 0"
+      >
         Back
       </button>
       <button @click="startTest" class="gradient-green gradient-btn py-6 mb-0">
-        {{ ibt_trials[section]?.section === "Practice" ? "Start Practice Task" : "Start Task" }}
+        {{
+          ibt_trials[section]?.section === "Practice"
+            ? "Start Practice Task"
+            : "Start Task"
+        }}
       </button>
     </div>
   </section>
@@ -107,36 +118,67 @@
   <!-- TASK -->
   <section v-if="currentStep === 3" class="text-center">
     <h3 class="underline mb-0">{{ ibt_trials[section].section }}</h3>
-    <section class="flex flex-wrap-reverse items-center flex-col justify-center gap-0">
+    <section
+      class="flex flex-wrap-reverse items-center flex-col justify-center gap-0"
+    >
       <div class="mt-7 w-56 min-h-[83px] flex items-center justify-center">
         <!-- Stars and Crosses -->
         <div class="flex justify-center">
-          <img src="../../../assets/LD_IBT/check-mark.png" alt="star" v-show="userGotStimulusRight"
-            class="ibt-star h-20" />
-          <img src="../../../assets/IT_faces/cross.jpg" alt="cross" class="cross" v-show="userGotStimulusWrong" />
+          <img
+            src="../../../assets/LD_IBT/check-mark.png"
+            alt="star"
+            v-show="userGotStimulusRight"
+            class="ibt-star h-20"
+          />
+          <img
+            src="../../../assets/IT_faces/cross.jpg"
+            alt="cross"
+            class="cross"
+            v-show="userGotStimulusWrong"
+          />
         </div>
 
-        <div class="flex-col items-center" :class="{ hide: testNotStarted || paused }">
-          <div v-for="trial in ibt_trials[section].trials" :key="trial.id" :style="{ display: trial.visibility }"
-            class="h-auto">
+        <div
+          class="flex-col items-center"
+          :class="{ hide: testNotStarted || paused }"
+        >
+          <div
+            v-for="trial in ibt_trials[section].trials"
+            :key="trial.id"
+            :style="{ display: trial.visibility }"
+            class="h-auto"
+          >
             <!-- Keyword -->
             <h3 class="font-semibold text-xl my-0 leading-10">
               {{ trial.keyword }}
             </h3>
 
             <!-- Clickers -->
-            <img :src="getClickerImage(
-              trial.leftClickerFace == 'Happy'
-                ? 'happy-face.png'
-                : 'sad-face.png'
-            )
-              " alt="Left face" ref="leftFace" @click="() => handleClick('Left')" class="faceLeft ibt-icon" />
-            <img :src="getClickerImage(
-              trial.rightClickerFace == 'Sad'
-                ? 'sad-face.png'
-                : 'happy-face.png'
-            )
-              " alt="Right face" @click="() => handleClick('Right')" class="faceRight ibt-icon" />
+            <img
+              :src="
+                getClickerImage(
+                  trial.leftClickerFace == 'Happy'
+                    ? 'happy-face.png'
+                    : 'sad-face.png'
+                )
+              "
+              alt="Left face"
+              ref="leftFace"
+              @click="() => handleClick('Left')"
+              class="faceLeft ibt-icon"
+            />
+            <img
+              :src="
+                getClickerImage(
+                  trial.rightClickerFace == 'Sad'
+                    ? 'sad-face.png'
+                    : 'happy-face.png'
+                )
+              "
+              alt="Right face"
+              @click="() => handleClick('Right')"
+              class="faceRight ibt-icon"
+            />
           </div>
         </div>
       </div>

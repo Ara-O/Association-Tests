@@ -1371,10 +1371,10 @@
     v-show="currentStep === 5"
   >
     <div class="result-box-questions">
-      <h3 class="font-semibold !text-[16px]">Appendix 5 - PART E</h3>
-      <h4 class="text-[14px]">
-        First Impressions Assessment Scale for Observers
-      </h4>
+      <h3 class="font-semibold !text-[16px]">
+        Explicit Attitudes Questionnaire
+      </h3>
+
       <h5 class="leading-7">
         <span class="underline">Task instructions: </span> Please watch the
         video clip shown below. A set of questions will follow which will ask
@@ -1393,8 +1393,11 @@
           allowfullscreen
         ></iframe>
       </div>
-      <h5 class="underline">After participants view each video:</h5>
-      <h5 class="bg-green-100">Please indicate your rating</h5>
+      <h5 class="underline">
+        After watching the video please indicate your rating for the following
+        statements:
+      </h5>
+      <!-- <h5 class="bg-green-100">Please indicate your rating</h5> -->
       <form
         @submit.prevent="finishTest"
         class="shadow-none text-left flex flex-col items-start justify-start border-none max-w-none p-0 max-h-none min-h-0 w-auto"
@@ -1463,7 +1466,8 @@
   >
     <div class="result-box-questions result-box-questions-last !max-w-[1000px]">
       <h3 class="!text-[16px] font-semibold">
-        PART D - Parents and School Survey
+        PART D - Parental involvement in children’s learning at home and in
+        school
       </h3>
       <h5 class="leading-7">
         <span class="font-bold">
@@ -1478,12 +1482,14 @@
         <tr
           class="top-row-numbers-fixed-top !border-none border-collapse hidden"
         >
-          <td class="!w-[27.9rem]"></td>
-          <td class="!w-[97.5px]">Strongly Agree (1)</td>
-          <td class="!w-[94px]">Agree (2)</td>
-          <td class="!w-[98px]">Partially Agree/Partially disagree (3)</td>
-          <td class="!w-[98px]">Disagree (4)</td>
-          <td class="!w-[99px]">Strongly Disagree (5)</td>
+          <td class=""></td>
+          <td class="">Strongly Agree (1)</td>
+          <td class="">Agree (2)</td>
+          <td class="">Partially Agree/Partially disagree (3)</td>
+          <td class="">Disagree (4)</td>
+          <td style="border-right: 1px solid black !important">
+            Strongly Disagree (5)
+          </td>
         </tr>
       </table>
 
@@ -1971,7 +1977,7 @@ onMounted(() => {
 
   if (data.length === 0) {
     // TODO: Uncomment here
-    // router.push("/LD_IBT_Consent_Form");
+    router.push("/LD_IBT_Consent_Form");
   } else {
     // Happy + without learning difficulty
     let congruent = data[1];
@@ -2086,6 +2092,7 @@ td {
   height: 36px;
   width: 90px;
   line-height: 24px;
+  border-right: 0px !important;
   padding: 3px 4px;
 }
 
@@ -2120,14 +2127,18 @@ tr:nth-child(odd) {
   background-color: white;
 }
 
+tr td:nth-child(1) {
+  width: 412px !important;
+}
+
 td:nth-child(1) {
   width: 250px;
 }
 
-td {
-  width: 50%;
-  /* width: 100px; */
-}
+/* tr td:not(:nth-child(1)) {
+  background-color: pink !important; 
+   width: 50px; 
+} */
 
 /* Hover effect on rows */
 tr:hover {
@@ -2204,6 +2215,6 @@ table td {
   padding: 5px;
   font-size: 13.5px;
   border: solid 1px;
-  width: 105px;
+  /* width: 105px; */
 }
 </style>

@@ -56,7 +56,6 @@
           id="spouseCountryOfOrigin"
           v-model="surveyData.spouseCountryOfOrigin"
           placeholder="Country of Origin"
-          required
         />
       </span>
 

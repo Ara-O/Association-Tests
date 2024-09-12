@@ -136,261 +136,6 @@
           </div>
         </div>
 
-        <!-- Question 2 -->
-        <!-- <h3 class="font-medium mb-0 bg-green-100">
-          2. The following statements are about different things that could be
-          contributing to Sam’s academic or learning difficulties; Please rate
-          each of these possible options with
-          <span class="bg-blue-100">1 being-contributing the least</span> to
-          <span class="bg-blue-100">4-contributing the most</span>. Please tick
-          the option that best match(s) your opinion, and indicate the extent to
-          which you feel each factor is contributing to Sam’s difficulties in
-          learning
-        </h3>
-
-        <table class="border-collapse text-left mt-6">
-          <tr class="questions-1-top">
-            <td>Questions</td>
-            <td class="w-32">1 - Contributes the Least</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4 - Contributes the Most</td>
-          </tr>
-          <tr>
-            <td>Sam</td>
-            <td>
-              <input
-                type="radio"
-                name="least"
-                value="1"
-                v-model="
-                  surveyData[
-                    'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-                  ]['Sam']
-                "
-                required
-              />
-            </td>
-            <td>
-              <input
-                type="radio"
-                value="2"
-                name="second"
-                v-model="
-                  surveyData[
-                    'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-                  ]['Sam']
-                "
-                required
-              />
-            </td>
-            <td>
-              <input
-                type="radio"
-                value="3"
-                name="third"
-                v-model="
-                  surveyData[
-                    'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-                  ]['Sam']
-                "
-                required
-              />
-            </td>
-            <td>
-              <input
-                type="radio"
-                value="4"
-                name="most"
-                v-model="
-                  surveyData[
-                    'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-                  ]['Sam']
-                "
-                required
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>The people around him (teachers, parents etc)</td>
-            <td>
-              <input
-                type="radio"
-                name="least"
-                value="1"
-                v-model="
-                  surveyData[
-                    'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-                  ]['The people around him (teachers, parents etc)']
-                "
-                required
-              />
-            </td>
-            <td>
-              <input
-                type="radio"
-                value="2"
-                name="second"
-                v-model="
-                  surveyData[
-                    'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-                  ]['The people around him (teachers, parents etc)']
-                "
-                required
-              />
-            </td>
-            <td>
-              <input
-                type="radio"
-                value="3"
-                name="third"
-                v-model="
-                  surveyData[
-                    'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-                  ]['The people around him (teachers, parents etc)']
-                "
-                required
-              />
-            </td>
-            <td>
-              <input
-                type="radio"
-                value="4"
-                name="most"
-                v-model="
-                  surveyData[
-                    'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-                  ]['The people around him (teachers, parents etc)']
-                "
-                required
-              />
-            </td>
-          </tr>
-
-          <tr>
-            <td>Systemic factors (education system, health system)</td>
-            <td>
-              <input
-                type="radio"
-                name="least"
-                value="1"
-                id="systemic-factors"
-                v-model="
-                  surveyData[
-                    'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-                  ]['Systemic factors (education system, health system)']
-                "
-                required
-              />
-            </td>
-            <td>
-              <input
-                type="radio"
-                value="2"
-                name="second"
-                id="systemic-factors"
-                v-model="
-                  surveyData[
-                    'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-                  ]['Systemic factors (education system, health system)']
-                "
-                required
-              />
-            </td>
-            <td>
-              <input
-                type="radio"
-                value="3"
-                name="third"
-                id="systemic-factors"
-                v-model="
-                  surveyData[
-                    'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-                  ]['Systemic factors (education system, health system)']
-                "
-                required
-              />
-            </td>
-            <td>
-              <input
-                type="radio"
-                value="4"
-                name="most"
-                id="systemic-factors"
-                v-model="
-                  surveyData[
-                    'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-                  ]['Systemic factors (education system, health system)']
-                "
-                required
-              />
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              His financial or academic situation (As an example: lack of school
-              resources that can support Sam's learning)
-            </td>
-            <td>
-              <input
-                type="radio"
-                name="least"
-                value="1"
-                id="systemic-factors"
-                v-model="
-                  surveyData[
-                    'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-                  ]['His financial or academic situation']
-                "
-                required
-              />
-            </td>
-            <td>
-              <input
-                type="radio"
-                value="2"
-                name="second"
-                id="systemic-factors"
-                v-model="
-                  surveyData[
-                    'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-                  ]['His financial or academic situation']
-                "
-                required
-              />
-            </td>
-            <td>
-              <input
-                type="radio"
-                value="3"
-                name="third"
-                id="systemic-factors"
-                v-model="
-                  surveyData[
-                    'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-                  ]['His financial or academic situation']
-                "
-                required
-              />
-            </td>
-            <td>
-              <input
-                type="radio"
-                value="4"
-                name="most"
-                id="systemic-factors"
-                v-model="
-                  surveyData[
-                    'The following statements are about different things that could be contributing to Sam’s academic or learning difficulties; Please rate each of these possible options with 1 being-contributing the most to 4-contributing the least; Please tick the option that best match(s) your opinion, and indicate the extent to which you feel each factor is contributing to Sam’s difficulties in learning'
-                  ]['His financial or academic situation']
-                "
-                required
-              />
-            </td>
-          </tr>
-        </table> -->
-
         <!-- Question 3 -->
         <h3 class="font-medium mt-6 mb-0 bg-green-100">
           2. Rank the following factors from 1 (least important) to 4 (more
@@ -633,7 +378,7 @@
         <br />
 
         <div class="flex gap-5 justify-start">
-          <button @click="currentStep--" type="button">Back</button>
+          <!-- <button @click="currentStep--" type="button">Back</button> -->
           <button type="submit">Next</button>
         </div>
       </form>
@@ -1453,7 +1198,7 @@
 
         <div class="flex gap-5 justify-start">
           <button @click="currentStep--" type="button">Back</button>
-          <button type="submit">Finish Survey</button>
+          <button type="submit" class="!w-[150px]">Finish Survey</button>
         </div>
       </form>
     </div>
@@ -1638,7 +1383,9 @@
         class="w-56"
       />
       <h4 class="font-medium leading-7">
-        Congratulations! You have reached the end of the Implicit Bias Task.
+        Congratulations! You have reached the end of the Implicit Bias Task. If
+        you would like to know about your results for the implicit bias task, it
+        is given below:
       </h4>
 
       <h5 class="leading-7 text-md font-medium">{{ feedbackMessage }}</h5>

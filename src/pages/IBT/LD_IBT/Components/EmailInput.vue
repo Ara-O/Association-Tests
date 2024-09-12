@@ -1,6 +1,6 @@
 <template>
   <div
-    class="shadow-md border border-solid border-gray-100 py-7 px-7 rounded-md w-auto max-w-[525px] text-sm box-border"
+    class="sm:shadow-md sm:border sm:border-solid border-gray-100 py-7 px-7 rounded-md w-auto max-w-[525px] text-sm box-border"
   >
     <h3 style="font-weight: 500" class="!text-center">
       Please provide us with your email address

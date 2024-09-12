@@ -75,7 +75,6 @@
           class="mt-7 mb-0 rounded-md border border-gray-300 border-solid px-3 py-1 box-border w-48 text-[12.5px]"
           placeholder="Enter Occupation"
           v-model="surveyData.usrOccupInFormerCountry"
-          required
         />
       </div>
 

@@ -11,7 +11,7 @@
     <!-- Test explanation section -->
     <section
       v-show="currentStep === Step.ExplainTest"
-      class="w-auto rounded-md py-10 px-12 pb-12 border border-solid border-gray-100 max-w-md shadow-md text-left mt-10 mb-10"
+      class="w-auto rounded-md py-10 sm:px-12 px-6 pb-12 sm:border sm:border-solid sm:border-gray-100 max-w-md sm:shadow-md text-left mt-10 mb-10"
     >
       <StudyIntroduction
         @go-back="currentStep--"

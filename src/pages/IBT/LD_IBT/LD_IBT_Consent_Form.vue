@@ -1,7 +1,7 @@
 <template>
-  <section class="m-0 mx-10 flex justify-center mt-12">
+  <section class="m-0 mx-0 sm:mx-10 flex justify-center mt-12">
     <section
-      class="max-w-[775px] w-full p-10 mb-12 border-solid box-border shadow-md border border-gray-100 text-[13px] rounded-md text-left"
+      class="max-w-[775px] w-full p-6 sm:p-10 mb-12 sm:border-solid box-border shadow-md sm:border sm:border-gray-100 text-[13px] sm:rounded-md text-left"
       v-show="userAgreesToConsentForm"
     >
       <!-- Top images -->
@@ -14,7 +14,7 @@
         <img
           :src="UniTorontoImage"
           alt="University of toronto image"
-          class="rounded-md !border-none shadow-none border border-gray-300 w-72 px-4"
+          class="rounded-md !border-none shadow-none border border-gray-300 w-40 sm:w-72 px-4"
         />
       </div>
       <!-- Information section -->
@@ -142,7 +142,7 @@
           </li>
           <li>
             For questions or concerns about your rights as a participant,
-            contact Research Oversight and Compliance Office- Human Research
+            contact Research Oversight and Compliance Office - Human Research
             Ethics Program at
             <a
               href="https://mail.google.com/mail/?view=cm&fs=1&to=ethics.review@utoronto.ca"
@@ -163,7 +163,7 @@
 
       <!-- Buttons -->
       <br />
-      <div class="flex gap-8 justify-start">
+      <div class="flex sm:gap-8 gap-4 justify-start">
         <router-link to="/LD_IBT_Survey" class="!no-underline">
           <button
             class="gradient-green no-underline flex justify-center items-center rounded-full shadow-md cursor-pointer border-0 mb-6 transition-all duration-200 ease-in-out text-white px-7 py-[25px] font-normal text-[13px] h-10"

@@ -22,7 +22,7 @@
     Part E - A questionnaire measuring attitudes towards learning difficulties
   </h4>
 
-  <h4 class="text-sm mb-6">
+  <h4 class="text-sm mb-6 leading-7">
     The whole study will take around 20 minutes to complete.
   </h4>
 

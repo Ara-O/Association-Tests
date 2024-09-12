@@ -66,7 +66,7 @@
       <h3 class="text-sm leading-7 mb-0">
         <!-- CORRECTION TODO -->
         <b class="font-semibold text-sm">Disclaimer:</b> If you are using
-        touchscreen, you can only use one hand to touch the screen
+        touchscreen, you can only use one hand to touch the screen.
       </h3>
       <button
         @click="currentStep++"

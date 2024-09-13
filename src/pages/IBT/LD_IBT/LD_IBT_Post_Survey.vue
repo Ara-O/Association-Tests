@@ -1382,10 +1382,9 @@
         alt="Happy children illustration"
         class="w-56"
       />
+      <h4 class="font-medium leading-7">Congratulations you have come to the end of the study!</h4>
       <h4 class="font-medium leading-7">
-        Congratulations! You have reached the end of the Implicit Bias Task. If
-        you would like to know about your results for the implicit bias task, it
-        is given below:
+        If you would like to know about the results for the implicit bias task it's given below:
       </h4>
 
       <h5 class="leading-7 text-md font-medium">{{ feedbackMessage }}</h5>

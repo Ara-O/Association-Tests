@@ -1376,14 +1376,13 @@
     v-show="currentStep === 6"
   >
     <div class="result-box text-left" style="max-width: 500px">
-      <h3 class="font-medium !text-lg">End of the Study!</h3>
+      <h4 class="font-medium leading-7">Congratulations you have come to the end of the study!</h4>
       <img
         src="../../../assets/LD_IBT/happy-children.png"
         alt="Happy children illustration"
         class="w-56"
       />
-      <h4 class="font-medium leading-7">Congratulations you have come to the end of the study!</h4>
-      <h4 class="font-medium leading-7">
+      <h4 class="font-medium text-sm leading-7">
         If you would like to know about the results for the implicit bias task it's given below:
       </h4>
 
@@ -1723,7 +1722,7 @@ onMounted(() => {
 
   if (data.length === 0) {
     // TODO: Uncomment here
-    router.push("/LD_IBT_Consent_Form");
+    //router.push("/LD_IBT_Consent_Form");
   } else {
     // Happy + without learning difficulty
     let congruent = data[1];

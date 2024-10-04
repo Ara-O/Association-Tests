@@ -1722,7 +1722,7 @@ onMounted(() => {
 
   if (data.length === 0) {
     // TODO: Uncomment here
-    //router.push("/LD_IBT_Consent_Form");
+    router.push("/LD_IBT_Consent_Form");
   } else {
     // Happy + without learning difficulty
     let congruent = data[1];

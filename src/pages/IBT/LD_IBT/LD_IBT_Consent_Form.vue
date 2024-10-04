@@ -96,7 +96,7 @@
             Compensation for taking part in the study
           </span>
           <br />
-          You will receive 20 dollars for taking part in this study.
+          You will receive 30 dollars for taking part in this study.
         </h4>
         <h4 class="mt-6">
           <span class="font-semibold"> Confidentiality </span>

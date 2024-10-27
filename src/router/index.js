@@ -62,7 +62,7 @@ import LD_IBT_Consent_Form from "../pages/IBT/LD_IBT/LD_IBT_Consent_Form.vue";
 import LD_IBT_Survey from "../pages/IBT/LD_IBT/LD_IBT_Survey.vue";
 import LD_IBT from "../pages/IBT/LD_IBT/LD_IBT.vue";
 import LD_IBT_Post_Survey from "../pages/IBT/LD_IBT/LD_IBT_Post_Survey.vue";
-
+import LD_IBT_Completed from "../pages/IBT/LD_IBT/LD_IBT_Completed.vue";
 
 const routes = [
   ...iatroutes,
@@ -222,28 +222,35 @@ const routes = [
     component: LD_IBT_Consent_Form,
     meta: {
       title: "Implicit Bias Task",
-    }
+    },
   },
   {
     path: "/LD_IBT_Survey",
     component: LD_IBT_Survey,
     meta: {
       title: "Implicit Bias Task",
-    }
+    },
   },
   {
     path: "/LD_IBT",
     component: LD_IBT,
     meta: {
       title: "Implicit Bias Task",
-    }
+    },
   },
   {
     path: "/LD_IBT_Post_Survey",
     component: LD_IBT_Post_Survey,
     meta: {
       title: "Implicit Bias Task",
-    }
+    },
+  },
+  {
+    path: "/LD_IBT_Completed",
+    component: LD_IBT_Completed,
+    meta: {
+      title: "Implicit Bias Task",
+    },
   },
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
 ];
@@ -253,10 +260,9 @@ const router = createRouter({
   routes,
 });
 
-
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.title || 'Implicit Association Tests';
+  document.title = to.meta.title || "Implicit Association Tests";
   next();
-})
+});
 
 export default router;

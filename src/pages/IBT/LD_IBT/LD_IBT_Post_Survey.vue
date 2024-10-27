@@ -1376,14 +1376,17 @@
     v-show="currentStep === 6"
   >
     <div class="result-box text-left" style="max-width: 500px">
-      <h4 class="font-medium leading-7">Congratulations you have come to the end of the study!</h4>
+      <h4 class="font-medium leading-7">
+        Congratulations you have come to the end of the study!
+      </h4>
       <img
         src="../../../assets/LD_IBT/happy-children.png"
         alt="Happy children illustration"
         class="w-56"
       />
       <h4 class="font-medium text-sm leading-7">
-        If you would like to know about the results for the implicit bias task it's given below:
+        If you would like to know about the results for the implicit bias task
+        it's given below:
       </h4>
 
       <h5 class="leading-7 text-md font-medium">{{ feedbackMessage }}</h5>
@@ -1407,7 +1410,7 @@
         >
       </h3>
 
-      <button @click="router.push('/home')">Go Home</button>
+      <button @click="router.push('/LD_IBT_Completed')">Finish Study</button>
     </div>
   </section>
 </template>

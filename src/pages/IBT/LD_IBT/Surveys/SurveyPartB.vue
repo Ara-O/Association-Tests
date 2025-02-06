@@ -85,6 +85,7 @@
           <option value="Romanian"></option>
           <option value="Greek"></option>
           <option value="Hebrew"></option>
+          <option value="Urdu"></option>
           <option value="Malay"></option>
           <option value="Swahili"></option>
           <option value="Hungarian"></option>

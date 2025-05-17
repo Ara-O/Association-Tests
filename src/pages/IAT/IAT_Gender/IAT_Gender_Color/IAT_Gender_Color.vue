@@ -119,10 +119,8 @@ export default {
 
   methods: {
     getImage(url) {
-      return new URL(
-        `../../../../assets/IAT_Gender_Color/${url}`,
-        import.meta.url
-      ).href;
+      return new URL(`../../../../assets/Gender_Color/${url}`, import.meta.url)
+        .href;
     },
 
     testOver() {

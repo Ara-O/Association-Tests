@@ -115,7 +115,7 @@ export default {
   methods: {
     getImage(url) {
       return new URL(
-        `../../../../assets/IAT_Gender_Clothing/${url}`,
+        `../../../../assets/Gender_Clothing/${url}`,
         import.meta.url
       ).href;
     },

@@ -150,7 +150,7 @@ export default {
 
     getImage(url) {
       return new URL(
-        `../../../../assets/IAT_Gender_Subject/${url}`,
+        `../../../../assets/Gender_Subject/${url}`,
         import.meta.url
       ).href;
     },

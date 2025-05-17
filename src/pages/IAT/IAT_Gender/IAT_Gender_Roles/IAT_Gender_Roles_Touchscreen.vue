@@ -174,10 +174,8 @@ export default {
 
   methods: {
     getImage(url) {
-      return new URL(
-        `../../../../assets/IAT_Gender_Roles/${url}`,
-        import.meta.url
-      ).href;
+      return new URL(`../../../../assets/Gender_Roles/${url}`, import.meta.url)
+        .href;
     },
 
     getImageClicker(url) {

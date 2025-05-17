@@ -50,7 +50,7 @@
     <h4>{{ opinionTitle1 }}</h4>
     <div class="gender-toy-stereotype-option">
       <img
-        src="../../assets/IAT_Gender_Toy/C_M08.jpg"
+        src="../../assets/Gender_Toy/C_M08.jpg"
         alt="Boy child"
         class="child-img-survey"
       />
@@ -99,7 +99,7 @@
     <h4>{{ opinionTitle2 }}</h4>
     <div class="gender-toy-stereotype-option" style="margin-bottom: 30px">
       <img
-        src="../../assets/IAT_Gender_Toy/C_F08.jpg"
+        src="../../assets/Gender_Toy/C_F08.jpg"
         alt="Girl child"
         class="child-img-survey"
       />

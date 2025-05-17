@@ -33,13 +33,20 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 
 const store = useStore();
+const router = useRouter();
 const emits = defineEmits(["finish"]);
 let user_email = ref<string>("");
 
 function finishEmailSection() {
+  if (user_email.value === "musfirah.qazi@mail.utoronto.ca") {
+    router.push("/home");
+    return;
+  }
+
   store.commit("storeLdPointOfContact", user_email.value);
   emits("finish");
 }

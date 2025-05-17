@@ -19,22 +19,22 @@
         <span class="mt-4 gap-4 overflow-auto flex flex-wrap">
           <input
             class="mt-0 mb-0 ml-0.5 rounded-md border border-gray-300 border-solid px-3 py-1 box-border w-40 outline-none text-[12.5px]"
-            v-model="surveyData.countryOfOrigin1"
+            v-model="props.surveyData.countryOfOrigin1"
             placeholder="Country 1"
           />
           <input
             class="mt-0 mb-0 rounded-md border border-gray-300 border-solid px-3 py-1 box-border w-40 outline-none text-[12.5px]"
-            v-model="surveyData.countryOfOrigin2"
+            v-model="props.surveyData.countryOfOrigin2"
             placeholder="Country 2"
           />
           <input
             class="mt-0 mb-0 rounded-md border border-gray-300 border-solid px-3 py-1 box-border w-40 outline-none text-[12.5px]"
-            v-model="surveyData.countryOfOrigin3"
+            v-model="props.surveyData.countryOfOrigin3"
             placeholder="Country 3"
           />
           <input
             class="mt-0 mb-0 rounded-md border border-gray-300 border-solid px-3 py-1 box-border w-40 outline-none text-[12.5px]"
-            v-model="surveyData.countryOfOrigin4"
+            v-model="props.surveyData.countryOfOrigin4"
             placeholder="Country 4"
           />
         </span>
@@ -54,7 +54,7 @@
           type="text"
           class="mt-0 mb-0 rounded-md border ml-0.5 border-gray-300 border-solid px-3 py-1 box-border w-48 text-[12.5px]"
           id="spouseCountryOfOrigin"
-          v-model="surveyData.spouseCountryOfOrigin"
+          v-model="props.surveyData.spouseCountryOfOrigin"
           placeholder="Country of Origin"
         />
       </span>
@@ -72,7 +72,7 @@
             <input
               type="text"
               class="border-none w-56 outline-none px-5 box-border h-10"
-              v-model="surveyData.yearUsrMovedToCanada"
+              v-model="props.surveyData.yearUsrMovedToCanada"
               placeholder="Year"
               required
             />
@@ -87,7 +87,7 @@
               type="text"
               placeholder="Year"
               class="border-none w-56 outline-none px-5 box-border h-10"
-              v-model="surveyData.yearSpouseMovedToCanada"
+              v-model="props.surveyData.yearSpouseMovedToCanada"
             />
           </td>
         </tr>
@@ -100,7 +100,7 @@
               type="text"
               placeholder="Year"
               class="border-none w-56 outline-none px-5 box-border h-10"
-              v-model="surveyData.yearParentsMovedToCanada"
+              v-model="props.surveyData.yearParentsMovedToCanada"
             />
           </td>
         </tr>
@@ -116,7 +116,7 @@
             <input
               type="text"
               class="border-none w-56 outline-none px-5 box-border h-10"
-              v-model="surveyData.durationUserHasBeenInCanada"
+              v-model="props.surveyData.durationUserHasBeenInCanada"
               required
             />
           </td>
@@ -129,7 +129,7 @@
             <input
               type="text"
               class="border-none w-56 outline-none px-5 box-border h-10"
-              v-model="surveyData.durationSpouseHasBeenInCanada"
+              v-model="props.surveyData.durationSpouseHasBeenInCanada"
             />
           </td>
         </tr>
@@ -141,7 +141,7 @@
             <input
               type="text"
               class="border-none w-56 outline-none px-5 box-border h-10"
-              v-model="surveyData.durationChildrenHaveBeenInCanada"
+              v-model="props.surveyData.durationChildrenHaveBeenInCanada"
             />
           </td>
         </tr>
@@ -154,7 +154,7 @@
           class="mt-0 mb-0 rounded-md border border-gray-300 border-solid pl-3 py-1 box-border w-48 text-[12.5px]"
           type="text"
           id="you-years-in-canada"
-          v-model="surveyData.usrDurOfStayInCanada"
+          v-model="props.surveyData.usrDurOfStayInCanada"
           placeholder=" Years"
           required
         />
@@ -168,7 +168,7 @@
           type="text"
           class="mt-0 mb-0 rounded-md border border-gray-300 border-solid pl-3 py-1 box-border w-48 text-[12.5px]"
           id="family-years-in-canada"
-          v-model="surveyData.familyDurOfStayInCanada"
+          v-model="props.surveyData.familyDurOfStayInCanada"
           placeholder="Years"
           required
         />
@@ -181,7 +181,7 @@
         <select
           id="immigrant-status"
           class="mb-0 mt-0 w-48 text-[12.5px]"
-          v-model="surveyData.immigrantStatus"
+          v-model="props.surveyData.immigrantStatus"
           required
         >
           <option value="Canadian Citizen">Canadian Citizen</option>
@@ -194,10 +194,10 @@
         <br />
         <input
           type="text"
-          v-if="surveyData.immigrantStatus === 'Other (please specify)'"
+          v-if="props.surveyData.immigrantStatus === 'Other (please specify)'"
           class="mt-0 mb-0 rounded-md border border-gray-300 border-solid pl-3 py-1 box-border w-48 text-[12.5px]"
           placeholder="Specify here"
-          v-model="surveyData.immigrantStatusOther"
+          v-model="props.surveyData.immigrantStatusOther"
         />
       </span>
 
@@ -210,7 +210,7 @@
         <select
           id="what-user-considers-themselves"
           class="mb-0 mt-0 w-48 text-[12.5px]"
-          v-model="surveyData.usrGeneration"
+          v-model="props.surveyData.usrGeneration"
           required
         >
           <option
@@ -243,7 +243,7 @@
         <select
           id="highest-education-level"
           class="mb-0 mt-0 text-[12.5px] w-48"
-          v-model="surveyData.usrsHighestEduLvl"
+          v-model="props.surveyData.usrsHighestEduLvl"
           required
         >
           <!-- <option value="Some school">Some school</option> -->
@@ -269,10 +269,10 @@
         <br />
         <input
           type="text"
-          v-if="surveyData.usrsHighestEduLvl === 'Other (please specify)'"
+          v-if="props.surveyData.usrsHighestEduLvl === 'Other (please specify)'"
           class="mt-0 mb-0 rounded-md border border-gray-300 border-solid pl-3 py-1 box-border w-48 text-[12.5px]"
           placeholder="Specify here"
-          v-model="surveyData.usrsHighestEduLvlOther"
+          v-model="props.surveyData.usrsHighestEduLvlOther"
         />
       </span>
 

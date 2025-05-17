@@ -149,15 +149,13 @@ export default {
     },
 
     getImage(url) {
-      return new URL(
-        `../../../../assets/IAT_Gender_Toy/${url}`,
-        import.meta.url
-      ).href;
+      return new URL(`../../../../assets/Gender_Toy/${url}`, import.meta.url)
+        .href;
     },
 
     getImage(url) {
       return new URL(
-        `../../../../assets/IAT_Gender_Clothing/${url}`,
+        `../../../../assets/Gender_Clothing/${url}`,
         import.meta.url
       ).href;
     },

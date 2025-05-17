@@ -174,7 +174,7 @@ export default {
   methods: {
     getImage(url) {
       return new URL(
-        `../../../../assets/IAT_Gender_Occupation/${url}`,
+        `../../../../assets/Gender_Occupation/${url}`,
         import.meta.url
       ).href;
     },

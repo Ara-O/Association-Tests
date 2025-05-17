@@ -7,20 +7,38 @@
     <div class="child-img-survey-option-container">
       <label for="child-img-survey-option1-user">
         <div v-if="leftImgPersonal">
-          <img :src="getImage(leftImgPersonal)" alt="Toy 1" class="child-img-survey child-img-survey-option" />
+          <img
+            :src="getImage(leftImgPersonal)"
+            alt="Toy 1"
+            class="child-img-survey child-img-survey-option"
+          />
         </div>
       </label>
-      <input type="radio" id="child-img-survey-option1-user" name="child-img-survey-user1"
-        :value="generateOptionValue(leftImgPersonal)" v-model="userData.userWouldPrefer" />
+      <input
+        type="radio"
+        id="child-img-survey-option1-user"
+        name="child-img-survey-user1"
+        :value="generateOptionValue(leftImgPersonal)"
+        v-model="userData.userWouldPrefer"
+      />
     </div>
     <div class="child-img-survey-option-container">
       <label for="child-img-survey-option2-user2">
         <div v-if="rightImgPersonal">
-          <img :src="getImage(rightImgPersonal)" alt="Toy 2" class="child-img-survey child-img-survey-option" />
+          <img
+            :src="getImage(rightImgPersonal)"
+            alt="Toy 2"
+            class="child-img-survey child-img-survey-option"
+          />
         </div>
       </label>
-      <input type="radio" id="child-img-survey-option2-user2" name="child-img-survey-user2"
-        :value="generateOptionValue(rightImgPersonal)" v-model="userData.userWouldPrefer" />
+      <input
+        type="radio"
+        id="child-img-survey-option2-user2"
+        name="child-img-survey-user2"
+        :value="generateOptionValue(rightImgPersonal)"
+        v-model="userData.userWouldPrefer"
+      />
     </div>
   </div>
 
@@ -31,25 +49,47 @@
   <div v-if="checkStereotypeVisibility">
     <h4>{{ opinionTitle1 }}</h4>
     <div class="gender-toy-stereotype-option">
-      <img src="../../assets/IAT_Gender_Toy/C_M08.jpg" alt="Boy child" class="child-img-survey" />
+      <img
+        src="../../assets/Gender_Toy/C_M08.jpg"
+        alt="Boy child"
+        class="child-img-survey"
+      />
       <span>: </span>
       <div class="child-img-survey-option-container">
         <label for="child-img-survey-option1-2">
           <div v-if="leftImg !== ''">
-            <img :src="getImage(leftImg)" alt="Toy 1" class="child-img-survey child-img-survey-option" />
+            <img
+              :src="getImage(leftImg)"
+              alt="Toy 1"
+              class="child-img-survey child-img-survey-option"
+            />
           </div>
         </label>
-        <input type="radio" id="child-img-survey-option1-2" name="child-img-survey-2"
-          :value="generateOptionValue(leftImg)" v-model="userData.boyWouldPrefer" />
+        <input
+          type="radio"
+          id="child-img-survey-option1-2"
+          name="child-img-survey-2"
+          :value="generateOptionValue(leftImg)"
+          v-model="userData.boyWouldPrefer"
+        />
       </div>
       <div class="child-img-survey-option-container">
         <label for="child-img-survey-option2-2">
           <div v-if="rightImg">
-            <img :src="getImage(rightImg)" alt="Toy 2" class="child-img-survey child-img-survey-option" />
+            <img
+              :src="getImage(rightImg)"
+              alt="Toy 2"
+              class="child-img-survey child-img-survey-option"
+            />
           </div>
         </label>
-        <input type="radio" id="child-img-survey-option2-2" name="child-img-survey-2"
-          :value="generateOptionValue(rightImg)" v-model="userData.boyWouldPrefer" />
+        <input
+          type="radio"
+          id="child-img-survey-option2-2"
+          name="child-img-survey-2"
+          :value="generateOptionValue(rightImg)"
+          v-model="userData.boyWouldPrefer"
+        />
       </div>
     </div>
   </div>
@@ -58,53 +98,90 @@
     <!-- Second stereotype option-->
     <h4>{{ opinionTitle2 }}</h4>
     <div class="gender-toy-stereotype-option" style="margin-bottom: 30px">
-      <img src="../../assets/IAT_Gender_Toy/C_F08.jpg" alt="Girl child" class="child-img-survey" />
+      <img
+        src="../../assets/Gender_Toy/C_F08.jpg"
+        alt="Girl child"
+        class="child-img-survey"
+      />
       <span>: </span>
       <div class="child-img-survey-option-container">
         <label for="child-img-survey-option1">
           <div v-if="leftImg2 !== ''">
-            <img :src="getImage(leftImg2)" alt="Toy 1" class="child-img-survey child-img-survey-option" />
+            <img
+              :src="getImage(leftImg2)"
+              alt="Toy 1"
+              class="child-img-survey child-img-survey-option"
+            />
           </div>
         </label>
-        <input type="radio" id="child-img-survey-option1" name="child-img-survey" :value="generateOptionValue(leftImg2)"
-          v-model="userData.girlWouldPrefer" />
+        <input
+          type="radio"
+          id="child-img-survey-option1"
+          name="child-img-survey"
+          :value="generateOptionValue(leftImg2)"
+          v-model="userData.girlWouldPrefer"
+        />
       </div>
       <div class="child-img-survey-option-container">
         <label for="child-img-survey-option2">
           <div v-if="rightImg2">
-            <img :src="getImage(rightImg2)" alt="Toy 2" class="child-img-survey child-img-survey-option" />
+            <img
+              :src="getImage(rightImg2)"
+              alt="Toy 2"
+              class="child-img-survey child-img-survey-option"
+            />
           </div>
         </label>
-        <input type="radio" id="child-img-survey-option2" name="child-img-survey" :value="generateOptionValue(rightImg2)"
-          v-model="userData.girlWouldPrefer" />
+        <input
+          type="radio"
+          id="child-img-survey-option2"
+          name="child-img-survey"
+          :value="generateOptionValue(rightImg2)"
+          v-model="userData.girlWouldPrefer"
+        />
       </div>
     </div>
   </div>
 
   <div style="display: flex; flex-direction: column; align-items: center">
     <div class="buttons">
-      <button @click="progress_ts" class="btn btn_basic_survey" style="margin-top: 5px; width: 150px">
-        <span v-if="currentTest != 'IAT_Gender_Occupation' &&
-          currentTest != 'IAT_Gender_Roles' &&
-          currentTest != 'IAT_Gender_Toy'
-          ">
+      <button
+        @click="progress_ts"
+        class="btn btn_basic_survey"
+        style="margin-top: 5px; width: 150px"
+      >
+        <span
+          v-if="
+            currentTest != 'IAT_Gender_Occupation' &&
+            currentTest != 'IAT_Gender_Roles' &&
+            currentTest != 'IAT_Gender_Toy'
+          "
+        >
           Touchscreen Version
         </span>
         <span v-else> Next </span>
       </button>
 
       <!-- TODO: Keeping this here for April 2 updates of no keyboard version on Toy, Roles, and Occupation IAT -->
-      <button v-if="currentTest != 'IAT_Gender_Occupation' &&
-        currentTest != 'IAT_Gender_Roles' &&
-        currentTest != 'IAT_Gender_Toy'
-        " @click="progress_kb" class="btn btn_basic_survey kb_btn"
-        style="margin-top: 5px; width: 150px; padding: 24px 18px">
+      <button
+        v-if="
+          currentTest != 'IAT_Gender_Occupation' &&
+          currentTest != 'IAT_Gender_Roles' &&
+          currentTest != 'IAT_Gender_Toy'
+        "
+        @click="progress_kb"
+        class="btn btn_basic_survey kb_btn"
+        style="margin-top: 5px; width: 150px; padding: 24px 18px"
+      >
         Keyboard Version
       </button>
     </div>
     <br />
-    <button @click="goBack" class="btn btn_basic_survey kb_btn"
-      style="margin-top: 5px; width: 150px; padding: 24px 18px; font-size: 14px;">
+    <button
+      @click="goBack"
+      class="btn btn_basic_survey kb_btn"
+      style="margin-top: 5px; width: 150px; padding: 24px 18px; font-size: 14px"
+    >
       Back
     </button>
   </div>

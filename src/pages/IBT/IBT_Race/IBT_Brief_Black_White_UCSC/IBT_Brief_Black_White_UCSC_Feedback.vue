@@ -15,7 +15,7 @@
         class="congratulations-image"
       />
     </div>
-    <main-button routeTo="/Home">Go Home</main-button>
+    <main-button routeTo="/">Go Home</main-button>
   </main>
 </template>
 <script setup>

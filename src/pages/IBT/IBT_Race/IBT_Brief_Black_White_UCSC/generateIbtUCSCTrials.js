@@ -1,5 +1,3 @@
-import validateTrialData from "../../../../modules/validateTrials/validateTrialDataIBT";
-
 function shuffleObjects(array) {
   for (var a = 0; a < array.length; a++) {
     var x = array[a];

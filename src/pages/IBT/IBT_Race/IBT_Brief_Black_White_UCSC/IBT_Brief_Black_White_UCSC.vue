@@ -1,16 +1,18 @@
 <template>
   <main style="height: 100vh" v-if="userHasNotFinishedConsentForm">
-    <!-- <ConsentForm
-      @userHasAgreed="userHasNotFinishedConsentForm = false"
-    ></ConsentForm> -->
-    <h3 style="font-weight: 500">Welcome to the UCSC IBT!</h3>
-    <button @click="userHasNotFinishedConsentForm = false" class="btn_basic_survey" style="margin-top: 10px">
-      Start Test
-    </button>
+    <h3 style="font-weight: 600; font-size: 30px">Welcome to the UCSC IBT!</h3>
+    <div class="mode-buttons">
+      <button
+        @click="chooseMode('touchscreen')"
+        class="btn_basic_survey mode-btn"
+      >
+        Start
+      </button>
+    </div>
   </main>
   <main v-else>
     <section>
-      <div v-show="!userHasPutInUserID" class="collect-user-id ">
+      <div v-show="!userHasPutInUserID" class="collect-user-id">
         <h3 style="font-size: 18px; font-weight: 500">Before we start!</h3>
         <h3 class="input-user-id-text">
           What is your unique testing ID? ( You will be given this by a lab
@@ -23,8 +25,11 @@
       <div v-show="userHasPutInUserID">
         <section id="test-border">
           <section v-if="notFinishedInstructions">
-            <implicit-bias-test-instructions :instruction="ibt_trials[section].instruction"
-              @finishedInstructions="finishedInstructions">
+            <implicit-bias-test-instructions
+              :instruction="ibt_trials[section].instruction"
+              :mode="testMode"
+              @finishedInstructions="finishedInstructions"
+            >
             </implicit-bias-test-instructions>
           </section>
 
@@ -32,38 +37,89 @@
             <div v-show="testNotStarted">
               <h3>Instruction</h3>
               <br />
-              <h3 class="fullinstruction" v-html="ibt_trials[section].instruction"></h3>
-
+              <h3
+                class="fullinstruction"
+                v-html="ibt_trials[section].instruction"
+              ></h3>
               <br />
               <h4>Click the right arrow to continue</h4>
-              <img src="../../../../assets/app_icons/rightArrow.png" alt="Right arrow" @click="startTest"
-                class="continue" />
+              <img
+                src="../../../../assets/app_icons/rightArrow.png"
+                alt="Right arrow"
+                @click="startTest"
+                class="continue"
+              />
             </div>
-            <img src="../../../../assets/IT_faces/star.jpg" alt="star" class="ibt-star" v-show="userGotStimulusRight" />
-            <img src="../../../../assets/IT_faces/cross.jpg" alt="cross" class="ibt-cross"
-              v-show="userGotStimulusWrong" />
+            <img
+              src="../../../../assets/IT_faces/star.jpg"
+              alt="star"
+              class="ibt-star"
+              v-show="userGotStimulusRight"
+            />
+            <img
+              src="../../../../assets/IT_faces/cross.jpg"
+              alt="cross"
+              class="ibt-cross"
+              v-show="userGotStimulusWrong"
+            />
             <div :class="{ hide: testNotStarted || paused }">
-              <div style="
+              <div
+                style="
                   display: flex;
                   flex-direction: column;
                   align-items: center;
-                ">
-                <div v-for="trial in ibt_trials[section].trials" :key="trial.id" :style="{ display: trial.visibility }">
-                  <img :src="getImage(trial.image)" class="trialimg" style="width: 240px" />
-                  <img :src="getClickerImage(
-                    trial.leftClickerFaceEmotion == 'Sad'
-                      ? 'sad.jpg'
-                      : 'happy.jpg'
-                  )
-                    " alt="Left face" ref="leftFace" :data-mood="trial.leftClickerFaceEmotion"
-                    class="faceLeft ibt-icon" />
-                  <img :src="getClickerImage(
-                    trial.rightClickerFaceEmotion == 'Sad'
-                      ? 'sad.jpg'
-                      : 'happy.jpg'
-                  )
-                    " alt="Right face" :data-mood="trial.rightClickerFaceEmotion" ref="rightFace"
-                    class="faceRight ibt-icon" />
+                "
+              >
+                <div
+                  v-for="trial in ibt_trials[section].trials"
+                  :key="trial.id"
+                  :style="{ display: trial.visibility }"
+                >
+                  <img
+                    :src="getImage(trial.image)"
+                    class="trialimg"
+                    style="width: 240px"
+                  />
+                  <div class="clicker-row">
+                    <!-- Left face -->
+                    <div class="clicker-wrapper">
+                      <span v-if="testMode === 'keyboard'" class="key-label"
+                        >E</span
+                      >
+                      <img
+                        :src="
+                          getClickerImage(
+                            trial.leftClickerFaceEmotion == 'Sad'
+                              ? 'sad.jpg'
+                              : 'happy.jpg',
+                          )
+                        "
+                        alt="Left face"
+                        ref="leftFace"
+                        :data-mood="trial.leftClickerFaceEmotion"
+                        class="faceLeft ibt-icon"
+                      />
+                    </div>
+                    <!-- Right face -->
+                    <div class="clicker-wrapper">
+                      <img
+                        :src="
+                          getClickerImage(
+                            trial.rightClickerFaceEmotion == 'Sad'
+                              ? 'sad.jpg'
+                              : 'happy.jpg',
+                          )
+                        "
+                        alt="Right face"
+                        :data-mood="trial.rightClickerFaceEmotion"
+                        ref="rightFace"
+                        class="faceRight ibt-icon"
+                      />
+                      <span v-if="testMode === 'keyboard'" class="key-label"
+                        >I</span
+                      >
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -91,6 +147,7 @@ export default {
   data() {
     return {
       uid: "",
+      testMode: null,
       userHasNotFinishedConsentForm: true,
       userHasPutInUserID: false,
       section: 0,
@@ -106,17 +163,22 @@ export default {
   },
 
   methods: {
+    chooseMode(mode) {
+      this.testMode = mode;
+      this.randomizeTrialCongruency();
+      this.userHasNotFinishedConsentForm = false;
+    },
+
     storeUserID() {
       if (this.uid.trim() !== "") {
         this.$store.commit("changeUserID", this.uid);
         this.userHasPutInUserID = true;
       }
 
-      //generate random number if they skip
       if (this.uid.trim() === "" && this.$store.getters.getUID === "") {
         this.$store.commit(
           "changeUserID",
-          String(Math.floor(Math.random() * 10000))
+          String(Math.floor(Math.random() * 10000)),
         );
         this.userHasPutInUserID = true;
       }
@@ -139,7 +201,7 @@ export default {
     getImage(url) {
       return new URL(
         `../../../../assets/IBT_Race_UCSC/${url}.jpg`,
-        import.meta.url
+        import.meta.url,
       ).href;
     },
 
@@ -158,7 +220,7 @@ export default {
           that,
           that.ibt_trials[that.section].trials,
           "IBT_Brief_Black_White_UCSC",
-          "/IBT_Brief_Black_White_Feedback_UCSC"
+          that.testMode,
         );
         document.querySelector(".faceRight").style.display = "block";
         document.querySelector(".faceLeft").style.display = "block";
@@ -166,7 +228,6 @@ export default {
     },
 
     startTest() {
-      // console.log("starting real test");
       let that = this;
       that.testNotStarted = false;
       setTimeout(function () {
@@ -177,82 +238,70 @@ export default {
           that,
           that.ibt_trials[that.section].trials,
           "IBT_Brief_Black_White_UCSC",
-          "/IBT_Brief_Black_White_UCSC_Feedback"
+          that.testMode,
         );
       }, 500);
     },
+
+    buildInstruction(whiteEmotion, blackEmotion) {
+      if (this.testMode === "keyboard") {
+        return `There will be a picture of a <span style="font-weight:bold;color:#e40000">Black person</span> or a <span style="font-weight:bold;color:#e40000">White person</span> in the middle of the screen. Two faces will appear at the bottom. Press <span style="font-weight:bold;color:#e40000">E</span> for the face on the <span style="font-weight:bold;color:#e40000">left</span> and <span style="font-weight:bold;color:#e40000">I</span> for the face on the <span style="font-weight:bold;color:#e40000">right</span>. When you see the <span style="font-weight:bold;color:#e40000">White person</span>, press the key for the <span style="font-weight:bold;color:#e40000">${
+          whiteEmotion === "Happy" ? "smiling" : "crying"
+        } face</span>. When you see the <span style="font-weight:bold;color:#e40000">Black person</span>, press the key for the <span style="font-weight:bold;color:#e40000">${
+          blackEmotion === "Happy" ? "smiling" : "crying"
+        } face</span>. Please respond quickly and correctly.`;
+      } else {
+        return `There will be a picture of a <span style="font-weight:bold;color:#e40000">Black person</span> or a <span style="font-weight:bold;color:#e40000">White person</span> in the middle of the screen. When you see a picture of the <span style="font-weight:bold;color:#e40000">White person</span> you should click the <span style="font-weight:bold;color:#e40000">${
+          whiteEmotion === "Happy" ? "smiling" : "crying"
+        } face</span>; when you see the <span style="font-weight:bold;color:#e40000">Black person</span>, you should click the <span style="font-weight:bold;color:#e40000">${
+          blackEmotion === "Happy" ? "smiling" : "crying"
+        } face</span>. The faces may change places. Please respond quickly and correctly.`;
+      }
+    },
+
+    buildPracticeInstruction(whiteEmotion, blackEmotion) {
+      const base = this.buildInstruction(whiteEmotion, blackEmotion);
+      return `Practice: ${base}`;
+    },
+
     randomizeTrialCongruency() {
-      let allTrialsShuffled = [];
-      let allTrials = [
+      const allTrials = [
         {
           trials: generateIBTtrialsRace("Happy", "Sad", 8),
           section: "practice_1",
-          instruction: `Practice: There will be a picture of a <span style="font-weight: bold; color: #e40000"> Black person </span> or a <span style="font-weight: bold; color: #e40000">White person</span> in the
-          middle of the screen. When you see a picture of the <span style="font-weight: bold; color: #e40000">White person</span> you should
-          touch the <span style="font-weight: bold; color: #e40000">smiling face</span>; when you see the <span style="font-weight: bold; color: #e40000">Black person</span>, you should touch
-          the <span style="font-weight: bold; color: #e40000">crying face</span>. <span style="font-weight: bold; color: #e40000">Smiling and Crying faces</span> will appear at the bottom of
-          the screen either on the left or right. Pay attention because the
-          <span style="font-weight: bold; color: #e40000">smiling</span> and <span style="font-weight: bold; color: #e40000">crying faces</span> may change places. Please respond
-          quickly and correctly. You can only use one hand to touch
-          the screen.`,
+          instruction: this.buildPracticeInstruction("Happy", "Sad"),
         },
         {
           trials: generateIBTtrialsRace("Happy", "Sad", 20),
           section: "section_1",
-          instruction: `There will be a picture of a <span style="font-weight: bold; color: #e40000">Black person</span> or a <span style="font-weight: bold; color: #e40000">White person</span> in the
-          middle of the screen. When you see a picture of the <span style="font-weight: bold; color: #e40000">White person</span> you should
-          touch the <span style="font-weight: bold; color: #e40000">smiling face</span>; when you see the<span style="font-weight: bold; color: #e40000"> Black person</span>, you should touch
-          <span style="font-weight: bold; color: #e40000">the crying face</span>. <span style="font-weight: bold; color: #e40000">Smiling and Crying faces</span> will appear at the bottom of
-          the screen either on the left or right. Pay attention because the
-          <span style="font-weight: bold; color: #e40000">smiling </span> and <span style="font-weight: bold; color: #e40000">crying faces</span> may change places. Please respond
-          quickly and correctly. You can only use one hand to touch
-          the screen.`,
+          instruction: this.buildInstruction("Happy", "Sad"),
         },
         {
           trials: generateIBTtrialsRace("Sad", "Happy", 8),
           section: "practice_2",
-          instruction: `Practice: There will be a picture of a <span style="font-weight: bold; color:#e40000">Black person</span> or a <span style="font-weight: bold; color: #e40000">White person</span> in the middle
-        of screen. When you see a picture of the <span style="font-weight: bold; color: #e40000">White person</span> you should touch the
-        <span style="font-weight: bold; color: #e40000">crying face</span>; when you see the <span style="font-weight: bold; color: #e40000">Black person</span>, you should touch the <span style="font-weight: bold; color: #e40000">smiling
-        face </span>. <span style="font-weight: bold; color: #e40000">Smiling and Crying faces </span> will appear at the bottom of the screen
-        either on the left or right. Pay attention because the <span style="font-weight: bold; color: #e40000">smiling</span> and<span style="font-weight: bold; color: #e40000"> crying</span>
-        faces may change places. Please respond quickly and correctly. You
-        can only use one hand to touch the screen.`,
+          instruction: this.buildPracticeInstruction("Sad", "Happy"),
         },
         {
           trials: generateIBTtrialsRace("Sad", "Happy", 20),
           section: "section_2",
-          instruction: `There will be a picture of a <span style="font-weight: bold; color:#e40000">Black person</span> or a <span style="font-weight: bold; color: #e40000">White person</span> in the middle
-        of screen. When you see a picture of the <span style="font-weight: bold; color: #e40000">White person</span> you should touch the
-        <span style="font-weight: bold; color: #e40000">crying face</span>; when you see the<span style="font-weight: bold; color: #e40000"> Black person</span>, you should touch the<span style="font-weight: bold; color: #e40000"> smiling
-        face </span>. <span style="font-weight: bold; color: #e40000">Smiling and Crying faces</span> will appear at the bottom of the screen
-        either on the left or right. Pay attention because the <span style="font-weight: bold; color: #e40000">smiling</span> and<span style="font-weight: bold; color: #e40000"> crying
-        faces</span> may change places. Please respond quickly and correctly. You
-        can only use one hand to touch the screen.`,
+          instruction: this.buildInstruction("Sad", "Happy"),
         },
       ];
-      let randomNo = Math.floor(Math.random() * 2);
+
+      let allTrialsShuffled = [];
+      const randomNo = Math.floor(Math.random() * 2);
       if (randomNo === 0) {
-        //Starting with congruency test, so updating the descriptions
         allTrialsShuffled = allTrials;
         allTrialsShuffled.forEach((trialArray, index) => {
           trialArray.trials.forEach((trial) => {
-            if (index === 0) {
-              trial.description =
-                "Practice: User clicks a happy face for an image of a white person, and a sad face for an image of a black person";
-            }
-            if (index === 1) {
-              trial.description =
-                "User clicks a happy face for an image of a white person, and a sad face for an image of a black person";
-            }
-            if (index === 2) {
-              trial.description =
-                "Practice: User clicks a happy face for an image of a black person, and a sad face for an image of a white person";
-            }
-            if (index === 3) {
-              trial.description =
-                "Practice: User clicks a happy face for an image of a black person, and a sad face for an image of a white person";
-            }
+            trial.description =
+              index === 0
+                ? "Practice: User clicks a happy face for an image of a white person, and a sad face for an image of a black person"
+                : index === 1
+                ? "User clicks a happy face for an image of a white person, and a sad face for an image of a black person"
+                : index === 2
+                ? "Practice: User clicks a happy face for an image of a black person, and a sad face for an image of a white person"
+                : "Practice: User clicks a happy face for an image of a black person, and a sad face for an image of a white person";
           });
         });
       } else {
@@ -260,28 +309,18 @@ export default {
           allTrials[2],
           allTrials[3],
           allTrials[0],
-          allTrials[1]
+          allTrials[1],
         );
-
-        //Setting the updated description for the allTrialsShuffled - for incongruent tests
         allTrialsShuffled.forEach((trialArray, index) => {
           trialArray.trials.forEach((trial) => {
-            if (index === 0) {
-              trial.description =
-                "Practice: User clicks a happy face for an image of a black person, and a sad face for an image of a white person";
-            }
-            if (index === 1) {
-              trial.description =
-                "User clicks a happy face for an image of a black person, and a sad face for an image of a white person";
-            }
-            if (index === 2) {
-              trial.description =
-                "Practice: User clicks a happy face for an image of a white person, and a sad face for an image of a black person";
-            }
-            if (index === 3) {
-              trial.description =
-                "User clicks a happy face for an image of a white person, and a sad face for an image of a black person";
-            }
+            trial.description =
+              index === 0
+                ? "Practice: User clicks a happy face for an image of a black person, and a sad face for an image of a white person"
+                : index === 1
+                ? "User clicks a happy face for an image of a black person, and a sad face for an image of a white person"
+                : index === 2
+                ? "Practice: User clicks a happy face for an image of a white person, and a sad face for an image of a black person"
+                : "User clicks a happy face for an image of a white person, and a sad face for an image of a black person";
           });
         });
       }
@@ -290,10 +329,6 @@ export default {
     },
   },
 
-  //Make sure that the IBT trial congruency tests are randomized
-  created() {
-    this.randomizeTrialCongruency();
-  },
   mounted() {
     this.$store.state["IBT_Brief_Black_White_UCSC"] = [];
     this.$store.commit("changeCurrentTest", "IBT_Brief_Black_White_UCSC");
@@ -302,6 +337,60 @@ export default {
 </script>
 
 <style scoped>
+.mode-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mode-btn {
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 0px;
+  font-size: 16px;
+  font-weight: 400;
+  height: 65px;
+}
+
+.key-hint {
+  font-size: 12px;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+.clicker-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 60px;
+  margin-top: 12px;
+}
+
+.clicker-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.key-label {
+  font-size: 22px;
+  font-weight: 700;
+  color: #333;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background: #f4f4f4;
+  border: 2px solid #ccc;
+  box-shadow: 0 3px 0 #aaa;
+}
+
 .input-user-id-text {
   max-width: 400px;
   width: auto;

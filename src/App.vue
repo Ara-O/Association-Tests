@@ -10,7 +10,16 @@ import { useRoute } from "vue-router";
 import { watch, ref, onMounted } from "vue";
 const route = useRoute();
 let shouldBeVisible = ref(false);
-let visiblePaths = ["/Home", "/"];
+let visiblePaths = [
+  "/Home",
+  "/",
+  "/IAT_Choose_Test",
+  "/IBT_Choose_Test",
+  "/IT",
+  "/FM_Choose_Test",
+  "/LD_IBT_Consent_Form",
+  "/LD_IBT_Survey"
+];
 
 watch(route, (newval) => {
   if (visiblePaths.includes(newval.fullPath)) {
@@ -25,7 +34,7 @@ watch(route, (newval) => {
         pageLanguage: "en",
         includedLanguages: "en,es,fr,ar,zh-CN,bn,hi,kn,ms,mr,ml,ta,ur,pn,pa,si",
       },
-      "google_translate_element",
+      "google_translate_element"
     );
   }, 1000);
 });
